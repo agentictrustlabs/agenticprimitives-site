@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0f172a;
+  --color-navy: #0b2a4a;
+  --color-navy-deep: #071a2f;
+  --color-navy-soft: #e6eef7;
+  --color-teal: #0f766e;
+  --color-teal-soft: #e0f2f1;
+  --color-amber: #b45309;
+  --color-amber-soft: #fef3c7;
+  --color-rose: #be123c;
+  --color-rose-soft: #ffe4e6;
+  --color-violet: #6d28d9;
+  --color-violet-soft: #ede9fe;
+  --color-paper: #ffffff;
+  --color-cream: #f8fafc;
+  --color-line: #e2e8f0;
+  --color-muted: #64748b;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  --dg-ink: var(--color-ink);
+  --dg-muted: var(--color-muted);
+  --dg-line: #94a3b8;
+  --dg-faint: var(--color-line);
+  --dg-paper: var(--color-paper);
+  --dg-navy: var(--color-navy);
+  --dg-navy-soft: var(--color-navy-soft);
+  --dg-teal: var(--color-teal);
+  --dg-teal-soft: var(--color-teal-soft);
+  --dg-amber: var(--color-amber);
+  --dg-amber-soft: var(--color-amber-soft);
+  --dg-rose: var(--color-rose);
+  --dg-rose-soft: var(--color-rose-soft);
+  --dg-violet: var(--color-violet);
+  --dg-violet-soft: var(--color-violet-soft);
+  --dg-slate-soft: #f1f5f9;
+  --dg-font: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --dg-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-paper text-ink antialiased; font-feature-settings: 'cv11', 'ss01'; }
+
+.container-x { @apply mx-auto w-full max-w-6xl px-6 md:px-10; }
+.eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-teal; }
+.h1 { @apply text-4xl font-semibold leading-[1.05] tracking-tight text-navy md:text-6xl; }
+.h2 { @apply text-3xl font-semibold leading-tight tracking-tight text-navy md:text-4xl; }
+.h3 { @apply text-xl font-semibold tracking-tight text-navy; }
+.lede { @apply text-lg leading-relaxed text-slate-600 md:text-xl; }
+.prose-ap p { @apply my-4 leading-relaxed text-slate-700; }
+@utility btn { @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition; }
+@utility btn-primary { @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition bg-navy text-white hover:bg-navy-deep; }
+@utility btn-secondary { @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition border border-line bg-white text-navy hover:border-navy; }
+@utility btn-ghost { @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition text-navy hover:bg-navy-soft; }
+.card { @apply rounded-2xl border border-line bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)]; }
+.kbd { @apply rounded border border-line bg-cream px-1.5 py-0.5 font-mono text-[0.85em] text-navy; }
+.figure { @apply overflow-hidden rounded-2xl border border-line bg-white p-3 md:p-5; }
+.grid-fade { background-image: linear-gradient(to right, rgba(11,42,74,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,42,74,0.06) 1px, transparent 1px); background-size: 32px 32px; mask-image: radial-gradient(ellipse at top, black 40%, transparent 80%); }
+.shot { @apply overflow-hidden rounded-xl border border-line bg-cream shadow-[0_20px_50px_-20px_rgba(11,42,74,0.35)]; }

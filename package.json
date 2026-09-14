@@ -1,0 +1,20 @@
+{
+  "name": "agenticprimitives.dev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The brand site for Agentic Primitives — https://agenticprimitives.dev",
+  "packageManager": "pnpm@9.15.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "pnpm --filter @apsite/web dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "start": "pnpm --filter @apsite/web start",
+    "shots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "turbo": "^2.10.12",
+    "typescript": "^5.9.3"
+  }
+}
