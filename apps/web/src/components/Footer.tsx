@@ -24,6 +24,8 @@ export function Footer() {
             <li><Link href="/substrate" className="hover:text-navy">Architecture</Link></li>
             <li><Link href="/compare" className="hover:text-navy">Why one substrate</Link></li>
             <li><Link href="/examples/game-night" className="hover:text-navy">Example: Game Night</Link></li>
+            <li><Link href="/writing" className="hover:text-navy">Writing</Link></li>
+            <li><a href="/rss.xml" className="hover:text-navy">RSS</a></li>
           </ul>
         </div>
         <div>

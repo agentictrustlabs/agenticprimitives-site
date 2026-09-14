@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { PILLARS } from '@apsite/content';
+import { pageMeta } from '@/lib/seo';
 import { AgentTriad, HarnessSequence, MandateAnatomy, SubstrateLayers } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Section } from '@/components/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Architecture — the substrate in detail',
   description: 'The Agentic Primitives architecture: Smart Agents for people, organizations and services; delegations, caveats and mandates; the authority-aware harness; two tiers of knowledge; evidence the owner carries.',
-};
+  path: '/substrate',
+});
 
 export default function Substrate() {
   return (

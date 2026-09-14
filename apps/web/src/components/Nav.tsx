@@ -7,6 +7,7 @@ const LINKS = [
   { href: '/substrate', label: 'Architecture' },
   { href: '/examples/game-night', label: 'Example: Game Night' },
   { href: '/compare', label: 'Why one substrate' },
+  { href: '/writing', label: 'Writing' },
   { href: '/developers', label: 'Developers' },
 ];
 

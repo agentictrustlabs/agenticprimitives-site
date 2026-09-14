@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import { SITE } from '@apsite/content';
 import { Section } from '@/components/ui';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'Ontology namespaces', description: 'The Agentic Primitives ontology namespaces: which module each prefix resolves to.' };
+export const metadata: Metadata = pageMeta({
+  title: 'Ontology namespaces',
+  description: 'The Agentic Primitives ontology namespaces: which module each prefix resolves to.',
+  path: '/ns',
+});
 
 const MODULES: Array<[string, string, string]> = [
   ['ap', 'core', 'Smart Agents, party roles, custody, chartering'],

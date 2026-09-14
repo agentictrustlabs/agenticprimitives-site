@@ -1,0 +1,91 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { SERIES, SITE, seriesNeighbors, writingBySlug, WRITING } from '@apsite/content';
+import { Markdown } from '@/components/Markdown';
+import { JsonLd, pageMeta } from '@/lib/seo';
+import { essayBody } from '@/lib/essays';
+
+export function generateStaticParams() {
+  return WRITING.map((w) => ({ slug: w.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const w = writingBySlug(slug);
+  if (!w) return {};
+  return pageMeta({
+    title: w.title,
+    description: w.description,
+    path: `/writing/${w.slug}`,
+    type: 'article',
+    image: w.cover ?? '/og.png',
+    published: w.date,
+  });
+}
+
+export default async function Essay({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const w = writingBySlug(slug);
+  if (!w) notFound();
+  const body = essayBody(slug);
+  const { prev, next } = seriesNeighbors(slug);
+  const url = `${SITE.url}/writing/${w.slug}`;
+  return (
+    <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: w.title,
+          description: w.description,
+          datePublished: w.date,
+          author: { '@type': 'Person', name: SITE.author },
+          publisher: { '@type': 'Organization', name: SITE.org, url: SITE.url },
+          mainEntityOfPage: url,
+          image: `${SITE.url}${w.cover ?? '/og.png'}`,
+          url,
+          ...(w.linkedin ? { sameAs: w.linkedin } : {}),
+        }}
+      />
+      <article className="container-x max-w-3xl py-16 md:py-24">
+        <p className="eyebrow">
+          {w.kind === 'series' ? `Day ${w.day} of ${SERIES.length} · The missing layer${w.week ? ` · ${w.week}` : ''}` : 'Essay'}
+          {' · '}
+          <time dateTime={w.date}>{w.date}</time>
+        </p>
+        {w.cover && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={w.cover} alt="" className="mt-8 w-full rounded-2xl border border-line" />
+        )}
+        <div className="mt-10">
+          <Markdown source={body} />
+        </div>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-sm">
+          <Link href="/writing" className="text-slate-500 hover:text-navy">← All writing</Link>
+          {w.linkedin && (
+            <a href={w.linkedin} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-navy">
+              Discuss on LinkedIn
+            </a>
+          )}
+        </div>
+        {(prev || next) && (
+          <nav className="mt-8 grid gap-4 border-t border-line pt-8 md:grid-cols-2" aria-label="Series">
+            {prev ? (
+              <Link href={`/writing/${prev.slug}`} className="card hover:border-navy">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Previous</div>
+                <div className="mt-1 font-semibold text-navy">Day {prev.day}: {prev.title}</div>
+              </Link>
+            ) : <span />}
+            {next && (
+              <Link href={`/writing/${next.slug}`} className="card hover:border-navy md:text-right">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Next</div>
+                <div className="mt-1 font-semibold text-navy">Day {next.day}: {next.title}</div>
+              </Link>
+            )}
+          </nav>
+        )}
+      </article>
+    </>
+  );
+}

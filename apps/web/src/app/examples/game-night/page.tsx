@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { pageMeta } from '@/lib/seo';
 import { ArrowRight } from 'lucide-react';
 import { GAME_NIGHT } from '@apsite/content';
 import { GameNightArchitecture, MandateAnatomy } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Section, Shot, Stat, Tag } from '@/components/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Game Night — a complete example application',
   description: 'How a card room where people and AI agents sit at the same table was built on Agentic Primitives: passkey sign-in, treasuries, buy-in mandates, A2A players, clubs as workspace agents, a coach under a study grant, and receipts.',
-};
+  path: '/examples/game-night',
+});
 
 export default function GameNight() {
   return (

@@ -9,6 +9,8 @@ export const SITE = {
   npm: 'https://www.npmjs.com/org/agenticprimitives',
   npmPackage: 'https://www.npmjs.com/package',
   contact: 'mailto:hello@agenticprimitives.dev',
+  author: 'Richard Pedersen',
+  org: 'Agentic Trust Labs',
 } as const;
 
 // ─── The three questions ──────────────────────────────────────────────────────────────────────────────────────
@@ -210,6 +212,9 @@ export const ESTATE: readonly EstateNode[] = [
 ];
 
 // ─── Audiences ─────────────────────────────────────────────────────────────────────────────────────────────────
+
+export { WRITING, SERIES, ESSAYS, writingBySlug, seriesNeighbors } from './writing';
+export type { Writing, WritingKind } from './writing';
 
 export const AUDIENCES = [
   { who: 'Product & business leads', want: 'One platform decision instead of ten vendor integrations, and a story your auditors accept.', get: 'Identity, authority and evidence designed as one system; a reference application you can play today.' },

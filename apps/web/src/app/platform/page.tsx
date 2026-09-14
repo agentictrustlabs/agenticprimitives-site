@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { OFFERINGS, SITE } from '@apsite/content';
+import { pageMeta } from '@/lib/seo';
 import { EstateTopology } from '@apsite/diagrams';
 import { CTA, Figure, Section, Shot, Tag } from '@/components/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Platform — nine capabilities, one substrate',
   description: 'Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations — the nine offerings of the Agentic Primitives substrate, what each replaces, and the packages and standards behind it.',
-};
+  path: '/platform',
+});
 
 export default function Platform() {
   return (

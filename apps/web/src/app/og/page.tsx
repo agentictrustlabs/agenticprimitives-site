@@ -1,4 +1,7 @@
+import type { Metadata } from 'next';
 import { Logo } from '@/components/Logo';
+
+export const metadata: Metadata = { robots: { index: false, follow: false }, title: 'OG image' };
 
 // Rendered once by scripts/og.mjs into public/og.png (1200×630). Not linked from navigation.
 export default function Og() {

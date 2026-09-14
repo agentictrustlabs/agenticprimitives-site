@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { OFFERINGS, SITE } from '@apsite/content';
+import { pageMeta } from '@/lib/seo';
 import { Callout, CTA, Section, Tag } from '@/components/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Developers — build on the substrate',
   description: 'Install @agenticprimitives/* packages, deploy the contracts to any EVM, wire your app as a relying app of a Home, and let your agents act under grants. Specs, package map, live gates.',
-};
+  path: '/developers',
+});
 
 const STEPS = [
   { t: 'Sign people in as Smart Agents', b: 'Your app is an OIDC client of a Home. A passkey sign-in yields `alice.me` — an account, not a session. Ask the Home to charter what your app needs on first connect (a treasury, a workspace).', pk: ['identity-auth', 'agent-account', 'agent-naming'] },

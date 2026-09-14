@@ -1,14 +1,34 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Fingerprint, KeyRound, ScrollText } from 'lucide-react';
-import { AUDIENCES, GAME_NIGHT, NEEDS, OFFERINGS, PILLARS, SITE } from '@apsite/content';
+import { AUDIENCES, ESSAYS, GAME_NIGHT, NEEDS, OFFERINGS, PILLARS, SITE } from '@apsite/content';
 import { StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Section, Shot, Tag } from '@/components/ui';
+import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
+
+export const metadata: Metadata = pageMeta({
+  title: `${SITE.name} — ${SITE.tagline}`,
+  description:
+    'One substrate for agentic applications: identity, authority and evidence designed as one system. Smart Agents for people, organizations and services; scoped, revocable grants; receipts the owner carries. Open source.',
+  path: '/',
+});
 
 const ICONS = { identity: Fingerprint, authority: KeyRound, evidence: ScrollText } as const;
 
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: HOME_FAQ.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-line">
         <div className="grid-fade absolute inset-0 -z-10" aria-hidden />
@@ -188,6 +208,23 @@ export default function Home() {
           <Callout tone="navy">
             Honest status: ready for test and pre-production environments. A comprehensive primitive set under an actively running audit; every security finding ever logged is public in the repository.
           </Callout>
+        </div>
+      </Section>
+
+      <Section eyebrow="Writing" title="Rails, not throttles." lede="The operating model around the LLM is what has to change. The 21-part series and the long essay are on this site — no LinkedIn login.">
+        <div className="grid gap-4 md:grid-cols-2">
+          {ESSAYS.map((w) => (
+            <Link key={w.slug} href={`/writing/${w.slug}`} className="card group hover:border-navy">
+              <p className="eyebrow">Essay</p>
+              <h3 className="h3 mt-2 group-hover:text-teal">{w.title}</h3>
+              <p className="mt-3 text-sm text-slate-600">{w.description}</p>
+            </Link>
+          ))}
+          <Link href="/writing" className="card group hover:border-navy">
+            <p className="eyebrow">Series · 21 days</p>
+            <h3 className="h3 mt-2 group-hover:text-teal">The missing layer</h3>
+            <p className="mt-3 text-sm text-slate-600">One idea a day: the anchor, authority, trust, and how an agent actually acts. Full text here.</p>
+          </Link>
         </div>
       </Section>
 

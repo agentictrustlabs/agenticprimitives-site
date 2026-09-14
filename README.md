@@ -28,6 +28,10 @@ pnpm build
 demo persona where one is offered, and writes `apps/web/public/shots/*.png`. Playwright is resolved from
 `PLAYWRIGHT_ROOT` (default `~/pokernight`) so this repo carries no browser download.
 
+## Findability
+
+`/sitemap.xml`, `/robots.txt` (AI crawlers allowed), `/llms.txt`, `/rss.xml`, JSON-LD (Organization, WebSite, SoftwareApplication, FAQ, Article), canonical + Open Graph on every page. Writing is hosted in full so Google and models do not hit a LinkedIn wall.
+
 ## Deploy
 
 Vercel project `agenticprimitives-dev`, connected to this repository — pushes to `master` deploy production. Root directory is `apps/web`;

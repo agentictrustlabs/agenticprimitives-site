@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { NEEDS } from '@apsite/content';
+import { pageMeta } from '@/lib/seo';
 import { StitchedVsSeamless } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Section } from '@/components/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Why one substrate — stitched vs seamless',
   description: 'What a team would stitch together to build a capable agentic application, seam by seam, against one substrate where identity, authority and evidence are one model.',
-};
+  path: '/compare',
+});
 
 const FRAMEWORKS = [
   ['Agent frameworks (LangGraph, MAF, ADK, OpenAI SDK)', 'Excellent at the loop: state, tools, handoffs, tracing.', 'Authority is application code and a callback. There is no identity that survives the runtime, no grant the chain enforces, no receipt a counterparty can verify without the vendor.'],
