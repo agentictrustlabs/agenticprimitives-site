@@ -59,7 +59,7 @@ export default function Platform() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">Packages</h4>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {o.packages.map((p) => (
-                    <a key={p} href={`${SITE.github}/tree/master/packages/${p}`} rel="noreferrer">
+                    <a key={p} href={`${SITE.npmPackage}/@agenticprimitives/${p}`} rel="noreferrer">
                       <Tag tone="teal">@agenticprimitives/{p}</Tag>
                     </a>
                   ))}

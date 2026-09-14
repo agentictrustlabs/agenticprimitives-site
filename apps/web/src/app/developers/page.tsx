@@ -21,10 +21,10 @@ export default function Developers() {
     <>
       <Section eyebrow="Developers" title="Build on the substrate." lede="TypeScript packages, Foundry contracts, an A2A 1.0 runtime and a set of live gates. Everything is open source under MIT; every spec and every ADR is in the repository.">
         <div className="flex flex-wrap gap-3">
-          <a href={SITE.github} className="btn-primary" rel="noreferrer">github.com/agentictrustlabs/agenticprimitives</a>
+          <a href={SITE.github} className="btn-primary" rel="noreferrer">github.com/agentictrustlabs/agentic-primitives</a>
           <a href={SITE.npm} className="btn-secondary" rel="noreferrer">@agenticprimitives on npm</a>
-          <a href={`${SITE.github}/tree/master/specs`} className="btn-secondary" rel="noreferrer">Specs (400+)</a>
-          <a href={`${SITE.github}/tree/master/docs/architecture/decisions`} className="btn-secondary" rel="noreferrer">ADRs</a>
+          <a href={`${SITE.github}/tree/main/docs`} className="btn-secondary" rel="noreferrer">Docs</a>
+          <a href={`${SITE.github}/tree/main/contracts`} className="btn-secondary" rel="noreferrer">Contracts</a>
         </div>
       </Section>
 
@@ -59,7 +59,7 @@ export default function Developers() {
               <p className="mt-1 text-sm text-slate-600">{o.oneLine}</p>
               <ul className="mt-3 space-y-1">
                 {o.packages.map((p) => (
-                  <li key={p}><a href={`${SITE.github}/tree/master/packages/${p}`} className="font-mono text-xs text-teal hover:underline" rel="noreferrer">@agenticprimitives/{p}</a></li>
+                  <li key={p}><a href={`${SITE.npmPackage}/@agenticprimitives/${p}`} className="font-mono text-xs text-teal hover:underline" rel="noreferrer">@agenticprimitives/{p}</a></li>
                 ))}
               </ul>
             </div>

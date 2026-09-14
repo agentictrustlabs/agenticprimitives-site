@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 
-const GITHUB = 'https://github.com/agentictrustlabs/agenticprimitives';
+const GITHUB = 'https://github.com/agentictrustlabs/agentic-primitives';
 
 const config: NextConfig = {
   reactStrictMode: true,
@@ -22,11 +22,11 @@ const config: NextConfig = {
         destination: 'https://agenticprimitives.dev/:path*',
         permanent: true,
       },
-      // The ontology namespace IRIs (`https://agenticprimitives.dev/ns/<module>#Term`) must never 404 under a
-      // marketing deploy: resolve each module to its T-box source until a content-negotiated server lands.
-      { source: '/ns/:module', destination: `${GITHUB}/blob/master/packages/ontology/tbox/:module.ttl`, permanent: false },
-      { source: '/schemas/:path*', destination: `${GITHUB}/blob/master/scripts/schemas/:path*`, permanent: false },
-      { source: '/contexts/:path*', destination: `${GITHUB}/blob/master/packages/ontology/context.jsonld`, permanent: false },
+      // Public kit is agentic-primitives (main). T-box TTL is not in that repo yet — land /ns on the kit
+      // until a content-negotiated ontology server exists. Schemas live at /schemas in the kit.
+      { source: '/ns/:module', destination: `${GITHUB}`, permanent: false },
+      { source: '/schemas/:path*', destination: `${GITHUB}/blob/main/schemas/:path*`, permanent: false },
+      { source: '/contexts/:path*', destination: `${GITHUB}`, permanent: false },
     ];
   },
 };

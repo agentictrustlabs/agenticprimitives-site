@@ -5,8 +5,9 @@ export const SITE = {
   name: 'Agentic Primitives',
   url: 'https://agenticprimitives.dev',
   tagline: 'The trust substrate for agentic applications.',
-  github: 'https://github.com/agentictrustlabs/agenticprimitives',
+  github: 'https://github.com/agentictrustlabs/agentic-primitives',
   npm: 'https://www.npmjs.com/org/agenticprimitives',
+  npmPackage: 'https://www.npmjs.com/package',
   contact: 'mailto:hello@agenticprimitives.dev',
 } as const;
 
