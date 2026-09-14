@@ -30,7 +30,7 @@ demo persona where one is offered, and writes `apps/web/public/shots/*.png`. Pla
 
 ## Deploy
 
-Vercel, connected to this repository — pushes to `main` deploy production. Root directory is `apps/web`;
+Vercel project `agenticprimitives-dev`, connected to this repository — pushes to `master` deploy production. Root directory is `apps/web`;
 `apps/web/vercel.json` pins the monorepo install/build (`cd ../.. && pnpm …`), the same shape as the Home. Domains: `agenticprimitives.dev` (canonical), `www` and
 `agenticprimitives.io` redirect to it. `/ns/*`, `/schemas/*` and `/contexts/*` are reserved for the ontology IRIs
 and redirect to their sources in the primitives repository.
