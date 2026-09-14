@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { OFFERINGS, SITE } from '@apsite/content';
+import { BUILD_PAGES } from '../build/pages';
 import { pageMeta } from '@/lib/seo';
 import { Callout, CTA, Ledger, Section, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -9,15 +11,6 @@ export const metadata: Metadata = pageMeta({
   description: 'Install @agenticprimitives/* packages, deploy the contracts to any EVM, wire your app as a relying app of a Home, and let your agents act under grants. Specs, package map, live gates.',
   path: '/developers',
 });
-
-const STEPS = [
-  { t: 'Sign people in as Smart Agents', b: 'Your app is an OIDC client of a Home. A passkey sign-in yields `alice.me` — an account, not a session. Ask the Home to charter what your app needs on first connect (a treasury, a workspace).', pk: ['identity-auth', 'agent-account', 'agent-naming'] },
-  { t: 'Express permissions as grants', b: 'When your app needs to act for a person or organization, mint a delegation with caveats at their Home: targets, methods, ceilings, time. Verify it before every action; redeem it on chain when value moves.', pk: ['delegation', 'custody', 'tool-policy'] },
-  { t: 'Let agents act under those grants', b: 'Run an A2A agent on the runtime with a playbook compiled from a SKILL.md contract. The harness parks steps that need a mandate; the person\'s confirmation is the signature; each step leaves a receipt.', pk: ['harness', 'orchestration', 'a2a', 'context'] },
-  { t: 'Admit outside agents at the edge', b: 'Publish an Agent Card; admit inbound A2A over HTTPS with application auth, canonical resolution and Admission. Keep MCP private behind admitted runtimes.', pk: ['admission', 'agent-profile', 'agent-resolution'] },
-  { t: 'Stand up your own registry', b: 'Deploy a registry from the kit with your membership and validation hooks. Project signed cards to it and to external registries from a sibling repo that imports the core.', pk: ['registry-kit', 'discovery', 'capability-claims'] },
-  { t: 'Prove it', b: 'Receipts and PROV-O provenance for every protected step, in the owner\'s vault. Run the conformance gates in CI: `ap doctor`, `ap test`, `ap conform`.', pk: ['provenance', 'evaluation', 'audit'] },
-];
 
 export default function Developers() {
   return (
@@ -29,26 +22,19 @@ export default function Developers() {
         <a href={`${SITE.github}/tree/main/contracts`} className="btn-outline-light" rel="noreferrer">Contracts</a>
       </PageHero>
 
-      <Section id="start" number="01" eyebrow="Quickstart" title="Six steps from a login to an accountable agent.">
-        <ol className="grid gap-4 md:grid-cols-2">
-          {STEPS.map((s, i) => (
-            <li key={s.t} className="card flex gap-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy font-mono text-sm font-semibold text-white">{i + 1}</div>
-              <div>
-                <h3 className="h3 !text-lg">{s.t}</h3>
-                <p className="mt-2 text-sm text-slate-600">{s.b}</p>
-                <div className="mt-3 flex flex-wrap gap-1.5">{s.pk.map((p) => <Tag key={p} tone="teal">@agenticprimitives/{p}</Tag>)}</div>
-              </div>
-            </li>
+      <Section id="start" tone="ink" number="01" eyebrow="Start" title="Say what kind of application you want. Let the agent build it." lede="The classical quickstart — six steps, a package per step, a config block at the end — is still exactly what happens. It is no longer what you do. The Build guide is five short pages: the prompt, where to point the agent, six demo people to test as, the flow, and the gates.">
+        <div className="grid gap-4 md:grid-cols-5">
+          {BUILD_PAGES.map((p, i) => (
+            <Link key={p.href} href={p.href} className="card-dark block hover:border-white/25">
+              <span className="num-mark text-brass">0{i + 1}</span>
+              <div className="mt-2 text-sm font-semibold text-white">{p.label}</div>
+              <div className="mt-1 text-xs leading-relaxed text-slate-400">{p.sub}</div>
+            </Link>
           ))}
-        </ol>
-        <div className="mt-8 rounded-xl border border-white/10 bg-ink p-6 font-mono text-sm leading-7 text-slate-100">
-          <div className="text-slate-400"># install what you need — each package depends only downward</div>
-          <div>pnpm add @agenticprimitives/identity-auth @agenticprimitives/agent-account @agenticprimitives/delegation</div>
-          <div className="mt-3 text-slate-400"># point at a chain (any EVM) and a Home</div>
-          <div>AP_RPC_URL=https://rpc.faithnet.io   AP_CHAIN_ID=34348   AP_HOME_ISSUER=https://www.faithnet.me</div>
-          <div className="mt-3 text-slate-400"># run the live gates against your deployment</div>
-          <div>pnpm ap doctor && pnpm ap conform</div>
+        </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/build" className="btn-brass">Open the Build guide</Link>
+          <a href={SITE.pokerGithub} className="btn-outline-light" rel="noreferrer">Reference app: pokernight</a>
         </div>
       </Section>
 
@@ -101,7 +87,7 @@ export default function Developers() {
         />
       </Section>
 
-      <CTA title="Read how one application did all six steps." body="Game Night is the reference: an OIDC client of the Home, a treasury per player, a mandate per buy-in, A2A players, a kit-built registry, receipts." primary={{ href: '/examples/game-night', label: 'Game Night case study' }} secondary={{ href: SITE.github, label: 'Open the repository' }} />
+      <CTA title="Read how one application did all six steps." body="Game Night is the reference — the card room the prompt above describes: an OIDC client of the Home, a treasury per player, a mandate per buy-in, A2A players, a coach under a study grant, receipts." primary={{ href: '/examples/game-night', label: 'Game Night case study' }} secondary={{ href: SITE.github, label: 'Open the repository' }} />
     </>
   );
 }

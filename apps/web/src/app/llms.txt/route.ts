@@ -26,7 +26,9 @@ Intelligence may be probabilistic. Authority must not be.
 - [Architecture](${SITE.url}/substrate): Smart Agents, mandates, harness sequence, two knowledge tiers
 - [Versus](${SITE.url}/compare): containment vs supervision vs platform governance vs authority-as-a-grant; the stitched stack; category comparison
 - [Game Night](${SITE.url}/examples/game-night): complete third-party example (gamenight.faithnet.io)
-- [Developers](${SITE.url}/developers): package map, quickstart, standards
+- [Ontology](${SITE.url}/ontology): the Agentic Trust upper ontology and the Texas hold'em domain ontology; how every layer binds to one T-box by IRI; meaning flows, authority never does
+- [Developers](${SITE.url}/developers): package map, standards, status
+- [Build](${SITE.url}/build): say what application you want; point a coding agent at github.com/agentictrustlabs/agentic-primitives + /pokernight and the faithnet estate; test as six demo people (alice bob carol dave elena nathan); the flow; the gates
 - [Ontology namespaces](${SITE.url}/ns): IRI prefixes (\`https://agenticprimitives.dev/ns/<module>#Term\`)
 
 ## Offerings

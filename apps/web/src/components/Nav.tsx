@@ -7,6 +7,7 @@ const LINKS = [
   { href: '/substrate', label: 'Architecture' },
   { href: '/compare', label: 'Versus' },
   { href: '/examples/game-night', label: 'Game Night' },
+  { href: '/ontology', label: 'Ontology' },
   { href: '/writing', label: 'Writing' },
   { href: '/developers', label: 'Developers' },
 ];
@@ -30,7 +31,7 @@ export function Nav() {
           <a href={SITE.github} className="btn-outline-light !px-3 !py-2" rel="noreferrer">
             GitHub
           </a>
-          <Link href="/developers#start" className="btn-brass !px-3 !py-2">
+          <Link href="/build" className="btn-brass !px-3 !py-2">
             Build
           </Link>
         </div>

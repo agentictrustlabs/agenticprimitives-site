@@ -182,8 +182,25 @@ export default function Home() {
             }))}
           />
         </div>
+        <div className="mt-12 rounded-2xl bg-ink p-8 text-white md:p-10">
+          <p className="eyebrow-dark">The bill of materials — we assembled it from products once</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
+            <div className="grid grid-cols-3 gap-4">
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-rose-300">30+</div><div className="mt-1 text-xs text-slate-400">products to select, contract, integrate</div></div>
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-rose-300">3</div><div className="mt-1 text-xs text-slate-400">identity models to reconcile</div></div>
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-rose-300">33</div><div className="mt-1 text-xs text-slate-400">contracts to write, fork and audit</div></div>
+            </div>
+            <ArrowRight className="hidden h-6 w-6 text-brass md:block" />
+            <div className="grid grid-cols-3 gap-4">
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-white">77</div><div className="mt-1 text-xs text-slate-400">packages under one npm scope</div></div>
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-white">33</div><div className="mt-1 text-xs text-slate-400">contracts written and under audit</div></div>
+              <div><div className="text-4xl font-semibold tracking-[-0.03em] text-white">1</div><div className="mt-1 text-xs text-slate-400">identity · 1 grant mechanism · 1 evidence trail</div></div>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-slate-300">The nightmare was never any one product; it was the seams. Now you describe the application and the packages and contracts already agree with each other.</p>
+        </div>
         <div className="mt-8 flex justify-end">
-          <Link href="/compare" className="btn-ghost">The full comparison <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/compare#bom" className="btn-ghost">The full bill of materials <ArrowRight className="h-4 w-4" /></Link>
         </div>
       </Section>
 

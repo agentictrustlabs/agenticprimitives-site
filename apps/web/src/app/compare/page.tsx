@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { INDUSTRY_ANSWERS, NEEDS, OUR_ANSWER } from '@apsite/content';
+import { BOM, BOM_TOTALS, INDUSTRY_ANSWERS, NEEDS, OUR_ANSWER } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
 import { StitchedVsSeamless, ThrottlesVsRail } from '@apsite/diagrams';
-import { Callout, Claim, CTA, Figure, Ledger, Section } from '@/components/ui';
+import { Callout, Claim, CTA, Figure, Ledger, Section, Stat, Tag } from '@/components/ui';
 
 export const metadata: Metadata = pageMeta({
   title: 'Versus — containment, supervision, platform governance, and the stitched stack',
-  description: 'Where the industry’s three answers to agent risk stop — sandboxes, auto-review, one platform’s ontology — and why authority as a signed, caveated, revocable grant is a different kind of answer. Plus the ten-product stack, seam by seam.',
+  description: 'Where the industry’s three answers to agent risk stop — sandboxes, auto-review, one platform’s ontology — and why authority as a signed, caveated, revocable grant is a different kind of answer. Plus the bill of materials: thirty products and thirty-three contracts assembled by hand, versus 77 packages and 33 contracts that already agree.',
   path: '/compare',
 });
 
@@ -118,7 +118,72 @@ export default function Compare() {
         </div>
       </Section>
 
-      <Section tone="cream" number="03" eyebrow="Against the categories" title="Where each category is strong, and where it stops." lede="We take from all of them. What none of them does is compose identity, authority and evidence into one model a counterparty can verify without trusting the platform.">
+      <Section id="bom" tone="ink" number="03" eyebrow="The bill of materials" title="What it actually takes to assemble this from products. We did it once." lede="Before this substrate existed, we built the same capability set the way everyone does: pick a product for every need, contract for it, integrate it, and then reconcile the identity models, permission shapes and audit formats they each brought with them. This is the tally. The right-hand column is what the repository ships today — 77 packages under one npm scope and 33 EVM contracts — with the seams designed out rather than papered over." wide>
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow-dark text-rose">Stitched — the first time</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {BOM_TOTALS.stitched.map((s) => <Stat key={s.label} dark value={s.value} label={s.label} note={s.note} />)}
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow-dark">On the substrate — now</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {BOM_TOTALS.substrate.map((s) => <Stat key={s.label} dark value={s.value} label={s.label} note={s.note} />)}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <Claim attribution="Richard Pedersen — after building it the first time">
+            The nightmare was never any one product. It was the thirty seams between them, every one of which was where a person became a token, the token became a row, and the row became a log line nobody could trace back to a decision.
+          </Claim>
+        </div>
+
+        <div className="mt-16">
+          <p className="eyebrow-dark">Need by need — what you would assemble, what you would configure, where it bites, and what covers it here</p>
+          <div className="mt-6 ledger-dark">
+            {BOM.map((r) => (
+              <div key={r.need} className="grid gap-6 py-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)_minmax(0,1.3fr)]">
+                <div>
+                  <div className="text-lg font-semibold text-white">{r.need}</div>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {r.packages.map((p) => <Tag key={p} tone="dark">{p}</Tag>)}
+                    {r.contracts.map((c) => <Tag key={c} tone="brass">{c}.sol</Tag>)}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-rose">Stitched</div>
+                  <ul className="mt-2 space-y-1 text-[15px] text-slate-300">{r.products.map((p) => <li key={p}>— {p}</li>)}</ul>
+                  <div className="mt-3 text-sm leading-relaxed text-slate-400"><span className="font-semibold text-slate-300">You configure:</span> {r.config}</div>
+                  <div className="mt-2 text-sm leading-relaxed text-rose-200/80"><span className="font-semibold">The seam:</span> {r.seam}</div>
+                </div>
+                <div>
+                  <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-teal">On the substrate</div>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-100">{r.substrate}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="card-dark">
+            <p className="eyebrow-dark">Then</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300">Thirty vendor evaluations. Thirty integrations. Thirty-three contracts to write, fork or audit. A wiki page explaining how the identity in product four maps to the identity in product nine — and an incident when it did not.</p>
+          </div>
+          <div className="card-dark">
+            <p className="eyebrow-dark">Now</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300"><span className="font-mono text-brass">pnpm add @agenticprimitives/*</span>, the contracts already deployed to the estate, one identity, one grant mechanism, one evidence trail. Describe the application; the packages and contracts already agree with each other.</p>
+          </div>
+          <div className="card-dark">
+            <p className="eyebrow-dark">What did not change</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300">The rigour. Every one of those 33 contracts is still a contract; every grant is still signed and revocable; every act still leaves a receipt. The seams went away. The guarantees did not.</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="cream" number="04" eyebrow="Against the categories" title="Where each category is strong, and where it stops." lede="We take from all of them. What none of them does is compose identity, authority and evidence into one model a counterparty can verify without trusting the platform.">
         <Ledger
           cols="md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1.6fr)]"
           rows={FRAMEWORKS.map(([c, s, w]) => ({
@@ -138,7 +203,7 @@ export default function Compare() {
         </div>
       </Section>
 
-      <Section number="04" eyebrow="What we deliberately are not" title="Honest boundaries.">
+      <Section number="05" eyebrow="What we deliberately are not" title="Honest boundaries.">
         <Ledger
           rows={[
             { k: 'Not an LLM framework.', v: 'The planner is a port. Bring your model and your prompting; the harness makes sure what it proposes runs only under a grant.' },

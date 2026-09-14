@@ -6,3 +6,5 @@ export { GameNightArchitecture } from './GameNightArchitecture';
 export { StitchedVsSeamless } from './StitchedVsSeamless';
 export { MandateAnatomy } from './MandateAnatomy';
 export { ThrottlesVsRail } from './ThrottlesVsRail';
+export { OntologyLadder } from './OntologyLadder';
+export { OntologyEveryLayer } from './OntologyEveryLayer';
