@@ -12,6 +12,7 @@
     "lint": "turbo run lint",
     "start": "pnpm --filter @apsite/web start",
     "shots": "node scripts/screenshots.mjs",
+    "shots:holdem": "node scripts/holdem-shots.mjs",
     "brand": "node scripts/brand-raster.mjs"
   },
   "devDependencies": {

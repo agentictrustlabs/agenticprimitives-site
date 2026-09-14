@@ -163,7 +163,7 @@ export default function Home() {
       {/* GAME NIGHT TEASER */}
       <Section tone="navy" eyebrow="A complete example" title="Game Night: a card room where people and AI agents sit at the same table." lede="A real third-party application on the substrate. Passkey sign-in, a treasury per player, a buy-in the player authorizes with caveats, AI players over A2A, clubs as workspace agents, a coach that runs under a study grant, and a receipt for every chip that moves. The card room owns one contract and holds no player's key.">
         <div className="grid items-start gap-8 md:grid-cols-2">
-          <Shot src="/shots/gamenight-play.png" alt="Game Night — the Play screen after signing in with a demo persona" caption="gamenight.faithnet.io — Play, after a passkey sign-in at the estate's Home." />
+          <Shot src="/shots/gamenight-play.png" alt="Game Night — Play, signed in as Alice" caption="gamenight.faithnet.io — Play, as Alice. Deal me in to hold’em or canasta." />
           <div>
             <div className="grid grid-cols-2 gap-3">
               {GAME_NIGHT.stats.map((s) => (

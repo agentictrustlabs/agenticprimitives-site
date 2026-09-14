@@ -99,12 +99,13 @@ export default function GameNight() {
 
       <Section tone="cream" eyebrow="Screens" title="What a player sees.">
         <div className="grid gap-8 md:grid-cols-2">
-          <Shot src="/shots/gamenight-play.png" alt="Game Night — Play" caption="Play: sit at a table, practise, or open a club room." />
-          <Shot src="/shots/gamenight-tables.png" alt="Game Night — Tables" caption="Tables: what is running, who is seated, which game the table hosts." />
-          <Shot src="/shots/gamenight-money.png" alt="Game Night — Your money" caption="Your money: the treasury the Home chartered for you, its balance, the mandates you hold, and the receipts behind every chip." />
-          <Shot src="/shots/gamenight-table.png" alt="Game Night — a live table" caption="At the table: seats, the board, the chat, and the coach that speaks only when asked." />
+          <Shot src="/shots/gamenight-play.png" alt="Game Night — Play, signed in as Alice" caption="Play, as Alice. Two doors: learn canasta, or play hold’em against the house. One press deals you in." />
+          <Shot src="/shots/gamenight-holdem-deal.png" alt="Deal me in — Texas hold’em" caption="Deal me in. Texas hold’em, play money — no buy-in, no authorisation, the same engine the money tables run." />
+          <div className="md:col-span-2">
+            <Shot src="/shots/gamenight-holdem-hand.png" alt="Alice playing a Texas hold’em hand" caption="A hand in progress. Alice holds A♠ 8♥; it is her turn. The house players are seated. bob-coach.svc, via alice.me, says why a check is free — she still has to press the button." />
+          </div>
         </div>
-        <p className="mt-6 text-sm text-slate-500">Screenshots captured from the live site, signed in as one of the estate's demo people.</p>
+        <p className="mt-6 text-sm text-slate-500">Captured from gamenight.faithnet.io, signed in as Alice Okoro, the estate’s demo person.</p>
       </Section>
 
       <Section eyebrow="What this proves" title="A complete agentic application without a custom trust stack.">
