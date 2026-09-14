@@ -4,7 +4,7 @@ import { SITE, WRITING } from '@apsite/content';
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [
     { url: SITE.url, lastModified: new Date('2026-09-14'), changeFrequency: 'weekly', priority: 1 },
-    ...['/platform', '/substrate', '/examples/game-night', '/compare', '/developers', '/writing', '/ns'].map((p) => ({
+    ...['/platform', '/substrate', '/examples/game-night', '/compare', '/developers', '/writing', '/brand', '/ns'].map((p) => ({
       url: `${SITE.url}${p}`,
       lastModified: new Date('2026-09-14'),
       changeFrequency: 'weekly' as const,

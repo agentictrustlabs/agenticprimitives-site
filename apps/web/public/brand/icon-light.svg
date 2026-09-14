@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Agentic Primitives icon (light field)</title>
+  <rect width="64" height="64" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <g fill="#07101c" transform="translate(6 5) scale(0.82)">
+    <path d="M32 3 L59 39 H48.2 L32 16.2 L15.8 39 H5 Z"/>
+    <rect x="17" y="43.2" width="30" height="7" rx="3.5"/>
+    <rect x="10" y="54" width="44" height="7" rx="3.5"/>
+  </g>
+</svg>

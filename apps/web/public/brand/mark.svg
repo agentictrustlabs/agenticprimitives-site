@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#07101c">
+  <title>Agentic Primitives mark</title>
+  <path d="M32 3 L59 39 H48.2 L32 16.2 L15.8 39 H5 Z"/>
+  <rect x="17" y="43.2" width="30" height="7" rx="3.5"/>
+  <rect x="10" y="54" width="44" height="7" rx="3.5"/>
+</svg>

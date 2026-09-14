@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', siteName: SITE.name, url: SITE.url, locale: 'en_US', images: [{ url: '/og.png', width: 1200, height: 630, alt: SITE.name }] },
   twitter: { card: 'summary_large_image', title: `${SITE.name} — ${SITE.tagline}`, images: ['/og.png'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
-  icons: { icon: '/icon.svg' },
+  icons: { icon: [{ url: '/icon.svg', type: 'image/svg+xml' }, { url: '/brand/icon-512.png', sizes: '512x512', type: 'image/png' }], apple: '/brand/apple-touch-icon.png' },
   category: 'technology',
 };
 

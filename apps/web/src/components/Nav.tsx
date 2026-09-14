@@ -16,8 +16,8 @@ export function Nav() {
     <header className="sticky top-0 z-40 border-b border-line/70 bg-white/85 backdrop-blur">
       <div className="container-x flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2.5 text-navy" aria-label="Agentic Primitives home">
-          <Logo className="h-7 w-7" />
-          <span className="text-[15px] font-semibold tracking-tight">Agentic Primitives</span>
+          <Logo className="h-8 w-8" />
+          <span className="text-[12px] font-semibold tracking-[0.18em]">AGENTIC PRIMITIVES</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {LINKS.map((l) => (

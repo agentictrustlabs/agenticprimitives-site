@@ -8,8 +8,8 @@ export function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5 text-navy">
-            <Logo className="h-7 w-7" />
-            <span className="font-semibold">Agentic Primitives</span>
+            <Logo className="h-8 w-8" />
+            <span className="text-[12px] font-semibold tracking-[0.18em]">AGENTIC PRIMITIVES</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600">
             The trust substrate for agentic applications. Identity, authority and evidence designed as one system —
@@ -25,6 +25,7 @@ export function Footer() {
             <li><Link href="/compare" className="hover:text-navy">Why one substrate</Link></li>
             <li><Link href="/examples/game-night" className="hover:text-navy">Example: Game Night</Link></li>
             <li><Link href="/writing" className="hover:text-navy">Writing</Link></li>
+            <li><Link href="/brand" className="hover:text-navy">Brand</Link></li>
             <li><a href="/rss.xml" className="hover:text-navy">RSS</a></li>
           </ul>
         </div>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 96">
+  <title>Agentic Primitives wordmark (light)</title>
+  <g fill="#ffffff">
+    <g transform="translate(0 16)">
+      <path d="M32 3 L59 39 H48.2 L32 16.2 L15.8 39 H5 Z"/>
+      <rect x="17" y="43.2" width="30" height="7" rx="3.5"/>
+      <rect x="10" y="54" width="44" height="7" rx="3.5"/>
+    </g>
+    <text x="88" y="62" font-family="ui-sans-serif, system-ui, Inter, sans-serif" font-size="28" font-weight="600" letter-spacing="6.2">AGENTIC PRIMITIVES</text>
+  </g>
+</svg>

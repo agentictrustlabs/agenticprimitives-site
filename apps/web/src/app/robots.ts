@@ -4,7 +4,7 @@ import { SITE } from '@apsite/content';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/', disallow: ['/og'] },
+      { userAgent: '*', allow: '/', disallow: ['/og', '/brand/export'] },
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'ChatGPT-User', allow: '/' },
       { userAgent: 'Google-Extended', allow: '/' },
