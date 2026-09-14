@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { OFFERINGS, SITE } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
-import { Callout, CTA, Section, Tag } from '@/components/ui';
+import { Callout, CTA, Ledger, Section, Tag } from '@/components/ui';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Developers — build on the substrate',
@@ -21,16 +22,14 @@ const STEPS = [
 export default function Developers() {
   return (
     <>
-      <Section eyebrow="Developers" title="Build on the substrate." lede="TypeScript packages, Foundry contracts, an A2A 1.0 runtime and a set of live gates. Everything is open source under MIT; every spec and every ADR is in the repository.">
-        <div className="flex flex-wrap gap-3">
-          <a href={SITE.github} className="btn-primary" rel="noreferrer">github.com/agentictrustlabs/agentic-primitives</a>
-          <a href={SITE.npm} className="btn-secondary" rel="noreferrer">@agenticprimitives on npm</a>
-          <a href={`${SITE.github}/tree/main/docs`} className="btn-secondary" rel="noreferrer">Docs</a>
-          <a href={`${SITE.github}/tree/main/contracts`} className="btn-secondary" rel="noreferrer">Contracts</a>
-        </div>
-      </Section>
+      <PageHero eyebrow="Developers" title={<>Build on the substrate.<br />Keep the keys.</>} lede="TypeScript packages, Foundry contracts, an A2A 1.0 runtime and a set of live gates. Everything is open source under MIT; every spec and every ADR is in the repository.">
+        <a href={SITE.github} className="btn-brass" rel="noreferrer">github.com/agentictrustlabs/agentic-primitives</a>
+        <a href={SITE.npm} className="btn-outline-light" rel="noreferrer">@agenticprimitives on npm</a>
+        <a href={`${SITE.github}/tree/main/docs`} className="btn-outline-light" rel="noreferrer">Docs</a>
+        <a href={`${SITE.github}/tree/main/contracts`} className="btn-outline-light" rel="noreferrer">Contracts</a>
+      </PageHero>
 
-      <Section id="start" tone="cream" eyebrow="Quickstart" title="Six steps from a login to an accountable agent.">
+      <Section id="start" number="01" eyebrow="Quickstart" title="Six steps from a login to an accountable agent.">
         <ol className="grid gap-4 md:grid-cols-2">
           {STEPS.map((s, i) => (
             <li key={s.t} className="card flex gap-4">
@@ -43,7 +42,7 @@ export default function Developers() {
             </li>
           ))}
         </ol>
-        <div className="mt-8 rounded-2xl bg-navy p-6 font-mono text-sm leading-7 text-slate-100">
+        <div className="mt-8 rounded-xl border border-white/10 bg-ink p-6 font-mono text-sm leading-7 text-slate-100">
           <div className="text-slate-400"># install what you need — each package depends only downward</div>
           <div>pnpm add @agenticprimitives/identity-auth @agenticprimitives/agent-account @agenticprimitives/delegation</div>
           <div className="mt-3 text-slate-400"># point at a chain (any EVM) and a Home</div>
@@ -53,7 +52,7 @@ export default function Developers() {
         </div>
       </Section>
 
-      <Section eyebrow="Package map" title="Which package for what.">
+      <Section tone="cream" number="02" eyebrow="Package map" title="Which package for what.">
         <div className="grid gap-4 md:grid-cols-3">
           {OFFERINGS.map((o) => (
             <div key={o.id} className="card">
@@ -69,7 +68,7 @@ export default function Developers() {
         </div>
       </Section>
 
-      <Section tone="cream" eyebrow="Standards" title="What we implement, and what we deliberately keep outside.">
+      <Section number="03" eyebrow="Standards" title="What we implement, and what we deliberately keep outside.">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="card">
             <h3 className="h3">Implemented in the core</h3>
@@ -92,12 +91,14 @@ export default function Developers() {
         </div>
       </Section>
 
-      <Section eyebrow="Status" title="Where the project stands, plainly.">
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="card"><h3 className="h3">Ready for</h3><p className="mt-3 text-sm text-slate-600">Test and pre-production environments. A live estate has run the full flow — people, organizations, treasuries, agents, mandates, receipts — since 2026.</p></div>
-          <div className="card"><h3 className="h3">Not yet</h3><p className="mt-3 text-sm text-slate-600">Full production: an external audit, clean governance keys, and the remaining readiness items are the gates. Every finding ever logged is public.</p></div>
-          <div className="card"><h3 className="h3">How to follow</h3><p className="mt-3 text-sm text-slate-600">Specs are the source of truth and precede code. ADRs record every decision, including the ones we reversed. Read them before you build against a surface.</p></div>
-        </div>
+      <Section tone="cream" number="04" eyebrow="Status" title="Where the project stands, plainly.">
+        <Ledger
+          rows={[
+            { k: 'Ready for', v: 'Test and pre-production environments. A live estate has run the full flow — people, organizations, treasuries, agents, mandates, receipts — since 2026.' },
+            { k: 'Not yet', v: 'Full production: an external audit, clean governance keys, and the remaining readiness items are the gates. Every finding ever logged is public.' },
+            { k: 'How to follow', v: 'Specs are the source of truth and precede code. ADRs record every decision, including the ones we reversed. Read them before you build against a surface.' },
+          ]}
+        />
       </Section>
 
       <CTA title="Read how one application did all six steps." body="Game Night is the reference: an OIDC client of the Home, a treasury per player, a mandate per buy-in, A2A players, a kit-built registry, receipts." primary={{ href: '/examples/game-night', label: 'Game Night case study' }} secondary={{ href: SITE.github, label: 'Open the repository' }} />

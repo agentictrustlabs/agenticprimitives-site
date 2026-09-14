@@ -4,7 +4,7 @@
 export const SITE = {
   name: 'Agentic Primitives',
   url: 'https://agenticprimitives.dev',
-  tagline: 'The trust substrate for agentic applications.',
+  tagline: 'Rails, not throttles. Authority for agents that the agent cannot exceed.',
   github: 'https://github.com/agentictrustlabs/agentic-primitives',
   npm: 'https://www.npmjs.com/org/agenticprimitives',
   npmPackage: 'https://www.npmjs.com/package',
@@ -12,6 +12,75 @@ export const SITE = {
   author: 'Richard Pedersen',
   org: 'Agentic Trust Labs',
 } as const;
+
+// ─── Positioning: the industry's three answers to agent risk, and ours ────────────────────────────────────────
+//
+// Every serious vendor now concedes the same fact — a capable agent has a blast radius — and offers one of three
+// remedies. Each is real engineering and each stops at the same place: none of them can say, for an act that
+// happened, under whose authority it happened, or refuse the next one because that authority is gone.
+
+export interface IndustryAnswer {
+  id: 'containment' | 'supervision' | 'platform';
+  name: string;
+  who: string;
+  claim: string;
+  buys: string;
+  stops: string;
+  edge: string;
+}
+
+export const INDUSTRY_ANSWERS: readonly IndustryAnswer[] = [
+  {
+    id: 'containment',
+    name: 'Containment',
+    who: 'The frontier labs',
+    claim: 'Shrink what the agent can reach: sandboxes, restricted modes, egress denied by default, a kill switch.',
+    buys: 'A smaller blast radius for one process on one machine.',
+    stops: 'A sandbox is a wall around a room. It says nothing about who let the agent into the room, on whose behalf, or for what. Every act inside the wall is equally authorized — which is to say, none of them are.',
+    edge: 'Containment bounds reach. It cannot bound authority, because it has no concept of it.',
+  },
+  {
+    id: 'supervision',
+    name: 'Supervision',
+    who: 'The frontier labs, again',
+    claim: 'Watch the agent: permission prompts, then — when people approve 93% of them — a second model that grades the first.',
+    buys: 'Fewer catastrophic actions, on average, with a non-zero miss rate the vendors acknowledge.',
+    stops: 'A click is not consent and a classifier is not a grant. When a probabilistic monitor approves a probabilistic agent, the result is still probabilistic — and the record of it is a log line in a vendor’s store.',
+    edge: 'Supervision is a better throttle. It is not a rail.',
+  },
+  {
+    id: 'platform',
+    name: 'Platform governance',
+    who: 'The enterprise platforms',
+    claim: 'Anchor agents in one platform’s ontology: purpose-based permissions, a human-in-the-loop dial, reversible actions, lineage across the estate.',
+    buys: 'Real control — inside the platform, for the workloads it hosts, on terms it sets.',
+    stops: 'The permission is the platform’s ACL. The reversal is the platform’s branch. The evidence is the platform’s lineage. Your sovereignty is exactly as large as your contract, and a counterparty outside it has to take the platform’s word.',
+    edge: 'Reversibility inside one vendor is that vendor’s sovereignty. Revocability the owner holds is yours.',
+  },
+];
+
+export const OUR_ANSWER = {
+  name: 'Authority as a grant',
+  claim: 'Let the agent be as capable as you like. Bound what it MAY do with a signed, caveated, revocable grant — enforced by code that runs outside the model, on every step, and receipted for the owner.',
+  points: [
+    { t: 'Signed by the principal, not configured by the platform.', b: 'A person, an organization or a service issues the grant from its own account, with a passkey, at its own Home. No vendor holds the key.' },
+    { t: 'Bounded by caveats that are code.', b: 'Payee, ceiling, method, target, time window, the digest of one exact intent. Each caveat is an enforcer contract that runs at redemption. A scope is a string; an enforcer executes.' },
+    { t: 'Verified every time, cached never.', b: 'Before the step, after the approval, and on chain when value moves. Revocation is one transaction, final at the next gate, everywhere — no expiry to wait out, no list to update.' },
+    { t: 'Receipted for the owner.', b: 'Which grant, which decision, which transaction, which playbook — into a PROV-O graph in the owner’s vault. A counterparty verifies it without the runtime’s cooperation.' },
+  ],
+  line: 'Intelligence may be probabilistic. Authority must not be.',
+} as const;
+
+export const MANIFESTO: readonly string[] = [
+  'You do not make a train safe by slowing it down. You lay track.',
+  'A sandbox bounds reach. A grant bounds authority. Only one of them can answer “under whose say-so?”',
+  'A click is not consent. A signature is.',
+  'The agent is an account. Names, cards, registry rows and DID documents are projections of it.',
+  'Revocation that waits for a token to expire is not revocation.',
+  'Evidence that lives in the vendor’s trace store is the vendor’s evidence.',
+  'The planner may propose anything. It may authorize nothing.',
+  'Trust is a relationship you can check, never a score you are handed.',
+];
 
 // ─── The three questions ──────────────────────────────────────────────────────────────────────────────────────
 

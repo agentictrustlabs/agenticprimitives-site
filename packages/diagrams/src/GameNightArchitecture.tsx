@@ -1,4 +1,4 @@
-import { Arrow, Box, C, Frame, Glyph, Label, Pill } from './primitives';
+import { Arrow, Box, Brandline, C, Frame, Glyph, Label, Pill } from './primitives';
 
 /**
  * GAME NIGHT, END TO END. What the card room built (left, grey) and what the substrate supplied (everything else).
@@ -65,11 +65,11 @@ export function GameNightArchitecture() {
       <Arrow id={id} d="M 980 506 V 524" tone="teal" />
 
       {/* Footer facts */}
-      <Pill x={40} y={650} text="Player keys held by the house: 0" tone="teal" />
-      <Pill x={270} y={650} text="Contracts the app owns: 1 (Sheqel)" tone="amber" />
-      <Pill x={520} y={650} text="Agent kinds at one table: person · AI player · house treasury · club" tone="violet" />
+      <Pill x={40} y={650} text="Player keys held by the house: 0" tone="teal" solid />
+      <Pill x={300} y={650} text="Contracts the app owns: 1 (Sheqel)" tone="amber" solid />
+      <Pill x={580} y={650} text="Agent kinds at one table: person · AI player · house treasury · club" tone="violet" solid />
       <Label x={40} y={700} text="Everything in the right column is the same code and the same contracts that run the estate's other applications. Game Night wrote a card room." size={11} italic />
-      <Label x={W - 40} y={H - 12} text="agenticprimitives.dev" size={9.5} anchor="end" mono />
+      <Brandline w={W} h={H} />
     </Frame>
   );
 }

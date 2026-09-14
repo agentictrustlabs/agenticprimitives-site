@@ -92,6 +92,10 @@ export const HOME_FAQ = [
     a: 'A trust substrate for agentic applications. Identity, authority and evidence are one system: every person, organization and service is a Smart Agent; permission is a scoped, revocable grant; every protected act leaves a receipt the owner carries.',
   },
   {
+    q: 'How is this different from sandboxing or supervising an agent?',
+    a: 'Containment bounds what an agent can reach; supervision watches what it does; platform governance fences it inside one vendor. None can say under whose authority an act happened. Agentic Primitives bounds authority itself: a grant the principal signs, caveats that are enforcer code, verification on every step outside the model, revocation in one transaction, and a receipt the owner carries.',
+  },
+  {
     q: 'How is this different from stitching Auth0, Safe, LangGraph and a tracing vendor?',
     a: 'Stitched stacks give each layer its own identity model and permission shape. Agentic Primitives uses one Smart Agent address, one grant mechanism (ERC-7710 delegations and mandates), and one evidence trail. Revoke once, refused everywhere.',
   },

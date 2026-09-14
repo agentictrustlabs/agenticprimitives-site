@@ -7,6 +7,8 @@ export function GET() {
 
 > ${SITE.tagline} Identity, authority and evidence designed as one system — not stitched from ten products.
 
+Positioning: the industry answers agent risk with throttles — containment (sandboxes, restricted modes, kill switches), supervision (permission prompts, a second model grading the first) and platform governance (one vendor's ACLs, reversibility and lineage). Each bounds something; none bounds authority, so none can say under whose authority an act happened. Agentic Primitives bounds authority: a grant the principal signs, caveats that are enforcer code, verification on every step outside the model, revocation in one transaction, a receipt the owner carries.
+
 - Canonical site: ${SITE.url}
 - Public source: ${SITE.github}
 - npm: ${SITE.npm}
@@ -22,7 +24,7 @@ Intelligence may be probabilistic. Authority must not be.
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
 - [Architecture](${SITE.url}/substrate): Smart Agents, mandates, harness sequence, two knowledge tiers
-- [Why one substrate](${SITE.url}/compare): category comparison vs frameworks, identity vendors, wallets, registries
+- [Versus](${SITE.url}/compare): containment vs supervision vs platform governance vs authority-as-a-grant; the stitched stack; category comparison
 - [Game Night](${SITE.url}/examples/game-night): complete third-party example (gamenight.faithnet.io)
 - [Developers](${SITE.url}/developers): package map, quickstart, standards
 - [Ontology namespaces](${SITE.url}/ns): IRI prefixes (\`https://agenticprimitives.dev/ns/<module>#Term\`)

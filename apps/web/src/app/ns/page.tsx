@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE } from '@apsite/content';
 import { Section } from '@/components/ui';
+import { PageHero } from '@/components/PageHero';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
@@ -25,7 +26,9 @@ const MODULES: Array<[string, string, string]> = [
 
 export default function Ns() {
   return (
-    <Section eyebrow="Ontology" title="Namespaces" lede="IRIs of the form https://agenticprimitives.dev/ns/<module>#Term resolve to the module's T-box source. A content-negotiated server will replace the redirect; the IRIs will not change.">
+    <>
+    <PageHero eyebrow="Ontology" title="Namespaces." lede={<>IRIs of the form <code className="font-mono text-base text-brass">https://agenticprimitives.dev/ns/&lt;module&gt;#Term</code> resolve to the module's T-box source. A content-negotiated server will replace the redirect; the IRIs will not change.</>} />
+    <Section eyebrow="Modules" title="One prefix per module">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead><tr className="border-b border-line text-xs uppercase tracking-wider text-slate-500"><th className="py-3 pr-4">Prefix</th><th className="py-3 pr-4">Namespace</th><th className="py-3">Covers</th></tr></thead>
@@ -42,5 +45,6 @@ export default function Ns() {
       </div>
       <p className="mt-6 text-sm text-slate-500">JSON-LD context: <a href="/contexts/ap.jsonld" className="font-mono text-teal hover:underline">/contexts/ap.jsonld</a> · JSON Schemas: <a href="/schemas/" className="font-mono text-teal hover:underline">/schemas/</a></p>
     </Section>
+    </>
   );
 }

@@ -5,39 +5,39 @@ import { Logo } from './Logo';
 const LINKS = [
   { href: '/platform', label: 'Platform' },
   { href: '/substrate', label: 'Architecture' },
-  { href: '/examples/game-night', label: 'Example: Game Night' },
-  { href: '/compare', label: 'Why one substrate' },
+  { href: '/compare', label: 'Versus' },
+  { href: '/examples/game-night', label: 'Game Night' },
   { href: '/writing', label: 'Writing' },
   { href: '/developers', label: 'Developers' },
 ];
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/85 text-white backdrop-blur">
       <div className="container-x flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-2.5 text-navy" aria-label="Agentic Primitives home">
-          <Logo className="h-8 w-8" />
-          <span className="text-[12px] font-semibold tracking-[0.18em]">AGENTIC PRIMITIVES</span>
+        <Link href="/" className="flex items-center gap-2.5 text-white" aria-label="Agentic Primitives home">
+          <Logo className="h-7 w-7" />
+          <span className="text-[12px] font-semibold tracking-[0.2em]">AGENTIC PRIMITIVES</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-navy-soft hover:text-navy">
+            <Link key={l.href} href={l.href} className="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white">
               {l.label}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href={SITE.github} className="btn-secondary !px-3 !py-2" rel="noreferrer">
+          <a href={SITE.github} className="btn-outline-light !px-3 !py-2" rel="noreferrer">
             GitHub
           </a>
-          <Link href="/developers#start" className="btn-primary !px-3 !py-2">
-            Get started
+          <Link href="/developers#start" className="btn-brass !px-3 !py-2">
+            Build
           </Link>
         </div>
       </div>
       <nav className="container-x flex gap-1 overflow-x-auto pb-2 md:hidden" aria-label="Primary (mobile)">
         {LINKS.map((l) => (
-          <Link key={l.href} href={l.href} className="whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-navy-soft">
+          <Link key={l.href} href={l.href} className="whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/5">
             {l.label}
           </Link>
         ))}

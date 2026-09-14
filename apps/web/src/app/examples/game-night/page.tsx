@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { GAME_NIGHT } from '@apsite/content';
 import { GameNightArchitecture, MandateAnatomy } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Section, Shot, Stat, Tag } from '@/components/ui';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Game Night — a complete example application',
@@ -15,26 +16,20 @@ export const metadata: Metadata = pageMeta({
 export default function GameNight() {
   return (
     <>
-      <section className="border-b border-line bg-cream">
-        <div className="container-x grid items-center gap-10 py-16 md:grid-cols-[1fr_1.1fr] md:py-24">
-          <div>
-            <p className="eyebrow">Example application · third-party on the substrate</p>
-            <h1 className="h1 mt-4 !text-5xl">{GAME_NIGHT.name}</h1>
-            <p className="lede mt-5">{GAME_NIGHT.tagline}</p>
-            <p className="mt-5 text-slate-600">{GAME_NIGHT.summary}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href={GAME_NIGHT.url} className="btn-primary" target="_blank" rel="noreferrer">Play it — play money, demo people <ArrowRight className="h-4 w-4" /></a>
-              <a href={GAME_NIGHT.repo} className="btn-secondary" target="_blank" rel="noreferrer">Source</a>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Cloudflare Workers', 'Durable Objects', 'Vite + React', 'A2A', 'ERC-7710', 'Sheqel (SHQ)', 'faithchain'].map((t) => <Tag key={t}>{t}</Tag>)}
-            </div>
-          </div>
-          <Shot src="/shots/gamenight-landing.png" alt="Game Night landing page" priority caption="gamenight.faithnet.io" />
+      <PageHero
+        eyebrow="Example application · third-party on the substrate"
+        title={<>{GAME_NIGHT.name}.<br />The house holds nobody’s key.</>}
+        lede={GAME_NIGHT.tagline}
+        aside={<Shot dark src="/shots/gamenight-landing.png" alt="Game Night landing page" priority caption="gamenight.faithnet.io" />}
+      >
+        <a href={GAME_NIGHT.url} className="btn-brass" target="_blank" rel="noreferrer">Play it — play money, demo people <ArrowRight className="h-4 w-4" /></a>
+        <a href={GAME_NIGHT.repo} className="btn-outline-light" target="_blank" rel="noreferrer">Source</a>
+        <div className="mt-2 flex w-full flex-wrap gap-2">
+          {['Cloudflare Workers', 'Durable Objects', 'Vite + React', 'A2A', 'ERC-7710', 'Sheqel (SHQ)', 'faithchain'].map((t) => <Tag key={t} tone="dark">{t}</Tag>)}
         </div>
-      </section>
+      </PageHero>
 
-      <Section eyebrow="By the numbers" title="What the card room did not have to build.">
+      <Section number="01" eyebrow="By the numbers" title="What the card room did not have to build." lede={GAME_NIGHT.summary}>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {GAME_NIGHT.stats.map((s) => <Stat key={s.label} value={s.value} label={s.label} note={s.note} />)}
         </div>
@@ -45,13 +40,13 @@ export default function GameNight() {
         </div>
       </Section>
 
-      <Section tone="cream" eyebrow="Architecture" title="What the card room built, and what the substrate supplied.">
-        <Figure caption="Left: the card room's own code — a Vite client, one Tables Worker with Durable Objects per table, two pure game engines, an agent worker that answers A2A turn requests, one ERC-20 (Sheqel), and coach playbooks. Right: everything from the substrate — the Home that signs people in and charters treasuries, the Smart Agents at the table, the buy-in mandate with its caveats, the agent runtime that hosts the coach, a registry built from the kit, and the chain where every buy-in is redeemed and receipted.">
+      <Section tone="ink" number="02" eyebrow="Architecture" title="What the card room built, and what the substrate supplied.">
+        <Figure dark caption="Left: the card room's own code — a Vite client, one Tables Worker with Durable Objects per table, two pure game engines, an agent worker that answers A2A turn requests, one ERC-20 (Sheqel), and coach playbooks. Right: everything from the substrate — the Home that signs people in and charters treasuries, the Smart Agents at the table, the buy-in mandate with its caveats, the agent runtime that hosts the coach, a registry built from the kit, and the chain where every buy-in is redeemed and receipted.">
           <GameNightArchitecture />
         </Figure>
       </Section>
 
-      <Section eyebrow="The requirements" title="Every capability the app needed, and where it came from." lede="Below is the list a product team writes on day one for an application like this — and, for each line, what the team would have stitched together versus what the substrate handed them.">
+      <Section number="03" eyebrow="The requirements" title="Every capability the app needed, and where it came from." lede="Below is the list a product team writes on day one for an application like this — and, for each line, what the team would have stitched together versus what the substrate handed them.">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
@@ -76,7 +71,7 @@ export default function GameNight() {
         </div>
       </Section>
 
-      <Section tone="cream" eyebrow="The flow" title="One evening at a table, step by step.">
+      <Section tone="cream" number="04" eyebrow="The flow" title="One evening at a table, step by step.">
         <ol className="grid gap-4 md:grid-cols-2">
           {GAME_NIGHT.flow.map((f, i) => (
             <li key={f.step} className="card flex gap-4">
@@ -91,24 +86,24 @@ export default function GameNight() {
         </ol>
       </Section>
 
-      <Section eyebrow="The mandate" title="The one signature that makes a buy-in possible — and the one transaction that ends it." lede="The player never sends money to the house. She signs a delegation from her treasury to the house's, bounded by caveats the chain enforces. Every buy-in redeems it once. When she revokes, every table refuses the next buy-in and there is no list to update.">
+      <Section number="05" eyebrow="The mandate" title="The one signature that makes a buy-in possible — and the one transaction that ends it." lede="The player never sends money to the house. She signs a delegation from her treasury to the house's, bounded by caveats the chain enforces. Every buy-in redeems it once. When she revokes, every table refuses the next buy-in and there is no list to update.">
         <Figure caption="The buy-in mandate as the chain sees it. Each caveat is an enforcer contract that runs at redemption. The asset is pinned: a table that plays in SHQ refuses a mandate in any other coin.">
           <MandateAnatomy />
         </Figure>
       </Section>
 
-      <Section tone="cream" eyebrow="Screens" title="What a player sees.">
+      <Section tone="ink" number="06" eyebrow="Screens" title="What a player sees.">
         <div className="grid gap-8 md:grid-cols-2">
-          <Shot src="/shots/gamenight-play.png" alt="Game Night — Play, signed in as Alice" caption="Play, as Alice. Two doors: learn canasta, or play hold’em against the house. One press deals you in." />
-          <Shot src="/shots/gamenight-holdem-deal.png" alt="Deal me in — Texas hold’em" caption="Deal me in. Texas hold’em, play money — no buy-in, no authorisation, the same engine the money tables run." />
+          <Shot dark src="/shots/gamenight-play.png" alt="Game Night — Play, signed in as Alice" caption="Play, as Alice. Two doors: learn canasta, or play hold’em against the house. One press deals you in." />
+          <Shot dark src="/shots/gamenight-holdem-deal.png" alt="Deal me in — Texas hold’em" caption="Deal me in. Texas hold’em, play money — no buy-in, no authorisation, the same engine the money tables run." />
           <div className="md:col-span-2">
-            <Shot src="/shots/gamenight-holdem-hand.png" alt="Alice playing a Texas hold’em hand" caption="A hand in progress. Alice holds A♠ 8♥; it is her turn. The house players are seated. bob-coach.svc, via alice.me, says why a check is free — she still has to press the button." />
+            <Shot dark src="/shots/gamenight-holdem-hand.png" alt="Alice playing a Texas hold’em hand" caption="A hand in progress. Alice holds A♠ 8♥; it is her turn. The house players are seated. bob-coach.svc, via alice.me, says why a check is free — she still has to press the button." />
           </div>
         </div>
         <p className="mt-6 text-sm text-slate-500">Captured from gamenight.faithnet.io, signed in as Alice Okoro, the estate’s demo person.</p>
       </Section>
 
-      <Section eyebrow="What this proves" title="A complete agentic application without a custom trust stack.">
+      <Section number="07" eyebrow="What this proves" title="A complete agentic application without a custom trust stack.">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="card"><h3 className="h3">Humans and agents on one identity model.</h3><p className="mt-3 text-sm text-slate-600">Alice, an AI player, the house treasury and a club are all Smart Agents. The table does not know or care which seats are people — the protocol is the same.</p></div>
           <div className="card"><h3 className="h3">Money moved under the player's own authority.</h3><p className="mt-3 text-sm text-slate-600">No custodial balance, no hot wallet with everyone's chips. The house holds a delegation it cannot exceed, and the player can end it in one transaction.</p></div>

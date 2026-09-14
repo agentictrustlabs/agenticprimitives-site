@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { pageMeta } from '@/lib/seo';
 import { Mark, MarkOnField } from '@/components/Mark';
 import { Wordmark } from '@/components/Logo';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Brand',
@@ -34,15 +35,16 @@ const PNGS = [
 
 export default function Brand() {
   return (
+    <>
+    <PageHero
+      eyebrow="Brand"
+      title="The mark."
+      lede="A deconstructed A: the peak, the crossbar, the base. Three primitives, one letter. Use the SVG as the source of truth; the PNGs are for places that will not take a vector."
+      aside={<div className="flex justify-center md:justify-end"><Mark className="h-40 w-40 text-white md:h-56 md:w-56" /></div>}
+    />
+    <div className="bg-white">
     <div className="container-x py-16 md:py-24">
-      <p className="eyebrow">Brand</p>
-      <h1 className="h1 mt-3 !text-5xl">The mark.</h1>
-      <p className="lede mt-5 max-w-2xl">
-        A deconstructed A: the peak, the crossbar, the base. Three primitives, one letter. Use the SVG as the source of
-        truth; the PNGs are for places that will not take a vector.
-      </p>
-
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         <figure className="card flex flex-col items-center justify-center gap-4 py-12">
           <Mark className="h-24 w-24 text-navy" />
           <figcaption className="text-xs font-semibold tracking-[0.14em] text-slate-500">MARK · NAVY</figcaption>
@@ -122,5 +124,7 @@ export default function Brand() {
         </div>
       </section>
     </div>
+    </div>
+    </>
   );
 }

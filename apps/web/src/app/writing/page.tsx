@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ESSAYS, SERIES, SITE } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Section } from '@/components/ui';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Writing',
@@ -22,14 +23,11 @@ export default function WritingIndex() {
           isPartOf: { '@id': `${SITE.url}/#website` },
         }}
       />
-      <Section
-        eyebrow="Writing"
-        title="Read it here. LinkedIn is optional."
-        lede="The essays and the 21-part series first appeared on LinkedIn. The full text lives on this site so anyone — and any model — can read it without a login wall."
-      >
-        <p className="mb-10 text-sm text-slate-500">
-          Also as <a href="/rss.xml" className="text-teal hover:underline">RSS</a> and <a href="/llms.txt" className="text-teal hover:underline">llms.txt</a> for crawlers and agents.
-        </p>
+      <PageHero eyebrow="Writing" title={<>The argument,<br />in full.</>} lede="The essays and the 21-part series first appeared on LinkedIn. The full text lives here so anyone — and any model — can read it without a login wall.">
+        <a href="/rss.xml" className="btn-outline-light">RSS</a>
+        <a href="/llms.txt" className="btn-outline-light">llms.txt</a>
+      </PageHero>
+      <Section number="01" eyebrow="Essays" title="Rails, not throttles — and the long version.">
         <div className="grid gap-6">
           {ESSAYS.map((w) => (
             <article key={w.slug} className="card">
@@ -50,7 +48,7 @@ export default function WritingIndex() {
           ))}
         </div>
       </Section>
-      <Section tone="cream" eyebrow="The missing layer · 21 days" title="One idea a day. The argument, in sequence." lede="Week 1 is the anchor. Week 2 is authority. Week 3 is trust, discovery and privacy. Week 4 is acting. Day 21 is what we owe.">
+      <Section tone="cream" number="02" eyebrow="The missing layer · 21 days" title="One idea a day. The argument, in sequence." lede="Week 1 is the anchor. Week 2 is authority. Week 3 is trust, discovery and privacy. Week 4 is acting. Day 21 is what we owe.">
         <ol className="grid gap-3">
           {SERIES.map((w) => (
             <li key={w.slug} className="flex gap-4 rounded-xl border border-line bg-white px-4 py-3">

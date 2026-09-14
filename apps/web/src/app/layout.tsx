@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
   description:
-    'One substrate for agentic applications: identity, authority and evidence designed as one system. Smart Agents for people, organizations and services; scoped, revocable grants; receipts the owner carries. Open source.',
+    'The industry answers agent risk with throttles — sandboxes, restricted modes, a second model grading the first, one platform’s ACLs. Agentic Primitives answers it with authority the agent cannot exceed: a signed, caveated, revocable grant enforced outside the model and receipted for the owner. Open source.',
   keywords: [
     'Agentic Primitives',
     'Smart Agent',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans bg-ink">
         <JsonLd data={orgGraph()} />
         <Nav />
         <main>{children}</main>

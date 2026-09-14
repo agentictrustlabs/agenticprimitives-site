@@ -1,4 +1,4 @@
-import { Arrow, Box, C, Frame, Glyph, Label, Pill } from './primitives';
+import { Arrow, Box, Brandline, C, Frame, Kicker, Label, Pill } from './primitives';
 
 /**
  * PERSON → ORGANIZATION → SERVICE. The authority chain that replaces "wallet A delegates to wallet B": a person's
@@ -7,45 +7,42 @@ import { Arrow, Box, C, Frame, Glyph, Label, Pill } from './primitives';
  */
 export function AgentTriad() {
   const id = 'triad';
-  const W = 1180, H = 590;
+  const W = 1200, H = 620;
   return (
     <Frame id={id} w={W} h={H} title="Authority flows between Smart Agents: passkey → Person → Organization → Service, with bounded grants back to people">
-      {/* Humans and their credentials */}
-      <Box x={40} y={60} w={190} h={78} title="Alice (a human)" lines={['passkey on her phone', 'passkey on her laptop', 'recovery: 2 guardians']} tone="slate" />
-      <Box x={40} y={300} w={190} h={78} title="Bob (a human)" lines={['passkey', 'hardware key', 'recovery: trustee quorum']} tone="slate" />
-      <Label x={40} y={160} text="Credentials rotate. The agent does not." size={10.5} italic />
+      <Kicker x={40} y={40} text="humans + credentials" tone="ink" />
+      <Kicker x={300} y={40} text="person agents" tone="navy" />
+      <Kicker x={610} y={40} text="organization agent" tone="violet" />
+      <Kicker x={940} y={40} text="service agents" tone="teal" />
 
-      <Arrow id={id} d="M 230 99 H 288" tone="ink" label="controls" lx={259} ly={92} labelSize={9.5} />
-      <Arrow id={id} d="M 230 339 H 288" tone="ink" label="controls" lx={259} ly={332} labelSize={9.5} />
+      <Box x={40} y={64} w={200} h={86} title="Alice (a human)" lines={['passkey · phone', 'passkey · laptop', 'recovery: 2 guardians']} tone="slate" titleSize={13} lineSize={11.5} />
+      <Box x={40} y={314} w={200} h={86} title="Bob (a human)" lines={['passkey', 'hardware key', 'recovery: trustee quorum']} tone="slate" titleSize={13} lineSize={11.5} />
+      <Label x={40} y={176} text="Credentials rotate. The agent does not." size={11} italic />
 
-      {/* Person agents */}
-      <g><Glyph x={302} y={70} kind="person" /><Box x={290} y={60} w={220} h={78} title="      alice.me" lines={['Person Smart Agent', 'ERC-4337 account · ERC-1271', 'custodies the org + a treasury']} tone="navy" titleMono titleSize={14} /></g>
-      <g><Glyph x={302} y={310} kind="person" /><Box x={290} y={300} w={220} h={78} title="      bob.me" lines={['Person Smart Agent', 'member of Missio Nexus', 'holds a bounded permission']} tone="navy" titleMono titleSize={14} /></g>
+      <Arrow id={id} d="M 240 107 H 298" tone="ink" label="controls" lx={269} ly={98} labelSize={10} />
+      <Arrow id={id} d="M 240 357 H 298" tone="ink" label="controls" lx={269} ly={348} labelSize={10} />
 
-      {/* Org agent */}
-      <g><Glyph x={612} y={170} kind="org" /><Box x={600} y={160} w={240} h={96} title="      missio-nexus.org" lines={['Organization Smart Agent', 'custody: alice (steward)', 'members: alice · bob · carol', 'vault: roster, decisions, receipts']} tone="violet" titleMono titleSize={13.5} /></g>
+      <Box x={300} y={64} w={230} h={86} title="alice.me" variant="header" tone="navy" titleMono lines={['Person Smart Agent', 'ERC-4337 account · ERC-1271', 'custodies the org + a treasury']} lineSize={11.5} />
+      <Box x={300} y={314} w={230} h={86} title="bob.me" variant="header" tone="navy" titleMono lines={['Person Smart Agent', 'member of Missio Nexus', 'holds a bounded permission']} lineSize={11.5} />
 
-      <Arrow id={id} d="M 510 99 C 550 99, 560 190, 598 190" tone="ink" label="stewards (custody)" lx={555} ly={150} labelSize={9.5} />
-      <Arrow id={id} d="M 510 339 C 550 339, 560 240, 598 240" dashed label="member — a situation in the org's vault" lx={548} ly={300} labelSize={9.5} anchor="start" />
+      <Box x={610} y={170} w={260} h={104} title="missio-nexus.org" variant="header" tone="violet" titleMono lines={['Organization Smart Agent', 'custody: alice (steward)', 'members: alice · bob · carol', 'vault: roster · decisions · receipts']} lineSize={11.5} />
 
-      {/* Service agents */}
-      <g><Glyph x={952} y={70} kind="service" /><Box x={940} y={60} w={200} h={88} title="      missio.treasury" lines={['Service Agent · role: treasury', 'holds the organization\'s funds', 'chartered under the org']} tone="teal" titleMono titleSize={12.5} /></g>
-      <g><Glyph x={952} y={300} kind="service" /><Box x={940} y={290} w={200} h={98} title="      catalog.svc" lines={['Service Agent', 'signs A2A as itself with a', 'KMS key that is a DELEGATE', 'under a revocable wire']} tone="teal" titleMono titleSize={13} /></g>
+      <Arrow id={id} d="M 530 107 C 570 107, 580 200, 608 200" tone="navy" label="stewards (custody)" lx={562} ly={150} labelSize={10} />
+      <Arrow id={id} d="M 530 357 C 570 357, 580 250, 608 250" dashed label="member — a situation in the org’s vault" lx={566} ly={312} labelSize={10} anchor="start" />
 
-      <Arrow id={id} d="M 840 190 C 880 190, 900 104, 938 104" tone="amber" label="charters + delegates" lx={846} ly={178} anchor="start" labelSize={9.5} />
-      <Arrow id={id} d="M 840 230 C 880 230, 900 339, 938 339" tone="amber" label="session wire: one skill, bounded" lx={846} ly={270} anchor="start" labelSize={9.5} />
+      <Box x={940} y={64} w={220} h={96} title="missio.treasury" variant="header" tone="teal" titleMono lines={['Service Agent · role: treasury', 'holds the organization’s funds', 'chartered under the org']} lineSize={11.5} />
+      <Box x={940} y={300} w={220} h={108} title="catalog.svc" variant="header" tone="teal" titleMono lines={['Service Agent', 'signs A2A as itself with a', 'KMS key that is a DELEGATE', 'under a revocable wire']} lineSize={11.5} />
 
-      {/* bounded permission back to bob */}
-      <Arrow id={id} d="M 1040 148 C 1040 430, 700 470, 510 372" tone="amber" dashed label="bounded permission: pay ≤ 500 to approved payees, 30 days" lx={790} ly={440} labelSize={9.5} />
+      <Arrow id={id} d="M 870 200 C 905 200, 905 112, 938 112" tone="amber" label="charters + delegates" lx={876} ly={186} anchor="start" labelSize={10} />
+      <Arrow id={id} d="M 870 244 C 905 244, 905 354, 938 354" tone="amber" label="session wire: one skill, bounded" lx={876} ly={290} anchor="start" labelSize={10} />
+      <Arrow id={id} d="M 1050 160 C 1050 470, 720 490, 530 390" tone="amber" dashed label="bounded permission: pay ≤ 500 to approved payees, 30 days" lx={800} ly={470} labelSize={10} />
 
-      {/* Provenance sentence */}
-      <rect x={40} y={460} width={1100} height={100} rx={10} fill={C.slateSoft} stroke={C.faint} />
-      <Label x={60} y={486} text="What the audit trail can say afterwards:" size={11.5} weight={700} tone="ink" />
-      <Label x={60} y={508} text="bob.me drafted a payment · acting under a bounded permission from missio.treasury · which acts on behalf of missio-nexus.org ·" size={11} tone="ink" mono />
-      <Label x={60} y={526} text="whose admin authority is custodied by alice.me · caveats enforced on chain at redemption · receipt anchored · revocable by one transaction." size={11} tone="ink" mono />
-      <Pill x={60} y={536} text="Agent performed Activity on behalf of Agent under Delegation with Limits" tone="amber" size={10} />
-
-      <Label x={W - 40} y={H - 12} text="agenticprimitives.dev" size={9.5} anchor="end" mono />
+      <rect x={40} y={500} width={1120} height={92} rx={12} fill={C.slateSoft} stroke={C.faint} />
+      <Kicker x={60} y={526} text="What the audit trail can say afterwards" tone="ink" />
+      <Label x={60} y={550} text="bob.me drafted a payment · acting under a bounded permission from missio.treasury · which acts on behalf of missio-nexus.org ·" size={11.5} tone="ink" mono />
+      <Label x={60} y={570} text="whose admin authority is custodied by alice.me · caveats enforced on chain at redemption · receipt anchored · revocable by one transaction." size={11.5} tone="ink" mono />
+      <Pill x={780} y={462} text="Agent performed Activity on behalf of Agent under Delegation with Limits" tone="amber" size={10.5} solid />
+      <Brandline w={W} h={H} />
     </Frame>
   );
 }

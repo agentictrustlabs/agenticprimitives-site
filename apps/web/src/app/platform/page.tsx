@@ -4,6 +4,7 @@ import { OFFERINGS, SITE } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
 import { EstateTopology } from '@apsite/diagrams';
 import { CTA, Figure, Section, Shot, Tag } from '@/components/ui';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Platform — nine capabilities, one substrate',
@@ -14,24 +15,24 @@ export const metadata: Metadata = pageMeta({
 export default function Platform() {
   return (
     <>
-      <Section eyebrow="Platform" title="Nine capabilities. One substrate." lede="Each offering is independently adoptable and depends only on the ones below it. Together they are every capability an agentic application needs — from a person's first passkey to the receipt for an AI agent's last action.">
-        <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-9">
+      <PageHero eyebrow="Platform" title={<>Nine capabilities.<br />One substrate.</>} lede="Each offering is independently adoptable and depends only on the ones below it. Together they are every capability an agentic application needs — from a person's first passkey to the receipt for an AI agent's last action.">
+        <div className="grid w-full gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-9">
           {OFFERINGS.map((o, i) => (
-            <a key={o.id} href={`#${o.id}`} className="card !p-4 text-center hover:border-navy">
-              <div className="font-mono text-[11px] text-slate-400">0{i + 1}</div>
-              <div className="mt-1 text-sm font-semibold text-navy">{o.name}</div>
+            <a key={o.id} href={`#${o.id}`} className="bg-ink p-3 text-center hover:bg-ink-2">
+              <div className="num-mark text-white/40">0{i + 1}</div>
+              <div className="mt-1 text-sm font-semibold text-white">{o.name}</div>
             </a>
           ))}
         </div>
-      </Section>
+      </PageHero>
 
-      <Section tone="cream" eyebrow="Where it runs" title="An estate: one deployment of the substrate, many applications around it." lede="Home for people and ceremonies, a runtime for agents, vaults for records, an edge for admission, discovery and a skills registry, and a chain for the anchor. Your application is a relying app: an OIDC client and an A2A caller.">
-        <Figure caption="The faithnet estate as deployed today. Names are the estate's; the shape is the substrate's. Home runs on Vercel; the runtime, vault, edge, discovery and registry are Cloudflare Workers; the chain is a private Besu QBFT network — any EVM works.">
+      <Section tone="ink" number="01" eyebrow="Where it runs" title="An estate: one deployment of the substrate, many applications around it." lede="Home for people and ceremonies, a runtime for agents, vaults for records, an edge for admission, discovery and a skills registry, and a chain for the anchor. Your application is a relying app: an OIDC client and an A2A caller.">
+        <Figure dark caption="The faithnet estate as deployed today. Names are the estate's; the shape is the substrate's. Home runs on Vercel; the runtime, vault, edge, discovery and registry are Cloudflare Workers; the chain is a private Besu QBFT network — any EVM works.">
           <EstateTopology />
         </Figure>
       </Section>
 
-      <Section eyebrow="Live" title="The estate, as its people see it." lede="Screens from the running faithnet estate, signed in as the Home's demo people. Every product here is a relying application of the same substrate.">
+      <Section number="02" eyebrow="Live" title="The estate, as its people see it." lede="Screens from the running faithnet estate, signed in as the Home's demo people. Every product here is a relying application of the same substrate.">
         <div className="grid gap-8 md:grid-cols-2">
           <Shot src="/shots/home-messages.png" alt="Home — Messages, with an Ask suggesting a payment and a club invitation" caption="Home · Messages. A conversation with bob.me; the Ask offers 'Finish sending 1.2 USDC to bob.me' — a step that will park for her signature. goose-1.svc and goose-2.svc are runtime members that joined over ACP." />
           <Shot src="/shots/gamenight-money.png" alt="Game Night — Your money, showing alice2.treasury and the authorise-buy-ins ceremony" caption="Game Night · Your money. 10,000 SHQ in the treasury the Home chartered for her; the buy-in authority is signed at her Home — the card room never can." />
@@ -44,7 +45,7 @@ export default function Platform() {
         <Section key={o.id} id={o.id} tone={i % 2 ? 'cream' : 'white'}>
           <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
             <div>
-              <p className="eyebrow">0{i + 1} · {o.name}</p>
+              <p className="eyebrow"><span className="text-slate-400">0{i + 1}</span> <span className="mx-2 inline-block h-px w-6 bg-line align-middle" /> {o.name}</p>
               <h2 className="h2 mt-3">{o.oneLine}</h2>
               <p className="lede mt-5 !text-base">{o.what}</p>
             </div>
@@ -72,7 +73,7 @@ export default function Platform() {
         </Section>
       ))}
 
-      <Section tone="navy" eyebrow="How they compose" title="Dependencies point one way. No back-edges.">
+      <Section tone="ink" eyebrow="How they compose" title="Dependencies point one way. No back-edges.">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-white/15 bg-white/5 p-6 font-mono text-sm leading-7 text-slate-200">
             <div>types ← identity-auth ← agent-account ← delegation ← mcp-runtime</div>
@@ -85,7 +86,7 @@ export default function Platform() {
           <div className="space-y-4 text-slate-200">
             <p>Ring 0 is packages and contracts. Products — a Home, a discovery service, a naming service, your application — live in their own repositories and import the packages. Integrations with other people's protocols (ERC-8004, ANS, HCS, DNS-AID, OASF) live outside too, importing inward, never the reverse.</p>
             <p>That is what lets you take one offering without the rest, and what keeps a vertical's vocabulary out of the primitives: the packages are generic trust building blocks; branding, verticals and deployment specifics are the application's job.</p>
-            <Link href="/developers" className="btn bg-amber-400 text-navy hover:bg-amber-300">Package map and quickstart</Link>
+            <Link href="/developers" className="btn-brass">Package map and quickstart</Link>
           </div>
         </div>
       </Section>
