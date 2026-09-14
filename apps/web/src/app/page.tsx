@@ -161,7 +161,7 @@ export default function Home() {
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/examples/game-night" className="btn bg-amber-400 text-navy hover:bg-amber-300">The full case study <ArrowRight className="h-4 w-4" /></Link>
-              <a href={GAME_NIGHT.url} className="btn border border-white/30 text-white hover:bg-white/10" rel="noreferrer">Play it (play money)</a>
+              <a href={GAME_NIGHT.url} className="btn border border-white/30 text-white hover:bg-white/10" target="_blank" rel="noreferrer">Play it (play money)</a>
             </div>
           </div>
         </div>

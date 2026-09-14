@@ -21,8 +21,8 @@ export default function GameNight() {
             <p className="lede mt-5">{GAME_NIGHT.tagline}</p>
             <p className="mt-5 text-slate-600">{GAME_NIGHT.summary}</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href={GAME_NIGHT.url} className="btn-primary" rel="noreferrer">Play it — play money, demo people <ArrowRight className="h-4 w-4" /></a>
-              <a href={GAME_NIGHT.repo} className="btn-secondary" rel="noreferrer">Source</a>
+              <a href={GAME_NIGHT.url} className="btn-primary" target="_blank" rel="noreferrer">Play it — play money, demo people <ArrowRight className="h-4 w-4" /></a>
+              <a href={GAME_NIGHT.repo} className="btn-secondary" target="_blank" rel="noreferrer">Source</a>
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               {['Cloudflare Workers', 'Durable Objects', 'Vite + React', 'A2A', 'ERC-7710', 'Sheqel (SHQ)', 'faithchain'].map((t) => <Tag key={t}>{t}</Tag>)}
