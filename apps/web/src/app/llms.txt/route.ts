@@ -24,11 +24,11 @@ Intelligence may be probabilistic. Authority must not be.
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
 - [Architecture](${SITE.url}/substrate): Smart Agents, mandates, harness sequence, two knowledge tiers
-- [Versus](${SITE.url}/compare): eight trust-substrate concerns against six peer families — agent frameworks (MAF, ADK, LangGraph, Dapr, Agno, Strands, Mastra, Pydantic, CrewAI, OpenAI SDK, Buzz), Web2 IAM (Auth0, Okta, Entra), smart accounts + delegation (MetaMask DTK, Smart Sessions, Lit Vincent, Safe, Zodiac, Coinbase, Kite), the ERC agent stack (8004, 8001, 8183, 8196, 8273, 8226), registries (ERC-8004, AGNTCY, NANDA, ANS), data/provenance (Inrupt, PROV-AGENT, OTel). Nobody has the composition.
+- [Versus](${SITE.url}/compare): the stack you would buy — 29 products in seven bands (Auth0, Privy, WorkOS, Safe, Pimlico, Turnkey, MetaMask DTK, Cerbos, OpenFGA, HashiCorp Vault, Postgres+RLS, Veramo, EAS, DocuSign, Box, LangGraph, Temporal, MCP SDK, a2a-js, XMTP, Stripe, Kong, ENS, an ERC-8004 registry, Tailscale, Datadog, TopBraid …), the seam each band introduces, and the 77 packages + 33 contracts that cover every row on one identity
+- [Versus · the composition](${SITE.url}/compare/composition): eight trust-substrate concerns against six peer families — agent frameworks (MAF, ADK, LangGraph, Dapr, Agno, Strands, Mastra, Pydantic, CrewAI, OpenAI SDK, Buzz), Web2 IAM (Auth0, Okta, Entra), smart accounts + delegation (MetaMask DTK, Smart Sessions, Lit Vincent, Safe, Zodiac, Coinbase, Kite), the ERC agent stack (8004, 8001, 8183, 8196, 8273, 8226), registries (ERC-8004, AGNTCY, NANDA, ANS), data/provenance (Inrupt, PROV-AGENT, OTel). Nobody has the composition.
 - [Versus · throttles](${SITE.url}/compare/throttles): containment vs supervision vs platform governance vs authority-as-a-grant
 - [Versus · frameworks](${SITE.url}/compare/frameworks): per-framework take/differ and the scorecard
 - [Versus · Web3](${SITE.url}/compare/web3): the Web3 trust-substrate landscape and the ERC stack
-- [Versus · what it replaces](${SITE.url}/compare/replaces): all 77 packages next to what they replace; the 33 contracts by group; the bill of materials
 - [Versus · where we lose](${SITE.url}/compare/honest): where peers are ahead today, what we refuse to take
 - [Game Night](${SITE.url}/examples/game-night): complete third-party example (gamenight.faithnet.io)
 - [Ontology](${SITE.url}/ontology): the Agentic Trust upper ontology and the Texas hold'em domain ontology; how every layer binds to one T-box by IRI; meaning flows, authority never does

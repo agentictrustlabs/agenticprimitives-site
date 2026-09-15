@@ -4,6 +4,89 @@
 //   README.md §"What it replaces" · §"How this compares" · §"Where we lose today"
 // Every claim here should be traceable to one of those; when they change, this changes.
 
+// ─── The product wall: what you would BUY and WIRE to build an agentic solution without the substrate ─────────
+// One realistic pick per need (alternatives in `or`), grouped by the identity model / permission shape / evidence
+// format it drags in. Thirty products. Every band boundary is a seam where identity changes shape.
+
+export interface WallProduct { name: string; need: string; or: string; packages: readonly string[] }
+export interface WallBand { band: string; brings: string; products: readonly WallProduct[] }
+
+export const PRODUCT_WALL: readonly WallBand[] = [
+  {
+    band: 'Sign-in and identity',
+    brings: 'identity model #1 — a user id in a vendor\u2019s directory',
+    products: [
+      { name: 'Auth0', need: 'login, SSO, MFA', or: 'Okta · Clerk · Cognito', packages: ['connect-auth', 'connect', 'connect-client', 'fedcm-rp', 'fedcm-idp'] },
+      { name: 'Privy', need: 'embedded wallets', or: 'Dynamic · Web3Auth', packages: ['browser-identity'] },
+      { name: 'WorkOS', need: 'organizations, members, roles', or: 'Okta groups · your own tables', packages: ['organization', 'situations'] },
+    ],
+  },
+  {
+    band: 'Accounts, keys and custody',
+    brings: 'identity model #2 — a wallet address, joined to the user id by a table you write',
+    products: [
+      { name: 'Safe', need: 'smart accounts, multisig', or: 'ZeroDev · Alchemy Account Kit', packages: ['agent-account', 'contracts'] },
+      { name: 'Pimlico', need: 'bundler, sponsored gas', or: 'Alchemy Gas Manager · Biconomy', packages: ['agent-account'] },
+      { name: 'Turnkey', need: 'key management, signing policy', or: 'Fireblocks · a cloud KMS console', packages: ['key-custody', 'ap-kms', 'delegated-signer'] },
+      { name: 'Argent-style guardians', need: 'recovery, trustees', or: 'a Safe recovery module', packages: ['account-custody'] },
+    ],
+  },
+  {
+    band: 'Permissions and delegation',
+    brings: 'permission shape #1 — roles and policies in a database; shape #2 — session keys on chain; nothing joins them',
+    products: [
+      { name: 'MetaMask Delegation Toolkit', need: 'scoped agent authority on chain', or: 'Smart Sessions · Lit Vincent', packages: ['delegation', 'chain-state', 'chain-state-viem'] },
+      { name: 'Cerbos', need: 'policy engine, per-call decisions', or: 'OPA · Permit.io · Cedar', packages: ['tool-policy', 'agentic-authorization'] },
+      { name: 'OpenFGA', need: 'fine-grained data access', or: 'Okta FGA · ABAC in the app', packages: ['entitlements', 'key-authorization'] },
+      { name: 'HashiCorp Vault', need: 'secrets, key release', or: 'AWS Secrets Manager', packages: ['key-authorization', 'vault-authority'] },
+    ],
+  },
+  {
+    band: 'Private data and credentials',
+    brings: 'the third copy of every identity — as a row key, a DID and a credential subject',
+    products: [
+      { name: 'Postgres + RLS', need: 'private records per user', or: 'Inrupt Solid · an encrypted store', packages: ['vault', 'related-agents', 'privacy-credentials'] },
+      { name: 'Veramo', need: 'verifiable credentials', or: 'SpruceID · walt.id', packages: ['verifiable-credentials', 'capability-claims', 'geo-features', 'agent-skills'] },
+      { name: 'EAS', need: 'attestations', or: 'Verax', packages: ['attestations'] },
+      { name: 'DocuSign', need: 'bilateral agreements', or: 'a signatures table', packages: ['agreements'] },
+      { name: 'Box', need: 'content library, sharing', or: 'SharePoint · Drive · Notion', packages: ['content-storage', 'content-primitives'] },
+    ],
+  },
+  {
+    band: 'Agent runtime and protocols',
+    brings: 'authority as application code — a callback the framework calls if the code remembers to',
+    products: [
+      { name: 'LangGraph', need: 'the agent loop', or: 'MAF · ADK · OpenAI Agents SDK', packages: ['orchestration', 'orchestration-anthropic', 'orchestration-openai-compat', 'harness', 'context', 'service-agent'] },
+      { name: 'Temporal', need: 'durable workflows, approvals', or: 'Dapr · Restate', packages: ['fulfillment', 'coordination', 'collaboration'] },
+      { name: 'MCP SDK + custom auth', need: 'tools and data for agents', or: 'an MCP gateway (Permit · Cerbos)', packages: ['mcp-protocol', 'mcp-runtime', 'mcp-oauth'] },
+      { name: 'a2a-js + a task store', need: 'agent-to-agent calls', or: 'REST webhooks + API keys', packages: ['a2a', 'acp', 'runtime-member'] },
+      { name: 'XMTP', need: 'agent messaging, inbox', or: 'Matrix · Nostr', packages: ['fabric'] },
+      { name: 'Stripe', need: 'payments, escrow, recurring', or: 'x402 · AP2', packages: ['payments', 'intent-engagement', 'intent-marketplace', 'intent-resolver'] },
+    ],
+  },
+  {
+    band: 'Edge, naming and discovery',
+    brings: 'reachability mistaken for authority — an API key at the gateway, a row in a registry',
+    products: [
+      { name: 'Kong', need: 'admission, rate limits, quotas', or: 'Zuplo · an API gateway', packages: ['admission', 'edge-runtime', 'edge-cloudflare', 'rate-control', 'rate-control-cloudflare', 'surface-catalog'] },
+      { name: 'ENS', need: 'names', or: 'Unstoppable · GoDaddy ANS · LF ANS', packages: ['agent-naming', 'registry-resolution'] },
+      { name: 'an ERC-8004 registry', need: 'discovery, agent cards', or: 'AGNTCY directory · a hand-kept list', packages: ['registry-kit', 'agent-profile', 'agent-relationships', 'identity-directory', 'identity-directory-adapters', 'home'] },
+      { name: 'Tailscale', need: 'private reachability', or: 'DNTLS · a VPN', packages: ['agent-resolution'] },
+    ],
+  },
+  {
+    band: 'Evidence, vocabulary and tooling',
+    brings: 'evidence format #1 spans · #2 log lines · #3 attestations — joined by ids you invent',
+    products: [
+      { name: 'Datadog', need: 'tracing, audit, evals', or: 'LangSmith · Langfuse · OpenTelemetry + a backend', packages: ['audit', 'provenance', 'verification-receipts', 'witness', 'evaluation'] },
+      { name: 'TopBraid', need: 'a shared vocabulary, schemas', or: 'a hand-rolled types repo', packages: ['types', 'ontology'] },
+      { name: 'create-next-app + a wiki', need: 'scaffolding, conventions, CI checks', or: 'a template repo', packages: ['create-app', 'devkit'] },
+    ],
+  },
+];
+
+export const PRODUCT_WALL_COUNT = PRODUCT_WALL.reduce((n, b) => n + b.products.length, 0);
+
 // ─── The composition: eight concerns, who is there, what we ship for each ─────────────────────────────────────
 
 export type Presence = 'full' | 'partial' | 'none';
