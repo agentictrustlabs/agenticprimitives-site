@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BUILD_PROMPT } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
-import { BuildPager } from './BuildNav';
-import { BuildHead, Note } from './_ui';
+import { GuidePager } from '@/components/GuideNav';
+import { BUILD_PAGES } from './pages';
+import { GuideHead as BuildHead, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
   title: 'Build — say what kind of application you want',
@@ -44,7 +45,7 @@ export default function BuildStart() {
         <p className="mt-3 text-[15px] leading-relaxed text-slate-300">Vibe coding a permission system gets you a permission system that looks right. Here the agent cannot write one: authority is a contract on chain it can only call, the person signs at her own Home, and every protected act leaves a receipt she carries. The generated part is behaviour. The part that must not be probabilistic never was.</p>
       </section>
 
-      <BuildPager current="/build" />
+      <GuidePager pages={BUILD_PAGES} current="/build" last={{ href: "/examples/game-night", label: "See it built: Game Night" }} />
     </>
   );
 }

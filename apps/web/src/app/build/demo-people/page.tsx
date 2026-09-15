@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { DEMO_PEOPLE } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
-import { BuildPager } from '../BuildNav';
-import { BuildHead, Code, Note } from '../_ui';
+import { GuidePager } from '@/components/GuideNav';
+import { BUILD_PAGES } from '../pages';
+import { GuideHead as BuildHead, GuideCode as Code, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
   title: 'Build — the six demo people',
@@ -53,7 +54,7 @@ curl -X POST https://www.faithnet.me/connect/demo-signin \\
         </ol>
       </section>
 
-      <BuildPager current="/build/demo-people" />
+      <GuidePager pages={BUILD_PAGES} current="/build/demo-people" last={{ href: "/examples/game-night", label: "See it built: Game Night" }} />
     </>
   );
 }

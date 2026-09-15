@@ -1,14 +1,15 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BUILD_PAGES } from './pages';
 
+export interface GuidePage { readonly href: string; readonly label: string; readonly sub: string }
 
-export function BuildNav() {
+/** Sidebar for a multi-page area: short pages behind one nav, not a scroll. */
+export function GuideNav({ pages }: { pages: readonly GuidePage[] }) {
   const path = usePathname();
   return (
-    <nav aria-label="Build" className="flex gap-1 overflow-x-auto md:sticky md:top-24 md:block md:space-y-1 md:overflow-visible">
-      {BUILD_PAGES.map((p, i) => {
+    <nav aria-label="Section" className="flex gap-1 overflow-x-auto md:sticky md:top-24 md:block md:space-y-1 md:overflow-visible">
+      {pages.map((p, i) => {
         const active = path === p.href;
         return (
           <Link
@@ -28,14 +29,14 @@ export function BuildNav() {
   );
 }
 
-export function BuildPager({ current }: { current: string }) {
-  const i = BUILD_PAGES.findIndex((p) => p.href === current);
-  const prev = i > 0 ? BUILD_PAGES[i - 1] : undefined;
-  const next = i >= 0 && i < BUILD_PAGES.length - 1 ? BUILD_PAGES[i + 1] : undefined;
+export function GuidePager({ pages, current, last }: { pages: readonly GuidePage[]; current: string; last: { href: string; label: string } }) {
+  const i = pages.findIndex((p) => p.href === current);
+  const prev = i > 0 ? pages[i - 1] : undefined;
+  const next = i >= 0 && i < pages.length - 1 ? pages[i + 1] : undefined;
   return (
     <div className="mt-16 flex items-center justify-between border-t border-white/10 pt-6 text-sm">
       {prev ? <Link href={prev.href} className="text-slate-400 hover:text-white">← {prev.label}</Link> : <span />}
-      {next ? <Link href={next.href} className="btn-brass !px-4 !py-2">{next.label} →</Link> : <Link href="/examples/game-night" className="btn-brass !px-4 !py-2">See it built: Game Night →</Link>}
+      {next ? <Link href={next.href} className="btn-brass !px-4 !py-2">{next.label} →</Link> : <Link href={last.href} className="btn-brass !px-4 !py-2">{last.label} →</Link>}
     </div>
   );
 }

@@ -449,6 +449,8 @@ export const ESTATE: readonly EstateNode[] = [
   { id: 'app', name: 'Your app', host: 'gamenight.faithnet.io', role: 'Relying app: OIDC client + A2A caller', runs: 'Anything that speaks HTTPS' },
 ];
 
+export * from './compare';
+
 // ─── Ontology: how one description of the world reaches every layer ────────────────────────────────────────────
 
 export interface OntologyLayer { layer: string; question: string; binds: string; gate: string; bug: string }

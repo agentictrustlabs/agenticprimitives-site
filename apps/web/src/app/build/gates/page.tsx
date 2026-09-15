@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { pageMeta } from '@/lib/seo';
-import { BuildPager } from '../BuildNav';
-import { BuildHead, Code, Note } from '../_ui';
+import { GuidePager } from '@/components/GuideNav';
+import { BUILD_PAGES } from '../pages';
+import { GuideHead as BuildHead, GuideCode as Code, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
   title: 'Build — the gates',
@@ -54,7 +55,7 @@ pnpm ap conform a2a https://<your-agent>/a2a`}</Code>
         </ul>
       </section>
 
-      <BuildPager current="/build/gates" />
+      <GuidePager pages={BUILD_PAGES} current="/build/gates" last={{ href: "/examples/game-night", label: "See it built: Game Night" }} />
     </>
   );
 }

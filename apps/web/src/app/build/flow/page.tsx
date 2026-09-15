@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { BUILD_FLOW, BUILD_UNDER_THE_HOOD } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
 import { Tag } from '@/components/ui';
-import { BuildPager } from '../BuildNav';
-import { BuildHead, Code, Note } from '../_ui';
+import { GuidePager } from '@/components/GuideNav';
+import { BUILD_PAGES } from '../pages';
+import { GuideHead as BuildHead, GuideCode as Code, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
   title: 'Build — the flow',
@@ -58,7 +59,7 @@ pnpm ap doctor && pnpm ap test --live-gates live-gates.json && pnpm ap conform a
         </ol>
       </details>
 
-      <BuildPager current="/build/flow" />
+      <GuidePager pages={BUILD_PAGES} current="/build/flow" last={{ href: "/examples/game-night", label: "See it built: Game Night" }} />
     </>
   );
 }

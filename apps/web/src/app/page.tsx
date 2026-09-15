@@ -200,7 +200,7 @@ export default function Home() {
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-slate-300">The nightmare was never any one product; it was the seams. Now you describe the application and the packages and contracts already agree with each other.</p>
         </div>
         <div className="mt-8 flex justify-end">
-          <Link href="/compare#bom" className="btn-ghost">The full bill of materials <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/compare/replaces#bom" className="btn-ghost">The full bill of materials <ArrowRight className="h-4 w-4" /></Link>
         </div>
       </Section>
 

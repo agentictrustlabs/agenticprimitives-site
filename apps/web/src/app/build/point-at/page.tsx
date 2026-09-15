@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { BUILD_ENDPOINTS, BUILD_REPOS } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
-import { BuildPager } from '../BuildNav';
-import { BuildHead, Code, Note } from '../_ui';
+import { GuidePager } from '@/components/GuideNav';
+import { BUILD_PAGES } from '../pages';
+import { GuideHead as BuildHead, GuideCode as Code, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
   title: 'Build — where to point the agent',
@@ -64,7 +65,7 @@ AP_SKILLS_REGISTRY=https://skills.faithnet.io`}</Code>
         <Note>The estate is a testing deployment. Sheqel, the card room&apos;s coin, has an open mint and is worth nothing anywhere else. Build against it freely; read <span className="font-mono">docs/AUDIT-2026-09-13.md</span> in pokernight before pointing any of this at an asset with value.</Note>
       </section>
 
-      <BuildPager current="/build/point-at" />
+      <GuidePager pages={BUILD_PAGES} current="/build/point-at" last={{ href: "/examples/game-night", label: "See it built: Game Night" }} />
     </>
   );
 }
