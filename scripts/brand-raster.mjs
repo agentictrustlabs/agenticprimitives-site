@@ -16,6 +16,8 @@ const shots = [
   { path: '/brand/export/icon', file: 'brand/apple-touch-icon.png', w: 180, h: 180 },
   { path: '/brand/export/lockup-dark', file: 'brand/lockup-dark.png', w: 2000, h: 480 },
   { path: '/brand/export/lockup-light', file: 'brand/lockup-light.png', w: 2000, h: 480 },
+  { path: '/brand/export/linkedin-cover', file: 'brand/linkedin-cover-1128x191.png', w: 1128, h: 191, scale: 2 },
+  { path: '/brand/export/linkedin-logo', file: 'brand/linkedin-logo-400.png', w: 400, h: 400 },
 ];
 
 const svgs = [
@@ -25,7 +27,7 @@ const svgs = [
 
 const browser = await chromium.launch();
 for (const s of shots) {
-  const page = await browser.newPage({ viewport: { width: s.w, height: s.h }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({ viewport: { width: s.w, height: s.h }, deviceScaleFactor: s.scale ?? 1 });
   await page.goto(base + s.path, { waitUntil: 'networkidle' });
   const el = page.locator('#frame');
   await el.waitFor();
