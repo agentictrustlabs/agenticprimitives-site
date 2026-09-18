@@ -623,3 +623,5 @@ export const AUDIENCES = [
 ] as const;
 export { DEMOS, HOME_MCP_CONNECTOR } from './demos';
 export type { Demo, DemoLink, DemoStep } from './demos';
+export { AUDITS, auditBySlug } from './audits';
+export type { Audit } from './audits';

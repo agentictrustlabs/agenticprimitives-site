@@ -81,7 +81,7 @@ export default function Developers() {
         <Ledger
           rows={[
             { k: 'Ready for', v: 'Test and pre-production environments. A live estate has run the full flow — people, organizations, treasuries, agents, mandates, receipts — since 2026.' },
-            { k: 'Not yet', v: 'Full production: an external audit, clean governance keys, and the remaining readiness items are the gates. Every finding ever logged is public.' },
+            { k: 'Not yet', v: <>Full production: an external audit, clean governance keys, and the remaining readiness items are the gates. Every finding ever logged is public — the <Link href="/audits" className="text-teal hover:underline">production readiness assessment</Link> has the verdict, the numbers and the open findings register.</> },
             { k: 'How to follow', v: 'Specs are the source of truth and precede code. ADRs record every decision, including the ones we reversed. Read them before you build against a surface.' },
           ]}
         />

@@ -112,6 +112,6 @@ export const HOME_FAQ = [
   },
   {
     q: 'Is it production-ready?',
-    a: 'Ready for test and pre-production. A live estate has run people, organizations, treasuries, agents, mandates and receipts. Full production waits on an external audit and remaining readiness items. Every finding is public.',
+    a: 'Pre-production, honestly labelled: GO for testnet pilots and demonstrations on our own chain; NO-GO for real private data, real value under delegated payments, and a public mainnet, each with named closing conditions. A live estate has run people, organizations, treasuries, agents, mandates and receipts. The full production readiness assessment is published at agenticprimitives.dev/audits.',
   },
 ] as const;

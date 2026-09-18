@@ -1,4 +1,4 @@
-import { ESSAYS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
+import { AUDITS, ESSAYS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
 
 export const dynamic = 'force-static';
 
@@ -26,6 +26,7 @@ Intelligence may be probabilistic. Authority must not be.
 
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
+- [Assessments](${SITE.url}/audits): published production-readiness assessments (self-assessments, labelled). Latest: ${AUDITS.map((a) => `[${a.title} ${a.date}](${SITE.url}/audits/${a.slug}) — PDF ${SITE.url}${a.pdf}`).join('; ')}
 - [Demos](${SITE.url}/demos): every live app on the estate — the Home (faithnet.me), your agent inside Claude (Home MCP), Game Night, Gather27 (find / host / ops), Field, the skills registry — with sign-in personas, a script and what each proves
 - [Architecture](${SITE.url}/substrate): Smart Agents, mandates, harness sequence, two knowledge tiers
 - [Versus](${SITE.url}/compare): the stack you would buy — 29 products in seven bands (Auth0, Privy, WorkOS, Safe, Pimlico, Turnkey, MetaMask DTK, Cerbos, OpenFGA, HashiCorp Vault, Postgres+RLS, Veramo, EAS, DocuSign, Box, LangGraph, Temporal, MCP SDK, a2a-js, XMTP, Stripe, Kong, ENS, an ERC-8004 registry, Tailscale, Datadog, TopBraid …), the seam each band introduces, and the 77 packages + 33 contracts that cover every row on one identity

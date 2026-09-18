@@ -38,6 +38,7 @@ export function Footer() {
             <li><a href={SITE.github} className="hover:text-white" rel="noreferrer">GitHub</a></li>
             <li><a href={SITE.npm} className="hover:text-white" rel="noreferrer">npm</a></li>
             <li><Link href="/ns" className="hover:text-white">Ontology namespaces</Link></li>
+            <li><Link href="/audits" className="hover:text-white">Production readiness</Link></li>
           </ul>
         </div>
         <div>
