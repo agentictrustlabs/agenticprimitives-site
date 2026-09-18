@@ -41,7 +41,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container-x flex flex-col justify-between gap-2 border-t border-white/10 py-6 text-xs text-slate-500 md:flex-row">
-        <span>© {new Date().getFullYear()} Agentic Trust Labs. Ring 0 is primitives; products live in their own repos.</span>
+        <span>Agentic Primitives · © {new Date().getFullYear()} Agentic Trust Labs. Ring 0 is primitives; products live in their own repos.</span>
         <span className="font-mono">agenticprimitives.dev</span>
       </div>
     </footer>

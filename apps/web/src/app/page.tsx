@@ -10,7 +10,7 @@ import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
 export const metadata: Metadata = pageMeta({
   title: `${SITE.name} — ${SITE.tagline}`,
   description:
-    'The industry answers agent risk with throttles: sandboxes, restricted modes, a second model grading the first, one platform’s ACLs. Agentic Primitives answers it with authority the agent cannot exceed — a signed, caveated, revocable grant enforced outside the model and receipted for the owner. Open source.',
+    'Agentic Primitives is the open-source trust substrate for agentic applications. The industry answers agent risk with throttles: sandboxes, restricted modes, a second model grading the first. Agentic Primitives answers it with authority the agent cannot exceed — a signed, caveated, revocable grant enforced outside the model and receipted for the owner.',
   path: '/',
 });
 
@@ -33,14 +33,15 @@ export default function Home() {
           <div>
             <p className="eyebrow-dark">The trust substrate for agentic applications</p>
             <h1 className="display mt-6">
+              <span className="mb-4 block text-lg font-semibold tracking-[0.02em] text-brass md:text-xl">Agentic Primitives</span>
               Rails,
               <br />
               not throttles.
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
               The industry’s answer to agent risk is to make the agent smaller — sandboxes, restricted modes, a second
-              model grading the first. Ours is to bound what it <em className="not-italic text-white">may do</em>: a
-              signed, caveated, revocable grant, enforced by code outside the model, receipted for the owner.
+              model grading the first. Agentic Primitives bounds what it <em className="not-italic text-white">may do</em>:
+              a signed, caveated, revocable grant, enforced by code outside the model, receipted for the owner. Open source.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href="/compare" className="btn-brass">
@@ -276,8 +277,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── FAQ ─────────────────────────────────────────────────────────────────────── */}
+      <Section tone="cream" number="08" eyebrow="Agentic Primitives, in short" title="Questions people ask first.">
+        <dl className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
+          {HOME_FAQ.map((f) => (
+            <div key={f.q} className="bg-white p-7">
+              <dt className="text-lg font-semibold text-navy">{f.q}</dt>
+              <dd className="mt-3 text-[15px] leading-relaxed text-slate-600">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
       {/* ── WRITING ──────────────────────────────────────────────────────────────────── */}
-      <Section number="08" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The long essay and the 21-part series are on this site — no LinkedIn login.">
+      <Section number="09" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The long essay and the 21-part series are on this site — no LinkedIn login.">
         <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
           {ESSAYS.map((w) => (
             <Link key={w.slug} href={`/writing/${w.slug}`} className="group bg-white p-6 hover:bg-cream">
