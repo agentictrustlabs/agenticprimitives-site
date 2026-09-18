@@ -48,15 +48,20 @@ export default function WritingIndex() {
           ))}
         </div>
       </Section>
-      <Section tone="cream" number="02" eyebrow="The missing layer · 21 days" title="One idea a day. The argument, in sequence." lede="Week 1 is the anchor. Week 2 is authority. Week 3 is trust, discovery and privacy. Week 4 is acting. Day 21 is what we owe.">
+      <Section tone="cream" number="02" eyebrow="The missing layer · 21 days" title="One idea a day. The argument, in sequence." lede="Week 1 is the anchor. Week 2 is authority. Week 3 is trust, discovery and privacy. Week 4 is acting. Day 21 is the rail.">
         <ol className="grid gap-3">
           {SERIES.map((w) => (
             <li key={w.slug} className="flex gap-4 rounded-xl border border-line bg-white px-4 py-3">
               <div className="w-10 shrink-0 font-mono text-sm font-semibold text-slate-400">{String(w.day).padStart(2, '0')}</div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <Link href={`/writing/${w.slug}`} className="font-semibold text-navy hover:text-teal">{w.title}</Link>
                 <p className="mt-1 text-sm text-slate-600">{w.description}</p>
               </div>
+              {w.linkedin && (
+                <a href={w.linkedin} target="_blank" rel="noreferrer" className="shrink-0 self-center text-xs text-slate-500 hover:text-navy">
+                  On LinkedIn ↗
+                </a>
+              )}
             </li>
           ))}
         </ol>
