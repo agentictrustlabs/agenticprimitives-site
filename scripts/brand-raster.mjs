@@ -18,6 +18,7 @@ const shots = [
   { path: '/brand/export/lockup-light', file: 'brand/lockup-light.png', w: 2000, h: 480 },
   { path: '/brand/export/linkedin-cover', file: 'brand/linkedin-cover-1128x191.png', w: 1128, h: 191, scale: 2 },
   { path: '/brand/export/linkedin-logo', file: 'brand/linkedin-logo-400.png', w: 400, h: 400 },
+  { path: '/brand/export/linkedin-profile-banner', file: 'brand/linkedin-profile-banner-1584x396.png', w: 1584, h: 396, scale: 2 },
 ];
 
 const svgs = [
