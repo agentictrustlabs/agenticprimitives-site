@@ -621,3 +621,5 @@ export const AUDIENCES = [
   { who: 'Architects & platform teams', want: 'Primitives that compose, standards you already know, no framework lock-in.', get: 'Publishable packages with one-directional boundaries, Foundry contracts, A2A/MCP conformance, live gates.' },
   { who: 'Security & compliance', want: '“Who acted, on behalf of whom, under what grant, with which limits?” — answerable for every action.', get: 'On-chain revocation at every gate, receipts bound to intent + mandate, PROV-O graphs the owner holds.' },
 ] as const;
+export { DEMOS, HOME_MCP_CONNECTOR } from './demos';
+export type { Demo, DemoLink, DemoStep } from './demos';

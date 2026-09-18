@@ -6,7 +6,7 @@ const LINKS = [
   { href: '/platform', label: 'Platform' },
   { href: '/substrate', label: 'Architecture' },
   { href: '/compare', label: 'Versus' },
-  { href: '/examples/game-night', label: 'Game Night' },
+  { href: '/demos', label: 'Demos' },
   { href: '/ontology', label: 'Ontology' },
   { href: '/writing', label: 'Writing' },
   { href: '/developers', label: 'Developers' },
