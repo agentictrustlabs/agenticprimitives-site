@@ -13,7 +13,10 @@ Positioning: the industry answers agent risk with throttles — containment (san
 - Public source: ${SITE.github}
 - npm: ${SITE.npm}
 - License: MIT
-- Author: ${SITE.author} (${SITE.org})
+- Author: ${SITE.author} (${SITE.org}) — ${SITE.authorUrl}
+- Domain ontologies (Rich Canvas): ${SITE.richCanvas} — services ${SITE.richCanvas}/our-services, CommerceCore ${SITE.richCanvas}/commercecore-ontology, did:aa ${SITE.richCanvas}/didaa, writing ${SITE.richCanvas}/muses-of-an-architect
+- Reference Home (sign in, ceremonies, vault): ${SITE.home}
+- Skills registry (playbooks by digest, ontology graphs): ${SITE.skills}
 
 The one-sentence claim: when an AI agent spends money or touches data on someone's behalf, this stack can prove who allowed it, what was allowed, and lets them take that permission back — without trusting any single vendor.
 

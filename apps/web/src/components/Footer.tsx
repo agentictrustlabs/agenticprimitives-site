@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { SITE } from '@apsite/content';
+import { ELSEWHERE, SITE } from '@apsite/content';
 import { Logo } from './Logo';
 
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-ink text-white">
-      <div className="container-x grid gap-10 py-16 md:grid-cols-4">
+      <div className="container-x grid gap-10 py-16 md:grid-cols-5">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5">
             <Logo className="h-8 w-8" />
@@ -37,6 +37,17 @@ export function Footer() {
             <li><a href={SITE.github} className="hover:text-white" rel="noreferrer">GitHub</a></li>
             <li><a href={SITE.npm} className="hover:text-white" rel="noreferrer">npm</a></li>
             <li><Link href="/ns" className="hover:text-white">Ontology namespaces</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="eyebrow-dark">Around the substrate</h4>
+          <ul className="mt-4 space-y-2 text-sm text-slate-300">
+            {ELSEWHERE.map((e) => (
+              <li key={e.id}><a href={e.url} className="hover:text-white" rel="noreferrer">{e.name}</a></li>
+            ))}
+            {ELSEWHERE[0]!.links.slice(0, 3).map((l) => (
+              <li key={l.href}><a href={l.href} className="text-slate-400 hover:text-white" rel="noreferrer">Rich Canvas: {l.label}</a></li>
+            ))}
           </ul>
         </div>
       </div>

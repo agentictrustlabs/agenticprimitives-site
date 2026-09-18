@@ -118,6 +118,26 @@ export default function Ontology() {
         </div>
       </Section>
 
+      <Section number="05" eyebrow="Who authors the domains" title="The substrate ships the upper ontology. Rich Canvas designs the domains." lede="Agentic Trust (at:) and the substrate modules (ap:) are in the repository. The domain ontologies an application actually binds to — commerce, faith communities, family offices, the everyday domains people live in — are authored by Rich Canvas on top of them and compiled into skill artifacts the registry pins by digest.">
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            [`${SITE.richCanvas}/our-services`, 'Ontology design as a service', 'Rich Canvas authors the shared, machine-checked vocabulary for a domain: who the parties are, what counts as an act, what an approval is, what a receipt proves — then binds it to the substrate by IRI.'],
+            [`${SITE.richCanvas}/commercecore-ontology`, 'CommerceCore', 'A commerce ontology for the agentic era — offers, orders, fulfilment and settlement as classes an agent can be granted authority over, with the treasury relationship modelled rather than guessed.'],
+            [`${SITE.richCanvas}/didaa`, 'did:aa', 'The DID method for agent accounts: the anchor is an ERC-4337 account, the DID names it, and every projection — card, name, registry entry — carries a proof the anchor signed.'],
+          ].map(([href, k, v]) => (
+            <a key={href} href={href} rel="noreferrer" className="card block hover:border-navy">
+              <div className="text-base font-semibold text-navy">{k} →</div>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">{v}</p>
+            </a>
+          ))}
+        </div>
+        <p className="mt-8 text-sm text-slate-500">
+          More from Rich Canvas: <a href={`${SITE.richCanvas}/why-semantic-metadata`} className="text-teal hover:underline" rel="noreferrer">Why semantic metadata</a> ·{' '}
+          <a href={`${SITE.richCanvas}/muses-of-an-architect`} className="text-teal hover:underline" rel="noreferrer">Muses of an architect</a> ·{' '}
+          <a href={SITE.richCanvas} className="text-teal hover:underline" rel="noreferrer">richcanvas3.com</a>
+        </p>
+      </Section>
+
       <CTA
         title="Browse the namespaces. Then build a domain."
         body="Every T-box module is published with its IRI. The skills registry at skills.faithnet.io renders every module of Agentic Trust and of each domain as a graph, signed in as a demo person."

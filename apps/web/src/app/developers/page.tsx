@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { OFFERINGS, SITE } from '@apsite/content';
+import { OFFERINGS, SITE, ELSEWHERE } from '@apsite/content';
 import { BUILD_PAGES } from '../build/pages';
 import { pageMeta } from '@/lib/seo';
 import { Callout, CTA, Ledger, Section, Tag } from '@/components/ui';
@@ -85,6 +85,17 @@ export default function Developers() {
             { k: 'How to follow', v: 'Specs are the source of truth and precede code. ADRs record every decision, including the ones we reversed. Read them before you build against a surface.' },
           ]}
         />
+      </Section>
+
+      <Section tone="ink" number="05" eyebrow="The estate you point at" title="A Home to sign in through. A registry that compiles playbooks. Ontologies to bind to.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {ELSEWHERE.map((e) => (
+            <a key={e.id} href={e.url} rel="noreferrer" className="card-dark block hover:border-white/25">
+              <div className="text-sm font-semibold text-white">{e.name} →</div>
+              <div className="mt-1 text-xs leading-relaxed text-slate-400">{e.role}</div>
+            </a>
+          ))}
+        </div>
       </Section>
 
       <CTA title="Read how one application did all six steps." body="Game Night is the reference — the card room the prompt above describes: an OIDC client of the Home, a treasury per player, a mandate per buy-in, A2A players, a coach under a study grant, receipts." primary={{ href: '/examples/game-night', label: 'Game Night case study' }} secondary={{ href: SITE.github, label: 'Open the repository' }} />

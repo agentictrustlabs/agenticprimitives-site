@@ -26,6 +26,7 @@ export default function WritingIndex() {
       <PageHero eyebrow="Writing" title={<>The argument,<br />in full.</>} lede="The essays and the 21-part series first appeared on LinkedIn. The full text lives here so anyone — and any model — can read it without a login wall.">
         <a href="/rss.xml" className="btn-outline-light">RSS</a>
         <a href="/llms.txt" className="btn-outline-light">llms.txt</a>
+        <a href={`${SITE.richCanvas}/muses-of-an-architect`} className="btn-outline-light" rel="noreferrer">Muses of an architect, at Rich Canvas</a>
       </PageHero>
       <Section number="01" eyebrow="Essays" title="Rails, not throttles — and the long version.">
         <div className="grid gap-6">

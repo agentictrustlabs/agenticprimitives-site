@@ -46,7 +46,7 @@ export default async function Essay({ params }: { params: Promise<{ slug: string
           headline: w.title,
           description: w.description,
           datePublished: w.date,
-          author: { '@type': 'Person', name: SITE.author },
+          author: { '@type': 'Person', name: SITE.author, url: SITE.authorUrl, sameAs: [SITE.richCanvas, 'https://www.linkedin.com/in/richardpedersen1'] },
           publisher: { '@type': 'Organization', name: SITE.org, url: SITE.url },
           mainEntityOfPage: url,
           image: `${SITE.url}${w.cover ?? '/og.png'}`,
@@ -65,7 +65,10 @@ export default async function Essay({ params }: { params: Promise<{ slug: string
           </p>
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-white md:text-5xl">{heading}</h1>
           <p className="mt-6 text-lg leading-relaxed text-slate-300">{w.description}</p>
-          <p className="mt-8 text-sm text-slate-400">{SITE.author} · {SITE.org}</p>
+          <p className="mt-8 text-sm text-slate-400">
+            <a href={SITE.authorUrl} rel="noreferrer" className="hover:text-white">{SITE.author}</a> · {SITE.org} ·{' '}
+            <a href={SITE.richCanvas} rel="noreferrer" className="hover:text-white">Rich Canvas</a>
+          </p>
         </div>
       </section>
       <div className="bg-white">
@@ -78,7 +81,10 @@ export default async function Essay({ params }: { params: Promise<{ slug: string
           <Markdown source={body} />
         </div>
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-sm">
-          <Link href="/writing" className="text-slate-500 hover:text-navy">← All writing</Link>
+          <span className="flex flex-wrap gap-4">
+            <Link href="/writing" className="text-slate-500 hover:text-navy">← All writing</Link>
+            <a href={`${SITE.richCanvas}/muses-of-an-architect`} rel="noreferrer" className="text-slate-500 hover:text-navy">More at Rich Canvas: Muses of an architect</a>
+          </span>
           {w.linkedin && (
             <a href={w.linkedin} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-navy">
               Discuss on LinkedIn

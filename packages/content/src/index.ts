@@ -11,8 +11,56 @@ export const SITE = {
   npmPackage: 'https://www.npmjs.com/package',
   contact: 'mailto:hello@agenticprimitives.dev',
   author: 'Richard Pedersen',
+  authorUrl: 'https://www.richcanvas3.com/about-us',
   org: 'Agentic Trust Labs',
+  richCanvas: 'https://www.richcanvas3.com',
+  skills: 'https://skills.faithnet.io',
+  home: 'https://faithnet.me',
 } as const;
+
+// ─── The sites around this one ───────────────────────────────────────────────────────────────────────────────
+//
+// Rich Canvas authors the domain ontologies the substrate binds to; the faithnet estate is the reference deployment
+// (a Home for people, a skills registry for playbooks). Each links here; these are the links back.
+
+export interface Elsewhere { id: string; name: string; url: string; role: string; blurb: string; links: readonly { href: string; label: string }[] }
+
+export const ELSEWHERE: readonly Elsewhere[] = [
+  {
+    id: 'richcanvas',
+    name: 'Rich Canvas',
+    url: SITE.richCanvas,
+    role: 'Ontologies for agentic trust and commerce',
+    blurb:
+      'Rich Canvas designs the shared ontologies that tell an agent how a domain is shaped — agentic trust, commerce, faith communities, family offices — built on Agentic Primitives and compiled into skill artifacts. Domain relationships live in the ontology, never in a prompt or an app table.',
+    links: [
+      { href: `${SITE.richCanvas}/our-services`, label: 'Services' },
+      { href: `${SITE.richCanvas}/commercecore-ontology`, label: 'CommerceCore ontology' },
+      { href: `${SITE.richCanvas}/didaa`, label: 'did:aa' },
+      { href: `${SITE.richCanvas}/why-semantic-metadata`, label: 'Why semantic metadata' },
+      { href: `${SITE.richCanvas}/muses-of-an-architect`, label: 'Muses of an architect' },
+      { href: `${SITE.richCanvas}/about-us`, label: 'About' },
+    ],
+  },
+  {
+    id: 'home',
+    name: 'Faithnet Home',
+    url: SITE.home,
+    role: 'The reference Home — passkeys, ceremonies, your vault',
+    blurb:
+      'A Home is where a person signs in with a passkey, creates an organization, links an app and signs the grants it asks for. faithnet.me is the Home the examples on this site sign in through.',
+    links: [{ href: SITE.home, label: 'faithnet.me' }],
+  },
+  {
+    id: 'skills',
+    name: 'Skills registry',
+    url: SITE.skills,
+    role: 'Playbooks compiled by digest, every ontology module as a graph',
+    blurb:
+      'SKILL.md management for the estate: agent archetypes, capabilities and the ontology modules they bind to, each pinned by digest so a receipt can cite exactly which playbook admitted a run.',
+    links: [{ href: SITE.skills, label: 'skills.faithnet.io' }, { href: `${SITE.skills}/library`, label: 'Library' }],
+  },
+];
 
 // ─── Positioning: the industry's three answers to agent risk, and ours ────────────────────────────────────────
 //

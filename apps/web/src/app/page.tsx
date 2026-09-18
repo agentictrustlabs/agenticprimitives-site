@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
+import { ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
 import { StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Mark } from '@/components/Mark';
 import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui';
@@ -289,8 +289,28 @@ export default function Home() {
         </dl>
       </Section>
 
+      {/* ── AROUND THE SUBSTRATE ─────────────────────────────────────────────────────── */}
+      <Section tone="ink" number="09" eyebrow="Around the substrate" title="Who builds on it, and where the ontologies come from." lede="The substrate is one repository. The domain ontologies it binds to, the Home people sign in through, and the registry that compiles playbooks are their own sites.">
+        <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:grid-cols-3">
+          {ELSEWHERE.map((e) => (
+            <article key={e.id} className="flex flex-col bg-ink p-7">
+              <p className="eyebrow-dark">{e.role}</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-white">
+                <a href={e.url} rel="noreferrer" className="hover:text-brass">{e.name}</a>
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-slate-300">{e.blurb}</p>
+              <ul className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-6 text-sm">
+                {e.links.map((l) => (
+                  <li key={l.href}><a href={l.href} rel="noreferrer" className="text-brass hover:underline">{l.label} →</a></li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </Section>
+
       {/* ── WRITING ──────────────────────────────────────────────────────────────────── */}
-      <Section number="09" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The long essay and the 21-part series are on this site — no LinkedIn login.">
+      <Section number="10" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The long essay and the 21-part series are on this site — no LinkedIn login.">
         <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
           {ESSAYS.map((w) => (
             <Link key={w.slug} href={`/writing/${w.slug}`} className="group bg-white p-6 hover:bg-cream">
