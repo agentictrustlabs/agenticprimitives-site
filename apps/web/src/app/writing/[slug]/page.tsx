@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { SERIES, SITE, seriesNeighbors, writingBySlug, WRITING } from '@apsite/content';
+import { KIT_MAP, SERIES, SITE, seriesNeighbors, writingBySlug, WRITING } from '@apsite/content';
 import { Markdown } from '@/components/Markdown';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { essayBody } from '@/lib/essays';
@@ -80,6 +80,34 @@ export default async function Essay({ params }: { params: Promise<{ slug: string
         <div className={w.cover ? 'mt-10' : ''}>
           <Markdown source={body} />
         </div>
+        {KIT_MAP[w.slug] && (
+          <aside className="mt-12 rounded-xl border border-line bg-cream p-6" aria-label="In the kit">
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="eyebrow">In the kit</span>
+              <span className="text-xs text-slate-500">Where this idea is implemented — packages, contracts, docs, and a demo that shows it.</span>
+            </div>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {KIT_MAP[w.slug]!.map((r) => {
+                const ext = r.href.startsWith('http');
+                const inner = (
+                  <>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-slate-400">{r.kind}</span>
+                    <span className={`block ${r.kind === 'package' ? 'font-mono text-[13px]' : 'text-sm font-semibold'} text-navy group-hover:text-teal`}>{r.label}</span>
+                  </>
+                );
+                return (
+                  <li key={r.href + r.label}>
+                    {ext ? (
+                      <a href={r.href} className="group block rounded-lg border border-line bg-white px-4 py-3 hover:border-navy" target="_blank" rel="noreferrer">{inner}</a>
+                    ) : (
+                      <Link href={r.href} className="group block rounded-lg border border-line bg-white px-4 py-3 hover:border-navy">{inner}</Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </aside>
+        )}
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-sm">
           <span className="flex flex-wrap gap-4">
             <Link href="/writing" className="text-slate-500 hover:text-navy">← All writing</Link>

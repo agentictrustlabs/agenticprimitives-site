@@ -625,3 +625,5 @@ export { DEMOS, HOME_MCP_CONNECTOR } from './demos';
 export type { Demo, DemoLink, DemoStep } from './demos';
 export { AUDITS, auditBySlug } from './audits';
 export type { Audit } from './audits';
+export { KIT_MAP } from './kit-map';
+export type { KitRef } from './kit-map';
