@@ -2,9 +2,11 @@
   "name": "agenticprimitives.dev",
   "version": "0.1.0",
   "private": true,
-  "description": "The brand site for Agentic Primitives — https://agenticprimitives.dev",
+  "description": "The brand site for Agentic Primitives \u2014 https://agenticprimitives.dev",
   "packageManager": "pnpm@9.15.0",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "pnpm --filter @apsite/web dev",
     "build": "turbo run build",
@@ -13,7 +15,8 @@
     "start": "pnpm --filter @apsite/web start",
     "shots": "node scripts/screenshots.mjs",
     "shots:holdem": "node scripts/holdem-shots.mjs",
-    "brand": "node scripts/brand-raster.mjs"
+    "brand": "node scripts/brand-raster.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "devDependencies": {
     "turbo": "^2.10.12",
