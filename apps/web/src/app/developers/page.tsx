@@ -8,7 +8,7 @@ import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
   title: 'Developers — build on the substrate',
-  description: 'Install @agenticprimitives/* packages, deploy the contracts to any EVM, wire your app as a relying app of a Home, and let your agents act under grants. Specs, package map, live gates.',
+  description: 'Install @agenticprimitives packages, deploy the contracts to any EVM, make your app a relying app of a Home, let agents act under grants. Specs and gates.',
   path: '/developers',
 });
 

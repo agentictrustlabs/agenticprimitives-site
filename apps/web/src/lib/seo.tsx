@@ -9,6 +9,7 @@ export function pageMeta({
   image = '/og.png',
   published,
   noIndex = false,
+  absoluteTitle = false,
 }: {
   title: string;
   description: string;
@@ -17,11 +18,12 @@ export function pageMeta({
   image?: string;
   published?: string;
   noIndex?: boolean;
+  absoluteTitle?: boolean;
 }): Metadata {
   const url = path === '/' ? SITE.url : `${SITE.url}${path}`;
   const absImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
   return {
-    title: path === '/' ? { absolute: title } : title,
+    title: path === '/' || absoluteTitle ? { absolute: title } : title,
     description,
     authors: [{ name: SITE.author }],
     creator: SITE.author,

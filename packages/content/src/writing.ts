@@ -19,7 +19,7 @@ export const WRITING: readonly Writing[] = [
     slug: 'rails-not-throttles',
     title: 'Rails, Not Throttles: The AI Model We Need to Change Isn’t the LLM',
     description:
-      'Trust must be built into the infrastructure — not requested from the intelligence. Why pacing models and emergency stops are throttles, and why agentic AI needs rails: identity, authority, mandates, and evidence.',
+      'Trust must be built into the infrastructure, not requested from the intelligence. Why pacing and emergency stops are throttles, and why agentic AI needs rails.',
     kind: 'essay',
     date: '2026-09-14',
     file: 'rails-not-throttles.md',

@@ -8,8 +8,8 @@ import { GuidePager } from '@/components/GuideNav';
 import { COMPARE_PAGES } from '../pages';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Versus — every layer has a peer; nobody has the composition',
-  description: 'Agentic Primitives against the agent frameworks, Web2 IAM, the smart-account and delegation stacks, the ERC agent standards, the registries and the data/provenance projects — eight concerns, who is ahead on each, and the one thing no project found has: all of them on one identity, as 77 packages and 33 EVM contracts.',
+  title: 'Versus — nobody has the composition',
+  description: 'Agentic Primitives against agent frameworks, Web2 IAM, smart-account stacks, ERC standards, registries and provenance — eight concerns on one identity.',
   path: '/compare/composition',
 });
 

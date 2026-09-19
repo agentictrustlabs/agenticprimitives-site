@@ -9,6 +9,8 @@ export interface Audit {
   head: string;
   status: string;
   verdict: string;
+  /** ≤160 characters, for the meta description. */
+  summaryShort: string;
   summary: string;
   file: string;
   pdf: string;
@@ -24,6 +26,7 @@ export const AUDITS: readonly Audit[] = [
     head: '2c711e01',
     status: 'Self-assessment by the maintainers, from the repository’s own evidence. Not a third-party audit.',
     verdict: 'Pre-production, honestly labelled. GO for testnet pilots and demonstrations on our own chain. NO-GO for a real person’s private data, for real value under delegated payments, and for a public mainnet — each with named, dated closing conditions.',
+    summaryShort: 'Agentic Primitives production readiness, 18 Sep 2026: pre-production, honestly labelled. GO for testnet pilots; NO-GO for real data, real value, mainnet.',
     summary:
       'What we would hand a senior third-party auditor or a technical due-diligence team today: the verdict, what held and what did not, every package by capability area, the contracts, the estate, thirteen capability areas measured against the field, and the open findings register with its remediation order.',
     file: '2026-09-18-production-readiness-assessment.md',

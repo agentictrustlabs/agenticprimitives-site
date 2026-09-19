@@ -7,8 +7,8 @@ import { GuidePager } from '@/components/GuideNav';
 import { COMPARE_PAGES } from '../pages';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Versus — where we lose today, and what we refuse to take',
-  description: 'Stated because the audit states it: production hours, durable execution, composition operators, the session module, public-by-default naming, transport peer identity, and not-yet-production. Plus the patterns we deliberately do not adopt from the field.',
+  title: 'Versus — where we lose, what we refuse',
+  description: 'Where Agentic Primitives loses today — production hours, durable execution, sessions, naming — and the patterns from the field we deliberately refuse.',
   path: '/compare/honest',
 });
 

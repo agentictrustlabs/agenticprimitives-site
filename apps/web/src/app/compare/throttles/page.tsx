@@ -9,7 +9,7 @@ import { COMPARE_PAGES } from '../pages';
 
 export const metadata: Metadata = pageMeta({
   title: 'Versus — the three throttles',
-  description: 'Containment, supervision and platform governance: what each buys, where each stops, and why authority as a signed, caveated, revocable grant is a different kind of answer.',
+  description: 'Containment, supervision and platform governance: what each buys, where each stops, and why authority as a signed, revocable grant is a different answer.',
   path: '/compare/throttles',
 });
 

@@ -6,8 +6,8 @@ import { Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Assessments — production readiness, published',
-  description: 'Published production-readiness assessments of Agentic Primitives: the verdict, the numbers, every package and contract, the open findings register. Self-assessments from the repository’s own evidence, labelled as such.',
+  title: 'Assessments — production readiness',
+  description: 'Published production-readiness assessments of Agentic Primitives: the verdict, the numbers, every package and contract, and the open findings register.',
   path: '/audits',
 });
 

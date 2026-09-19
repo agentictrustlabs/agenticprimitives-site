@@ -9,8 +9,8 @@ import { GuidePager } from '@/components/GuideNav';
 import { COMPARE_PAGES } from './pages';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Versus — the stack you would buy, or one substrate',
-  description: `An agentic solution assembled from products is ${PRODUCT_WALL_COUNT} vendors, three identity models, two permission shapes, three evidence formats and thirty-three contracts to write or fork — with a seam at every boundary. Or 77 packages and 33 contracts that already share one identity, one grant mechanism and one evidence trail.`,
+  title: 'Versus — the stack you would buy',
+  description: 'The stack you would buy — 29 products, three identity models, a seam at every boundary — or Agentic Primitives: 77 packages and 33 contracts on one identity.',
   path: '/compare',
 });
 

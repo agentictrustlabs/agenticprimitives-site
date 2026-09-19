@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const a = auditBySlug(slug);
   if (!a) return {};
-  return pageMeta({ title: `${a.title} (${a.date})`, description: a.verdict, path: `/audits/${a.slug}`, type: 'article', published: a.date });
+  return pageMeta({ title: `${a.title} (${a.date})`, description: a.summaryShort, path: `/audits/${a.slug}`, type: 'article', published: a.date });
 }
 
 function body(file: string): string {

@@ -7,8 +7,8 @@ import { GuidePager } from '@/components/GuideNav';
 import { COMPARE_PAGES } from '../pages';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Versus — the Web3 trust-substrate field',
-  description: 'MetaMask Delegation Toolkit, Smart Sessions, Lit Vincent, Safe, Zodiac, Coinbase, Kite; the ERC agent stack (8004, 8001, 8183, 8196, 8273, 8226); ERC-8004, AGNTCY, NANDA, ANS; AP2, x402, Virtuals ACP; Inrupt Solid; PROV-AGENT; the Web2 IAM vendors — who is ahead, where each stops, what we take and refuse.',
+  title: 'Versus — the Web3 field',
+  description: 'Agentic Primitives against MetaMask DTK, Smart Sessions, Lit Vincent, Safe, the ERC agent stack, ERC-8004, NANDA, ANS and x402 — who is ahead, where each stops.',
   path: '/compare/web3',
 });
 

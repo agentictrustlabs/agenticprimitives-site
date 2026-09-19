@@ -7,8 +7,8 @@ import { Claim, CTA, Figure, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Ontology — one description of the world, in every layer',
-  description: 'How the Agentic Trust upper ontology and a domain ontology (Texas hold’em coaching) bind every layer of the architecture by IRI — the Ask, the harness, agent cards, vaults, interactions, receipts and the chain — and why meaning flows through it while authority never does.',
+  title: 'Ontology — one description, every layer',
+  description: 'One ontology binds every layer of Agentic Primitives by IRI — the Ask, harness, agent cards, vaults, receipts and chain — and authority never flows through it.',
   path: '/ontology',
 });
 

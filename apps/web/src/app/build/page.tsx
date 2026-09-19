@@ -7,7 +7,7 @@ import { BUILD_PAGES } from './pages';
 import { GuideHead as BuildHead, GuideNote as Note } from '@/components/GuideLayout';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Build — say what kind of application you want',
+  title: 'Build — describe the app, let the agent build it',
   description: 'Describe the application in domain terms, point a coding agent at two repositories and a Home, test as six demo people, and let the gates keep it honest.',
   path: '/build',
 });

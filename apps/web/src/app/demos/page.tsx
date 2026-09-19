@@ -7,9 +7,9 @@ import { Callout, CTA, Section, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Demos — every live app on the Agentic Primitives estate, with a script',
+  title: 'Demos — six live apps, one substrate',
   description:
-    'Run the Agentic Primitives platform in front of someone: the Home, your agent inside Claude, Game Night, Gather27, Field and the skills registry — each with the URLs, the demo people to sign in as, what to do and what it proves.',
+    'Run Agentic Primitives live: the Home, your agent inside Claude, Game Night, Gather27, Field and the skills registry — each with a script and what it proves.',
   path: '/demos',
 });
 

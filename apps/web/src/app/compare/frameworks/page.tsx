@@ -7,7 +7,7 @@ import { COMPARE_PAGES } from '../pages';
 
 export const metadata: Metadata = pageMeta({
   title: 'Versus — the agent frameworks',
-  description: 'Microsoft Agent Framework, Google ADK, LangGraph/LangSmith, Dapr Agents, Agno, Strands, Mastra, Pydantic AI, CrewAI, the OpenAI Agents SDK and Buzz — what each is best at, what we take, where we differ, and an honest scorecard.',
+  description: 'Agentic Primitives beside Microsoft Agent Framework, Google ADK, LangGraph, Dapr Agents, Agno, Strands, Mastra, Pydantic AI, CrewAI and OpenAI — a scorecard.',
   path: '/compare/frameworks',
 });
 

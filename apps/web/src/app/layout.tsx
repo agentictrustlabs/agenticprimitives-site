@@ -11,7 +11,7 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', displ
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
+  title: { default: `${SITE.name} — Rails, not throttles`, template: `%s · ${SITE.name}` },
   description:
     'The industry answers agent risk with throttles — sandboxes, restricted modes, a second model grading the first, one platform’s ACLs. Agentic Primitives answers it with authority the agent cannot exceed: a signed, caveated, revocable grant enforced outside the model and receipted for the owner. Open source.',
   keywords: [

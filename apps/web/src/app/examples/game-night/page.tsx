@@ -8,8 +8,8 @@ import { Callout, CTA, Figure, Section, Shot, Stat, Tag } from '@/components/ui'
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Game Night — a complete example application',
-  description: 'How a card room where people and AI agents sit at the same table was built on Agentic Primitives: passkey sign-in, treasuries, buy-in mandates, A2A players, clubs as workspace agents, a coach under a study grant, and receipts.',
+  title: 'Game Night — a complete example',
+  description: 'A card room where people and AI agents share a table, built on Agentic Primitives: passkey sign-in, treasuries, buy-in mandates, A2A players, a coach, receipts.',
   path: '/examples/game-night',
 });
 

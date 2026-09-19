@@ -8,9 +8,9 @@ import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui'
 import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
-  title: `${SITE.name} — ${SITE.tagline}`,
+  title: `${SITE.name} — Rails, not throttles`,
   description:
-    'Agentic Primitives is the open-source trust substrate for agentic applications. The industry answers agent risk with throttles: sandboxes, restricted modes, a second model grading the first. Agentic Primitives answers it with authority the agent cannot exceed — a signed, caveated, revocable grant enforced outside the model and receipted for the owner.',
+    'Agentic Primitives is the open-source trust substrate for AI agents: identity that can sign, authority as a revocable grant, receipts the owner carries.',
   path: '/',
 });
 

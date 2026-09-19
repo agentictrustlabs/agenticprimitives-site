@@ -6,8 +6,8 @@ import { Callout, CTA, Figure, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Architecture — the substrate in detail',
-  description: 'The Agentic Primitives architecture: Smart Agents for people, organizations and services; delegations, caveats and mandates; the authority-aware harness; two tiers of knowledge; evidence the owner carries.',
+  title: 'Architecture — the substrate',
+  description: 'The Agentic Primitives architecture: Smart Agents for people, organizations and services; delegations, caveats, mandates; the harness; two tiers; receipts.',
   path: '/substrate',
 });
 

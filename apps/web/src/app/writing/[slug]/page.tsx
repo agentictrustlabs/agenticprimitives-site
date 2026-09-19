@@ -14,8 +14,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const w = writingBySlug(slug);
   if (!w) return {};
+  // Titles are shown with " · Agentic Primitives" appended when that still fits in ~65 characters; longer article
+  // titles stand alone — a truncated title is worse than an unbranded one, and the description carries the brand.
+  const fits = w.title.length + 21 <= 65;
   return pageMeta({
     title: w.title,
+    absoluteTitle: !fits,
     description: w.description,
     path: `/writing/${w.slug}`,
     type: 'article',

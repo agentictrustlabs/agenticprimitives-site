@@ -8,8 +8,8 @@ import { CTA, Figure, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Platform — nine capabilities, one substrate',
-  description: 'Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations — the nine offerings of the Agentic Primitives substrate, what each replaces, and the packages and standards behind it.',
+  title: 'Platform — nine capabilities',
+  description: 'Nine capabilities of Agentic Primitives — Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations — what each replaces.',
   path: '/platform',
 });
 
