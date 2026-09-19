@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
+import { AUDITS, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
 import { StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Mark } from '@/components/Mark';
 import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui';
@@ -78,6 +78,26 @@ export default function Home() {
           </aside>
         </div>
       </section>
+
+      {/* ── STATUS STRIP ─────────────────────────────────────────────────────────────── */}
+      {(() => {
+        const a = AUDITS[0]!;
+        return (
+          <section className="border-y border-white/10 bg-ink-2 text-white">
+            <div className="container-x flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
+              <p className="text-sm leading-relaxed text-slate-300">
+                <span className="mr-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-brass">Status · {a.date}</span>
+                <span className="font-semibold text-white">Pre-production, honestly labelled.</span>{' '}
+                GO for testnet pilots on our own chain · NO-GO for real private data, real value, public mainnet — each with dated closing conditions.{' '}
+                <span className="text-slate-500">77 packages · 939/939 contract tests · 54 open findings, all public.</span>
+              </p>
+              <Link href={`/audits/${a.slug}`} className="btn-outline-light shrink-0 !px-4 !py-2 text-sm">
+                Read the assessment <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── THE FEAR, AND THREE THROTTLES ────────────────────────────────────────────── */}
       <Section tone="ink" number="01" eyebrow="The state of the argument" title="Everyone now admits a capable agent has a blast radius. Then they reach for a throttle." lede="Three answers dominate. Each is real engineering. Each stops at the same place: none can say, for an act that happened, under whose authority it happened — or refuse the next one because that authority is gone." wide>
@@ -263,7 +283,9 @@ export default function Home() {
           ))}
         </ol>
         <p className="mt-8 max-w-3xl text-sm text-slate-500">
-          Honest status: ready for test and pre-production environments. A comprehensive primitive set under an actively running audit; every security finding ever logged is public in the repository.
+          Honest status: pre-production. GO for testnet pilots and demonstrations; NO-GO for a real person’s private data, real value under delegated payments, and a public mainnet — each with named, dated closing conditions. Every finding ever logged is public: read the{' '}
+          <Link href="/audits" className="text-teal hover:underline">production readiness assessment</Link>, or take the{' '}
+          <Link href="/audits/production-readiness-2026-09-18" className="text-teal hover:underline">PDF</Link>.
         </p>
       </Section>
 
@@ -283,7 +305,12 @@ export default function Home() {
           {HOME_FAQ.map((f) => (
             <div key={f.q} className="bg-white p-7">
               <dt className="text-lg font-semibold text-navy">{f.q}</dt>
-              <dd className="mt-3 text-[15px] leading-relaxed text-slate-600">{f.a}</dd>
+              <dd className="mt-3 text-[15px] leading-relaxed text-slate-600">
+                {f.a}
+                {f.q.includes('production-ready') && (
+                  <>{' '}<Link href="/audits" className="font-semibold text-teal hover:underline">Read the assessment →</Link></>
+                )}
+              </dd>
             </div>
           ))}
         </dl>
