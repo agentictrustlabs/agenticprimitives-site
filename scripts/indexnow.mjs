@@ -2,7 +2,7 @@
 // Usage: node scripts/indexnow.mjs            → all sitemap URLs
 //        node scripts/indexnow.mjs /demos /audits   → just those paths
 const HOST = 'agenticprimitives.dev';
-const KEY = 'a06a07013e2a47c39c24a80f92ac3671'; // apps/web/public/<key>.txt proves we own the host
+const KEY = 'af32d4aebafd4ee09405d36361b4b6e5'; // apps/web/public/<key>.txt proves we own the host
 const args = process.argv.slice(2);
 let urls;
 if (args.length) {
