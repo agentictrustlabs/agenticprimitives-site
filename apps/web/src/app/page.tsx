@@ -310,6 +310,9 @@ export default function Home() {
                 {f.q.includes('production-ready') && (
                   <>{' '}<Link href="/audits" className="font-semibold text-teal hover:underline">Read the assessment →</Link></>
                 )}
+                {f.q === 'What is Agentic Primitives?' && (
+                  <>{' '}<Link href="/what-is-agentic-primitives" className="font-semibold text-teal hover:underline">The definition, in full →</Link></>
+                )}
               </dd>
             </div>
           ))}

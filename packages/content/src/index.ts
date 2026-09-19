@@ -14,6 +14,9 @@ export const SITE = {
   authorUrl: 'https://www.richcanvas3.com/about-us',
   org: 'Agentic Trust Labs',
   richCanvas: 'https://www.richcanvas3.com',
+  linkedinCompany: 'https://www.linkedin.com/company/agentic-primitives',
+  linkedinAuthor: 'https://www.linkedin.com/in/richardpedersen1',
+  githubOrg: 'https://github.com/agentictrustlabs',
   skills: 'https://skills.faithnet.io',
   home: 'https://faithnet.me',
 } as const;

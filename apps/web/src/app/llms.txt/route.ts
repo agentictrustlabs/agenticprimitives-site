@@ -24,6 +24,8 @@ Intelligence may be probabilistic. Authority must not be.
 
 ## Product pages
 
+- [What is Agentic Primitives?](${SITE.url}/what-is-agentic-primitives): the definition, the three primitives, and how it differs from OpenAI's "agentic primitives" (Skills, Shell, Compaction) and from agent frameworks and registries
+- [About](${SITE.url}/about): Agentic Trust Labs, the founder, boilerplate for press
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
 - [Assessments](${SITE.url}/audits): published production-readiness assessments (self-assessments, labelled). Latest: ${AUDITS.map((a) => `[${a.title} ${a.date}](${SITE.url}/audits/${a.slug}) — PDF ${SITE.url}${a.pdf}`).join('; ')}
