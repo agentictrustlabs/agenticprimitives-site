@@ -630,5 +630,3 @@ export { AUDITS, auditBySlug } from './audits';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';
-export { THESIS, ARCHITECTURES, DOMAINS, BETS, CONSENSUS, PRINCIPLES, ACCUMULATES, PEERS, EVIDENCE, RISKS, DIMENSIONS, ONTOLOGY_STACK } from './thesis';
-export type { Architecture, DomainBet, Bet, Principle, PeerHolding, Dimension, ThesisOntologyLayer } from './thesis';

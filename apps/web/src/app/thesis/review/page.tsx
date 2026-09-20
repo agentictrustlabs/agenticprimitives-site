@@ -9,17 +9,17 @@ import { CTA } from '@/components/ui';
 
 export const metadata: Metadata = pageMeta({
   title: 'A critical review of the thesis',
-  description: 'The project’s own critical reading of its thesis, against the contracts, packages and running estate: whose authority it is, where each of the eleven principles holds or is a bet, what to build next, and what would prove it.',
+  description: 'The project’s own critical reading of its ecosystem thesis: the three claims that can be tested, the five markets against what exists, the thirteen bets and eleven principles against the code, what the thesis does not say, and what would prove it.',
   path: '/thesis/review',
   type: 'article',
   published: '2026-09-20',
 });
 
 const VERDICTS: readonly [string, string][] = [
-  ['Holds', 'The identity can sign · Private dimension, public projection · A delegation is the authority · Verification at every step · Trust as a graph'],
-  ['Holds in the contract, not yet the product', 'Rotation preserves grants — the Home has no rotation ceremony for a person · Verification at commit for external effects — the receipt lacks the adapter’s observation'],
-  ['A bet with a stated test', 'Open intents · One vocabulary across organizations · Shared records and portability · The estate as decentralized · Travel'],
-  ['A convention, defended', 'Three accountable shapes'],
+  ['Evidence', 'Faith — a domain model and a running estate. The two-organization proof has not been run.'],
+  ['Mechanics', 'Finance — treasury mandates enforced at commit, in-estate. Not a market proof: institutions federate under their own consent regimes.'],
+  ['Nothing yet', 'Fitness, healthcare, travel — no domain model. Fitness is the cheapest test of reuse; healthcare and travel only with a partner who carries the obligation.'],
+  ['The bets', 'Four need nothing structural · five wait on tracked work · four wait on measurement or a two-party demonstration. None refuted; none of the economic ones yet supported.'],
 ];
 
 export default function Review() {
@@ -33,7 +33,7 @@ export default function Review() {
           name: 'A critical review of the Agentic Primitives thesis',
           itemReviewed: { '@type': 'SoftwareApplication', name: 'Agentic Primitives', url: SITE.url },
           datePublished: '2026-09-20',
-          reviewBody: 'A person-centric substrate for domains with no intermediary. Of the eleven principles, most hold in the contracts; two hold in the contract and not yet in the product; several are bets with stated tests. The tenant model is not a competitor; federation is.',
+          reviewBody: 'The vision cannot be wrong; three claims inside it can be tested. One market has evidence, one has the mechanics, three have neither yet. Four bets need nothing structural, five wait on tracked work, four on measurement. The competitor is the platform; the bet holds only where participants will not be coordinated by one.',
           author: { '@id': `${SITE.url}/#org` },
           publisher: { '@id': `${SITE.url}/#org` },
           url: `${SITE.url}/thesis/review`,
@@ -47,15 +47,15 @@ export default function Review() {
             <p className="eyebrow-dark">A critical review of the thesis · 2026-09-20</p>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it is a bet.</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
-              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. It fixes the cast first — a person is an agent, with agents chartered under her, facing agents that belong to companies, apps and treasuries — then starts from the question that decides everything, <em className="not-italic text-white">whose authority it is, and who bears the consequences</em>, takes the eleven principles one by one, says where each holds and where it is a bet, and ends with what a doubter is right about. Nothing here is softened.
+              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. A vision cannot be wrong, so this review holds the thesis to the three claims inside it that can be — that a shared foundation makes the next participant cheaper, that capabilities are reused across journeys, and that everyone keeps control — and reads the five markets, the thirteen bets and the eleven principles against what is actually built. Nothing here is softened.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#the-trade-that-matters" className="btn-brass">The trade that matters</a>
-              <a href="#what-this-means-for-focus" className="btn-outline-light">What to focus on, change, stop</a>
+              <a href="#five-markets-read-against-what-exists" className="btn-brass">The five markets, against what exists</a>
+              <a href="#what-would-prove-it" className="btn-outline-light">What would prove it</a>
             </div>
           </div>
           <div className="rounded-xl border border-white/10 bg-ink-2/80 p-6 backdrop-blur">
-            <span className="eyebrow-dark">The eleven principles, judged</span>
+            <span className="eyebrow-dark">The reading, in brief</span>
             <dl className="mt-4 divide-y divide-white/10">
               {VERDICTS.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[7.5rem_1fr] gap-3 py-3">
@@ -64,7 +64,7 @@ export default function Review() {
                 </div>
               ))}
             </dl>
-            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Two principles are true of the contracts and not yet of the product. The review names the work that closes each.</p>
+            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Every gap the review names is a tracked finding with a file-and-symbol anchor.</p>
           </div>
         </div>
       </section>
@@ -77,7 +77,7 @@ export default function Review() {
           </div>
         </article>
       </div>
-      <CTA title="The bet, narrowed." body="A person-centric substrate for domains with no intermediary: many small organizations, the person as the paying principal, records that outlive any one of them. A rotation ceremony that preserves grants. The adapter’s observation on every receipt. A public projection of a private grant. A consortium chain the domain’s own institutions validate. Then two separately governed estates doing real work — and preferring it." primary={{ href: '/audits', label: 'What holds today' }} secondary={{ href: '/demos', label: 'What runs today' }} />
+      <CTA title="The bet, narrowed." body="One journey that works between two parties who will not join one operator’s system — each under its own authority, with a receipt either can show a stranger — built on the substrate and on a conventional baseline, and compared. Then the same journey between two separately governed estates. Then the third party, cheaper." primary={{ href: '/audits', label: 'What holds today' }} secondary={{ href: '/demos', label: 'What runs today' }} />
     </>
   );
 }

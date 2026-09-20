@@ -30,6 +30,8 @@ const config: NextConfig = {
       // Days 18 and 21 of the series were retitled when the LinkedIn articles went up.
       { source: '/writing/behaviour-generated-authority-never', destination: '/writing/dont-build-your-app-twice', permanent: true },
       { source: '/writing/what-we-owe', destination: '/writing/rails-not-throttles-day-21', permanent: true },
+      // The domain strategy is now part of the thesis.
+      { source: '/strategy', destination: '/thesis', permanent: true },
     ];
   },
 };

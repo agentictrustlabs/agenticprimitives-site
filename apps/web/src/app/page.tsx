@@ -340,7 +340,7 @@ export default function Home() {
       </Section>
 
       {/* ── WRITING ──────────────────────────────────────────────────────────────────── */}
-      <Section number="10" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The thesis states the bet against the field’s consensus; the long essay and the 21-part series make the case — all on this site, no LinkedIn login.">
+      <Section number="10" eyebrow="Writing" title="The argument, in full." lede="The operating model around the LLM is what has to change. The thesis states the bet; the long essay and the 21-part series make the case — all on this site, no LinkedIn login.">
         <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
           {ESSAYS.map((w) => (
             <Link key={w.slug} href={`/writing/${w.slug}`} className="group bg-white p-6 hover:bg-cream">
@@ -351,8 +351,8 @@ export default function Home() {
           ))}
           <Link href="/thesis" className="group bg-white p-6 hover:bg-cream">
             <p className="eyebrow">Thesis</p>
-            <h3 className="mt-3 text-xl font-semibold tracking-[-0.015em] text-navy group-hover:text-teal">Against conventional wisdom: the competing bet</h3>
-            <p className="mt-3 text-sm text-slate-600">Thirteen hypotheses and eleven principles against the IdP-as-control-plane consensus — who holds which, and what would make it win.</p>
+            <h3 className="mt-3 text-xl font-semibold tracking-[-0.015em] text-navy group-hover:text-teal">Build an ecosystem where every participant expands what everyone can accomplish</h3>
+            <p className="mt-3 text-sm text-slate-600">The competing bet: coordinate whole journeys through independent participants while each retains control — thirteen bets, eleven principles, and where it can fail.</p>
           </Link>
           <Link href="/writing" className="group bg-white p-6 hover:bg-cream">
             <p className="eyebrow">Series · 21 days</p>
