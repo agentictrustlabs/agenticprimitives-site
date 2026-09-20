@@ -70,7 +70,7 @@ export default function Thesis() {
           </div>
         </article>
       </div>
-      <CTA title="Read the case against it." body="A thesis that cannot survive its own hardest questions is not worth a stranger’s time. The critical review takes the five markets, the thirteen bets and the eleven principles in turn against the contracts, the packages and the running estate, says where each holds and where it is a bet, and ends with what a doubter is right about." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/demos', label: 'What runs today' }} />
+      <CTA title="Read the case against it." body="A thesis that cannot survive its own hardest questions is not worth a stranger’s time. The critical review concedes that this is a new offering, then reads the five markets on their premises, the thirteen bets on their reasoning and the eleven principles as principles — and ends with what a doubter is right about." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/demos', label: 'What runs today' }} />
     </>
   );
 }

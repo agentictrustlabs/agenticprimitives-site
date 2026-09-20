@@ -9,17 +9,17 @@ import { CTA } from '@/components/ui';
 
 export const metadata: Metadata = pageMeta({
   title: 'A critical review of the thesis',
-  description: 'The project’s own critical reading of its ecosystem thesis: the three claims that can be tested, the five markets against what exists, the thirteen bets and eleven principles against the code, what the thesis does not say, and what would prove it.',
+  description: 'The project’s own critical reading of its thesis, on its merits: the three claims that can be tested, the platform as the competitor, the five markets read on their premises, the thirteen bets on their reasoning, the eleven principles as principles, what the thesis does not say, and what would prove it.',
   path: '/thesis/review',
   type: 'article',
   published: '2026-09-20',
 });
 
 const VERDICTS: readonly [string, string][] = [
-  ['Evidence', 'Faith — a domain model and a running estate. The two-organization proof has not been run.'],
-  ['Mechanics', 'Finance — treasury mandates enforced at commit, in-estate. Not a market proof: institutions federate under their own consent regimes.'],
-  ['Nothing yet', 'Fitness, healthcare, travel — no domain model. Fitness is the cheapest test of reuse; healthcare and travel only with a partner who carries the obligation.'],
-  ['The bets', 'Four need nothing structural · five wait on tracked work · four wait on measurement or a two-party demonstration. None refuted; none of the economic ones yet supported.'],
+  ['Conceded', 'This is a new offering. The question is not whether it is finished but whether the bet is the right bet.'],
+  ['Testable', 'Three claims inside the vision: the next participant is cheaper, capabilities are reused across journeys, everyone keeps control.'],
+  ['The competitor', 'The platform — one operating environment. The bet holds only where participants will not be coordinated by one.'],
+  ['Missing', 'A principle on governance of the common model and of an estate. The doubter finds this first.'],
 ];
 
 export default function Review() {
@@ -33,7 +33,7 @@ export default function Review() {
           name: 'A critical review of the Agentic Primitives thesis',
           itemReviewed: { '@type': 'SoftwareApplication', name: 'Agentic Primitives', url: SITE.url },
           datePublished: '2026-09-20',
-          reviewBody: 'The vision cannot be wrong; three claims inside it can be tested. One market has evidence, one has the mechanics, three have neither yet. Four bets need nothing structural, five wait on tracked work, four on measurement. The competitor is the platform; the bet holds only where participants will not be coordinated by one.',
+          reviewBody: 'A new offering, conceded. The vision cannot be wrong; three claims inside it can be tested. The competitor is the platform, and the bet holds where participants are separately governed and will not be platformed. The principles are consistent and thin on governance. What would prove it: the same journey built two ways, then between two estates.',
           author: { '@id': `${SITE.url}/#org` },
           publisher: { '@id': `${SITE.url}/#org` },
           url: `${SITE.url}/thesis/review`,
@@ -47,10 +47,10 @@ export default function Review() {
             <p className="eyebrow-dark">A critical review of the thesis · 2026-09-20</p>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it is a bet.</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
-              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. A vision cannot be wrong, so this review holds the thesis to the three claims inside it that can be — that a shared foundation makes the next participant cheaper, that capabilities are reused across journeys, and that everyone keeps control — and reads the five markets, the thirteen bets and the eleven principles against what is actually built. Nothing here is softened.
+              The project’s own critical reading of its thesis, on its merits. This is a new offering, and the review concedes that first; the question is whether the bet is the right bet. A vision cannot be wrong, so the review holds the thesis to the three claims inside it that can be — that a shared foundation makes the next participant cheaper, that capabilities are reused across journeys, and that everyone keeps control — and reads the five markets on their premises, the thirteen bets on their reasoning and the eleven principles as principles. Nothing here is softened.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#five-markets-read-against-what-exists" className="btn-brass">The five markets, against what exists</a>
+              <a href="#five-markets-read-on-their-merits" className="btn-brass">The five markets, on their merits</a>
               <a href="#what-would-prove-it" className="btn-outline-light">What would prove it</a>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Review() {
                 </div>
               ))}
             </dl>
-            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Every gap the review names is a tracked finding with a file-and-symbol anchor.</p>
+            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Where the bet is strong, where a doubter is right, and what would settle it.</p>
           </div>
         </div>
       </section>
