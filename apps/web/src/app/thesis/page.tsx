@@ -56,8 +56,8 @@ export default function Thesis() {
           </div>
         }
       >
-        <Link href="/thesis/review" className="btn-brass">Read the critical review</Link>
-        <Link href="/what-is-agentic-primitives" className="btn-outline-light">What is Agentic Primitives?</Link>
+        <a href="#statement" className="btn-brass">Start with the statement</a>
+        <a href="#principles" className="btn-outline-light">The eleven principles</a>
       </PageHero>
 
       <Section id="statement" number="01" eyebrow="The statement" title="Three answers a stranger can check — and they belong to the person, not the runtime.">
