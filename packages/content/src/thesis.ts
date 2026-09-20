@@ -71,11 +71,11 @@ export const PEERS: readonly PeerHolding[] = [
   { peer: 'Okta · Entra', holds: '— (a weak 4)', note: 'Admission and access for what the tenant owns; no neutral ground, no identity that signs, scopes rather than caveats.' },
   { peer: 'MetaMask DTK · Lit Vincent', holds: '1 · 2 · 4', note: 'The ERC-7710 object model and session UX, in more wallets than we reach. No harness discipline around it.' },
   { peer: 'Palantir', holds: '8', note: 'One ontology from data to decision — inside a tenant, for the customers who can mandate it.' },
-  { peer: 'Dina · Hestia', holds: '9', note: 'Personal data stores and portability, with keys as identity.' },
+  { peer: 'Dina · Hestia', holds: '9 · 10', note: 'Personal data stores, portability and owner-held records, with keys as identity.' },
   { peer: 'ERC-8004 · x402', holds: '1, and 11’s problem statement', note: 'On-chain identity registry and payments; the reputation registry is the score, and the payment-backed-feedback work is drifting toward receipts.' },
   { peer: 'SAIHM', holds: '9’s container', note: 'A home for the agent’s state, without the grant model over it.' },
   { peer: 'W3C Agent Identity CG', holds: '2’s pointer', note: 'An identifier with a trust level — a pointer, not an account.' },
-  { peer: 'Nobody', holds: '5 · 6 · 10', note: 'Intent-digest binding, verification outside the model at every step and at commit, evidence recomputable without the runtime. The combination is the perspective; the ordering is the argument.' },
+  { peer: 'Nobody', holds: '5 · 6', note: 'Intent-digest binding, and verification outside the model at every step and again at commit. Nobody else holds the two that make a delegation safe in the hands of a planner that can be lied to. The combination is the perspective; the ordering is the argument.' },
 ];
 
 export const EVIDENCE = [
