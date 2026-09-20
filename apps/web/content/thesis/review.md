@@ -87,3 +87,89 @@ And run it between two estates, not inside one. Two separately governed organiza
 You are right that a platform is simpler for a bounded journey and that a few direct integrations serve a small partner network. You are right that "every participant expands what everyone can accomplish" is a vision, not a claim, and that the claims inside it are untested. You are right that a bank will not take a mandate from a substrate as authorization, that a limit is only enforceable where something enforces it, that a Home concentrates power, that the governance of a shared model is a principle the thesis does not yet have, and that the ecosystem builder it addresses is rare. The thesis is better for each of those, and this page exists so that none of them has to be said from outside.
 
 What you may not yet have seen is the thing a platform cannot do and a network of integrations cannot afford: let two parties who will not join one operator's system complete a journey together, each under its own authority, with a receipt either can show a stranger — and do it again, more cheaply, when a third party joins. That is the claim worth defending, and the experiment above is how it gets defended.
+
+## What has to be added
+
+The review above argues with the thesis. This section is for the engineers: the specific additions that would close the gaps the argument exposes, each with what already exists as its base, what to add, and how to know it is done. They are ordered by leverage.
+
+### 1. A rotation ceremony that preserves standing grants
+
+*Exists.* Multi-signature custody around recovery: the custody policy module supports trustee quorums, guardian quorums, multi-credential self-recovery and multisig; the account keeps a custody epoch that voids every approved-hash grant and every key-signed grant when a credential is retired, which is exactly right after a compromise.
+
+*Add.* In the Home, a **rotate-credential ceremony** for a person that runs as one batched user operation: register the new passkey or key → retire the old one → re-approve every standing wire under the new epoch (`approveHash(approvedHashKey(digest))` for each outstanding delegation digest) → re-issue each key-signed delegation to its delegate with the account-level `0x03` sentinel signature. Beside it, a **wire-refresh endpoint** at the Home so a delegate that holds a wire can fetch the re-issued object by delegation hash. Keep the existing quorum-governed **recovery** path as it is, with one rule made explicit in code: recovery re-approves nothing; the person re-issues from a reviewed list. Treat a **Home-to-Home move** as a rotation (new passkey at the new relying-party domain, retire the old), never as a recovery.
+
+*Done when.* A person replaces a device and every linked app, her ask-as-me wire and her organizations' stewardship wires still validate at redemption without any counterparty acting; and after a guardian recovery, a grant planted by the retired key fails at redemption.
+
+### 2. The adapter's observation on every receipt
+
+*Exists.* The tool invoker port; a declared outcome class on every tool (`lookup`, `submission`, `authoritative`); an idempotency key handed to every medium-risk invocation; declared compensation; an irreversible flag that forces a fresh signature.
+
+*Add.* Change the invoker's return from an untyped value to a **result contract** — `outcome: attempted | accepted | committed | confirmed`, a provider reference, an observed-at timestamp, and evidence — and record it on the step receipt beside the output digest. Make the receipt state which of the four it attests. Require every adapter to declare its **verification window** (the time between the harness's check and the provider's commit), its retry behaviour and its cancellation semantics in the tool contract.
+
+*Done when.* A receipt for an external effect can be read by a stranger and answers "which end committed this, and what did it see," and a tool whose adapter cannot cancel cannot be described as cancellable in any generated interface.
+
+### 3. Reconcile before every retry, per effect kind
+
+*Exists.* The durable-step rule — reconcile, then verify, then act, as one indivisible attempt — and one implementation of reconcile, for the ledger (reserve and finalize). A stable logical operation identity on every execution binding.
+
+*Add.* A reconcile implementation for each effect kind, keyed on that operation identity: outbox lookup for a message, record version for a vault write, task fetch for an A2A call, transaction hash or nonce for a payment. Derive the mandate's single-use nonce from the **logical request identity**, not from payment fields, so two deliberately identical payments are possible and an unintended duplicate is not.
+
+*Done when.* A retry after a lost response never performs the effect twice and never fails to perform it once, across all four effect kinds, under the existing live gates.
+
+### 4. Grants and relationships projected across an estate boundary
+
+*Exists.* Merkle inclusion proofs (the `merkle-membership-v1` atom, OpenZeppelin-compatible) already proving membership against signed corpus and containment roots; selective-disclosure presentations (SD-JWT), with a zero-knowledge predicate suite reserved; a registry that anchors a run's bundle digest; revocation as one on-chain read.
+
+*Add.* Apply those to authority: a **revocation root** and a **membership-set root** for grants and relationships, maintained per estate, anchored on public ground and refreshed on every revocation and membership change; a **non-revocation / membership presentation** a verifier in another estate can check — a Merkle proof today, the zero-knowledge predicate suite when it lands — that never reveals the edge; and **admission at the receiving edge** that consumes that presentation. Then the product capability those enable: a person participating in a second estate from one Home, with the receipt landing in her own vault.
+
+*Done when.* An agent chartered in estate A is admitted to an act in estate B on a proof rooted in A's public projection; B learns that the grant is live and that the agent is a member, and learns nothing else about A's graph.
+
+### 5. Version binding in the mandate
+
+*Exists.* The intent digest and the single-use nonce as caveats; the playbook digest on every receipt.
+
+*Add.* Fold the **ontology version and execution-semantics version** the intent was approved under into the mandate — as a caveat or as a field in the digest preimage — so a changed schema or adapter cannot reinterpret an approved intent. Name the compiler and the release process as security-critical components with their own gates.
+
+*Done when.* An intent approved under one schema version is refused at redemption after the schema changes, until it is re-approved.
+
+### 6. A conformance check for open intents
+
+*Exists.* Closed mandates for consequential effects; fan-out compiled into one mandate per item.
+
+*Add.* A **conformance component** in the harness that, for an open intent — "organize the retreat for under two thousand" — compares each proposed consequential effect against the intent's stated outcome in the ontology before it is offered for signature, and refuses effects the outcome does not cover: the disclosure, the deposit, the substitute venue.
+
+*Done when.* An adversarial instruction inside an open plan cannot surface an effect for signature that the stated outcome does not entail.
+
+### 7. Aggregate limits at the resource
+
+*Exists.* Per-delegation enforcers: value, timestamp, targets, methods, call-data hash, quorum, digest binding, payment.
+
+*Add.* A **per-treasury spending enforcer** at the treasury account — a ceiling across all delegates, with a window — so that two delegates each under their own ceiling cannot jointly exceed the principal's budget. Where a read precedes a write, an information-flow caveat that names what the write may carry.
+
+*Done when.* Two delegates under a shared budget are refused at commit when their combined spend would exceed it.
+
+### 8. The vault form of a relationship
+
+*Exists.* Relationships as typed records on the estate chain; the vault with per-record scope and data keys released under grant.
+
+*Add.* A **vault credential for every relationship** — member-of, steward-of, chartered-under — held by each party and presented under grant, read only from that party's vantage point, with the chain record kept where a gate must follow it and the public projection reduced to a commitment. The rule for shared records, in code: each principal holds its side; nothing is one party's alone if two signed it.
+
+*Done when.* A person can prove membership to a counterparty from her own vault without the counterparty reading any chain, and a departing member keeps her receipts and not the organization's records.
+
+### 9. A consortium for the estate chain
+
+*Exists.* A private chain with four validators, run by one operator, as the reference estate.
+
+*Add.* Validators run by **at least three separately governed institutions** in the vertical, with written governance for admitted issuers, contract upgrades, ontology versions and emergency behaviour. This is what "neutral" means for a private enforcement chain, and it is the difference between a platform with a signature scheme and the estate the thesis describes.
+
+*Done when.* No single operator can halt, upgrade or reinterpret the chain the estate enforces on, and the governance is public.
+
+### 10. A governance principle, and the tooling under it
+
+*Exists.* Domain stewards named as a duty in the strategy; disagreement and versioning named as risks.
+
+*Add.* A **twelfth principle** on governance of the common model and of an estate, and the tooling to make it real: a versioning and adoption process for domain models, a way to record two organizations' differing meanings of a term with both named, a dispute path, and a public record of who stewards what. Without it, "govern the common model" is a central actor with no constitution.
+
+*Done when.* Two organizations that disagree about "member" can both be right, in the model, at the same time, and a third party can see which meaning a given grant used.
+
+These ten are a roadmap, not a claim. The thesis stands or falls on the experiment in the section before this one; the additions above are what has to exist for that experiment to be fair.
