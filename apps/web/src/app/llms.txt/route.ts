@@ -26,6 +26,7 @@ Intelligence may be probabilistic. Authority must not be.
 
 - [What is Agentic Primitives?](${SITE.url}/what-is-agentic-primitives): the definition, the three primitives, and how it differs from OpenAI's "agentic primitives" (Skills, Shell, Compaction) and from agent frameworks and registries
 - [Thesis](${SITE.url}/thesis): against conventional wisdom — the bet the substrate and the estate make: the statement, the field's consensus named, the tenant / federation / substrate trade, the domain bets (faith communities first; travel as the disintermediation bet), thirteen hypotheses, the eleven principles, private dimension and public projection, why it accumulates, who holds which, evidence, risks
+- [Strategy](${SITE.url}/strategy): where the bet is placed — what qualifies a domain; faith communities first, travel at the long tail as the disintermediation bet, healthcare/education later, enterprise never; what must be true for each
 - [A critical review](${SITE.url}/thesis/review): the project's own critical reading of its thesis against the contracts, packages and running estate — whose authority it is (tenant / federation / substrate), each of the eleven principles judged, the two places doctrine and product still differ, what to build next, what would prove it, and what a doubter is right about
 - [About](${SITE.url}/about): Agentic Trust Labs, the founder, boilerplate for press
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings

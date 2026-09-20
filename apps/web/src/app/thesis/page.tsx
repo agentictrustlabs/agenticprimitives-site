@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, ONTOLOGY_STACK, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
+import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, EVIDENCE, ONTOLOGY_STACK, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Claim, CTA, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -41,7 +41,6 @@ export default function Thesis() {
                 ['#statement', 'The statement'],
                 ['#consensus', 'Conventional wisdom, named'],
                 ['#trade', 'The trade: tenant, federation, substrate'],
-                ['#domains', 'The domain bets'],
                 ['#bets', 'Thirteen bets that play together'],
                 ['#principles', 'The eleven principles, restated'],
                 ['#dimensions', 'Private dimension, public projection'],
@@ -102,33 +101,10 @@ export default function Thesis() {
             </tbody>
           </table>
         </div>
-        <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-slate-600">The tenant model is not the competitor; it wins its own ground and should. The competitor is federation, in two forms — the network that clears payments between strangers, and the vertical system of record that holds each organization’s slice of a person — and the bet is about the domains where neither can be the root.</p>
+        <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-slate-600">The tenant model is not the competitor; it wins its own ground and should. The competitor is federation, in two forms — the network that clears payments between strangers, and the vertical system of record that holds each organization’s slice of a person — and the bet is about the domains where neither can be the root. Which domains those are, in what order, and what would have to be true for each is a strategy rather than a principle, and it has <Link href="/strategy" className="text-teal hover:underline">its own page</Link>.</p>
       </Section>
 
-      <Section id="domains" tone="ink" number="04" eyebrow="The domain bets" title="Two beachheads. One is a bet on what has already happened; the other on what is happening." lede="A domain fits when the person is the paying principal, the organizations are many and small or losing the relationship, and the records must outlive every one of them." wide>
-        <div className="grid gap-4 md:grid-cols-2">
-          {DOMAINS.map((d) => (
-            <article key={d.domain} className={`card-dark flex flex-col ${d.fit.startsWith('Not') || d.fit.startsWith('Later') ? 'opacity-70' : ''}`}>
-              <h3 className="text-xl font-semibold text-white">{d.domain}</h3>
-              <p className="mt-1 text-sm font-semibold text-brass">{d.fit}</p>
-              <dl className="mt-4 grid grid-cols-[7rem_1fr] gap-x-3 gap-y-2 text-[13.5px]">
-                <dt className="text-slate-500">Intermediary</dt><dd className="text-slate-300">{d.intermediary}</dd>
-                <dt className="text-slate-500">Principal</dt><dd className="text-slate-300">{d.principal}</dd>
-                <dt className="text-slate-500">Outlives an org</dt><dd className="text-slate-300">{d.outlive}</dd>
-              </dl>
-              {d.bet !== 'None. We do not sell against Okta or Entra inside a tenant.' && (
-                <>
-                  <p className="mt-4 text-[15px] leading-relaxed text-slate-200"><span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-brass">The bet</span><br />{d.bet}</p>
-                  {d.mustBeTrue !== '—' && <p className="mt-3 border-t border-white/10 pt-3 text-[13.5px] leading-relaxed text-slate-400"><span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-teal-bright">What must be true</span><br />{d.mustBeTrue}</p>}
-                </>
-              )}
-              {d.bet.startsWith('None') && <p className="mt-4 text-[15px] leading-relaxed text-slate-300">{d.bet}</p>}
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section id="bets" tone="cream" number="05" eyebrow="Competing bets" title="Thirteen hypotheses. They only work together." lede="Each is stated as a bet: the claim, why we think it holds, and the conventional position it goes against. Several were narrowed by the review.">
+      <Section id="bets" tone="cream" number="04" eyebrow="Competing bets" title="Thirteen hypotheses. They only work together." lede="Each is stated as a bet: the claim, why we think it holds, and the conventional position it goes against. Several were narrowed by the review.">
         <ol className="grid gap-4 md:grid-cols-2">
           {BETS.map((b, i) => (
             <li key={b.id} className="card flex flex-col">
@@ -143,7 +119,7 @@ export default function Thesis() {
         </ol>
       </Section>
 
-      <Section id="principles" number="06" eyebrow="The substrate" title="The eleven principles." lede="Each is enforced by a gate, a contract or a build check. The consequence is what follows once it is.">
+      <Section id="principles" number="05" eyebrow="The substrate" title="The eleven principles." lede="Each is enforced by a gate, a contract or a build check. The consequence is what follows once it is.">
         <ol className="divide-y divide-line rounded-xl border border-line">
           {PRINCIPLES.map((p) => (
             <li key={p.n} className="grid gap-4 p-6 md:grid-cols-[3rem_1fr]">
@@ -158,7 +134,7 @@ export default function Thesis() {
         </ol>
       </Section>
 
-      <Section id="dimensions" tone="cream" number="07" eyebrow="Private dimension, public projection" title="Neutral ground and a discreet graph are not in tension. They are on different ledgers." lede="Every concern is defined and verified off chain against a counterfactual account, enforced on a private estate chain the domain’s institutions validate, and projected to a public chain only as commitments and proofs. The private chain gives enforcement without exposure; the public chain gives strangers something to verify without learning who belongs to what." wide>
+      <Section id="dimensions" tone="cream" number="06" eyebrow="Private dimension, public projection" title="Neutral ground and a discreet graph are not in tension. They are on different ledgers." lede="Every concern is defined and verified off chain against a counterfactual account, enforced on a private estate chain the domain’s institutions validate, and projected to a public chain only as commitments and proofs. The private chain gives enforcement without exposure; the public chain gives strangers something to verify without learning who belongs to what." wide>
         <div className="overflow-x-auto rounded-xl border border-line">
           <table className="w-full text-left text-[14px] leading-relaxed text-slate-700">
             <thead className="bg-white text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Concern</th><th className="px-4 py-3">Private dimension — defined and verified off chain</th><th className="px-4 py-3">Enforcement — the private estate chain</th><th className="px-4 py-3">Public projection — neutral ground</th></tr></thead>
@@ -183,7 +159,7 @@ export default function Thesis() {
         <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Two limits stay in force. A private enforcement chain is neutral only to the extent its validators are the domain’s own institutions; the layering locates the governance question, it does not remove it. And a verifier outside the estate cannot read the private chain, so cross-estate verification runs on the public projection — a root and a proof — which is why the projection is a requirement, not a nicety.</p>
       </Section>
 
-      <Section id="ontology" number="08" eyebrow="The ontology, held" title="Abstraction is the key. One stack, six layers, translation at the edges." lede="This is the bet we hold hardest against the field’s instinct. A model can translate between local schemas cheaply, and that is exactly why a layered ontology matters more, not less: it is where translation is done once, at a named boundary, instead of at every act — and it is what lets reasoning, memory, skills and coordination run inside rails instead of inside a prompt." wide>
+      <Section id="ontology" number="07" eyebrow="The ontology, held" title="Abstraction is the key. One stack, six layers, translation at the edges." lede="This is the bet we hold hardest against the field’s instinct. A model can translate between local schemas cheaply, and that is exactly why a layered ontology matters more, not less: it is where translation is done once, at a named boundary, instead of at every act — and it is what lets reasoning, memory, skills and coordination run inside rails instead of inside a prompt." wide>
         <div className="overflow-x-auto rounded-xl border border-line">
           <table className="w-full text-left text-[14px] leading-relaxed text-slate-700">
             <thead className="bg-cream text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Layer</th><th className="px-4 py-3">What it settles</th><th className="px-4 py-3">Examples</th><th className="px-4 py-3">What it drives in the substrate</th></tr></thead>
@@ -206,11 +182,11 @@ export default function Thesis() {
         <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Where we hold the line, and where we do not. Shared meaning for what an agent may do — intent, capability, mandate, receipt — is settled in the stack and never translated at the moment of an act. Shared meaning for data an application merely reads may well be translated by a model at the edge, and the crosswalks are where that happens. The counter-hypothesis — that cheap translation makes a shared ontology unnecessary — is answered by the review, and by the test it names.</p>
       </Section>
 
-      <Section id="accumulates" tone="ink" number="09" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
+      <Section id="accumulates" tone="ink" number="08" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
         <Ledger dark rows={ACCUMULATES.map(([k, v]) => ({ k: <span className="font-mono text-base text-brass">{k}</span>, v }))} cols="md:grid-cols-[minmax(0,0.6fr)_minmax(0,3fr)]" />
       </Section>
 
-      <Section id="peers" number="10" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
+      <Section id="peers" number="09" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
         <div className="overflow-x-auto rounded-xl border border-line">
           <table className="w-full text-left text-[15px] text-slate-700">
             <thead className="bg-cream text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Peer</th><th className="px-4 py-3">Holds</th><th className="px-4 py-3">Note</th></tr></thead>
@@ -228,11 +204,11 @@ export default function Thesis() {
         <p className="mt-6 text-sm text-slate-500"><Link href="/compare/composition" className="text-teal hover:underline">The full composition matrix →</Link></p>
       </Section>
 
-      <Section id="evidence" tone="cream" number="11" eyebrow="Evidence and assumptions" title="What has already happened.">
+      <Section id="evidence" tone="cream" number="10" eyebrow="Evidence and assumptions" title="What has already happened.">
         <Ledger rows={EVIDENCE.map((e) => ({ k: e.k, v: e.v }))} />
       </Section>
 
-      <Section id="risks" number="12" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
+      <Section id="risks" number="11" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
         <div className="grid gap-6 md:grid-cols-2">
           {RISKS.map((r) => (
             <div key={r.risk} className="card">
