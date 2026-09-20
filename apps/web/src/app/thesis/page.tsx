@@ -53,8 +53,8 @@ export default function Thesis() {
           </div>
         }
       >
-        <Link href="/what-is-agentic-primitives" className="btn-brass">What is Agentic Primitives?</Link>
-        <Link href="/compare" className="btn-outline-light">Versus the alternatives</Link>
+        <Link href="/thesis/review" className="btn-brass">Read the case against it</Link>
+        <Link href="/what-is-agentic-primitives" className="btn-outline-light">What is Agentic Primitives?</Link>
       </PageHero>
 
       <Section id="statement" number="01" eyebrow="The statement" title="Palantir did it inside a few markets. AI takes the boundary away.">
@@ -157,7 +157,7 @@ export default function Thesis() {
         </div>
       </Section>
 
-      <CTA title="Argue with it." body="Every claim here is exercised by a running estate and reported in a published assessment, including where it does not yet hold. If you build identity providers, registries, wallets or agent frameworks and think the layer described here already exists — or should not — we want to hear exactly where." primary={{ href: '/audits', label: 'The assessment' }} secondary={{ href: '/demos', label: 'Run the demos' }} />
+      <CTA title="Argue with it. Someone already has." body="The strongest case against this page — every principle challenged, the sources, and the tests that would settle it — is published in full, unsoftened. Every claim here is exercised by a running estate and reported in an assessment that says where it does not yet hold." primary={{ href: '/thesis/review', label: 'The case against the substrate' }} secondary={{ href: '/audits', label: 'The assessment' }} />
     </>
   );
 }

@@ -26,6 +26,7 @@ Intelligence may be probabilistic. Authority must not be.
 
 - [What is Agentic Primitives?](${SITE.url}/what-is-agentic-primitives): the definition, the three primitives, and how it differs from OpenAI's "agentic primitives" (Skills, Shell, Compaction) and from agent frameworks and registries
 - [Thesis](${SITE.url}/thesis): against conventional wisdom — the competing bet vs. the IdP-as-control-plane consensus (NIST NCCoE, OIDF AIIM, IETF WIMSE, CSA, W3C CGs, Visa TAP, Mastercard Agent Pay): thirteen hypotheses, the eleven principles, why they accumulate, who holds which, evidence, risks
+- [The case against](${SITE.url}/thesis/review): a critical review of the substrate, published in full — most benefits deliverable incrementally on existing infrastructure; property-vs-mechanism leaps; each of the eleven principles challenged; federated-enterprise vs domain-wide; the three-implementation test
 - [About](${SITE.url}/about): Agentic Trust Labs, the founder, boilerplate for press
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
