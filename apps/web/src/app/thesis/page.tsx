@@ -68,7 +68,7 @@ export default function Thesis() {
         </div>
       </Section>
 
-      <Section id="consensus" tone="ink" number="02" eyebrow="Conventional wisdom" title="Everyone agrees on the question. Inside a tenant, the answer is right." lede={CONSENSUS.lede} wide>
+      <Section id="consensus" tone="ink" number="02" eyebrow="Conventional wisdom" title="The field’s answer: extend the identity provider. Right for a company. Wrong for a person." lede={CONSENSUS.lede} wide>
         <div className="grid gap-8 md:grid-cols-[1.1fr_1fr]">
           <div>
             <p className="text-lg leading-relaxed text-white">{CONSENSUS.idp.line}</p>
@@ -82,11 +82,11 @@ export default function Thesis() {
                 <li key={a} className="grid grid-cols-[2rem_1fr] gap-3 py-3"><span className="num-mark text-white/40">0{i + 1}</span><span className="text-[15px] text-slate-200">{a}</span></li>
               ))}
             </ol>
-            <p className="mt-5 border-t border-white/10 pt-4 text-sm text-slate-400">Five good questions. None of them is <em className="text-white not-italic">may this act commit</em> — this payee, this amount, this intent, once, checkable by a stranger, revocable by the person.</p>
+            <p className="mt-5 border-t border-white/10 pt-4 text-sm text-slate-400">Five questions about access. Not one about whether <em className="text-white not-italic">this act</em> may commit.</p>
           </div>
         </div>
         <div className="mt-12">
-          <Claim attribution="the competing bet, in one line">An IdP is an important admission authority for what a tenant owns. It is not the root of a person’s identity or a person’s authority — and in the domains we build for, nothing centralized can be.</Claim>
+          <Claim attribution="the competing bet, in one line">Companies get an identity provider. People get an account that can sign, a grant they issued, and a receipt they keep — and nothing in the middle that can take those away.</Claim>
         </div>
       </Section>
 

@@ -45,12 +45,12 @@ export const BETS: readonly Bet[] = [
 ];
 
 export const CONSENSUS = {
-  lede: 'Everyone now agrees on the question. NIST NCCoE (February 2026), the OpenID Foundation’s AIIM working group — “who authorized this agent, on whose behalf, and can it be verified” — IETF WIMSE, the Cloud Security Alliance’s Agentic Trust Framework, three W3C community groups, Visa’s Trusted Agent Protocol and Mastercard Agent Pay. Every one answers with OAuth extensions, short-lived tokens, a registered issuer and a gateway.',
+  lede: 'NIST, the OpenID Foundation, the IETF, the Cloud Security Alliance, three W3C community groups, Visa and Mastercard are all asking the same question — who authorized this agent, for whom, and can it be verified — and all giving the same answer: extend OAuth, shorten the tokens, register the issuer, put a gateway in front. Okta says it outright: the identity provider is the control plane.',
   idp: {
-    line: 'The IdP world’s counter-hypothesis is “the IdP is the control plane.” Okta positions Cross App Access exactly there and announced Claude and VS Code integrations in June 2026. It is a serious bet, and inside a tenant it is the right one.',
+    line: 'That answer is right when one company owns the resources, the people, the agents and the liability. We do not compete there.',
     answers: ['Who is this user, workload, application or agent?', 'How was it authenticated?', 'What organization and groups does it belong to?', 'What applications may it access?', 'Under what conditions should access be allowed or revoked?'],
-    strong: 'A control plane is where policy is defined and administrative decisions are made. The IdP is strong at admission and access for the people, workloads and agents an organization owns, and it carries the liability those decisions create. We do not compete with it there.',
-    limit: 'Access alone does not express the authority of an act, and a tenant’s authority stops at the tenant. An IdP can say a principal may reach the payments service. It cannot say this payee, at most this amount, for this intent, once — checkable by a stranger, enforced at commit, revocable by the person rather than the tenant — and it cannot say anything at all about a person who belongs to three organizations and is a customer of a fourth. An IdP is an important admission authority. It is not the root of a person’s identity or of a person’s authority, and in the domains we build for, nothing centralized can be.',
+    strong: 'It fails the moment the person is the principal. An identity provider answers five questions about access. It cannot answer the one that matters for an act: may this payment go to this payee, for this amount, for this purpose, once — and can a stranger check that, and can the person, not the company, take it back?',
+    limit: 'It also has no answer for a person who belongs to three organizations and buys from a fourth. Each has its own provider. None of them is that person’s root, and there is no tenant to put her in. The identity provider governs access inside a company. It cannot be the root of a person’s identity or authority, and no central system can.',
   },
 } as const;
 
