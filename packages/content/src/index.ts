@@ -631,4 +631,4 @@ export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';
 export { THESIS, ARCHITECTURES, DOMAINS, BETS, CONSENSUS, PRINCIPLES, ACCUMULATES, PEERS, EVIDENCE, RISKS, DIMENSIONS, PRIVACY_STACK, ONTOLOGY_STACK } from './thesis';
-export type { Architecture, DomainBet, Bet, Principle, PeerHolding, Dimension, PrivacyTool, OntologyLayer } from './thesis';
+export type { Architecture, DomainBet, Bet, Principle, PeerHolding, Dimension, PrivacyTool, ThesisOntologyLayer } from './thesis';
