@@ -104,7 +104,7 @@ export default function Thesis() {
         <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-slate-600">The tenant model is not the competitor; it wins its own ground and should. The competitor is federation, in two forms — the network that clears payments between strangers, and the vertical system of record that holds each organization’s slice of a person — and the bet is about the domains where neither can be the root. Which domains those are, in what order, and what would have to be true for each is a strategy rather than a principle, and it has <Link href="/strategy" className="text-teal hover:underline">its own page</Link>.</p>
       </Section>
 
-      <Section id="bets" tone="cream" number="04" eyebrow="Competing bets" title="Thirteen hypotheses. They only work together." lede="Each is stated as a bet: the claim, why we think it holds, and the conventional position it goes against. Several were narrowed by the review.">
+      <Section id="bets" tone="cream" number="04" eyebrow="Competing bets" title="Thirteen hypotheses. They only work together." lede="Each is stated as a bet: the claim, why we think it holds, and the conventional position it goes against.">
         <ol className="grid gap-4 md:grid-cols-2">
           {BETS.map((b, i) => (
             <li key={b.id} className="card flex flex-col">
@@ -179,7 +179,7 @@ export default function Thesis() {
             <div key={k} className="card"><div className="text-base font-semibold text-navy">{k}</div><p className="mt-2 text-[14px] leading-relaxed text-slate-600">{v}</p></div>
           ))}
         </div>
-        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Where we hold the line, and where we do not. Shared meaning for what an agent may do — intent, capability, mandate, receipt — is settled in the stack and never translated at the moment of an act. Shared meaning for data an application merely reads may well be translated by a model at the edge, and the crosswalks are where that happens. The counter-hypothesis — that cheap translation makes a shared ontology unnecessary — is answered by the review, and by the test it names.</p>
+        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Where we hold the line, and where we do not. Shared meaning for what an agent may do — intent, capability, mandate, receipt — is settled in the stack and never translated at the moment of an act. Shared meaning for data an application merely reads may well be translated by a model at the edge, and the crosswalks are where that happens. The counter-hypothesis — that cheap translation makes a shared ontology unnecessary — is answered by that line, and it is testable: two independent teams integrate a new domain against the stack and against a schema-and-adapter baseline, and the stack has to win on time to the first working mandate and on semantic defects the gates catch.</p>
       </Section>
 
       <Section id="accumulates" tone="ink" number="08" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
