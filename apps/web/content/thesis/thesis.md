@@ -50,7 +50,7 @@ An ecosystem builder has several credible approaches. The right comparison conce
 | --- | --- | --- |
 | A comprehensive platform | Brings participants, workflows and records into one managed operating environment. | Define the platform's rules, operate the common system and support the breadth of the journey. |
 | A network of integrations | Connects existing systems through APIs, adapters and agreements between partners. | Maintain the mappings, permissions and state transitions across each participating system. |
-| A shared domain foundation | Gives independent participants common definitions, explicit authority and records they can verify and retain. | Govern the common model, make integrations dependable and prove that capabilities can be reused across journeys. |
+| A shared domain foundation | Gives independent participants common definitions, explicit authority and records they can verify and retain — deployed as many estates, each governed by the vertical's own institutions, with every identity self-sovereign and free to participate across them. | Govern the common model, make integrations dependable and prove that capabilities can be reused across journeys. |
 
 **Our competing bet is that a shared domain foundation will make each additional participant and capability more useful — and less costly to coordinate — than rebuilding the same meaning, permissions and evidence at every connection.**
 
@@ -83,6 +83,14 @@ Builders combine those layers into the marketplace, community or coordination ex
 The builder decides whom the ecosystem admits, what contributions it recognizes, what quality means and how disputes are handled. Each participating organization retains authority over its resources and responsibilities.
 
 AP's role is to make the underlying cooperation reusable. The domain builder's differentiation comes from its participants, expertise, experience and ability to deliver valuable outcomes.
+
+### Estates, not a walled environment
+
+The substrate is a kit and a domain ontology, not an operating environment. It runs as **estates**: a deployment — a Home for people, an agent runtime, an edge, a registry, a chain — governed by a vertical's own institutions. A vertical may have several. A denomination, a mission alliance and a relief network may each run one; a cruise line and a port authority may each run one; a health system may run its own under its own compliance obligations.
+
+An identity does not belong to an estate. A person's account is hers; her Home lives in one estate, and she participates in any estate that admits her, carrying her agents, her grants and her receipts with her. An organization's agent is chartered by its custodians, not by the estate that hosts it. Moving a Home from one estate to another is a rotation ceremony, not a loss of identity. That is the structural difference from a closed platform whose participants exist only inside its walls: here the walls belong to the vertical's institutions, the identities belong to their principals, and the two are never the same thing.
+
+Decentralized, self-sovereign identity and management is therefore not a feature of the substrate. It is the reason the substrate can be shared by participants who would never join one operator's system.
 
 ### The delivery sequence
 
