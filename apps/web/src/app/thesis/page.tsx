@@ -60,8 +60,8 @@ export default function Thesis() {
         <a href="#principles" className="btn-outline-light">The eleven principles</a>
       </PageHero>
 
-      <Section id="statement" number="01" eyebrow="The statement" title="A person is an agent, with agents of their own. Every act one of them takes should answer three questions a stranger can check.">
-        <div className="grid gap-6 md:grid-cols-2">
+      <Section id="statement" number="01" eyebrow="The statement" title="Three answers a stranger can check — and they belong to the person, not the runtime.">
+        <div className="grid gap-6 md:grid-cols-3">
           {THESIS.statement.map((p, i) => (
             <p key={i} className="text-[16px] leading-relaxed text-slate-700">{p}</p>
           ))}
