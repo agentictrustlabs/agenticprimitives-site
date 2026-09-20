@@ -38,6 +38,8 @@ These are proposed applications of the AP foundation. They describe the value to
 
 The shared pattern is a goal, a set of participants, a plan, commitments, authorized actions and evidence of results. The meaning and obligations of those objects differ by domain.
 
+What is actually common across the five is not a product, a schema or a workflow. It is three abstractions. The **principles** — the eleven in section 6 — say how identity, authority and evidence must behave whatever the domain. The **technical protocols** — ERC-4337 and ERC-7710 for accounts and delegation, A2A between agents, MCP between an agent and its tools, OpenID Connect and passkeys for sign-in, W3C Verifiable Credentials and DIDs for claims and identifiers — say how participants reach and check each other. The **ontological standards** — W3C PROV-O for who did what, P-Plan for plans and their steps, SKOS for vocabularies and crosswalks, W3C Organization and ActivityStreams for organizations and activity, with DOLCE beneath — say what kind of thing anything is. The substrate's own modules bind those three to code; each domain adds its meaning beneath them. Everything above that line is shared; everything below it is the domain's.
+
 A training recommendation is not a clinical instruction. An invitation to a ministry partnership is not authority to spend its funds. A financial plan is not permission to execute every transaction that might advance it. A reservation is not a referral.
 
 AP's strategy depends on preserving those distinctions while reusing the foundation underneath them.
@@ -258,8 +260,8 @@ The substrate is built on a layered ontology: open foundational vocabularies, co
 
 | Layer | What it establishes | How it supports the five markets |
 | --- | --- | --- |
-| Open foundations | Parties, activities, plans, relationships and provenance. | A common basis for describing who committed to what and what occurred. |
-| AP primitives | Identity, custody, delegation, intent, capabilities, execution and receipts. | Reusable mechanics for authorized cooperation. |
+| Open foundations — W3C and other open standards | Parties, activities, plans, relationships and provenance: PROV-O, P-Plan, SKOS, W3C Organization, ActivityStreams, DOLCE. | A common basis for describing who committed to what and what occurred, in vocabularies no single vendor owns. |
+| AP primitives — the principles and protocols, bound to code | Identity, custody, delegation, intent, capabilities, execution and receipts, over ERC-4337, ERC-7710, A2A, MCP, OpenID Connect, passkeys, Verifiable Credentials and DIDs. | Reusable mechanics for authorized cooperation. |
 | Domain models | The meaning of specialized objects, actions and responsibilities. | Referrals, training plans, ministry commitments, financial mandates and reservations. |
 | Solution extensions | Local policies, workflows and mappings to existing systems. | A care network, fitness community, ministry partnership, financial ecosystem or destination marketplace. |
 
