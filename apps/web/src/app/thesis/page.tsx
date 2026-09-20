@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, EVIDENCE, ONTOLOGY_STACK, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
+import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, EVIDENCE, ONTOLOGY_STACK, PEERS, PRINCIPLES, RISKS, SITE, THESIS } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Claim, CTA, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -145,18 +145,8 @@ export default function Thesis() {
             </tbody>
           </table>
         </div>
-        <h3 className="h3 mt-12">The public privacy stack, and where each piece fits</h3>
-        <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-slate-600">The private estate chain is the near-term answer. The path to the same properties on neutral public ground runs through the Ethereum privacy stack. Each piece is listed with what it does and where the substrate would use it; maturity is checked at adoption, not assumed.</p>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {PRIVACY_STACK.map((t) => (
-            <div key={t.name} className="card">
-              <div className="text-base font-semibold text-navy">{t.name}</div>
-              <p className="mt-2 text-[14px] leading-relaxed text-slate-600">{t.what}</p>
-              <p className="mt-2 text-[14px] leading-relaxed text-slate-700"><span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-teal">Where it fits</span><br />{t.where}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Two limits stay in force. A private enforcement chain is neutral only to the extent its validators are the domain’s own institutions; the layering locates the governance question, it does not remove it. And a verifier outside the estate cannot read the private chain, so cross-estate verification runs on the public projection — a root and a proof — which is why the projection is a requirement, not a nicety.</p>
+        <p className="mt-8 max-w-3xl text-[15px] leading-relaxed text-slate-600">The private estate chain is the near-term answer. The same properties on neutral public ground — a shielded settlement so a mandate-bound payment does not expose payer, payee or amount; a membership proof against a set root so a stranger can verify without learning the members; private state with public proofs — are what the Ethereum privacy work is converging on, and the substrate adopts each piece as it matures rather than naming it in advance.</p>
+        <p className="mt-4 max-w-3xl text-[14px] leading-relaxed text-slate-500">Two limits stay in force. A private enforcement chain is neutral only to the extent its validators are the domain’s own institutions; the layering locates the governance question, it does not remove it. And a verifier outside the estate cannot read the private chain, so cross-estate verification runs on the public projection — a root and a proof — which is why the projection is a requirement, not a nicety.</p>
       </Section>
 
       <Section id="ontology" number="07" eyebrow="The ontology, held" title="Abstraction is the key. One stack, six layers, translation at the edges." lede="This is the bet we hold hardest against the field’s instinct. A model can translate between local schemas cheaply, and that is exactly why a layered ontology matters more, not less: it is where translation is done once, at a named boundary, instead of at every act — and it is what lets reasoning, memory, skills and coordination run inside rails instead of inside a prompt." wide>

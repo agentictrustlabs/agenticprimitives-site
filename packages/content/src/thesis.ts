@@ -130,10 +130,3 @@ export const DIMENSIONS: readonly Dimension[] = [
   { concern: 'Evidence', privateSide: 'The PROV receipt in the owner’s vault.', enforcement: 'The run’s bundle digest anchored, so completeness is provable and withholding visible.', publicSide: 'Anchored outcomes a stranger may see; reviews and interaction receipts as trust-graph edges.' },
 ];
 
-export interface PrivacyTool { name: string; what: string; where: string }
-export const PRIVACY_STACK: readonly PrivacyTool[] = [
-  { name: 'Privacy Pools', what: 'An operational shielded pool with association sets: prove membership in a set of legitimate participants without revealing which one.', where: 'The shape of the public projection of a private graph — a set root a stranger verifies against, without learning the members. Also private value transfer for treasuries that must not be linkable.' },
-  { name: 'Railgun', what: 'An open-source shielded system for using tokens and applications privately.', where: 'Private settlement where a mandate-bound payment must not expose payer, payee or amount on a public ledger.' },
-  { name: 'Aztec', what: 'An Ethereum privacy layer with programmable private smart contracts and private state.', where: 'The only member of the stack that addresses graph privacy on a public chain: relationships and grants as private state with public proofs. Maturity is verified at adoption, not assumed.' },
-  { name: 'Kohaku', what: 'An Ethereum Foundation wallet framework integrating Privacy Pools, Railgun, stealth addresses, private RPC access and relayers.', where: 'The Home’s wallet layer, so that a person’s public-chain projection — payments, anchors — is unlinkable by default.' },
-];
