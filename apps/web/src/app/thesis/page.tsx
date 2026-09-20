@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
+import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, ONTOLOGY_STACK, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Claim, CTA, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -45,6 +45,7 @@ export default function Thesis() {
                 ['#bets', 'Thirteen bets that play together'],
                 ['#principles', 'The eleven principles, restated'],
                 ['#dimensions', 'Private dimension, public projection'],
+                ['#ontology', 'The ontology, held'],
                 ['#accumulates', 'Why it accumulates'],
                 ['#peers', 'Who holds which'],
                 ['#evidence', 'Evidence and assumptions'],
@@ -182,11 +183,34 @@ export default function Thesis() {
         <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Two limits stay in force. A private enforcement chain is neutral only to the extent its validators are the domain’s own institutions; the layering locates the governance question, it does not remove it. And a verifier outside the estate cannot read the private chain, so cross-estate verification runs on the public projection — a root and a proof — which is why the projection is a requirement, not a nicety.</p>
       </Section>
 
-      <Section id="accumulates" tone="ink" number="08" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
+      <Section id="ontology" number="08" eyebrow="The ontology, held" title="Abstraction is the key. One stack, six layers, translation at the edges." lede="This is the bet we hold hardest against the field’s instinct. A model can translate between local schemas cheaply, and that is exactly why a layered ontology matters more, not less: it is where translation is done once, at a named boundary, instead of at every act — and it is what lets reasoning, memory, skills and coordination run inside rails instead of inside a prompt." wide>
+        <div className="overflow-x-auto rounded-xl border border-line">
+          <table className="w-full text-left text-[14px] leading-relaxed text-slate-700">
+            <thead className="bg-cream text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Layer</th><th className="px-4 py-3">What it settles</th><th className="px-4 py-3">Examples</th><th className="px-4 py-3">What it drives in the substrate</th></tr></thead>
+            <tbody>
+              {ONTOLOGY_STACK.map((l) => (
+                <tr key={l.layer} className="border-t border-line align-top"><td className="whitespace-nowrap px-4 py-3 font-semibold text-navy">{l.layer}</td><td className="px-4 py-3">{l.what}</td><td className="px-4 py-3 text-slate-600">{l.examples}</td><td className="px-4 py-3">{l.drives}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {[
+            ['Rails on reasoning', 'The planner is offered capabilities whose ids mean one thing on the card, in the registry and on chain; an intent is a class with a stated outcome; a relationship is a property whose definition says what it is not. A model that reasons over defined terms can be wrong about how. It cannot invent what.'],
+            ['Rails on memory and knowledge', 'What a person’s agent remembers is a vault record bound to a class by IRI; what the public tier holds is a projection of chain facts under the same terms. A generated query is a query over defined terms, never over column names it guessed.'],
+            ['Rails on coordination', 'Coordination between principals and orchestration inside a run are two namespaces, related only by provenance. A plan step states a capability requirement; a tool satisfies it; the words never appear in each other’s records. That is why a creating agent may invite and may not enrol people by iterating over them.'],
+          ].map(([k, v]) => (
+            <div key={k} className="card"><div className="text-base font-semibold text-navy">{k}</div><p className="mt-2 text-[14px] leading-relaxed text-slate-600">{v}</p></div>
+          ))}
+        </div>
+        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Where we hold the line, and where we do not. Shared meaning for what an agent may do — intent, capability, mandate, receipt — is settled in the stack and never translated at the moment of an act. Shared meaning for data an application merely reads may well be translated by a model at the edge, and the crosswalks are where that happens. The counter-hypothesis — that cheap translation makes a shared ontology unnecessary — is answered by the review, and by the test it names.</p>
+      </Section>
+
+      <Section id="accumulates" tone="ink" number="09" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
         <Ledger dark rows={ACCUMULATES.map(([k, v]) => ({ k: <span className="font-mono text-base text-brass">{k}</span>, v }))} cols="md:grid-cols-[minmax(0,0.6fr)_minmax(0,3fr)]" />
       </Section>
 
-      <Section id="peers" number="09" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
+      <Section id="peers" number="10" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
         <div className="overflow-x-auto rounded-xl border border-line">
           <table className="w-full text-left text-[15px] text-slate-700">
             <thead className="bg-cream text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Peer</th><th className="px-4 py-3">Holds</th><th className="px-4 py-3">Note</th></tr></thead>
@@ -204,11 +228,11 @@ export default function Thesis() {
         <p className="mt-6 text-sm text-slate-500"><Link href="/compare/composition" className="text-teal hover:underline">The full composition matrix →</Link></p>
       </Section>
 
-      <Section id="evidence" tone="cream" number="10" eyebrow="Evidence and assumptions" title="What has already happened.">
+      <Section id="evidence" tone="cream" number="11" eyebrow="Evidence and assumptions" title="What has already happened.">
         <Ledger rows={EVIDENCE.map((e) => ({ k: e.k, v: e.v }))} />
       </Section>
 
-      <Section id="risks" number="11" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
+      <Section id="risks" number="12" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
         <div className="grid gap-6 md:grid-cols-2">
           {RISKS.map((r) => (
             <div key={r.risk} className="card">
