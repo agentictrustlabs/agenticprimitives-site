@@ -8,18 +8,18 @@ import { JsonLd, pageMeta } from '@/lib/seo';
 import { CTA } from '@/components/ui';
 
 export const metadata: Metadata = pageMeta({
-  title: 'A critical review — where the bet holds, and where it must change',
-  description: 'The site’s own review of the Agentic Primitives thesis: the tenant / federation / substrate trade, each of the eleven principles judged against the code and deployments, three internal tensions, and what to focus on, refine, change and stop claiming.',
+  title: 'A critical review of the thesis',
+  description: 'The project’s own critical reading of its thesis, against the contracts, packages and running estate: whose authority it is, where each of the eleven principles holds or is a bet, what to build next, and what would prove it.',
   path: '/thesis/review',
   type: 'article',
   published: '2026-09-20',
 });
 
 const VERDICTS: readonly [string, string][] = [
-  ['Holds', 'The identity can sign · Never acting stale, per step · One vocabulary, inside one estate · Evidence travels, as statement evidence'],
-  ['Overstated', 'Neutral ground · Token vs delegation · Three shapes as “law” · Trust graph as a prohibition on the reader'],
-  ['Wrong as stated', 'Credentials rotate, nothing re-signed — the contract bumps the custody epoch on every retirement'],
-  ['Unproven', 'Intent binding for open intents · One vocabulary across organizations · Owner’s records for shared records · The deployment as decentralized'],
+  ['Holds', 'The identity can sign · Private dimension, public projection · A delegation is the authority · Verification at every step · Trust as a graph'],
+  ['Holds in the contract, not yet the product', 'Rotation preserves grants — the Home has no rotation ceremony for a person · Verification at commit for external effects — the receipt lacks the adapter’s observation'],
+  ['A bet with a stated test', 'Open intents · One vocabulary across organizations · Shared records and portability · The estate as decentralized · Travel'],
+  ['A convention, defended', 'Three accountable shapes'],
 ];
 
 export default function Review() {
@@ -33,7 +33,7 @@ export default function Review() {
           name: 'A critical review of the Agentic Primitives thesis',
           itemReviewed: { '@type': 'SoftwareApplication', name: 'Agentic Primitives', url: SITE.url },
           datePublished: '2026-09-20',
-          reviewBody: 'The substrate is a person-centric architecture for domains without an intermediary. The thesis should say that and stop arguing with Okta. Of the eleven principles, four hold, four are overstated, one is wrong as stated and the rest are unproven; two are in tension with each other in the target domain.',
+          reviewBody: 'A person-centric substrate for domains with no intermediary. Of the eleven principles, most hold in the contracts; two hold in the contract and not yet in the product; several are bets with stated tests. The tenant model is not a competitor; federation is.',
           author: { '@id': `${SITE.url}/#org` },
           publisher: { '@id': `${SITE.url}/#org` },
           url: `${SITE.url}/thesis/review`,
@@ -44,10 +44,10 @@ export default function Review() {
         <div className="glow-brass absolute inset-0" aria-hidden />
         <div className="container-x relative grid items-end gap-12 py-20 md:grid-cols-[1.25fr_1fr] md:py-28">
           <div>
-            <p className="eyebrow-dark">Against the thesis · the site’s own review · 2026-09-20</p>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it must change.</h1>
+            <p className="eyebrow-dark">A critical review of the thesis · 2026-09-20</p>
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it is a bet.</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
-              The usual objection — that most of this could be delivered incrementally on existing infrastructure — is true and not the important one. The important question is <em className="not-italic text-white">whose authority it is and who bears the consequences</em>: tenant, federation or substrate. Judged against its own code, contracts and deployments, the substrate is a person-centric architecture for domains without an intermediary. It should say so, stop arguing with Okta, and fix two places where its principles contradict each other.
+              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. It starts from the question that decides everything — <em className="not-italic text-white">whose authority it is, and who bears the consequences</em> — takes the eleven principles one by one, says where each holds and where it is a bet, and ends with what a doubter is right about. Nothing here is softened.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#the-trade-that-matters" className="btn-brass">The trade that matters</a>
@@ -64,7 +64,7 @@ export default function Review() {
                 </div>
               ))}
             </dl>
-            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Two principles are in tension with each other in the target domain; a third tension the review first raised — neutral ground against a discreet graph — was resolved by putting private and public on different ledgers.</p>
+            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Two principles are true of the contracts and not yet of the product. The review names the work that closes each.</p>
           </div>
         </div>
       </section>
@@ -73,14 +73,11 @@ export default function Review() {
           <Markdown source={body} />
           <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-sm">
             <Link href="/thesis" className="text-slate-500 hover:text-navy">← The thesis</Link>
-            <span className="flex gap-4">
-              <Link href="/thesis/review/input" className="text-slate-500 hover:text-navy">The outside critique, in full</Link>
-              <Link href="/audits" className="text-slate-500 hover:text-navy">The assessment</Link>
-            </span>
+            <Link href="/audits" className="text-slate-500 hover:text-navy">The assessment</Link>
           </div>
         </article>
       </div>
-      <CTA title="The bet, narrowed." body="A person-centric substrate for domains with no intermediary: many small organizations, the person as the paying principal, records that outlive any one of them. Rotation split from recovery. Relationships off chain. A consortium chain the domain’s own institutions validate. Then two separately governed estates doing real work — and preferring it." primary={{ href: '/audits', label: 'What holds today' }} secondary={{ href: '/demos', label: 'What runs today' }} />
+      <CTA title="The bet, narrowed." body="A person-centric substrate for domains with no intermediary: many small organizations, the person as the paying principal, records that outlive any one of them. A rotation ceremony that preserves grants. The adapter’s observation on every receipt. A public projection of a private grant. A consortium chain the domain’s own institutions validate. Then two separately governed estates doing real work — and preferring it." primary={{ href: '/audits', label: 'What holds today' }} secondary={{ href: '/demos', label: 'What runs today' }} />
     </>
   );
 }

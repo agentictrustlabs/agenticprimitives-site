@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ACCUMULATES, ARCHITECTURES, BETS, CHANGED, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
+import { ACCUMULATES, ARCHITECTURES, BETS, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Claim, CTA, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -49,7 +49,6 @@ export default function Thesis() {
                 ['#peers', 'Who holds which'],
                 ['#evidence', 'Evidence and assumptions'],
                 ['#risks', 'Risks and mitigations'],
-                ['#changed', 'What the review changed'],
               ].map(([h, l], i) => (
                 <li key={h} className="flex gap-3"><span className="num-mark w-6 text-white/40">{String(i + 1).padStart(2, '0')}</span><a href={h} className="text-slate-300 hover:text-white">{l}</a></li>
               ))}
@@ -143,7 +142,7 @@ export default function Thesis() {
         </ol>
       </Section>
 
-      <Section id="principles" number="06" eyebrow="The substrate" title="The eleven principles, restated." lede="Each is enforced by a gate, a contract or a build check. Where the review changed a principle, the change is recorded beneath it.">
+      <Section id="principles" number="06" eyebrow="The substrate" title="The eleven principles." lede="Each is enforced by a gate, a contract or a build check. The consequence is what follows once it is.">
         <ol className="divide-y divide-line rounded-xl border border-line">
           {PRINCIPLES.map((p) => (
             <li key={p.n} className="grid gap-4 p-6 md:grid-cols-[3rem_1fr]">
@@ -152,7 +151,6 @@ export default function Thesis() {
                 <h3 className="text-xl font-semibold tracking-[-0.015em] text-navy">{p.title}</h3>
                 <p className="mt-2 text-[16px] leading-relaxed text-slate-700">{p.body}</p>
                 {p.consequence && <p className="mt-2 text-[15px] leading-relaxed text-slate-500"><span className="font-semibold text-slate-600">Consequence.</span> {p.consequence}</p>}
-                {p.changed && <p className="mt-3 rounded-lg border border-amber/30 bg-amber-soft px-3 py-2 text-[13.5px] leading-relaxed text-amber"><span className="font-mono text-[10.5px] uppercase tracking-[0.16em]">Changed after the review</span><br />{p.changed}</p>}
               </div>
             </li>
           ))}
@@ -224,19 +222,7 @@ export default function Thesis() {
         </div>
       </Section>
 
-      <Section id="changed" tone="cream" number="12" eyebrow="What the review changed" title="What this page no longer says." lede="The critical review was written against the code and the deployments, and it was right often enough to change the thesis. This is the record.">
-        <ol className="grid gap-4 md:grid-cols-2">
-          {CHANGED.map((c, i) => (
-            <li key={c.what} className="card">
-              <div className="flex items-baseline gap-3"><span className="num-mark text-slate-400">{String(i + 1).padStart(2, '0')}</span><h3 className="text-lg font-semibold text-navy">{c.what}</h3></div>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{c.why}</p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-6 text-sm text-slate-500"><Link href="/thesis/review" className="text-teal hover:underline">The review itself →</Link></p>
-      </Section>
-
-      <CTA title="Argue with it. We already have." body="The site’s own critical review judges each of these principles against the code and the deployments: four hold, four are overstated, one is wrong as stated, and two are in tension with each other in the target domain — a third was resolved by putting private and public on different ledgers. It says what to focus on, what to refine, what to change and what to stop claiming." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/thesis/review/input', label: 'The outside critique, in full' }} />
+      <CTA title="Read the case against it." body="A thesis that cannot survive its own hardest questions is not worth a stranger’s time. The critical review takes each of these principles in turn against the contracts, the packages and the running estate, says where each holds, where it is a bet, and what would have to be built or proven — and it is written so that a doubter feels heard." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/audits', label: 'The assessment' }} />
     </>
   );
 }

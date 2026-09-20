@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE.url, lastModified: new Date('2026-09-19'), changeFrequency: 'weekly', priority: 1 },
     { url: `${SITE.url}/thesis`, lastModified: new Date('2026-09-20'), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE.url}/thesis/review`, lastModified: new Date('2026-09-20'), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE.url}/thesis/review/input`, lastModified: new Date('2026-09-20'), changeFrequency: 'yearly', priority: 0.5 },
     { url: `${SITE.url}/what-is-agentic-primitives`, lastModified: new Date('2026-09-19'), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE.url}/about`, lastModified: new Date('2026-09-19'), changeFrequency: 'monthly', priority: 0.8 },
     ...['/platform', '/substrate', '/demos', '/examples/game-night', '/compare', '/compare/throttles', '/compare/frameworks', '/compare/web3', '/compare/composition', '/compare/honest', '/developers', '/ontology', '/build', '/build/point-at', '/build/demo-people', '/build/flow', '/build/gates', '/writing', '/brand', '/ns', '/audits'].map((p) => ({

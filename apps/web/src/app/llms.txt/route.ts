@@ -25,9 +25,8 @@ Intelligence may be probabilistic. Authority must not be.
 ## Product pages
 
 - [What is Agentic Primitives?](${SITE.url}/what-is-agentic-primitives): the definition, the three primitives, and how it differs from OpenAI's "agentic primitives" (Skills, Shell, Compaction) and from agent frameworks and registries
-- [Thesis](${SITE.url}/thesis): against conventional wisdom — the competing bet vs. the IdP-as-control-plane consensus (NIST NCCoE, OIDF AIIM, IETF WIMSE, CSA, W3C CGs, Visa TAP, Mastercard Agent Pay): thirteen hypotheses, the eleven principles, why they accumulate, who holds which, evidence, risks
-- [A critical review](${SITE.url}/thesis/review): the site's own review of the thesis — the tenant / federation / substrate trade and which domains fit which; each of the eleven principles judged against the code and deployments (four hold, four overstated, one wrong as stated, the rest unproven); three internal tensions (neutral ground vs discreet posture, rotation doctrine vs custody epoch, enforcement at commit vs off-chain effects); what to focus on, refine, change and stop claiming; the experiment that would settle it
-- [The outside critique](${SITE.url}/thesis/review/input): the critical review the site's review draws on, in full
+- [Thesis](${SITE.url}/thesis): against conventional wisdom — the bet the substrate and the estate make: the statement, the field's consensus named, the tenant / federation / substrate trade, the domain bets (faith communities first; travel as the disintermediation bet), thirteen hypotheses, the eleven principles, private dimension and public projection, why it accumulates, who holds which, evidence, risks
+- [A critical review](${SITE.url}/thesis/review): the project's own critical reading of its thesis against the contracts, packages and running estate — whose authority it is (tenant / federation / substrate), each of the eleven principles judged, the two places doctrine and product still differ, what to build next, what would prove it, and what a doubter is right about
 - [About](${SITE.url}/about): Agentic Trust Labs, the founder, boilerplate for press
 - [Home](${SITE.url}/): positioning, stitched vs seamless, nine offerings
 - [Platform](${SITE.url}/platform): Identity, Authority, Harness, Edge, Registry Kit, Evidence, Coordination, Ontology, Operations
