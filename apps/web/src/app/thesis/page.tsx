@@ -60,7 +60,7 @@ export default function Thesis() {
         <Link href="/what-is-agentic-primitives" className="btn-outline-light">What is Agentic Primitives?</Link>
       </PageHero>
 
-      <Section id="statement" number="01" eyebrow="The statement" title="Palantir did it inside a few markets. AI takes the cost away — not the disagreements.">
+      <Section id="statement" number="01" eyebrow="The statement" title="Three answers a stranger can check — and they belong to the person, not the runtime.">
         <div className="grid gap-6 md:grid-cols-3">
           {THESIS.statement.map((p, i) => (
             <p key={i} className="text-[16px] leading-relaxed text-slate-700">{p}</p>
