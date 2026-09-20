@@ -33,7 +33,7 @@ export default function Review() {
           name: 'A critical review of the Agentic Primitives thesis',
           itemReviewed: { '@type': 'SoftwareApplication', name: 'Agentic Primitives', url: SITE.url },
           datePublished: '2026-09-20',
-          reviewBody: 'The substrate is a person-centric architecture for domains without an intermediary. The thesis should say that and stop arguing with Okta. Of the eleven principles, four hold, four are overstated, one is wrong as stated and the rest are unproven; three are in tension with each other in the target domain.',
+          reviewBody: 'The substrate is a person-centric architecture for domains without an intermediary. The thesis should say that and stop arguing with Okta. Of the eleven principles, four hold, four are overstated, one is wrong as stated and the rest are unproven; two are in tension with each other in the target domain.',
           author: { '@id': `${SITE.url}/#org` },
           publisher: { '@id': `${SITE.url}/#org` },
           url: `${SITE.url}/thesis/review`,
@@ -47,7 +47,7 @@ export default function Review() {
             <p className="eyebrow-dark">Against the thesis · the site’s own review · 2026-09-20</p>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it must change.</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
-              The usual objection — that most of this could be delivered incrementally on existing infrastructure — is true and not the important one. The important question is <em className="not-italic text-white">whose authority it is and who bears the consequences</em>: tenant, federation or substrate. Judged against its own code, contracts and deployments, the substrate is a person-centric architecture for domains without an intermediary. It should say so, stop arguing with Okta, and fix three places where its principles contradict each other.
+              The usual objection — that most of this could be delivered incrementally on existing infrastructure — is true and not the important one. The important question is <em className="not-italic text-white">whose authority it is and who bears the consequences</em>: tenant, federation or substrate. Judged against its own code, contracts and deployments, the substrate is a person-centric architecture for domains without an intermediary. It should say so, stop arguing with Okta, and fix two places where its principles contradict each other.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#the-trade-that-matters" className="btn-brass">The trade that matters</a>
@@ -64,7 +64,7 @@ export default function Review() {
                 </div>
               ))}
             </dl>
-            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Three principles are in tension with each other in the target domain. The review names them and the resolution.</p>
+            <p className="mt-4 border-t border-white/10 pt-3 text-xs text-slate-400">Two principles are in tension with each other in the target domain; a third tension the review first raised — neutral ground against a discreet graph — was resolved by putting private and public on different ledgers.</p>
           </div>
         </div>
       </section>

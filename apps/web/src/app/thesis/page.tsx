@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { ACCUMULATES, ARCHITECTURES, BETS, CHANGED, CONSENSUS, DOMAINS, EVIDENCE, PEERS, PRINCIPLES, RISKS, SITE, THESIS } from '@apsite/content';
+import { ACCUMULATES, ARCHITECTURES, BETS, CHANGED, CONSENSUS, DIMENSIONS, DOMAINS, EVIDENCE, PEERS, PRINCIPLES, PRIVACY_STACK, RISKS, SITE, THESIS } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
 import { Claim, CTA, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
@@ -44,6 +44,7 @@ export default function Thesis() {
                 ['#domains', 'The domain bets'],
                 ['#bets', 'Thirteen bets that play together'],
                 ['#principles', 'The eleven principles, restated'],
+                ['#dimensions', 'Private dimension, public projection'],
                 ['#accumulates', 'Why it accumulates'],
                 ['#peers', 'Who holds which'],
                 ['#evidence', 'Evidence and assumptions'],
@@ -158,11 +159,36 @@ export default function Thesis() {
         </ol>
       </Section>
 
-      <Section id="accumulates" tone="ink" number="07" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
+      <Section id="dimensions" tone="cream" number="07" eyebrow="Private dimension, public projection" title="Neutral ground and a discreet graph are not in tension. They are on different ledgers." lede="Every concern is defined and verified off chain against a counterfactual account, enforced on a private estate chain the domain’s institutions validate, and projected to a public chain only as commitments and proofs. The private chain gives enforcement without exposure; the public chain gives strangers something to verify without learning who belongs to what." wide>
+        <div className="overflow-x-auto rounded-xl border border-line">
+          <table className="w-full text-left text-[14px] leading-relaxed text-slate-700">
+            <thead className="bg-white text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Concern</th><th className="px-4 py-3">Private dimension — defined and verified off chain</th><th className="px-4 py-3">Enforcement — the private estate chain</th><th className="px-4 py-3">Public projection — neutral ground</th></tr></thead>
+            <tbody>
+              {DIMENSIONS.map((d) => (
+                <tr key={d.concern} className="border-t border-line bg-white align-top"><td className="whitespace-nowrap px-4 py-3 font-semibold text-navy">{d.concern}</td><td className="px-4 py-3">{d.privateSide}</td><td className="px-4 py-3">{d.enforcement}</td><td className="px-4 py-3">{d.publicSide}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h3 className="h3 mt-12">The public privacy stack, and where each piece fits</h3>
+        <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-slate-600">The private estate chain is the near-term answer. The path to the same properties on neutral public ground runs through the Ethereum privacy stack. Each piece is listed with what it does and where the substrate would use it; maturity is checked at adoption, not assumed.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {PRIVACY_STACK.map((t) => (
+            <div key={t.name} className="card">
+              <div className="text-base font-semibold text-navy">{t.name}</div>
+              <p className="mt-2 text-[14px] leading-relaxed text-slate-600">{t.what}</p>
+              <p className="mt-2 text-[14px] leading-relaxed text-slate-700"><span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-teal">Where it fits</span><br />{t.where}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 max-w-3xl text-[14px] leading-relaxed text-slate-500">Two limits stay in force. A private enforcement chain is neutral only to the extent its validators are the domain’s own institutions; the layering locates the governance question, it does not remove it. And a verifier outside the estate cannot read the private chain, so cross-estate verification runs on the public projection — a root and a proof — which is why the projection is a requirement, not a nicety.</p>
+      </Section>
+
+      <Section id="accumulates" tone="ink" number="08" eyebrow="Why it accumulates" title="Each principle makes another one possible." lede="The combination is the perspective; the ordering is the argument.">
         <Ledger dark rows={ACCUMULATES.map(([k, v]) => ({ k: <span className="font-mono text-base text-brass">{k}</span>, v }))} cols="md:grid-cols-[minmax(0,0.6fr)_minmax(0,3fr)]" />
       </Section>
 
-      <Section id="peers" number="08" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
+      <Section id="peers" number="09" eyebrow="Who holds which" title="Every peer holds two or three of these." lede="By principle number. Where a peer is ahead on the ones it holds, we say so on the Versus pages.">
         <div className="overflow-x-auto rounded-xl border border-line">
           <table className="w-full text-left text-[15px] text-slate-700">
             <thead className="bg-cream text-xs uppercase tracking-wider text-slate-500"><tr><th className="px-4 py-3">Peer</th><th className="px-4 py-3">Holds</th><th className="px-4 py-3">Note</th></tr></thead>
@@ -180,11 +206,11 @@ export default function Thesis() {
         <p className="mt-6 text-sm text-slate-500"><Link href="/compare/composition" className="text-teal hover:underline">The full composition matrix →</Link></p>
       </Section>
 
-      <Section id="evidence" tone="cream" number="09" eyebrow="Evidence and assumptions" title="What has already happened.">
+      <Section id="evidence" tone="cream" number="10" eyebrow="Evidence and assumptions" title="What has already happened.">
         <Ledger rows={EVIDENCE.map((e) => ({ k: e.k, v: e.v }))} />
       </Section>
 
-      <Section id="risks" number="10" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
+      <Section id="risks" number="11" eyebrow="Risks" title="Where the bet can lose, and what we do about it.">
         <div className="grid gap-6 md:grid-cols-2">
           {RISKS.map((r) => (
             <div key={r.risk} className="card">
@@ -198,7 +224,7 @@ export default function Thesis() {
         </div>
       </Section>
 
-      <Section id="changed" tone="cream" number="11" eyebrow="What the review changed" title="Eight things this page no longer says." lede="The critical review was written against the code and the deployments, and it was right often enough to change the thesis. This is the record.">
+      <Section id="changed" tone="cream" number="12" eyebrow="What the review changed" title="What this page no longer says." lede="The critical review was written against the code and the deployments, and it was right often enough to change the thesis. This is the record.">
         <ol className="grid gap-4 md:grid-cols-2">
           {CHANGED.map((c, i) => (
             <li key={c.what} className="card">
@@ -210,7 +236,7 @@ export default function Thesis() {
         <p className="mt-6 text-sm text-slate-500"><Link href="/thesis/review" className="text-teal hover:underline">The review itself →</Link></p>
       </Section>
 
-      <CTA title="Argue with it. We already have." body="The site’s own critical review judges each of these principles against the code and the deployments: four hold, four are overstated, one is wrong as stated, and three contradict each other in the target domain. It says what to focus on, what to refine, what to change and what to stop claiming." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/thesis/review/input', label: 'The outside critique, in full' }} />
+      <CTA title="Argue with it. We already have." body="The site’s own critical review judges each of these principles against the code and the deployments: four hold, four are overstated, one is wrong as stated, and two are in tension with each other in the target domain — a third was resolved by putting private and public on different ledgers. It says what to focus on, what to refine, what to change and what to stop claiming." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/thesis/review/input', label: 'The outside critique, in full' }} />
     </>
   );
 }
