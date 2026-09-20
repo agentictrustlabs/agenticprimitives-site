@@ -3,6 +3,7 @@ import { SITE } from '@apsite/content';
 import { Logo } from './Logo';
 
 const LINKS = [
+  { href: '/thesis', label: 'Thesis' },
   { href: '/platform', label: 'Platform' },
   { href: '/substrate', label: 'Architecture' },
   { href: '/compare', label: 'Versus' },

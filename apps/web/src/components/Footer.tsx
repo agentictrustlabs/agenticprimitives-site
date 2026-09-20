@@ -22,6 +22,7 @@ export function Footer() {
           <h4 className="eyebrow-dark">Product</h4>
           <ul className="mt-4 space-y-2 text-sm text-slate-300">
             <li><Link href="/what-is-agentic-primitives" className="hover:text-white">What is Agentic Primitives?</Link></li>
+            <li><Link href="/thesis" className="hover:text-white">Thesis — against conventional wisdom</Link></li>
             <li><Link href="/about" className="hover:text-white">About</Link></li>
             <li><Link href="/platform" className="hover:text-white">Platform</Link></li>
             <li><Link href="/substrate" className="hover:text-white">Architecture</Link></li>
