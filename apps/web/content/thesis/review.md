@@ -26,11 +26,11 @@ So the domain question is not "enterprise or not." It is: **does this domain hav
 | Domain | Incumbent intermediary | Paying principal | Records that must outlive an organization | Substrate fit |
 | --- | --- | --- | --- | --- |
 | Enterprise workflow | The tenant itself | The organization | No | Poor. The tenant model wins. |
-| Travel, retail | Card networks; OTAs | The consumer | Rarely | Weak. The network already federates; the consumer's mandate is one signal among the network's. |
+| Travel, retail | Card networks; GDSs; OTAs — today | The consumer | Today rarely; on the thesis's bet, yes — the itinerary, preferences, loyalty and receipts as the traveller's record | Weak as the domain stands: the network already federates and the consumer's mandate is one signal among its own. The thesis makes the disintermediation bet — providers win the direct relationship, OTAs and GDSs lose the order, and the traveller's agent rather than the carrier's "One Order" holds the record. That is a real bet with a stated test: providers accepting a traveller-issued mandate at admission over an intermediary's token. It should be tested at the long tail, where providers already want the direct relationship, not at the carriers, who are building the opposite. |
 | Faith communities, mission work, mutual care | None. Many small organizations, none large enough to be the root; church-management SaaS holds each one's slice | The person, mostly | Yes: a person belongs to several organizations over a life and carries giving, formation, relationships and safety-sensitive records between them | Strong, and the only column where the substrate's claims are not already someone else's product. |
 | Healthcare, education | Regulators and large institutions | Mixed | Yes, by law | Possible later, through regulation-driven portability; not a beachhead. |
 
-This is the review's first conclusion, and it is more useful than "not proven": **the substrate is a person-centric architecture for domains without an intermediary. The thesis should say that, and stop arguing with Okta.**
+This is the review's first conclusion, and it is more useful than "not proven": **the substrate is a person-centric architecture for domains without an intermediary — or where the intermediary is losing the record. The thesis should say that, and stop arguing with Okta.** The thesis now does; the domain bets, and what would have to be true for each, are stated there.
 
 ## The eleven principles, judged
 
@@ -158,7 +158,7 @@ These matter more than any single principle, because they are places where two p
 
 **Focus.** Person-centric domains with many small organizations and no incumbent intermediary: faith communities, mission work, mutual care, and eventually the regulation-driven portability domains. Here the person is the paying principal, records outlive any one organization, and the competitor is a vertical SaaS system of record whose bet is the organization's data, not the person's. This is the ground the substrate can hold and no one else is standing on.
 
-**Do not pursue.** Enterprise workflow, where the tenant model wins on its own terms and should. Card-cleared commerce, where the networks' federation is the incumbent and the consumer's mandate is at best one signal in their scheme. Arguing with Okta; Okta is not wrong about tenants.
+**Do not pursue.** Enterprise workflow, where the tenant model wins on its own terms and should. Card-cleared commerce *as it stands* — the networks' federation is the incumbent there; the thesis's travel bet is a bet that the intermediary loses the record, and it belongs at the long tail of providers who already want the direct relationship, with the card network treated as a settlement rail under a mandate rather than an authority to displace. Arguing with Okta; Okta is not wrong about tenants.
 
 **Refine, in the thesis.** Principle 1 to "ordering and revocation oracle for everything; enforcer for value." Principle 4 to "no central authorization server; every resource owner verifies the grants it recognizes." Principle 5 to closed mandates for consequential effects and caveated delegations for the envelope, with AP2 cited. Principle 7 to "never sufficient." Principle 11 to "no score at the index." Drop "no seams," "law," and every claim of novelty that macaroons, RAR or AP2 already hold.
 

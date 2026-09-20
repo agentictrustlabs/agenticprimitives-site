@@ -630,5 +630,5 @@ export { AUDITS, auditBySlug } from './audits';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';
-export { THESIS, BETS, CONSENSUS, PRINCIPLES, ACCUMULATES, PEERS, EVIDENCE, RISKS } from './thesis';
-export type { Bet, Principle, PeerHolding } from './thesis';
+export { THESIS, ARCHITECTURES, DOMAINS, BETS, CONSENSUS, PRINCIPLES, ACCUMULATES, PEERS, EVIDENCE, RISKS, CHANGED } from './thesis';
+export type { Architecture, DomainBet, Bet, Principle, PeerHolding } from './thesis';
