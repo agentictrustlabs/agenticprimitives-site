@@ -1,4 +1,4 @@
-Healthcare spans patients, clinicians and care teams. Fitness spans coaches, facilities and daily habits. Faith spans people, congregations and ministries. Finance spans households, businesses, advisers and financial institutions. A trip spans airlines, hotels and transport.
+Healthcare spans patients, clinicians and care teams. Fitness spans coaches, facilities and daily habits. Faith spans people, congregations and ministries. Finance spans households, businesses, advisers and financial institutions. A cruise spans the line, its ports and the excursion operators ashore.
 
 The opportunity is to turn their separate capabilities into coordinated action — with clear commitments, permission to act and continuity across organizations.
 
@@ -14,13 +14,13 @@ In this substrate a person is an agent too — an account of their own that can 
 
 If you are building a care network, a fitness community, a ministry partnership, a financial services ecosystem or a travel marketplace, your opportunity extends across the whole journey your participants are trying to complete.
 
-People experience a course of care, a training goal, a shared mission, a financial plan or a trip as connected work. Delivering it may involve many providers, applications, decisions and changes. Someone has to hold those pieces together.
+People experience a course of care, a training goal, a shared mission, a financial plan or a cruise as connected work. Delivering it may involve many providers, applications, decisions and changes. Someone has to hold those pieces together.
 
-Consider a trip disrupted by a delayed arrival. Finding another flight is one task. Understanding what that change means for the hotel, airport transfer, local experience, budget and travelling companions is a coordination problem. Each provider controls a different part of the journey. The traveller has preferences and limits that none of those providers can simply override.
+Consider a relief effort after a storm. A congregation sends a volunteer team; a mission agency funds the supplies; a local partner church hosts the team and knows which families need help first. Then the team's arrival slips by two days. Rebooking the team is one task. Understanding what that slip means for the host families, the supply shipment, the agency's disbursement, the local partner's own volunteers and the families waiting is a coordination problem. Each organization controls a different part of the effort. The volunteers have limits and the host church has commitments that none of the others can simply override.
 
-An ecosystem designed for that situation could let agents identify affected commitments, propose alternatives, seek the right approvals, request changes and carry back evidence of what each provider accepted. If one change fails, the plan must account for that failure. The experience depends on the participants' ability to work together under explicit terms.
+An ecosystem designed for that situation could let agents identify affected commitments, propose alternatives, seek the right approvals, request changes and carry back evidence of what each organization accepted. If one change fails, the plan must account for that failure. The experience depends on the participants' ability to work together under explicit terms.
 
-The same structure appears in every domain. A referral involves several parties. A training plan changes when a person's circumstances change. A ministry effort combines funding, people and local relationships. A household's financial goal spans accounts, obligations and advisers.
+The same structure appears in every domain. A referral involves several parties. A training plan changes when a person's circumstances change. A household's financial goal spans accounts, obligations and advisers. A cruise changes when a port is missed.
 
 For a builder, the differentiating capability is to make that whole journey coherent. Each provider remains accountable for its contribution. The ecosystem makes their contributions discoverable, understandable and usable together.
 
@@ -34,7 +34,7 @@ These are proposed applications of the AP foundation. They describe the value to
 | Fitness | Sustained progress toward a personal goal | People, coaches, facilities, programs and permitted data sources contribute plans, sessions, observations and support. | Progress and permitted context that remain useful as the person moves between coaches, services and facilities. |
 | Faith | Formation, mutual care, service and collective mission | People, congregations, ministries, funders and local partners contribute relationships, expertise, resources and commitments. | Shared efforts that preserve local governance, respect participation choices and protect sensitive relationships. |
 | Finance | Planning, payments and follow-through across institutions | Households, businesses, advisers, account providers and payment services contribute information, expertise and authorized transactions. | Financial coordination through bounded permissions, specific approvals and verifiable records, within each institution's responsibilities. |
-| Travel | Planning, booking, experiencing and adapting a trip | Airlines, hotels, transport operators, guides, destinations and travellers contribute availability, services, preferences and commitments. | An itinerary whose participants can coordinate changes under the traveller's permissions and each provider's terms. |
+| Travel | Planning, booking, experiencing and adapting a cruise | Cruise lines, ports, excursion operators, guides and travellers contribute availability, services, preferences and commitments. | A cruise experience whose participants can coordinate changes — a missed port, a rebooked excursion — under the traveller's permissions and each provider's terms. |
 
 The shared pattern is a goal, a set of participants, a plan, commitments, authorized actions and evidence of results. The meaning and obligations of those objects differ by domain.
 
@@ -72,7 +72,7 @@ These primitives must compose. A capability discovered in a directory should mea
 
 Domain partners define the specialized objects, relationships, capabilities and rules that make the foundation useful in their world.
 
-A healthcare model could define referrals, appointments, care-team roles and information-sharing purposes. Fitness could define goals, programs, sessions and progress observations. Faith could define communities, formation activities, partnerships and shared mission commitments. Finance could define accounts, obligations, budgets and payment mandates. A travel model could define offers, reservations, itineraries and cancellation terms.
+A healthcare model could define referrals, appointments, care-team roles and information-sharing purposes. Fitness could define goals, programs, sessions and progress observations. Faith could define communities, formation activities, partnerships and shared mission commitments. Finance could define accounts, obligations, budgets and payment mandates. A travel model could define sailings, shore excursions, reservations and cancellation terms.
 
 These are versioned, governed definitions. They need domain expertise, explicit boundaries and a way to handle disagreement. Each solution can specialize them and map its existing systems to them.
 
@@ -96,7 +96,7 @@ This sequence tests the economic claim behind AP: the second and third additions
 
 ### 1. Independent participants can coordinate through explicit commitments.
 
-A shared plan identifies the intended outcome, required capabilities and responsible parties. Each participant accepts its own commitments and authorizes its own agents. A trip organizer can request a booking change; the provider still decides whether to accept it under the applicable terms.
+A shared plan identifies the intended outcome, required capabilities and responsible parties. Each participant accepts its own commitments and authorizes its own agents. A mission coordinator can ask a host congregation to move a team's arrival; the congregation still decides whether to accept it under its own commitments.
 
 **The test:** can multiple parties complete a shared plan while each remains responsible for its own decisions?
 
@@ -120,7 +120,7 @@ A registry can serve a care network, fitness community, ministry partnership, fi
 
 ### 5. Records must remain useful across applications.
 
-Each participant keeps the records it is entitled to retain. A traveller can carry a booking receipt; a coach can retain the records appropriate to the coaching relationship; a ministry partner can retain its side of a shared commitment. Portability does not transfer another party's private records or erase its retention duties.
+Each participant keeps the records it is entitled to retain. A volunteer can carry the receipt of a service commitment she completed; a coach can retain the records appropriate to the coaching relationship; a ministry partner can retain its side of a shared commitment. Portability does not transfer another party's private records or erase its retention duties.
 
 **The test:** can participants leave an application without losing entitled history or acquiring information beyond their rights?
 
@@ -150,7 +150,7 @@ Evidence relevant to a guide's reliability differs from evidence relevant to cli
 
 ### 10. Conversation and screens should invoke the same capabilities.
 
-"Change my transfer," a booking-management button and an agent request should reach the same action definition, permission checks and records. Natural language may require clarification; a screen can provide exact parameters. Both enter one governed flow.
+"Move our team to the Tuesday slot," a scheduling button and an agent's request should reach the same action definition, permission checks and records. Natural language may require clarification; a screen can provide exact parameters. Both enter one governed flow.
 
 **The test:** do the different interfaces produce equivalent authorized actions and understandable results?
 
@@ -204,7 +204,7 @@ Membership, an authenticated session or a registry listing may inform a decision
 
 A mandate identifies the concrete action being approved, its parameters, relevant versions and replay protections. A broad plan decomposes into bounded actions as details become known.
 
-A travel purchase might bind supplier, amount and reservation terms. A data release might bind the recipient, purpose and permitted record selection. Each domain must define which effects require fresh approval and who is qualified to provide it.
+A ministry's supply purchase might bind supplier, amount and delivery terms. A data release might bind the recipient, purpose and permitted record selection. Each domain must define which effects require fresh approval and who is qualified to provide it.
 
 ### 6. Verify outside the model and at the point of execution.
 
@@ -216,7 +216,7 @@ External APIs have their own execution and cancellation semantics. A permission 
 
 The model distinguishes persons, organizations and software agents, drawing on PROV-O. A team can be represented as an organization; a service can operate under a principal's authority.
 
-That distinction matters across every target domain. A clinician's judgment, a ministry's commitment, a traveller's consent and a software agent's request are different acts. Relationships identify the parties; explicit grants establish what they may do.
+That distinction matters across every target domain. A clinician's judgment, a ministry's commitment, a volunteer's consent and a software agent's request are different acts. Relationships identify the parties; explicit grants establish what they may do.
 
 ### 8. Use one governed vocabulary from intent to receipt.
 
@@ -257,7 +257,7 @@ The substrate is built on a layered ontology: open foundational vocabularies, co
 
 An application can expose a capability once through the domain model. Its screen, conversational interface, agent description and execution path should agree about what that capability means.
 
-In fitness, another coach could contribute a service that fits existing goals and approval flows. In travel, a new transport provider could offer a capability already understood by itinerary plans. The specific provider differs; the shared meaning reduces the work needed to engage it.
+In fitness, another coach could contribute a service that fits existing goals and approval flows. In travel, a new excursion operator could offer a capability already understood by a cruise plan. The specific provider differs; the shared meaning reduces the work needed to engage it.
 
 This reuse has boundaries. Domain stewards must resolve disagreements, manage versions and name exceptions. A clinical referral and a marketing referral may share a word while carrying entirely different obligations. Cross-domain connections require their own mappings and permission decisions.
 
@@ -273,7 +273,7 @@ For an ecosystem builder, that creates a potential advantage in the combination 
 
 For AP, the defensible work is making those foundations dependable and repeatable across domains. Code volume alone does not establish that advantage. Neither does the number of registered agents. The important questions are whether contributions are reused, whether the next integration is easier and whether participants choose to keep cooperating.
 
-A care network could differentiate through accountable transitions. A fitness community could differentiate through sustained progress across services. A faith ecosystem could differentiate through coordinated care and mission. A financial ecosystem could differentiate through coherent planning and authorized execution across providers. A travel marketplace could differentiate through itinerary continuity and disruption handling.
+A care network could differentiate through accountable transitions. A fitness community could differentiate through sustained progress across services. A faith ecosystem could differentiate through coordinated care and mission. A financial ecosystem could differentiate through coherent planning and authorized execution across providers. A cruise ecosystem could differentiate through an experience that stays coherent when a port is missed.
 
 The same primitives can support these outcomes, while each ecosystem creates its own domain value.
 
@@ -283,7 +283,7 @@ Adoption needs a practical path. Providers already have systems, operating proce
 
 Identity providers can authenticate people and workloads within organizations. Existing applications can expose operational capabilities. Agent runtimes can reason and use tools. Registries can support discovery. Payment and settlement services can move value. AP supplies common structures for meaning, authority, coordination and evidence across those components.
 
-An adapter should state what it can read, request, authorize, change, cancel and verify. Its limitations are part of the capability definition. A booking API that accepts a request asynchronously should not be represented as a confirmed reservation. A service that cannot reverse an action should not promise cancellation through a generic workflow.
+An adapter should state what it can read, request, authorize, change, cancel and verify. Its limitations are part of the capability definition. A host congregation's scheduling system that accepts a request asynchronously should not be represented as a confirmed placement. A service that cannot reverse an action should not promise cancellation through a generic workflow.
 
 The ecosystem builder remains responsible for selecting and operating integrations appropriate to its domain. A common substrate reduces repeated work; it does not remove the obligations of the participants or substitute for professional judgment.
 
@@ -299,7 +299,7 @@ Faith and community work remain the concrete starting context: a running estate 
 | Fitness | Carry an agreed goal and permitted progress context between a coach and facility. | Less repeated setup, clear access boundaries and continuity the participant finds useful. |
 | Faith | Coordinate a shared service effort between independently governed organizations. | Accepted commitments, authorized resource contributions, protected relationships and records each party can retain. |
 | Finance | Coordinate an approved payment between an organization's planning workflow and its treasury service. | The intended payee and amount are enforced, retries do not create duplicate payment, and the parties receive evidence of the result. |
-| Travel | Coordinate a permitted itinerary change across accommodation and transport providers. | Both providers' accepted changes, the traveller's approval where required, and an updated plan that exposes any unresolved dependency. |
+| Travel | Coordinate a missed-port change across the cruise line and an excursion operator. | Both providers' accepted changes, the traveller's approval where required, and an updated plan that exposes any unresolved dependency. |
 
 Across those proofs, measure time to onboard the next participant, effort to reuse a capability in another workflow, manual coordination required, completed outcomes, unauthorized actions refused, and the ability to change providers without losing entitled records.
 
@@ -329,7 +329,7 @@ The published implementation, critical review and readiness assessment provide m
 
 **Build an ecosystem where every participant expands what everyone can accomplish.**
 
-For healthcare, that means a care network that can carry responsibility across transitions. For fitness, progress that can continue across services. For faith, independent communities that can act together. For finance, goals connected to explicitly authorized action across providers. For travel, a journey providers can coordinate.
+For healthcare, that means a care network that can carry responsibility across transitions. For fitness, progress that can continue across services. For faith, independent communities that can act together. For finance, goals connected to explicitly authorized action across providers. For travel, a cruise experience its providers can coordinate.
 
 AP's opportunity is to give the builders of those ecosystems a shared foundation they can extend with domain expertise, participants and valuable experiences.
 
