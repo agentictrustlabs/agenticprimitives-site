@@ -53,7 +53,7 @@ export default function Thesis() {
           </div>
         }
       >
-        <Link href="/thesis/review" className="btn-brass">Read the case against it</Link>
+        <Link href="/thesis/review" className="btn-brass">Read the critical review</Link>
         <Link href="/what-is-agentic-primitives" className="btn-outline-light">What is Agentic Primitives?</Link>
       </PageHero>
 
@@ -157,7 +157,7 @@ export default function Thesis() {
         </div>
       </Section>
 
-      <CTA title="Argue with it. Someone already has." body="The strongest case against this page — every principle challenged, the sources, and the tests that would settle it — is published in full, unsoftened. Every claim here is exercised by a running estate and reported in an assessment that says where it does not yet hold." primary={{ href: '/thesis/review', label: 'The case against the substrate' }} secondary={{ href: '/audits', label: 'The assessment' }} />
+      <CTA title="Argue with it. We already have." body="The site’s own critical review judges each of these principles against the code and the deployments: four hold, four are overstated, one is wrong as stated, and three contradict each other in the target domain. It says what to focus on, what to refine, what to change and what to stop claiming." primary={{ href: '/thesis/review', label: 'The critical review' }} secondary={{ href: '/thesis/review/input', label: 'The outside critique, in full' }} />
     </>
   );
 }

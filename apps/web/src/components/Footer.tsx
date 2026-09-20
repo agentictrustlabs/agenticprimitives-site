@@ -23,7 +23,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-slate-300">
             <li><Link href="/what-is-agentic-primitives" className="hover:text-white">What is Agentic Primitives?</Link></li>
             <li><Link href="/thesis" className="hover:text-white">Thesis — against conventional wisdom</Link></li>
-            <li><Link href="/thesis/review" className="hover:text-white">The case against the substrate</Link></li>
+            <li><Link href="/thesis/review" className="hover:text-white">A critical review of the thesis</Link></li>
             <li><Link href="/about" className="hover:text-white">About</Link></li>
             <li><Link href="/platform" className="hover:text-white">Platform</Link></li>
             <li><Link href="/substrate" className="hover:text-white">Architecture</Link></li>

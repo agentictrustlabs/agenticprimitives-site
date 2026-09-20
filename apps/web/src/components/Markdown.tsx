@@ -30,6 +30,8 @@ function inline(text: string): ReactNode[] {
   return parts;
 }
 
+const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+
 export function Markdown({ source }: { source: string }) {
   const blocks = source.replace(/\r\n/g, '\n').split(/\n{2,}/);
   return (
@@ -39,8 +41,8 @@ export function Markdown({ source }: { source: string }) {
         if (!b) return null;
         if (b === '---') return <hr key={i} className="my-10 border-line" />;
         if (b.startsWith('# ')) return <h1 key={i} className="h1 !text-4xl md:!text-5xl">{inline(b.slice(2))}</h1>;
-        if (b.startsWith('## ')) return <h2 key={i} className="h2 mt-12 !text-2xl md:!text-3xl">{inline(b.slice(3))}</h2>;
-        if (b.startsWith('### ')) return <h3 key={i} className="h3 mt-8">{inline(b.slice(4))}</h3>;
+        if (b.startsWith('## ')) return <h2 key={i} id={slug(b.slice(3))} className="h2 mt-12 scroll-mt-24 !text-2xl md:!text-3xl">{inline(b.slice(3))}</h2>;
+        if (b.startsWith('### ')) return <h3 key={i} id={slug(b.slice(4))} className="h3 mt-8 scroll-mt-24">{inline(b.slice(4))}</h3>;
         if (b.startsWith('#### ')) return <h4 key={i} className="mt-6 text-base font-semibold text-navy">{inline(b.slice(5))}</h4>;
         if (b.startsWith('|')) {
           // GFM pipe table: header row, separator row, body rows. A header row of empty cells is a key/value ledger.
