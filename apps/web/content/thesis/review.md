@@ -156,6 +156,64 @@ What survives of the objection is narrower and still real. First, a private enfo
 
 **Enforcement at commit against effects the chain does not order.** Principle 6 promises verification "again at commit." For value that is literally true; for every other effect "commit" happens in an adapter. Resolution: say which effects are chain-ordered, and make the harness's receipt for the others name the adapter that committed and what it observed.
 
+## Two tensions, in depth
+
+The two remaining tensions are not flaws in the substrate's mechanisms. Each is a gap between what the thesis says and what the code does — in opposite directions. Both are worked through here against the source, because "define two ceremonies" and "name the adapter" are not resolutions until one can see what would have to be built.
+
+### Rotation doctrine against the custody epoch
+
+**The promise.** Principle 3: a key is a facet beneath the account; rotate it and nothing that named the account must be re-signed.
+
+**The contract.** A grant is validated at redemption by `AgentAccount.isValidSignature`, and there are three ways it can have been signed:
+
+| How the grant was signed | What redemption checks | When that credential is retired |
+| --- | --- | --- |
+| ECDSA by a custodian key | The recovered signer must be in the **current** custodian set | The grant dies the moment the key is removed |
+| A WebAuthn passkey | The passkey must be in the **current** registered set | Same |
+| An account-level approved hash | `isApproved(this, keccak(hash, custodyEpoch))` | `_bumpCustodyEpoch()` runs on every `removeCustodian` and `removePasskey`; every approval under the old epoch is void |
+
+The doctrine is false in all three paths: retiring any credential — ordinary rotation or compromise recovery — kills every grant that credential signed and every account-level approval made under the old epoch. Adding a credential does not bump the epoch, deliberately: "bumping on add would kill a person's standing wires every time she enrols a device."
+
+**Why it was built this way.** The September assessment closed a High: approved-hash delegations had survived custody recovery, so an attacker with a stolen key could plant an account-level approval that outlived the key's removal. The epoch is the fix, and spec 408 names its price: *removing a custodian voids the org's standing approved-hash wires; the Home re-approves them in the same ceremony. That is the invariant's price and it is the right price.*
+
+**Where the tension actually is.** Not in the contract, which is right. It is between the invariant and two other things. The thesis text promised survival; that is a wording error, now corrected. And the Home is supposed to make rotation *look like* survival by re-approving standing wires in the same ceremony — and does not. The Home batches `approveHash` at onboarding and organization creation; it has no passkey-replace or custodian-rotation ceremony for a person at all. Today, retiring a passkey is a bare contract call with no re-approval, so a person who replaces a device silently loses every standing grant.
+
+**What resolves it — no contract change.** Two ceremonies over one invariant:
+
+- **Rotation** (the old credential is still yours): one batch adds the new credential, retires the old, and re-approves every standing wire under the new epoch. The delegation's hash does not change, so the delegate holds the same object; the Home re-issues it with the account-level sentinel signature. From a counterparty's vantage point nothing happened. Grants that third parties hold as key-signed objects — a service's session wire — are re-issued to the delegate; the wires already live at the Home, so a wire-refresh pull is the missing protocol.
+- **Recovery** (a credential you no longer control): a guardian or trustee quorum retires it, the epoch bumps, and nothing is re-approved automatically. Every descendant of the compromised epoch is dead — the property one wants. The person re-issues grants from a reviewed list.
+- **Home-to-Home portability is a rotation.** Passkeys are scoped to a relying-party domain, so moving Homes means add-at-the-new-Home, retire-the-old, re-approve. Done as a bare removal, it is a recovery by accident.
+
+The one line still to be written down is the security boundary itself: a person's own standing wires are re-approved automatically on rotation and never on recovery.
+
+### Enforcement at commit against effects the chain does not order
+
+**The promise.** Principle 6: verified before the step, again after approval, and again at commit.
+
+**What commit is.** For a treasury payment the promise is literal: the mandate's enforcers run inside the transaction that moves value, and a harness that skipped its own checks still cannot pay outside the caveats. For everything else the harness executes through the `ToolInvoker` port, which returns an untyped value — a resolved value is treated as success — and the effect "commits" inside an adapter, on the receiving system's terms. A message, a vault write, an invitation, an A2A call, a provider's API: the chain ordered none of them, so the sequence is verify → invoke → the adapter does what it does → record. The window between the verification and the adapter's own commit is where a revocation can land and the effect still happens.
+
+**What the substrate already has, and does not claim.**
+
+| Mechanism | What it gives |
+| --- | --- |
+| Receiver-side re-verification (`admission/src/execution.ts`) | For in-estate effects — vault, messaging, another agent on the estate — the *receiver* verifies the grant again at the moment it executes. Two independent checks, one at each end; the receiver's is the one that counts. That is the off-chain analogue of enforcement at commit. |
+| `OutcomeClass` on every tool: `lookup` · `submission` · `authoritative` | Declared on the contract, never lowered by a plan; the reply may claim only what the evidence established. This is already the attempted / accepted / state-changed distinction the critique asked for. |
+| `operationId` in the execution binding | The stable logical operation identity — "a retry must locate this, never perform it again." The thing the nonce needs. |
+| `idempotencyKey` handed to the invoker | Retry safety, delegated to the receiving system's idempotency; the harness does not verify it. |
+| Declared `compensation` per tool | The off-chain unwind when a run fails after a tool executed — declared, never improvised. |
+| `irreversible: true` | Forces fresh authorization at any risk tier: the class of effect where the window matters most gets the strongest ceremony. |
+| `untrustedSeen` | After untrusted content, a self-authorized write parks as a proposal — a first information-flow rule. |
+| The durable-step rule: reconcile → verify → act, indivisible | Correct, and only partly implemented: reconcile exists for the ledger (reserve and finalize) and nowhere else. |
+
+**What is missing.** Four things, all small.
+
+1. **An invoker result contract.** The port should return what the adapter observed — attempted, accepted, committed, confirmed; a provider reference; a timestamp; evidence — and the receipt should carry it beside the output digest. "Verified again at commit" then becomes, for off-chain effects, "the receipt names which end committed it and what it saw," which is the honest form of the claim.
+2. **Reconcile per effect kind.** A message looks up the outbox by operation id before sending; a vault write checks the record version; an A2A call fetches the task; a payment reads the transaction. None exists.
+3. **The window, stated.** For in-estate effects it is sender-verify to receiver-verify, milliseconds, both against one chain read. For an external provider there is no second check; the window is verify-to-provider-latency, declared per tool, with `irreversible` forcing a fresh signature where it is unacceptable.
+4. **Effects classified by who orders them.** Chain-ordered: enforced at commit. Estate-ordered: verified at both ends. Externally ordered: verified once, receipted with the adapter's observation, compensated if declared. The thesis should carry this three-way split in place of "again at commit."
+
+**Bottom line.** On rotation the code is stricter than the doctrine and the Home has not built the ceremony that would make the doctrine true. On commit the code has more than the doctrine claims and lacks the one thing that would let it claim it honestly — the adapter's observation on the receipt.
+
 ## What this means for focus
 
 **Focus.** Person-centric domains with many small organizations and no incumbent intermediary: faith communities, mission work, mutual care, and eventually the regulation-driven portability domains. Here the person is the paying principal, records outlive any one organization, and the competitor is a vertical SaaS system of record whose bet is the organization's data, not the person's. This is the ground the substrate can hold and no one else is standing on.
