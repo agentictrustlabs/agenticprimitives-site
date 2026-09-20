@@ -47,7 +47,7 @@ export default function Review() {
             <p className="eyebrow-dark">A critical review of the thesis · 2026-09-20</p>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">Where the bet holds,<br />and where it is a bet.</h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
-              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. It starts from the question that decides everything — <em className="not-italic text-white">whose authority it is, and who bears the consequences</em> — takes the eleven principles one by one, says where each holds and where it is a bet, and ends with what a doubter is right about. Nothing here is softened.
+              The project’s own critical reading of its thesis, against the contracts, the packages and the running estate. It fixes the cast first — a person is an agent, with agents chartered under her, facing agents that belong to companies, apps and treasuries — then starts from the question that decides everything, <em className="not-italic text-white">whose authority it is, and who bears the consequences</em>, takes the eleven principles one by one, says where each holds and where it is a bet, and ends with what a doubter is right about. Nothing here is softened.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#the-trade-that-matters" className="btn-brass">The trade that matters</a>

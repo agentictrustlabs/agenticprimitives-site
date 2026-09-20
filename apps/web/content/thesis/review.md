@@ -1,12 +1,14 @@
 *This is the project's own critical reading of its thesis, written against the substrate's contracts, packages and the running estate. It is here because a thesis that cannot survive its own hardest questions is not worth a stranger's time, and because the people who doubt it are usually right about something. Where a claim does not hold, this page says so and says what would make it hold.*
 
-## Start with whose authority it is
+## Start with the cast, then with whose authority it is
+
+The thesis uses a vocabulary that has to be held steady or everything after it blurs. A **person is an agent** — a Person agent, `alice.me`, the root that can sign for her. A person has **other agents chartered under her** for the worlds she moves in: a community agent, a fitness agent, a travel agent, a character in a game. Each is a software agent that belongs to her and acts only under a grant she signed; none of them is her. Across from them are agents that belong to someone else: an **Organization agent** with members, a **Workspace agent** that is an app's own face, a **Treasury** that is a service agent chartered under whoever's money it holds. Alice can be a *member* of an organization, which authorizes nothing; she can separately be one of its *custodians*, which is a different thing; and she can hold a *delegation* from it, which is a third. When her travel agent books a hotel, it acts under her grant; when it pays, her treasury pays the hotel's treasury under a mandate she signed. Every "person" below means that whole cast, and every "act" means one of her agents acting under her authority against an agent that belongs to someone else.
 
 The thesis is easy to misread as an argument against identity providers. It is not, and the first thing a critical reading has to do is put the real question in front of the rhetorical one: **whose authority is being exercised, and who bears the consequences when it is wrong?** There are three honest answers, and every claim the thesis makes holds or fails depending on which one a domain actually has.
 
 | | Tenant | Federation | Substrate |
 | --- | --- | --- | --- |
-| Who is the root | The organization's identity provider | Each organization's provider, recognizing selected others; an intermediary for what crosses — a payment network, a vertical system of record | The principal's own account; a chain no single party in the domain operates |
+| Who is the root | The organization's identity provider | Each organization's provider, recognizing selected others; an intermediary for what crosses — a payment network, a vertical system of record | The person's own account, with her chartered agents under it; a chain no single party in the domain operates |
 | What authority looks like | Roles, scopes, rich authorization details set by the tenant | Tenant policy plus issuer trust, plus the intermediary's rules | A signed, caveated, revocable grant the principal issued; a mandate per consequential act |
 | Where it is checked | Inside the tenant's services | At each resource owner, and at the intermediary | Per step in the harness; at commit on chain for value; at admission by every resource owner |
 | Who holds the evidence | The tenant's logs | Each party's logs; the intermediary's records | The owner's vault; digests anchored on chain |
@@ -64,7 +66,7 @@ The claim: every principal is an ERC-4337 account that verifies signatures about
 
 This is the substrate's firmest ground, and the reason is structural: an ERC-7710 delegation needs a delegator that a stranger can check at redemption, and a pointer — a DID document, a registry id, an NFT — cannot be that. The account is not a better identifier; it is the only kind that can be a principal in an enforced grant.
 
-Two honest costs. Every principal needs an account, a custody policy and a paymaster; for a congregation member who will never transact on chain, that is overhead paid for a property she may never use. Counterfactual accounts defer it; they do not remove it. And an account persists while its model, operator and playbook change. The substrate handles this correctly — every receipt cites the behaviour definition's digest, and a counterparty keys trust on the principal and the behaviour together — but it is a rule a reader has to be told, and the thesis now tells it.
+Two honest costs. Every principal needs an account, a custody policy and a paymaster — the person, and each agent chartered under her, and each treasury; for a congregation member who will never transact on chain, that is overhead paid for a property she may never use. Counterfactual accounts defer it; they do not remove it. And an account persists while its model, operator and playbook change. The substrate handles this correctly — every receipt cites the behaviour definition's digest, and a counterparty keys trust on the principal and the behaviour together — but it is a rule a reader has to be told, and the thesis now tells it.
 
 ### 3. Rotation and recovery
 
