@@ -13,7 +13,7 @@ export interface Writing {
   linkedin?: string;
 }
 
-/** Standalone essay, then the 21-day "The missing layer" series. Full text lives on this site. */
+/** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
     slug: 'rails-not-throttles',
@@ -24,6 +24,15 @@ export const WRITING: readonly Writing[] = [
     date: '2026-09-14',
     file: 'rails-not-throttles.md',
     linkedin: 'https://www.linkedin.com/pulse/rails-throttles-ai-model-we-need-change-isnt-llm-richard-pedersen-5tyvc',
+  },
+  {
+    slug: 'one-description-of-the-world',
+    title: 'One Description of the World: How an Ontology Becomes a Rail',
+    description:
+      'The ontology strategy behind Agentic Primitives: one formal description of the domain that every layer binds to by IRI, that never authorizes anything, and that the skills registry compiles into every agent, card, playbook and receipt.',
+    kind: 'essay',
+    date: '2026-09-20',
+    file: 'one-description-of-the-world.md',
   },
   {
     slug: 'the-missing-layer',

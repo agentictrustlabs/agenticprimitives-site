@@ -145,7 +145,7 @@ export default function Ontology() {
         secondary={{ href: 'https://skills.faithnet.io', label: 'skills.faithnet.io' }}
       />
       <div className="container-x pb-16 text-sm text-slate-500">
-        <Link href="/build" className="hover:text-white">Build guide →</Link> · <a href={SITE.github} className="hover:text-white">packages/ontology in the repository →</a>
+        <Link href="/writing/one-description-of-the-world" className="hover:text-white">The essay: how an ontology becomes a rail →</Link> · <Link href="/build" className="hover:text-white">Build guide →</Link> · <a href={SITE.github} className="hover:text-white">packages/ontology in the repository →</a>
       </div>
     </>
   );

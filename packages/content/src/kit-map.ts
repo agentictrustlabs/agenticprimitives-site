@@ -13,6 +13,7 @@ const demo = (label: string, id: string): KitRef => ({ label, href: `/demos#${id
 
 /** Keyed by series slug. */
 export const KIT_MAP: Readonly<Record<string, readonly KitRef[]>> = {
+  'one-description-of-the-world': [pkg('ontology'), pkg('capability-claims'), page('One ontology, every layer', '/ontology'), page('Ontology namespaces', '/ns'), doc('Ontology modeling skill', 'skills/agenticprimitives-ontology-modeling/SKILL.md'), doc('Faith solution skill', 'skills/agenticprimitives-faith-solution/SKILL.md'), demo('Skills registry — playbooks by digest', 'skills')],
   'the-missing-layer': [page('The substrate, layer by layer', '/substrate'), page('Versus the alternatives', '/compare'), doc('Principles', 'docs/principles.md'), demo('Run every app on it', 'home')],
   'identity-that-signs': [pkg('agent-account'), pkg('account-custody'), contract('AgentAccount (ERC-4337, ERC-1271)'), doc('Principle 1 — the address is the identity', 'docs/principles.md#1-the-address-is-the-identity-the-name-is-a-facet'), demo('Sign in at the Home', 'home')],
   projections: [pkg('agent-naming'), pkg('agent-profile'), pkg('registry-kit'), pkg('registry-resolution'), contract('AgentNameRegistry · AgentProfileResolver')],
