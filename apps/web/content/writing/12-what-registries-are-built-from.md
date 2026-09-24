@@ -2,6 +2,22 @@
 
 There will be hundreds of agent registries, most of them vertical, and no horizontal winner. So we do not build a registry. We build the kit registries are built from.
 
+## The important transition
+
+The important transition is not simply:
+
+Website → Chatbot
+
+It is:
+
+- Navigation → Intent
+- Search → Delegation
+- Information retrieval → Authorized action
+- Application workflows → Agent coordination
+- Generated answers → Evidence-backed outcomes
+
+A registry built from the kit is how you find who can be asked; the substrate is how the ask becomes a delegated, authorized, receipted act — not another chatbot glued to a search box.
+
 ## Day 12 of 21 · The missing layer
 
 Healthcare will not list its agents where DeFi lists theirs. A denomination will not use a logistics consortium's admission rules. Every attempt to be *the* registry is an attempt to be the root — and Week 1 argued the root is the agent's own account.
