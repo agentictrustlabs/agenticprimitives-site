@@ -9,7 +9,7 @@ import { PageHero } from '@/components/PageHero';
 export const metadata: Metadata = pageMeta({
   title: 'Demos — ten live apps, one substrate',
   description:
-    'Run Agentic Primitives live: the Home, Claude connectors, Game Night, Gather27, Field, Verifiable Scripture, Bible Explorer, Source Publishing and the skills registry — each with a script and what it proves.',
+    'Run Agentic Primitives live: the Home, Claude connectors, Game Night, Gather27, Field Operations, Verifiable Scripture, Bible Explorer, Source Publishing and the skills registry — each with a script and what it proves.',
   path: '/demos',
 });
 
