@@ -195,6 +195,39 @@ export const DEMOS: readonly Demo[] = [
     minutes: 5,
   },
   {
+    id: 'explorer',
+    name: 'Bible Explorer',
+    kind: 'PROV-O graph — people, places, trust',
+    line: 'Explore the Bible as a living graph of people, places, events, and the verses behind them.',
+    blurb:
+      'explorer.faithnet.io is the ontology surface of the verifiable-content stack: ~6,300 entities across 66 books, geolocated places, timelines, oikos rings, generations, and a trust graph with character signals. Browse the graph free; licensed verse reads (LBSB) are entitlement-gated via your Home. Validate GCO checks the Global Church Ontology against the same corpus the verse lookup uses.',
+    links: [
+      { href: 'https://explorer.faithnet.io/', label: 'explorer.faithnet.io' },
+      { href: 'https://bible.faithnet.io/', label: 'Verifiable Scripture', note: 'same substrate — verse path' },
+      { href: 'https://github.com/rpedersen3/verifiable-content-demo', label: 'Source' },
+    ],
+    proves: [
+      'Entity identity is a canonical graph node — names collide; the id does not',
+      'Map, timeline, oikos and trust views are projections of one ontology, not separate databases',
+      'Graph browse is free; verse disclosure still runs the gated, accountable path',
+    ],
+    sampleQuery: 'Jesus',
+    shot: {
+      src: '/shots/bible-explorer-home.jpg',
+      alt: 'Bible Explorer home — search people, places, events; Map, Timeline, Oikos, Generations, Trust Graph',
+      caption: 'explorer.faithnet.io — 6,376 entities · 1,758 places · 66 books',
+      width: 1024,
+      height: 891,
+    },
+    script: [
+      { do: 'Open explorer.faithnet.io; search “Jesus” (or Jerusalem, Exodus).', expect: 'Entity cards resolve to canonical people/places/events — not a bare string match.' },
+      { do: 'Open Map; pan to a region and play time if offered.', expect: 'Geolocated places with activities; the graph, not a static atlas.' },
+      { do: 'Open Oikos or Generations on a featured person (Paul, Abraham).', expect: 'Relationship rings / descent — household and discipleship as modelled edges.' },
+      { do: 'Open Graph / Trust Graph; optionally Validate GCO.', expect: 'Character and attestation signals on entities; GCO validation against the living ontology.' },
+    ],
+    minutes: 5,
+  },
+  {
     id: 'skills',
     name: 'Skills registry',
     kind: 'Playbooks and ontology, by digest',

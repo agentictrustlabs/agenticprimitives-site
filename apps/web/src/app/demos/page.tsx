@@ -7,9 +7,9 @@ import { Callout, CTA, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Demos — eight live apps, one substrate',
+  title: 'Demos — nine live apps, one substrate',
   description:
-    'Run Agentic Primitives live: the Home, your agent inside Claude, registry→Ligonier, Game Night, Gather27, Field, Verifiable Scripture and the skills registry — each with a script and what it proves.',
+    'Run Agentic Primitives live: the Home, Claude connectors, Game Night, Gather27, Field, Verifiable Scripture, Bible Explorer and the skills registry — each with a script and what it proves.',
   path: '/demos',
 });
 
@@ -32,7 +32,7 @@ export default function Demos() {
       />
       <PageHero
         eyebrow="Demos"
-        title={<>One substrate.<br />Eight apps you can run right now.</>}
+        title={<>One substrate.<br />Nine apps you can run right now.</>}
         lede="Every app here is a relying app of the same Home: it signs people in through faithnet.me, never holds a key, and every act it performs is a grant the person signed. Pick one, sign in as a demo person, follow the script. The whole tour is about half an hour."
         aside={
           <nav className="grid gap-2 text-sm" aria-label="Demos">
