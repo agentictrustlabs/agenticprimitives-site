@@ -120,6 +120,30 @@ export const DEMOS: readonly Demo[] = [
     minutes: 4,
   },
   {
+    id: 'bible',
+    name: 'Verifiable Scripture',
+    kind: 'Verse lookup — content you can prove',
+    line: 'The model never quotes the verse. A tool retrieves it; a third party can re-check the claim.',
+    blurb:
+      'bible.faithnet.io is a scripture lookup built on published @agenticprimitives content packages. Resolve a reference to a stable canonical locus, retrieve gated text under policy, get a signed CitationAssertion bound to the commitment and run, then hand an EvidenceBundle to an independent validator — optional Groth16 membership against the issuer’s Merkle corpus. Quotation fidelity is the floor; verifiable provenance is the point.',
+    links: [
+      { href: 'https://bible.faithnet.io/', label: 'bible.faithnet.io' },
+      { href: 'https://github.com/rpedersen3/verifiable-content-demo', label: 'Source' },
+    ],
+    proves: [
+      'Verse text is tool-retrieved under policy, never model-emitted',
+      'A citation binds canonicalId, commitment, issuer, and run — not a bare string',
+      'An independent validator (and optional ZK membership) re-checks without trusting the app',
+    ],
+    script: [
+      { do: 'Open bible.faithnet.io; look up a familiar verse (e.g. John 3:16) in an edition.', expect: 'The passage renders with a provenance card: canonical locus id, issuer, content commitment, verified against the corpus root.' },
+      { do: 'Inspect candidates / aliases for the same locus.', expect: 'Different surface forms (abbreviations, versifications) resolve to one canonicalId — name collision is not identity.' },
+      { do: 'Ask or cite through the agent path; open Validate on the evidence.', expect: 'An EvidenceBundle: signed CitationAssertion + descriptor + commitment. The third-party validator returns validated / gated / rejected — not “trust the chat.”' },
+      { do: 'If shown, check the ZK membership proof.', expect: 'Proof that the commitment is in the issuer’s Merkle corpus without revealing which leaf — licensed text stays gated.' },
+    ],
+    minutes: 5,
+  },
+  {
     id: 'skills',
     name: 'Skills registry',
     kind: 'Playbooks and ontology, by digest',

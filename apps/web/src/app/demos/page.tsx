@@ -7,9 +7,9 @@ import { Callout, CTA, Section, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Demos — six live apps, one substrate',
+  title: 'Demos — seven live apps, one substrate',
   description:
-    'Run Agentic Primitives live: the Home, your agent inside Claude, Game Night, Gather27, Field and the skills registry — each with a script and what it proves.',
+    'Run Agentic Primitives live: the Home, your agent inside Claude, Game Night, Gather27, Field, Verifiable Scripture and the skills registry — each with a script and what it proves.',
   path: '/demos',
 });
 
@@ -28,7 +28,7 @@ export default function Demos() {
       />
       <PageHero
         eyebrow="Demos"
-        title={<>One substrate.<br />Six apps you can run right now.</>}
+        title={<>One substrate.<br />Seven apps you can run right now.</>}
         lede="Every app here is a relying app of the same Home: it signs people in through faithnet.me, never holds a key, and every act it performs is a grant the person signed. Pick one, sign in as a demo person, follow the script. The whole tour is about half an hour."
         aside={
           <nav className="grid gap-2 text-sm" aria-label="Demos">
@@ -128,7 +128,7 @@ export default function Demos() {
         </Section>
       ))}
 
-      <Section tone="cream" number="07" eyebrow="If something refuses" title="Most refusals are ceremonies, not bugs.">
+      <Section tone="cream" number="08" eyebrow="If something refuses" title="Most refusals are ceremonies, not bugs.">
         <Callout tone="navy">
           <strong>authority_required</strong> means the act needs a signature the person has not given — follow the grant link to the Home and sign. <strong>member, not a steward</strong> means the person belongs to the organization but may not speak for it. A refusal after a revoke is the point: nothing was cached. The <Link href="/build/gates" className="underline">gates page</Link> lists every gate and who holds it.
         </Callout>
