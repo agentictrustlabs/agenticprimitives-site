@@ -98,7 +98,7 @@ export default function WhatIs() {
         </div>
       </Section>
 
-      <CTA title="Read the argument, then run it." body="Twenty-one days, one idea each, and seven live apps that exercise every layer." primary={{ href: '/writing', label: 'The missing layer — the series' }} secondary={{ href: '/demos', label: 'Demos' }} />
+      <CTA title="Read the argument, then run it." body="Twenty-one days, one idea each, and eight live apps that exercise every layer." primary={{ href: '/writing', label: 'The missing layer — the series' }} secondary={{ href: '/demos', label: 'Demos' }} />
     </>
   );
 }

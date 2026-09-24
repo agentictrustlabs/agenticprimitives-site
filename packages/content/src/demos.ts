@@ -4,6 +4,7 @@
 
 export interface DemoLink { href: string; label: string; note?: string }
 export interface DemoStep { do: string; expect: string }
+export interface DemoShot { src: string; alt: string; caption: string; width?: number; height?: number }
 export interface Demo {
   id: string;
   name: string;
@@ -13,11 +14,25 @@ export interface Demo {
   links: readonly DemoLink[];
   proves: readonly string[];
   script: readonly DemoStep[];
+  /** Paste-ready prompt shown on the demos page when present. */
+  sampleQuery?: string;
+  /** Claude → Settings → Connectors steps (Home MCP demos). */
+  connect?: readonly string[];
+  shot?: DemoShot;
   signInAs?: string;
   minutes: number;
 }
 
 export const HOME_MCP_CONNECTOR = 'https://home-mcp.faithnet.io/mcp';
+
+export const HOME_MCP_CONNECT_STEPS = [
+  'In Claude, open Settings → Connectors.',
+  'Choose Add custom connector.',
+  'Name it (e.g. My Home agent) and paste the connector address below.',
+  'Click Add, then Connect — your browser opens faithnet.me.',
+  'Sign in and approve ask-as-me for this connector only.',
+  'Back in Claude, open a new chat; turn the connector on under Search and tools.',
+] as const;
 
 export const DEMOS: readonly Demo[] = [
   {
@@ -55,6 +70,42 @@ export const DEMOS: readonly Demo[] = [
       { do: 'Ask: “Find an agent that can help with a study on justification.”', expect: 'Your agent searches the estate’s discovery tier and returns candidate agents — the Ligonier catalog service among them — with what each one can do and the evidence for it. Nothing has been asked of them yet.' },
       { do: 'Ask the Ligonier catalog the same question through your agent.', expect: 'The catalog answers with titles, teachers and topics (240 items under 236 topics). Your agent reports what it read and from which tier; the run leaves a receipt in your vault.' },
       { do: 'Ask for something that would change a record — “invite Bob to Missio Nexus.”', expect: 'authority_required, and a grant_link to your Home. Claude cannot sign for you.' },
+    ],
+    signInAs: 'alice',
+    minutes: 5,
+  },
+  {
+    id: 'home-mcp2',
+    name: 'Registry → Ligonier in Claude',
+    kind: 'Home MCP · discovery + A2A content',
+    line: 'Search the ADR registry through your agent, then ask Ligonier (or a publisher) over A2A — inside Claude.',
+    blurb:
+      'The same Home MCP connector as “Your agent, inside Claude,” exercised on the content path: discover_agents searches the estate’s ADR / discovery registry; engage sends your words as you to the returned agent’s A2A endpoint. Works for ligonier.svc catalog asks and other publisher agents the registry lists. Claude never holds your keys — it holds a revocable ask-as-me delegate; the hop and the answer are your agent’s record.',
+    links: [
+      { href: HOME_MCP_CONNECTOR, label: 'Connector address', note: 'Claude → Settings → Connectors → Add custom connector' },
+      { href: 'https://claude.ai/chat/8377ba9f-f9c0-44a3-bb64-1def58db4e2a', label: 'Example chat', note: 'grace / works query via Ligonier' },
+      { href: 'https://faithnet.me', label: 'Sign the ask-as-me grant at your Home' },
+    ],
+    proves: [
+      'Discovery is a registry search through your agent — candidates with evidence, not a vendor score',
+      'Engage is A2A: Ligonier (or another publisher) answers from its own catalog under its own playbook',
+      'Claude shows the tool hop (“Searched Ligonier resources”); the receipt lands in your vault',
+    ],
+    sampleQuery:
+      'If salvation is by grace alone, what role do good works play in a Christian\'s life—and how can someone distinguish growing in faith from trying to earn God\'s acceptance?',
+    connect: HOME_MCP_CONNECT_STEPS,
+    shot: {
+      src: '/shots/home-mcp-ligonier-claude.jpg',
+      alt: 'Claude using the Home MCP connector — Searched Ligonier resources, then answered a grace-and-works question from Ligonier’s teaching',
+      caption: 'claude.ai — connector on; registry hop → Ligonier A2A; answer cites the publisher, not the model’s memory alone',
+      width: 1024,
+      height: 539,
+    },
+    script: [
+      { do: 'Connect the Home MCP (steps below). In a new chat, turn My Home agent on under Search and tools.', expect: 'The connector shows as connected; tools are available for this chat.' },
+      { do: 'Paste the sample query (grace alone / good works).', expect: 'Claude calls the connector — you see a hop like “Searched Ligonier resources.” The answer is grounded in Ligonier’s catalog/teaching, with scripture and doctrine named as theirs.' },
+      { do: 'Or step it: “Find agents that offer study plans about justification.” Then engage ligonier.svc with the same theological ask.', expect: 'Registry candidates first (ADR discovery); then Ligonier’s own A2A reply — titles, teachers, topics — presented as that agent’s answer.' },
+      { do: 'Ask: “What have I asked my agent for recently?”', expect: 'The run appears under your agent’s name (e.g. alice.me), with a vault receipt for the hop.' },
     ],
     signInAs: 'alice',
     minutes: 5,
