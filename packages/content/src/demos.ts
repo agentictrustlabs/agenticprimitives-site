@@ -19,6 +19,8 @@ export interface Demo {
   /** Claude → Settings → Connectors steps (Home MCP demos). */
   connect?: readonly string[];
   shot?: DemoShot;
+  /** Extra shots (rendered after `shot` when both are set). */
+  shots?: readonly DemoShot[];
   signInAs?: string;
   minutes: number;
 }
@@ -225,6 +227,48 @@ export const DEMOS: readonly Demo[] = [
       { do: 'Open Oikos or Generations on a featured person (Paul, Abraham).', expect: 'Relationship rings / descent — household and discipleship as modelled edges.' },
       { do: 'Open Graph / Trust Graph; optionally Validate GCO.', expect: 'Character and attestation signals on entities; GCO validation against the living ontology.' },
     ],
+    minutes: 5,
+  },
+  {
+    id: 'publishing',
+    name: 'Source Publishing',
+    kind: 'Publish your own sources — signed, block-hashed',
+    line: 'A person publishes into their Home library; the public listing carries on-chain provenance a reader can verify.',
+    blurb:
+      'publishing.faithnet.io is the people-as-publishers path on the same content-primitives substrate as Verifiable Scripture. Sign in at the Home, author a work (title, structure, articles), accept the listing agreement, and publish: Home mints and signs a release; each article is a Merkle of content blocks. The public page shows Signed ✓ verified on chain — not “trust the host.” Demo works (e.g. AP3) ship Free + CC BY with proof details open.',
+    links: [
+      { href: 'https://publishing.faithnet.io/@rich-google2-me/ap3', label: 'Example: AP3', note: 'signed listing · 8 articles' },
+      { href: 'https://publishing.faithnet.io/publish', label: 'Publish', note: 'step 1 of the ceremony' },
+      { href: 'https://publishing.faithnet.io/', label: 'publishing.faithnet.io' },
+    ],
+    proves: [
+      'The person (or their agent) signs the release — the site never holds the author’s key',
+      'Each article is block-committed; the listing verifies the whole run matches',
+      'License + agreement ride with the release (e.g. CC BY 4.0) — attribution is evidence, not a footer guess',
+    ],
+    shot: {
+      src: '/shots/source-publishing-ap3.jpg',
+      alt: 'Source Publishing — AP3 listing with Signed ✓ verified on chain and per-article block hashes',
+      caption: 'publishing.faithnet.io/@rich-google2-me/ap3 — Signed ✓ on chain 34348 · 8 articles match',
+      width: 1024,
+      height: 816,
+    },
+    shots: [
+      {
+        src: '/shots/source-publishing-publish.jpg',
+        alt: 'Source Publishing — Publish step 1: title, type, structure, language, authors',
+        caption: 'Publish · step 1 of 6 — nothing leaves the browser until you sign',
+        width: 1024,
+        height: 850,
+      },
+    ],
+    script: [
+      { do: 'Open the AP3 example listing.', expect: 'Provenance sidebar: Signed ✓ verified on chain; each article lists block count + commitment hash.' },
+      { do: 'Expand Show proof details if offered.', expect: 'Signer, release, agreement digest — re-checkable, not a trust-me badge.' },
+      { do: 'Open Publish; sign in as a demo person; start a work (title + structure).', expect: 'Multi-step ceremony; listing address under your handle. Text stays local until the sign step.' },
+      { do: 'Finish publish (or open Studio on an existing work).', expect: 'Public page under /@you/slug with the same provenance card pattern as AP3.' },
+    ],
+    signInAs: 'alice',
     minutes: 5,
   },
   {

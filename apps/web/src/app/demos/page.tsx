@@ -7,9 +7,9 @@ import { Callout, CTA, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Demos — nine live apps, one substrate',
+  title: 'Demos — ten live apps, one substrate',
   description:
-    'Run Agentic Primitives live: the Home, Claude connectors, Game Night, Gather27, Field, Verifiable Scripture, Bible Explorer and the skills registry — each with a script and what it proves.',
+    'Run Agentic Primitives live: the Home, Claude connectors, Game Night, Gather27, Field, Verifiable Scripture, Bible Explorer, Source Publishing and the skills registry — each with a script and what it proves.',
   path: '/demos',
 });
 
@@ -32,7 +32,7 @@ export default function Demos() {
       />
       <PageHero
         eyebrow="Demos"
-        title={<>One substrate.<br />Nine apps you can run right now.</>}
+        title={<>One substrate.<br />Ten apps you can run right now.</>}
         lede="Every app here is a relying app of the same Home: it signs people in through faithnet.me, never holds a key, and every act it performs is a grant the person signed. Pick one, sign in as a demo person, follow the script. The whole tour is about half an hour."
         aside={
           <nav className="grid gap-2 text-sm" aria-label="Demos">
@@ -128,16 +128,17 @@ export default function Demos() {
               </div>
             </div>
             <div className="space-y-6">
-              {d.shot && (
+              {[...(d.shot ? [d.shot] : []), ...(d.shots ?? [])].map((s) => (
                 <Shot
+                  key={s.src}
                   dark={i % 2 !== 0}
-                  src={d.shot.src}
-                  alt={d.shot.alt}
-                  caption={d.shot.caption}
-                  width={d.shot.width}
-                  height={d.shot.height}
+                  src={s.src}
+                  alt={s.alt}
+                  caption={s.caption}
+                  width={s.width}
+                  height={s.height}
                 />
-              )}
+              ))}
               <div className={`rounded-xl border p-6 ${i % 2 === 0 ? 'border-line bg-cream' : 'border-white/10 bg-white/[0.03]'}`}>
                 <div className="flex items-center justify-between">
                   <span className={`eyebrow${i % 2 === 0 ? '' : '-dark'}`}>The script</span>
