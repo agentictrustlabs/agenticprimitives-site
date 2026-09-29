@@ -35,6 +35,33 @@ export const WRITING: readonly Writing[] = [
     file: 'one-description-of-the-world.md',
   },
   {
+    slug: 'agent-ask-harness',
+    title: 'The Ask at a person’s agent: from the words to the receipt',
+    description:
+      'One conversational ask at a person’s agent, followed through the harness in the order it runs — admitted, given its playbook, grounded and judged, planned around a skill, admitted as a plan, gated by authority step by step, executed, reconciled, receipted — with nine real asks walked in full.',
+    kind: 'essay',
+    date: '2026-09-29',
+    file: 'agent-ask-harness.md',
+  },
+  {
+    slug: 'heartcoach-ask-harness',
+    title: 'HeartCoach Ask: an app-side harness, step by step',
+    description:
+      'How a cardiac coaching app turns an Ask into a consultation inside its own Worker — the two doors, the twelve steps, the ontology-driven gates for a care team — and six walked Asks from a patient and her cardiologist. The shortcut the next essay proposes to leave.',
+    kind: 'essay',
+    date: '2026-09-29',
+    file: 'heartcoach-ask-harness.md',
+  },
+  {
+    slug: 'coach-through-the-harness',
+    title: 'Proposal: run the coach through the harness',
+    description:
+      'Move HeartCoach from an app-side harness under the patient’s session to the shape its archetypes describe: the patient’s agent asks, the coach service answers under a grant she signed, every act is a receipted step at her Home. The four missing pieces, the costs, four waves.',
+    kind: 'essay',
+    date: '2026-09-29',
+    file: 'coach-through-the-harness.md',
+  },
+  {
     slug: 'the-missing-layer',
     title: 'The agentic web has a missing layer — and it isn’t discovery',
     description: 'Day 1 of 21. Identity, authority and evidence are substrate problems. A card format or a faster index cannot fix them.',

@@ -40,13 +40,24 @@ export function Markdown({ source }: { source: string }) {
         const b = raw.trim();
         if (!b) return null;
         if (b === '---') return <hr key={i} className="my-10 border-line" />;
+        if (b.startsWith('```')) {
+          // A fenced block: the fence lines are dropped, the body is shown as it was written.
+          const lines = b.split('\n');
+          const code = lines.slice(1, lines[lines.length - 1]!.trim() === '```' ? -1 : undefined).join('\n');
+          return (
+            <pre key={i} className="my-6 overflow-x-auto rounded-lg border border-line bg-cream px-4 py-3 font-mono text-[13px] leading-relaxed text-slate-700">
+              <code>{code}</code>
+            </pre>
+          );
+        }
         if (b.startsWith('# ')) return <h1 key={i} className="h1 !text-4xl md:!text-5xl">{inline(b.slice(2))}</h1>;
         if (b.startsWith('## ')) return <h2 key={i} id={slug(b.slice(3))} className="h2 mt-12 scroll-mt-24 !text-2xl md:!text-3xl">{inline(b.slice(3))}</h2>;
         if (b.startsWith('### ')) return <h3 key={i} id={slug(b.slice(4))} className="h3 mt-8 scroll-mt-24">{inline(b.slice(4))}</h3>;
         if (b.startsWith('#### ')) return <h4 key={i} className="mt-6 text-base font-semibold text-navy">{inline(b.slice(5))}</h4>;
         if (b.startsWith('|')) {
           // GFM pipe table: header row, separator row, body rows. A header row of empty cells is a key/value ledger.
-          const rows = b.split('\n').filter((l) => l.trim().startsWith('|')).map((l) => l.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim()));
+          // `\|` inside a cell is a literal pipe, not a column break.
+          const rows = b.split('\n').filter((l) => l.trim().startsWith('|')).map((l) => l.trim().replace(/^\||\|$/g, '').replace(/\\\|/g, '\u0000').split('|').map((c) => c.trim().replace(/\u0000/g, '|')));
           const [head, sep, ...body] = rows;
           if (!head || !sep || !sep.every((c) => /^:?-{2,}:?$/.test(c))) {
             return <p key={i} className="my-4 text-[17px] leading-relaxed text-slate-700">{inline(b.replace(/\n/g, ' '))}</p>;
