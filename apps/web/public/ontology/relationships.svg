@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-label="Four relationships">
+  <rect width="100%" height="100%" fill="#f6f3ec"/>
+  <text x="24" y="28" font-family="Georgia, serif" font-size="15" fill="#1b3a4b">Four relationships</text>
+  
+  
+  <g>
+    <rect x="40" y="70" width="240" height="70" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="40" y1="92" x2="280" y2="92" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="160" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Membership</text>
+    <text x="160" y="104" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">belonging</text>
+  </g>
+  <text x="160" y="175" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Host: organization, team,</text>
+  <text x="160" y="192" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">or workspace agent</text>
+  <text x="160" y="214" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Record: org.membership</text>
+
+  
+  <g>
+    <rect x="300" y="70" width="240" height="70" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="300" y1="92" x2="540" y2="92" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="420" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Stewardship</text>
+    <text x="420" y="104" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">oversight</text>
+  </g>
+  <text x="420" y="175" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Host: the same agents</text>
+  <text x="420" y="192" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Need not be a member</text>
+  <text x="420" y="214" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Record: the oversight wire</text>
+
+  
+  <g>
+    <rect x="560" y="70" width="240" height="70" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="560" y1="92" x2="800" y2="92" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="680" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Role</text>
+    <text x="680" y="104" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">a name on belonging</text>
+  </g>
+  <text x="680" y="175" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Hangs on the membership</text>
+  <text x="680" y="192" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Ends when belonging ends</text>
+  <text x="680" y="214" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Authority is the delegation</text>
+
+  
+  <g>
+    <rect x="820" y="70" width="240" height="70" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="820" y1="92" x2="1060" y2="92" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="940" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Discussion</text>
+    <text x="940" y="104" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">not a membership</text>
+  </g>
+  <text x="940" y="175" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Host: a topic, not an agent</text>
+  <text x="940" y="192" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Open: derived from members</text>
+  <text x="940" y="214" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Restricted: an invitation</text>
+
+  
+  <g>
+    <rect x="80" y="280" width="420" height="180" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="80" y1="302" x2="500" y2="302" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="290" y="298" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Home derives standing</text>
+    <text x="290" y="314" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">read, never typed in</text>
+  </g>
+  <text x="290" y="330" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">self — she is the agent</text>
+  <text x="290" y="354" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">steward — verified oversight wire</text>
+  <text x="290" y="378" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">member — a membership record</text>
+  <text x="290" y="402" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">none — neither</text>
+  <text x="290" y="434" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">The card room calls steward or self “host”.</text>
+
+  
+  <g>
+    <rect x="560" y="280" width="480" height="180" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="560" y1="302" x2="1040" y2="302" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="800" y="298" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">What each app stores</text>
+    <text x="800" y="314" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">Home is the record</text>
+  </g>
+  <text x="800" y="330" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Home writes the membership and the wire.</text>
+  <text x="800" y="354" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">The card room stores only the club’s wire.</text>
+  <text x="800" y="378" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Field’s roster row points at those records.</text>
+  <text x="800" y="402" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">A field title “steward” is not the wire.</text>
+  <text x="800" y="434" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">An open topic stores no participant list.</text>
+
+</svg>

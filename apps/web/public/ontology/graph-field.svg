@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-label="Trust graph centered on field.org">
+  <rect width="100%" height="100%" fill="#f6f3ec"/>
+  <text x="24" y="28" font-family="Georgia, serif" font-size="15" fill="#1b3a4b">Trust graph centered on field.org</text>
+  
+  
+  <g>
+    <rect x="330" y="160" width="200" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="330" y1="182" x2="530" y2="182" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="430" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">field.org</text>
+    <text x="430" y="194" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">center</text>
+  </g>
+  
+  <g>
+    <rect x="40" y="60" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    
+    <text x="110" y="84" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Ada</text>
+    
+  </g>
+  
+  <g>
+    <rect x="40" y="180" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    
+    <text x="110" y="204" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Ben</text>
+    
+  </g>
+  
+  <g>
+    <rect x="40" y="300" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    
+    <text x="110" y="324" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Cora</text>
+    
+  </g>
+  
+  <g>
+    <rect x="620" y="160" width="200" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="620" y1="182" x2="820" y2="182" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="720" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">corridor.workspace</text>
+    <text x="720" y="194" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">chartered under</text>
+  </g>
+  
+  <defs><marker id="a18080330170" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="180" y1="80" x2="330" y2="170" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a18080330170)"/>
+  <text x="255" y="121" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
+  
+  <defs><marker id="a180200330186" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="180" y1="200" x2="330" y2="186" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a180200330186)"/>
+  <text x="255" y="189" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
+  
+  <defs><marker id="a180320330200" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="180" y1="320" x2="330" y2="200" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a180320330200)"/>
+  <text x="255" y="256" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
+  
+  <defs><marker id="a530186620186" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="530" y1="186" x2="620" y2="186" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a530186620186)"/>
+  <text x="575" y="182" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">chartered under</text>
+  
+  <defs><marker id="a430212180340" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="430" y1="212" x2="180" y2="340" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a430212180340)"/>
+  <text x="305" y="272" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">D1 facilitator</text>
+  <text x="430" y="380" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Cora’s stewardship of the workspace is not an edge of Field.</text>
+
+</svg>

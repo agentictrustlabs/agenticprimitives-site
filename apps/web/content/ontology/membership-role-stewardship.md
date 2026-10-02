@@ -16,6 +16,8 @@ The same split holds for a workspace agent. It is a service, and people can belo
 
 ## What Home, Field, and the card room record
 
+![Four relationships: membership, stewardship, a role, and a discussion](/ontology/relationships.svg)
+
 Home is the record. Field and the card room ask Home who a person is to an agent, and they do not keep a second roster that decides it. Standing is derived, never typed in by an app: `self`, `steward`, `member`, or `none` (`deriveStanding`). `steward` means she holds that agent's oversight delegation, the wire is the right shape, and the chain still accepts it. `member` means she is on that agent's membership roster. Standing shapes what the product says before a ceremony. A gate does not read it as permission.
 
 | Relationship | Host | Record the apps use | What it is |
@@ -45,60 +47,11 @@ A person who belongs, holds a role, and oversees an agent is three records.
 
 ## Class diagram
 
-```mermaid
-classDiagram
-  direction LR
-
-  class Agent
-  class PersonAgent
-  class OrganizationAgent
-  class ServiceAgent
-  class WorkspaceAgent
-  class Workspace
-  class Situation
-  class OrganizationMembership
-  class WorkspaceParticipation
-  class RoleAssignment
-  class OrganizationRoleDefinition
-  class Stewardship
-  class Delegation
-  class Entitlement
-  class RelationshipCredential
-
-  PersonAgent --|> Agent
-  OrganizationAgent --|> Agent
-  ServiceAgent --|> Agent
-  WorkspaceAgent --|> ServiceAgent
-
-  OrganizationMembership --|> Situation
-  WorkspaceParticipation --|> Situation
-  Stewardship --|> Situation
-
-  OrganizationMembership --> PersonAgent : memberAgent
-  OrganizationMembership --> OrganizationAgent : organizationAgent
-  OrganizationMembership --> RoleAssignment : hasRoleAssignment
-  RoleAssignment --> OrganizationRoleDefinition : assignedRole
-  RoleAssignment --> Delegation : materializedByDelegation
-  RoleAssignment --> Entitlement : supportedByEntitlement
-
-  Workspace --> OrganizationAgent : governedBy
-  Workspace --> WorkspaceAgent : coordinatedBy
-  WorkspaceAgent --> Workspace : coordinatesWorkspace
-  Workspace --> WorkspaceParticipation : participation when restricted
-  WorkspaceParticipation --> Agent : participantAgent
-  WorkspaceParticipation --> Workspace : inWorkspace
-
-  Stewardship --> PersonAgent : steward
-  Stewardship --> Agent : stewarded
-  Stewardship --> Delegation : stewardshipDelegation digest
-
-  RelationshipCredential --> OrganizationMembership : kind has-member
-  RelationshipCredential --> Stewardship : kind steward-of
-```
+![Class diagram: membership is belonging, a role hangs on it, stewardship is oversight, a discussion is not an agent](/ontology/classes.svg)
 
 `stewarded` ranges over an agent that is an organization or a service. It never ranges over a person, and it never ranges over the `aporg:Workspace` entity. The workspace does not sign. Its agent does.
 
-`organizationAgent` ranges over `ap:OrganizationAgent` (an organization, a team, or an alliance). It does not range over `ap:WorkspaceAgent`. People are not members of the workspace agent. They are members of the organization that governs the workspace, and the workspace admits them from that membership.
+The T-box range of `organizationAgent` is an organization or a team. Home also writes this same membership record on a workspace agent when a person joins it. Stewardship of that workspace agent stays a separate wire.
 
 ## Membership
 
@@ -166,32 +119,7 @@ Each relationship becomes an edge by being recorded as a trust assertion. `at:re
 
 `at:RelationshipAssertion` is the assertion that two agents are related. `at:DelegationAssertion` is the attested record of a grant, and it is what other assertions cite when they need to say the relation was authorized. Membership and stewardship stay relationship edges. The two delegations stay delegation edges. One person who is a member, a facilitator, and a steward is three edges, plus the two grants, in one graph.
 
-```mermaid
-classDiagram
-  direction TB
-
-  class Situation
-  class OrganizationMembership
-  class Stewardship
-  class Delegation
-  class TrustAssertion
-  class RelationshipAssertion
-  class DelegationAssertion
-  class TrustGraph
-  class TrustGraphEdge
-  class Agent
-
-  OrganizationMembership --|> Situation
-  Stewardship --|> Situation
-  RelationshipAssertion --|> TrustAssertion
-  DelegationAssertion --|> TrustAssertion
-  RelationshipAssertion --> Situation : recordsSituation
-  DelegationAssertion --> Delegation : attested form of
-  TrustAssertion --> TrustGraph : assertedInTrustGraph
-  Agent --> TrustGraphEdge : hasRelationship
-  TrustGraphEdge --> Agent : edgeSubject
-  TrustGraphEdge --> Agent : edgeObject
-```
+![A relationship recorded as an assertion in the trust graph](/ontology/trust-graph.svg)
 
 When the relationship is public and both parties have confirmed it, the same fact is one `aptrust:TrustGraphEdge`. `ap:hasRelationship` hangs that edge on each endpoint. The edge states its subject, its object, its relationship type, and its status absolutely. Subject proposed it. Object confirmed it. Status runs PROPOSED, CONFIRMED, ACTIVE, REVOKED. Only an ACTIVE edge may inform a score. `aptrust:TrustScore` is a number computed over evidence under a named policy and a graph snapshot. The score is derived. The edge is the relationship. Neither one is authority.
 
@@ -246,41 +174,7 @@ D2 is the authority of the stewardship. It is not D1. Ending her facilitator rol
 
 She is not a custody member of `corridor.workspace`. The key stays with the account's custodians. She acts for the workspace agent only where D2 says so.
 
-```mermaid
-flowchart TB
-  fieldOrg["field.org OrganizationAgent"]
-  corridor["Corridor Workspace open"]
-  ws["corridor.workspace WorkspaceAgent"]
-  ada["Ada PersonAgent"]
-  ben["Ben PersonAgent"]
-  cora["Cora PersonAgent"]
-  mAda["Membership Ada"]
-  mBen["Membership Ben"]
-  mCora["Membership Cora"]
-  role["RoleAssignment facilitator"]
-  d1["D1 Delegation role"]
-  stew["Stewardship"]
-  d2["D2 Delegation oversight"]
-
-  corridor -->|governedBy| fieldOrg
-  corridor -->|coordinatedBy| ws
-  ws -->|coordinatesWorkspace| corridor
-  mAda -->|memberAgent| ada
-  mAda -->|organizationAgent| fieldOrg
-  mBen -->|memberAgent| ben
-  mBen -->|organizationAgent| fieldOrg
-  mCora -->|memberAgent| cora
-  mCora -->|organizationAgent| fieldOrg
-  mCora -->|hasRoleAssignment| role
-  role -->|materializedByDelegation| d1
-  d1 -->|principal| fieldOrg
-  d1 -->|delegate| cora
-  stew -->|steward| cora
-  stew -->|stewarded| ws
-  stew -->|stewardshipDelegation| d2
-  d2 -->|principal| ws
-  d2 -->|delegate| cora
-```
+![Object diagram: Ada, Ben, and Cora, Cora’s facilitator role, and her stewardship of the workspace](/ontology/corridor.svg)
 
 What a reader should be able to answer from the diagram without guessing:
 
@@ -294,38 +188,11 @@ What a reader should be able to answer from the diagram without guessing:
 
 Centered on `field.org`, the graph is the membership edges, Cora's role grant, and the workspace agent's charter. Ada, Ben, and Cora appear because they are members. Corridor's agent appears because it is chartered under Field. Cora's stewardship does not appear here: that edge is about `corridor.workspace`, not about Field.
 
-```mermaid
-flowchart TB
-  ada["Ada"]
-  ben["Ben"]
-  cora["Cora"]
-  fieldOrg["field.org"]
-  ws["corridor.workspace"]
-
-  ada -->|member of| fieldOrg
-  ben -->|member of| fieldOrg
-  cora -->|member of| fieldOrg
-  fieldOrg -->|D1 facilitator| cora
-  ws -->|chartered under| fieldOrg
-```
+![Trust graph centered on field.org](/ontology/graph-field.svg)
 
 Centered on `corridor.workspace`, the graph is whoever has joined that agent, plus Cora's stewardship if she oversees it, plus the charter back to Field. Ada's membership of the workspace agent is an edge of this agent. It is not her membership of Field, and it is not stewardship. A discussion hosted here adds no edge: an open topic is read off these memberships, and a restricted topic is an invitation on the topic, which is not an agent.
 
-```mermaid
-flowchart TB
-  ada["Ada"]
-  ben["Ben"]
-  cora["Cora"]
-  ws["corridor.workspace"]
-  fieldOrg["field.org"]
-
-  ada -->|member of| ws
-  ben -->|member of| ws
-  cora -->|member of| ws
-  cora -->|stewards| ws
-  ws -->|D2 oversight| cora
-  ws -->|chartered under| fieldOrg
-```
+![Trust graph centered on the workspace agent](/ontology/graph-workspace.svg)
 
 One set of records. Two centers. Field's picture of "who is on this team" is the membership edges of the team agent. Its picture of "who stewards this workspace" is the stewardship edge of the workspace agent. The card room's picture of a club is the membership edges of the club agent, and host is the stewardship edge, derived on the read.
 

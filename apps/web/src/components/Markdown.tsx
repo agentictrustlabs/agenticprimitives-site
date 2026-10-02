@@ -41,6 +41,15 @@ export function Markdown({ source }: { source: string }) {
         const b = raw.trim();
         if (!b) return null;
         if (b === '---') return <hr key={i} className="my-10 border-line" />;
+        const img = b.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        if (img) {
+          return (
+            <figure key={i} className="my-8">
+              <img src={img[2]} alt={img[1]} className="w-full rounded-lg border border-line bg-cream" />
+              <figcaption className="mt-2 text-sm text-slate-500">{img[1]}</figcaption>
+            </figure>
+          );
+        }
         if (b.startsWith('```')) {
           // A fenced block: mermaid draws; every other fence is shown as it was written.
           const lines = b.split('\n');

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="700" viewBox="0 0 1120 700" role="img" aria-label="Classes — belonging, a role, and oversight">
+  <rect width="100%" height="100%" fill="#f6f3ec"/>
+  <text x="24" y="28" font-family="Georgia, serif" font-size="15" fill="#1b3a4b">Classes — belonging, a role, and oversight</text>
+  
+  
+  <g>
+    <rect x="470" y="48" width="150" height="36" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    
+    <text x="545" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Agent</text>
+    
+  </g>
+  
+  <g>
+    <rect x="40" y="140" width="180" height="48" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="40" y1="162" x2="220" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="130" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">PersonAgent</text>
+    <text x="130" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">a person</text>
+  </g>
+  
+  <g>
+    <rect x="260" y="140" width="210" height="48" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="260" y1="162" x2="470" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="365" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">OrganizationAgent</text>
+    <text x="365" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">org or team</text>
+  </g>
+  
+  <g>
+    <rect x="520" y="140" width="170" height="48" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="520" y1="162" x2="690" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="605" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">ServiceAgent</text>
+    <text x="605" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">a service</text>
+  </g>
+  
+  <g>
+    <rect x="740" y="140" width="220" height="48" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="740" y1="162" x2="960" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="850" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">WorkspaceAgent</text>
+    <text x="850" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">.workspace service</text>
+  </g>
+  
+  <line x1="130" y1="140" x2="499.117534990609" y2="85.60373168559447" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="510,84 499.992297728206,91.53962169071686 498.242772253012,79.66784168047208" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+  
+  <line x1="365" y1="140" x2="529.5233343808075" y2="87.35253299814163" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="540,84 531.3519887434302,93.06707788133757 527.6946800181847,81.63798811494568" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+  
+  <line x1="605" y1="140" x2="575.829988340035" y2="93.32798134405597" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="570,84 580.9179781640655,90.1479877040369 570.7419985160045,96.50797498407505" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+  
+  <line x1="740" y1="164" x2="701" y2="164" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="690,164 701,158 701,170" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+
+  
+  <g>
+    <rect x="470" y="250" width="150" height="36" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    
+    <text x="545" y="272" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Situation</text>
+    
+  </g>
+  
+  <g>
+    <rect x="40" y="370" width="250" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="40" y1="392" x2="290" y2="392" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="165" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">OrganizationMembership</text>
+    <text x="165" y="404" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">belonging</text>
+  </g>
+  
+  <g>
+    <rect x="330" y="370" width="230" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="330" y1="392" x2="560" y2="392" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="445" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">RoleAssignment</text>
+    <text x="445" y="404" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">a name on belonging</text>
+  </g>
+  
+  <g>
+    <rect x="600" y="370" width="190" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="600" y1="392" x2="790" y2="392" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="695" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Delegation</text>
+    <text x="695" y="404" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">the grant</text>
+  </g>
+  
+  <g>
+    <rect x="840" y="370" width="240" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="840" y1="392" x2="1080" y2="392" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="960" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Stewardship</text>
+    <text x="960" y="404" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">oversight</text>
+  </g>
+  
+  <line x1="165" y1="370" x2="489.33030864886155" y2="288.6753852940168" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="500,286 490.78960971832527,294.4952169400923 487.8710075793978,282.8555536479413" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+  
+  <line x1="960" y1="370" x2="600.7270307078606" y2="288.4353258904332" stroke="#1b3a4b" stroke-width="1.3"/>
+  <polygon points="590,286 602.0553902844606,282.5842182316001 599.3986711312607,294.2864335492663" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.3"/>
+
+  
+  <defs><marker id="a290396330396" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="290" y1="396" x2="330" y2="396" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a290396330396)"/>
+  
+  <text x="310" y="358" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">has role</text>
+  
+  <defs><marker id="a560396600396" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="560" y1="396" x2="600" y2="396" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a560396600396)"/>
+  
+  <text x="580" y="358" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">grant</text>
+  
+  <defs><marker id="a165370130188" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="165" y1="370" x2="130" y2="188" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a165370130188)"/>
+  <text x="147.5" y="275" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member</text>
+  
+  <defs><marker id="a200370365188" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="200" y1="370" x2="365" y2="188" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a200370365188)"/>
+  <text x="282.5" y="275" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">of this agent</text>
+  
+  <defs><marker id="a960370850188" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="960" y1="370" x2="850" y2="188" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a960370850188)"/>
+  <text x="905" y="275" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">stewarded</text>
+  <text x="960" y="448" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">digest → the oversight delegation</text>
+
+  
+  <g>
+    <rect x="40" y="510" width="250" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="40" y1="532" x2="290" y2="532" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="165" y="528" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">DiscussionTopic</text>
+    <text x="165" y="544" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">not an agent</text>
+  </g>
+  
+  <defs><marker id="a165510165422" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="165" y1="510" x2="165" y2="422" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a165510165422)"/>
+  <text x="165" y="462" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">open: derived</text>
+  
+  <g>
+    <rect x="340" y="500" width="470" height="70" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="340" y1="522" x2="810" y2="522" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="575" y="518" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Restricted topic</text>
+    <text x="575" y="534" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">an accepted invitation, not a membership</text>
+  </g>
+  <text x="575" y="590" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">Accepting does not mint a role.</text>
+
+</svg>
