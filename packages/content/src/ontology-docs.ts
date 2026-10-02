@@ -16,7 +16,7 @@ export const ONTOLOGY_DOCS: readonly OntologyDoc[] = [
     title: 'Membership, role, and stewardship',
     date: '2026-10-01',
     summary:
-      'Membership, a role’s delegation, and stewardship are the edges of the Agentic Trust graph, shown on a workspace with one steward.',
+      'Membership is belonging, and a role hangs on it. Stewardship is oversight, and the steward need not belong.',
     file: 'membership-role-stewardship.md',
   },
 ];

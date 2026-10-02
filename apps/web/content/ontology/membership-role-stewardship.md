@@ -1,8 +1,18 @@
 # Membership, role, and stewardship
 
-How a person belongs to an organization, how a role on that membership becomes authority, and how stewardship of an agent is a different situation. The classes are `aporg:OrganizationMembership`, `aporg:RoleAssignment`, and `ap:Stewardship`. Those situations, the charter link, and the delegations that carry their authority are the edges of the Agentic Trust graph (`at:TrustGraph`). The field app and the card-room game both bind these. Neither invents a steward flag on a member row, and neither draws a second picture of who is related to whom.
+Membership is belonging. Stewardship is oversight, and oversight does not require belonging. A role is a name a belonging can carry. The classes are `aporg:OrganizationMembership`, `aporg:RoleAssignment`, and `ap:Stewardship`. Those situations, the charter link, and the delegations that carry their authority are the edges of the Agentic Trust graph (`at:TrustGraph`).
 
 Sources: `packages/ontology/tbox/org.ttl`, `packages/ontology/tbox/core.ttl`, `packages/ontology/tbox/trust.ttl`, `packages/ontology/tbox/verification-receipt.ttl`. The Agentic Trust T-box mirrors the same terms under `at:` with `rdfs:seeAlso`. `at:TrustGraph` is declared there.
+
+## Belonging and oversight
+
+A membership says that a person belongs to an organization for a time. The belonging can carry roles. Facilitator, treasurer, and chief financial officer are roles on a membership: each names what that person is called inside that organization, and a delegation may materialize the role so the name has authority. The role qualifies the belonging. End the membership and the roles on it end with it.
+
+Charter is belonging of a different kind. `ap:charteredUnder` says an agent sits under the agent it was created for: a workspace agent under its organization, a treasury under the person or organization that holds it. Charter says whose it is.
+
+Stewardship is not a belonging. A person stewards an agent when that agent has signed an oversight delegation to her. She may also belong to it, and she may hold a role on that membership. Neither is required. A chief financial officer can oversee a company without being a member of it. The stewardship is her oversight of the organization, evidenced by the organization's delegation to her. If she later joins, the membership is a second record, and "chief financial officer" is a role on that membership. Leaving the company ends the role. It does not, by itself, end the oversight. Revoke the oversight delegation and the stewardship ends. The membership, if she has one, stays until it is ended on its own.
+
+The same split holds for a workspace. Members belong to the organization that governs it. The person who stewards the workspace agent oversees that agent. She may be one of the members. She may be neither a member nor the holder of any role.
 
 ## The three situations
 
