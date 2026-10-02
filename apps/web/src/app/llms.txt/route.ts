@@ -1,4 +1,4 @@
-import { AUDITS, ESSAYS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
+import { AUDITS, ESSAYS, ONTOLOGY_DOCS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
 
 export const dynamic = 'force-static';
 
@@ -41,7 +41,7 @@ Intelligence may be probabilistic. Authority must not be.
 - [Versus · Web3](${SITE.url}/compare/web3): the Web3 trust-substrate landscape and the ERC stack
 - [Versus · where we lose](${SITE.url}/compare/honest): where peers are ahead today, what we refuse to take
 - [Game Night](${SITE.url}/examples/game-night): complete third-party example (gamenight.faithnet.io)
-- [Ontology](${SITE.url}/ontology): the Agentic Trust upper ontology and the Texas hold'em domain ontology; how every layer binds to one T-box by IRI; meaning flows, authority never does
+- [Ontology](${SITE.url}/ontology): the Agentic Trust upper ontology and the Texas hold'em domain ontology; how every layer binds to one T-box by IRI; meaning flows, authority never does. Notes: ${ONTOLOGY_DOCS.map((d) => `[${d.title}](${SITE.url}/ontology/${d.slug})`).join('; ')}
 - [Developers](${SITE.url}/developers): package map, standards, status
 - [Build](${SITE.url}/build): say what application you want; point a coding agent at github.com/agentictrustlabs/agentic-primitives + /pokernight and the faithnet estate; test as six demo people (alice bob carol dave elena nathan); the flow; the gates
 - [Ontology namespaces](${SITE.url}/ns): IRI prefixes (\`https://agenticprimitives.dev/ns/<module>#Term\`)

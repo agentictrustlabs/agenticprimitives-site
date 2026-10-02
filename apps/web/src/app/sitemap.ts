@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { AUDITS, SITE, WRITING } from '@apsite/content';
+import { AUDITS, ONTOLOGY_DOCS, SITE, WRITING } from '@apsite/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [
@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: p === '/writing' ? 0.8 : 0.7,
     })),
     ...AUDITS.map((a) => ({ url: `${SITE.url}/audits/${a.slug}`, lastModified: new Date(a.date), changeFrequency: 'monthly' as const, priority: 0.7 })),
+    ...ONTOLOGY_DOCS.map((d) => ({ url: `${SITE.url}/ontology/${d.slug}`, lastModified: new Date(d.date), changeFrequency: 'monthly' as const, priority: 0.7 })),
     ...WRITING.map((w) => ({
       url: `${SITE.url}/writing/${w.slug}`,
       lastModified: new Date(w.date),

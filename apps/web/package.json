@@ -13,6 +13,7 @@
     "@apsite/content": "workspace:*",
     "@apsite/diagrams": "workspace:*",
     "lucide-react": "^1.46.0",
+    "mermaid": "^12.0.0",
     "next": "^16.3.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

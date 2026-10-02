@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Mermaid } from '@/components/Mermaid';
 
 function inline(text: string): ReactNode[] {
   const parts: ReactNode[] = [];
@@ -41,9 +42,11 @@ export function Markdown({ source }: { source: string }) {
         if (!b) return null;
         if (b === '---') return <hr key={i} className="my-10 border-line" />;
         if (b.startsWith('```')) {
-          // A fenced block: the fence lines are dropped, the body is shown as it was written.
+          // A fenced block: mermaid draws; every other fence is shown as it was written.
           const lines = b.split('\n');
+          const lang = lines[0]!.slice(3).trim();
           const code = lines.slice(1, lines[lines.length - 1]!.trim() === '```' ? -1 : undefined).join('\n');
+          if (lang === 'mermaid') return <Mermaid key={i} chart={code} />;
           return (
             <pre key={i} className="my-6 overflow-x-auto rounded-lg border border-line bg-cream px-4 py-3 font-mono text-[13px] leading-relaxed text-slate-700">
               <code>{code}</code>

@@ -627,6 +627,8 @@ export const AUDIENCES = [
 export { DEMOS, HOME_MCP_CONNECTOR, HOME_MCP_CONNECT_STEPS } from './demos';
 export type { Demo, DemoLink, DemoShot, DemoStep } from './demos';
 export { AUDITS, auditBySlug } from './audits';
+export { ONTOLOGY_DOCS, ontologyDocBySlug } from './ontology-docs';
+export type { OntologyDoc } from './ontology-docs';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';

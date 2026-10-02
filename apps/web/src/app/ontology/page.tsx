@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { HOLDEM_GROUNDING, ONTOLOGY_LAYERS, SITE } from '@apsite/content';
+import { HOLDEM_GROUNDING, ONTOLOGY_DOCS, ONTOLOGY_LAYERS, SITE } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
 import { OntologyEveryLayer, OntologyLadder } from '@apsite/diagrams';
 import { Claim, CTA, Figure, Section, Shot, Tag } from '@/components/ui';
@@ -136,6 +136,20 @@ export default function Ontology() {
           <a href={`${SITE.richCanvas}/muses-of-an-architect`} className="text-teal hover:underline" rel="noreferrer">Muses of an architect</a> ·{' '}
           <a href={SITE.richCanvas} className="text-teal hover:underline" rel="noreferrer">richcanvas3.com</a>
         </p>
+      </Section>
+
+      <Section number="06" eyebrow="Documents" title="Notes on the classes themselves." lede="Each note is one cluster of classes: what they are, how they connect, and an example with named agents. The T-box remains the declaration. These pages are how a person reads it.">
+        <div className="grid gap-6">
+          {ONTOLOGY_DOCS.map((d) => (
+            <article key={d.slug} className="card">
+              <p className="eyebrow">{d.date}</p>
+              <h2 className="h3 mt-2">
+                <Link href={`/ontology/${d.slug}`} className="hover:text-teal">{d.title}</Link>
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">{d.summary}</p>
+            </article>
+          ))}
+        </div>
       </Section>
 
       <CTA
