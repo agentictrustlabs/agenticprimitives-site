@@ -12,7 +12,24 @@ Charter is belonging of a different kind. `ap:charteredUnder` says an agent sits
 
 Stewardship is not a belonging. A person stewards an agent when that agent has signed an oversight delegation to her. She may also belong to it, and she may hold a role on that membership. Neither is required. A chief financial officer can oversee a company without being a member of it. The stewardship is her oversight of the organization, evidenced by the organization's delegation to her. If she later joins, the membership is a second record, and "chief financial officer" is a role on that membership. Leaving the company ends the role. It does not, by itself, end the oversight. Revoke the oversight delegation and the stewardship ends. The membership, if she has one, stays until it is ended on its own.
 
-The same split holds for a workspace. Members belong to the organization that governs it. The person who stewards the workspace agent oversees that agent. She may be one of the members. She may be neither a member nor the holder of any role.
+The same split holds for a workspace agent. It is a service, and people can belong to it. That belonging is a membership of the workspace agent, written by Home at `workspace-join`. The person who stewards it oversees it, and she may or may not be one of those members. A discussion is not an agent, so nobody belongs to a discussion. Who may speak is participation, derived from a membership when the topic is open, and an accepted invitation when it is restricted.
+
+## What Home, Field, and the card room record
+
+Home is the record. Field and the card room ask Home who a person is to an agent, and they do not keep a second roster that decides it. Standing is derived, never typed in by an app: `self`, `steward`, `member`, or `none` (`deriveStanding`). `steward` means she holds that agent's oversight delegation, the wire is the right shape, and the chain still accepts it. `member` means she is on that agent's membership roster. Standing shapes what the product says before a ceremony. A gate does not read it as permission.
+
+| Relationship | Host | Record the apps use | What it is |
+| --- | --- | --- | --- |
+| Membership | An organization agent, a team agent, or a workspace agent | `org.membership:member:<person>` in that agent's vault, and the person's related-agent link with `relationship: member` | Belonging. The workspace-join ceremony writes it for a `.workspace` agent. |
+| Stewardship | The same kinds of agent | The oversight delegation on the person's link, `relationship: steward`, checked on chain | Oversight. A chief financial officer can hold this and not be a member. |
+| Role on a belonging | The membership, or a Field roster row that points at one | Field team roles: `organization-steward`, `community-steward`, `progress-steward`, `field-recorder`, `member`. Field workspace roster: `custodian`, `steward`, `member` | A name on the belonging. `organization-steward` is materialized by the stewardship wire. The word on the row is not the wire. |
+| Participation in a discussion | A topic. Not an agent | Open: no row. Restricted: an invitation, then acceptance | Presence in a conversation. Accepting a field community-team invite does not mint a role and does not create a membership. |
+
+**Home.** An organization and a workspace agent both keep membership records. Joining a workspace is `workspace-member-invite` (the custodian signs the member's grant) then `workspace-join` (the person writes her own link). Stewardship is a different link to that same agent. The trust graph centered on a person draws `member of` and `stewards` from those links.
+
+**The card room** (the poker game). A club is its `.workspace` agent. Who belongs is that agent's `org.membership` records. The card room stores the wire the host signed so the room can act as the club, and nothing else: no roster table, no host column. On each read, Home derives standing. Host means `self` or a verified steward of the club agent. Member means the membership record. A night's conversation is an open topic the club opens on its own board (`club.topic`). Everyone who belongs may speak, because the topic is open. The topic has no member list.
+
+**Field.** A team is an organization agent. The team roster row in the team's vault is a projection: it names the Home membership record, the `has-member` credential, and, when she also oversees the team, the stewardship. The role on that row is one of the five field role names. A workspace is a service agent. Field keeps a `ws-membership` row in the workspace vault so the directory can show who was invited and what title the inviter used (`custodian`, `steward`, or `member`). That title is the field directory. Belonging is still the Home membership of the workspace agent, and oversight is still the stewardship wire. A team conversation is an open topic: every team member is in it, and no participant list is stored. A thread on a field subject is open to the organization's members. A community team room is restricted: invite, then accept, and the acceptance grants nothing.
 
 ## The three situations
 
@@ -191,12 +208,9 @@ Four objects, not one.
 | The plane | `aporg:Workspace` | A governed coordination context. Not an agent. No address, no custody, no authority. |
 | The governor | `ap:OrganizationAgent` | `aporg:governedBy`. Every policy the workspace has comes from this agent. |
 | The face | `ap:WorkspaceAgent` | The service agent that acts for that one workspace. `aporg:coordinatedBy` / `aporg:coordinatesWorkspace`. |
-| The people | `ap:PersonAgent` | Members of the governor. Participants in the workspace only by the rule below. |
+| The people | `ap:PersonAgent` | Members of the workspace agent when they have joined it, and members of the governing organization when they belong there. Two belongings, when both exist. |
 
-`aporg:workspaceParticipationPolicy` is `open` or `restricted`.
-
-- **Open.** Participation is derived. Every current member of the governing organization participates. `aporg:WorkspaceParticipation` must not be asserted.
-- **Restricted.** Participation is its own situation: `aporg:participantAgent` and `aporg:inWorkspace`. It still authorizes nothing. Being in the room is not a grant.
+Home, Field, and the card room record "she is part of this workspace" as a membership of the workspace agent, the same `org.membership` record an organization uses. The ontology also has `aporg:WorkspaceParticipation` for a restricted plane when the host is the workspace entity rather than the agent. None of the three apps write that class. An open discussion still derives who may speak from the membership of the host agent, and stores no participant row.
 
 The workspace agent acts only inside what the governor delegated to it. Revoke that delegation and the workspace agent is inert. It is never an independent source of authority.
 
@@ -213,7 +227,7 @@ Corridor is an open workspace for a field team. Four people. One of them facilit
 | The workspace agent | `corridor.workspace` | `ap:WorkspaceAgent`, `coordinatesWorkspace` Corridor |
 | Ada, Ben, Cora | three person agents | `ap:PersonAgent` |
 
-Ada, Ben, and Cora each have an `aporg:OrganizationMembership` with `organizationAgent = field.org`. Because Corridor is open, all three participate. No `WorkspaceParticipation` rows are stored.
+Ada, Ben, and Cora each belong to Field, and each has joined `corridor.workspace`. Those are two memberships. Field's team roster points at the Field membership. The workspace membership is what Home wrote at `workspace-join`. No discussion stores a third list of them: the team conversation is open, so who may speak is the team membership, read when someone posts.
 
 Cora's membership has one `aporg:RoleAssignment`.
 
@@ -295,44 +309,55 @@ flowchart TB
   ws -->|chartered under| fieldOrg
 ```
 
-Centered on `corridor.workspace`, the graph is the stewardship edge, the oversight grant, and the charter back to Field. Ada and Ben are not edges of this agent. An open workspace admits them by reading Field's membership edges through the charter, which is a reading of the graph that already exists.
+Centered on `corridor.workspace`, the graph is whoever has joined that agent, plus Cora's stewardship if she oversees it, plus the charter back to Field. Ada's membership of the workspace agent is an edge of this agent. It is not her membership of Field, and it is not stewardship. A discussion hosted here adds no edge: an open topic is read off these memberships, and a restricted topic is an invitation on the topic, which is not an agent.
 
 ```mermaid
 flowchart TB
+  ada["Ada"]
+  ben["Ben"]
   cora["Cora"]
   ws["corridor.workspace"]
   fieldOrg["field.org"]
 
+  ada -->|member of| ws
+  ben -->|member of| ws
+  cora -->|member of| ws
   cora -->|stewards| ws
   ws -->|D2 oversight| cora
   ws -->|chartered under| fieldOrg
 ```
 
-One set of records. Two centers. The field app's picture of "who is on this team" is the first graph. Its picture of "who stewards this workspace" is the second. The game's picture of a club is the same reading with the club agent as the center: membership edges in, the host's stewardship edge in, a dealer role as a delegation edge on that membership.
+One set of records. Two centers. Field's picture of "who is on this team" is the membership edges of the team agent. Its picture of "who stewards this workspace" is the stewardship edge of the workspace agent. The card room's picture of a club is the membership edges of the club agent, and host is the stewardship edge, derived on the read.
 
-## The same shape in the game
+## The card room
 
-A card-room club is an `ap:OrganizationAgent` (the game's club class specializes organization). The club's address is the workspace smart agent the table runs as. Two consequences fall out of the classes above, and the game already follows them.
+A club is a `.workspace` service agent. The card room acts as that agent under a wire the host signed at charter, pinned to one selector. Who belongs is `org.membership:member:<person>` in the club's vault, written when the person completes `workspace-join`. The card room does not store the roster.
 
-- Members are `aporg:OrganizationMembership` on that organization. The roster is not a table in the app.
-- The host is the steward of that agent: `ap:Stewardship` with `stewarded` equal to the club agent. It is derived. It is not a column on the member row.
+Standing on a club read is Home's derivation for the signed-in person:
 
-A host who is also a member has both records. Her dealer role, if she has one, is a `RoleAssignment` on the membership, materialized by its own delegation. Dealing is not stewardship. Hosting is not membership.
-
-## What the field app binds
-
-The field app uses the same three situations. It does not add a field-only steward class, and it does not store "steward" as a role name that the app treats as permission.
-
-| Product sentence | Record |
+| Standing | Derived from |
 | --- | --- |
-| Ada is on the team | `OrganizationMembership`: Ada, `field.org` |
-| Cora is the facilitator | `RoleAssignment` on Cora's membership, `materializedByDelegation` = D1 |
-| Cora stewards the workspace | `Stewardship`: Cora, `corridor.workspace`, digest of D2 |
-| Anyone on the team can be in this workspace | Corridor is `open`; participation is derived |
-| Only some members may enter | Corridor is `restricted`; assert `WorkspaceParticipation` for those people |
-| The workspace sits under Field | `governedBy` Field, and `charteredUnder` from the workspace agent to Field |
+| Host | She is the agent, or she holds a verified stewardship delegation from the club agent |
+| Member | She has a membership record on the club agent |
+| None | Neither |
 
-A string match on a person's name, a boolean on a member row, and a prompt sentence are not substitutes for these records. A roster, a steward flag, or a diagram stored beside them is a second graph. The Agentic Trust graph is the one the app reads.
+A host who has also joined has both records. Hosting is the stewardship. Membership is the belonging. A night's talk is an open topic on the club's board. The people in it are the members, derived. The topic is not an agent and has no membership of its own.
+
+## Field
+
+A team is an organization agent. Each person on the team has a roster row in the team vault. The row points at the Home membership, the `has-member` credential, and the stewardship when she has one. The role on the row is `organization-steward`, `community-steward`, `progress-steward`, `field-recorder`, or `member`. The comment on `organization-steward` is the rule for all three steward titles: the stewardship wire materializes the authority, and the row does not.
+
+A workspace is a service agent. Field's `ws-membership` row records an invitation and a title (`custodian`, `steward`, or `member`) so the directory has a name to show. The title `steward` on that row is not `ap:Stewardship`. Oversight is the wire Home checks. Belonging is the membership Home wrote on the workspace agent. When a team is associated with a workspace, a team member is also an active workspace member. The team roster does not copy the workspace roster into a second authority.
+
+Discussions:
+
+| Topic | Policy in Field | Who is in it |
+| --- | --- | --- |
+| A team conversation | Open | Every team member. No participant list. |
+| A thread on a field subject | Open | The organization's members. |
+| A community team room | Restricted | Whoever was invited and accepted. Acceptance does not mint a role and does not write a membership. |
+
+A string match on a person's name, a boolean on a member row, and a prompt sentence are not substitutes for these records. A field roster row that does not name the Home membership is the steward's note. The membership, the credential, and the stewardship wire are the records.
 
 ## What not to model
 
@@ -341,6 +366,7 @@ A string match on a person's name, a boolean on a member row, and a prompt sente
 - The role definition as the grant. Without `materializedByDelegation`, the role authorizes nothing.
 - Membership as a grant. Joining does not delegate.
 - Stewardship as custody. The oversight delegation is how she acts for the agent. The key is how the account signs.
-- `memberOf` or `WorkspaceParticipation` asserted on an open workspace. Both are derived. Asserting them creates a second opinion about who is in the room.
-- A membership whose `organizationAgent` is the workspace agent. The range is an organization. Point the membership at the governor. Point the stewardship at the workspace agent.
+- A participant list on an open topic. Who may speak is the host's membership, read at the time.
+- A membership of a discussion. A discussion is not an agent. Restricted presence is an accepted invitation.
+- A field workspace title of `steward` treated as the oversight delegation. The title is on the directory row. The wire is the stewardship.
 - A trust graph drawn from names, avatars, or a table in the app. Every edge is one of the assertions above, or it is not an edge.
