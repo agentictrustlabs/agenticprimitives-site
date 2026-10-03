@@ -16,7 +16,7 @@ export const ONTOLOGY_DOCS: readonly OntologyDoc[] = [
     title: 'Membership, role, and stewardship',
     date: '2026-10-01',
     summary:
-      'Membership is belonging, and a role hangs on it. Stewardship is oversight, and the steward need not belong.',
+      'People and teams belong to an organization. A workspace names that organization and reaches them through it.',
     file: 'membership-role-stewardship.md',
   },
 ];

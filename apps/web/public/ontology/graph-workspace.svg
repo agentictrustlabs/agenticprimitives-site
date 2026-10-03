@@ -1,74 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" role="img" aria-label="Trust graph centered on corridor.workspace">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-label="The workspace names only its governing organization">
   <rect width="100%" height="100%" fill="#f6f3ec"/>
-  <text x="24" y="28" font-family="Georgia, serif" font-size="15" fill="#1b3a4b">Trust graph centered on corridor.workspace</text>
+  <text x="24" y="28" font-family="Georgia, serif" font-size="15" fill="#1b3a4b">The workspace names only its governing organization</text>
   
   
   <g>
-    <rect x="330" y="170" width="240" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    <line x1="330" y1="192" x2="570" y2="192" stroke="#1b3a4b" stroke-width="1"/>
-    <text x="450" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">corridor.workspace</text>
-    <text x="450" y="204" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">center</text>
+    <rect x="40" y="140" width="250" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="40" y1="162" x2="290" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="165" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">corridor.workspace</text>
+    <text x="165" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">WorkspaceAgent</text>
   </g>
   
   <g>
-    <rect x="40" y="40" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    
-    <text x="110" y="64" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Ada</text>
-    
+    <rect x="420" y="140" width="200" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="420" y1="162" x2="620" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="520" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">field.org</text>
+    <text x="520" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">the hub</text>
   </g>
   
   <g>
-    <rect x="40" y="150" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    
-    <text x="110" y="174" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Ben</text>
-    
+    <rect x="700" y="40" width="160" height="44" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="700" y1="62" x2="860" y2="62" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="780" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Ada Ben Cora</text>
+    <text x="780" y="74" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">members</text>
   </g>
   
   <g>
-    <rect x="40" y="260" width="140" height="40" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    
-    <text x="110" y="284" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Cora</text>
-    
+    <rect x="700" y="140" width="160" height="44" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="700" y1="162" x2="860" y2="162" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="780" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Walk team</text>
+    <text x="780" y="174" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">a team</text>
   </g>
   
   <g>
-    <rect x="40" y="370" width="200" height="44" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    <line x1="40" y1="392" x2="240" y2="392" stroke="#1b3a4b" stroke-width="1"/>
-    <text x="140" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">Night topic</text>
-    <text x="140" y="404" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">not an agent</text>
+    <rect x="700" y="240" width="160" height="44" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
+    <line x1="700" y1="262" x2="860" y2="262" stroke="#1b3a4b" stroke-width="1"/>
+    <text x="780" y="258" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">content grant</text>
+    <text x="780" y="274" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">workspace → org</text>
   </g>
   
-  <g>
-    <rect x="640" y="170" width="220" height="52" rx="2" fill="#fffdf8" stroke="#1b3a4b" stroke-width="1.4"/>
-    <line x1="640" y1="192" x2="860" y2="192" stroke="#1b3a4b" stroke-width="1"/>
-    <text x="750" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#1b3a4b">field.org</text>
-    <text x="750" y="204" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a6232">charter</text>
-  </g>
+  <defs><marker id="a290166420166" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="290" y1="166" x2="420" y2="166" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a290166420166)"/>
+  <text x="355" y="162" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">governedBy</text>
   
-  <defs><marker id="a18060330180" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="180" y1="60" x2="330" y2="180" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a18060330180)"/>
-  <text x="255" y="116" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
+  <defs><marker id="a62015070062" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="620" y1="150" x2="700" y2="62" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a62015070062)"/>
+  <text x="660" y="102" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">members</text>
   
-  <defs><marker id="a180170330190" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="180" y1="170" x2="330" y2="190" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a180170330190)"/>
-  <text x="255" y="176" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
+  <defs><marker id="a620166700162" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="620" y1="166" x2="700" y2="162" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a620166700162)"/>
+  <text x="660" y="160" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">teams</text>
   
-  <defs><marker id="a180280330200" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="180" y1="280" x2="330" y2="200" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a180280330200)"/>
-  <text x="255" y="236" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">member of</text>
-  
-  <defs><marker id="a180280360170" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="180" y1="280" x2="360" y2="170" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a180280360170)"/>
-  <text x="270" y="221" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">stewards</text>
-  
-  <defs><marker id="a570196640196" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="570" y1="196" x2="640" y2="196" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a570196640196)"/>
-  <text x="605" y="192" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">chartered under</text>
-  
-  <defs><marker id="a450222140370" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
-  <line x1="450" y1="222" x2="140" y2="370" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a450222140370)"/>
-  <text x="295" y="292" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">D2 oversight</text>
-  <text x="250" y="430" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">An open topic has no edge. Speakers are these members.</text>
+  <defs><marker id="a620180700250" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1b3a4b"/></marker></defs>
+  <line x1="620" y1="180" x2="700" y2="250" stroke="#1b3a4b" stroke-width="1.3" marker-end="url(#a620180700250)"/>
+  <text x="660" y="211" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#1f6f6a">reads through</text>
+  <text x="450" y="300" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="11" fill="#243038">No membership edge touches the workspace. People and teams are Field’s.</text>
 
 </svg>
