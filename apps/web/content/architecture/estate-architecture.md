@@ -134,6 +134,7 @@ That adapter belongs in a sibling repository, as every external protocol bridge 
 ## 7. What an estate is not
 
 - **Not a chain.** Two estates share faithchain today. A chain is where an estate enforces; it is not the estate.
+  What may cross between chains, and as what: [Chains and estates](/architecture/chains).
 - **Not Ring 0's deployment.** Faithnet is one estate among several. `ap-home` is another, from a product repository
   on published packages.
 - **Not a tenant of a registry.** Registries list an estate's agents. They hold no authority over them.

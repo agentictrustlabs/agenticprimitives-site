@@ -23,6 +23,15 @@ export const ARCHITECTURE_DOCS: readonly ArchitectureDoc[] = [
     file: 'estate-architecture.md',
     hero: '/architecture/federation.svg',
   },
+  {
+    slug: 'chains',
+    title: 'Chains and estates',
+    date: '2026-10-04',
+    summary:
+      'Estates share private and public EVM chains. Authority is chain-local by construction; evidence and value cross a chain, a grant never does.',
+    file: 'chains-and-estates.md',
+    hero: '/architecture/chains-and-estates.svg',
+  },
 ];
 
 export function architectureDocBySlug(slug: string): ArchitectureDoc | undefined {

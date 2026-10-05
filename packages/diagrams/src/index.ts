@@ -12,3 +12,4 @@ export { CompositionMatrix } from './CompositionMatrix';
 export { ProductWall } from './ProductWall';
 export { EstateBlock, EstateResidents, EstateCommons, Federation, CrossEstateAct, NandaLayers } from './estate';
 export { Building, Plot, Road, Resident, Flag, KIND } from './estate-kit';
+export { ChainsAndEstates, ChainBoundary } from './chains';
