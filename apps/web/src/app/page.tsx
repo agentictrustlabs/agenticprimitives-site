@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AUDITS, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
-import { Scales, StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
+import { DiagramImg } from '@/components/DiagramImg';
 import { Mark } from '@/components/Mark';
 import { ScaleCards } from '@/components/ScaleCards';
 import { ScalesPlain } from '@/components/ScalesPlain';
@@ -112,10 +112,10 @@ export default function Home() {
       <ScalesPlain id="scales" />
 
       {/* ── MEET THE TOWN ─────────────────────────────────────────────────────────────── */}
-      <Section id="meet-the-town" tone="navy" eyebrow="Meet the town" title="One street. A person, an organization, a service. Watch what crosses it — and what never does." lede="Agents find each other, check each other against the chain, talk gate to gate, and act under a permission signed at the owner's own front door. The receipt comes home. The owner can cut the road. Then the camera pulls back to the next town over." wide>
-        <TownStory />
+      <Section id="meet-the-town" tone="navy" eyebrow="A day in the town" title="One person. One agent. Many contexts — and the keys never leave home." lede="Alice's agent books her check-up as a patient, asks her church and home group for this week's times as a member, gets the yoga timetable as a neighbour, and opens one shelf of her vault to her coach — then closes it. Every provider answers from its own estate, with its own agent. Press play." wide>
+        <TownStory scene="day" />
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/architecture#meet-the-town" className="btn-brass">The town, explained <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/architecture#meet-the-town" className="btn-brass">How the street works, beat by beat <ArrowRight className="h-4 w-4" /></Link>
           <Link href="/architecture" className="btn-outline-light">Substrate · estate · town · federation</Link>
         </div>
       </Section>
@@ -190,7 +190,7 @@ export default function Home() {
       {/* ── ARCHITECTURE ─────────────────────────────────────────────────────────────── */}
       <Section tone="ink" number="03" eyebrow="The architecture" title="Application on harness. Harness on authority. Authority on identity. Identity on chain." lede="Every layer is a published package or a deployed contract. Admission runs at the edge of every request; evidence is written for every protected step; the ontology binds the vocabulary so the code cannot invent its own.">
         <Figure dark caption="The substrate in layers. The harness turns an ask into an intent, a mandate, a plan, per-step verification and a receipt. Authority is a signed delegation with caveats, revocable in one transaction. Identity is a Smart Agent per person, organization and service. The chain anchors all three; edge admission and evidence run alongside every layer.">
-          <SubstrateLayers />
+          <DiagramImg name="substrate-layers" dark width={1200} height={820} alt="The Agentic Primitives substrate in layers: application, harness, authority, identity, chain — with edge admission and evidence alongside" />
         </Figure>
         <div className="mt-8 flex justify-end">
           <Link href="/substrate" className="btn-outline-light">Architecture deep dive <ArrowRight className="h-4 w-4" /></Link>
@@ -202,7 +202,7 @@ export default function Home() {
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">The packages are the substrate. One deployment of them — a Home, an agent runtime, a vault, an edge, on one chain — is an estate. The estates on one chain and the services they share there are a town. Towns on different chains, private and public, joined on public ground, are a federation. Each is its own repository; each depends only on the one below; each answers a question the one below cannot.</p>
           <div className="mt-10">
             <Figure dark caption="One chain per estate. One chain per town. Many chains per federation. Authority never leaves the chain it was signed into: evidence and value cross, a grant never does.">
-              <Scales />
+              <DiagramImg name="scales" dark width={1180} height={900} alt="The four scales: substrate, estate, town, federation — one repository each, each depending only on the one below" />
             </Figure>
           </div>
           <div className="mt-10"><ScaleCards /></div>
@@ -216,7 +216,7 @@ export default function Home() {
       {/* ── STITCHED VS SEAMLESS ─────────────────────────────────────────────────────── */}
       <Section number="04" eyebrow="Why one substrate" title="Ten products, or one model." lede="An agentic application needs sign-in, organizations, permissions, money, an agent loop, human approval, evidence, service credentials, discovery and tools. Each is sold separately. Every seam between them is where identity becomes a token, permission becomes a row, and the row becomes a log line nobody can trace back to a person’s decision.">
         <Figure caption="Left: the stack most teams assemble and the glue between the parts. Right: the same needs as slots in one model, sharing one identity, one authority mechanism and one evidence trail.">
-          <StitchedVsSeamless />
+          <DiagramImg name="stitched-vs-seamless" width={1200} height={660} alt="Stitched: ten products and the glue between them. Seamless: one substrate where identity, authority and evidence are one model." />
         </Figure>
         <div className="mt-10">
           <Ledger

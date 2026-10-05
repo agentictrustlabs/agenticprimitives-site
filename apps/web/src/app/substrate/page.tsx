@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { PILLARS } from '@apsite/content';
 import { pageMeta } from '@/lib/seo';
-import { AgentTriad, HarnessSequence, MandateAnatomy, SubstrateLayers } from '@apsite/diagrams';
+import { AgentTriad, HarnessSequence, MandateAnatomy } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Ledger, Section } from '@/components/ui';
+import { DiagramImg } from '@/components/DiagramImg';
 import { PageHero } from '@/components/PageHero';
 import { ScalesStrip } from '@/components/ScalesPlain';
 
@@ -20,7 +21,7 @@ export default function Substrate() {
 
       <Section tone="ink" number="01" eyebrow="The shape" title="Application on harness. Harness on authority. Authority on identity. Identity on chain.">
         <Figure dark caption="Application → Harness → Authority → Identity → Chain, with Edge admission and Evidence alongside every layer. The ontology binds the vocabulary across all of it; the registry kit is how the estate is found.">
-          <SubstrateLayers />
+          <DiagramImg name="substrate-layers" dark width={1200} height={820} alt="The Agentic Primitives substrate in layers: application, harness, authority, identity, chain — with edge admission and evidence alongside" />
         </Figure>
       </Section>
 
