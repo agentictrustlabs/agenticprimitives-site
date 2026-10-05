@@ -6,8 +6,8 @@ import { PageHero } from '@/components/PageHero';
 import { Section } from '@/components/ui';
 
 export const metadata: Metadata = pageMeta({
-  title: 'Architecture notes — estates, the commons, the federation',
-  description: 'How Agentic Primitives is deployed: an estate of Home, runtime, vault, edge and chain; the services estates share; how estates meet.',
+  title: 'Architecture notes — substrate, estate, town, federation',
+  description: 'How Agentic Primitives is deployed at four scales: the substrate packages, an estate of Home, runtime, vault, edge and chain, the town of estates on one chain, and the federation across chains.',
   path: '/architecture',
 });
 
@@ -16,8 +16,8 @@ export default function Architecture() {
     <>
       <PageHero
         eyebrow="Architecture notes"
-        title={<>Estates, the commons,<br />and the federation between them.</>}
-        lede="Each note draws one part of how the substrate is deployed and how the parts meet: the buildings of an estate, who lives there, what estates hold in common, and what crosses a boundary. The pictures use one vocabulary throughout: a house is a Home, a gatehouse is an edge, a vault is a vault, a hall with columns is a chain or a registry, a dome is the public graph."
+        title={<>Substrate, estate, town,<br />and the federation between chains.</>}
+        lede="Each note draws one part of how the substrate is deployed and how the parts meet: the four scales and their repositories, the buildings of an estate, who lives there, what the estates on a chain share as a town, and what crosses a chain in a federation. The pictures use one vocabulary throughout: a house is a Home, a gatehouse is an edge, a vault is a vault, a hall with columns is a chain or a registry, a dome is the public graph."
       >
         <Link href="/platform" className="btn-outline-light">Platform</Link>
         <Link href="/substrate" className="btn-outline-light">The substrate</Link>

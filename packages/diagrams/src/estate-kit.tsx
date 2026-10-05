@@ -1,5 +1,5 @@
 // THE ESTATE KIT. An estate is drawn as a block of buildings on its own ground; the services estates share are the
-// commons between the grounds; many estates around one commons are a federation; a road is a call. Every building has one roof shape per kind of service, so a reader who has
+// town between the grounds — what the estates on one chain share; towns on several chains joined on public ground are a federation; a road is a call. Every building has one roof shape per kind of service, so a reader who has
 // seen one estate recognises the next, and a glyph is the same in every picture: a house is a Home, a gatehouse is
 // an edge, a vault is a vault, a hall with columns is a chain or a registry, a dome is the public graph.
 //
@@ -107,7 +107,7 @@ export function Building({ x, y, w, h, kind, name, host, lines = [], tone, title
   );
 }
 
-/** A plot of land: an estate's boundary, or the commons. Dashed, with a kicker and a sub-caption. */
+/** A plot of land: an estate's boundary, a town, or a chain. Dashed, with a kicker and a sub-caption. */
 export function Plot({ x, y, w, h, caption, sub, tone = 'slate', solid = false }: { x: number; y: number; w: number; h: number; caption: string; sub?: string; tone?: Tone; solid?: boolean }) {
   const t = toneOf(tone);
   return (

@@ -1,5 +1,5 @@
 // THE ESTATE AND THE FEDERATION. Six pictures for the estate architecture note: one estate as a block of buildings
-// (the ap-home estate as deployed); who lives there; the commons the estates share; the federation of estates; one
+// (the ap-home estate as deployed); who lives there; the town — what estates share on one chain; the federation; one
 // act crossing an estate boundary; and the twelve NANDA layers against the buildings. Names are the deployment's;
 // the shapes are the substrate's.
 import { Arrow, Box, Brandline, Frame, Glyph, Kicker, Label, Pill } from './primitives';
@@ -91,13 +91,13 @@ export function EstateResidents() {
   );
 }
 
-/** The commons: the services estates share. */
+/** The town: the services estates share on one chain. */
 export function EstateCommons() {
   const id = 'estate-commons';
   const W = 1180, H = 600;
   return (
-    <Frame id={id} w={W} h={H} title="The commons: agent naming, the public graph, registries, the KMS pilot and public ground, shared by every estate that attaches to them">
-      <Plot x={30} y={30} w={1120} h={250} caption="The commons" sub="shared across estates; nothing here is anybody's Home" tone="teal" />
+    <Frame id={id} w={W} h={H} title="The town: agent naming, the public graph, registries and the KMS pilot, shared by every estate on the chain; public ground beyond it, where towns meet">
+      <Plot x={30} y={30} w={1120} h={250} caption="The town · faithchain" sub="shared by the estates on one chain; nothing here is anybody's Home" tone="teal" />
 
       <Building kind="naming" x={60} y={80} w={200} h={160} name="Agent naming" host="name registries on the chain" lines={['forced-unique names · typed suffixes', '.me .org .team .svc .treasury', '.workspace .registry .church .circle', 'on-chain type is the authority;', 'a wrong suffix fails closed']} />
       <Building kind="graph" x={320} y={80} w={220} h={160} name="Public graph" host="graphdb.agentkg.io · discovery-a2a.faithnet.io" lines={['indexer reads the chain → GraphDB', 'only on-chain-derivable facts', '/.well-known/ard.json · ACP registry', 'A2A + MCP question surfaces', 'passage retrieval over public works']} roofH={30} />
@@ -116,7 +116,7 @@ export function EstateCommons() {
       <Building kind="runtime" x={555} y={378} w={90} h={96} name="Runtime" roofH={18} />
       <Building kind="vault" x={660} y={378} w={70} h={96} name="Vault" roofH={18} />
 
-      <Plot x={800} y={340} w={330} h={150} caption="Estate · another product" sub="its own chain" />
+      <Plot x={800} y={340} w={330} h={150} caption="Estate · another product" sub="another chain · another town" />
       <Building kind="home" x={820} y={378} w={90} h={96} name="Home" roofH={18} />
       <Building kind="runtime" x={925} y={378} w={90} h={96} name="Runtime" roofH={18} />
       <Building kind="vault" x={1030} y={378} w={80} h={96} name="Vault" roofH={18} />
@@ -127,16 +127,16 @@ export function EstateCommons() {
       <Road id={id} d="M 930 340 V 246" tone="violet" label="mints wires" lx={940} ly={300} anchor="start" labelSize={9.5} />
       <Road id={id} d="M 1075 340 V 246" tone="line" dashed label="anchors roots" lx={1085} ly={300} anchor="start" labelSize={9.5} />
 
-      <Label x={60} y={520} text="Shared on one chain: the naming contracts and the indexer are the chain's. Across chains: roots on public ground, designed in spec 410 §4." size={11} tone="ink" />
+      <Label x={60} y={520} text="A town is one chain: its names, its graph, its registries are reads of that chain. Across chains: roots on public ground, designed in spec 410 §4." size={11} tone="ink" />
       <Label x={60} y={540} text="A resolver returns an address, never a credential. A registry's signature binds only the fact that it lists an agent. Trust is read between two parties." size={11} tone="muted" />
-      <Flag x={60} y={556} text="naming · public graph · skills registry · KMS tenant" status="live" />
+      <Flag x={60} y={556} text="the faithchain town: naming · public graph · skills registry · KMS tenant" status="live" />
       <Flag x={440} y={556} text="EstateProjectionRegistry on a public L2" status="designed" />
       <Brandline w={W} h={H} />
     </Frame>
   );
 }
 
-/** The federation: several estates around the commons. */
+/** The federation: a town on faithchain and a town on another chain, joined on public ground. */
 export function Federation() {
   const id = 'federation';
   const W = 1180, H = 820;
@@ -149,30 +149,30 @@ export function Federation() {
     </>
   );
   return (
-    <Frame id={id} w={W} h={H} title="The federation: estates on faithchain and on another chain, around the commons they share, with the roads between them">
+    <Frame id={id} w={W} h={H} title="The federation: the faithchain town — three estates and the services they share — and a town on another chain, joined on public ground">
       {/* Top estates */}
       <Plot x={30} y={30} w={540} h={190} caption="Estate · ap-home" sub="faithchain 34348 · the Home product's own estate" tone="navy" />
       {mini(60, 80, { home: 'Vercel', a2a: 'home-a2a.faithnet.io', edge: 'home-edge.faithnet.io' })}
       <Plot x={610} y={30} w={540} h={190} caption="Estate · Faithnet" sub="faithchain 34348 · Ring 0's deployment" tone="navy" />
       {mini(640, 80, { home: 'www.faithnet.me', a2a: 'a2a.faithnet.io', edge: 'edge.faithnet.io' })}
 
-      {/* Commons */}
-      <Plot x={30} y={280} w={1120} h={250} caption="The commons" sub="shared by every estate that attaches" tone="teal" />
+      {/* The town */}
+      <Plot x={30} y={280} w={1120} h={250} caption="The town · faithchain" sub="what the estates on this chain share" tone="teal" />
       <Building kind="naming" x={70} y={330} w={190} h={150} name="Agent naming" host="name registries · faithchain" lines={['typed names, forced-unique', 'the on-chain type is authority']} />
       <Building kind="graph" x={320} y={330} w={220} h={150} name="Public graph" host="graphdb.agentkg.io" lines={['indexer → GraphDB → discovery', 'on-chain-derivable facts only', 'ARD · ACP · A2A + MCP questions']} roofH={30} />
       <Building kind="registry" x={600} y={330} w={200} h={150} name="Registries" host="skills.faithnet.io + more" lines={['registry-kit instances', 'skills by digest · verticals', 'list, never grant']} />
       <Building kind="kms" x={850} y={330} w={110} h={150} name="KMS pilot" lines={['a tenant', 'per estate']} roofH={28} />
       <Building kind="ground" x={1000} y={330} w={120} h={150} name="Public ground" lines={['per-estate roots', 'spec 410 §4']} dashed roofH={22} />
-      <Flag x={70} y={495} text="faithchain commons" status="live" />
+      <Flag x={70} y={495} text="the faithchain town" status="live" />
       <Flag x={300} y={495} text="public ground on a public L2" status="designed" />
 
       {/* Bottom estates */}
       <Plot x={30} y={590} w={540} h={190} caption="Estate · faithnet-b" sub="faithchain 34348 · the federation twin" tone="slate" />
       {mini(60, 640, { home: 'Home B', a2a: '*.b.faithnet.io', edge: 'edge-b.faithnet.io' })}
-      <Plot x={610} y={590} w={540} h={190} caption="Estate · another product" sub="its own chain · same shape" tone="slate" />
+      <Plot x={610} y={590} w={540} h={190} caption="Estate · another product" sub="another chain, another town · same shape" tone="slate" />
       {mini(640, 640, { home: 'their Home', a2a: 'their runtime', edge: 'their edge' })}
 
-      {/* Roads: estates to the commons */}
+      {/* Roads: estates to the town */}
       <Road id={id} d="M 165 220 V 326" tone="teal" label="names · reads" lx={175} ly={262} anchor="start" labelSize={9.5} />
       <Road id={id} d="M 500 326 V 224" tone="violet" dashed label="indexer reads chain" lx={510} ly={262} anchor="start" labelSize={9.5} />
       <Road id={id} d="M 700 220 V 326" tone="amber" label="playbooks by digest" lx={710} ly={262} anchor="start" labelSize={9.5} />
@@ -201,7 +201,7 @@ export function CrossEstateAct() {
     <Frame id={id} w={W} h={H} title="One act across an estate boundary: Mara, whose Home is in estate A, acts on an organization served by estate B; the act parks for her signature at her own Home">
       <Plot x={30} y={60} w={420} h={400} caption="Estate A · her Home" tone="navy" />
       <Plot x={760} y={60} w={390} h={400} caption="Estate B · the organization's" tone="slate" />
-      <Plot x={480} y={60} w={250} h={400} caption="The commons" tone="teal" />
+      <Plot x={480} y={60} w={250} h={400} caption="The town" tone="teal" />
 
       <Glyph x={250} y={94} kind="person" size={16} />
       <Label x={272} y={107} text="mara.me" size={12} tone="navy" weight={700} mono />

@@ -51,8 +51,8 @@ export const ELSEWHERE: readonly Elsewhere[] = [
     url: SITE.home,
     role: 'The reference Home — passkeys, ceremonies, your vault',
     blurb:
-      'A Home is where a person signs in with a passkey, creates an organization, links an app and signs the grants it asks for. faithnet.me is the Home the examples on this site sign in through.',
-    links: [{ href: SITE.home, label: 'faithnet.me' }],
+      'A Home is where a person signs in with a passkey, creates an organization, links an app and signs the grants it asks for. faithnet.me is the Home the examples on this site sign in through; ap-home is the public repository that deploys it — the estate scale, on published packages.',
+    links: [{ href: SITE.home, label: 'faithnet.me' }, { href: 'https://github.com/agentictrustlabs/ap-home', label: 'ap-home on GitHub' }],
   },
   {
     id: 'skills',
@@ -631,6 +631,8 @@ export { ONTOLOGY_DOCS, ontologyDocBySlug } from './ontology-docs';
 export type { OntologyDoc } from './ontology-docs';
 export { ARCHITECTURE_DOCS, architectureDocBySlug } from './architecture-docs';
 export type { ArchitectureDoc } from './architecture-docs';
+export { SCALES, SCALE_STATUS_LABEL } from './scales';
+export type { Scale, ScaleStatus } from './scales';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';

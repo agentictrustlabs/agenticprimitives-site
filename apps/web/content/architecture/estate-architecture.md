@@ -6,12 +6,14 @@ say how estates meet. **Reads:** [spec 399](https://github.com/agentictrustlabs/
 (the vault), ADR-0040 (the public graph), ADR-0038 (registries), ADR-0019 (keys as delegates).
 
 Agentic Primitives runs as **estates**. An estate is one deployment of the substrate: a Home where people sign, an
-agent runtime, a vault, an edge, a Home MCP entrance, an RPC gateway, and the chain they all enforce on. Estates share
-services held in common: agent naming, a public graph, registries, a KMS pilot, and, by design, public ground. Many
-estates around one commons are a **federation**.
+agent runtime, a vault, an edge, a Home MCP entrance, an RPC gateway, and the chain they all enforce on. The estates
+on one chain, with the services they share there (agent naming, a public graph, registries, a KMS pilot, the chain's
+operations), are a **town**. Towns on different chains, joined on public ground, are a **federation**. The four
+scales, one repository each: [Substrate, estate, town, federation](/architecture/scales).
 
-Four names, kept apart on purpose. **faithchain** is a chain. **Faithnet** is Ring 0's deployment on it. **Home** is
-the product. **The estate** is one product deployment, with its own names, its own vault, and its own people.
+Four names, kept apart on purpose. **faithchain** is a chain. **Faithnet** is the estate `ap-home` deploys on it.
+**Home** is the product. **The estate** is one product deployment, with its own names, its own vault, and its own
+people.
 
 ## 1. One estate
 
@@ -51,12 +53,13 @@ person oversees an organization or service), team affiliation (team → organiza
 organization), charter (service → the agent that holds it), and delegation (any → any, caveated). How these differ is
 [its own note](/ontology/membership-role-stewardship). Private relationships live in vaults. Public ones are chain state.
 
-## 3. The commons
+## 3. The town: what estates share on one chain
 
-![The commons: agent naming, the public graph, registries, the KMS pilot and public ground, shared by every estate that attaches to them](/architecture/estate-commons.svg)
+![The town: agent naming, the public graph, registries and the KMS pilot, shared by every estate on the chain; public ground beyond it](/architecture/estate-commons.svg)
 
-Nothing in the commons is anybody's Home. Each service answers a question any estate can ask, and none of them grants
-anything.
+Nothing in the town is anybody's Home. Each service answers a question any estate on the chain can ask, and none of
+them grants anything. The town is single-chain by definition: every service in it is a read of one chain's state or a
+contract on it. Public ground, the last column, is the one piece that is not of the town; it is where towns meet.
 
 | Service | What it is | How it is shared | Status |
 | --- | --- | --- | --- |
@@ -72,17 +75,18 @@ nothing reading the chain would not.
 
 ## 4. The federation
 
-![The federation: estates on faithchain and on another chain, around the commons they share, with the roads between them](/architecture/federation.svg)
+![The federation: the faithchain town, three estates and the services they share, and a town on another chain, joined on public ground](/architecture/federation.svg)
 
 Four estates stand in the picture. **ap-home** and **Faithnet** are on faithchain, so they share its naming, its
 indexer and its KMS tenant model by construction; only the default deployment serves names that are unpublished
 (`A2A_SERVES_UNPUBLISHED_NAMES`). **faithnet-b** is the federation twin (`edge-b.faithnet.io`, `*.b.faithnet.io`), the
-second deployment the cross-Home proofs run against. **Another product** on its own chain has the same shape and
-shares nothing on chain; it meets the others on public ground.
+second deployment the cross-Home proofs run against. These three and the services between them are the faithchain
+town. **Another product** on its own chain stands in another town, with the same shape and nothing shared on chain; the
+two towns meet on public ground, and that meeting is the federation.
 
 | | Per estate | Shared |
 | --- | --- | --- |
-| People, organizations, services | ✓ their accounts, their vaults, their Home | names resolve from the commons |
+| People, organizations, services | ✓ their accounts, their vaults, their Home | names resolve from the town |
 | Home · runtime · vault · edge · Home MCP · RPC | ✓ | — |
 | Durable Objects, D1, KV, secrets, broker key | ✓ | — |
 | Name registries, typed subregistries | on the estate chain | ✓ for estates on that chain |
@@ -135,6 +139,8 @@ That adapter belongs in a sibling repository, as every external protocol bridge 
 
 - **Not a chain.** Two estates share faithchain today. A chain is where an estate enforces; it is not the estate.
   What may cross between chains, and as what: [Chains and estates](/architecture/chains).
+- **Not a town.** The town is the estates on a chain plus what they share there. An estate stands in one; it does
+  not own the naming, the graph or the registries, and it cannot grant through them.
 - **Not Ring 0's deployment.** Faithnet is one estate among several. `ap-home` is another, from a product repository
   on published packages.
 - **Not a tenant of a registry.** Registries list an estate's agents. They hold no authority over them.

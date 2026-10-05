@@ -6,7 +6,9 @@ and a gate named; *proposed* is what this note recommends and no spec yet holds;
 does not decide.
 
 An estate enforces on one chain. A chain is not an estate: several estates may stand on one, and an estate's residents
-may hold accounts on others. Some chains are private (faithchain, a Besu network one operator runs), some are public
+may hold accounts on others. The estates on one chain and what they share there are a **town** (`ap-town`); towns on
+several chains, joined on public ground, are the **federation** (`ap-federation`). This note is the federation's
+problem statement: [Substrate, estate, town, federation](/architecture/scales) places it among the four scales. Some chains are private (faithchain, a Besu network one operator runs), some are public
 (Base). Both kinds are shared resources in the federation, and EVM chains come with a large cross-chain toolkit. The
 question is what, out of everything an estate holds, may travel between chains, and as what.
 
@@ -20,7 +22,7 @@ leaves for a person who holds accounts on two chains, and what ERC-8004 and ENS 
 
 | Relation | Example | What is shared | What it means for an act |
 | --- | --- | --- | --- |
-| **Two estates, one chain** | ap-home and Faithnet on faithchain | the same `AgentAccount`s, the same `DelegationManager`, the same name registries, one `isRevoked` read | a cross-estate act is chain-local: B's runtime verifies a grant A's resident signed, on the chain both read. Live |
+| **Two estates, one chain** (a town) | ap-home and Faithnet on faithchain | the same `AgentAccount`s, the same `DelegationManager`, the same name registries, one `isRevoked` read | a cross-estate act is chain-local: B's runtime verifies a grant A's resident signed, on the chain both read. Live |
 | **Two estates, two chains** | ap-home on faithchain, a product on Base | nothing on chain. They meet on public ground, where each anchors its roots | the act in C runs under a grant issued and redeemed on C's chain; A's standing arrives as a proof against A's root. Designed (spec 410 §4) |
 | **A public chain as the floor** | Base as public ground for every estate | `EstateProjectionRegistry`: one registry, many estates, each known only by its roots and governance address | C's edge reads A's root from its own chain, one read, no bridge. Designed; which public L2 is spec 407 D-03, Base the default proposal |
 

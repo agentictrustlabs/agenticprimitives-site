@@ -6,6 +6,7 @@ import { pageMeta } from '@/lib/seo';
 import { EstateTopology, OntologyLadder } from '@apsite/diagrams';
 import { CTA, Figure, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
+import { ScaleCards } from '@/components/ScaleCards';
 
 export const metadata: Metadata = pageMeta({
   title: 'Platform — nine capabilities',
@@ -59,12 +60,15 @@ export default function Platform() {
         </div>
       </PageHero>
 
-      <Section tone="ink" number="01" eyebrow="Where it runs" title="An estate: one deployment of the substrate, many applications around it." lede="Home for people and ceremonies, a runtime for agents, vaults for records, an edge for admission, discovery and a skills registry, and a chain for the anchor. Your application is a relying app: an OIDC client and an A2A caller.">
-        <Figure dark caption="The faithnet estate as deployed today. Names are the estate's; the shape is the substrate's. Home runs on Vercel; the runtime, vault, edge, discovery and registry are Cloudflare Workers; the chain is a private Besu QBFT network — any EVM works.">
+      <Section tone="ink" number="01" eyebrow="Where it runs" title="An estate: one deployment of the substrate, many applications around it." lede="Home for people and ceremonies, a runtime for agents, vaults for records, an edge for admission, and a chain for the anchor. Your application is a relying app: an OIDC client and an A2A caller. The estate product is ap-home, public on GitHub; the estates on one chain share a town; towns across chains form a federation.">
+        <Figure dark caption="The faithnet estate as deployed today by ap-home. Names are the estate's; the shape is the substrate's. Home runs on Vercel; the runtime, vault, edge, discovery and registry are Cloudflare Workers; the chain is a private Besu QBFT network — any EVM works.">
           <EstateTopology />
         </Figure>
+        <div className="mt-10"><ScaleCards compact /></div>
         <p className="mt-6 text-sm text-slate-400">
-          Building by building, and how several estates share naming, a public graph and registries: <Link href="/architecture/estate" className="text-teal-300 hover:underline">The estate and the federation →</Link>
+          The four scales, one repository each: <Link href="/architecture/scales" className="text-teal-300 hover:underline">Substrate, estate, town, federation →</Link>
+          {' '}· Building by building: <Link href="/architecture/estate" className="text-teal-300 hover:underline">The estate and the federation →</Link>
+          {' '}· What crosses a chain: <Link href="/architecture/chains" className="text-teal-300 hover:underline">Chains and estates →</Link>
         </p>
       </Section>
 
@@ -123,7 +127,7 @@ export default function Platform() {
             <div className="mt-3 text-amber-300">edge, brokers, workload identity: leaf bindings, depend inward</div>
           </div>
           <div className="space-y-4 text-slate-200">
-            <p>Ring 0 is packages and contracts. Products — a Home, a discovery service, a naming service, your application — live in their own repositories and import the packages. Integrations with other people's protocols (ERC-8004, ANS, HCS, DNS-AID, OASF) live outside too, importing inward, never the reverse.</p>
+            <p>Ring 0 is packages and contracts. Products live in their own repositories and import the packages: the Home and its estate in <a href="https://github.com/agentictrustlabs/ap-home" rel="noreferrer" className="text-brass hover:underline">ap-home</a>, the single-chain shared services (naming, the public graph, registries) in ap-town, the cross-chain public ground in ap-federation, and your application in yours. Integrations with other people's protocols (ERC-8004, ANS, HCS, DNS-AID, OASF) live outside too, importing inward, never the reverse.</p>
             <p>That is what lets you take one offering without the rest, and what keeps a vertical's vocabulary out of the primitives: the packages are generic trust building blocks; branding, verticals and deployment specifics are the application's job.</p>
             <Link href="/developers" className="btn-brass">Package map and quickstart</Link>
           </div>

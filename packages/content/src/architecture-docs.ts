@@ -15,11 +15,20 @@ export interface ArchitectureDoc {
 
 export const ARCHITECTURE_DOCS: readonly ArchitectureDoc[] = [
   {
+    slug: 'scales',
+    title: 'Substrate, estate, town, federation',
+    date: '2026-10-05',
+    summary:
+      'The four scales, one repository each: packages (agentic-primitives), one deployment (ap-home), estates on one chain (ap-town), towns across chains (ap-federation).',
+    file: 'scales.md',
+    hero: '/architecture/scales.svg',
+  },
+  {
     slug: 'estate',
     title: 'The estate and the federation',
     date: '2026-10-04',
     summary:
-      'An estate is one deployment: Home, runtime, vault, edge, Home MCP and its chain. Estates share naming, a public graph and registries.',
+      'An estate is one deployment: Home, runtime, vault, edge, Home MCP and its chain. The estates on a chain share a town; towns meet in a federation.',
     file: 'estate-architecture.md',
     hero: '/architecture/federation.svg',
   },

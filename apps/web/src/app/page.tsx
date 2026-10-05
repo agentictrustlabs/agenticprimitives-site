@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AUDITS, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
-import { StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
+import { Scales, StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Mark } from '@/components/Mark';
+import { ScaleCards } from '@/components/ScaleCards';
 import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui';
 import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
 
@@ -174,6 +175,22 @@ export default function Home() {
         </Figure>
         <div className="mt-8 flex justify-end">
           <Link href="/substrate" className="btn-outline-light">Architecture deep dive <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+
+        <div className="mt-20 border-t border-white/10 pt-14">
+          <p className="eyebrow-dark">Four scales, four repositories</p>
+          <h3 className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-white md:text-4xl">Substrate. Estate. Town. Federation.</h3>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">The packages are the substrate. One deployment of them — a Home, an agent runtime, a vault, an edge, on one chain — is an estate. The estates on one chain and the services they share there are a town. Towns on different chains, private and public, joined on public ground, are a federation. Each is its own repository; each depends only on the one below; each answers a question the one below cannot.</p>
+          <div className="mt-10">
+            <Figure dark caption="One chain per estate. One chain per town. Many chains per federation. Authority never leaves the chain it was signed into: evidence and value cross, a grant never does.">
+              <Scales />
+            </Figure>
+          </div>
+          <div className="mt-10"><ScaleCards /></div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/architecture/scales" className="btn-brass">The four scales, in full <ArrowRight className="h-4 w-4" /></Link>
+            <a href="https://github.com/agentictrustlabs/ap-home" rel="noreferrer" className="btn-outline-light">ap-home on GitHub <ArrowRight className="h-4 w-4" /></a>
+          </div>
         </div>
       </Section>
 
