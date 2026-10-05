@@ -1,8 +1,59 @@
 // CHAINS AND ESTATES. Two pictures for the chains note: estates standing on shared and separate chains, with what
 // crosses between them; and the ledger of what crosses a chain boundary, as what. A chain is drawn as ground, not as
 // a building: an estate enforces ON it, and several estates may stand on one.
-import { Box, Brandline, Frame, Kicker, Label, Pill } from './primitives';
-import { Building, Flag, Plot, Road } from './estate-kit';
+import { Box, Brandline, Frame, Glyph, Kicker, Label, Pill } from './primitives';
+import { Building, Flag, Plot, Road, type FlagStatus } from './estate-kit';
+
+/** One principal with a home account on one chain and a satellite on another, joined by her signed card and her name. */
+export function PrincipalAcrossChains() {
+  const id = 'principal-across-chains';
+  const W = 1180, H = 700;
+  return (
+    <Frame id={id} w={W} h={H} title="One principal, two chains: a home account where custody is governed, a satellite account where she also acts, joined by her signed card and her name, each side proving control of its own account">
+      <Plot x={30} y={60} w={430} h={420} caption="faithchain · private · eip155:34348" sub="the home chain" tone="amber" solid />
+      <Plot x={720} y={60} w={430} h={420} caption="Base · public · eip155:8453" sub="a chain where she also acts" tone="amber" solid />
+
+      <Glyph x={560} y={74} kind="person" size={18} />
+      <Label x={585} y={88} text="mara.me" size={13} tone="navy" weight={700} mono />
+
+      {/* Home side */}
+      <Building kind="chain" x={60} y={110} w={190} h={150} name="Home account" host="AgentAccount · 0x7a3f…" lines={['CustodyPolicy: passkeys, trustees', 'recovery and rotation run here', 'her grants in this estate']} titleSize={12} />
+      <Building kind="naming" x={270} y={110} w={170} h={150} name="Name registry" host="the one home for .me" lines={['mara.me → owner', 'atl:addr[34348] = 0x7a3f…', 'atl:addr[8453] = 0x7a3f…', 'atl:cardUri → her card']} titleSize={12} lineSize={10} />
+      <Building kind="ground" x={60} y={300} w={380} h={150} name="Anchored roots" host="signed by the estate's governance" lines={['live-grant root · membership root', 'resolver storage root (naming + profile records)', 'read on Base by the verifying resolver']} titleSize={12} lineSize={10} dashed />
+
+      {/* Satellite side */}
+      <Building kind="chain" x={750} y={110} w={190} h={150} name="Satellite account" host="AgentAccount · 0x7a3f…" lines={['same CREATE2 address: same', 'factory, config and salt', 'the same custodians installed', 'her Base grants, redeemed here']} titleSize={12} lineSize={10} />
+      <Building kind="naming" x={960} y={110} w={170} h={150} name="Verifying resolver" host="no .me registry here" lines={['mara.me → 0x7a3f… by proof', 'against the anchored root', 'reverse: 0x7a3f… claims mara.me,', 'valid only if the forward agrees']} titleSize={12} lineSize={10} />
+      <Building kind="ground" x={750} y={300} w={380} h={150} name="Public ground" host="EstateProjectionRegistry on Base" lines={['roots of every estate, by estateId', 'one read, no bridge, no gateway']} titleSize={12} lineSize={10} dashed />
+
+      {/* The card between */}
+      <Box x={490} y={120} w={200} h={200} title="Her signed card" tone="navy" lines={['accounts: [', '  { eip155:34348, 0x7a3f…,', '    role: home, proof },', '  { eip155:8453, 0x7a3f…,', '    role: satellite, proof } ]', 'signed by the home account;', 'each proof signed by that', 'account on its own chain']} lineSize={10} />
+      <Box x={490} y={350} w={200} h={100} title="Custody propagation" tone="rose" dashed lines={['rotation or recovery at home', '→ a ceremony per satellite', '→ the satellite proof re-signed', 'under the new epoch']} lineSize={10} />
+
+      {/* Roads */}
+      <Road id={id} d="M 250 160 H 266" tone="teal" />
+      <Road id={id} d="M 440 190 H 486" tone="navy" label="cardUri" lx={463} ly={182} labelSize={9.5} />
+      <Road id={id} d="M 690 190 H 746" tone="navy" label="1271 proof" lx={718} ly={182} labelSize={9.5} />
+      <Road id={id} d="M 940 190 H 956" tone="teal" />
+      <Road id={id} d="M 440 440 C 500 468, 700 468, 746 440" tone="line" dashed label="roots anchored" lx={590} ly={478} labelSize={9.5} />
+      <Road id={id} d="M 1045 260 V 296" tone="violet" label="reads root" lx={1055} ly={282} anchor="start" labelSize={9.5} />
+      <Road id={id} d="M 155 260 V 296" tone="violet" label="projected" lx={165} ly={282} anchor="start" labelSize={9.5} />
+      <Road id={id} d="M 490 400 C 420 400, 300 280, 250 240" tone="rose" dashed />
+      <Road id={id} d="M 690 400 C 740 400, 820 280, 750 240" tone="rose" dashed />
+
+      <Flag x={30} y={500} text="chain-local custody and grants on each side" status="live" />
+      <Flag x={360} y={500} text="roots on public ground" status="designed" />
+      <Flag x={580} y={500} text="card account list · chain-keyed addr · verifying resolver · propagation" status="proposed" />
+
+      <Label x={30} y={548} text="From ERC-8004: identity is chain-local; one self-published document lists every registration; a wallet is bound only by a signature it made; verified by round trip." size={11} tone="ink" />
+      <Label x={30} y={566} text="From ENS v2: one home registry for a name; address records keyed by chain; a per-chain reverse claim valid only when the forward agrees; resolution elsewhere by proof." size={11} tone="ink" />
+      <Label x={30} y={584} text="From neither: how a rotation or a recovery at the home reaches the satellite. That is a custody ceremony, and it is ours to write." size={11} tone="rose" />
+      <Pill x={30} y={612} text="The card joins the accounts. The name finds them. The chain governs each. A matching address proves common deployment and nothing more." tone="slate" />
+      <Label x={30} y={668} text="Nothing here is authority: a satellite entry, a resolved address and a reverse claim are evidence a verifier reads; the act on Base still runs under a Base grant, verified per step." size={11} tone="muted" />
+      <Brandline w={W} h={H} />
+    </Frame>
+  );
+}
 
 /** Three estates, two chains: A and B share faithchain; C stands on Base, which is also public ground. */
 export function ChainsAndEstates() {
@@ -52,7 +103,7 @@ export function ChainsAndEstates() {
 
       <Flag x={30} y={696} text="two estates on one chain" status="live" />
       <Flag x={240} y={696} text="roots on a public chain · cross-chain admission" status="designed" />
-      <Flag x={660} y={696} text="one principal with accounts on two chains, bound" status="pending" />
+      <Flag x={660} y={696} text="one principal with accounts on two chains, bound" status="proposed" />
       <Pill x={30} y={736} text="A chain is ground, not a building. An estate enforces on one; several estates may stand on it; none of them is it." tone="slate" />
       <Brandline w={W} h={H} />
     </Frame>
@@ -62,10 +113,11 @@ export function ChainsAndEstates() {
 /** The ledger: what crosses a chain boundary, as what, by which standard. */
 export function ChainBoundary() {
   const id = 'chain-boundary';
-  const W = 1180, H = 620;
-  const rows: Array<[string, string, string, string, 'live' | 'pending' | 'designed']> = [
+  const W = 1180, H = 720;
+  const rows: Array<[string, string, string, string, FlagStatus]> = [
     ['Address', 'as a reference', 'eip155:<chain>:<address>; one hex on two chains is two accounts until a signed binding joins them', 'CAIP-10 · CREATE2', 'live'],
-    ['Name', 'as a record', 'a name belongs to the registry on its chain; its native-id record may point at an account on another', 'spec 215 records', 'live'],
+    ['Principal', 'as a signed list', 'the card lists her accounts by chain, each with a proof that account signed; round trip per chain', '8004 pattern · 1271/6492', 'proposed'],
+    ['Name', 'as a record', 'one home registry per typed root; addr records by chain; per-chain reverse claim; proof elsewhere', 'ENSIP-9/19 · ERC-3668', 'proposed'],
     ['Grant', 'never', 're-issued on the chain where it acts; the EIP-712 domain carries the chain id and the manager', 'EIP-712 · ERC-7710', 'live'],
     ['Revocation', 'never read across', 'one read on the grant\u2019s chain; the live-grant root is refreshed and a stale root is a refusal', 'spec 410 §4', 'designed'],
     ['Membership', 'as a proof', 'the membership root on public ground; a Merkle presentation reveals one leaf, nothing else', 'merkle-membership-v1', 'designed'],
@@ -73,6 +125,7 @@ export function ChainBoundary() {
     ['Value', 'as a transfer', 'a treasury invokes a bridge adapter under a mandate redeemable only on the destination chain', 'CCTP V2 · xERC20 · ERC-7683', 'pending'],
     ['Public graph', 'as tagged facts', 'the indexer reads each chain; every fact carries its chain; still only what the chain can prove', 'CAIP-2 on every fact', 'pending'],
     ['Charter', 'as a hash', 'the estate\u2019s governance address is its id on public ground; the charter hash sits beside its roots', 'spec 410 §9', 'designed'],
+    ['Custody', 'as a ceremony', 'a rotation or recovery at the home reaches each satellite by its own custody action; proofs re-signed', 'CustodyPolicy · 410 §1', 'proposed'],
   ];
   return (
     <Frame id={id} w={W} h={H} title="What crosses a chain boundary between estates, as what, and by which standard">
@@ -94,9 +147,9 @@ export function ChainBoundary() {
           </g>
         );
       })}
-      <Label x={30} y={520} text="Two things never cross: a grant and the read of its revocation. Everything else crosses as a reference, a proof, an anchor or a transfer." size={11} tone="ink" />
-      <Label x={30} y={540} text="Bridges and messaging gateways are adapters in sibling repositories. Ring 0 ships the fields they carry: a chain on every reference, a chain and an anchor on every receipt, a root per estate." size={11} tone="muted" />
-      <Pill x={30} y={566} text="A message from another chain is evidence that something happened there. It is never a mandate here." tone="slate" />
+      <Label x={30} y={612} text="Two things never cross: a grant and the read of its revocation. Everything else crosses as a reference, a signed list, a proof, an anchor, a transfer or a ceremony." size={11} tone="ink" />
+      <Label x={30} y={632} text="Bridges and messaging gateways are adapters in sibling repositories. Ring 0 ships the fields they carry: a chain on every reference, a chain and an anchor on every receipt, a root per estate." size={11} tone="muted" />
+      <Pill x={30} y={660} text="A message from another chain is evidence that something happened there. It is never a mandate here." tone="slate" />
       <Brandline w={W} h={H} />
     </Frame>
   );

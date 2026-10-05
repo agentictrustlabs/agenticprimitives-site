@@ -163,16 +163,18 @@ export function Resident({ x, y, w = 150, kind, name, note, h = 44 }: { x: numbe
   );
 }
 
-/** A small status flag: live · pending · designed. */
-export function Flag({ x, y, text, status }: { x: number; y: number; text: string; status: 'live' | 'pending' | 'designed' }) {
-  const tone: Tone = status === 'live' ? 'teal' : status === 'pending' ? 'amber' : 'slate';
+export type FlagStatus = 'live' | 'pending' | 'designed' | 'proposed';
+
+/** A small status flag: live (runs today) · pending (specified and gated, wave open) · designed (spec written) · proposed (a note recommends it; no spec yet). */
+export function Flag({ x, y, text, status }: { x: number; y: number; text: string; status: FlagStatus }) {
+  const tone: Tone = status === 'live' ? 'teal' : status === 'pending' ? 'amber' : status === 'proposed' ? 'violet' : 'slate';
   const t = toneOf(tone);
   const size = 10;
   const tail = text ? `  ·  ${text}` : '';
   const w = tw(`${status}${tail}`, size, false, 600) * 1.08 + 20;
   return (
     <g>
-      <rect x={x} y={y} width={w} height={size + 10} rx={4} fill={t.fill} stroke={t.stroke} strokeWidth={1} strokeDasharray={status === 'designed' ? '4 3' : undefined} />
+      <rect x={x} y={y} width={w} height={size + 10} rx={4} fill={t.fill} stroke={t.stroke} strokeWidth={1} strokeDasharray={status === 'designed' || status === 'proposed' ? '4 3' : undefined} />
       <text x={x + 9} y={y + size + 2.5} fontSize={size} fontWeight={600} fill={t.text} fontFamily={FONT}><tspan fontFamily={MONO} letterSpacing={1}>{status.toUpperCase()}</tspan>{tail}</text>
     </g>
   );

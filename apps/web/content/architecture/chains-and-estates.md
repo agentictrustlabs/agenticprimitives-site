@@ -1,8 +1,9 @@
 # Chains and estates
 
-**Status:** exploration, 2026-10-04. Companion to [The estate and the federation](/architecture/estate). Everything
-marked *live* runs today; *designed* has a spec and a gate named; *open* is a question this note frames and does not
-decide.
+**Status:** exploration, 2026-10-04; §3 and §5 revised the same day with the ENS v2 and ERC-8004 study. Companion to
+[The estate and the federation](/architecture/estate). Everything marked *live* runs today; *designed* has a spec
+and a gate named; *proposed* is what this note recommends and no spec yet holds; *open* is a question it frames and
+does not decide.
 
 An estate enforces on one chain. A chain is not an estate: several estates may stand on one, and an estate's residents
 may hold accounts on others. Some chains are private (faithchain, a Besu network one operator runs), some are public
@@ -10,7 +11,8 @@ may hold accounts on others. Some chains are private (faithchain, a Besu network
 question is what, out of everything an estate holds, may travel between chains, and as what.
 
 The answer is one sentence, and the rest of this note is its consequences. **Authority is chain-local by
-construction; evidence and value cross a chain, authority never does.**
+construction; evidence and value cross a chain, authority never does.** The second half of the note is what that
+leaves for a person who holds accounts on two chains, and what ERC-8004 and ENS v2 already know about joining them.
 
 ## 1. Three ways a chain and an estate relate
 
@@ -51,26 +53,72 @@ step, decides whether anything runs.
 
 ## 3. One principal, many chains
 
-The identity question is the open one, and it is worth stating carefully.
+![One principal, two chains: a home account where custody is governed, a satellite account where she also acts, joined by her signed card and her name](/architecture/principal-across-chains.svg)
 
 **An address is chain-qualified.** The identifier is CAIP-10, `eip155:<chainId>:<address>`
 ([ADR-0008](https://github.com/agentictrustlabs/agentic-primitives/blob/master/docs/architecture/decisions/0008-caip10-nativeid-record-predicate.md), `CanonicalAgentId` in `types`). The same hex on
 faithchain and on Base is two accounts with two custody states, two sets of grants and two revocation histories.
-Nothing makes them one principal except a statement signed by both.
+Nothing makes them one principal except a statement signed by both. Spec 220 deferred that statement and kept CAIP-10
+as the bridge.
 
-**The same address is reproducible.** CREATE2 from the same factory address, with the same implementation, salt and
-custody configuration, yields the same hex on any EVM chain. A person can hold the "same" address on faithchain and
-on Base, and a reader can recognise it. That is evidence that the same custodians deployed both, and no more: it is
-not a grant on either side, and a verifier must never treat a match of hex as a match of authority.
+### 3.1 What is lost without the binding
 
-**The binding is what is missing.** Spec 220 deferred multi-chain canonical identity and kept CAIP-10 as the bridge.
-What a binding would be, in the substrate's own vocabulary: a signed statement from each account naming the other,
-anchored where each lives, projected into the signed card so an outside verifier gets it without a chain read. One
-account would be the **home account**: where custody is governed, where the Home signs, where recovery runs. The
-others would be **satellite accounts**, controlled by the same custodians, holding only the grants and funds the
-estate they stand in requires. A rotation at the home account would have to reach the satellites by ceremony, as
-spec 410 §1 reaches standing wires. None of this is specified. The note names it so it is not re-derived as a
-shortcut.
+Nothing in authority, and most of what makes the person one person. Without it: cross-chain participation (spec 410
+§4.4) stops at the edge, because A's root proves standing for `eip155:34348:0x…` and C's mandate is signed by
+`eip155:8453:0x…`, and nothing joins them; a passkey rotated out at her Home is still a live custodian on the Base
+account, so custody must be duplicated per chain or left stale; one history becomes two `prov:Agent`s and a receipt
+anchored on Base is not provably hers; her name stops at its chain and someone else can hold `mara.me` on a second
+`.me` registry; rosters, stewardship and `charteredUnder` for a treasury drift per chain; and an ERC-8004 entry on a
+public chain cannot honestly point back at the account where custody is governed. The per-chain posture (a person on
+Base is a different account) is honest and cheap, and it forgoes all six. The binding is worth having if a Home
+person is meant to participate in an estate on another chain as herself; custody alone justifies it.
+
+### 3.2 The recommended shape
+
+Two existing standards have already solved the records half of this, from opposite ends. ERC-8004 keeps identity
+chain-local and joins the registrations in one self-published document, each entry verified by round trip, each
+wallet bound only by a signature it made. ENS v2 keeps one authoritative registry for a name, keys address records by
+chain, lets each chain's account claim the name in reverse, valid only when the forward record agrees, and resolves
+the name on other chains by proof against the home chain's state. Port both as principles in AP vocabulary; the
+custody half is ours to write.
+
+1. **Home and satellite accounts.** One account per principal is the **home account**: where `CustodyPolicy` is
+   governed, where the Home signs, where recovery and rotation run. Every other is a **satellite**: an
+   `AgentAccount` on another chain with the same custodians installed, holding only the grants and funds the estate
+   it stands in requires. Nothing about a satellite is new on chain; what is new is the statement that it is hers.
+2. **The card lists the accounts; each proves itself.** The signed card (`A2AAgentCardV1`, the
+   `AgentServicePublication`, spec 347) is already the agent's self-published facts document, which is the role the
+   8004 registration file plays. Add `accounts: [{ chain, account, role: 'home' | 'satellite', proof }]`. The home
+   account signs the card. Each satellite `proof` is an EIP-712 statement with the satellite's chain id and the card
+   digest in its domain, verifiable against that account on its own chain by ERC-1271, or ERC-6492 while it is
+   counterfactual. This is 8004's `setAgentWallet` rule: an address is bound by a signature it made, never by
+   assertion. The round trip closes per chain: the satellite's own profile record (`atl:cardUri`) names the card.
+   Spec 347 already carries external identity bindings; an own account on another chain is one more binding kind.
+3. **One home registry per typed root; address records keyed by chain.** `mara.me` belongs to the `.me` registry on
+   one chain, and no other chain runs a parallel forced-unique `.me`. Replace the single `atl:addr` and the one-way
+   `atl:nativeId` with `atl:addr` keyed by CAIP-2 chain, written by the name owner. The contract comment "no
+   multi-coin (ENSIP-9) address records" in `AgentNameAttributeResolver.sol` becomes the thing to change.
+4. **A reverse claim per chain, valid only with the forward.** The satellite account on Base publishes "I am
+   `mara.me`"; a reader honours it only when the home registry's `atl:addr[8453]` names that account (ENSIP-19's
+   rule; our universal resolver already enforces round trip on one chain).
+5. **Resolution elsewhere by proof, never by gateway trust.** A verifying resolver on Base answers `mara.me` against
+   a resolver storage root the estate anchors beside its live-grant and membership roots on public ground (spec 410
+   §4). ENS's version rides the rollup's state commitment; faithchain has none, so the root is the estate's signed
+   anchor, the same trust public ground already makes. Under [ADR-0013](https://github.com/agentictrustlabs/agentic-primitives/blob/master/docs/architecture/decisions/0013-no-silent-fallbacks.md) a
+   proof-backed answer or an empty one; no second mechanism when the proof is missing.
+6. **A deterministic authority set.** We deploy accounts by CREATE2 already; deploy the factory, implementation,
+   `DelegationManager` and enforcers at the same addresses on every chain the federation uses, one deployer and one
+   salt, so the `chain-state` multi-chain registry spec 407 D-03 asks for is a chain-id lookup. A matching account hex
+   then follows when the custody configuration matches. It remains evidence of common deployment. A verifier never
+   treats a match of hex as a match of authority.
+7. **Custody propagation, the part neither standard has.** A rotation or a recovery at the home account reaches each
+   satellite by that satellite's own custody action, under its own timelocks, and the satellite's card proof is
+   re-signed under the new epoch, in the same class of ceremony as spec 410 §1's re-approval of standing wires.
+   8004's answer would be "transfer the NFT"; ENS has no answer; ours has to be a `CustodyPolicy` ceremony. Until a
+   satellite has been propagated to, its proof is stale and a reader should say so.
+
+Nothing in 1–6 is authority. A satellite entry, a resolved address and a reverse claim are evidence a verifier reads.
+The act on Base still runs under a Base grant, verified per step.
 
 ## 4. What crosses a chain boundary
 
@@ -78,8 +126,9 @@ shortcut.
 
 | Thing | Crosses | How | Standard | Status |
 | --- | --- | --- | --- | --- |
-| **Address** | as a reference | `eip155:<chain>:<address>`. One hex on two chains is two accounts until a signed binding joins them | CAIP-10; CREATE2 | live; binding open |
-| **Name** | as a record | A name belongs to the registry on its chain. Its `native-id` record may point at an account on another chain. A `.me` on faithchain and a `.me` on Base are two registries with two forced-unique rules | spec 215 records | live; no cross-chain name authority |
+| **Address** | as a reference | `eip155:<chain>:<address>`. One hex on two chains is two accounts until a signed binding joins them | CAIP-10; CREATE2 | live |
+| **Principal** | as a signed list | The card lists her accounts by chain, each with a proof that account signed on its own chain; round trip from each chain's `atl:cardUri` (§3.2) | the ERC-8004 registration pattern; ERC-1271/6492 | proposed |
+| **Name** | as a record | One home registry per typed root; `atl:addr` keyed by chain; a per-chain reverse claim valid only with the forward; resolution on other chains by proof against an anchored root (§3.2) | the ENSIP-9/19 pattern; ERC-3668 for the proof path | proposed; today one `atl:addr` and a one-way `native-id` |
 | **Grant** | never | Re-issued on the chain where it acts. The EIP-712 domain carries the chain id and the manager | EIP-712; ERC-7710 | by construction |
 | **Revocation** | never read across | One read on the grant's chain. The live-grant root on public ground is refreshed on every revocation; a stale root is a refusal, never a cached acceptance | spec 410 §4 | designed |
 | **Membership, relationships** | as a proof | The membership root on public ground; a `merkle-membership-v1` presentation reveals one leaf and nothing else about the estate's graph | `privacy-credentials` | designed |
@@ -87,32 +136,61 @@ shortcut.
 | **Value** | as a transfer | A treasury invokes a bridge adapter under a mandate redeemable only on the destination chain. Between two public chains: CCTP V2 for USDC, xERC20 for a token, ERC-7683 for an intent settled by a filler. Between a private chain and a public one there is no public bridge; the estate's operators would run one, and it would be a service agent with a treasury, not a protocol feature | CCTP V2; ERC-7281; ERC-7683 | reserved (spec 243); successor ADR named |
 | **Public graph** | as tagged facts | The indexer reads each chain it is pointed at; every fact carries its CAIP-2 chain; the KB still holds only what the chain it names can prove | CAIP-2 | one chain today |
 | **Charter, governance** | as a hash | The estate's `AgenticGovernance` address on its own chain is its id on public ground; the charter hash sits beside its roots | spec 410 §9 | designed |
+| **Custody** | as a ceremony | A rotation or recovery at the home account reaches each satellite by that satellite's own custody action; the satellite's card proof is re-signed under the new epoch | `CustodyPolicy`; spec 410 §1's shape | proposed |
 
-Two things never cross: a grant, and the read of its revocation. Everything else crosses as a reference, a proof, an
-anchor or a transfer, and each of those is read from the live original on the chain that holds it.
+Two things never cross: a grant, and the read of its revocation. Everything else crosses as a reference, a signed
+list, a proof, an anchor, a transfer or a ceremony, and each of those is read from the live original on the chain
+that holds it.
 
-## 5. The EVM cross-chain toolkit, placed
+## 5. The EVM standards, placed
 
-The EVM world offers more cross-chain machinery than the federation needs. Here is where each piece sits, and the
-test for all of them is the same: does it carry authority? If it does, it is refused as a path; if it carries
-evidence or value, it is an adapter.
+The EVM world offers more cross-chain machinery than the federation needs. Four verdicts, and one test for all of
+them: does it carry authority? If it does, it is refused as a path. If it carries identity facts, we **port the
+principle** in our vocabulary. If it carries evidence or value, it is an **adapter** in a sibling repository
+([ADR-0037](https://github.com/agentictrustlabs/agentic-primitives/blob/master/docs/architecture/decisions/0037-primitives-pure-repo-external-integration-and-ux-layers.md)). If it is an identifier, we
+**adopt** it as is.
+
+### 5.1 Identity: port the principle
+
+| Standard | The concept | Our form | Verdict |
+| --- | --- | --- | --- |
+| **ERC-8004** registration file, `registrations[]` | identity is chain-local; one self-published document lists every registration; each entry is checked by round trip (registry → URI → file names the registry) | the signed card's `accounts[]` (§3.2 item 2); the round trip from each chain's `atl:cardUri` | **port** |
+| **ERC-8004** `setAgentWallet` | a wallet is bound by an EIP-712 signature it made, ERC-1271 for a contract wallet; never by assertion | the per-satellite `proof`, chain id in the domain, 1271/6492 on that chain | **port** |
+| **ERC-8004** deterministic registries | the same registry address on 30+ chains; "which registry" collapses to "which chain" | the same factory, implementation and `DelegationManager` addresses on every federation chain (item 6) | **port** |
+| **ERC-8004** reputation / validation per `agentId` | evidence keyed per chain; the reader aggregates | receipts anchored per chain; no cross-chain score, ever | **already ours** |
+| **ERC-8004** `agentId` as ERC-721; transfer = identity move | a number names the agent; ownership transfer in one step | our id is the account; control is `CustodyPolicy` with T5/T6 delays and recovery | **refused.** No timelock, no custody governance |
+| **ERC-8004** the registry itself | a public identity registry on mainnets | a Ring 1 **projection** (spec 407 D-10) whose registration file lists both our home and satellite accounts with their proofs; `agentWallet` = the Base satellite via 1271 | **projection**, sibling repo |
+| **ENS v2** one authoritative registry, resolved on other chains | names live on one chain; other chains resolve, never re-register | one home registry per typed root; no parallel `.me` (item 3) | **port** |
+| **ENSIP-9 / ENSIP-11, ERC-7930** multi-chain address records | `addr(node, chain)`: one name, an address per chain | `atl:addr` keyed by CAIP-2 chain, replacing the single record and the one-way `nativeId` | **port** |
+| **ENSIP-19** per-chain primary name | the account on chain X claims the name; valid only if the forward on the home chain agrees | the reverse claim with round trip (item 4); our universal resolver already enforces round trip on one chain | **port** |
+| **ERC-3668** CCIP-Read, **ENSIP-10** wildcard, state-proof verifiers | a resolver on chain Y answers for names stored on chain X against X's state root | the verifying resolver on Base against the estate's anchored resolver storage root (item 5); the gateway is a Ring 1 adapter; proof-backed or empty | **port the shape, adapter for the gateway** |
+| **ERC-7828** `name@chain` | chain-qualified name syntax | **do not adopt.** `x@ctx` is already a contextual name (spec 346); the chain belongs in the record, not the name | **refused** |
+| **CAIP-2, CAIP-10** | chain and account identifiers | on every reference, every receipt, every fact | **adopted** |
+| **EIP-712** domain with `chainId` | typed data bound to one chain and one verifying contract | the reason authority is chain-local; the satellite proof's domain too | **adopted** |
+| **ERC-1271, ERC-6492** | signature validation by a contract account, counterfactual included | `UniversalSignatureValidator`; across chains: verify against the account on *its* chain, never a copy | **adopted** |
+| **CREATE2**, a deterministic deployer | the same address on many chains | evidence of common deployment; never an identity claim by itself | **adopted, as evidence** |
+
+### 5.2 Evidence and value: adapters
 
 | Standard | What it is | Where it sits here |
 | --- | --- | --- |
-| CAIP-2, CAIP-10 | chain and account identifiers | **adopted.** On every reference, every receipt, every fact |
-| EIP-712 domain with `chainId` | typed-data signing bound to one chain and one verifying contract | **the reason** authority is chain-local |
-| ERC-1271, ERC-6492 | signature validation by a contract account, including a counterfactual one | **adopted** (`UniversalSignatureValidator`). Cross-chain it means: verify against the account on *its* chain, never against a copy |
-| CREATE2, deterministic deployer | the same address on many chains | **evidence** of common custody, and a convenience. Never an identity claim by itself |
-| ERC-7786 | a messaging gateway interface between chains | **adapter**, outside Ring 0. Carries a root or an anchor to where a reader prefers to read it. The reader still treats it as evidence |
-| ERC-5164 and cross-chain execution | a message on chain A executes a call on chain B | **refused as an authority path.** A message is not a mandate. An act on B runs under B's own grant |
+| ERC-7786 | a messaging gateway interface between chains | **adapter.** Carries a root or an anchor to where a reader prefers to read it. The reader still treats it as evidence |
+| OP Stack / Superchain interop | native messaging among OP chains (Base is one) | **adapter.** Same rule as 7786 |
 | CCTP V2, xERC20 (ERC-7281), ERC-7802 | native USDC burn-and-mint; cross-chain token interfaces | **adapter**, invoked by a treasury under a destination-bound mandate |
 | ERC-7683 | cross-chain intents settled by fillers | **adapter.** Our intent is the mandate's digest; the filler's settlement is a transfer the receipt observes |
-| OP Stack / Superchain interop | native messaging among OP chains (Base is one) | **adapter.** Same rule as 7786 |
-| ERC-8004 | an agent identity registry on public mainnets | **projection**, Ring 1 (spec 407 D-10). An estate's agents can appear there with a binding proof the account signed |
+| ERC-5164 and cross-chain execution | a message on chain A executes a call on chain B | **refused as an authority path.** A message is not a mandate. An act on B runs under B's own grant |
 
 Ring 0 ships the fields these adapters carry and the contracts they read: a chain on every reference, a chain and an
-anchor on every receipt, a root per estate on public ground, a `DelegationManager` that refuses anything not signed
-into its own domain. The adapters live in sibling repositories ([ADR-0037](https://github.com/agentictrustlabs/agentic-primitives/blob/master/docs/architecture/decisions/0037-primitives-pure-repo-external-integration-and-ux-layers.md)).
+anchor on every receipt, a root per estate on public ground, a card that lists accounts with their proofs, a
+`DelegationManager` that refuses anything not signed into its own domain.
+
+### 5.3 What none of them has
+
+How a rotation or a recovery at the home account reaches a satellite. 8004 would transfer the token; ENS is a records
+layer and says nothing; the bridges carry messages, and a message is not a custody action. This is item 7 of §3.2, a
+`CustodyPolicy` ceremony per satellite, and it is the piece that must be specified by us before any of the ported
+principles is safe to rely on: a binding whose satellite can be left under a retired credential is a binding to a
+compromised account.
 
 ## 6. The scenario
 
@@ -123,10 +201,12 @@ admitted at B's edge; the act parks at her Home; B verifies her grant on faithch
 the cross-estate act of the companion note, and it is live in part (reads and routed acts proven; G4–G6 pending).
 
 **Mara acts on an organization in estate C.** Other chain. C's edge admits her agent on a presentation rooted in A's
-roots, read from Base, which is C's own chain. The act parks at her Home in A, as before. The mandate is a Base
-delegation from her Base account, whether that is the same hex by CREATE2 or a fresh account she bound, redeemed on
-Base. The receipt lands in her vault in A with `apexec:estate` naming C and an anchor in C's `ReceiptAnchorRegistry`
-on `eip155:8453`. She needed a Base account and a binding; that is the open item of §3.
+roots, read from Base, which is C's own chain. C's edge joins the proved subject to the actor through her card: the
+`accounts[]` entry for `eip155:8453` carries a proof her Base satellite signed, and the satellite's `atl:cardUri`
+names the same card. The act parks at her Home in A, as before. The mandate is a Base delegation from the satellite,
+redeemed on Base. The receipt lands in her vault in A with `apexec:estate` naming C and an anchor in C's
+`ReceiptAnchorRegistry` on `eip155:8453`. If she rotated a passkey last week, the satellite's proof must have been
+re-signed by the propagation ceremony, or C's edge should treat the entry as stale (§3.2 item 7).
 
 **Mara's organization pays a supplier in C.** Value. Her treasury on faithchain holds funds a private chain can hold;
 Base holds USDC. There is no public bridge between them. The move is either the organization's Base treasury paying
@@ -134,19 +214,40 @@ from a Base balance under a Base mandate, or an operator-run bridge service the 
 invoked by the treasury under a mandate bound to the destination chain. Either way the bridge never decides whether
 the payment was allowed; the mandate did, and the receipt says which chain it ran on.
 
-## 7. Open
+## 7. Recommended order, and what stays open
 
-- **Which public L2** hosts public ground, and whether the authority set itself ever moves there (spec 407 D-03;
-  Base the default proposal; paymaster economics and a regulated tenant's private-chain option in the ADR).
-- **The binding form** for one principal with accounts on several chains (spec 220's deferral): home and satellite
-  accounts, the signed statement, how a rotation reaches satellites.
+Specs precede the code. The recommendation, in the order the dependencies run:
+
+1. **Amend spec 347**: `accounts[]` on the canonical profile and the released card, the `SatelliteAccountProofV1`
+   EIP-712 type (satellite chain id and card digest in the domain), round trip from each chain's `atl:cardUri`. Gate:
+   a card whose satellite proof does not verify against the satellite on its own chain is refused at release.
+2. **Amend specs 215 and 346**: `atl:addr` keyed by CAIP-2 chain; `nativeId` retired in its favour; one home registry
+   per typed root across the federation; the per-chain reverse claim and its round-trip rule.
+3. **Extend spec 410 §4**: a resolver storage root beside the live-grant and membership roots; the verifying resolver
+   on public ground; the Ring 1 CCIP-Read gateway named as an adapter. Gate: `mara.me` resolved on the second anvil
+   chain by proof, and refused when the root is stale.
+4. **Extend spec 410 §1 or write the custody-propagation spec**: the satellite ceremony on rotation and recovery, the
+   re-signed proof, the stale-proof rule at an edge. Gate: rotate at home, act on the second chain, the first attempt
+   is refused as stale and the second succeeds after propagation.
+5. **The deterministic authority set** in spec 407 D-03's chain-posture ADR: same addresses on every federation chain,
+   the `chain-state` multi-chain registry as a chain-id lookup.
+6. **The Ring 1 ERC-8004 projection** (D-10), now listing both accounts with their proofs.
+
+Open, and not decided here:
+
+- **Which public L2** hosts public ground, and whether the authority set itself ever moves there (D-03; Base the
+  default proposal; paymaster economics and a regulated tenant's private-chain option in the ADR).
 - **A multi-chain indexer**: the public graph with a CAIP-2 chain on every fact; one chain today.
-- **A bridge-aware mandate envelope** for value (spec 243's successor ADR).
+- **A bridge-aware mandate envelope** for value (spec 243's successor ADR), and whether the consortium runs a bridge
+  service between a private chain and Base at all.
 - **Order of proof**: G4–G6 on faithnet-b first (one chain, two estates), then `check:cross-estate-admission` (two
-  chains and a public ground), then `check:participate-across-estates`.
+  chains and a public ground), then `check:participate-across-estates`, then the gates named above.
 
 ## Sources
 
 `packages/contracts/src/agency/DelegationManager.sol` (`DOMAIN_SEPARATOR`), `AgentAccountFactory.sol`
-(`relaxedT4Floor`, CREATE2), spec 410 §4 and §9, spec 407 D-03 / D-10, spec 243 PMT-INV-03, spec 220 §deferred,
-ADR-0008, ADR-0013, ADR-0037, [The estate and the federation](/architecture/estate).
+(`relaxedT4Floor`, CREATE2), `naming/AgentNameAttributeResolver.sol` ("no multi-coin address records"),
+`naming/AgentNameUniversalResolver.sol` (round trip), spec 410 §1, §4 and §9, spec 407 D-03 / D-10, spec 347, specs
+215 / 346, spec 243 PMT-INV-03, spec 220 §deferred, ADR-0008, ADR-0013, ADR-0037, ADR-0056; ERC-8004 (registration
+file, `setAgentWallet`), ENS v2 / ENSIP-9 / ENSIP-11 / ENSIP-19 / ENSIP-10, ERC-3668, ERC-7930, ERC-7828;
+[The estate and the federation](/architecture/estate).

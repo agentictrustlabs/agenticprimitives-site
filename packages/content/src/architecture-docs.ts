@@ -28,7 +28,7 @@ export const ARCHITECTURE_DOCS: readonly ArchitectureDoc[] = [
     title: 'Chains and estates',
     date: '2026-10-04',
     summary:
-      'Estates share private and public EVM chains. Authority is chain-local by construction; evidence and value cross a chain, a grant never does.',
+      'Estates share private and public EVM chains. Authority is chain-local; evidence and value cross. One principal across chains, from ERC-8004 and ENS v2.',
     file: 'chains-and-estates.md',
     hero: '/architecture/chains-and-estates.svg',
   },
