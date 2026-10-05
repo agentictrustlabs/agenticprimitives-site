@@ -16,3 +16,5 @@ export { ChainsAndEstates, ChainBoundary, PrincipalAcrossChains } from './chains
 export { Scales } from './scales';
 export { ScaleGlyph } from './scale-glyphs';
 export type { ScaleId } from './scale-glyphs';
+export { TownScene, TOWN_BEATS } from './town-scene';
+export type { TownBeat, TownBeatInfo } from './town-scene';

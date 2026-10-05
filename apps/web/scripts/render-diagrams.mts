@@ -5,7 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, NandaLayers, PrincipalAcrossChains, Scales } from '@apsite/diagrams';
+import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, NandaLayers, PrincipalAcrossChains, Scales, TownScene } from '@apsite/diagrams';
 
 const FILES: Record<string, () => React.JSX.Element> = {
   'estate-block': () => createElement(EstateBlock),
@@ -18,6 +18,10 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'chain-boundary': () => createElement(ChainBoundary),
   'principal-across-chains': () => createElement(PrincipalAcrossChains),
   'scales': () => createElement(Scales),
+  'town-street': () => createElement(TownScene, { beat: 0 }),
+  'town-act': () => createElement(TownScene, { beat: 4 }),
+  'town-revoke': () => createElement(TownScene, { beat: 6 }),
+  'town-federation': () => createElement(TownScene, { beat: 7 }),
 };
 
 const resolveVars = (svg: string): string => {

@@ -6,6 +6,7 @@ import { Scales, StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Mark } from '@/components/Mark';
 import { ScaleCards } from '@/components/ScaleCards';
 import { ScalesPlain } from '@/components/ScalesPlain';
+import { TownStory } from '@/components/TownStory';
 import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui';
 import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
 
@@ -109,6 +110,15 @@ export default function Home() {
       {/* ── THE FEAR, AND THREE THROTTLES ────────────────────────────────────────────── */}
       {/* ── THE FOUR SCALES, IN PLAIN WORDS ───────────────────────────────────────────── */}
       <ScalesPlain id="scales" />
+
+      {/* ── MEET THE TOWN ─────────────────────────────────────────────────────────────── */}
+      <Section id="meet-the-town" tone="navy" eyebrow="Meet the town" title="One street. A person, an organization, a service. Watch what crosses it — and what never does." lede="Agents find each other, check each other against the chain, talk gate to gate, and act under a permission signed at the owner's own front door. The receipt comes home. The owner can cut the road. Then the camera pulls back to the next town over." wide>
+        <TownStory />
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/architecture#meet-the-town" className="btn-brass">The town, explained <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/architecture" className="btn-outline-light">Substrate · estate · town · federation</Link>
+        </div>
+      </Section>
 
       <Section tone="ink" number="01" eyebrow="The state of the argument" title="Everyone now admits a capable agent has a blast radius. Then they reach for a throttle." lede="Three answers dominate. Each is real engineering. Each stops at the same place: none can say, for an act that happened, under whose authority it happened — or refuse the next one because that authority is gone." wide>
         <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:grid-cols-3">
