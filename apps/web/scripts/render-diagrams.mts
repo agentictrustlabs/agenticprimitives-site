@@ -1,0 +1,34 @@
+// Render brand diagrams to static SVG files so a Markdown note can show them as images.
+//   pnpm --filter @apsite/web exec tsx scripts/render-diagrams.mts <outDir> [<outDir2> ...]
+// CSS variables are resolved to their fallbacks: a standalone <img> has no site theme to read.
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Federation, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, NandaLayers } from '@apsite/diagrams';
+
+const FILES: Record<string, () => React.JSX.Element> = {
+  'estate-block': () => createElement(EstateBlock),
+  'estate-residents': () => createElement(EstateResidents),
+  'estate-commons': () => createElement(EstateCommons),
+  'federation': () => createElement(Federation),
+  'cross-estate-act': () => createElement(CrossEstateAct),
+  'nanda-layers': () => createElement(NandaLayers),
+};
+
+const resolveVars = (svg: string): string => {
+  let out = svg;
+  for (let i = 0; i < 3; i++) out = out.replace(/var\(--[\w-]+,\s*([^()]*?)\)/g, '$1');
+  return out;
+};
+
+const dirs = process.argv.slice(2);
+if (!dirs.length) throw new Error('usage: render-diagrams.mts <outDir> [<outDir2> ...]');
+for (const dir of dirs) {
+  mkdirSync(dir, { recursive: true });
+  for (const [name, make] of Object.entries(FILES)) {
+    const svg = resolveVars(renderToStaticMarkup(make()));
+    writeFileSync(join(dir, `${name}.svg`), `<?xml version="1.0" encoding="UTF-8"?>\n${svg}\n`);
+  }
+  console.log(`wrote ${Object.keys(FILES).length} diagrams to ${dir}`);
+}

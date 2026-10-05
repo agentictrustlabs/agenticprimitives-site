@@ -629,6 +629,8 @@ export type { Demo, DemoLink, DemoShot, DemoStep } from './demos';
 export { AUDITS, auditBySlug } from './audits';
 export { ONTOLOGY_DOCS, ontologyDocBySlug } from './ontology-docs';
 export type { OntologyDoc } from './ontology-docs';
+export { ARCHITECTURE_DOCS, architectureDocBySlug } from './architecture-docs';
+export type { ArchitectureDoc } from './architecture-docs';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';
 export type { KitRef } from './kit-map';

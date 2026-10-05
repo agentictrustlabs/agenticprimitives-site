@@ -63,6 +63,9 @@ export default function Platform() {
         <Figure dark caption="The faithnet estate as deployed today. Names are the estate's; the shape is the substrate's. Home runs on Vercel; the runtime, vault, edge, discovery and registry are Cloudflare Workers; the chain is a private Besu QBFT network — any EVM works.">
           <EstateTopology />
         </Figure>
+        <p className="mt-6 text-sm text-slate-400">
+          Building by building, and how several estates share naming, a public graph and registries: <Link href="/architecture/estate" className="text-teal-300 hover:underline">The estate and the federation →</Link>
+        </p>
       </Section>
 
       <Section number="02" eyebrow="Live" title="The estate, as its people see it." lede="Screens from the running faithnet estate, signed in as the Home's demo people. Every product here is a relying application of the same substrate.">

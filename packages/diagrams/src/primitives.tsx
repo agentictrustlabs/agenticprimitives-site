@@ -140,7 +140,7 @@ export function Box({
 
 export function Pill({ x, y, text, tone = 'slate', size = 11, mono = false, solid = false }: { x: number; y: number; text: string; tone?: Tone; size?: number; mono?: boolean; solid?: boolean }) {
   const t = TONES[tone];
-  const w = tw(text, size, mono, 600) + 20;
+  const w = tw(text, size, mono, 600) * 1.1 + 20;
   const h = size + 12;
   return (
     <g>

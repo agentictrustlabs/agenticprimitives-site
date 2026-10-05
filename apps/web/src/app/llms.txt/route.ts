@@ -1,4 +1,4 @@
-import { AUDITS, ESSAYS, ONTOLOGY_DOCS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
+import { ARCHITECTURE_DOCS, AUDITS, ESSAYS, ONTOLOGY_DOCS, OFFERINGS, SERIES, SITE, WRITING } from '@apsite/content';
 
 export const dynamic = 'force-static';
 
@@ -42,6 +42,7 @@ Intelligence may be probabilistic. Authority must not be.
 - [Versus · where we lose](${SITE.url}/compare/honest): where peers are ahead today, what we refuse to take
 - [Game Night](${SITE.url}/examples/game-night): complete third-party example (gamenight.faithnet.io)
 - [Ontology](${SITE.url}/ontology): the Agentic Trust upper ontology and the Texas hold'em domain ontology; how every layer binds to one T-box by IRI; meaning flows, authority never does. Notes: ${ONTOLOGY_DOCS.map((d) => `[${d.title}](${SITE.url}/ontology/${d.slug})`).join('; ')}
+- [Architecture notes](${SITE.url}/architecture): how the substrate is deployed — an estate (Home, agent runtime, vault, edge, Home MCP, RPC gateway, estate chain, KMS tenant), who lives there, the commons estates share (agent naming, the public graph, registries, the KMS pilot, public ground), the federation of estates, one act across an estate boundary, Project NANDA's twelve layers against the estate. Notes: ${ARCHITECTURE_DOCS.map((d) => `[${d.title}](${SITE.url}/architecture/${d.slug})`).join('; ')}
 - [Developers](${SITE.url}/developers): package map, standards, status
 - [Build](${SITE.url}/build): say what application you want; point a coding agent at github.com/agentictrustlabs/agentic-primitives + /pokernight and the faithnet estate; test as six demo people (alice bob carol dave elena nathan); the flow; the gates
 - [Ontology namespaces](${SITE.url}/ns): IRI prefixes (\`https://agenticprimitives.dev/ns/<module>#Term\`)
