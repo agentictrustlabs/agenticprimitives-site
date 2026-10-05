@@ -7,6 +7,7 @@ import { EstateTopology, OntologyLadder } from '@apsite/diagrams';
 import { CTA, Figure, Section, Shot, Tag } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
 import { ScaleCards } from '@/components/ScaleCards';
+import { ScalesStrip } from '@/components/ScalesPlain';
 
 export const metadata: Metadata = pageMeta({
   title: 'Platform — nine capabilities',
@@ -49,6 +50,7 @@ function OntologyLadderSection() {
 export default function Platform() {
   return (
     <>
+      <ScalesStrip here="substrate" />
       <PageHero eyebrow="Platform" title={<>Nine capabilities.<br />One substrate.</>} lede="Each offering is independently adoptable and depends only on the ones below it. Together they are every capability an agentic application needs — from a person's first passkey to the receipt for an AI agent's last action.">
         <div className="grid w-full gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-9">
           {OFFERINGS.map((o, i) => (

@@ -4,6 +4,7 @@ import { pageMeta } from '@/lib/seo';
 import { AgentTriad, HarnessSequence, MandateAnatomy, SubstrateLayers } from '@apsite/diagrams';
 import { Callout, CTA, Figure, Ledger, Section } from '@/components/ui';
 import { PageHero } from '@/components/PageHero';
+import { ScalesStrip } from '@/components/ScalesPlain';
 
 export const metadata: Metadata = pageMeta({
   title: 'Architecture — the substrate',
@@ -14,7 +15,8 @@ export const metadata: Metadata = pageMeta({
 export default function Substrate() {
   return (
     <>
-      <PageHero eyebrow="Architecture" title={<>Four layers. Two rails.<br />No layer trusts the one above it.</>} lede="Read top-down for how an application uses the substrate. Read bottom-up for why a counterparty can trust what it did without trusting the platform that hosted the request." />
+      <ScalesStrip here="substrate" />
+      <PageHero eyebrow="Architecture · inside the substrate" title={<>Four layers. Two rails.<br />No layer trusts the one above it.</>} lede="This page is the engineer's view of the substrate, the first of the four scales: what is inside one deployment. Read top-down for how an application uses it. Read bottom-up for why a counterparty can trust what it did without trusting the platform that hosted the request." />
 
       <Section tone="ink" number="01" eyebrow="The shape" title="Application on harness. Harness on authority. Authority on identity. Identity on chain.">
         <Figure dark caption="Application → Harness → Authority → Identity → Chain, with Edge admission and Evidence alongside every layer. The ontology binds the vocabulary across all of it; the registry kit is how the estate is found.">

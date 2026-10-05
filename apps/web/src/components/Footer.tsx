@@ -26,7 +26,8 @@ export function Footer() {
             <li><Link href="/thesis/review" className="hover:text-white">A critical review of the thesis</Link></li>
             <li><Link href="/about" className="hover:text-white">About</Link></li>
             <li><Link href="/platform" className="hover:text-white">Platform</Link></li>
-            <li><Link href="/substrate" className="hover:text-white">Architecture</Link></li>
+            <li><Link href="/architecture" className="hover:text-white">Architecture — substrate, estate, town, federation</Link></li>
+            <li><Link href="/substrate" className="hover:text-white">Inside the substrate (for engineers)</Link></li>
             <li><Link href="/compare" className="hover:text-white">Versus the alternatives</Link></li>
             <li><Link href="/demos" className="hover:text-white">Demos</Link></li>
             <li><Link href="/examples/game-night" className="hover:text-white">Example: Game Night</Link></li>

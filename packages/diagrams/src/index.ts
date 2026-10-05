@@ -14,3 +14,5 @@ export { EstateBlock, EstateResidents, EstateCommons, Federation, CrossEstateAct
 export { Building, Plot, Road, Resident, Flag, KIND } from './estate-kit';
 export { ChainsAndEstates, ChainBoundary, PrincipalAcrossChains } from './chains';
 export { Scales } from './scales';
+export { ScaleGlyph } from './scale-glyphs';
+export type { ScaleId } from './scale-glyphs';

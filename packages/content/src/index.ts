@@ -631,7 +631,7 @@ export { ONTOLOGY_DOCS, ontologyDocBySlug } from './ontology-docs';
 export type { OntologyDoc } from './ontology-docs';
 export { ARCHITECTURE_DOCS, architectureDocBySlug } from './architecture-docs';
 export type { ArchitectureDoc } from './architecture-docs';
-export { SCALES, SCALE_STATUS_LABEL } from './scales';
+export { SCALES, SCALES_INTRO, SCALE_STATUS_LABEL } from './scales';
 export type { Scale, ScaleStatus } from './scales';
 export type { Audit } from './audits';
 export { KIT_MAP } from './kit-map';

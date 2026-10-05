@@ -9,11 +9,11 @@ const STATUS_CLASS: Record<ScaleStatus, string> = {
 };
 
 /** The four scales as cards: one repository each, its question, its rule, its status. Dark background. */
-export function ScaleCards({ compact = false }: { compact?: boolean }) {
+export function ScaleCards({ compact = false, anchors = false }: { compact?: boolean; anchors?: boolean }) {
   return (
     <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">
       {SCALES.map((s, i) => (
-        <article key={s.id} className="flex flex-col bg-ink p-6">
+        <article key={s.id} id={anchors ? s.id : undefined} className="flex flex-col scroll-mt-24 bg-ink p-6">
           <div className="flex items-center justify-between">
             <p className="eyebrow-dark"><span className="text-white/40">0{i + 1}</span> {s.name}</p>
             <span className={`rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] ${STATUS_CLASS[s.repo.status]}`}>{SCALE_STATUS_LABEL[s.repo.status]}</span>

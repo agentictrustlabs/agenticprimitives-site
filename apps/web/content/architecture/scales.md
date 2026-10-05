@@ -4,6 +4,29 @@
 Companions: [The estate and the federation](/architecture/estate) (the buildings) and
 [Chains and estates](/architecture/chains) (what crosses a chain).
 
+## In plain words
+
+Agentic Primitives is built the way a place is built.
+
+- The **substrate** is the materials and the building code. Nobody lives in it; everything else is built from it, so
+  every Home, town and federation behaves the same way. You never touch it. It is why your agent can sign, why a
+  permission you give can be taken back, and why there is always a receipt.
+- An **estate** is your own property: the front door where you sign in (the Home), the staff who work for you (your
+  agents), the filing cabinet that holds your records (the vault), and the gate that checks who may come in (the
+  edge). You hold the keys. Nothing is done in your name without a permission you signed here, and you can take it
+  back here.
+- A **town** is the street your estate is on: the address book that says who lives where, the public notice board,
+  the directories of who offers what, and the utilities every neighbour shares. Shared by all, owned by none. Being
+  listed in a directory never gives anyone power over your estate.
+- A **federation** is towns in different places, connected by public roads. You can visit another town and act there,
+  but your keys never leave home; you prove what you are entitled to, sign at your own door, and keep the receipt.
+
+The rule that runs through all four: being somewhere never gives anyone power over you. Your keys stay at your
+estate. A town can list you; it cannot act for you. A federation can prove what you are entitled to elsewhere; it
+cannot spend on your behalf.
+
+## In full
+
 Agentic Primitives is built at four scales. Each is a repository. Each depends only on the one below it. Each answers
 a question the one below cannot, and each is held to one rule that keeps it from becoming the one above.
 

@@ -5,6 +5,7 @@ import { AUDITS, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEE
 import { Scales, StitchedVsSeamless, SubstrateLayers } from '@apsite/diagrams';
 import { Mark } from '@/components/Mark';
 import { ScaleCards } from '@/components/ScaleCards';
+import { ScalesPlain } from '@/components/ScalesPlain';
 import { Claim, CTA, Figure, Ledger, Section, Shot, Tag } from '@/components/ui';
 import { HOME_FAQ, JsonLd, pageMeta } from '@/lib/seo';
 
@@ -50,7 +51,12 @@ export default function Home() {
               </Link>
               <Link href="/examples/game-night" className="btn-outline-light">See it running</Link>
             </div>
-            <div className="mt-12 flex flex-wrap gap-2">
+            <a href="#scales" className="mt-12 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-slate-300 hover:border-brass/60 hover:text-white">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-brass">Built at four scales</span>
+              <span>Substrate</span><span className="text-white/30">→</span><span>Estate</span><span className="text-white/30">→</span><span>Town</span><span className="text-white/30">→</span><span>Federation</span>
+              <ArrowRight className="h-4 w-4 text-brass" />
+            </a>
+            <div className="mt-6 flex flex-wrap gap-2">
               {['ERC-4337', 'ERC-7710', 'A2A 1.0', 'MCP', 'W3C PROV-O', 'passkeys', 'W3C VC'].map((s) => (
                 <Tag key={s} tone="dark">{s}</Tag>
               ))}
@@ -101,6 +107,9 @@ export default function Home() {
       })()}
 
       {/* ── THE FEAR, AND THREE THROTTLES ────────────────────────────────────────────── */}
+      {/* ── THE FOUR SCALES, IN PLAIN WORDS ───────────────────────────────────────────── */}
+      <ScalesPlain id="scales" />
+
       <Section tone="ink" number="01" eyebrow="The state of the argument" title="Everyone now admits a capable agent has a blast radius. Then they reach for a throttle." lede="Three answers dominate. Each is real engineering. Each stops at the same place: none can say, for an act that happened, under whose authority it happened — or refuse the next one because that authority is gone." wide>
         <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:grid-cols-3">
           {INDUSTRY_ANSWERS.map((a, i) => (
