@@ -243,6 +243,88 @@ Open, and not decided here:
 - **Order of proof**: G4–G6 on faithnet-b first (one chain, two estates), then `check:cross-estate-admission` (two
   chains and a public ground), then `check:participate-across-estates`, then the gates named above.
 
+## 8. Not figured out, and what ten chains would break
+
+Everything above is drawn for two chains and three estates. Take the federation to ten chains, private and public,
+with estates on each, and the following are either unsolved or stop holding. Each is stated with what it would cost
+if ignored.
+
+1. **Revocation stops being "final and global."** On one chain, revoke → refuse is one block and one read. Across
+   chains it becomes: the estate's projector notices, re-signs the root, anchors it on public ground, the anchor
+   confirms, and the far edge's freshness window expires. Minutes at best, and a retired grant is honoured elsewhere
+   for all of them. The thesis property degrades to *final here, eventual there*. Nothing bounds the window today, and
+   an edge's choice of window is a security parameter nobody has named.
+
+2. **Custody propagation fans out, and the gap is the attack.** One rotation at home is ten satellite ceremonies, each
+   under that chain's own timelocks (T4 1 h, T5 24 h, T6 48 h), each paid in that chain's gas, each needing the Home to
+   hold RPC and a paymaster there. A recovery that `revokeAll`s at home races the holder of the retired credential to
+   nine other chains. Partial propagation is a real state with no representation: which satellites are current, which
+   are stale, and what an edge does with "stale" are undefined. §3.2 item 7 names the ceremony; it does not solve the
+   race.
+
+3. **Aggregate spend limits cannot be enforced across chains.** Assets live only in treasuries (spec 420), and a
+   treasury is per chain. `TreasurySpendPolicy` (spec 410 §7) caps spend where it runs. A grant honoured on ten
+   chains is ten caps. The only cross-chain aggregate is one the harness keeps in memory before signing, which is
+   policy, not enforcement. Either the mandate names one chain (today's rule, PMT-INV-03) and a person accepts ten
+   separate budgets, or an aggregate root is anchored and read, which reintroduces item 1's window for money.
+
+4. **Private-chain evidence is not verifiable by strangers.** A receipt anchored on faithchain names a chain whose RPC
+   is tokenised. "Anyone can verify the receipt" is false for anyone without a token. The mirror on public ground
+   (ERC-7786, §5.2) helps only for what the estate chooses to mirror, and a mirrored anchor is the estate's word that
+   the anchor exists. Public estates have the opposite problem (item 7). The honest statement is: private chains buy
+   a closed validator set at the price of third-party verifiability of everything anchored there.
+
+5. **"One home registry per typed root" has no home across federations.** Within one federation the rule works. Two
+   federations each with a `.me` home collide exactly as two chains did, one level up. The many-registries hypothesis
+   (ADR-0038) refuses a horizontal root; a typed root needs one. Unresolved, and the candidates are all bad: a
+   federation prefix in the name (fights spec 346's syntax), a root registry on a public chain (a horizontal root),
+   or accepting that `mara.me` is scoped to a federation and saying so in the card.
+
+6. **Public ground becomes plural.** Spec 410 §4 says one registry, many estates. Estates will anchor where their
+   public chain is: Base, an OP chain, an Arbitrum chain. A verifying edge then needs to know which public ground an
+   estate uses, and that fact must come from somewhere a stranger can read, which is the problem public ground was
+   meant to solve. A registry of public grounds is a root again.
+
+7. **Finality differs, and the substrate assumes it does not.** QBFT is final at the block; a public L2 is soft-final
+   in seconds and L1-final in minutes to hours. A receipt observed and reconciled (spec 410 §2, §3) on a soft-final
+   block can be undone by a reorg after the vault has recorded it. The KB can serve a fact the chain later did not
+   contain. Per-chain finality policy for observation, reconcile and indexing is not written.
+
+8. **Contract generations drift per chain.** Deterministic addresses need identical bytecode; faithchain runs
+   generation 1, Base Sepolia later generations, and `approveDigest`'s semantics are generation 3. Ten chains at three
+   generations means a satellite proof, a wire or a receipt verified under different rules depending on the chain,
+   while the card says they are one principal. A generation floor per federation, and a refusal when a chain is below
+   it, are undefined.
+
+9. **A public binding is a public correlation.** CAIP-10 is omnidirectional by construction (spec 260); the card's
+   `accounts[]` joins ten of them in one signed document. Spec 338's pairwise and unlisted agents exist precisely so a
+   person is not correlatable across contexts. Binding and unlinkability pull in opposite directions, and §3.2 picks
+   binding without saying where a person may keep a satellite out of the card. She should be able to; the stale-proof
+   rule then has to work for an account the card does not list.
+
+10. **An estate's chain can die or fork.** If a private chain is shut down, the home accounts, names, grants and
+    anchors on it are gone, and every satellite is orphaned with a home that no longer exists. A chain-id fork
+    recomputes `CustodyPolicy`'s domain but `DelegationManager`'s separator is immutable, so every grant on the fork
+    is dead. The Home-to-Home move (spec 410 §1.2) moves a Home within a chain; moving a principal's home account to
+    another chain, with its custody epoch and its standing, is unspecified. At ten chains some will be abandoned.
+
+11. **Operations multiply linearly and governance has no floor.** Ten chains is ten RPC gateways, ten deployers, ten
+    paymaster policies, ten `AgenticGovernance` instances with timelocks, ten indexer feeds with ten reorg models. A
+    paymaster that sponsors an act is a party that can refuse to, which is a censorship surface the authority model
+    does not name. Federation-level governance (spec 410 §9's consortium) has no chain to live on except public
+    ground, which puts the consortium's decisions on a chain some of its members may not run.
+
+12. **The ontology has no word for it.** `prov:Agent` is one IRI, and ours is one CAIP-10. A person with ten accounts
+    is ten agents in every graph until a term says otherwise: `ap:homeAccount`, `ap:satelliteOf`, and a rule for which
+    IRI a receipt, a membership and a stewardship edge attach to. Under the ontology rule this is the first thing to
+    write, and it has not been.
+
+The shape that falls out of this list: a federation should be **few chains, chosen**, not many chains, accepted. One
+private chain per regulated posture, one public chain as ground and as the default public home, and a stated
+generation floor. Ten chains is not a goal; it is the stress test that shows which of the above must be solved before
+the third chain is added. Items 1, 2 and 3 are the ones that touch money and custody and should be solved first, and
+each needs a written window, a written race, and a written cap, before any code.
+
 ## Sources
 
 `packages/contracts/src/agency/DelegationManager.sol` (`DOMAIN_SEPARATOR`), `AgentAccountFactory.sol`
