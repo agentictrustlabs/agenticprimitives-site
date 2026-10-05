@@ -7,6 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: '*', allow: '/', disallow: ['/og', '/brand/export'] },
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'OAI-SearchBot', allow: '/' },
+      { userAgent: 'Bingbot', allow: '/' },
       { userAgent: 'Google-Extended', allow: '/' },
       { userAgent: 'ClaudeBot', allow: '/' },
       { userAgent: 'anthropic-ai', allow: '/' },
@@ -15,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'CCBot', allow: '/' },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,
-    host: SITE.url,
+    host: 'agenticprimitives.dev',
   };
 }
