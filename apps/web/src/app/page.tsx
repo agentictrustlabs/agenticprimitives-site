@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { AUDITS, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, SITE } from '@apsite/content';
+import { AUDITS, ECOSYSTEM, ELSEWHERE, ESSAYS, GAME_NIGHT, INDUSTRY_ANSWERS, MANIFESTO, NEEDS, OFFERINGS, OUR_ANSWER, PILLARS, REPOS, SITE } from '@apsite/content';
 import { DiagramImg } from '@/components/DiagramImg';
 import { Mark } from '@/components/Mark';
 import { ScaleCards } from '@/components/ScaleCards';
@@ -107,7 +107,25 @@ export default function Home() {
         );
       })()}
 
-      {/* ── THE FEAR, AND THREE THROTTLES ────────────────────────────────────────────── */}
+      {/* ── ECOSYSTEM STRIP: the code, the ontology, the skills, a live Home ─────────── */}
+      <section className="border-b border-white/10 bg-ink text-white">
+        <div className="container-x flex flex-col gap-3 py-4 text-sm md:flex-row md:items-center md:justify-between">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-slate-400">
+            <span className="mr-1 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-brass">Open, end to end</span>
+            {REPOS.filter((r) => r.url && r.scale !== 'example').map((r) => (
+              <a key={r.id} href={r.url} rel="noreferrer" className="rounded border border-white/10 px-2 py-0.5 font-mono text-xs text-slate-200 hover:border-white/30 hover:text-white">{r.name} <span className="text-slate-500">· {r.scale}</span></a>
+            ))}
+            <span className="text-slate-600">·</span>
+            {ECOSYSTEM.map((e) => (
+              'external' in e
+                ? <a key={e.id} href={e.href} rel="noreferrer" className="text-slate-200 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/60">{e.label}</a>
+                : <Link key={e.id} href={e.href} className="text-slate-200 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/60">{e.label}</Link>
+            ))}
+          </p>
+          <p className="shrink-0 text-xs text-slate-500">The code is the substrate and the estate; the ontology says how each domain is shaped; the skills library turns it into playbooks.</p>
+        </div>
+      </section>
+
       {/* ── THE FOUR SCALES, IN PLAIN WORDS ───────────────────────────────────────────── */}
       <ScalesPlain id="scales" />
 

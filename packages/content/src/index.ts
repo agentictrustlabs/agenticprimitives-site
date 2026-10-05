@@ -21,6 +21,32 @@ export const SITE = {
   home: 'https://faithnet.me',
 } as const;
 
+// ─── The repositories ────────────────────────────────────────────────────────────────────────────────────────
+//
+// One entry per public repository, in scale order (ADR-0063). The nav's GitHub menu, the footer and llms.txt render
+// from this list; add a repository here and it appears everywhere. `status: 'next'` entries render without a link.
+
+export interface Repo { id: string; name: string; scale: 'substrate' | 'estate' | 'town' | 'federation' | 'example'; url?: string; blurb: string; status: 'live' | 'public' | 'building' | 'next' }
+
+export const REPOS: readonly Repo[] = [
+  { id: 'agentic-primitives', name: 'agentic-primitives', scale: 'substrate', url: SITE.github, blurb: 'The substrate: 77 packages, 33 contracts, the Developer Kit.', status: 'live' },
+  { id: 'ap-home', name: 'ap-home', scale: 'estate', url: 'https://github.com/agentictrustlabs/ap-home', blurb: 'The estate: a Home, the agent runtime, the vault, the edge. Deploys faithnet.me.', status: 'public' },
+  { id: 'ap-town', name: 'ap-town', scale: 'town', blurb: 'The town: naming, public graph, registries, key service and chain ops for estates on one chain.', status: 'building' },
+  { id: 'ap-federation', name: 'ap-federation', scale: 'federation', blurb: 'The federation: public ground, bindings and proofs between towns on different chains.', status: 'next' },
+  { id: 'pokernight', name: 'pokernight', scale: 'example', url: SITE.pokerGithub, blurb: 'Game Night: the worked example — a relying app on the substrate.', status: 'public' },
+];
+
+// ─── The ecosystem around the code ───────────────────────────────────────────────────────────────────────────
+//
+// Two things the substrate is nothing without: the ontology that says how each domain is shaped, and the skills
+// library that compiles it into playbooks an agent runs under. Linked quietly, everywhere.
+
+export const ECOSYSTEM = [
+  { id: 'ontology', label: 'Ontology', href: '/ontology', note: 'how each domain is shaped — one T-box, bound by IRI' },
+  { id: 'skills', label: 'Skills library', href: SITE.skills, note: 'archetypes and playbooks, pinned by digest · skills.faithnet.io', external: true },
+  { id: 'home', label: 'A live Home', href: SITE.home, note: 'faithnet.me — the estate the examples sign in through', external: true },
+] as const;
+
 // ─── The sites around this one ───────────────────────────────────────────────────────────────────────────────
 //
 // Rich Canvas authors the domain ontologies the substrate binds to; the faithnet estate is the reference deployment

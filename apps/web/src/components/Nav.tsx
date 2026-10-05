@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE } from '@apsite/content';
+import { GitHubMenu } from './GitHubMenu';
 import { Logo } from './Logo';
 
 const LINKS = [
@@ -29,9 +29,7 @@ export function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href={SITE.github} className="btn-outline-light !px-3 !py-2" rel="noreferrer">
-            GitHub
-          </a>
+          <GitHubMenu />
           <Link href="/build" className="btn-brass !px-3 !py-2">
             Build
           </Link>

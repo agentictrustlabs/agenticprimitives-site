@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ELSEWHERE, SITE } from '@apsite/content';
+import { ECOSYSTEM, ELSEWHERE, REPOS, SITE } from '@apsite/content';
 import { Logo } from './Logo';
 
 export function Footer() {
@@ -40,14 +40,23 @@ export function Footer() {
           <h4 className="eyebrow-dark">Build</h4>
           <ul className="mt-4 space-y-2 text-sm text-slate-300">
             <li><Link href="/developers" className="hover:text-white">Developers</Link></li>
-            <li><a href={SITE.github} className="hover:text-white" rel="noreferrer">GitHub</a></li>
+            {REPOS.filter((r) => r.url).map((r) => (
+              <li key={r.id}><a href={r.url} className="hover:text-white" rel="noreferrer">GitHub: {r.name} <span className="text-slate-500">· {r.scale}</span></a></li>
+            ))}
+            <li><a href={SITE.githubOrg} className="hover:text-white" rel="noreferrer">All repositories</a></li>
             <li><a href={SITE.npm} className="hover:text-white" rel="noreferrer">npm</a></li>
             <li><Link href="/ns" className="hover:text-white">Ontology namespaces</Link></li>
             <li><Link href="/audits" className="hover:text-white">Production readiness</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="eyebrow-dark">Around the substrate</h4>
+          <h4 className="eyebrow-dark">Ontology · skills · a live Home</h4>
+          <ul className="mt-4 space-y-2 text-sm text-slate-300">
+            {ECOSYSTEM.map((e) => (
+              <li key={e.id}>{'external' in e ? <a href={e.href} className="hover:text-white" rel="noreferrer">{e.label} <span className="text-slate-500">· {e.href.replace('https://', '')}</span></a> : <Link href={e.href} className="hover:text-white">{e.label}</Link>}</li>
+            ))}
+          </ul>
+          <h4 className="eyebrow-dark mt-8">Around the substrate</h4>
           <ul className="mt-4 space-y-2 text-sm text-slate-300">
             {ELSEWHERE.map((e) => (
               <li key={e.id}><a href={e.url} className="hover:text-white" rel="noreferrer">{e.name}</a></li>
