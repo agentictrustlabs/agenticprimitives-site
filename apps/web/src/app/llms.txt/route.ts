@@ -12,6 +12,7 @@ Positioning: the industry answers agent risk with throttles — containment (san
 - Canonical site: ${SITE.url}
 - Public source (the substrate, Ring 0): ${SITE.github}
 - The estate product (Home, agent runtime, vault, edge, Home MCP; deploys Faithnet): https://github.com/agentictrustlabs/ap-home
+- The town (registry, public graph, naming, chain access, the town portal — the services every estate on one chain shares): https://github.com/agentictrustlabs/ap-town
 - Four scales, one repository each: substrate (agentic-primitives) → estate (ap-home) → town (ap-town: estates on one chain and the services they share — naming, public graph, registries) → federation (ap-federation: towns across chains on public ground). Each depends only on the one below; authority never leaves the chain it was signed into.
 - npm: ${SITE.npm}
 - License: MIT

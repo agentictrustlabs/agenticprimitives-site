@@ -31,7 +31,7 @@ export interface Repo { id: string; name: string; scale: 'substrate' | 'estate' 
 export const REPOS: readonly Repo[] = [
   { id: 'agentic-primitives', name: 'agentic-primitives', scale: 'substrate', url: SITE.github, blurb: 'The substrate: 77 packages, 33 contracts, the Developer Kit.', status: 'live' },
   { id: 'ap-home', name: 'ap-home', scale: 'estate', url: 'https://github.com/agentictrustlabs/ap-home', blurb: 'The estate: a Home, the agent runtime, the vault, the edge. Deploys faithnet.me.', status: 'public' },
-  { id: 'ap-town', name: 'ap-town', scale: 'town', blurb: 'The town: naming, public graph, registries, key service and chain ops for estates on one chain.', status: 'building' },
+  { id: 'ap-town', name: 'ap-town', scale: 'town', url: 'https://github.com/agentictrustlabs/ap-town', blurb: 'The town: naming, public graph, registries, key service and chain ops for estates on one chain.', status: 'public' },
   { id: 'ap-federation', name: 'ap-federation', scale: 'federation', blurb: 'The federation: public ground, bindings and proofs between towns on different chains.', status: 'next' },
   { id: 'pokernight', name: 'pokernight', scale: 'example', url: SITE.pokerGithub, blurb: 'Game Night: the worked example — a relying app on the substrate.', status: 'public' },
 ];

@@ -36,7 +36,7 @@ a question the one below cannot, and each is held to one rule that keeps it from
 | --- | --- | --- | --- | --- |
 | **Substrate** | [`agentic-primitives`](https://github.com/agentictrustlabs/agentic-primitives) | The published packages and contracts: identity, authority, harness, edge, registry kit, evidence, coordination, ontology, operations, and the Developer Kit | Any EVM; nothing in a package names a chain or a host | Live. Ring 0, on npm, exact-pinned |
 | **Estate** | [`ap-home`](https://github.com/agentictrustlabs/ap-home) | One deployment for one set of people and organizations: the Home where they sign, the agent runtime, the vault, the edge, the Home MCP, the RPC gateway | One chain | Public. Deploys Faithnet on faithchain |
-| **Town** | `ap-town` | Several estates on one chain and the services they share: agent naming, the public graph and discovery, registries, KMS tenants, chain operations | One chain, by definition | Building. Being cut from Ring 0 and Faithnet |
+| **Town** | [`ap-town`](https://github.com/agentictrustlabs/ap-town) | Several estates on one chain and the services they share: agent naming, the public graph and discovery, registries, KMS tenants, chain operations | One chain, by definition | Public. The services every estate on one chain shares |
 | **Federation** | `ap-federation` | Towns on different chains, private and public, and the public ground that lets an estate in one prove its standing to an edge in another | Many chains | Next. Spec 410 §4 is its design |
 
 "Scale," not "layer." Inside one deployment the substrate already has layers: application on harness, harness on
@@ -87,7 +87,7 @@ own names, its own graph, its own registries.
 binds only the fact that it lists. The graph holds only what anyone could rebuild from the chain. Trust is read
 between two parties for an outcome, never scored by a directory.
 
-`ap-town` is being cut now from what Ring 0 and Faithnet run: `demo-discovery`, `demo-discovery-indexer`,
+[`ap-town`](https://github.com/agentictrustlabs/ap-town) is public. It holds what Ring 0 and Faithnet already run: `demo-discovery`, `demo-discovery-indexer`,
 `demo-discovery-mcp`, `demo-discovery-a2a`, the naming service, the skills registry. Towns are what the
 many-registries hypothesis predicts: hundreds of them, mostly vertical, each built from the same kit, no horizontal
 winner.
@@ -117,7 +117,7 @@ collapsing into the next by its rule: the substrate must not name a deployment, 
 record's only copy, the town must not grant, the federation must not carry authority.
 
 The order is the build order. The substrate was first and is the only thing a third party must take. `ap-home` was
-cut second, with history, and is public. `ap-town` is being cut now, from services that already run. `ap-federation`
+cut second, with history, and is public. [`ap-town`](https://github.com/agentictrustlabs/ap-town) is public too, holding the services that already run. `ap-federation`
 comes last because its design depends on everything below it holding: a cross-estate presentation is only worth
 verifying if the estate's grants were real, the town's names were forced-unique, and the substrate's revocation was
 final on its chain.
@@ -126,4 +126,4 @@ final on its chain.
 
 ADR-0063 and spec 399 (the split), spec 410 §4 and §9 (the estate boundary, the consortium), ADR-0038 (many
 registries), ADR-0040 (the public graph), ADR-0055 (the vault), ADR-0057 (the edge), ADR-0037 and ADR-0021 (what the
-substrate must not contain), [`ap-home`](https://github.com/agentictrustlabs/ap-home) `README.md` and `DEPLOYER.md`.
+substrate must not contain), [`ap-home`](https://github.com/agentictrustlabs/ap-home) `README.md` and `DEPLOYER.md`, [`ap-town`](https://github.com/agentictrustlabs/ap-town) `README.md`.

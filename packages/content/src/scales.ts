@@ -78,7 +78,7 @@ export const SCALES: readonly Scale[] = [
     answers: 'How do estates on one chain find each other, name each other and read the same facts?',
     holds: ['agent naming: typed registries, forced-unique names', 'public graph: indexer → GraphDB → discovery (A2A, MCP, ARD, ACP)', 'registries: registry-kit instances, the skills registry', 'KMS: a tenant per estate, keys as delegates', 'chain operations: RPC, governance, paymaster'],
     chain: 'One chain, by definition. A town is the chain\u2019s estates plus the services built on that chain\u2019s state.',
-    repo: { name: 'agentictrustlabs/ap-town', url: 'https://github.com/agentictrustlabs/ap-town', status: 'building', note: 'Being cut now: discovery, naming, registries and the indexer, today in Ring 0 and Faithnet, into one repository.' },
+    repo: { name: 'agentictrustlabs/ap-town', url: 'https://github.com/agentictrustlabs/ap-town', status: 'public', note: 'Public. The services every estate on one chain shares: registry, public graph, naming, chain access, the town portal.' },
     rule: 'Nothing in a town grants. A resolver returns an address, a registry lists, a graph holds only what the chain can prove.',
     plain: 'The street your estate is on. The address book that says who lives where, the public notice board, the directories of who offers what, and the utilities every neighbour shares. Shared by all, owned by none.',
     analogy: 'Like a town: street names, a notice board, a trades directory. Being listed is not the same as being in charge.',

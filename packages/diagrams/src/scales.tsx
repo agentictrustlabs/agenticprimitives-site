@@ -48,7 +48,7 @@ export function Scales() {
       <Label x={50} y={T.y + 90} text="name and read each other?" size={11.5} tone="ink" weight={600} />
       <Label x={50} y={T.y + 114} text="Nothing in a town grants: a resolver" size={10.5} tone="muted" />
       <Label x={50} y={T.y + 130} text="returns an address, a registry lists." size={10.5} tone="muted" />
-      <Flag x={50} y={T.y + 150} text="ap-town · being cut now" status="pending" />
+      <Flag x={50} y={T.y + 150} text="ap-town · public" status="live" />
 
       <Building kind="naming" x={360} y={T.y + 40} w={120} h={130} name="Agent naming" lines={['typed registries', 'forced-unique']} titleSize={11.5} lineSize={10} />
       <Building kind="graph" x={495} y={T.y + 40} w={140} h={130} name="Public graph" lines={['indexer → GraphDB', 'discovery · ARD · ACP']} titleSize={11.5} lineSize={10} roofH={26} />
