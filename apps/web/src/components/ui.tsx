@@ -78,7 +78,7 @@ export function Shot({
   return (
     <figure>
       <div className={dark ? 'shot-dark' : 'shot'}>
-        <Image src={src} alt={alt} width={width} height={height} priority={priority} className="h-auto w-full" />
+        <Image src={src} alt={alt} width={width} height={height} priority={priority} className="h-auto w-full max-w-full" sizes="(max-width: 768px) 100vw, 720px" />
       </div>
       {caption && <figcaption className={`mt-2 text-sm ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{caption}</figcaption>}
     </figure>

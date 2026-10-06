@@ -16,10 +16,10 @@ const LINKS = [
 export function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/85 text-white backdrop-blur">
-      <div className="container-x flex h-16 items-center justify-between gap-6">
+      <div className="container-x flex h-16 items-center justify-between gap-3 sm:gap-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5 text-white" aria-label="Agentic Primitives home">
           <Logo className="h-7 w-7" />
-          <span className="whitespace-nowrap text-[12px] font-semibold tracking-[0.2em]">AGENTIC PRIMITIVES</span>
+          <span className="hidden whitespace-nowrap text-[12px] font-semibold tracking-[0.2em] sm:inline">AGENTIC PRIMITIVES</span><span className="whitespace-nowrap text-[12px] font-semibold tracking-[0.2em] sm:hidden">AP</span>
         </Link>
         <nav className="hidden items-center gap-0.5 md:flex" aria-label="Primary">
           {LINKS.map((l) => (
