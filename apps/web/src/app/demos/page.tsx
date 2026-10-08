@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { DEMO_PEOPLE, DEMOS, HOME_MCP_CONNECTOR, SITE } from '@apsite/content';
 import { JsonLd, pageMeta } from '@/lib/seo';
-import { Callout, CTA, Section, Shot, Tag } from '@/components/ui';
+import { Callout, CTA, Figure, Section, Shot, Tag } from '@/components/ui';
+import { ScriptureAskFlow } from '@apsite/diagrams';
 import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = pageMeta({
@@ -160,6 +161,14 @@ export default function Demos() {
               </div>
             </div>
           </div>
+          {d.id === 'explorer' && (
+            <div className="mt-10">
+              <div className={`eyebrow${i % 2 === 0 ? '' : '-dark'}`}>Ask Scripture through your own agent — how the hop runs</div>
+              <Figure dark={i % 2 !== 0} caption="Left: the Explorer sends only the question; the one authorization is an ask-as-me wire signed at the Home, limited to putting a question to her agent. Middle: her own agent admits the wire on chain, runs its person-steward playbook (compiled from SKILL.md contracts in the skills repo, pinned by digest, assigned in her vault), reads her scripture-profile from her vault over her MCP, inspects scripture-resolver.svc through its name's records, and engages it over A2A as her. Right: the Scripture Agent plans passages for who she is, resolves each through the signed corpus behind its content MCP, checks the commitment, signs the citation as its own Smart Agent, grades support, and composes from the verified texts only. The answer lands in her run with a receipt; the page shows every verse with a Verify button anyone can press. Underneath: the skill artifacts that make each agent what it is — behaviour is generated from them; authority never is.">
+                <ScriptureAskFlow />
+              </Figure>
+            </div>
+          )}
         </Section>
       ))}
 

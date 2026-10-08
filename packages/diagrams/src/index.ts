@@ -20,3 +20,4 @@ export { TownScene, TOWN_BEATS } from './town-scene';
 export type { TownBeat, TownBeatInfo } from './town-scene';
 export { IsoTown, ISO_BEATS } from './iso-town';
 export type { IsoBeat, IsoBeatInfo } from './iso-town';
+export { ScriptureAskFlow } from './ScriptureAskFlow';

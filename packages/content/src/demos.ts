@@ -253,9 +253,10 @@ export const DEMOS: readonly Demo[] = [
     kind: 'PROV-O graph — people, places, trust',
     line: 'Explore the Bible as a living graph of people, places, events, and the verses behind them.',
     blurb:
-      'explorer.faithnet.io is the ontology surface of the verifiable-content stack: ~6,300 entities across 66 books, geolocated places, timelines, oikos rings, generations, and a trust graph with character signals. Browse the graph free; licensed verse reads (LBSB) are entitlement-gated via your Home. Validate GCO checks the Global Church Ontology against the same corpus the verse lookup uses.',
+      'explorer.faithnet.io is the ontology surface of the verifiable-content stack: ~6,300 entities across 66 books, geolocated places, timelines, oikos rings, generations, and a trust graph with character signals. Browse the graph free; licensed verse reads (LBSB) are entitlement-gated via your Home. Validate GCO checks the Global Church Ontology against the same corpus the verse lookup uses. The Ask tab puts a question to the Scripture Agent — and, once you press “Let my agent ask for me”, to your OWN agent, which engages the Scripture Agent as you and reads who you are from your vault; the page sends only the question, and every verse in the answer is resolved in the signed corpus, commitment-checked and signed before it reaches you.',
     links: [
       { href: 'https://explorer.faithnet.io/', label: 'explorer.faithnet.io' },
+      { href: 'https://explorer.faithnet.io/#ask', label: 'Ask Scripture', note: 'through your own agent' },
       { href: 'https://bible.faithnet.io/', label: 'Verifiable Scripture', note: 'same substrate — verse path' },
       { href: 'https://github.com/rpedersen3/verifiable-content-demo', label: 'Source' },
     ],
@@ -263,6 +264,8 @@ export const DEMOS: readonly Demo[] = [
       'Entity identity is a canonical graph node — names collide; the id does not',
       'Map, timeline, oikos and trust views are projections of one ontology, not separate databases',
       'Graph browse is free; verse disclosure still runs the gated, accountable path',
+      'Ask through your own agent: the page sends the question; your agent reads who you are from your vault and engages the Scripture Agent as you, under a wire limited to asking',
+      'Every verse in an answer is resolved in the signed corpus, commitment-checked and signed by the agent — the model never supplies verse text, and dropped passages are listed',
     ],
     sampleQuery: 'Jesus',
     shot: {
@@ -277,8 +280,9 @@ export const DEMOS: readonly Demo[] = [
       { do: 'Open Map; pan to a region and play time if offered.', expect: 'Geolocated places with activities; the graph, not a static atlas.' },
       { do: 'Open Oikos or Generations on a featured person (Paul, Abraham).', expect: 'Relationship rings / descent — household and discipleship as modelled edges.' },
       { do: 'Open Graph / Trust Graph; optionally Validate GCO.', expect: 'Character and attestation signals on entities; GCO validation against the living ontology.' },
+      { do: 'Open Ask; connect through the Home; press “Let my agent ask for me” and sign the ask-as-me wire; ask a question.', expect: '“Asked through your own agent … which engaged scripture-resolver.svc over A2A as you.” The answer is shaped to your scripture profile; each verse shows commitment ✓ and a signed citation — press Verify citation to re-check it yourself.' },
     ],
-    minutes: 5,
+    minutes: 7,
   },
   {
     id: 'publishing',
