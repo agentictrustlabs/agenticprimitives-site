@@ -15,6 +15,15 @@ export interface ArchitectureDoc {
 
 export const ARCHITECTURE_DOCS: readonly ArchitectureDoc[] = [
   {
+    slug: 'operating',
+    title: 'Operating Agentic Primitives — the ladder',
+    date: '2026-10-11',
+    summary:
+      'What you do at each scale and where the guide lives: build on the substrate, stand up an estate, publish it in a town, prove standing across a federation. One guide per rung, in the repository that owns it.',
+    file: 'operating.md',
+    hero: '/architecture/scales.svg',
+  },
+  {
     slug: 'scales',
     title: 'Substrate, estate, town, federation',
     date: '2026-10-05',

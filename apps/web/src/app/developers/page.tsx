@@ -96,6 +96,10 @@ export default function Developers() {
             </a>
           ))}
         </div>
+        <p className="mt-6 text-sm leading-relaxed text-slate-300">
+          Running one of these yourself — your own Home and vault for your own people, or a town&apos;s shared services on your own chain — is a different job from building on them. It has its own guide per scale:{' '}
+          <Link href="/architecture/operating" className="text-teal hover:underline">the operator&apos;s ladder</Link>.
+        </p>
       </Section>
 
       <CTA title="Read how one application did all six steps." body="Game Night is the reference — the card room the prompt above describes: an OIDC client of the Home, a treasury per player, a mandate per buy-in, A2A players, a coach under a study grant, receipts." primary={{ href: '/examples/game-night', label: 'Game Night case study' }} secondary={{ href: SITE.github, label: 'Open the repository' }} />

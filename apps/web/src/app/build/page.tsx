@@ -27,6 +27,12 @@ export default function BuildStart() {
         <Note>No package names. No tool names. No call sequence. Two repositories, one Home, one registry, three demo people to test as. Everything else the agent fetches — it never has to trust a sentence on this site.</Note>
       </section>
 
+      <section className="mt-12 card-dark">
+        <p className="eyebrow-dark">First: which of the five are you doing?</p>
+        <p className="mt-3 text-[15px] leading-relaxed text-slate-300">The prompt above is for an <strong className="text-white">application</strong> — build 1, and the most common. Four other shapes have their own guides: a <strong className="text-white">behaviour</strong> (skills an agent runs), a <strong className="text-white">service agent</strong> (something other people&apos;s agents call as a peer), an <strong className="text-white">estate</strong> (your own Home and vault for your own people) and a <strong className="text-white">town</strong> (a chain&apos;s shared services). Starting the wrong one is the fastest way to waste a week.</p>
+        <Link href="/build/paths" className="btn-brass mt-5 inline-block !px-4 !py-2">Pick your build →</Link>
+      </section>
+
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
         {([
           ['Point at', 'Two public repositories and the live estate’s endpoints — the agent reads code, not prose.', '/build/point-at'],
