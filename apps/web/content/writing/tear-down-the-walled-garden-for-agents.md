@@ -1,4 +1,4 @@
-# Tear down the walled garden — and do not build a new one for your agent
+# Your personal agent is the new walled garden
 
 In September 2025 Coin Center published *Tear Down this Walled Garden: American Values and Digital Identity*. Its argument is simple and, I think, right: identity infrastructure that one intermediary controls — a platform, a bank consortium, a government agency — centralizes surveillance, limits what anyone else can build on it, and lets the gatekeeper privilege its own services. The alternative the report calls an *Open Commons*: credentials a person holds and carries, facts proved rather than documents shown, open standards that no one captures. The report ends with a line worth keeping: *a state-run walled garden is no better than a private park.*
 

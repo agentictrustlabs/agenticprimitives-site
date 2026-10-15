@@ -17,9 +17,9 @@ export interface Writing {
 export const WRITING: readonly Writing[] = [
   {
     slug: 'tear-down-the-walled-garden-for-agents',
-    title: 'Tear down the walled garden — and do not build a new one for your agent',
+    title: 'Your personal agent is the new walled garden',
     description:
-      'A response to Coin Center’s Tear Down this Walled Garden in the year Muse, dots and Grok Bot shipped: when the holder of a credential is a program, who holds the key? Delegated presentation, anonymous credentials with OpenAC and zkID, identity and reputation for agents without a score, and the Home · Town · Federation answer — with the seven “nos” scored honestly.',
+      'Muse, dots and Grok Bot put your agent, your identity, your credentials and the record of everything it did on a machine you do not control. That is the surveillance gatekeeper Coin Center warned about, rebuilt as a helper. An agent can act for you while the keys, the proofs and the receipts stay yours — here is how, built and running.',
     kind: 'essay',
     date: '2026-10-15',
     file: 'tear-down-the-walled-garden-for-agents.md',
