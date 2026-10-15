@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'tear-down-the-walled-garden-for-agents',
+    title: 'Tear down the walled garden — and do not build a new one for your agent',
+    description:
+      'A response to Coin Center’s Tear Down this Walled Garden in the year Muse, dots and Grok Bot shipped: when the holder of a credential is a program, who holds the key? Delegated presentation, anonymous credentials with OpenAC and zkID, identity and reputation for agents without a score, and the Home · Town · Federation answer — with the seven “nos” scored honestly.',
+    kind: 'essay',
+    date: '2026-10-15',
+    file: 'tear-down-the-walled-garden-for-agents.md',
+  },
+  {
     slug: 'rails-not-throttles',
     title: 'Rails, Not Throttles: The AI Model We Need to Change Isn’t the LLM',
     description:
