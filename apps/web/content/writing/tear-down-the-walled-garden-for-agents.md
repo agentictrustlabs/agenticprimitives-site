@@ -38,7 +38,7 @@ It is the rule the whole substrate is built on — *the key is a delegate, never
 
 ## What we built, and what it looks like at a door
 
-We did not write this as a position paper. Over the last two weeks we built it, end to end, on the published packages and the three product repositories that run on them, and on October 15 a live gate went green against a real door: a nameless visitor proved "over 18" at another estate's boundary, in zero knowledge, and was admitted.
+This is not a position paper. It is implemented, end to end, in the published packages and the product repositories that run on them, and a live gate holds it against a real door: a nameless visitor proves "over 18" at another estate's boundary, in zero knowledge, and is admitted.
 
 The pieces, in the order a visit uses them:
 
@@ -50,7 +50,7 @@ The pieces, in the order a visit uses them:
 - **Revocation lives on neutral ground.** The issuer anchors the root of its *live* credential set on a registry no estate controls — the same registry our estates use for their authority projections. A holder presents a membership proof against the root the verifier *reads from the chain*; a credential the issuer has retired is simply absent from the next root, and every old status proof is stale. Nobody phones a status list.
 - **The receipt names the evidence and nothing else.** The door's record of a predicate admission carries the facet, the predicate digest, the nullifier's grade, the status sequence it read, where the proof was verified, and the pairwise account. Never a claim. Never the person's agent. The holder's own receipt, in her vault, adds the one thing the door cannot know: the mandate the presentation was made under.
 
-One finding from the live run is worth passing on to anyone building this: a zero-knowledge proof bundle is tens of kilobytes, and the edge of the public internet caps an HTTP header at sixteen. The presentation now goes ahead of the knock, held for ten minutes under a reference the door derives; the knock cites the reference. Trivial, and nobody writes it down.
+One finding from the implementation is worth passing on to anyone building this: a zero-knowledge proof bundle is tens of kilobytes, and the edge of the public internet caps an HTTP header at sixteen. The presentation now goes ahead of the knock, held for ten minutes under a reference the door derives; the knock cites the reference. Trivial, and nobody writes it down.
 
 ## The seven "nos," scored honestly
 
