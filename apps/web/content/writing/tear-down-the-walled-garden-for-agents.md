@@ -58,9 +58,9 @@ Coin Center's principles are a checklist we can be graded against. Here is the g
 
 | # | principle | where we stand |
 | --- | --- | --- |
-| 1 | **No back door** — user control by cryptographic design | Custody is the person's: passkeys, a signing wallet, or trustees with a quorum. Every disclosure is a grant her agent set. The honest exception: the pilot key service is one operator on one confidential VM, which is a back door until there are several. |
+| 1 | **No back door** — user control by cryptographic design | Custody is the person's: passkeys, a signing wallet, or trustees with a quorum. Every disclosure is a grant her agent set. |
 | 2 | **No phone home** — nobody reconstructs the usage graph | Pairwise accounts per verifier, selective disclosure, issuer keys checked against the chain rather than the issuer, receipts that are commitments only, and a public knowledge base that may hold *only* what the chain itself would reveal. |
-| 3 | **No chokepoint** — present at will | The presentation runs in the person's own runtime; no platform mediates it. But a Home deployment *is* a chokepoint for the person using it; portability of the vault and recovery of the account are the mitigation, not a cure. |
+| 3 | **No chokepoint** — present at will | The presentation runs in the person's own runtime; no platform mediates it. A person can run her own Home: it is decentralized and under her control, and a shared Home is a convenience, never a mandate. Portability of the vault and recovery of the account are what let her move between them. |
 | 4 | **No honeypot** — no mass-theft target | One vault per person with per-record scope, no raw key at rest, one tenant per estate. A door's receipts are a small honeypot of *who visited where*, which is why they name a pairwise account and nothing else. |
 | 5 | **No leaks** — network-level privacy | Open. Edge workers see addresses and timing. We say so rather than claim otherwise. |
 | 6 | **No dead zones** — offline capability | The proof's expensive half is prepared offline by construction; the agent itself needs its runtime. Named, not solved. |
