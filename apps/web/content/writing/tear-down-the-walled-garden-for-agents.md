@@ -1,5 +1,7 @@
 # Your personal agent is the new walled garden
 
+> **The answer is not a better platform. It is an agent that holds none of your keys.** It acts as your delegate, under permissions you sign and can revoke one at a time. Your credentials prove facts without ever being shown. Every receipt is yours to carry away. We built this, and it is running at a live door today.
+
 In September 2025 Coin Center published *Tear Down this Walled Garden: American Values and Digital Identity*. Its argument is simple and, I think, right: identity infrastructure that one intermediary controls — a platform, a bank consortium, a government agency — centralizes surveillance, limits what anyone else can build on it, and lets the gatekeeper privilege its own services. The alternative the report calls an *Open Commons*: credentials a person holds and carries, facts proved rather than documents shown, open standards that no one captures. The report ends with a line worth keeping: *a state-run walled garden is no better than a private park.*
 
 A year later the walled gardens are being built, and they are not identity wallets. They are personal agents.

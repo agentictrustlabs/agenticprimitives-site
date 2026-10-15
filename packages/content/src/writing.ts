@@ -19,7 +19,7 @@ export const WRITING: readonly Writing[] = [
     slug: 'tear-down-the-walled-garden-for-agents',
     title: 'Your personal agent is the new walled garden',
     description:
-      'Muse, dots and Grok Bot put your agent, your identity, your credentials and the record of everything it did on a machine you do not control. That is the surveillance gatekeeper Coin Center warned about, rebuilt as a helper. An agent can act for you while the keys, the proofs and the receipts stay yours — here is how, built and running.',
+      'Muse, dots and Grok Bot put your agent, your identity, your credentials and the record of everything it did on a machine you do not control. That is the surveillance gatekeeper Coin Center warned about, rebuilt as a helper.',
     kind: 'essay',
     date: '2026-10-15',
     file: 'tear-down-the-walled-garden-for-agents.md',
