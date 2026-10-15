@@ -8,7 +8,7 @@ A year later the walled gardens are being built, and they are not identity walle
 
 In the space of seven weeks this autumn, three of the largest companies on earth shipped a program that acts for you. Meta's **Muse** (September 8) books travel, fills forms and checks out purchases; it runs on what Meta calls a *Muse Secure VM*, a private machine that holds both the agent and your personal data. OpenAI's **dots** (DevDay, September 29) are always-on agents, each on its own cloud computer with its own browser, connected to four thousand apps, working after you log off. xAI and Cursor's **Grok Bot**, in beta since August, is reported to sign in to your mail and your CRM from a dedicated computer of its own and keep going while you are away. These are remarkable products. They are also, every one of them, a private park: the agent *and* your data *and* the record of what it did live on the platform's machine, under the platform's account, governed by the platform's trust in you.
 
-This essay is about what identity, authority and privacy have to look like when the holder of a credential is a program rather than a person — and what we have built, in the open, so that a person's agent can act for her without becoming a new gatekeeper's property. I will respond to Coin Center's principles directly, because they are the best checklist anyone has written, and I will be honest about where we fail them today.
+This essay is about what identity, authority and privacy have to look like when the holder of a credential is a program rather than a person. That is not a premise about the future. Programs hold credentials today, everywhere: every API key, service-account file, bot token and long-lived session cookie is a credential held by software with nobody at the keyboard. What they hold is a *secret*, and whoever has the secret *is* the identity — it cannot say who authorized the act, cannot be narrowed to one task, cannot be revoked per call, and leaks as easily as it is copied. The personal-agent platforms do not introduce the program as holder; they put your whole life behind that kind of holder. So the question is not whether programs should hold credentials, but what a credential has to be when they do — and what we have built, in the open, so that a person's agent can act for her without becoming a new gatekeeper's property. I will respond to Coin Center's principles directly, because they are the best checklist anyone has written, and I will be honest about where we fail them today.
 
 ## The holder is no longer a human with a phone
 
@@ -16,7 +16,7 @@ Everything in the digital-identity literature, Coin Center's report included, ca
 
 The personal-agent platforms break the assumption on day one. Muse pays for things while you are in a meeting. A dot files your expense report at 3 a.m. For an agent to present a credential on your behalf, something has to hold the key the credential is bound to, and there are only two obvious answers.
 
-**Give the agent the key.** Now the agent is the holder, cryptographically. Every principle in Coin Center's list is defeated by construction: whoever controls the agent's machine controls every credential it holds, can present any of them to anyone, forever, and the person can only revoke by asking the platform nicely. This is the walled-garden answer, and it is the one the platforms will take by default, because it is the one that works tonight.
+**Give the agent the key.** Now the agent is the holder, cryptographically. This is how every program holds a credential today — the API key in the environment, the service account's JSON file, the bot's token — and the personal agent inherits the pattern whole. Every principle in Coin Center's list is defeated by construction: whoever controls the agent's machine controls every credential it holds, can present any of them to anyone, forever, and the person can only revoke by asking the platform nicely. This is the walled-garden answer, and it is the one the platforms will take by default, because it is the one that works tonight.
 
 **Keep the key on the person's phone.** Now the agent cannot act while she sleeps, which is the entire point of an agent. This is the answer the identity literature implicitly gives, and it is why that literature has nothing to say about agents.
 
@@ -34,7 +34,7 @@ What this buys is best stated as the differences:
 | what the person can prove later | "I presented" | nothing | a receipt: *this* presentation was made under *this* mandate for *this* challenge |
 | revocation | issuer | issuer | issuer (the credential) and person (the wire), independently |
 
-It is the rule the whole substrate is built on — *the key is a delegate, never the identity* — applied to a credential's device key. And it is what we would contribute to Coin Center's proposed standards body, the John Hancock Project, if it existed tomorrow.
+It is the rule the whole substrate is built on — *the key is a delegate, never the identity* — applied to a credential's device key. Programs stay credential holders; what changes is that the program holds a delegation it can only exercise, never a secret it owns. And it is what we would contribute to Coin Center's proposed standards body, the John Hancock Project, if it existed tomorrow.
 
 ## What we built, and what it looks like at a door
 
