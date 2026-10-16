@@ -5,14 +5,15 @@
 //   scene="street" → TownScene (the flat eight beats: how the street works)
 //   scene="day"    → IsoTown   (the isometric town: one person's agent, many contexts)
 //   scene="message" → MemberMessageScene (a message between two agents under an anonymous credential)
+//   scene="scripture" → PrivateScriptureScene (asking Scripture privately: unnamed payment, reader's credential, a pen name per question)
 //   narration="/audio/<dir>" → one MP3 per beat (`<nn>-<id>.mp3`); the clip's end advances the beat, and the beat's
 //   `narration` text is the transcript. Audio needs a gesture, so a narrated story starts paused on the Play button.
-import { ISO_BEATS, IsoTown, MESSAGE_BEATS, MemberMessageScene, TOWN_BEATS, TownScene, type IsoBeat, type MessageBeat, type TownBeat } from '@apsite/diagrams';
+import { ISO_BEATS, IsoTown, MESSAGE_BEATS, MemberMessageScene, PrivateScriptureScene, SCRIPTURE_BEATS, TOWN_BEATS, TownScene, type IsoBeat, type MessageBeat, type ScriptureBeat, type TownBeat } from '@apsite/diagrams';
 import { Volume2, VolumeX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type SceneId = 'street' | 'day' | 'message';
-const BEATS = { street: TOWN_BEATS, day: ISO_BEATS, message: MESSAGE_BEATS } as const;
+type SceneId = 'street' | 'day' | 'message' | 'scripture';
+const BEATS = { street: TOWN_BEATS, day: ISO_BEATS, message: MESSAGE_BEATS, scripture: SCRIPTURE_BEATS } as const;
 
 export function TownStory({ id = 'town-story', scene = 'street', autoplay = true, narration }: { id?: string; scene?: SceneId; autoplay?: boolean; narration?: string }) {
   const beats = BEATS[scene];
@@ -81,13 +82,13 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
 
   const info = beats[beat]!;
   const below = scene !== 'street'; // the isometric scenes are read large, caption underneath
-  const big = scene === 'message';
+  const big = scene === 'message' || scene === 'scripture';
 
   return (
-    <div id={id} ref={rootRef} className={below ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : scene === 'message' ? 'A message between two agents' : 'Meet the town'}>
+    <div id={id} ref={rootRef} className={below ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : scene === 'message' ? 'A message between two agents' : scene === 'scripture' ? 'Asking Scripture privately' : 'Meet the town'}>
       <div>
         <div className={below ? 'relative overflow-hidden rounded-xl border border-white/10' : 'figure-dark relative'}>
-          {scene === 'day' ? <IsoTown beat={beat as IsoBeat} /> : scene === 'message' ? <MemberMessageScene beat={beat as MessageBeat} /> : <TownScene beat={beat as TownBeat} />}
+          {scene === 'day' ? <IsoTown beat={beat as IsoBeat} /> : scene === 'message' ? <MemberMessageScene beat={beat as MessageBeat} /> : scene === 'scripture' ? <PrivateScriptureScene beat={beat as ScriptureBeat} /> : <TownScene beat={beat as TownBeat} />}
           <div className={`absolute inset-x-3 bottom-3 h-[3px] overflow-hidden rounded bg-white/10 ${below ? '' : 'md:inset-x-5 md:bottom-5'}`}>
             <div className="h-full bg-brass" style={{ width: `${((beat + (playing ? progress : 1)) / beats.length) * 100}%`, transition: playing ? 'none' : 'width .4s ease' }} />
           </div>

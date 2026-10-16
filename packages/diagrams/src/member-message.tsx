@@ -121,7 +121,7 @@ const centre = iso(GX / 2, GY / 2);
 const TOWN_TRANSFORM = `translate(${(W / 2 - centre.x * K).toFixed(1)}, ${(H / 2 + 36 - centre.y * K).toFixed(1)}) scale(${K})`;
 
 /** A person: larger than a walker, standing still, named. The two people in the loop are drawn this way. */
-function Person({ gx, gy, name, color, note }: { gx: number; gy: number; name: string; color: string; note?: string }) {
+export function Person({ gx, gy, name, color, note }: { gx: number; gy: number; name: string; color: string; note?: string }) {
   const b = iso(gx, gy);
   const nw = tw(name, 12.5, false, 700) * 1.1 + 18;
   return (
@@ -138,7 +138,7 @@ function Person({ gx, gy, name, color, note }: { gx: number; gy: number; name: s
 }
 
 /** An agent: a small boxy figure with an antenna and a halo. Drawn beside the person or building it works for. */
-function Agent({ gx, gy, name, color }: { gx: number; gy: number; name: string; color: string }) {
+export function Agent({ gx, gy, name, color }: { gx: number; gy: number; name: string; color: string }) {
   const b = iso(gx, gy);
   const nw = tw(name, 11.5, false, 650) * 1.1 + 16;
   return (
@@ -156,7 +156,7 @@ function Agent({ gx, gy, name, color }: { gx: number; gy: number; name: string; 
 }
 
 /** The moment a person signs: a ring and a pen stroke over her head. */
-function Signature({ gx, gy, on }: { gx: number; gy: number; on: boolean }) {
+export function Signature({ gx, gy, on }: { gx: number; gy: number; on: boolean }) {
   const b = iso(gx, gy);
   return (
     <g style={{ opacity: on ? 1 : 0, transform: on ? 'scale(1)' : 'scale(0.6)', transformOrigin: `${b.x}px ${b.y - 60}px`, transition: `opacity .5s ${EASE} 300ms, transform .5s ${EASE} 300ms` }}>
@@ -183,13 +183,13 @@ function CardOnVault({ on }: { on: boolean }) {
 }
 
 /** A pool of light under whoever is acting in this scene, so the eye goes to the right place. */
-function Spot({ gx, gy, on, r = 44, color = PAL.glow }: { gx: number; gy: number; on: boolean; r?: number; color?: string }) {
+export function Spot({ gx, gy, on, r = 44, color = PAL.glow }: { gx: number; gy: number; on: boolean; r?: number; color?: string }) {
   const p = iso(gx, gy);
   return <ellipse cx={p.x} cy={p.y} rx={r} ry={r / 2} fill={color} style={{ opacity: on ? 0.26 : 0, transition: `opacity .6s ${EASE}` }} />;
 }
 
 /** A multi-line speech bubble that hangs to the right of its speaker (for a speaker near the left edge). */
-function Bubble({ gx, gy, z, lines, color, on, delay = 0, size = 11.5 }: { gx: number; gy: number; z: number; lines: readonly string[]; color: string; on: boolean; delay?: number; size?: number }) {
+export function Bubble({ gx, gy, z, lines, color, on, delay = 0, size = 11.5 }: { gx: number; gy: number; z: number; lines: readonly string[]; color: string; on: boolean; delay?: number; size?: number }) {
   const p = iso(gx, gy, z);
   const w = Math.max(...lines.map((l) => tw(l, size, false, 650))) * 1.08 + 26;
   const lh = size + 4; const h = lines.length * lh + 14;
@@ -203,7 +203,7 @@ function Bubble({ gx, gy, z, lines, color, on, delay = 0, size = 11.5 }: { gx: n
   );
 }
 
-function wrap(text: string, size: number, width: number): string[] {
+export function wrap(text: string, size: number, width: number): string[] {
   const out: string[] = []; let line = '';
   for (const word of text.split(' ')) {
     const next = line ? `${line} ${word}` : word;
