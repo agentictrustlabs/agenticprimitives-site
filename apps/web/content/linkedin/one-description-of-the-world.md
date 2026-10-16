@@ -42,7 +42,7 @@ Every binding replaced a defect that lived where nothing could check it.
 
 **The receipt.** USDC moved from Alice to Bob and neither was told. The fix was a declared effect in the playbook, compiled into the definition, discharged by the executor, written as an `apix:PaymentReceipt` whose field names *are* the T-box property names — readable by the ontology, not interpreted into it.
 
-**The chain.** Typed name suffixes — `.me` `.org` `.svc` `.treasury` — are checked against the on-chain agent type and fail closed. An `OntologyTermRegistry` governs which predicates a contract may carry. The vocabulary is the same above and below the chain boundary.
+**The chain.** Typed name suffixes — `.me` `.org` `.team` `.svc` `.church` `.circle` `.treasury` — are checked against the on-chain agent type and fail closed. An `OntologyTermRegistry` governs which predicates a contract may carry. The vocabulary is the same above and below the chain boundary.
 
 ## Build time, run time, redemption time
 

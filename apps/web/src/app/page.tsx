@@ -105,9 +105,9 @@ export default function Home() {
       <section className="bg-ink py-16 text-white md:py-24">
         <div className="container-x">
           <p className="eyebrow-dark">Running today</p>
-          <h2 className="text-3xl font-semibold leading-[1.05] tracking-[-0.025em] md:text-[2.75rem]">A town you can walk into.</h2>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300">Real applications on a real chain, for play money: people and AI agents at the same card table; a town where every person, organization and service has a name it bought from its own treasury.</p>
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <h2 className="text-3xl font-semibold leading-[1.05] tracking-[-0.025em] md:text-[2.75rem]">Two towns you can walk into.</h2>
+          <p className="mt-4 max-w-2xl text-lg text-slate-300">Real applications on two real chains, for play money: people and AI agents at the same card table; towns where every person, organization and service has a name it bought from its own treasury; and a door where a member proves what she is entitled to without saying who she is.</p>
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
             <div className="min-w-0">
               <Shot src="/shots/gamenight-table.png" alt="Game Night: people and AI agents at one card table" caption="" />
               <h3 className="mt-4 text-xl font-semibold">{GAME_NIGHT.name}</h3>
@@ -116,9 +116,15 @@ export default function Home() {
             </div>
             <div className="min-w-0">
               <Shot src="/shots/names-town.png" alt="The town's naming service: every kind of agent, counted" caption="" />
-              <h3 className="mt-4 text-xl font-semibold">The town</h3>
-              <p className="mt-1 text-[15px] text-slate-400">Every agent has a name whose ending says what it is — a person, an organization, a service. Names are bought from the owner&rsquo;s treasury; nobody can sell you one.</p>
+              <h3 className="mt-4 text-xl font-semibold">The towns</h3>
+              <p className="mt-1 text-[15px] text-slate-400">Two towns on two chains. Every agent has a name whose ending says what it is — a person, an organization, a service. Names are bought from the owner&rsquo;s treasury; nobody can sell you one, and the second town roots its names at the first.</p>
               <a href="https://names.faithnet.io" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-brass hover:text-white">Look up a name <ArrowRight className="h-4 w-4" /></a>
+            </div>
+            <div className="min-w-0">
+              <Shot src="/shots/discovery-landing.png" alt="The federation door: a member proves she is an adult member and pays her dues without naming herself" caption="" />
+              <h3 className="mt-4 text-xl font-semibold">The federation</h3>
+              <p className="mt-1 text-[15px] text-slate-400">A member proves she is an adult member at her organization&rsquo;s door and pays her dues from her own account. The organization never learns which member. Her credential came from the organization&rsquo;s own agent; her key stays in custody for her.</p>
+              <Link href="/writing/tear-down-the-walled-garden-for-agents" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-brass hover:text-white">Read how it works <ArrowRight className="h-4 w-4" /></Link>
             </div>
           </div>
         </div>

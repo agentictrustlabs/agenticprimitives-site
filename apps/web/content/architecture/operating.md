@@ -1,6 +1,6 @@
 # Operating Agentic Primitives — the ladder
 
-**Status:** 2026-10-11. The companion to [Substrate, estate, town, federation](/architecture/scales). That note
+**Status:** 2026-10-16. The companion to [Substrate, estate, town, federation](/architecture/scales). That note
 says what each scale IS; this one says what you DO at each, and where the instructions live. One guide per rung, kept
 in the repository that owns the rung, indexed here and nowhere else twice.
 
@@ -12,7 +12,8 @@ one operator's guide. A developer picks the rung that matches what they are doin
 | **1 · Substrate** | building an application on the packages and contracts — a relying app of a Home, a service agent, a connector | [Getting started](https://github.com/agentictrustlabs/agentic-primitives/blob/main/docs/getting-started.md) · [Register at a Home](https://github.com/agentictrustlabs/agentic-primitives/blob/main/docs/register-your-app.md) · [`create-app`](https://github.com/agentictrustlabs/agentic-primitives/blob/main/docs/create-app.md) | [`agentic-primitives`](https://github.com/agentictrustlabs/agentic-primitives) — the public kit, exact-pinned |
 | **2 · Estate** | standing up a Home, an agent runtime, a vault, an edge and a Home MCP for a population of your own — people whose keys stay with you | [What an estate is made of](https://github.com/agentictrustlabs/agentic-primitives/blob/main/docs/estate-anatomy.md) (the primitives, the invariants, the lessons — read first) → [New estate runbook](https://github.com/agentictrustlabs/ap-home/blob/master/docs/runbooks/new-estate.md) (every command) | [`ap-home`](https://github.com/agentictrustlabs/ap-home) |
 | **3 · Town** | publishing an estate into the services every estate on that chain shares — names, the public graph, the registry, chain access, key custody — or standing up a town on a new chain | [Publish an estate](https://github.com/agentictrustlabs/ap-town/blob/master/operations/runbooks/publish-an-estate.md) · [New town runbook](https://github.com/agentictrustlabs/ap-town/blob/master/operations/runbooks/new-town.md) | [`ap-town`](https://github.com/agentictrustlabs/ap-town) |
-| **4 · Federation** | letting an agent from one chain prove its standing at an estate on another, without authority crossing | Designed, not yet runnable: [Chains and estates](/architecture/chains) + [spec 410 §4](https://agenticprimitives.dev/architecture/chains) | `ap-federation` — next |
+| **4 · Federation** | letting an agent from one chain prove its standing at an estate on another, without authority crossing | Live: [Federation and anonymous credentials](/architecture/federation-and-anonymous-credentials) + [Chains and estates](/architecture/chains); the ap-federation runbooks (`docs/runbooks/`) | `ap-federation` — live |
+
 
 ## How to read the ladder
 

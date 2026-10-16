@@ -1,6 +1,6 @@
 # Chains and estates
 
-**Status:** exploration, 2026-10-04; §3 and §5 revised the same day with the ENS v2 and ERC-8004 study. Companion to
+**Status:** 2026-10-16; written as an exploration on 2026-10-04 and revised as the federation went live (neutral ground, doors, the two-chain twin, anonymous credentials). The status column of each table says what runs today. Companion to
 [The estate and the federation](/architecture/estate). Everything marked *live* runs today; *designed* has a spec
 and a gate named; *proposed* is what this note recommends and no spec yet holds; *open* is a question it frames and
 does not decide.
@@ -23,8 +23,8 @@ leaves for a person who holds accounts on two chains, and what ERC-8004 and ENS 
 | Relation | Example | What is shared | What it means for an act |
 | --- | --- | --- | --- |
 | **Two estates, one chain** (a town) | ap-home and Faithnet on faithchain | the same `AgentAccount`s, the same `DelegationManager`, the same name registries, one `isRevoked` read | a cross-estate act is chain-local: B's runtime verifies a grant A's resident signed, on the chain both read. Live |
-| **Two estates, two chains** | ap-home on faithchain, a product on Base | nothing on chain. They meet on public ground, where each anchors its roots | the act in C runs under a grant issued and redeemed on C's chain; A's standing arrives as a proof against A's root. Designed (spec 410 §4) |
-| **A public chain as the floor** | Base as public ground for every estate | `EstateProjectionRegistry`: one registry, many estates, each known only by its roots and governance address | C's edge reads A's root from its own chain, one read, no bridge. Designed; which public L2 is spec 407 D-03, Base the default proposal |
+| **Two estates, two chains** | faithnet on faithchain, imbnet on hopechain | nothing on chain. They meet on neutral ground, where each anchors its roots | the act runs under a grant issued and redeemed on the acting chain; the visitor's standing arrives as a proof against her estate's root. Live: the twin is green both ways |
+| **Neutral ground** | the `EstateProjectionRegistry` on faithchain, controlled by no estate | one registry, many estates and issuers, each known only by its roots and its governance or issuer address | a door reads the visitor's root from the registry, one read, no bridge. Live; moving the registry to a public L2 is spec 407 D-03, still open |
 
 An estate on a public chain and an estate on a private chain are the same shape. The private chain buys a closed
 validator set and no gas market; the public chain buys the floor everyone can read. Nothing in the substrate prefers
@@ -130,14 +130,14 @@ The act on Base still runs under a Base grant, verified per step.
 | --- | --- | --- | --- | --- |
 | **Address** | as a reference | `eip155:<chain>:<address>`. One hex on two chains is two accounts until a signed binding joins them | CAIP-10; CREATE2 | live |
 | **Principal** | as a signed list | The card lists her accounts by chain, each with a proof that account signed on its own chain; round trip from each chain's `atl:cardUri` (§3.2) | the ERC-8004 registration pattern; ERC-1271/6492 | proposed |
-| **Name** | as a record | One home registry per typed root; `atl:addr` keyed by chain; a per-chain reverse claim valid only with the forward; resolution on other chains by proof against an anchored root (§3.2) | the ENSIP-9/19 pattern; ERC-3668 for the proof path | proposed; today one `atl:addr` and a one-way `native-id` |
+| **Name** | as a record | One home registry per typed root (a town roots its names at another town and keeps a local table); the account per chain on the record; a Home declares its account on a name once; resolution on other chains by proof against an anchored root is the remaining step (§3.2) | the ENSIP-9/19 pattern; ERC-3668 for the proof path | live (rooted names, per-chain accounts); proof-based resolution elsewhere proposed |
 | **Grant** | never | Re-issued on the chain where it acts. The EIP-712 domain carries the chain id and the manager | EIP-712; ERC-7710 | by construction |
-| **Revocation** | never read across | One read on the grant's chain. The live-grant root on public ground is refreshed on every revocation; a stale root is a refusal, never a cached acceptance | spec 410 §4 | designed |
-| **Membership, relationships** | as a proof | The membership root on public ground; a `merkle-membership-v1` presentation reveals one leaf and nothing else about the estate's graph | `privacy-credentials` | designed |
+| **Revocation** | never read across | One read on the grant's chain. The live-grant root on public ground is refreshed on every revocation; a stale root is a refusal, never a cached acceptance | spec 410 §4 | live |
+| **Membership, relationships** | as a proof | The membership root on neutral ground; a `merkle-membership-v1` presentation reveals one leaf and nothing else about the estate's graph; a zero-knowledge predicate presentation reveals only that “over 18 and a member” holds | `privacy-credentials`, `privacy-credentials-openac` | live |
 | **Receipt** | as an anchor | Anchored in the `ReceiptAnchorRegistry` of the chain where the act ran. The vault record names the chain and the anchor. A mirrored anchor on another chain is evidence that an anchor exists there, never the receipt | spec 406; ERC-7786 for the mirror | anchors live; mirror open |
 | **Value** | as a transfer | A treasury invokes a bridge adapter under a mandate redeemable only on the destination chain. Between two public chains: CCTP V2 for USDC, xERC20 for a token, ERC-7683 for an intent settled by a filler. Between a private chain and a public one there is no public bridge; the estate's operators would run one, and it would be a service agent with a treasury, not a protocol feature | CCTP V2; ERC-7281; ERC-7683 | reserved (spec 243); successor ADR named |
-| **Public graph** | as tagged facts | The indexer reads each chain it is pointed at; every fact carries its CAIP-2 chain; the KB still holds only what the chain it names can prove | CAIP-2 | one chain today |
-| **Charter, governance** | as a hash | The estate's `AgenticGovernance` address on its own chain is its id on public ground; the charter hash sits beside its roots | spec 410 §9 | designed |
+| **Public graph** | as tagged facts | The indexer reads each chain it is pointed at; every fact carries its CAIP-2 chain; the KB still holds only what the chain it names can prove | CAIP-2 | one chain per indexer today; two towns, two indexers |
+| **Charter, governance** | as a hash | The estate's `AgenticGovernance` address on its own chain is its id on public ground; the charter hash sits beside its roots | spec 410 §9 | live (the id and the hash); the consortium itself open |
 | **Custody** | as a ceremony | A rotation or recovery at the home account reaches each satellite by that satellite's own custody action; the satellite's card proof is re-signed under the new epoch | `CustodyPolicy`; spec 410 §1's shape | proposed |
 
 Two things never cross: a grant, and the read of its revocation. Everything else crosses as a reference, a signed
@@ -196,11 +196,11 @@ compromised account.
 
 ## 6. The scenario
 
-Two estates on faithchain, one on Base. Mara's Home is in estate A.
+Two estates on faithchain, one on hopechain. Mara's Home is in estate A.
 
 **Mara acts on an organization in estate B.** Same chain. Her agent resolves the name, reads the records, is
 admitted at B's edge; the act parks at her Home; B verifies her grant on faithchain, where B already reads. This is
-the cross-estate act of the companion note, and it is live in part (reads and routed acts proven; G4–G6 pending).
+the cross-estate act of the companion note, and it is live.
 
 **Mara acts on an organization in estate C.** Other chain. C's edge admits her agent on a presentation rooted in A's
 roots, read from Base, which is C's own chain. C's edge joins the proved subject to the actor through her card: the
@@ -242,8 +242,8 @@ Open, and not decided here:
 - **A multi-chain indexer**: the public graph with a CAIP-2 chain on every fact; one chain today.
 - **A bridge-aware mandate envelope** for value (spec 243's successor ADR), and whether the consortium runs a bridge
   service between a private chain and Base at all.
-- **Order of proof**: G4–G6 on faithnet-b first (one chain, two estates), then `check:cross-estate-admission` (two
-  chains and a public ground), then `check:participate-across-estates`, then the gates named above.
+- **Membership across estates**: a person of one estate invited into an organization on another and recorded as a
+  member there; until then the estate's registry agent stands in as issuer for that visitor.
 
 ## 8. Not figured out, and what ten chains would break
 

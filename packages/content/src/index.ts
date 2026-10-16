@@ -32,7 +32,7 @@ export const REPOS: readonly Repo[] = [
   { id: 'agentic-primitives', name: 'agentic-primitives', scale: 'substrate', url: SITE.github, blurb: 'The substrate: 77 packages, 33 contracts, the Developer Kit.', status: 'live' },
   { id: 'ap-home', name: 'ap-home', scale: 'estate', url: 'https://github.com/agentictrustlabs/ap-home', blurb: 'The estate: a Home, the agent runtime, the vault, the edge. Deploys faithnet.me.', status: 'public' },
   { id: 'ap-town', name: 'ap-town', scale: 'town', url: 'https://github.com/agentictrustlabs/ap-town', blurb: 'The town: naming, public graph, registries, key service and chain ops for estates on one chain.', status: 'public' },
-  { id: 'ap-federation', name: 'ap-federation', scale: 'federation', blurb: 'The federation: public ground, bindings and proofs between towns on different chains.', status: 'next' },
+  { id: 'ap-federation', name: 'ap-federation', scale: 'federation', blurb: 'The federation: neutral ground, doors with the predicate grade, member payment and anonymous credentials between towns on different chains.', status: 'live' },
   { id: 'pokernight', name: 'pokernight', scale: 'example', url: SITE.pokerGithub, blurb: 'Game Night: the worked example — a relying app on the substrate.', status: 'public' },
 ];
 
@@ -256,8 +256,8 @@ export const BOM: readonly BomRow[] = [
     products: ['a database', 'a field-encryption library', 'a KMS', 'a consent-management platform'],
     config: 'a PII schema; a key per tenant; consent flags disconnected from the code path that reads the field; a DSAR process.',
     seam: 'Consent is a flag; access is a query. Nothing makes the second depend on the first.',
-    substrate: 'Vaults are the record: encrypted envelopes with per-record scope, released only under a delegation the owner signed; the KB holds only what the chain already says.',
-    packages: ['vault', 'vault-authority', 'privacy-credentials', 'verifiable-credentials', 'content-storage', 'content-primitives'],
+    substrate: 'Vaults are the record: encrypted envelopes with per-record scope, released only under a delegation the owner signed; the KB holds only what the chain already says. Anonymous credentials in two suites — selective disclosure of values, and zero-knowledge predicates over OpenAC (\u201cover 18 and a member\u201d) — presented by the person\u2019s agent under a wire she signed, with the device key custodied for her.',
+    packages: ['vault', 'vault-authority', 'privacy-credentials', 'privacy-credentials-openac', 'verifiable-credentials', 'content-storage', 'content-primitives'],
     contracts: [],
   },
   {
@@ -274,7 +274,7 @@ export const BOM: readonly BomRow[] = [
     products: ['ENS or DNS', 'an internal directory', 'a search index', 'an ERC-8004 registry', 'sync jobs between them'],
     config: 'three name systems; a directory schema; an indexer you run; the mapping from name to address to card to endpoint, maintained by hand.',
     seam: 'A name resolves to an address in one place and to an endpoint in another. Discovery is a search box over a table you own.',
-    substrate: 'Typed names on chain (`.me .org .svc .treasury`); a registry kit with pluggable membership; discovery projected only from chain state; resolution grants that are never authority.',
+    substrate: 'Typed names on chain (`.me .org .team .svc .church .circle .treasury .registry .workspace`); a registry kit with pluggable membership; discovery projected only from chain state; resolution grants that are never authority.',
     packages: ['agent-naming', 'registry-kit', 'registry-resolution', 'agent-resolution', 'identity-directory', 'identity-directory-adapters', 'capability-claims'],
     contracts: ['AgentNameRegistry', 'AgentNameUniversalResolver', 'AgentNameAttributeResolver', 'PermissionlessSubregistry', 'AgentProfileResolver', 'AgentRegistryBase', 'SkillDefinitionRegistry'],
   },
@@ -338,7 +338,7 @@ export const PILLARS: readonly Pillar[] = [
     question: 'Who is acting?',
     title: 'Identity that survives the runtime',
     body: 'Every person, organization and service in your application is a Smart Agent — an on-chain account that can verify signatures, hold value and execute logic. Names, cards, registry entries and DID documents are projections of it, never the identity itself. Passkeys and keys rotate; the agent does not.',
-    proof: 'ERC-4337 account · ERC-1271 signatures · typed names (.me .org .svc .treasury .workspace)',
+    proof: 'ERC-4337 account · ERC-1271 signatures · typed names (.me .org .team .svc .church .circle .treasury .registry .workspace)',
   },
   {
     id: 'authority',
@@ -418,7 +418,7 @@ export const OFFERINGS: readonly Offering[] = [
     id: 'evidence',
     name: 'Evidence',
     oneLine: 'Receipts, provenance and audit that outlive the platform.',
-    what: 'Verification receipts bound to intent + mandate + step + playbook digest; PROV-O graphs with a trace-context spine; append-only audit with forensics tooling; verifiable credentials for claims.',
+    what: 'Verification receipts bound to intent + mandate + step + playbook digest; PROV-O graphs with a trace-context spine; append-only audit with forensics tooling; verifiable credentials for claims; anonymous credentials an organization issues to its members, with the issuer\u2019s live-credential root anchored on neutral ground.',
     replaces: ['LangSmith / Langfuse as the record', 'application audit tables', 'a credentials vendor'],
     packages: ['provenance', 'verifiable-credentials', 'capability-claims', 'audit', 'attestations'],
     standards: ['W3C PROV-O', 'W3C VC 2.0', 'W3C Trace Context', 'OpenTelemetry'],

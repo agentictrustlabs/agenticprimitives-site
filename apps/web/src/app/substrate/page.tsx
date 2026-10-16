@@ -32,7 +32,7 @@ export default function Substrate() {
         <Ledger
           rows={[
             { k: 'Canonical identity persists; credentials rotate.', v: 'Passkeys, hardware keys and SIWE wallets are control credentials — replaceable under custody policy (guardian quorum, trustee quorum, multi-credential self-recovery). The agent’s address never changes; every delegation it issued stays valid.' },
-            { k: 'Typed names say what an agent is.', v: <><span className="font-mono text-navy">.me .org .team .svc .workspace .treasury .registry</span> — a suffix names the derived agent type, checked against the on-chain record and failing closed on a mismatch. A person’s org is never the person’s own address.</> },
+            { k: 'Typed names say what an agent is.', v: <><span className="font-mono text-navy">.me .org .team .svc .church .circle .workspace .treasury .registry</span> — a suffix names the derived agent type, checked against the on-chain record and failing closed on a mismatch. A person’s org is never the person’s own address.</> },
             { k: 'Projections, not copies.', v: 'An A2A Agent Card, an ARD record, an ERC-8004 entry, a DNS host, a DID document — each is a signed projection of the one profile. Delete a projection and you have lost a listing, not an identity.' },
           ]}
         />

@@ -1,6 +1,6 @@
 # Substrate, estate, town, federation
 
-**Status:** 2026-10-05. The four scales at which Agentic Primitives is built and deployed, one repository each.
+**Status:** 2026-10-16. The four scales at which Agentic Primitives is built and deployed, one repository each.
 Companions: [The estate and the federation](/architecture/estate) (the buildings) and
 [Chains and estates](/architecture/chains) (what crosses a chain).
 
@@ -37,7 +37,7 @@ a question the one below cannot, and each is held to one rule that keeps it from
 | **Substrate** | [`agentic-primitives`](https://github.com/agentictrustlabs/agentic-primitives) | The published packages and contracts: identity, authority, harness, edge, registry kit, evidence, coordination, ontology, operations, and the Developer Kit | Any EVM; nothing in a package names a chain or a host | Live. Ring 0, on npm, exact-pinned |
 | **Estate** | [`ap-home`](https://github.com/agentictrustlabs/ap-home) | One deployment for one set of people and organizations: the Home where they sign, the agent runtime, the vault, the edge, the Home MCP, the RPC gateway | One chain | Public. Deploys Faithnet on faithchain |
 | **Town** | [`ap-town`](https://github.com/agentictrustlabs/ap-town) | Several estates on one chain and the services they share: agent naming, the public graph and discovery, registries, KMS tenants, chain operations | One chain, by definition | Public. The services every estate on one chain shares |
-| **Federation** | `ap-federation` | Towns on different chains, private and public, and the public ground that lets an estate in one prove its standing to an edge in another | Many chains | Next. Spec 410 §4 is its design |
+| **Federation** | `ap-federation` | Towns on different chains and the neutral ground that lets an estate in one prove its standing at a door in another: roots, doors, anonymous credentials, member payment | Many chains | Live: ap-federation.faithnet.io, two towns on two chains, gates on a schedule |
 
 "Scale," not "layer." Inside one deployment the substrate already has layers: application on harness, harness on
 authority, authority on identity, identity on chain. The four scales are about how far a deployment reaches.
@@ -76,12 +76,15 @@ A town is a chain's estates plus the services built on that chain's state: agent
 forced-unique names, the on-chain type as the authority), the public graph (the indexer as the only writer, GraphDB,
 discovery over A2A and MCP, the ARD document and the ACP registry), registries (registry-kit instances; the skills
 registry that pins playbooks by digest), the KMS pilot with a tenant per estate, and the chain's own operations: RPC
-gateways, governance with its timelock, a paymaster policy. ap-home and Faithnet stand in the faithchain town today;
-faithnet-b, the federation twin, is its third estate.
+gateways, governance with its timelock, a paymaster policy. Two towns are live: faithnet.town on faithchain (34348), where
+ap-home, Faithnet and faithnet-b stand, and hopenet.town on hopechain (34349), where imbnet stands with its Home at
+www.impact-agent.me.
 
 Why a town is single-chain by definition: every service in it is a read of one chain's state or a contract on it. The
-names are the chain's name registries. The graph holds only what that chain can prove. A town on Base would have its
-own names, its own graph, its own registries.
+names are the chain's name registries. The graph holds only what that chain can prove. A second town has its own graph
+and its own registries, and it may root its names at another town while keeping a local table: hopenet's resolver
+answers existence from faithchain and shows its own table as local, the root marks a name claimed elsewhere, and a
+resolver row's account is the account on that chain, never promoted to the canonical id.
 
 **The rule:** nothing in a town grants. A resolver returns an address, never a credential. A registry's signature
 binds only the fact that it lists. The graph holds only what anyone could rebuild from the chain. Trust is read
@@ -96,8 +99,8 @@ winner.
 
 **How does an agent from one chain act in an estate on another, without authority ever crossing?**
 
-A federation is towns on different chains, some private (faithchain) and some public (Base), and the public ground
-between them: an `EstateProjectionRegistry` on a public chain where each estate anchors its roots (live grants,
+A federation is towns on different chains and the neutral ground between them: an `EstateProjectionRegistry` on
+faithchain that no estate controls, where each estate anchors its roots (live grants,
 membership, resolver state, charter), a presentation that reveals one leaf, an admission evaluator that consumes it,
 and the binding that makes one principal's accounts on several chains legibly hers. Authority stays on each chain;
 evidence and value cross; a grant never does. What crosses, as what, and what ten chains would break:
@@ -105,9 +108,12 @@ evidence and value cross; a grant never does. What crosses, as what, and what te
 
 **The rule:** a message from another chain is evidence that something happened there. It is never a mandate here.
 
-`ap-federation` is next. Its design is spec 410 §4, its gates are `check:cross-estate-admission` and
-`check:participate-across-estates`, and its open questions are listed honestly in the chains note: the revocation
-window across chains, custody propagation to satellite accounts, aggregate spend across chains, the public L2.
+`ap-federation` is live at ap-federation.faithnet.io. A scheduled projector reads each estate's and each issuer's
+submissions from its own vault and anchors the roots; doors admit a visitor on a leaf proved against a root read from the
+chain, and on a zero-knowledge predicate (“over 18 and a member”) proved about a credential the organization's own
+agent issued; a member pays dues treasury to treasury on the organization's chain under a standing wire; the two-chain
+twin is green in both directions. Its gates run on a schedule, and what is not done is listed in
+[Federation and anonymous credentials](/architecture/federation-and-anonymous-credentials).
 
 ## 5. Why four, and why in this order
 

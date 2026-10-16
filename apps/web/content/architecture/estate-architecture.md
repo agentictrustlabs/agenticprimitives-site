@@ -1,6 +1,6 @@
 # The estate and the federation
 
-**Status:** 2026-10-04. Drawn from what `ap-home` deploys today, what Ring 0 deploys as Faithnet, and the specs that
+**Status:** 2026-10-16. Drawn from what `ap-home` deploys today, what Ring 0 deploys as Faithnet, and the specs that
 say how estates meet. **Reads:** [spec 399](https://github.com/agentictrustlabs/agentic-primitives/blob/master/specs/399-repository-split-program.md) (the names),
 [spec 410 §4](https://github.com/agentictrustlabs/agentic-primitives/blob/master/specs/410-thesis-review-ten-additions.md) (the estate boundary), ADR-0057 (the edge), ADR-0055
 (the vault), ADR-0040 (the public graph), ADR-0038 (registries), ADR-0019 (keys as delegates).
@@ -67,7 +67,7 @@ contract on it. Public ground, the last column, is the one piece that is not of 
 | **Public graph** | The discovery indexer, the only writer, reads the chain into GraphDB (`graphdb.agentkg.io`). Discovery serves it over A2A and MCP (`discovery-a2a.faithnet.io`), as an ARD document and an ACP registry, and as passage retrieval over public, released works | A world-readable read tier. It holds only what anyone could rebuild from the chain: names, types, profiles, public relationships, cards, releases. Never a viewer's state, never a vault's contents | Live on faithchain |
 | **Registries** | Registry-kit instances. The skills registry (`skills.faithnet.io`) pins playbooks by digest and renders ontologies; vertical registries list their own members. Admission receipts and a lifecycle log | Any estate's agent may be listed. A registry's signature binds only the fact that it lists | Live: skills registry |
 | **KMS pilot** | One AKCS pilot, a tenant per estate, a wire per service | Shared operator; per-estate tenants and keys. The shared caller token is a posture finding to close | Live |
-| **Public ground** | `EstateProjectionRegistry` on a public chain. Each estate anchors two roots, a live-grant root and a membership root, plus its charter hash, under its `estateId`, the estate's governance address on its own chain. A presentation reveals one leaf; the other estate's admission consumes it | The only thing public ground learns about an estate is its roots. One registry, many estates | Designed, generation 3, not deployed |
+| **Neutral ground** | `EstateProjectionRegistry` on faithchain, controlled by no estate. Each estate anchors two roots, a live-grant root and a membership root, plus its charter hash, under its `estateId`, the estate's governance address on its own chain. A presentation reveals one leaf; the other estate's admission consumes it | The only thing neutral ground learns about an estate is its roots; an issuer anchors the root of the credentials it still vouches for. One registry, many estates and issuers | Live: anchored by a scheduled projector from each estate's own vault |
 
 The public graph is the piece people compare with The Graph: an index built from chain events, rebuildable by anyone,
 queried by everyone. The difference worth keeping is what it is allowed to contain. Reading the whole graph reveals
@@ -77,7 +77,7 @@ nothing reading the chain would not.
 
 ![The federation: the faithchain town, three estates and the services they share, and a town on another chain, joined on public ground](/architecture/federation.svg)
 
-Four estates stand in the picture. **ap-home** and **Faithnet** are on faithchain, so they share its naming, its
+Four estates stand in the picture, on two chains. **ap-home** and **Faithnet** are on faithchain, so they share its naming, its
 indexer and its KMS tenant model by construction; only the default deployment serves names that are unpublished
 (`A2A_SERVES_UNPUBLISHED_NAMES`). **faithnet-b** is the federation twin (`edge-b.faithnet.io`, `*.b.faithnet.io`), the
 second deployment the cross-Home proofs run against. These three and the services between them are the faithchain
@@ -117,8 +117,10 @@ are evidence: a receipt she keeps.
 Where it stands. Reads and routed acts across Faithnet A and B are proven live (`verify-cross-deployment`: an
 organization placed on B through its records, a read and an act routed from A, `observedVia: network`, a session
 wire). Completion across deployments, hand-off with a live revocation twin, and the three-link authority chain are the
-federation proofs G4–G6, pending the wave on faithnet-b. Roots on public ground, for estates on different chains, are
-designed in spec 410 §4 and gated by `check:cross-estate-admission`.
+federation proofs, green on the live twin in both directions across faithchain and hopechain. Roots on neutral ground,
+for estates on different chains, are anchored by ap-federation's scheduled projector; a door admits on a leaf proved
+against them, and on a zero-knowledge predicate about a credential the organization's own agent issued
+([Federation and anonymous credentials](/architecture/federation-and-anonymous-credentials)).
 
 ## 6. Project NANDA
 

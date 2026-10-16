@@ -53,7 +53,7 @@ const BUILDS = [
     what: 'A town',
     who: 'You need your own chain.',
     youRun: 'a chain and its services',
-    body: 'The services every estate on one chain shares: naming, the public graph, the registry, chain access, key custody. Single-chain by definition, because every service in it is a contract on that chain or a read of its state. If you want your own people and names but not your own chain, you want build 4 — a day’s work instead of a quarter’s.',
+    body: 'The services every estate on one chain shares: naming, the public graph, the registry, chain access, key custody. Single-chain by definition, because every service in it is a contract on that chain or a read of its state; a town may root its names at another town and keep a local table, the way hopenet roots at faithchain. If you want your own people and names but not your own chain, you want build 4 — a day’s work instead of a quarter’s.',
     href: 'https://github.com/agentictrustlabs/ap-town/blob/master/operations/runbooks/new-town.md',
     label: 'New-town runbook',
   },

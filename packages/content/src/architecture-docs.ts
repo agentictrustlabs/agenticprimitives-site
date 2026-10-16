@@ -15,6 +15,15 @@ export interface ArchitectureDoc {
 
 export const ARCHITECTURE_DOCS: readonly ArchitectureDoc[] = [
   {
+    slug: 'federation-and-anonymous-credentials',
+    title: 'Federation and anonymous credentials',
+    date: '2026-10-16',
+    summary:
+      'What a federation is (neutral ground, doors, a projector, receipts), what an anonymous credential is here, how two estates on two chains interoperate over proof, and what is not done.',
+    file: 'federation-and-anonymous-credentials.md',
+    hero: '/architecture/federation.svg',
+  },
+  {
     slug: 'operating',
     title: 'Operating Agentic Primitives — the ladder',
     date: '2026-10-11',
