@@ -38,7 +38,7 @@ It is the rule the whole substrate is built on — *the key is a delegate, never
 
 ## What we built, and what it looks like at a door
 
-This is not a position paper. It is implemented, end to end, in the published packages and the product repositories that run on them, and a live gate holds it against a real door: a nameless visitor proves "over 18" at another estate's boundary, in zero knowledge, and is admitted. The next thing the same door asks is "and I am a member of your organization": a membership claim in a credential the organization itself issued, proven the same way, naming nobody.
+This is not a position paper. It is implemented, end to end, in the published packages and the product repositories that run on them, and a live gate holds it against a real door: a nameless visitor proves "over 18, and I am a member of your organization" at another estate's boundary, in zero knowledge, and is admitted. The membership is a claim in a credential the organization itself issued, proven the same way as the age, naming nobody: the door learns that it issued her a membership, and not which member.
 
 The pieces, in the order a visit uses them:
 
