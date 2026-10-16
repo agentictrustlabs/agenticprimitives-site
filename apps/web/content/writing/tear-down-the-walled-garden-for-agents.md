@@ -74,7 +74,7 @@ Here is the whole Open Commons in one everyday transaction, running today. A mem
 
 Two automated checks run this against the live system on a schedule: the visit itself (twenty-five checks, five of them deliberate refusals: a reused one-time token, a proof meant for another organization, a revoked credential, a replayed challenge, a credential from an issuer the door does not trust) and the payment (fifteen checks, four refusals: no bill without an admission, one settlement per bill, a forged reference, a repeated payment). The issuing step has refusals of its own: a non-member, an organization that has published no issuing key, a vault that will not accept the delivery — each said in words, none silently worked around.
 
-The same path carries a *message* instead of a visit. An organization's agent that reads mail only from adult members, without learning which member wrote, asks the same two questions, verifies before it reads, and hands the steward a message from a one-time alias. That variant uses nothing the door does not; the proving half of it is what the door demonstrates every night.
+The same path carries a *message* instead of a visit. An organization's agent that reads mail only from adult members, without learning which member wrote, asks the same two questions, verifies before it reads, and hands the steward a message from a one-time alias. That variant uses nothing the door does not; the proving half of it is what the door demonstrates every night. It is drawn out beat by beat, with who learns what at the end, in [A message between two agents](/examples/member-message).
 
 ## The seven "nos," scored honestly
 

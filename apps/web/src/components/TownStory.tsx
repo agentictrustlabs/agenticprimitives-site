@@ -4,11 +4,12 @@
 // reduced motion, and lets the reader scrub by clicking a beat or using the keyboard.
 //   scene="street" → TownScene (the flat eight beats: how the street works)
 //   scene="day"    → IsoTown   (the isometric town: one person's agent, many contexts)
-import { ISO_BEATS, IsoTown, TOWN_BEATS, TownScene, type IsoBeat, type TownBeat } from '@apsite/diagrams';
+//   scene="message" → MemberMessageScene (a message between two agents under an anonymous credential)
+import { ISO_BEATS, IsoTown, MESSAGE_BEATS, MemberMessageScene, TOWN_BEATS, TownScene, type IsoBeat, type MessageBeat, type TownBeat } from '@apsite/diagrams';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type SceneId = 'street' | 'day';
-const BEATS = { street: TOWN_BEATS, day: ISO_BEATS } as const;
+type SceneId = 'street' | 'day' | 'message';
+const BEATS = { street: TOWN_BEATS, day: ISO_BEATS, message: MESSAGE_BEATS } as const;
 
 export function TownStory({ id = 'town-story', scene = 'street', autoplay = true }: { id?: string; scene?: SceneId; autoplay?: boolean }) {
   const beats = BEATS[scene];
@@ -59,10 +60,10 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
   const info = beats[beat]!;
 
   return (
-    <div id={id} ref={rootRef} className={scene === 'day' ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : 'Meet the town'}>
+    <div id={id} ref={rootRef} className={scene === 'day' ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : scene === 'message' ? 'A message between two agents' : 'Meet the town'}>
       <div>
         <div className={scene === 'day' ? 'relative overflow-hidden rounded-xl border border-white/10' : 'figure-dark relative'}>
-          {scene === 'day' ? <IsoTown beat={beat as IsoBeat} /> : <TownScene beat={beat as TownBeat} />}
+          {scene === 'day' ? <IsoTown beat={beat as IsoBeat} /> : scene === 'message' ? <MemberMessageScene beat={beat as MessageBeat} /> : <TownScene beat={beat as TownBeat} />}
           <div className={`absolute inset-x-3 bottom-3 h-[3px] overflow-hidden rounded bg-white/10 ${scene === 'day' ? '' : 'md:inset-x-5 md:bottom-5'}`}>
             <div className="h-full bg-brass" style={{ width: `${((beat + (playing ? progress : 1)) / beats.length) * 100}%`, transition: playing ? 'none' : 'width .4s ease' }} />
           </div>
@@ -80,7 +81,7 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
       {scene === 'day' ? (
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
           <div className="rounded-xl border border-brass/40 bg-white/[0.05] p-5" aria-live="polite">
-            <p className="font-mono text-[10px] tracking-[0.14em] text-brass">0{beat + 1} · {info.title.toUpperCase()}</p>
+            <p className="font-mono text-[10px] tracking-[0.14em] text-brass">{String(beat + 1).padStart(2, '0')} · {info.title.toUpperCase()}</p>
             <p className="mt-2 text-[15px] leading-relaxed text-slate-100">{info.caption}</p>
             <p className="mt-3 text-[15px] font-semibold leading-snug text-brass">{info.rule}</p>
           </div>
@@ -91,7 +92,7 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
                 <li key={b.id}>
                   <button type="button" onClick={() => go(i)} aria-current={on ? 'step' : undefined}
                     className={`flex w-full items-baseline gap-2 rounded-lg border px-3 py-2 text-left transition ${on ? 'border-brass/60 bg-white/[0.06]' : 'border-white/10 hover:border-white/25 hover:bg-white/[0.03]'}`}>
-                    <span className={`font-mono text-[10px] tracking-[0.14em] ${on ? 'text-brass' : 'text-slate-500'}`}>0{i + 1}</span>
+                    <span className={`font-mono text-[10px] tracking-[0.14em] ${on ? 'text-brass' : 'text-slate-500'}`}>{String(i + 1).padStart(2, '0')}</span>
                     <span className={`text-[13px] font-semibold ${on ? 'text-white' : 'text-slate-300'}`}>{b.title}</span>
                   </button>
                 </li>
@@ -108,7 +109,7 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
               <button type="button" onClick={() => go(i)} aria-current={on ? 'step' : undefined}
                 className={`w-full rounded-lg border px-3.5 py-2.5 text-left transition ${on ? 'border-brass/60 bg-white/[0.06]' : 'border-transparent hover:border-white/10 hover:bg-white/[0.03]'}`}>
                 <div className="flex items-baseline gap-2">
-                  <span className={`font-mono text-[10px] tracking-[0.14em] ${on ? 'text-brass' : 'text-slate-500'}`}>0{i + 1}</span>
+                  <span className={`font-mono text-[10px] tracking-[0.14em] ${on ? 'text-brass' : 'text-slate-500'}`}>{String(i + 1).padStart(2, '0')}</span>
                   <span className={`text-sm font-semibold ${on ? 'text-white' : 'text-slate-300'}`}>{b.title}</span>
                 </div>
                 <div className={`grid transition-[grid-template-rows] duration-300 ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>

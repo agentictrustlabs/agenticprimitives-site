@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, NandaLayers, PrincipalAcrossChains, Scales, StitchedVsSeamless, SubstrateLayers, TownScene } from '@apsite/diagrams';
+import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, MemberMessageScene, NandaLayers, PrincipalAcrossChains, Scales, StitchedVsSeamless, SubstrateLayers, TownScene } from '@apsite/diagrams';
 
 const FILES: Record<string, () => React.JSX.Element> = {
   'estate-block': () => createElement(EstateBlock),
@@ -31,6 +31,9 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'iso-town-patient': () => createElement(IsoTown, { beat: 1 }),
   'iso-town-window': () => createElement(IsoTown, { beat: 4 }),
   'iso-town-day': () => createElement(IsoTown, { beat: 6 }),
+  'member-message-sign': () => createElement(MemberMessageScene, { beat: 4 }),
+  'member-message-verify': () => createElement(MemberMessageScene, { beat: 6 }),
+  'member-message-contrast': () => createElement(MemberMessageScene, { beat: 9 }),
 };
 
 // Mirrors `.figure-dark` in apps/web/src/app/globals.css. Keep in step.
