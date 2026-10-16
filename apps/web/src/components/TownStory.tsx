@@ -5,17 +5,24 @@
 //   scene="street" → TownScene (the flat eight beats: how the street works)
 //   scene="day"    → IsoTown   (the isometric town: one person's agent, many contexts)
 //   scene="message" → MemberMessageScene (a message between two agents under an anonymous credential)
+//   narration="/audio/<dir>" → one MP3 per beat (`<nn>-<id>.mp3`); the clip's end advances the beat, and the beat's
+//   `narration` text is the transcript. Audio needs a gesture, so a narrated story starts paused on the Play button.
 import { ISO_BEATS, IsoTown, MESSAGE_BEATS, MemberMessageScene, TOWN_BEATS, TownScene, type IsoBeat, type MessageBeat, type TownBeat } from '@apsite/diagrams';
+import { Volume2, VolumeX } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type SceneId = 'street' | 'day' | 'message';
 const BEATS = { street: TOWN_BEATS, day: ISO_BEATS, message: MESSAGE_BEATS } as const;
 
-export function TownStory({ id = 'town-story', scene = 'street', autoplay = true }: { id?: string; scene?: SceneId; autoplay?: boolean }) {
+export function TownStory({ id = 'town-story', scene = 'street', autoplay = true, narration }: { id?: string; scene?: SceneId; autoplay?: boolean; narration?: string }) {
   const beats = BEATS[scene];
   const LAST = beats.length - 1;
   const [beat, setBeat] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [voice, setVoice] = useState(!!narration);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const narrated = !!narration && voice;
+  const clipFor = (i: number) => `${narration}/${String(i + 1).padStart(2, '0')}-${beats[i]!.id}.mp3`;
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -29,15 +36,15 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
     const io = new IntersectionObserver(([e]) => {
       const on = !!e?.isIntersecting;
       setVisible(on);
-      if (on && autoplay && !reduced && !started.current) { started.current = true; setPlaying(true); }
+      if (on && autoplay && !narration && !reduced && !started.current) { started.current = true; setPlaying(true); }
     }, { threshold: 0.35 });
     io.observe(el);
     return () => io.disconnect();
-  }, [autoplay]);
+  }, [autoplay, narration]);
 
   // Advance on a timer while playing and visible. Progress is a cheap per-frame tick for the bar under the figure.
   useEffect(() => {
-    if (!playing || !visible) return;
+    if (!playing || !visible || narrated) return;
     const dwell = beats[beat]?.ms ?? 5000;
     const t0 = performance.now();
     let raf = 0;
@@ -45,9 +52,24 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
     raf = requestAnimationFrame(tick);
     const timer = window.setTimeout(() => setBeat((b) => (b + 1) % beats.length), dwell);
     return () => { window.clearTimeout(timer); cancelAnimationFrame(raf); };
-  }, [playing, visible, beat, beats]);
+  }, [playing, visible, beat, beats, narrated]);
 
-  const go = useCallback((b: number, keepPlaying = false) => { setProgress(0); setBeat(b); if (!keepPlaying) setPlaying(false); }, []);
+  // Narrated: the clip for this beat plays; when it ends the next beat starts; the last clip ends the story.
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a || !narrated) return;
+    if (!playing) { a.pause(); return; }
+    const src = clipFor(beat);
+    if (!a.src.endsWith(src)) { a.src = src; a.currentTime = 0; }
+    const onTime = () => { if (a.duration) setProgress(a.currentTime / a.duration); };
+    const onEnd = () => { if (beat === LAST) { setPlaying(false); setProgress(1); } else { setProgress(0); setBeat(beat + 1); } };
+    a.addEventListener('timeupdate', onTime); a.addEventListener('ended', onEnd);
+    void a.play().catch(() => setPlaying(false));
+    return () => { a.removeEventListener('timeupdate', onTime); a.removeEventListener('ended', onEnd); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, beat, narrated, LAST]);
+
+  const go = useCallback((b: number, keepPlaying = false) => { setProgress(0); setBeat(b); if (!keepPlaying) setPlaying(false); const a = audioRef.current; if (a) { a.pause(); a.currentTime = 0; } }, []);
   const prev = useCallback(() => go(beat === 0 ? LAST : beat - 1), [beat, go, LAST]);
   const next = useCallback(() => go(beat === LAST ? 0 : beat + 1), [beat, go, LAST]);
 
@@ -71,12 +93,18 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
           </div>
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <button type="button" onClick={() => setPlaying((p) => !p)} className="btn-brass !px-4 !py-2" aria-pressed={playing}>
-            {playing ? 'Pause' : beat === LAST && !playing ? 'Replay' : 'Play'}
+          <button type="button" onClick={() => { if (!playing && beat === LAST && progress >= 1) { setProgress(0); setBeat(0); } setPlaying((p) => !p); }} className="btn-brass !px-4 !py-2" aria-pressed={playing}>
+            {playing ? 'Pause' : beat === LAST && progress >= 1 ? 'Replay' : narration ? (beat === 0 ? 'Play with narration' : 'Play') : 'Play'}
           </button>
           <button type="button" onClick={prev} className="rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/5" aria-label="Previous beat">←</button>
           <button type="button" onClick={next} className="rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/5" aria-label="Next beat">→</button>
+          {narration && (
+            <button type="button" onClick={() => setVoice((v) => !v)} className="inline-flex items-center gap-1.5 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/5" aria-pressed={voice} aria-label={voice ? 'Turn narration off' : 'Turn narration on'}>
+              {voice ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />} {voice ? 'Narration on' : 'Narration off'}
+            </button>
+          )}
           <p className="ml-1 text-xs text-slate-400">{beat + 1} / {beats.length} · <span className="text-slate-200">{info.title}</span> · ← → to step, space to pause</p>
+          {narration && <audio ref={audioRef} preload="auto" />}
         </div>
       </div>
 
@@ -84,7 +112,10 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
         <div className={big ? 'grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-start' : 'grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start'}>
           <div className={big ? 'rounded-xl border border-brass/40 bg-white/[0.05] p-6 md:p-7' : 'rounded-xl border border-brass/40 bg-white/[0.05] p-5'} aria-live="polite">
             <p className="font-mono text-[10px] tracking-[0.14em] text-brass">{String(beat + 1).padStart(2, '0')} · {info.title.toUpperCase()}</p>
-            <p className={big ? 'mt-3 text-lg leading-relaxed text-slate-100 md:text-xl' : 'mt-2 text-[15px] leading-relaxed text-slate-100'}>{info.caption}</p>
+            {'from' in info && info.to !== '—' && (
+              <p className="mt-3 text-sm text-teal-300"><span className="font-semibold text-white">{info.from}</span> <span className="text-slate-400">→</span> <span className="font-semibold text-white">{info.to}</span><span className="text-slate-400"> · </span>{info.what}</p>
+            )}
+            <p className={big ? 'mt-3 text-lg leading-relaxed text-slate-100 md:text-xl' : 'mt-2 text-[15px] leading-relaxed text-slate-100'}>{'narration' in info ? info.narration : info.caption}</p>
             <p className={big ? 'mt-4 text-lg font-semibold leading-snug text-brass md:text-xl' : 'mt-3 text-[15px] font-semibold leading-snug text-brass'}>{info.rule}</p>
           </div>
           <ol className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-2" aria-label="Beats">

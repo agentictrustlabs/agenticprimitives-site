@@ -19,19 +19,73 @@ export interface MessageBeatInfo {
   caption: string;
   /** The line that makes ours different, said to a non-technical reader. */
   rule: string;
-  /** Autoplay dwell, ms. */
+  /** Autoplay dwell, ms — used when narration is off. */
   ms: number;
+  /** The interaction, made explicit: who is acting, who receives, what passes between them. */
+  from: string;
+  to: string;
+  what: string;
+  /** The spoken walkthrough for this scene (also shown as the transcript). */
+  narration: string;
 }
 
 export const MESSAGE_BEATS: readonly MessageBeatInfo[] = [
-  { id: 'meet', title: 'Meet everyone', caption: "Hannah lives on the south side of the street with her agent. Her vault holds the membership card her organization gave her — it says adult, member. The key that card is tied to sits in a key safe and never comes out. Across the street: the organization, its agent at the door, the steward inside. On the corner, a public notice board where the organization has posted its stamp and the list of cards it still vouches for.", rule: 'Three things never leave her side of the street: the card, the key, and her name.', ms: 9000 },
-  { id: 'permission', title: 'Hannah signs one permission', caption: 'At her own front door, once, Hannah signs: "My agent may prove I am an adult member — to this organization, until spring." The permission goes into her vault. It says where, what and until when. It does not say who she is.', rule: 'A person signs. Everything that follows runs under that one signature.', ms: 7400 },
-  { id: 'question', title: 'The organization asks its own question', caption: 'The organization\'s agent reads mail only from adult members. It sends a fresh question to her gate: "Adult member? Prove it. Question #4821, for this door only." It does not ask for a name, a card or a birthday.', rule: 'The receiver asks its own question. It never sees the card.', ms: 7000 },
-  { id: 'proof', title: 'Her agent makes the proof at home', caption: 'Her agent takes the card and the permission out of the vault, inside the house, and makes a sealed proof: "Adult member — YES." The proof answers the question. It does not carry the card, the birthday or the organization\'s signature on the card.', rule: 'The proof says the answer is yes. It does not say what the card says.', ms: 7400 },
-  { id: 'stamp', title: 'The key safe stamps it — once', caption: 'The proof needs one stamp from the key tied to her card. Her agent brings it to the key safe with the permission. The safe checks: this organization? this question? under her permission? Yes — one stamp. A slip for a different organization gets no stamp at all.', rule: 'The key never leaves the safe, and the safe stamps only what her permission covers.', ms: 8200 },
-  { id: 'send', title: 'The message crosses the street under a pen name', caption: 'Her agent carries the message across the street with the sealed, stamped proof inside. The envelope is signed with a pen name made for this organization alone. A different organization would see a different pen name.', rule: 'Different door, different pen name. Never her name.', ms: 6600 },
-  { id: 'board', title: 'The door checks the notice board, not the office', caption: 'Before anyone reads the message, the organization\'s agent walks to the public notice board: Is this stamp really the organization\'s? Is the card still vouched for? Has question #4821 been used before? Yes, yes, no. It never phones the membership office.', rule: 'Trust is read off a public board. The issuer is never asked.', ms: 8000 },
-  { id: 'read', title: 'The steward reads — and two receipts', caption: 'Now the steward gets the message: from an adult member. Not which one. The organization files a receipt that says a fact and a question number. A receipt also walks back to Hannah\'s vault, with the one thing the organization can never hold: the permission it ran under. She can cancel that permission from her front door, any time.', rule: 'The organization knows a fact. Hannah keeps the whole story, and the off switch.', ms: 9600 },
+  {
+    id: 'meet', title: 'Meet everyone', ms: 9000,
+    caption: "Hannah lives on the near side of the street with her agent. Her vault holds the membership card her organization gave her — adult, member. The key that card is tied to sits in a key safe and never comes out. Across the street: the organization, its agent at the door, the steward inside. On the corner, a public notice board where the organization has posted its stamp and the list of cards it still vouches for.",
+    rule: 'Three things never leave her side of the street: the card, the key, and her name.',
+    from: 'Nobody yet', to: '—', what: 'Who is where, and what each of them holds',
+    narration: "Let's meet everyone. On the near side of the street lives Hannah. Beside her stands her agent — a piece of software that runs errands for her. Next to her home is her vault, where she keeps private things, including a membership card her organization gave her. It says two things: she's an adult, and she's a member. The card is tied to a key, and that key sits in a key safe that never opens. Across the street is the organization. Its own agent waits at the door, and inside, the steward reads the mail. On the corner is a public notice board, where the organization has posted its stamp, and the list of cards it still vouches for. Keep your eye on three things that will never cross the street: the card, the key, and Hannah's name.",
+  },
+  {
+    id: 'permission', title: 'Hannah signs one permission', ms: 7400,
+    caption: 'At her own front door, once, Hannah signs: "My agent may prove I am an adult member — to this organization, until spring." The permission goes into her vault. It says where, what and until when. It does not say who she is.',
+    rule: 'A person signs. Everything that follows runs under that one signature.',
+    from: 'Hannah', to: 'her vault', what: 'one signed permission: prove "adult member" to this organization, until spring',
+    narration: "Everything starts with a person. At her own front door, Hannah signs one permission: \"My agent may prove I'm an adult member — to this organization, and only until spring.\" That permission goes into her vault. Notice what it says, and what it doesn't. It says where her agent may speak, what it may prove, and for how long. It never says who she is.",
+  },
+  {
+    id: 'question', title: 'The organization asks its own question', ms: 7000,
+    caption: 'The organization\'s agent reads mail only from adult members. It sends a fresh question to her gate: "Adult member? Prove it. Question #4821, for this door only." It does not ask for a name, a card or a birthday.',
+    rule: 'The receiver asks its own question. It never sees the card.',
+    from: "the organization's agent", to: "Hannah's gate", what: '"Adult member? Prove it." — question #4821, good at this door only',
+    narration: "Now the organization's agent does its job. It reads mail only from adult members, so before it reads anything, it asks a question. It sends a note across to Hannah's gate: \"Adult member? Prove it. This is question number four eight two one, and it's only good at this door.\" It does not ask for a name, a card, or a birthday. It asks exactly one thing, and it will accept exactly one kind of answer.",
+  },
+  {
+    id: 'proof', title: 'Her agent makes the proof at home', ms: 7400,
+    caption: 'Her agent takes the card and the permission out of the vault, inside the house, and makes a sealed proof: "Adult member — YES." The proof answers the question. It does not carry the card, the birthday or the organization\'s signature on the card.',
+    rule: 'The proof says the answer is yes. It does not say what the card says.',
+    from: 'her vault', to: 'her agent', what: 'the card and the permission — they stay inside the house; out comes a sealed proof: "adult member — yes"',
+    narration: "Her agent takes the card and the permission out of the vault — inside the house, where they stay. From them it makes a sealed proof. Think of a sealed envelope that says only: adult member, yes. It answers the question, and nothing more. It does not carry the card, the birthday, or even the organization's signature on the card.",
+  },
+  {
+    id: 'stamp', title: 'The key safe stamps it — once', ms: 8200,
+    caption: 'The proof needs one stamp from the key tied to her card. Her agent brings it to the key safe with the permission. The safe checks: this organization? this question? under her permission? Yes — one stamp. A slip for a different organization gets no stamp at all.',
+    rule: 'The key never leaves the safe, and the safe stamps only what her permission covers.',
+    from: 'her agent', to: 'the key safe', what: '"stamp this — for the organization, question #4821" · the safe checks her permission, then stamps once; a slip for another organization gets nothing',
+    narration: "There's one more step before the proof is finished: it needs a stamp from the key the card is tied to. Her agent carries the proof to the key safe, along with her permission. The safe checks three things. Is this for the organization she named? Is it for the question that was asked? Is it still before spring? Yes, yes, yes — one stamp. Now watch the second slip. It asks for a stamp for a different organization. The safe refuses. The key never comes out, and it only stamps what her permission covers.",
+  },
+  {
+    id: 'send', title: 'The message crosses the street under a pen name', ms: 6600,
+    caption: 'Her agent carries the message across the street with the sealed, stamped proof inside. The envelope is signed with a pen name made for this organization alone. A different organization would see a different pen name.',
+    rule: 'Different door, different pen name. Never her name.',
+    from: 'her agent', to: "the organization's door", what: 'the message, from a pen name made for this organization — the stamped proof inside',
+    narration: "Now the message crosses the street. Her agent carries it to the organization's door with the stamped proof inside. The envelope is signed with a pen name — made just for this organization. If she wrote to a different organization, it would see a different pen name. No one on the street, and no one at the door, sees her name.",
+  },
+  {
+    id: 'board', title: 'The door checks the notice board, not the office', ms: 8000,
+    caption: 'Before anyone reads the message, the organization\'s agent walks to the public notice board: Is this stamp really the organization\'s? Is the card still vouched for? Has question #4821 been used before? Yes, yes, no. It never phones the membership office.',
+    rule: 'Trust is read off a public board. The issuer is never asked.',
+    from: "the organization's agent", to: 'the public notice board', what: '"real stamp? card still vouched for? #4821 unused?" — yes · yes · unused. The membership office is never asked.',
+    narration: "Before the message goes inside, the organization's agent walks to the public notice board. It checks three things. Is this stamp really the organization's own? Is this card still on the list of cards the organization vouches for? And has question four eight two one been used before? Yes, yes, and no. Notice what it didn't do: it never phoned the membership office. Everything it needed was already posted, in public.",
+  },
+  {
+    id: 'read', title: 'The steward reads — and two receipts', ms: 9600,
+    caption: 'Now the steward gets the message: from an adult member. Not which one. The organization files a receipt that says a fact and a question number. A receipt also walks back to Hannah\'s vault, with the one thing the organization can never hold: the permission it ran under. She can cancel that permission from her front door, any time.',
+    rule: 'The organization knows a fact. Hannah keeps the whole story, and the off switch.',
+    from: 'the door', to: 'the steward · and back to her vault', what: '"a message from an adult member" to the steward; a receipt for the organization (a fact, no name); a receipt for Hannah (with the permission it ran under)',
+    narration: "Now the steward gets the message. It says: from an adult member. Not which one. Two receipts are written. The organization files one: an adult member wrote, question four eight two one. No name. And a receipt walks back across the street into Hannah's vault — with one thing the organization can never hold: the permission this all ran under. If she ever changes her mind, she cancels that permission at her own front door, and the next message simply doesn't get through.",
+  },
 ];
 
 const W = ISO_W; const H = ISO_H;
@@ -128,6 +182,55 @@ function CardOnVault({ on }: { on: boolean }) {
   );
 }
 
+/** A pool of light under whoever is acting in this scene, so the eye goes to the right place. */
+function Spot({ gx, gy, on, r = 44, color = PAL.glow }: { gx: number; gy: number; on: boolean; r?: number; color?: string }) {
+  const p = iso(gx, gy);
+  return <ellipse cx={p.x} cy={p.y} rx={r} ry={r / 2} fill={color} style={{ opacity: on ? 0.26 : 0, transition: `opacity .6s ${EASE}` }} />;
+}
+
+/** A multi-line speech bubble that hangs to the right of its speaker (for a speaker near the left edge). */
+function Bubble({ gx, gy, z, lines, color, on, delay = 0, size = 11.5 }: { gx: number; gy: number; z: number; lines: readonly string[]; color: string; on: boolean; delay?: number; size?: number }) {
+  const p = iso(gx, gy, z);
+  const w = Math.max(...lines.map((l) => tw(l, size, false, 650))) * 1.08 + 26;
+  const lh = size + 4; const h = lines.length * lh + 14;
+  const x = p.x - 26; const y = p.y - 12 - h;
+  return (
+    <g style={{ opacity: on ? 1 : 0, transform: on ? 'translateY(0)' : 'translateY(6px)', transition: `opacity .5s ${EASE} ${on ? delay : 0}ms, transform .5s ${EASE} ${on ? delay : 0}ms` }}>
+      <path d={`M ${p.x - 4} ${y + h - 1} L ${p.x} ${p.y - 2} L ${p.x + 8} ${y + h - 1}`} fill={color} />
+      <rect x={x} y={y} width={w} height={h} rx={10} fill={color} />
+      {lines.map((l, i) => <text key={i} x={x + 13} y={y + 10 + (i + 1) * lh - 4} fontSize={size} fontWeight={650} fill="#0b1830" fontFamily={FONT}>{l}</text>)}
+    </g>
+  );
+}
+
+function wrap(text: string, size: number, width: number): string[] {
+  const out: string[] = []; let line = '';
+  for (const word of text.split(' ')) {
+    const next = line ? `${line} ${word}` : word;
+    if (tw(next, size) > width && line) { out.push(line); line = word; } else line = next;
+  }
+  if (line) out.push(line);
+  return out;
+}
+
+/** The interaction, written on the picture: scene number, who acts, who receives, what passes between them. */
+function InteractionCard({ at }: { at: MessageBeat }) {
+  const b = MESSAGE_BEATS[at]!;
+  const x = 36; const y = 26; const w = 430; const size = 12.5;
+  const lines = wrap(b.what, size, w - 32).slice(0, 3);
+  const h = 96 + lines.length * 17;
+  const fromTo = b.to === '—' ? b.from : `${b.from}  →  ${b.to}`;
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx={12} fill="#0b1830" stroke={PAL.glow} strokeWidth={1.2} opacity={0.96} />
+      <text x={x + 16} y={y + 24} fontSize={10.5} fontWeight={700} fill={PAL.glow} fontFamily={FONT} letterSpacing={1.6}>{`SCENE ${at + 1} OF ${MESSAGE_BEATS.length}`}</text>
+      <text x={x + 16} y={y + 46} fontSize={Math.min(16, (16 * (w - 32)) / Math.max(tw(b.title, 16, false, 700), w - 32))} fontWeight={700} fill={PAL.ink} fontFamily={FONT}>{b.title}</text>
+      <text x={x + 16} y={y + 70} fontSize={12.5} fontWeight={700} fill={shade(PAL.teal, 0.35)} fontFamily={FONT}>{fromTo}</text>
+      {lines.map((l, i) => <text key={i} x={x + 16} y={y + 92 + i * 17} fontSize={size} fontWeight={500} fill={PAL.muted} fontFamily={FONT}>{l}</text>)}
+    </g>
+  );
+}
+
 function Ground() {
   const tiles: ReactNode[] = [];
   for (let gx = 0; gx < GX; gx++) for (let gy = 0; gy < GY; gy++) {
@@ -195,6 +298,15 @@ export function MemberMessageScene({ beat: at = 0 }: { beat?: MessageBeat }) {
       <g transform={TOWN_TRANSFORM}>
       <Ground />
 
+      {/* who is acting: a pool of light */}
+      <Spot gx={HANNAH.gx} gy={HANNAH.gy} on={at === 1} />
+      <Spot gx={VAULT.gx + 0.85} gy={VAULT.gy + 0.85} on={at === 1 || at === 3 || at === 7} r={56} />
+      <Spot gx={AGENT.gx} gy={AGENT.gy} on={at === 3 || at === 4 || at === 5} />
+      <Spot gx={KEYSAFE.gx + 0.9} gy={KEYSAFE.gy + 0.9} on={at === 4} r={58} />
+      <Spot gx={ORGDOOR.gx} gy={ORGDOOR.gy} on={at === 2 || at === 5 || at === 6} />
+      <Spot gx={BOARD.gx + 1.4} gy={BOARD.gy + 0.5} on={at === 6} r={70} />
+      <Spot gx={STEWARD.gx} gy={STEWARD.gy} on={at === 7} />
+
       {/* lanes, under the buildings */}
       <Lane pts={L.permission} beat={1} at={at} color={PAL.glow} delay={2400} summary={SUMMARY} />
       <Lane pts={L.ask} beat={2} at={at} color={PAL.violet} dur={1.8} summary={SUMMARY} />
@@ -209,13 +321,13 @@ export function MemberMessageScene({ beat: at = 0 }: { beat?: MessageBeat }) {
 
       {/* beat 0 — what is where (held again on the summary beat) */}
       <Tag gx={KEYSAFE.gx + 3.3} gy={KEYSAFE.gy + 0.9} z={130} text="the key — it never comes out" color={PAL.amber} on={at === 0 || at === 4} size={11} />
-      <Tag gx={BOARD.gx + 1.4} gy={BOARD.gy + 0.5} z={boardZ} text="the organization's stamp · cards still vouched for" color={PAL.good} on={at === 0 || at === 6} size={11} />
+      <Tag gx={BOARD.gx + 1.4} gy={BOARD.gy + 0.5} z={boardZ} text="the organization's stamp · cards still vouched for" color={PAL.good} on={at === 0} size={11} />
       <Tag gx={OFFICE.gx + 0.8} gy={OFFICE.gy + 0.8} z={officeZ} text="issues the cards" color={PAL.muted} on={at === 0} size={11} />
       <Tag gx={ORG.gx + 1.7} gy={ORG.gy + 1.3} z={orgZ} text="reads mail only from adult members" color={shade(PAL.violet, 0.3)} on={at === 0 || at === 2} size={11} />
 
       {/* beat 1 — Hannah signs */}
       <Signature gx={HANNAH.gx} gy={HANNAH.gy} on={at === 1} />
-      <Reply gx={HANNAH.gx} gy={HANNAH.gy} z={92} text="I sign once: my agent may prove I'm an adult member — to this organization, until spring" color={PAL.glow} beat={1} at={at} delay={500} size={S} summary={SUMMARY} />
+      <Bubble gx={HANNAH.gx + 0.3} gy={HANNAH.gy} z={44} lines={['I sign once:', "my agent may prove I'm an adult member", '— to this organization, until spring.']} color={PAL.glow} on={at === 1} delay={500} size={S} />
       <Walker pts={L.permission} beat={1} at={at} say="her permission → her vault" color={PAL.glow} delay={2500} dur={1.6} size={S} />
 
       {/* beat 2 — the question */}
@@ -247,6 +359,7 @@ export function MemberMessageScene({ beat: at = 0 }: { beat?: MessageBeat }) {
       <Walker pts={L.receipt} beat={7} at={at} say="her receipt → her vault, with the permission it ran under" color={PAL.good} delay={1700} dur={2.6} size={S} />
       <Tag gx={HOME.gx + 1.2} gy={HOME.gy + 1.1} z={46 + 112} text="she can cancel the permission from her front door — any time" color={PAL.glow} on={at === SUMMARY} delay={3600} size={11} />
       </g>
+      <InteractionCard at={at} />
     </svg>
   );
 }

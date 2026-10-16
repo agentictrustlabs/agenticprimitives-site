@@ -32,6 +32,8 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'iso-town-window': () => createElement(IsoTown, { beat: 4 }),
   'iso-town-day': () => createElement(IsoTown, { beat: 6 }),
   'member-message-meet': () => createElement(MemberMessageScene, { beat: 0 }),
+  'member-message-permission': () => createElement(MemberMessageScene, { beat: 1 }),
+  'member-message-board': () => createElement(MemberMessageScene, { beat: 6 }),
   'member-message-stamp': () => createElement(MemberMessageScene, { beat: 4 }),
   'member-message-read': () => createElement(MemberMessageScene, { beat: 7 }),
 };

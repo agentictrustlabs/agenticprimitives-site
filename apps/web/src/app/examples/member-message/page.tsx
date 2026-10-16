@@ -54,8 +54,8 @@ export default function MemberMessage() {
         <Link href="/in-depth#meet-the-town" className="btn-outline-light">A day in the town</Link>
       </PageHero>
 
-      <Section id="story" tone="navy" eyebrow="The animation" title="One street. Eight scenes. Press play, or step through with the arrow keys." lede="Hannah's side of the street is on the left; the organization's is on the right; the public notice board is on the corner. Watch what crosses the street: a question, a sealed proof under a pen name, and a receipt. Never the card, never the key, never her name.">
-        <TownStory scene="message" id="member-message-story" />
+      <Section id="story" tone="navy" eyebrow="The animation" title="One street. Eight scenes. Press play and a narrator walks you through it." lede="Hannah's side of the street is on the left; the organization's is on the right; the public notice board is on the corner. The card in the corner of the picture says who is acting and what passes between them; the light on the ground follows them. Turn the narration off to read at your own pace, or step with the arrow keys.">
+        <TownStory scene="message" id="member-message-story" narration="/audio/member-message" autoplay={false} />
       </Section>
 
       <Section number="01" eyebrow="Who is in the picture" title="Two people, two agents." lede="A person signs at the start and a person reads at the end. Everything in between is done by agents under what the people decided.">
@@ -72,13 +72,14 @@ export default function MemberMessage() {
         </div>
       </Section>
 
-      <Section tone="cream" number="02" eyebrow="Scene by scene" title="What happens in each scene, and the rule it keeps." lede="The same words as the captions under the animation, so you can read them at your own pace.">
+      <Section tone="cream" number="02" eyebrow="Scene by scene" title="What happens in each scene, and the rule it keeps." lede="Who acts, who receives, what passes between them — then the scene in a sentence, and the rule it keeps.">
         <ol className="grid gap-4 md:grid-cols-2">
           {MESSAGE_BEATS.map((b, i) => (
             <li key={b.id} className="card flex gap-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy font-mono text-sm font-semibold text-white">{i + 1}</div>
               <div>
                 <h3 className="h3 !text-lg">{b.title}</h3>
+                {b.to !== '—' && <p className="mt-2 text-sm text-slate-800"><span className="font-semibold">{b.from}</span> → <span className="font-semibold">{b.to}</span> · {b.what}</p>}
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{b.caption}</p>
                 <p className="mt-2 text-sm font-semibold text-teal">{b.rule}</p>
               </div>

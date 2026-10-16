@@ -8,7 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
-    "diagrams": "tsx --tsconfig ../../packages/diagrams/tsconfig.json scripts/render-diagrams.mts public/architecture"
+    "diagrams": "tsx --tsconfig ../../packages/diagrams/tsconfig.json scripts/render-diagrams.mts public/architecture",
+    "narrate": "tsx --tsconfig ../../packages/diagrams/tsconfig.json scripts/narrate-member-message.mts"
   },
   "dependencies": {
     "@apsite/content": "workspace:*",
