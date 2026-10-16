@@ -1,17 +1,16 @@
-// A MESSAGE BETWEEN TWO AGENTS. One scene, ten beats: a member's agent writes to her organization's agent, which reads
-// only from members who are adults and does not want to know which member wrote. The same drawing is a still (any
-// beat), a page animation (the beats advance) and a frame source (the beat is a prop). Nothing here is client
-// JavaScript: motion is CSS transitions on opacity and stroke-dashoffset, so a static render is the scene at that beat.
+// A MESSAGE BETWEEN TWO AGENTS — drawn as a town, for the reader who will never open a spec. Hannah lives on the
+// south side of the street with her Home, her vault and the estate's key safe. The organization is across the
+// street: its agent at the door, the steward inside, a membership office that is never asked. On the corner, a
+// public notice board (the chain) where the organization has posted its stamp and the list of cards it still vouches
+// for. Hannah signs one permission; her agent does the rest; the steward reads a message from "an adult member".
 //
-// The story — the example in "Your personal agent is the new walled garden": the receiver asks its own question; the
-// sender's agent finds the credential and the wire; the proof is made and the key is asked ONCE, in the key service,
-// under evidence of what the wire covered; the presentation goes ahead of the message; the receiver verifies against
-// the chain, not the issuer; the steward reads; two receipts, two truths. Then the contrast: the same credential under
-// selective disclosure, for a receiver that is entitled to the member number.
-import type { CSSProperties, ReactNode } from 'react';
-import { Arrow, Box, Brandline, C, Frame, Kicker, Label, Pill, tw } from './primitives';
+// Same contract as `IsoTown`: a `beat` prop, CSS transitions for everything that changes, CSS motion paths for the
+// walkers. A static render is a still of that beat. Plain words on the drawing; the technical names live on the page.
+import type { ReactNode } from 'react';
+import { Box, District, EASE, ISO_H, ISO_W, Lane, PAL, Reply, Tag, Tile, Tree, Walker, iso, pathOf, shade } from './iso-town';
+import { FONT, tw } from './primitives';
 
-export type MessageBeat = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+export type MessageBeat = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export interface MessageBeatInfo {
   id: string;
@@ -25,217 +24,229 @@ export interface MessageBeatInfo {
 }
 
 export const MESSAGE_BEATS: readonly MessageBeatInfo[] = [
-  { id: 'actors', title: 'The actors', caption: "Hannah's vault holds a membership credential her organization issued — age and member, bound to a device key that lives in the estate's key service — plus a holder secret and one standing wire. The organization's agent has a rule: adults who are members, and it does not want to know which.", rule: 'The key is in the key service. The credential is in her vault. Neither is the agent\'s.', ms: 7000 },
-  { id: 'question', title: 'The receiver asks its own question', caption: "The organization's agent compiles its policy — over 18 AND a member — into a predicate program, digests it, and issues a single-use challenge whose audience is itself. Nothing about the question comes from the sender.", rule: 'A verifier asks its own question, from its own policy, with its own challenge.', ms: 6200 },
-  { id: 'wire', title: 'Her agent finds the credential and the wire', caption: 'From her vault: the credential, and the standing wire she signed at her Home — present to this organization, this predicate program, under this issuer, until spring. The wire is a delegation, not a key.', rule: 'A wire says where, what and until when. It never says who.', ms: 6200 },
-  { id: 'proof', title: 'The proof is made', caption: 'Her agent runs the prepared half of the proof it already holds for this credential, then the showing half against the challenge. The proof hides the claim values, the issuer\'s signature and the device key.', rule: 'The verifier will learn that a statement is true, and nothing else.', ms: 6000 },
-  { id: 'sign', title: 'The key is asked once', caption: 'Inside the one callback that needs a signature, the presentation release judges the wire against the exact statement — this audience, this predicate digest, this issuer facet — and mints bound evidence. The key service signs because the evidence covers it. For a different organization, nothing would have signed.', rule: 'The key signs only what the wire covers. The service checks it a second time.', ms: 7400 },
-  { id: 'send', title: 'The presentation goes ahead of the message', caption: 'A proof bundle is larger than an edge header, so the presentation is posted first and held ten minutes under a reference. The message cites the reference and is signed by a pairwise account — one derived for this organization alone.', rule: 'Different door, different account. Same door, same account. Never her person.', ms: 6600 },
-  { id: 'verify', title: 'The receiver verifies, against the chain', caption: "It checks the proof against the challenge it issued and the program it compiled. It resolves the issuer's key through the chain to a live facet of the organization's own issuer — never by asking the issuer. It consumes the nullifier for its window and checks the status proof against the live-credential root on neutral ground.", rule: 'Issuer trust is read from the chain. The issuer is never phoned.', ms: 7400 },
-  { id: 'read', title: 'The steward reads', caption: 'Only now is the message handed to the steward. The organization knows a member over eighteen wrote. It does not know which member.', rule: 'A fact was proved. A person was not identified.', ms: 5200 },
-  { id: 'receipts', title: 'Two receipts, two truths', caption: "The organization's receipt names the facet, the predicate digest, the nullifier grade and the status sequence — never a claim, never her person. Her own receipt, in her vault, adds the one thing the receiver cannot know: the mandate the presentation was made under.", rule: 'Each side keeps what it is entitled to, and nothing more.', ms: 6800 },
-  { id: 'contrast', title: 'The other suite: when the receiver is entitled to a value', caption: 'Had the receiver been the dues ledger, which needs the member number, the same credential presents under selective disclosure instead: the member claim in the clear, the birth date withheld, a pseudonym stable for this receiver alone. Same credential, same wire shape, a different question answered.', rule: 'One suite per request. A verifier that asked for a fact never ends up holding a value.', ms: 7000 },
+  { id: 'meet', title: 'Meet everyone', caption: "Hannah lives on the south side of the street with her agent. Her vault holds the membership card her organization gave her — it says adult, member. The key that card is tied to sits in a key safe and never comes out. Across the street: the organization, its agent at the door, the steward inside. On the corner, a public notice board where the organization has posted its stamp and the list of cards it still vouches for.", rule: 'Three things never leave her side of the street: the card, the key, and her name.', ms: 9000 },
+  { id: 'permission', title: 'Hannah signs one permission', caption: 'At her own front door, once, Hannah signs: "My agent may prove I am an adult member — to this organization, until spring." The permission goes into her vault. It says where, what and until when. It does not say who she is.', rule: 'A person signs. Everything that follows runs under that one signature.', ms: 7400 },
+  { id: 'question', title: 'The organization asks its own question', caption: 'The organization\'s agent reads mail only from adult members. It sends a fresh question to her gate: "Adult member? Prove it. Question #4821, for this door only." It does not ask for a name, a card or a birthday.', rule: 'The receiver asks its own question. It never sees the card.', ms: 7000 },
+  { id: 'proof', title: 'Her agent makes the proof at home', caption: 'Her agent takes the card and the permission out of the vault, inside the house, and makes a sealed proof: "Adult member — YES." The proof answers the question. It does not carry the card, the birthday or the organization\'s signature on the card.', rule: 'The proof says the answer is yes. It does not say what the card says.', ms: 7400 },
+  { id: 'stamp', title: 'The key safe stamps it — once', caption: 'The proof needs one stamp from the key tied to her card. Her agent brings it to the key safe with the permission. The safe checks: this organization? this question? under her permission? Yes — one stamp. A slip for a different organization gets no stamp at all.', rule: 'The key never leaves the safe, and the safe stamps only what her permission covers.', ms: 8200 },
+  { id: 'send', title: 'The message crosses the street under a pen name', caption: 'Her agent carries the message across the street with the sealed, stamped proof inside. The envelope is signed with a pen name made for this organization alone. A different organization would see a different pen name.', rule: 'Different door, different pen name. Never her name.', ms: 6600 },
+  { id: 'board', title: 'The door checks the notice board, not the office', caption: 'Before anyone reads the message, the organization\'s agent walks to the public notice board: Is this stamp really the organization\'s? Is the card still vouched for? Has question #4821 been used before? Yes, yes, no. It never phones the membership office.', rule: 'Trust is read off a public board. The issuer is never asked.', ms: 8000 },
+  { id: 'read', title: 'The steward reads — and two receipts', caption: 'Now the steward gets the message: from an adult member. Not which one. The organization files a receipt that says a fact and a question number. A receipt also walks back to Hannah\'s vault, with the one thing the organization can never hold: the permission it ran under. She can cancel that permission from her front door, any time.', rule: 'The organization knows a fact. Hannah keeps the whole story, and the off switch.', ms: 9600 },
 ];
 
-const W = 1280;
-const H = 850;
+const W = ISO_W; const H = ISO_H;
+const SUMMARY = 7;
 
-// ── lanes ─────────────────────────────────────────────────────────────────────
-const TOP = 40;
-const LANE_H = 64;
-const BOTTOM = 790;
+// ── the town plan ──────────────────────────────────────────────────────────────────────────────────────────────────
+// Grid 0..20 × 0..14, drawn large. One east–west street along gy 6–8. South: Hannah's side. North-east: the
+// organization. North-west: the public notice board.
+const GX = 20; const GY = 14;
+const HOME = { gx: 2.0, gy: 9.6 }; const VAULT = { gx: 6.0, gy: 9.4 }; const KEYSAFE = { gx: 9.0, gy: 9.8 };
+const HANNAH = { gx: 3.0, gy: 12.9 }; const AGENT = { gx: 5.6, gy: 12.7 };
+const GATE = { gx: 7.0, gy: 8.6 } as const;
+const ORG = { gx: 13.4, gy: 1.6 }; const ORGDOOR = { gx: 15.1, gy: 5.2 }; const STEWARD = { gx: 18.0, gy: 3.8 };
+const OFFICE = { gx: 18.4, gy: 0.8 };
+const BOARD = { gx: 3.0, gy: 1.8 }; const BOARDFRONT = { gx: 4.4, gy: 3.5 };
+
+const ST = 7.0; // street centre
+const VAULTFRONT = { gx: 6.85, gy: 11.4 }; const SAFEFRONT = { gx: 9.9, gy: 11.9 };
 const L = {
-  vault: { x: 118, name: "Hannah's vault", sub: 'credential · secret · wire', tone: 'navy' as const },
-  agent: { x: 356, name: 'Her agent', sub: 'runtime · the prover', tone: 'navy' as const },
-  kms: { x: 594, name: 'Key service', sub: 'confidential VM · device key', tone: 'amber' as const },
-  org: { x: 858, name: "The organization's agent", sub: 'the receiver · its door', tone: 'violet' as const },
-  chain: { x: 1120, name: 'Chain · neutral ground', sub: 'issuer facet · live root', tone: 'teal' as const },
+  permission: [[HANNAH.gx + 0.4, HANNAH.gy - 0.3], [VAULTFRONT.gx, HANNAH.gy - 0.3], [VAULTFRONT.gx, VAULTFRONT.gy]] as const,
+  ask: [[ORGDOOR.gx, ORGDOOR.gy + 0.3], [ORGDOOR.gx, ST], [GATE.gx, ST], [GATE.gx, GATE.gy]] as const,
+  fetch: [[VAULTFRONT.gx, VAULTFRONT.gy], [VAULTFRONT.gx, AGENT.gy - 0.3], [AGENT.gx + 0.3, AGENT.gy - 0.3]] as const,
+  toSafe: [[AGENT.gx + 0.3, AGENT.gy - 0.3], [SAFEFRONT.gx, AGENT.gy - 0.3], [SAFEFRONT.gx, SAFEFRONT.gy]] as const,
+  fromSafe: [[SAFEFRONT.gx, SAFEFRONT.gy], [SAFEFRONT.gx, AGENT.gy - 0.3], [AGENT.gx + 0.3, AGENT.gy - 0.3]] as const,
+  send: [[AGENT.gx + 0.3, AGENT.gy - 0.3], [GATE.gx, AGENT.gy - 0.3], [GATE.gx, ST], [ORGDOOR.gx, ST], [ORGDOOR.gx, ORGDOOR.gy + 0.3]] as const,
+  board: [[ORGDOOR.gx, ORGDOOR.gy + 0.3], [ORGDOOR.gx, ST], [BOARDFRONT.gx, ST], [BOARDFRONT.gx, BOARDFRONT.gy]] as const,
+  receipt: [[ORGDOOR.gx, ORGDOOR.gy + 0.3], [ORGDOOR.gx, ST], [VAULTFRONT.gx, ST], [VAULTFRONT.gx, VAULTFRONT.gy]] as const,
 };
-const LANES = Object.values(L);
 
-const EASE = 'cubic-bezier(.4,0,.2,1)';
+// The kit's grid is sized for a whole town; this scene has one street, so it is drawn at 1.3× and centred.
+const K = 1.3;
+const centre = iso(GX / 2, GY / 2);
+const TOWN_TRANSFORM = `translate(${(W / 2 - centre.x * K).toFixed(1)}, ${(H / 2 + 36 - centre.y * K).toFixed(1)}) scale(${K})`;
 
-/** Bright on its beat, ghosted after, hidden before. The contrast beat clears the stage. */
-function vis(beat: MessageBeat, at: MessageBeat): number {
-  if (at === 9) return beat === 9 ? 1 : 0;
-  if (beat === 9) return 0;
-  if (at === 8 && beat === 0) return 0;
-  if (beat === at) return 1;
-  return at > beat ? 0.16 : 0;
-}
-
-function Layer({ beat, at, children, delay = 0 }: { beat: MessageBeat; at: MessageBeat; children: ReactNode; delay?: number }) {
-  return <g style={{ opacity: vis(beat, at), transition: `opacity .7s ${EASE} ${delay}ms` }}>{children}</g>;
-}
-
-/** A message line between lanes that draws itself in on its beat. */
-function Wire({ x1, x2, y, beat, at, tone, label, dashed = false, delay = 0, dur = 1.1, back = false }: { x1: number; x2: number; y: number; beat: MessageBeat; at: MessageBeat; tone: 'navy' | 'amber' | 'violet' | 'teal' | 'rose' | 'ink'; label?: string; dashed?: boolean; delay?: number; dur?: number; back?: boolean }) {
-  const drawn = at >= beat && !(at === 9 && beat !== 9);
-  const stroke = tone === 'navy' ? C.navy : tone === 'amber' ? C.amber : tone === 'violet' ? C.violet : tone === 'teal' ? C.teal : tone === 'rose' ? C.rose : C.ink;
-  const mid = (x1 + x2) / 2;
-  const lw = label ? tw(label, 11, false, 600) + 12 : 0;
-  const dir = x2 >= x1 ? 1 : -1;
-  const headDelay = delay + (dashed ? 300 : dur * 900);
+/** A person: larger than a walker, standing still, named. The two people in the loop are drawn this way. */
+function Person({ gx, gy, name, color, note }: { gx: number; gy: number; name: string; color: string; note?: string }) {
+  const b = iso(gx, gy);
+  const nw = tw(name, 12.5, false, 700) * 1.1 + 18;
   return (
     <g>
-      <path d={`M ${x1} ${y} H ${x2 - dir * 6}`} fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" pathLength={1}
-        strokeDasharray={dashed ? '0.015 0.015' : 1} strokeDashoffset={dashed ? 0 : drawn ? 0 : 1}
-        style={dashed ? { opacity: drawn ? 1 : 0, transition: `opacity .6s ${EASE} ${delay}ms` } : { transition: `stroke-dashoffset ${dur}s ${EASE} ${delay}ms` }} />
-      <path d={`M ${x2} ${y} l ${-dir * 9} -5 v 10 z`} fill={stroke} style={{ opacity: drawn ? 1 : 0, transition: `opacity .3s ${EASE} ${headDelay}ms` }} />
-      {label && (
-        <g style={{ opacity: drawn ? 1 : 0, transition: `opacity .5s ${EASE} ${delay + (dashed ? 200 : dur * 600)}ms` }}>
-          <rect x={mid - lw / 2} y={y - (back ? -6 : 22)} width={lw} height={17} rx={4} fill={C.bg} opacity={0.94} />
-          <text x={mid} y={y - (back ? -18 : 10)} fontSize={11} fontWeight={600} textAnchor="middle" fill={stroke} fontFamily="inherit">{label}</text>
-        </g>
-      )}
+      <ellipse cx={b.x} cy={b.y + 2} rx={14} ry={6} fill="#000" opacity={0.35} />
+      <rect x={-9 + b.x} y={b.y - 30} width={18} height={26} rx={8} fill={color} />
+      <circle cx={b.x} cy={b.y - 39} r={9} fill={shade(color, 0.5)} />
+      <path d={`M ${b.x - 9} ${b.y - 22} l -6 10 M ${b.x + 9} ${b.y - 22} l 6 10`} stroke={color} strokeWidth={4} strokeLinecap="round" />
+      <rect x={b.x - nw / 2} y={b.y + 10} width={nw} height={20} rx={5} fill="#0b1830" stroke={color} strokeWidth={1.2} />
+      <text x={b.x} y={b.y + 24} fontSize={12.5} fontWeight={700} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{name}</text>
+      {note && <text x={b.x} y={b.y + 44} fontSize={11} fontWeight={500} textAnchor="middle" fill={PAL.muted} fontFamily={FONT}>{note}</text>}
     </g>
   );
 }
 
-/** A small round badge: a check, a cross, a signature. */
-function Badge({ x, y, tone, soft, glyph, text }: { x: number; y: number; tone: string; soft: string; glyph: 'check' | 'cross' | 'sign' | 'lock'; text?: string }) {
-  const g = glyph === 'check'
-    ? <path d={`M ${x - 6} ${y} l 4 4 l 8 -8`} fill="none" stroke={tone} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
-    : glyph === 'cross'
-      ? <path d={`M ${x - 5} ${y - 5} l 10 10 M ${x + 5} ${y - 5} l -10 10`} fill="none" stroke={tone} strokeWidth={2.2} strokeLinecap="round" />
-      : glyph === 'sign'
-        ? <path d={`M ${x - 6} ${y + 4} q 3 -10 6 -3 t 6 -3 M ${x - 7} ${y + 7} h 14`} fill="none" stroke={tone} strokeWidth={1.8} strokeLinecap="round" />
-        : <g fill="none" stroke={tone} strokeWidth={1.8}><rect x={x - 5.5} y={y - 2} width={11} height={8} rx={1.5} /><path d={`M ${x - 3.5} ${y - 2} v -3 a 3.5 3.5 0 0 1 7 0 v 3`} /></g>;
-  const lw = text ? tw(text, 10, false, 600) * 1.1 + 12 : 0;
+/** An agent: a small boxy figure with an antenna and a halo. Drawn beside the person or building it works for. */
+function Agent({ gx, gy, name, color }: { gx: number; gy: number; name: string; color: string }) {
+  const b = iso(gx, gy);
+  const nw = tw(name, 11.5, false, 650) * 1.1 + 16;
   return (
     <g>
-      <circle cx={x} cy={y} r={13} fill={soft} stroke={tone} strokeWidth={1.5} />
-      {g}
-      {text && (
-        <>
-          <rect x={x + 18} y={y - 9} width={lw} height={18} rx={4} fill={soft} stroke={tone} strokeWidth={1} />
-          <text x={x + 24} y={y + 3.5} fontSize={10} fontWeight={600} fill={tone} fontFamily="inherit">{text}</text>
-        </>
-      )}
+      <ellipse cx={b.x} cy={b.y + 2} rx={11} ry={5} fill="#000" opacity={0.35} />
+      <circle cx={b.x} cy={b.y - 16} r={20} fill={color} opacity={0.16} />
+      <rect x={b.x - 8} y={b.y - 22} width={16} height={20} rx={4} fill={color} />
+      <rect x={b.x - 7} y={b.y - 34} width={14} height={11} rx={3} fill={shade(color, 0.45)} />
+      <line x1={b.x} y1={b.y - 34} x2={b.x} y2={b.y - 41} stroke={shade(color, 0.6)} strokeWidth={2} />
+      <circle cx={b.x} cy={b.y - 42} r={2.2} fill={PAL.glow} />
+      <rect x={b.x - nw / 2} y={b.y + 9} width={nw} height={18} rx={5} fill="#0b1830" stroke={color} strokeWidth={1.1} />
+      <text x={b.x} y={b.y + 22} fontSize={11.5} fontWeight={650} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{name}</text>
     </g>
   );
 }
 
-/** A card pinned to a lane: a small titled list. */
-function Card({ cx, y, w, h, title, lines, tone, mono = false }: { cx: number; y: number; w: number; h: number; title: string; lines: readonly string[]; tone: 'navy' | 'teal' | 'amber' | 'rose' | 'violet' | 'slate' | 'paper'; mono?: boolean }) {
-  return <Box x={cx - w / 2} y={y} w={w} h={h} title={title} lines={lines} tone={tone} titleSize={11.5} lineSize={10.5} mono={mono} variant="header" />;
+/** The moment a person signs: a ring and a pen stroke over her head. */
+function Signature({ gx, gy, on }: { gx: number; gy: number; on: boolean }) {
+  const b = iso(gx, gy);
+  return (
+    <g style={{ opacity: on ? 1 : 0, transform: on ? 'scale(1)' : 'scale(0.6)', transformOrigin: `${b.x}px ${b.y - 60}px`, transition: `opacity .5s ${EASE} 300ms, transform .5s ${EASE} 300ms` }}>
+      <circle cx={b.x} cy={b.y - 62} r={22} fill={PAL.glow} opacity={0.18} />
+      <circle cx={b.x} cy={b.y - 62} r={16} fill="#0b1830" stroke={PAL.glow} strokeWidth={1.8} />
+      <path d={`M ${b.x - 8} ${b.y - 58} q 4 -12 8 -4 t 8 -4 M ${b.x - 9} ${b.y - 54} h 18`} fill="none" stroke={PAL.glow} strokeWidth={2} strokeLinecap="round" />
+    </g>
+  );
 }
 
-const Y = {
-  cards: TOP + LANE_H + 22,       // 126 — the standing cards (beat 0); receipts and the contrast take these slots
-  question: 268,
-  wire: 310,
-  proof: 348,
-  evidence: 414,
-  sig: 448,
-  twin: 500,
-  present: 548,
-  message: 586,
-  verify: 636,
-  verifyBack: 668,
-  verifyBox: 696,
-  read: 768,
-};
+/** A small card pinned to the vault's roof: the membership card, so a reader can see what is inside. */
+function CardOnVault({ on }: { on: boolean }) {
+  const p0 = iso(VAULT.gx + 0.85, VAULT.gy + 0.85, 30);
+  const p = { x: p0.x + 48, y: p0.y - 86 };
+  return (
+    <g style={{ opacity: on ? 1 : 0, transition: `opacity .6s ${EASE}` }}>
+      <line x1={p0.x} y1={p0.y - 2} x2={p.x - 6} y2={p.y - 22} stroke={PAL.muted} strokeWidth={1} />
+      <rect x={p.x - 85} y={p.y - 64} width={170} height={42} rx={6} fill="#fff7e6" stroke={PAL.amber} strokeWidth={1.4} />
+      <rect x={p.x - 77} y={p.y - 56} width={22} height={16} rx={3} fill={PAL.amber} opacity={0.8} />
+      <text x={p.x - 49} y={p.y - 46} fontSize={10} fontWeight={700} fill="#0b1830" fontFamily={FONT}>membership card</text>
+      <text x={p.x - 49} y={p.y - 33} fontSize={9.5} fontWeight={500} fill="#3b3b3b" fontFamily={FONT}>adult · member · tied to the key</text>
+    </g>
+  );
+}
 
-export function MemberMessageScene({ beat = 0 }: { beat?: MessageBeat }) {
-  const at = beat;
+function Ground() {
+  const tiles: ReactNode[] = [];
+  for (let gx = 0; gx < GX; gx++) for (let gy = 0; gy < GY; gy++) {
+    const road = gy >= 6 && gy < 8;
+    tiles.push(<Tile key={`${gx}-${gy}`} gx={gx} gy={gy} fill={road ? PAL.road : PAL.ground} stroke={road ? undefined : PAL.groundLine} opacity={road ? 1 : 0.9} />);
+  }
+  return (
+    <g>
+      {tiles}
+      <path d={pathOf([[0, ST], [GX, ST]])} stroke={PAL.roadLine} strokeWidth={1} strokeDasharray="8 8" opacity={0.45} fill="none" />
+      <Tile gx={0.8} gy={8.5} w={10.6} d={5.2} fill={PAL.grass} opacity={0.5} />
+      <Tile gx={11.6} gy={0.4} w={8.2} d={5.2} fill={PAL.violet} opacity={0.08} />
+      <Tile gx={0.8} gy={0.4} w={7} d={5} fill={PAL.teal} opacity={0.08} />
+    </g>
+  );
+}
+
+function Town({ at }: { at: MessageBeat }) {
+  return (
+    <g>
+      <District gx={0.8} gy={8.5} w={10.6} d={5.2} label="Hannah's side of the street · her Home, her vault, the key safe" tone="navy" at="bottom" />
+      <District gx={11.6} gy={0.4} w={8.2} d={5.2} label="The organization's side" tone="violet" at="bottom" />
+      <District gx={0.8} gy={0.4} w={7} d={5} label="The public notice board · the chain" tone="teal" at="left" />
+
+      {/* the board */}
+      <Tree gx={1.4} gy={1.0} /><Tree gx={7.2} gy={5.0} s={0.9} />
+      <Box gx={BOARD.gx} gy={BOARD.gy} w={2.8} d={1} h={56} tone="teal" roof="slab" windows={false} sign="Public notice board" signSize={13} />
+
+      {/* the organization */}
+      <Tree gx={12.2} gy={1.0} /><Tree gx={19.2} gy={5.0} s={0.9} />
+      <Box gx={ORG.gx} gy={ORG.gy} w={3.4} d={2.6} h={64} tone="violet" roof="pediment" sign="The organization" signSize={13} />
+      <Box gx={OFFICE.gx} gy={OFFICE.gy} w={1.6} d={1.6} h={30} tone="slate" roof="flat" sign="Membership office" signSize={12} />
+
+      {/* hannah's side */}
+      <Tree gx={1.4} gy={9.0} /><Tree gx={10.8} gy={13.2} s={0.9} />
+      <Box gx={VAULT.gx} gy={VAULT.gy} w={1.7} d={1.7} h={30} tone="amber" roof="slab" sign="Her vault" signSize={13} />
+      <Box gx={HOME.gx} gy={HOME.gy} w={2.4} d={2.2} h={46} tone="navy" roof="gable" sign="Hannah's Home" signSize={13} />
+      <Box gx={KEYSAFE.gx} gy={KEYSAFE.gy} w={1.8} d={1.8} h={42} tone="amber" roof="flat" windows={false} sign="Key safe" signSize={13} />
+      <CardOnVault on={at === 0 || at === 3} />
+
+      {/* the people, and the two agents */}
+      <Person gx={HANNAH.gx} gy={HANNAH.gy} name="Hannah" color={PAL.navy} note="a member" />
+      <Agent gx={AGENT.gx} gy={AGENT.gy} name="her agent" color={PAL.teal} />
+      <Agent gx={ORGDOOR.gx} gy={ORGDOOR.gy} name="its agent · at the door" color={PAL.violet} />
+      <Person gx={STEWARD.gx} gy={STEWARD.gy} name="the steward" color={PAL.violet} note="reads the mail" />
+    </g>
+  );
+}
+
+// ── the scene ──────────────────────────────────────────────────────────────────────────────────────────────────────
+export function MemberMessageScene({ beat: at = 0 }: { beat?: MessageBeat }) {
   const id = 'member-message';
-  const soft = { navy: C.navySoft, teal: C.tealSoft, amber: C.amberSoft, rose: C.roseSoft, violet: C.violetSoft } as const;
+  const S = 11.5; // speech size (the town is drawn at 1.3×, so this reads as ~15px on a wide screen)
+  const boardZ = 56 + 60; const orgZ = 64 + 86; const safeZ = 42 + 50; const vaultZ = 30 + 50; const officeZ = 30 + 66;
   return (
-    <Frame id={id} w={W} h={H} title="A member's agent messages her organization's agent, which admits only adult members and learns neither who wrote nor any claim value">
-      <style>{`@media (prefers-reduced-motion: reduce) { #${id} * { transition: none !important; } }`}</style>
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby={`${id}-title`} xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto', display: 'block', fontFamily: FONT }}>
+      <title id={`${id}-title`}>A member's agent sends a message to her organization's agent, which admits only adult members and learns neither who wrote nor anything on her card</title>
+      <defs>
+        <linearGradient id={`${id}-sky`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={PAL.sky0} /><stop offset="1" stopColor={PAL.sky1} /></linearGradient>
+      </defs>
+      <style>{`@keyframes iso-in { from { opacity: 0 } to { opacity: 1 } } @keyframes iso-out { to { opacity: 0 } } @media (prefers-reduced-motion: reduce) { #${id} * { transition: none !important; animation: none !important; } }`}</style>
+      <rect width={W} height={H} fill={`url(#${id}-sky)`} />
+      {Array.from({ length: 40 }, (_, i) => <circle key={i} cx={(i * 173) % W} cy={(i * 97) % 120} r={(i % 3) * 0.5 + 0.4} fill="#fff" opacity={0.35} />)}
 
-      {/* lanes */}
-      {LANES.map((l) => (
-        <g key={l.name}>
-          <Box x={l.x - 104} y={TOP} w={208} h={LANE_H} title={l.name} lines={[l.sub]} tone={l.tone} titleSize={13} lineSize={10.5} align="middle" solid />
-          <line x1={l.x} y1={TOP + LANE_H} x2={l.x} y2={BOTTOM} stroke={C.line} strokeWidth={1.5} strokeDasharray="2 4" />
-        </g>
-      ))}
-      {/* the estate boundary: her side / their side */}
-      <line x1={726} y1={TOP + LANE_H + 8} x2={726} y2={BOTTOM} stroke={C.rose} strokeWidth={1} strokeDasharray="8 6" opacity={0.6} />
-      <Kicker x={420} y={BOTTOM + 24} text="her estate — nothing here leaves" tone="navy" anchor="middle" />
-      <Kicker x={990} y={BOTTOM + 24} text="their estate — a fact arrives, a person does not" tone="violet" anchor="middle" />
+      <g transform={TOWN_TRANSFORM}>
+      <Ground />
 
-      {/* beat 0 — the standing cards */}
-      <Layer beat={0} at={at}>
-        <Card cx={L.vault.x} y={Y.cards} w={200} h={112} title="credential.anonymous" tone="navy" lines={['age · member', 'issuer: the org\'s facet', 'cnf → device key (a reference)']} />
-        <Card cx={L.vault.x} y={Y.cards + 122} w={200} h={38} title="holder secret" tone="navy" lines={[]} />
-        <Card cx={L.kms.x} y={Y.cards} w={200} h={76} title="device key · P-256" tone="amber" lines={['never exported', 'signs ES256 only under evidence']} />
-        <Card cx={L.org.x} y={Y.cards} w={224} h={76} title="policy" tone="violet" lines={['age ≥ 18  ∧  member ≥ 1', 'issuers: { the org\'s own facet }']} mono />
-        <Card cx={L.chain.x} y={Y.cards} w={200} h={76} title="anchored" tone="teal" lines={['issuer facet + attestation', 'live-credential root · seq n']} />
-      </Layer>
-      <Layer beat={0} at={at} delay={200}>
-        <Card cx={L.agent.x} y={Y.cards} w={200} h={76} title="standing wire" tone="navy" lines={['present → this org · this program', 'this issuer · until spring']} />
-      </Layer>
+      {/* lanes, under the buildings */}
+      <Lane pts={L.permission} beat={1} at={at} color={PAL.glow} delay={2400} summary={SUMMARY} />
+      <Lane pts={L.ask} beat={2} at={at} color={PAL.violet} dur={1.8} summary={SUMMARY} />
+      <Lane pts={L.fetch} beat={3} at={at} color={PAL.amber} summary={SUMMARY} />
+      <Lane pts={L.toSafe} beat={4} at={at} color={PAL.amber} summary={SUMMARY} />
+      <Lane pts={L.fromSafe} beat={4} at={at} color={PAL.good} delay={3600} summary={SUMMARY} />
+      <Lane pts={L.send} beat={5} at={at} color={PAL.navy} dur={2} summary={SUMMARY} />
+      <Lane pts={L.board} beat={6} at={at} color={PAL.teal} dur={2} summary={SUMMARY} />
+      <Lane pts={L.receipt} beat={7} at={at} color={PAL.good} delay={1600} dur={2} summary={SUMMARY} />
 
-      {/* beat 1 — the question */}
-      <Wire x1={L.org.x} x2={L.agent.x + 10} y={Y.question} beat={1} at={at} tone="violet" label="challenge · single use · audience = me · predicate digest" />
-      <Layer beat={1} at={at} delay={700}>
-        <Badge x={L.org.x + 26} y={Y.question} tone={C.violet} soft={soft.violet} glyph="lock" text="my policy, my nonce" />
-      </Layer>
+      <Town at={at} />
 
-      {/* beat 2 — the wire */}
-      <Wire x1={L.vault.x} x2={L.agent.x - 10} y={Y.wire} beat={2} at={at} tone="navy" label="credential + wire (read under her vault grant)" />
-      <Layer beat={2} at={at} delay={700}>
-        <Pill x={L.agent.x + 16} y={Y.wire - 12} text="wire covers: this audience · this program · this facet" tone="navy" size={10} />
-      </Layer>
+      {/* beat 0 — what is where (held again on the summary beat) */}
+      <Tag gx={KEYSAFE.gx + 3.3} gy={KEYSAFE.gy + 0.9} z={130} text="the key — it never comes out" color={PAL.amber} on={at === 0 || at === 4} size={11} />
+      <Tag gx={BOARD.gx + 1.4} gy={BOARD.gy + 0.5} z={boardZ} text="the organization's stamp · cards still vouched for" color={PAL.good} on={at === 0 || at === 6} size={11} />
+      <Tag gx={OFFICE.gx + 0.8} gy={OFFICE.gy + 0.8} z={officeZ} text="issues the cards" color={PAL.muted} on={at === 0} size={11} />
+      <Tag gx={ORG.gx + 1.7} gy={ORG.gy + 1.3} z={orgZ} text="reads mail only from adult members" color={shade(PAL.violet, 0.3)} on={at === 0 || at === 2} size={11} />
 
-      {/* beat 3 — the proof */}
-      <Layer beat={3} at={at}>
-        <Box x={L.agent.x - 100} y={Y.proof - 8} w={200} h={46} title="Prepare (cached) → Show(challenge)" lines={['hides values · issuer sig · device key']} tone="paper" titleSize={11} lineSize={10} align="middle" />
-      </Layer>
+      {/* beat 1 — Hannah signs */}
+      <Signature gx={HANNAH.gx} gy={HANNAH.gy} on={at === 1} />
+      <Reply gx={HANNAH.gx} gy={HANNAH.gy} z={92} text="I sign once: my agent may prove I'm an adult member — to this organization, until spring" color={PAL.glow} beat={1} at={at} delay={500} size={S} summary={SUMMARY} />
+      <Walker pts={L.permission} beat={1} at={at} say="her permission → her vault" color={PAL.glow} delay={2500} dur={1.6} size={S} />
 
-      {/* beat 4 — the one signature, and the twin */}
-      <Wire x1={L.agent.x + 10} x2={L.kms.x - 10} y={Y.evidence} beat={4} at={at} tone="amber" label="bound evidence: digest · venue · predicate digest" />
-      <Wire x1={L.kms.x - 10} x2={L.agent.x + 10} y={Y.sig} beat={4} at={at} tone="amber" label="r ‖ s  (64 bytes, low-S)" delay={900} back />
-      <Layer beat={4} at={at} delay={500}>
-        <Badge x={L.kms.x + 26} y={Y.evidence} tone={C.amber} soft={soft.amber} glyph="sign" text="release judged the wire" />
-      </Layer>
-      <Layer beat={4} at={at} delay={1700}>
-        <g opacity={0.85}>
-          <Wire x1={L.agent.x + 10} x2={L.kms.x - 10} y={Y.twin} beat={4} at={at} tone="rose" label="twin: evidence for another venue" dashed />
-          <Badge x={L.kms.x + 26} y={Y.twin} tone={C.rose} soft={soft.rose} glyph="cross" text="AUTHORITY_EVIDENCE_INVALID — nothing signed" />
-        </g>
-      </Layer>
+      {/* beat 2 — the question */}
+      <Walker pts={L.ask} beat={2} at={at} say="Adult member? Prove it. Question #4821 — for this door only" color={PAL.violet} delay={200} dur={2.6} size={S} />
+      <Reply gx={ORGDOOR.gx} gy={ORGDOOR.gy} z={70} text="no name asked" color={shade(PAL.violet, 0.3)} beat={2} at={at} delay={3000} size={S} summary={SUMMARY} />
 
-      {/* beat 5 — ahead of the message */}
-      <Wire x1={L.agent.x + 10} x2={L.org.x - 10} y={Y.present} beat={5} at={at} tone="navy" label="presentation → held 10 min under a reference" />
-      <Wire x1={L.agent.x + 10} x2={L.org.x - 10} y={Y.message} beat={5} at={at} tone="navy" label="message · from a pairwise account · cites the reference" delay={1100} />
-      <Layer beat={5} at={at} delay={1900}>
-        <Pill x={L.agent.x - 96} y={Y.message + 10} text="pairwise account = f(secret, this door) — no address of hers" tone="navy" size={10} />
-      </Layer>
+      {/* beat 3 — the proof, at home */}
+      <Walker pts={L.fetch} beat={3} at={at} say="card + permission — they stay home" color={PAL.amber} delay={200} dur={1.6} until={2600} size={S} />
+      <Reply gx={AGENT.gx} gy={AGENT.gy} z={62} text="sealed proof: adult member — YES" color={PAL.good} beat={3} at={at} delay={2400} size={S} summary={SUMMARY} />
 
-      {/* beat 6 — verify against the chain */}
-      <Wire x1={L.org.x + 10} x2={L.chain.x - 10} y={Y.verify} beat={6} at={at} tone="teal" label="facet live? root at seq n?" />
-      <Wire x1={L.chain.x - 10} x2={L.org.x + 10} y={Y.verifyBack} beat={6} at={at} tone="teal" label="facet attested · root current" delay={900} back />
-      <Layer beat={6} at={at} delay={1600}>
-        <Box x={L.org.x - 130} y={Y.verifyBox} w={260} h={62} title="verified against the chain" lines={['challenge ✓ · program digest ✓', 'nullifier consumed ✓ · status root ✓ · the issuer was never asked']} tone="violet" titleSize={11.5} lineSize={10} align="middle" />
-      </Layer>
+      {/* beat 4 — the stamp, and the slip that gets none */}
+      <Walker pts={L.toSafe} beat={4} at={at} say="stamp this — for the organization, #4821" color={PAL.amber} delay={200} dur={1.8} until={2600} size={S} />
+      <Reply gx={KEYSAFE.gx + 3.3} gy={KEYSAFE.gy + 0.9} z={170} text="her permission covers it — one stamp ✓" color={PAL.good} beat={4} at={at} delay={2400} size={S} summary={SUMMARY} />
+      <Reply gx={KEYSAFE.gx + 1.6} gy={KEYSAFE.gy + 2.4} z={10} text="for a different organization? no stamp ✗" color={PAL.bad} beat={4} at={at} delay={4600} size={S} summary={SUMMARY} />
+      <Walker pts={L.fromSafe} beat={4} at={at} say="stamped proof" color={PAL.good} delay={3700} dur={1.4} size={S} />
 
-      {/* beat 7 — the steward reads */}
-      <Layer beat={7} at={at}>
-        <Badge x={L.org.x} y={Y.read} tone={C.violet} soft={soft.violet} glyph="check" text="a member, over 18 — not which" />
-      </Layer>
+      {/* beat 5 — across the street */}
+      <Walker pts={L.send} beat={5} at={at} say="✉ from a pen name — sealed proof inside" color={shade(PAL.navy, 0.3)} delay={200} dur={3} size={S} />
+      <Tag gx={HOME.gx + 1.2} gy={HOME.gy + 1.1} z={46 + 70} text="no name on the envelope" color={shade(PAL.navy, 0.35)} on={at === 5} size={11} />
 
-      {/* beat 8 — two receipts */}
-      <Layer beat={8} at={at}>
-        <Card cx={L.org.x} y={Y.cards} w={236} h={96} title="its receipt" tone="violet" lines={['facet · predicate digest', 'nullifier: asserted · status seq n', 'pairwise account — no claim, no person']} />
-        <Card cx={L.vault.x} y={Y.cards} w={200} h={76} title="her receipt" tone="navy" lines={['proof · challenge · + the MANDATE', 'what the receiver cannot know']} />
-      </Layer>
-      <Wire x1={L.agent.x - 10} x2={L.vault.x + 100} y={Y.cards + 40} beat={8} at={at} tone="navy" label="receipt → her vault" delay={400} />
+      {/* beat 6 — the notice board */}
+      <Walker pts={L.board} beat={6} at={at} say="real stamp? card still vouched for? #4821 unused?" color={PAL.teal} delay={200} dur={3} size={S} />
+      <Reply gx={BOARDFRONT.gx} gy={BOARDFRONT.gy} z={30} text="yes · yes · unused" color={PAL.good} beat={6} at={at} delay={3400} size={S} summary={SUMMARY} />
+      <Tag gx={OFFICE.gx + 0.8} gy={OFFICE.gy + 0.8} z={officeZ} text="never asked" color={PAL.bad} on={at === 6 || at === SUMMARY} size={11} />
 
-      {/* beat 9 — the contrast: selective disclosure for the dues ledger */}
-      <Layer beat={9} at={at}>
-        <Box x={L.org.x - 130} y={Y.cards} w={260} h={64} title="the dues ledger (another receiver)" lines={['entitled to the member NUMBER']} tone="violet" titleSize={12} lineSize={10.5} align="middle" variant="header" />
-        <Box x={L.agent.x - 118} y={Y.question - 10} w={236} h={120} title="suite: sd-jwt (selective disclosure)" lines={['member: 0900101 — in the clear', 'birth date — withheld (digest only)', 'pseudonym — stable for THIS receiver', 'issuer signature — visible, linkable']} tone="paper" titleSize={11.5} lineSize={10.5} />
-        <Box x={L.agent.x - 118} y={Y.evidence + 10} w={236} h={92} title="suite: openac-sd-jwt-p256 (zero knowledge)" lines={['over 18 ∧ member — a fact', 'no value · no signature · no key', 'unlinkable across receivers']} tone="teal" titleSize={11.5} lineSize={10.5} />
-        <Label x={L.agent.x} y={Y.evidence - 6} text="same credential · same wire shape · one suite per request" size={10.5} weight={600} tone="ink" anchor="middle" />
-        <Wire x1={L.agent.x + 10} x2={L.org.x - 10} y={Y.question + 40} beat={9} at={at} tone="violet" label="disclosed claims + pseudonym" />
-        <Badge x={L.org.x} y={Y.sig} tone={C.rose} soft={soft.rose} glyph="cross" text="no ladder: a predicate request never gets a value back" />
-      </Layer>
-
-      <Brandline w={W} h={H} left="A message between two agents · the receiver verifies a fact, never a person" />
-    </Frame>
+      {/* beat 7 — the steward reads; two receipts; the off switch */}
+      <Reply gx={STEWARD.gx} gy={STEWARD.gy} z={62} text="a message — from an adult member" color={shade(PAL.violet, 0.35)} beat={7} at={at} delay={300} size={S} hold summary={SUMMARY} />
+      <Tag gx={ORG.gx + 1.7} gy={ORG.gy + 1.3} z={orgZ} text="its receipt: an adult member wrote · #4821 — no name" color={shade(PAL.violet, 0.3)} on={at === SUMMARY} delay={1200} size={11} />
+      <Walker pts={L.receipt} beat={7} at={at} say="her receipt → her vault, with the permission it ran under" color={PAL.good} delay={1700} dur={2.6} size={S} />
+      <Tag gx={HOME.gx + 1.2} gy={HOME.gy + 1.1} z={46 + 112} text="she can cancel the permission from her front door — any time" color={PAL.glow} on={at === SUMMARY} delay={3600} size={11} />
+      </g>
+    </svg>
   );
 }

@@ -24,20 +24,21 @@ export const ISO_BEATS: readonly IsoBeatInfo[] = [
 ];
 
 // ── isometric grid ───────────────────────────────────────────────────────────────────────────────────────────────
-const W = 1400; const H = 840;
+export const ISO_W = 1400; export const ISO_H = 840;
+const W = ISO_W; const H = ISO_H;
 const TW = 60; const TH = 30; // one tile on screen (2:1)
 const OX = 720; const OY = 118;
-const iso = (gx: number, gy: number, z = 0) => ({ x: OX + (gx - gy) * (TW / 2), y: OY + (gx + gy) * (TH / 2) - z });
-const pt = (gx: number, gy: number, z = 0) => { const p = iso(gx, gy, z); return `${p.x.toFixed(1)},${p.y.toFixed(1)}`; };
-const pathOf = (pts: readonly (readonly [number, number])[], z = 0) => pts.map(([gx, gy], i) => { const p = iso(gx, gy, z); return `${i ? 'L' : 'M'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`; }).join(' ');
+export const iso = (gx: number, gy: number, z = 0) => ({ x: OX + (gx - gy) * (TW / 2), y: OY + (gx + gy) * (TH / 2) - z });
+export const pt = (gx: number, gy: number, z = 0) => { const p = iso(gx, gy, z); return `${p.x.toFixed(1)},${p.y.toFixed(1)}`; };
+export const pathOf = (pts: readonly (readonly [number, number])[], z = 0) => pts.map(([gx, gy], i) => { const p = iso(gx, gy, z); return `${i ? 'L' : 'M'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`; }).join(' ');
 
 // ── palette (fixed hex: faces need shading, which CSS variables cannot do) ─────────────────────────────────────
-const shade = (hex: string, k: number) => {
+export const shade = (hex: string, k: number) => {
   const n = parseInt(hex.slice(1), 16); const r = (n >> 16) & 255; const g = (n >> 8) & 255; const b = n & 255;
   const f = (c: number) => Math.max(0, Math.min(255, Math.round(k >= 0 ? c + (255 - c) * k : c * (1 + k))));
   return `#${((f(r) << 16) | (f(g) << 8) | f(b)).toString(16).padStart(6, '0')}`;
 };
-const PAL = {
+export const PAL = {
   sky0: '#071122', sky1: '#0d1b33',
   ground: '#152640', groundLine: '#1f3658', grass: '#17423f', grassLine: '#1e5a52',
   road: '#2b3a52', roadLine: '#8a98b3', path: '#3a4d6b',
@@ -45,15 +46,15 @@ const PAL = {
   tree: '#2e8b6a', trunk: '#6b4a2b',
   ink: '#e8eef7', muted: '#93a4bd', glow: '#ffd27a', good: '#2dd4bf', bad: '#fb7185',
 } as const;
-type IsoTone = 'navy' | 'teal' | 'violet' | 'rose' | 'amber' | 'slate';
+export type IsoTone = 'navy' | 'teal' | 'violet' | 'rose' | 'amber' | 'slate';
 
 // ── primitives ───────────────────────────────────────────────────────────────────────────────────────────────────
-function Tile({ gx, gy, w = 1, d = 1, fill, stroke, opacity = 1 }: { gx: number; gy: number; w?: number; d?: number; fill: string; stroke?: string; opacity?: number }) {
+export function Tile({ gx, gy, w = 1, d = 1, fill, stroke, opacity = 1 }: { gx: number; gy: number; w?: number; d?: number; fill: string; stroke?: string; opacity?: number }) {
   return <polygon points={`${pt(gx, gy)} ${pt(gx + w, gy)} ${pt(gx + w, gy + d)} ${pt(gx, gy + d)}`} fill={fill} stroke={stroke} strokeWidth={stroke ? 1 : 0} opacity={opacity} />;
 }
 
 /** A box on the grid: footprint w×d tiles, height h px. Top face lit, left face mid, right face dark. */
-function Box({ gx, gy, w, d, h, tone, roof = 'flat', windows = true, sign, signTone }: { gx: number; gy: number; w: number; d: number; h: number; tone: IsoTone; roof?: 'flat' | 'gable' | 'dome' | 'spire' | 'pediment' | 'slab'; windows?: boolean; sign?: string; signTone?: string }) {
+export function Box({ gx, gy, w, d, h, tone, roof = 'flat', windows = true, sign, signTone, signSize = 11 }: { gx: number; gy: number; w: number; d: number; h: number; tone: IsoTone; roof?: 'flat' | 'gable' | 'dome' | 'spire' | 'pediment' | 'slab'; windows?: boolean; sign?: string; signTone?: string; signSize?: number }) {
   const base = PAL[tone];
   const top = shade(base, 0.38); const left = shade(base, 0.02); const right = shade(base, -0.32); const roofC = shade(base, -0.12); const roofD = shade(base, -0.42);
   const topPts = `${pt(gx, gy, h)} ${pt(gx + w, gy, h)} ${pt(gx + w, gy + d, h)} ${pt(gx, gy + d, h)}`;
@@ -100,7 +101,8 @@ function Box({ gx, gy, w, d, h, tone, roof = 'flat', windows = true, sign, signT
     roofEl = <polygon points={`${pt(gx - 0.12, gy - 0.12, h + 4)} ${pt(gx + w + 0.12, gy - 0.12, h + 4)} ${pt(gx + w + 0.12, gy + d + 0.12, h + 4)} ${pt(gx - 0.12, gy + d + 0.12, h + 4)}`} fill={roofD} />;
   }
   const sc = iso(gx + w / 2, gy + d / 2, h + (roof === 'flat' || roof === 'slab' ? 0 : roof === 'spire' ? rh * 2.2 : rh) + 26);
-  const sw = sign ? tw(sign, 11, false, 650) * 1.1 + 18 : 0;
+  const sw = sign ? tw(sign, signSize, false, 650) * 1.1 + 18 : 0;
+  const sh = signSize + 9;
   return (
     <g>
       <polygon points={shadow} fill="#000" opacity={0.28} />
@@ -112,15 +114,15 @@ function Box({ gx, gy, w, d, h, tone, roof = 'flat', windows = true, sign, signT
       {sign && (
         <g>
           <line x1={sc.x} y1={sc.y + 10} x2={sc.x} y2={sc.y + 22} stroke={PAL.muted} strokeWidth={1} />
-          <rect x={sc.x - sw / 2} y={sc.y - 10} width={sw} height={20} rx={10} fill="#0b1830" stroke={signTone ?? shade(base, 0.25)} strokeWidth={1.2} />
-          <text x={sc.x} y={sc.y + 4} fontSize={11} fontWeight={650} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{sign}</text>
+          <rect x={sc.x - sw / 2} y={sc.y - sh / 2} width={sw} height={sh} rx={sh / 2} fill="#0b1830" stroke={signTone ?? shade(base, 0.25)} strokeWidth={1.2} />
+          <text x={sc.x} y={sc.y + signSize * 0.36} fontSize={signSize} fontWeight={650} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{sign}</text>
         </g>
       )}
     </g>
   );
 }
 
-function Tree({ gx, gy, s = 1 }: { gx: number; gy: number; s?: number }) {
+export function Tree({ gx, gy, s = 1 }: { gx: number; gy: number; s?: number }) {
   const b = iso(gx, gy); const h = 26 * s;
   return (
     <g>
@@ -132,7 +134,7 @@ function Tree({ gx, gy, s = 1 }: { gx: number; gy: number; s?: number }) {
   );
 }
 
-function District({ gx, gy, w, d, label, tone, at = 'none' }: { gx: number; gy: number; w: number; d: number; label?: string; tone: IsoTone; at?: 'bottom' | 'left' | 'none' }) {
+export function District({ gx, gy, w, d, label, tone, at = 'none' }: { gx: number; gy: number; w: number; d: number; label?: string; tone: IsoTone; at?: 'bottom' | 'left' | 'none' }) {
   const c = PAL[tone];
   const lp = at === 'bottom' ? iso(gx + w, gy + d) : iso(gx, gy + d);
   return (
@@ -143,20 +145,20 @@ function District({ gx, gy, w, d, label, tone, at = 'none' }: { gx: number; gy: 
   );
 }
 
-const EASE = 'cubic-bezier(.4,0,.2,1)';
+export const EASE = 'cubic-bezier(.4,0,.2,1)';
 
 /** A road segment along a grid polyline, used for the walkers' lanes; drawn as a lit line when active. */
-function Lane({ pts, beat, at, color, delay = 0, dur = 1.2, dashed = false }: { pts: readonly (readonly [number, number])[]; beat: IsoBeat; at: IsoBeat; color: string; delay?: number; dur?: number; dashed?: boolean }) {
-  const drawn = at >= beat; const on = at === beat || at === 6;
+export function Lane({ pts, beat, at, color, delay = 0, dur = 1.2, dashed = false, summary = 6 }: { pts: readonly (readonly [number, number])[]; beat: number; at: number; color: string; delay?: number; dur?: number; dashed?: boolean; summary?: number }) {
+  const drawn = at >= beat; const on = at === beat || at === summary;
   return <path d={pathOf(pts)} fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" pathLength={1}
     strokeDasharray={dashed ? '0.015 0.015' : 1} strokeDashoffset={dashed ? 0 : drawn ? 0 : 1}
     style={{ opacity: dashed ? (drawn ? 0.95 : 0) : on ? 0.95 : drawn ? 0.3 : 1, transition: dashed ? `opacity .6s ${EASE} ${delay}ms` : `stroke-dashoffset ${dur}s ${EASE} ${delay}ms, opacity .6s ${EASE}` }} />;
 }
 
 /** The agent on foot: a little figure with a halo and a speech pill, travelling a lane on its beat. */
-function Walker({ pts, beat, at, say, color, delay = 300, dur = 2.4, until }: { pts: readonly (readonly [number, number])[]; beat: IsoBeat; at: IsoBeat; say: string; color: string; delay?: number; dur?: number; until?: number }) {
+export function Walker({ pts, beat, at, say, color, delay = 300, dur = 2.4, until, size = 10.5 }: { pts: readonly (readonly [number, number])[]; beat: number; at: number; say: string; color: string; delay?: number; dur?: number; until?: number; size?: number }) {
   const go = at >= beat; const show = at === beat;
-  const w = tw(say, 10.5, false, 650) * 1.1 + 20;
+  const w = tw(say, size, false, 650) * 1.1 + 20; const ph = size + 11.5;
   const style: CSSProperties = {
     offsetPath: `path('${pathOf(pts)}')`, offsetRotate: '0deg', offsetDistance: go ? '100%' : '0%', opacity: show ? 1 : 0,
     transition: go ? `offset-distance ${dur}s ${EASE} ${delay}ms, opacity .5s ${EASE}` : 'none',
@@ -169,32 +171,32 @@ function Walker({ pts, beat, at, say, color, delay = 300, dur = 2.4, until }: { 
       <rect x={-5} y={-16} width={10} height={14} rx={5} fill={color} />
       <circle cx={0} cy={-21} r={5} fill={shade(color, 0.5)} />
       <path d={`M 8 -22 l 6 -4 l 0 8 z`} fill={color} />
-      <rect x={13} y={-33} width={w} height={22} rx={11} fill="#0b1830" stroke={color} strokeWidth={1.4} />
-      <text x={13 + w / 2} y={-18.5} fontSize={10.5} fontWeight={650} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{say}</text>
+      <rect x={13} y={-11 - ph} width={w} height={ph} rx={ph / 2} fill="#0b1830" stroke={color} strokeWidth={1.4} />
+      <text x={13 + w / 2} y={-11 - ph / 2 + size * 0.36} fontSize={size} fontWeight={650} textAnchor="middle" fill={PAL.ink} fontFamily={FONT}>{say}</text>
     </g>
   );
 }
 
 /** A reply from a building: a pill that fades in on cue, anchored above a grid point. */
-function Reply({ gx, gy, z, text, color, beat, at, delay = 0, hold = false }: { gx: number; gy: number; z: number; text: string; color: string; beat: IsoBeat; at: IsoBeat; delay?: number; hold?: boolean }) {
-  const p = iso(gx, gy, z); const on = at === beat || (hold && at === 6);
-  const w = tw(text, 10.5, false, 650) * 1.1 + 20;
+export function Reply({ gx, gy, z, text, color, beat, at, delay = 0, hold = false, summary = 6, size = 10.5 }: { gx: number; gy: number; z: number; text: string; color: string; beat: number; at: number; delay?: number; hold?: boolean; summary?: number; size?: number }) {
+  const p = iso(gx, gy, z); const on = at === beat || (hold && at === summary);
+  const w = tw(text, size, false, 650) * 1.1 + 20; const ph = size + 11.5;
   return (
     <g style={{ opacity: on ? 1 : 0, transform: on ? 'translateY(0)' : 'translateY(6px)', transition: `opacity .5s ${EASE} ${on ? delay : 0}ms, transform .5s ${EASE} ${on ? delay : 0}ms` }}>
       <path d={`M ${p.x - 5} ${p.y - 8} l 5 7 l 5 -7`} fill={color} />
-      <rect x={p.x - w / 2} y={p.y - 30} width={w} height={22} rx={11} fill={color} />
-      <text x={p.x} y={p.y - 15.5} fontSize={10.5} fontWeight={650} textAnchor="middle" fill="#0b1830" fontFamily={FONT}>{text}</text>
+      <rect x={p.x - w / 2} y={p.y - 8 - ph} width={w} height={ph} rx={ph / 2} fill={color} />
+      <text x={p.x} y={p.y - 8 - ph / 2 + size * 0.36} fontSize={size} fontWeight={650} textAnchor="middle" fill="#0b1830" fontFamily={FONT}>{text}</text>
     </g>
   );
 }
 
 /** A tag that says what a provider knows her as — the summary beat. */
-function Tag({ gx, gy, z, text, color, on, delay = 0 }: { gx: number; gy: number; z: number; text: string; color: string; on: boolean; delay?: number }) {
-  const p = iso(gx, gy, z); const w = tw(text, 10, false, 650) * 1.1 + 16;
+export function Tag({ gx, gy, z, text, color, on, delay = 0, size = 10 }: { gx: number; gy: number; z: number; text: string; color: string; on: boolean; delay?: number; size?: number }) {
+  const p = iso(gx, gy, z); const w = tw(text, size, false, 650) * 1.1 + 16; const ph = size + 10;
   return (
     <g style={{ opacity: on ? 1 : 0, transition: `opacity .5s ${EASE} ${on ? delay : 0}ms` }}>
-      <rect x={p.x - w / 2} y={p.y - 10} width={w} height={20} rx={4} fill="#0b1830" stroke={color} strokeWidth={1.2} />
-      <text x={p.x} y={p.y + 3.5} fontSize={10} fontWeight={650} textAnchor="middle" fill={color} fontFamily={FONT}>{text}</text>
+      <rect x={p.x - w / 2} y={p.y - ph / 2} width={w} height={ph} rx={4} fill="#0b1830" stroke={color} strokeWidth={1.2} />
+      <text x={p.x} y={p.y + size * 0.36} fontSize={size} fontWeight={650} textAnchor="middle" fill={color} fontFamily={FONT}>{text}</text>
     </g>
   );
 }

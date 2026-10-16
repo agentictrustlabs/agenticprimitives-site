@@ -31,9 +31,9 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'iso-town-patient': () => createElement(IsoTown, { beat: 1 }),
   'iso-town-window': () => createElement(IsoTown, { beat: 4 }),
   'iso-town-day': () => createElement(IsoTown, { beat: 6 }),
-  'member-message-sign': () => createElement(MemberMessageScene, { beat: 4 }),
-  'member-message-verify': () => createElement(MemberMessageScene, { beat: 6 }),
-  'member-message-contrast': () => createElement(MemberMessageScene, { beat: 9 }),
+  'member-message-meet': () => createElement(MemberMessageScene, { beat: 0 }),
+  'member-message-stamp': () => createElement(MemberMessageScene, { beat: 4 }),
+  'member-message-read': () => createElement(MemberMessageScene, { beat: 7 }),
 };
 
 // Mirrors `.figure-dark` in apps/web/src/app/globals.css. Keep in step.

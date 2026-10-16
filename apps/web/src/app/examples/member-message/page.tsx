@@ -10,31 +10,36 @@ import { TownStory } from '@/components/TownStory';
 export const metadata: Metadata = pageMeta({
   title: 'A message between two agents — an animated walkthrough',
   description:
-    "A member's agent writes to her organization's agent, which admits only adult members and learns neither who wrote nor any claim value. Ten beats: the receiver's own question, the standing wire, the proof, one signature in the key service, verification against the chain, two receipts.",
+    "Hannah's agent writes to her organization's agent. The organization reads only from adult members and never learns which member wrote. One signature from Hannah, one stamp from a key that never leaves its safe, a public notice board instead of a phone call, two receipts.",
   path: '/examples/member-message',
 });
 
 const ESSAY = '/writing/tear-down-the-walled-garden-for-agents';
 
-const PARTIES = [
-  { who: 'Hannah', what: "A member of the organization. Her agent runs in her estate; her credential and the standing wire live in her vault; her device key lives in the estate's key service. She never appears in this story by name, address or key.", tone: 'navy' as const },
-  { who: 'Her agent', what: 'The prover. It reads her vault under her grant, makes the proof, asks the key service for exactly one signature, posts the presentation, sends the message from a pairwise account.', tone: 'navy' as const },
-  { who: 'The key service', what: 'A confidential VM holding a P-256 device key that is never exported. It signs ES256 only when the caller presents bound evidence — a digest, a venue, a predicate digest — and it checks that evidence itself.', tone: 'amber' as const },
-  { who: "The organization's agent", what: 'The receiver and the verifier. It compiles its own policy, issues its own challenge, verifies the proof, resolves the issuer through the chain, and only then hands the message to its steward.', tone: 'violet' as const },
-  { who: 'Chain and neutral ground', what: "Where the organization's issuer facet and attestation are anchored, and where the live-credential root is published. The verifier reads here; it never phones the issuer.", tone: 'teal' as const },
+const PEOPLE = [
+  { who: 'Hannah', role: 'a member', what: 'The person in the loop. She signs one permission at her own front door, and she can cancel it from the same door. She never appears in the story by name, address or key.', tone: 'navy' as const },
+  { who: 'The steward', role: 'reads the mail', what: 'The other person. At the end, the steward is handed a message from "an adult member". The steward gets the message, not the sender.', tone: 'violet' as const },
+  { who: 'Her agent', role: 'does the legwork', what: 'Fetches the card and the permission from her vault, makes the proof, walks to the key safe, carries the message across the street, brings the receipt home.', tone: 'teal' as const },
+  { who: "The organization's agent", role: 'at the door', what: 'Asks its own question, checks the answer against the public notice board, and only then hands the message inside.', tone: 'violet' as const },
+];
+
+const PLACES = [
+  { drawn: 'Her vault', real: 'Her encrypted record store. Holds the membership card, her permission, and later her receipt. Her agent reads it under her grant; nobody else does.' },
+  { drawn: 'The membership card', real: 'A credential the organization issued to her: adult, member. It is tied to a key, so only the holder of the key can present it.' },
+  { drawn: 'The key safe', real: "A key service on a sealed machine in her estate. The key never leaves it. It signs once per request and only when the request is covered by her permission — and it checks that itself." },
+  { drawn: 'Her permission', real: 'A signed, standing delegation from Hannah to her agent: present this card, to this organization, for this question, until this date. It says where and until when. It does not say who.' },
+  { drawn: 'The sealed proof', real: "A zero-knowledge proof: it shows the statement 'over 18 and a member' is true about a card the organization issued, without showing the card, the birth date, or the organization's signature on the card." },
+  { drawn: 'The pen name', real: 'A pairwise account derived for this organization alone. The same organization sees the same pen name next time; a different organization sees a different one.' },
+  { drawn: 'The public notice board', real: "The chain. Where the organization has registered its stamp (its issuing key) and publishes the root of the list of cards it still vouches for. Anyone can read it; no one has to ask." },
+  { drawn: 'Question #4821', real: 'A single-use challenge the organization makes up for each request. It stops a proof from being replayed and pins the proof to this door.' },
 ];
 
 const LEARNS = [
-  { k: 'The organization', v: 'That a member over eighteen wrote. The facet the credential came from, the predicate digest it checked, a nullifier that stops a replay inside its window, the status sequence it checked against. A pairwise account that it will see again from the same sender at the same door and nowhere else.', meta: 'never: a claim value, a signature, a device key, an address of hers' },
-  { k: 'Hannah', v: 'Everything the organization learned, plus the one thing it cannot: the mandate the presentation was made under. Her receipt is in her vault and it is hers to carry.', meta: 'two receipts, two truths' },
-  { k: 'The key service', v: 'That a signature was requested under evidence for this venue and this predicate digest, and that it signed. It saw a digest. It did not see the message, the credential or the proof.', meta: 'an audit row, not a copy' },
-  { k: 'The issuer', v: 'Nothing. It was not asked. The verifier read its facet and attestation from the chain and the live-credential root from neutral ground.', meta: 'issuance is not a phone call' },
-  { k: 'A second organization', v: 'Nothing that links to the first. A different door derives a different pairwise account, a different nullifier, and a proof that shares no visible value with the one above.', meta: 'unlinkable by construction' },
-];
-
-const SUITES = [
-  { suite: 'openac-sd-jwt-p256', kind: 'zero knowledge', when: "The receiver needs a fact — 'over 18 and a member' — and must not learn a value, a signature or a key. This page's main flow.", shows: 'a predicate result, a nullifier (asserted grade), a status proof', hides: 'claim values, issuer signature, device key, link across receivers', tone: 'teal' as const },
-  { suite: 'sd-jwt', kind: 'selective disclosure', when: 'The receiver is entitled to a value — the dues ledger needs the member number — and nothing more. The contrast beat.', shows: 'the disclosed claims, a pseudonym stable for this receiver', hides: 'the undisclosed claims (digest only)', tone: 'navy' as const },
+  { k: 'The organization', v: 'That an adult member wrote, and that the card came from its own issuing stamp. A pen name it will see again from the same sender at the same door. A question number it has now used up.', meta: 'never: a name, a birth date, the card, her address' },
+  { k: 'Hannah', v: 'Everything the organization learned, plus the one thing it cannot hold: the permission the whole thing ran under. Her receipt is in her vault and goes where she goes.', meta: 'two receipts, two truths' },
+  { k: 'The key safe', v: 'That it stamped one request, for this organization and this question. It saw a fingerprint of the proof. It never saw the message, the card or the proof itself.', meta: 'a log line, not a copy' },
+  { k: 'The membership office', v: 'Nothing. It was never asked. The door read the stamp and the valid-cards list off the public notice board.', meta: 'issuing is not a phone call' },
+  { k: 'A second organization', v: 'Nothing that links back. A different door gets a different pen name, a different question number and a proof that shares no visible part with this one.', meta: 'unlinkable by construction' },
 ];
 
 export default function MemberMessage() {
@@ -43,31 +48,31 @@ export default function MemberMessage() {
       <PageHero
         eyebrow="Example · an animated walkthrough"
         title={<>A message between two agents.<br />A fact arrives. A person does not.</>}
-        lede="Hannah's agent writes to her organization's agent. The organization reads only from members who are adults — and does not want to know which member wrote. Ten beats, from the receiver's own question to two receipts, with the one signature made in a key service under evidence of what her standing wire covered."
+        lede="Hannah's agent writes to her organization's agent. The organization reads only from members who are adults — and does not want to know which member wrote. Watch one signature from Hannah, one stamp from a key that never leaves its safe, a public notice board instead of a phone call, and two receipts."
       >
         <Link href={ESSAY} className="btn-brass">The essay this example comes from <ArrowRight className="h-4 w-4" /></Link>
-        <Link href="/architecture#meet-the-town" className="btn-outline-light">How the street works</Link>
-        <div className="mt-2 flex w-full flex-wrap gap-2">
-          {['zkID · OpenAC', 'SD-JWT', 'P-256 device key', 'standing wire', 'pairwise account', 'nullifier', 'neutral ground', 'two receipts'].map((t) => <Tag key={t} tone="dark">{t}</Tag>)}
-        </div>
+        <Link href="/in-depth#meet-the-town" className="btn-outline-light">A day in the town</Link>
       </PageHero>
 
-      <Section id="story" tone="navy" eyebrow="The animation" title="Ten beats. Press play, or step with the arrow keys." lede="Her estate is on the left of the dashed line; the organization's is on the right. Watch what crosses it: a challenge, a presentation, a message from a pairwise account — never a claim, never a key, never her.">
+      <Section id="story" tone="navy" eyebrow="The animation" title="One street. Eight scenes. Press play, or step through with the arrow keys." lede="Hannah's side of the street is on the left; the organization's is on the right; the public notice board is on the corner. Watch what crosses the street: a question, a sealed proof under a pen name, and a receipt. Never the card, never the key, never her name.">
         <TownStory scene="message" id="member-message-story" />
       </Section>
 
-      <Section number="01" eyebrow="Who is on the stage" title="Five parties. Two of them never meet." lede="The issuer is on the chain and is never asked. The key service sees a digest and signs. The organization learns a fact. Hannah appears nowhere she did not choose to.">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {PARTIES.map((p) => (
+      <Section number="01" eyebrow="Who is in the picture" title="Two people, two agents." lede="A person signs at the start and a person reads at the end. Everything in between is done by agents under what the people decided.">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {PEOPLE.map((p) => (
             <div key={p.who} className="card">
-              <Tag tone={p.tone}>{p.who}</Tag>
+              <div className="flex flex-wrap items-center gap-2">
+                <Tag tone={p.tone}>{p.who}</Tag>
+                <span className="text-xs text-slate-500">{p.role}</span>
+              </div>
               <p className="mt-3 text-sm leading-relaxed text-slate-700">{p.what}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section tone="cream" number="02" eyebrow="The flow, written down" title="What each beat does, and the rule it keeps." lede="The captions from the animation, laid out so you can read them in order. The sentence in colour under each is the one that makes this different from a session token or an API key.">
+      <Section tone="cream" number="02" eyebrow="Scene by scene" title="What happens in each scene, and the rule it keeps." lede="The same words as the captions under the animation, so you can read them at your own pace.">
         <ol className="grid gap-4 md:grid-cols-2">
           {MESSAGE_BEATS.map((b, i) => (
             <li key={b.id} className="card flex gap-4">
@@ -82,72 +87,70 @@ export default function MemberMessage() {
         </ol>
       </Section>
 
-      <Section number="03" eyebrow="The one signature" title="Why the key is asked once, and why the key service checks the evidence again.">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <div className="prose-ap">
-            <p>
-              An anonymous credential is bound to a device key: the proof shows that whoever is presenting controls the key the issuer bound the credential to. That is the one moment a signature is needed. In most designs the device key sits on the person's phone and the agent cannot use it; in the lazy design the agent simply holds the key and becomes the person.
-            </p>
-            <p>
-              Here the key is a P-256 key in the estate's key service, inside a confidential VM, never exported. Her agent does not hold it. What her agent holds is a <strong>standing wire</strong> she signed at her Home: present to this organization, this predicate program, under this issuer, until spring. When the proof reaches its signing callback, the presentation release judges the wire against the exact statement being made — the audience, the predicate digest, the issuer facet — and mints bound evidence. The key service signs only because the evidence covers it, and it checks the evidence itself before it does.
-            </p>
-            <p>
-              The negative twin in beat five is the point. Evidence for a different venue reaches the same key service, under the same credentials, and nothing is signed. A service that could sign for any venue would be the person; a service that signs only what a wire covers is a delegate, and a delegate is something she can revoke from the same door she issued it at.
-            </p>
-          </div>
-          <div>
-            <Callout tone="amber">
-              <p className="font-semibold">What the key service never sees</p>
-              <p className="mt-2 text-sm">The message. The credential. The proof. It receives a digest to sign and evidence naming a venue and a predicate digest. Its audit row says a signature was made under that evidence — it does not say what for.</p>
-            </Callout>
-            <div className="mt-4">
-              <Callout tone="teal">
-                <p className="font-semibold">What this is not</p>
-                <p className="mt-2 text-sm">Not a key on her smart account. The account's keys sign transactions and WebAuthn assertions; neither is what a P-256 credential binding needs. The device key is a separate custodied key, and the wire makes the key service a delegate of her agent, not an owner of her account.</p>
-              </Callout>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section tone="cream" number="04" eyebrow="Two suites" title="Two kinds of anonymous credential, and no ladder between them." lede="The same credential presents under either suite. Which one is decided by the receiver's question — a fact, or a value it is entitled to — and a request for a fact can never be answered with a value.">
-        <div className="grid gap-4 md:grid-cols-2">
-          {SUITES.map((s) => (
-            <div key={s.suite} className="card">
-              <div className="flex flex-wrap items-center gap-2">
-                <code className="font-mono text-sm font-semibold text-navy">{s.suite}</code>
-                <Tag tone={s.tone}>{s.kind}</Tag>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">{s.when}</p>
-              <dl className="mt-4 grid gap-2 text-sm">
-                <div><dt className="font-semibold text-slate-900">Shows</dt><dd className="text-slate-600">{s.shows}</dd></div>
-                <div><dt className="font-semibold text-slate-900">Hides</dt><dd className="text-slate-600">{s.hides}</dd></div>
-              </dl>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 max-w-3xl text-sm leading-relaxed text-slate-600">
-          One suite per request. The door that asked “is this an adult member?” receives a proof and nothing else; the ledger that is entitled to a member number receives the number and a pseudonym it can reconcile against. A verifier cannot start with a predicate and end up holding a value.
-        </p>
-      </Section>
-
-      <Section number="05" eyebrow="Who learned what" title="At the end of the story, five parties hold five different things.">
+      <Section number="03" eyebrow="Who learned what" title="At the end, five parties hold five different things.">
         <Ledger rows={LEARNS} />
       </Section>
 
-      <Section tone="ink" number="06" eyebrow="Where it runs" title="This is a live gate, not a storyboard.">
+      <Section tone="cream" number="04" eyebrow="The drawing, decoded" title="What the picture calls it, and what it really is." lede="Every object in the drawing stands for one real thing in the system. None of them is a metaphor for something the system does not have.">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-line text-xs uppercase tracking-wider text-slate-500">
+                <th className="py-3 pr-6">In the drawing</th>
+                <th className="py-3">What it really is</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PLACES.map((r) => (
+                <tr key={r.drawn} className="border-b border-line/70 align-top">
+                  <td className="py-3 pr-6 font-semibold text-navy whitespace-nowrap">{r.drawn}</td>
+                  <td className="py-3 text-slate-700">{r.real}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      <Section number="05" eyebrow="Why the key safe matters" title="One stamp, from a key the agent does not hold.">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+          <div className="prose-ap">
+            <p>
+              The card is tied to a key. Showing the card means proving you control that key — and that is the one moment in the story where a signature is needed. In most systems that key sits on the person's phone, so her agent cannot use it; in the lazy design the agent simply holds the key and becomes her.
+            </p>
+            <p>
+              Here the key lives in a key safe on a sealed machine. Her agent does not hold it. What her agent holds is her <strong>permission</strong>: present this card, to this organization, for this question, until spring. When the proof needs its stamp, the safe is shown the permission and the exact request — which organization, which question — and it stamps only if the permission covers it. It checks that itself; it does not take the agent's word for it.
+            </p>
+            <p>
+              That is why scene five shows a second slip getting no stamp. A safe that would stamp anything would make the agent into Hannah. A safe that stamps only what her permission covers makes the agent a delegate — and a delegate is something she can revoke from her own front door.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <Callout tone="amber">
+              <p className="font-semibold">What the key safe never sees</p>
+              <p className="mt-2 text-sm">The message. The card. The proof. It is handed a fingerprint to stamp and a note saying which organization and which question. Its log says a stamp was made for that note — not what the message said.</p>
+            </Callout>
+            <Callout tone="teal">
+              <p className="font-semibold">Two ways to show the same card</p>
+              <p className="mt-2 text-sm">This story uses a sealed proof: the organization learns a fact and no values. If the receiver were the dues ledger, which is entitled to her member number, the same card would be shown with that one field open and the rest closed. Which way is used is decided by the question — and a request for a fact can never be answered with a value.</p>
+            </Callout>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="ink" number="06" eyebrow="For engineers" title="This is a live gate, not a storyboard.">
         <div className="grid gap-6 md:grid-cols-3">
           <div className="card-dark">
             <h3 className="h3 !text-white">The door</h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">A federation estate's A2A door requires the <code className="font-mono text-xs">predicate</code> proof grade for this skill. The gate <code className="font-mono text-xs">predicate-visitor</code> runs nightly against it, with a negative twin that must be refused.</p>
           </div>
           <div className="card-dark">
-            <h3 className="h3 !text-white">The device key</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-300">The key service added the P-256 curve and the <code className="font-mono text-xs">ES256_SHA256</code> purpose with bound authority evidence. The gate is green on it with no local-key allowance.</p>
+            <h3 className="h3 !text-white">The key safe</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300">The key service added a P-256 curve and an <code className="font-mono text-xs">ES256</code> purpose that signs only under bound evidence — digest, venue, predicate digest. The gate is green on it with no local-key allowance.</p>
           </div>
           <div className="card-dark">
             <h3 className="h3 !text-white">What is still open</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-300">The nullifier is the asserted grade, the status proof is a signed root rather than an in-circuit path, and the key service is one operator on one machine. Each is named, with its cost to close, at the end of the essay.</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300">The replay check is the asserted grade, the valid-cards proof is a signed root rather than an in-circuit path, and the key safe is one operator on one machine. Each is named, with its cost to close, at the end of the essay.</p>
           </div>
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -158,7 +161,7 @@ export default function MemberMessage() {
 
       <CTA
         title="The receiver asks its own question. The person is never the answer."
-        body="A door that needs a fact gets a proof. A door entitled to a value gets the value and nothing else. The key that binds the credential signs only what a standing wire covers, and the wire is hers to revoke. That is the whole example."
+        body="A door that needs a fact gets a proof. A door entitled to a value gets the value and nothing else. The key that backs the card stamps only what a signed permission covers, and the permission is hers to cancel. That is the whole example."
         primary={{ href: ESSAY, label: 'Read the essay' }}
         secondary={{ href: '/developers', label: 'Build on it' }}
       />

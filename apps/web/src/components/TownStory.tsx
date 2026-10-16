@@ -58,13 +58,15 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
   };
 
   const info = beats[beat]!;
+  const below = scene !== 'street'; // the isometric scenes are read large, caption underneath
+  const big = scene === 'message';
 
   return (
-    <div id={id} ref={rootRef} className={scene === 'day' ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : scene === 'message' ? 'A message between two agents' : 'Meet the town'}>
+    <div id={id} ref={rootRef} className={below ? 'grid gap-5' : 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]'} tabIndex={0} onKeyDown={onKey} aria-roledescription="animated walkthrough" aria-label={scene === 'day' ? 'A day in the town' : scene === 'message' ? 'A message between two agents' : 'Meet the town'}>
       <div>
-        <div className={scene === 'day' ? 'relative overflow-hidden rounded-xl border border-white/10' : 'figure-dark relative'}>
+        <div className={below ? 'relative overflow-hidden rounded-xl border border-white/10' : 'figure-dark relative'}>
           {scene === 'day' ? <IsoTown beat={beat as IsoBeat} /> : scene === 'message' ? <MemberMessageScene beat={beat as MessageBeat} /> : <TownScene beat={beat as TownBeat} />}
-          <div className={`absolute inset-x-3 bottom-3 h-[3px] overflow-hidden rounded bg-white/10 ${scene === 'day' ? '' : 'md:inset-x-5 md:bottom-5'}`}>
+          <div className={`absolute inset-x-3 bottom-3 h-[3px] overflow-hidden rounded bg-white/10 ${below ? '' : 'md:inset-x-5 md:bottom-5'}`}>
             <div className="h-full bg-brass" style={{ width: `${((beat + (playing ? progress : 1)) / beats.length) * 100}%`, transition: playing ? 'none' : 'width .4s ease' }} />
           </div>
         </div>
@@ -78,12 +80,12 @@ export function TownStory({ id = 'town-story', scene = 'street', autoplay = true
         </div>
       </div>
 
-      {scene === 'day' ? (
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
-          <div className="rounded-xl border border-brass/40 bg-white/[0.05] p-5" aria-live="polite">
+      {below ? (
+        <div className={big ? 'grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-start' : 'grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start'}>
+          <div className={big ? 'rounded-xl border border-brass/40 bg-white/[0.05] p-6 md:p-7' : 'rounded-xl border border-brass/40 bg-white/[0.05] p-5'} aria-live="polite">
             <p className="font-mono text-[10px] tracking-[0.14em] text-brass">{String(beat + 1).padStart(2, '0')} · {info.title.toUpperCase()}</p>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate-100">{info.caption}</p>
-            <p className="mt-3 text-[15px] font-semibold leading-snug text-brass">{info.rule}</p>
+            <p className={big ? 'mt-3 text-lg leading-relaxed text-slate-100 md:text-xl' : 'mt-2 text-[15px] leading-relaxed text-slate-100'}>{info.caption}</p>
+            <p className={big ? 'mt-4 text-lg font-semibold leading-snug text-brass md:text-xl' : 'mt-3 text-[15px] font-semibold leading-snug text-brass'}>{info.rule}</p>
           </div>
           <ol className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-2" aria-label="Beats">
             {beats.map((b, i) => {
