@@ -46,7 +46,7 @@ authority, authority on identity, identity on chain. The four scales are about h
 
 **What is an agent, what may it do, and how is that proven?**
 
-Seventy-seven `@agenticprimitives/*` packages and thirty-three contracts. A Smart Agent account per person,
+Eighty-three `@agenticprimitives/*` packages and thirty-eight contracts on each chain. A Smart Agent account per person,
 organization and service; a delegation with caveats as the one authority mechanism; a harness that verifies every
 step against a live grant; an edge that admits before anything; receipts the owner carries; an ontology every term
 binds to by IRI. The Developer Kit (`create-app`, `doctor`, `conform`) is how a product repository starts and stays

@@ -10,7 +10,7 @@ import { COMPARE_PAGES } from './pages';
 
 export const metadata: Metadata = pageMeta({
   title: 'Versus — the stack you would buy',
-  description: 'The stack you would buy — 29 products, three identity models, a seam at every boundary — or Agentic Primitives: 77 packages and 33 contracts on one identity.',
+  description: 'The stack you would buy — 29 products, three identity models, a seam at every boundary — or Agentic Primitives: 83 packages and 38 contracts per chain on one identity.',
   path: '/compare',
 });
 

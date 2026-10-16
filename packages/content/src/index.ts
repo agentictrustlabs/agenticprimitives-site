@@ -29,7 +29,7 @@ export const SITE = {
 export interface Repo { id: string; name: string; scale: 'substrate' | 'estate' | 'town' | 'federation' | 'example'; url?: string; blurb: string; status: 'live' | 'public' | 'building' | 'next' }
 
 export const REPOS: readonly Repo[] = [
-  { id: 'agentic-primitives', name: 'agentic-primitives', scale: 'substrate', url: SITE.github, blurb: 'The substrate: 77 packages, 33 contracts, the Developer Kit.', status: 'live' },
+  { id: 'agentic-primitives', name: 'agentic-primitives', scale: 'substrate', url: SITE.github, blurb: 'The substrate: 83 packages, 38 contracts per chain, the Developer Kit.', status: 'live' },
   { id: 'ap-home', name: 'ap-home', scale: 'estate', url: 'https://github.com/agentictrustlabs/ap-home', blurb: 'The estate: a Home, the agent runtime, the vault, the edge. Deploys faithnet.me.', status: 'public' },
   { id: 'ap-town', name: 'ap-town', scale: 'town', url: 'https://github.com/agentictrustlabs/ap-town', blurb: 'The town: naming, public graph, registries, key service and chain ops for estates on one chain.', status: 'public' },
   { id: 'ap-federation', name: 'ap-federation', scale: 'federation', blurb: 'The federation: neutral ground, doors with the predicate grade, member payment and anonymous credentials between towns on different chains.', status: 'live' },
@@ -584,7 +584,7 @@ export const BUILD_REPOS: readonly BuildPointer[] = [
   {
     name: 'agentic-primitives',
     url: SITE.github,
-    what: 'Ring 0: the 77 packages, the 33 contracts, every spec and ADR, and the agent rules. The coding agent reads CLAUDE.md and AGENTS.md first — they are written for it.',
+    what: 'Ring 0: the 83 packages, the 38 contracts per chain, every spec and ADR, and the agent rules. The coding agent reads CLAUDE.md and AGENTS.md first — they are written for it.',
     readFirst: ['CLAUDE.md', 'AGENTS.md', 'docs/architecture/agent-rules/', 'docs/architecture/package-consumer-map.md', 'docs/architecture/task-routing.md', 'specs/'],
   },
   {

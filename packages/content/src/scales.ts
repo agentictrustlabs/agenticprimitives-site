@@ -42,7 +42,7 @@ export const SCALES: readonly Scale[] = [
     name: 'Substrate',
     is: 'The published packages and contracts: everything an agentic application needs, as primitives with one identity, one authority mechanism and one evidence trail.',
     answers: 'What is an agent, what may it do, and how is that proven?',
-    holds: ['77 @agenticprimitives/* packages', '33 contracts (AgentAccount, CustodyPolicy, DelegationManager, enforcers, naming, registry kit, anchors)', 'the ontology, bound by IRI', 'the Developer Kit: create-app, doctor, conform'],
+    holds: ['83 @agenticprimitives/* packages', '38 contracts per chain (AgentAccount, CustodyPolicy, DelegationManager, enforcers, naming, registry kit, anchors)', 'the ontology, bound by IRI', 'the Developer Kit: create-app, doctor, conform'],
     chain: 'Any EVM. The contracts are deployed per chain; nothing in a package names one.',
     repo: { name: 'agentictrustlabs/agentic-primitives', url: 'https://github.com/agentictrustlabs/agentic-primitives', status: 'live', note: 'Ring 0. Packages on npm, exact-pinned by consumers.' },
     rule: 'Generic. No vertical, no brand, no hostname, no deployment. Products import it; it imports nothing of theirs.',
