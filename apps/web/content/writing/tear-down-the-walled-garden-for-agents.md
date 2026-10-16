@@ -128,12 +128,6 @@ If I could put five sentences in front of the teams shipping Muse, dots and Grok
 
 None of this requires a chain the public cannot read, a registry one company runs, or a wallet one company ships. It requires the keys to be delegates, the proofs to be evidence, and the receipts to belong to the person. The walled garden is not the agent. It is the decision to make the agent the holder.
 
-## Where this stands, and what is still owed
-
-Everything the example above uses is shipped in the published packages and running in the live federation, and the checks that prove it run on a schedule. The person's device key is held by a key service inside an attested confidential machine; it signs presentations only under evidence naming the digest, the venue and the predicate, and it cannot sign anything for her account. The organization's own agent issues, as an act under its steward's mandate, vouches on its own anchored row, and delivers into the member's vault. The list below is the rest, sorted by what each item is: a gap, a deployment, or a property we carry another way.
-
-The design, the specifications and the ontology that binds every one of these records to a declared class are public. If you are building a personal agent, build it so that the person could leave. If you are writing the standard, write the holder as a program acting under a mandate. And if you are Coin Center: thank you for the checklist. Here is the grade; the red cells are where we are working.
-
 ## The open items, sorted by what they are
 
 Three kinds of item, and the kind is said on each. A **gap** is something the design or the protocol does not yet do. **Infrastructure** means the design is done and what remains is to deploy or configure more of it. **Carried otherwise** means we do not close the gap as stated, because another mechanism gives the property and we say which. Each item also says whether the limit is OpenAC's or ours, and what it would add to the bill. The pilot today runs on one confidential VM (about $280–330 a month), Key Vault Premium (about $40–60), a burstable database, and Cloudflare Workers whose cost at this volume rounds to nothing.
