@@ -45,9 +45,9 @@ const LEARNS = [
 ];
 
 const STATUS = [
-  { k: 'Asking under a pen name', v: 'Live on explorer.faithnet.io: the Scripture Agent receives the question and a pairwise pen name, never a name, account or sign-in token.', meta: 'live' },
-  { k: 'A new pen name for every question', v: 'The primitive (`derivePerAskSubject`) is in review; the runtime switches to it when it ships. Today the pen name is stable per service, so asks are linkable to each other — not to her.', meta: 'shipping' },
-  { k: "Paying from an unmarked purse · the reader's card · the sealed proof", v: "Being built: the bookshop's issuing key and register, the claim-once receipt, and proof preparation and checking in sealed containers. Until then, licensed reading pays from a named treasury and the pass is tied to her account.", meta: 'in progress' },
+  { k: 'Asking under a new pen name every time', v: "Live on explorer.faithnet.io since 2026-10-17: each question reaches the Scripture Agent under a pen name derived for that question alone (`derivePerAskSubject`), with no name, account, sign-in token, trace id, or the role and situation she set for context.", meta: 'live' },
+  { k: "The bookshop's issuing key", v: "Live: lbsb.svc's P-256 issuing key in faithnet's key service, its facet signed by its steward and attested on faithchain, and its issuer record in its own vault.", meta: 'live' },
+  { k: "Paying from an unmarked purse · the reader's card · the sealed proof", v: "Being built: a purse with its own custodian (so the chain cannot tie it to her person account), the claim-once receipt and card issuance, and proof preparation and checking in sealed containers. Until then, licensed reading pays from a named treasury and the pass is tied to her account.", meta: 'in progress' },
 ];
 
 export default function PrivateScripture() {
