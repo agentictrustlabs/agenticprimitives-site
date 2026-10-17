@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, MemberMessageScene, NandaLayers, PrincipalAcrossChains, Scales, StitchedVsSeamless, SubstrateLayers, TownScene } from '@apsite/diagrams';
+import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, MemberMessageScene, NandaLayers, PrincipalAcrossChains, Scales, StitchedVsSeamless, SubstrateLayers, TownScene, TranslationLoop } from '@apsite/diagrams';
 
 const FILES: Record<string, () => React.JSX.Element> = {
   'estate-block': () => createElement(EstateBlock),
@@ -36,6 +36,7 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'member-message-board': () => createElement(MemberMessageScene, { beat: 6 }),
   'member-message-stamp': () => createElement(MemberMessageScene, { beat: 4 }),
   'member-message-read': () => createElement(MemberMessageScene, { beat: 7 }),
+  'translation-loop': () => createElement(TranslationLoop),
 };
 
 // Mirrors `.figure-dark` in apps/web/src/app/globals.css. Keep in step.
