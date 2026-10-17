@@ -45,9 +45,11 @@ const LEARNS = [
 ];
 
 const STATUS = [
-  { k: 'Asking under a new pen name every time', v: "Live on explorer.faithnet.io since 2026-10-17: each question reaches the Scripture Agent under a pen name derived for that question alone (`derivePerAskSubject`), with no name, account, sign-in token, trace id, or the role and situation she set for context.", meta: 'live' },
-  { k: "The bookshop's issuing key", v: "Live: lbsb.svc's P-256 issuing key in faithnet's key service, its facet signed by its steward and attested on faithchain, and its issuer record in its own vault.", meta: 'live' },
-  { k: "Paying from an unmarked purse · the reader's card · the sealed proof", v: "Being built: a purse with its own custodian (so the chain cannot tie it to her person account), the claim-once receipt and card issuance, and proof preparation and checking in sealed containers. Until then, licensed reading pays from a named treasury and the pass is tied to her account.", meta: 'in progress' },
+  { k: 'A new pen name for every question', v: "Live on explorer.faithnet.io: each question reaches the Scripture Agent under a pen name derived for that question alone, with no name, account, sign-in token, trace id, or the role and situation she set for context.", meta: 'live' },
+  { k: 'The unmarked purse', v: "Live: a treasury whose custodian is her sign-in on its own derivation path — no shared custodian with her account, no stewardship link, no name on chain. On the demo chain it mints its own test USDC in the same step it pays.", meta: 'live' },
+  { k: "The reader's card", v: "Live: lbsb.svc checks the payment on chain, spends the receipt once (claimed only with the paying purse's signature), and issues an OpenAC credential bound to a fresh key in her key service — recording no holder.", meta: 'live' },
+  { k: 'The sealed proof', v: "Live: for each licensed verse, a prover beside her agent makes a zero-knowledge proof over the Scripture Agent's single-use challenge, under a short-lived permission derived from the one she signed at purchase; a verifier checks it against lbsb's stamp on faithchain. About a minute per read.", meta: 'live' },
+  { k: 'Checked end to end', v: "A nightly-style gate drives the real UI as a fresh custody-grade person: sign in, secure her home, connect the Explorer, buy a pass, read a licensed verse privately.", meta: 'gate:private-scripture · 7/7' },
 ];
 
 export default function PrivateScripture() {
@@ -130,7 +132,7 @@ export default function PrivateScripture() {
         </div>
       </Section>
 
-      <Section tone="ink" number="06" eyebrow="Status" title="What runs today, and what is being built.">
+      <Section tone="ink" number="06" eyebrow="Status" title="All of it runs today.">
         <Ledger rows={STATUS} dark />
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href={EXPLORER} className="btn-brass">Try the Explorer <ArrowRight className="h-4 w-4" /></Link>
