@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'translating-the-bible-with-an-ontology',
+    title: 'A machine translated the Bible from Hebrew and Greek. The hard part was making sure it didn’t cheat.',
+    description:
+      'How a new American English edition (rbs) is drafted from the original languages without copying the English Bibles the model remembers: an ontology that describes the text once, a translation loop held to it by checks, a test harness that measures the checker before the model, and a workbench where people decide — and why the same four parts apply to every tough problem a model cannot be trusted with alone.',
+    kind: 'essay',
+    date: '2026-10-18',
+    file: 'translating-the-bible-with-an-ontology.md',
+  },
+  {
     slug: 'tear-down-the-walled-garden-for-agents',
     title: 'Your personal agent is the new walled garden',
     description:
