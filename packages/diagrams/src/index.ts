@@ -26,3 +26,5 @@ export type { MessageBeat, MessageBeatInfo } from './member-message';
 export { PrivateScriptureScene, SCRIPTURE_BEATS } from './private-scripture';
 export type { ScriptureBeat, ScriptureBeatInfo } from './private-scripture';
 export { TranslationLoop } from './TranslationLoop';
+export { TranslationLoopScene, TRANSLATION_BEATS } from './translation-loop-scene';
+export type { TranslationBeat, TranslationBeatInfo } from './translation-loop-scene';

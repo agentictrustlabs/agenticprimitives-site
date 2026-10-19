@@ -1,26 +1,32 @@
-// Generates the spoken walkthrough for /examples/member-message from the `narration` text on each beat, one MP3 per
-// scene, into public/audio/member-message/. The text on the page and the words in the clip come from the same source,
-// so they cannot drift. Re-run when a beat's narration changes.
+// Generates the spoken walkthrough for a town story from the `narration` text on each beat, one MP3 per scene, into
+// public/audio/<story>/. The text on the page and the words in the clip come from the same source, so they cannot
+// drift. Re-run when a beat's narration changes.
 //
-//   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate
+//   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate                          # member-message (default)
+//   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate translation-loop         # the Bible-translation loop
 //
 // Requires ffmpeg on PATH. Clips are committed; the site never calls the model at run time.
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MESSAGE_BEATS } from '@apsite/diagrams';
+import { MESSAGE_BEATS, TRANSLATION_BEATS } from '@apsite/diagrams';
+
+const STORIES = { 'member-message': MESSAGE_BEATS, 'translation-loop': TRANSLATION_BEATS } as const;
+const story = (process.argv.filter((a) => a !== '--')[2] ?? 'member-message') as keyof typeof STORIES;
+const BEATS = STORIES[story];
+if (!BEATS) { console.error(`unknown story ${story}; one of ${Object.keys(STORIES).join(', ')}`); process.exit(1); }
 
 const KEY = process.env.GEMINI_API_KEY;
 if (!KEY) { console.error('GEMINI_API_KEY is required'); process.exit(1); }
 const MODEL = process.env.TTS_MODEL ?? 'gemini-3.8-flash-tts';
 const VOICE = process.env.TTS_VOICE ?? 'Kore';
-const OUT = join(process.cwd(), 'public/audio/member-message');
+const OUT = join(process.cwd(), 'public/audio', story);
 mkdirSync(OUT, { recursive: true });
 
 // No style directive: this TTS model reads any preamble aloud (checked by transcribing the output), and it accepts no
 // system instruction. The narration text is written to be spoken as-is; the voice carries the tone.
 
-for (const [i, b] of MESSAGE_BEATS.entries()) {
+for (const [i, b] of BEATS.entries()) {
   const name = `${String(i + 1).padStart(2, '0')}-${b.id}`;
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${KEY}`, {
     method: 'POST',

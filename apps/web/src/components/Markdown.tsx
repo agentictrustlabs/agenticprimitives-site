@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Mermaid } from '@/components/Mermaid';
+import { TownStory } from '@/components/TownStory';
 
 function inline(text: string): ReactNode[] {
   const parts: ReactNode[] = [];
@@ -56,6 +57,22 @@ export function Markdown({ source }: { source: string }) {
           const lang = lines[0]!.slice(3).trim();
           const code = lines.slice(1, lines[lines.length - 1]!.trim() === '```' ? -1 : undefined).join('\n');
           if (lang === 'mermaid') return <Mermaid key={i} chart={code} />;
+          if (lang === 'story') {
+            // An animated walkthrough from the diagrams package, embedded in an essay:
+            //   ```story
+            //   scene: translation
+            //   narration: /audio/translation-loop   (optional)
+            //   ```
+            // The player is drawn on the dark panel the example pages use, and breaks out of the prose column so the
+            // picture can be read.
+            const opts = Object.fromEntries(code.split('\n').map((l) => l.split(':').map((x) => x.trim())).filter((kv) => kv[0]).map(([k, ...v]) => [k, v.join(':')]));
+            const scene = (opts.scene ?? 'street') as 'street' | 'day' | 'message' | 'scripture' | 'translation';
+            return (
+              <div key={i} className="relative left-1/2 my-10 w-[min(100vw-2rem,1280px)] -translate-x-1/2 rounded-2xl bg-ink p-4 text-white md:p-6">
+                <TownStory scene={scene} id={opts.id ?? `${scene}-story`} narration={opts.narration || undefined} autoplay={false} />
+              </div>
+            );
+          }
           return (
             <pre key={i} className="my-6 overflow-x-auto rounded-lg border border-line bg-cream px-4 py-3 font-mono text-[13px] leading-relaxed text-slate-700">
               <code>{code}</code>
