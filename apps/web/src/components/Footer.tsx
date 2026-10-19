@@ -32,6 +32,7 @@ export function Footer() {
             <li><Link href="/demos" className="hover:text-white">Demos</Link></li>
             <li><Link href="/examples/game-night" className="hover:text-white">Example: Game Night</Link></li>
             <li><Link href="/examples/bible-translation" className="hover:text-white">Example: Bible translation</Link></li>
+            <li><Link href="/writing/designing-a-radar-with-an-ontology" className="hover:text-white">Essay: Radar design</Link></li>
             <li><Link href="/writing" className="hover:text-white">Writing</Link></li>
             <li><Link href="/brand" className="hover:text-white">Brand</Link></li>
             <li><a href="/rss.xml" className="hover:text-white">RSS</a></li>

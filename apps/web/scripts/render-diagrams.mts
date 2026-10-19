@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, MemberMessageScene, NandaLayers, TranslationLoopScene, PrincipalAcrossChains, Scales, StitchedVsSeamless, SubstrateLayers, TownScene, TranslationLoop } from '@apsite/diagrams';
+import { ChainBoundary, ChainsAndEstates, CrossEstateAct, EstateBlock, EstateCommons, EstateResidents, Federation, IsoTown, MemberMessageScene, NandaLayers, PrincipalAcrossChains, RadarLoopScene, Scales, StitchedVsSeamless, SubstrateLayers, TownScene, TranslationLoop, TranslationLoopScene } from '@apsite/diagrams';
 
 const FILES: Record<string, () => React.JSX.Element> = {
   'estate-block': () => createElement(EstateBlock),
@@ -42,6 +42,11 @@ const FILES: Record<string, () => React.JSX.Element> = {
   'translation-loop-workbench': () => createElement(TranslationLoopScene, { beat: 12 }),
   'translation-loop-again': () => createElement(TranslationLoopScene, { beat: 13 }),
   'translation-loop': () => createElement(TranslationLoop),
+  'radar-loop-meet': () => createElement(RadarLoopScene, { beat: 0 }),
+  'radar-loop-sources': () => createElement(RadarLoopScene, { beat: 1 }),
+  'radar-loop-checks': () => createElement(RadarLoopScene, { beat: 8 }),
+  'radar-loop-workbench': () => createElement(RadarLoopScene, { beat: 12 }),
+  'radar-loop-again': () => createElement(RadarLoopScene, { beat: 13 }),
 };
 
 // Mirrors `.figure-dark` in apps/web/src/app/globals.css. Keep in step.

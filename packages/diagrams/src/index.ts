@@ -28,3 +28,5 @@ export type { ScriptureBeat, ScriptureBeatInfo } from './private-scripture';
 export { TranslationLoop } from './TranslationLoop';
 export { TranslationLoopScene, TRANSLATION_BEATS } from './translation-loop-scene';
 export type { TranslationBeat, TranslationBeatInfo } from './translation-loop-scene';
+export { RadarLoopScene, RADAR_BEATS } from './radar-loop-scene';
+export type { RadarBeat, RadarBeatInfo } from './radar-loop-scene';

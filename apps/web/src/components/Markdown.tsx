@@ -66,7 +66,7 @@ export function Markdown({ source }: { source: string }) {
             // The player is drawn on the dark panel the example pages use, and breaks out of the prose column so the
             // picture can be read.
             const opts = Object.fromEntries(code.split('\n').map((l) => l.split(':').map((x) => x.trim())).filter((kv) => kv[0]).map(([k, ...v]) => [k, v.join(':')]));
-            const scene = (opts.scene ?? 'street') as 'street' | 'day' | 'message' | 'scripture' | 'translation';
+            const scene = (opts.scene ?? 'street') as 'street' | 'day' | 'message' | 'scripture' | 'translation' | 'radar';
             return (
               <div key={i} className="relative left-1/2 my-10 w-[min(100vw-2rem,1280px)] -translate-x-1/2 rounded-2xl bg-ink p-4 text-white md:p-6">
                 <TownStory scene={scene} id={opts.id ?? `${scene}-story`} narration={opts.narration || undefined} autoplay={false} />

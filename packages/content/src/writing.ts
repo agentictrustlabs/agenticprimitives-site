@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'designing-a-radar-with-an-ontology',
+    title: 'A machine designed a tracking radar. The hard part was making sure it didn’t invent the physics.',
+    description:
+      'How a tracking radar for a low-observable aircraft is designed from open physics without copying a brochure the model remembers: an ontology that describes the problem once, a design loop held to a deterministic simulator, a test harness that measures the checker before the model, and a workbench where people decide — the same four parts as the Bible-translation programme, on a different domain.',
+    kind: 'essay',
+    date: '2026-10-18',
+    file: 'designing-a-radar-with-an-ontology.md',
+  },
+  {
     slug: 'translating-the-bible-with-an-ontology',
     title: 'A machine translated the Bible from Hebrew and Greek. The hard part was making sure it didn’t cheat.',
     description:

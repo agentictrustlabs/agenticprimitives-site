@@ -4,14 +4,15 @@
 //
 //   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate                          # member-message (default)
 //   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate translation-loop         # the Bible-translation loop
+//   GEMINI_API_KEY=… pnpm --filter @apsite/web narrate radar-loop               # the radar-design loop
 //
 // Requires ffmpeg on PATH. Clips are committed; the site never calls the model at run time.
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { MESSAGE_BEATS, TRANSLATION_BEATS } from '@apsite/diagrams';
+import { MESSAGE_BEATS, RADAR_BEATS, TRANSLATION_BEATS } from '@apsite/diagrams';
 
-const STORIES = { 'member-message': MESSAGE_BEATS, 'translation-loop': TRANSLATION_BEATS } as const;
+const STORIES = { 'member-message': MESSAGE_BEATS, 'translation-loop': TRANSLATION_BEATS, 'radar-loop': RADAR_BEATS } as const;
 const story = (process.argv.filter((a) => a !== '--')[2] ?? 'member-message') as keyof typeof STORIES;
 const BEATS = STORIES[story];
 if (!BEATS) { console.error(`unknown story ${story}; one of ${Object.keys(STORIES).join(', ')}`); process.exit(1); }
