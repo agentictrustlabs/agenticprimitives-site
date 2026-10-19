@@ -32,7 +32,7 @@ Four parts. The **ontology** says what exists in the text and how it must be ren
 
 An ontology is a formal description of a domain: what kinds of things exist, how they relate, what values a field may take, and the individual things themselves. Ours sits on the same foundations the rest of Agentic Primitives uses — W3C PROV-O for who did what, DOLCE for the difference between a *description* (a rule that should hold) and a *situation* (what actually happened), P-Plan for plans with steps — and adds a scripture layer on top.
 
-What is in it today:
+What is in it today, and then — because a census is not an argument — the passages where each layer changes the English, or protects it:
 
 - **Every person, place and being in the Bible as a node, not a name.** 3,129 persons with kinship and period; 1,007 places, 870 of them on a map; 477 narrative events with their participants; 78 collectives and 843 memberships. Built from open scholarship (STEP Bible, OpenBible, the Theographic project) and kept under their licences. The Judas who betrayed Jesus is one node in all four Gospels; the patriarch Judah is another. A rendering is a row on the node — so when a second target language comes, it adds rows, never nodes.
 - **Every Hebrew and Greek word the source uses as a key term**, 5,168 of them, each opening a lexicon entry.
@@ -43,6 +43,77 @@ What is in it today:
 - **God, the Son and the Holy Spirit as referents**, with the sixteen divine names as *forms* of them. יהוה becomes "the LORD" and אֱלֹהִים becomes "God" because those are two renderings of one node, not because a string matched.
 - **The translation brief as a typed norm**: what the drafter may see, what it must never see, how gender language, group names and deity pronouns are handled — with a digest, so a run can say which version of the brief it ran under.
 - **Decisions as nodes.** When the chair ruled that Ἰουδαῖοι in John is "the Jews" — never "the Jewish leaders", never "the Judeans", with a note where the authorities are meant — the ruling became a record on the concept (`renderAs` / `neverRenderAs`), the checker holds every draft to it, and the 36 verses of the first draft that had chosen otherwise are listed for revision. A human decision is a row the next run reads.
+
+### What each layer does to a verse
+
+The census above is a list. Here is what it *does*. Five layers, each with passages where the English would go wrong — or stay honest — because of that layer. The source is shown; the English is the difference that layer makes.
+
+**1. Lexicon — what meanings does this source word have?**
+
+The Hebrew word רוּחַ (*ruach*) is documented with meanings including wind, breath, and spirit. These are different uses of the same word, not a translator's preference.
+
+| Passage | What is happening | The meaning that fits |
+| --- | --- | --- |
+| Genesis 8:1 | God causes *ruach* to pass over the earth as the floodwaters recede. | Wind |
+| Ezekiel 37:5 | The dry bones are promised *ruach* so that they will live. | Breath — inside the vision's wider breath/spirit imagery |
+| Job 15:13 | Eliphaz accuses Job of turning his *ruach* against God. | Spirit — Job's inward disposition |
+
+The lexicon gives the translator the available meanings. The passage chooses which one fits. A rule that always rendered *ruach* as "spirit" would fail in Genesis 8:1 — and that is exactly the kind of rule a model, left to its memory of English Bibles, will apply.
+
+A unit value can ride along with a word the same way. Exodus 16:36 says an עֹמֶר (*omer*) is one-tenth of an ephah. The record is: dry-volume measure; 1 omer = 0.1 ephah. That relationship is in the text. Converting it into litres is a further historical estimate, and the ontology keeps the two apart — the text's ratio is a fact; the litre figure is an estimate with a source.
+
+**2. Names — which entity does this name identify?**
+
+The Greek name Ἰησοῦς (*Iēsous*) is one spelling and three people.
+
+| Passage | Person identified | Conventional English |
+| --- | --- | --- |
+| Matthew 1:21 | Mary's son | Jesus |
+| Acts 7:45 | The leader associated with Israel's entry into the land | Joshua |
+| Colossians 4:11 | Paul's coworker, also called Justus | Jesus |
+
+The dictionary spelling cannot tell them apart. The names layer can: for Acts 7:45 it supplies the lemma Ἰησοῦς, the resolved person Joshua son of Nun, and the approved English "Joshua". The ontology node keeps Joshua, Jesus of Nazareth, and Jesus Justus as three referents. A model that has read a thousand English Bibles still has one English string for the Greek name; without the node it will write "Jesus" in Acts 7:45.
+
+A divine-name example is Psalm 23:1, where the Hebrew is יהוה. A project that has decided "the LORD" produces "The LORD is my shepherd"; one that has decided "Yahweh" produces "Yahweh is my shepherd." The source name is the same; the output follows the project's convention, stored as a rendering on the node, not guessed from a glossary.
+
+**3. Syntax — who is doing what, and how do the words connect?**
+
+The opening of Genesis 22:7 reads וַיֹּאמֶר יִצְחָק אֶל־אַבְרָהָם אָבִיו.
+
+| Source word | Basic meaning | Grammatical role |
+| --- | --- | --- |
+| וַיֹּאמֶר | spoke / said | Verb |
+| יִצְחָק | Isaac | Subject |
+| אֶל | to | Preposition introducing the addressee |
+| אַבְרָהָם | Abraham | Addressee |
+| אָבִיו | his father | Identifies Abraham's relationship to Isaac |
+
+The source order is roughly "spoke Isaac to Abraham his-father." Natural English rearranges that to "Isaac spoke to Abraham his father." The syntax the drafter is shown is: clause order verb–subject–recipient; speaker Isaac; recipient Abraham; "his father" is Abraham, father of Isaac.
+
+Two verses later, Genesis 22:9, Abraham is named earlier in the verse; the verb "bound" does not repeat his name. Isaac follows the direct-object marker אֶת. The tree identifies Abraham as the continuing subject and Isaac as the object. That is how syntax stops a model confusing the person acting with the person receiving the action — a swap no lexicon lookup would catch.
+
+**4. Senses — which meaning applies at this occurrence?**
+
+Jonah 3:10 is the same Hebrew word twice. הָרָעָה (*hara‘ah*) describes the people's way of life, from which they turn — their evil, their wicked conduct — and, in the same verse, what God had threatened to bring upon them: disaster, calamity. The Hebrew connects the two through related wording. An English translation can distinguish their evil conduct from the threatened disaster, and a note can keep the wordplay. The records are:
+
+| Occurrence | Sense | Describes |
+| --- | --- | --- |
+| 1 | morally wrongful | their conduct |
+| 2 | destructive calamity | the threatened outcome |
+
+That is sense selection: applying the appropriate meaning to each occurrence of the same lemma. A concept rule keyed to the *word* would fire on both; a concept keyed to the *sense* fires on one.
+
+Where the reading is genuinely open, the layer must not close it. רוּחַ אֱלֹהִים in Genesis 1:2 is "Spirit of God" or "wind from God" — two recognised competing readings. A responsible input preserves both candidates, with their supporting arguments, rather than presenting one interpretation as an uncontested dictionary fact. That is the 2,503 two-sense tokens counted later in this essay: left open, not silently resolved.
+
+**5. Situation — who is speaking, to whom, and what is happening?**
+
+Job 15:2 has imagery of windy knowledge and the east wind. The situation is: speaker Eliphaz; addressee Job; literary form a poetic dialogue; speech action a rhetorical challenge, a rebuke; immediate purpose to attack the value of Job's speech. Job 15:1 names Eliphaz as the speaker, and the following verses continue his criticism. That supports reading verse 2 as an accusatory rhetorical question, not a sincere request for information about wise people.
+
+The wider book also matters. Job 42:7 rebukes Eliphaz and his companions for their speech about God. The ontology therefore records "Eliphaz asserts this about Job", rather than treating every accusation as an established fact about Job. That distinction is the narrative framing, stored as situation, not inferred by the model from the verse alone.
+
+Jonah 3:1 marks the divine communication as occurring a second time. Its situation includes the earlier commission and Jonah's flight. That context lets the translator keep the force of a *renewed* commission, while keeping explanations of Jonah's motives separate from what this verse actually says.
+
+These five are what the drafter is shown, as text, with no English of the passage in it. A model that has to account for *ruach* as wind here, for Ἰησοῦς as Joshua here, for Abraham as the one who binds and Isaac as the one bound, for *hara‘ah* as conduct in one clause and calamity in the next, and for Eliphaz as the one asserting, not the narrator as the one establishing — that model is being held to the source. One that is not shown them is reciting.
 
 Licensing is a layer of its own: the sources that are CC BY feed the knowledge base; the share-alike ones (the dictionaries, the narrative events) live in their own named graphs, joined by identifier and never mixed in. The build refuses a source whose licence is not on the allow-list.
 
