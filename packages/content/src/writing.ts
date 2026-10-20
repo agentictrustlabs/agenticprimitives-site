@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'naba-a-language-the-model-does-not-know',
+    title: 'Tar Melbene has no Bible, and the model does not know the language.',
+    description:
+      'How an experimental draft of Jonah and John in Tar Melbene (Naba) was made from open scholarship only: a lexicon whose every word cites a published source, orthography rules as data, gaps left in the verse, and the same ontology that holds the English edition.',
+    kind: 'essay',
+    date: '2026-10-20',
+    file: 'naba-a-language-the-model-does-not-know.md',
+  },
+  {
     slug: 'designing-a-radar-with-an-ontology',
     title: 'A machine designed a tracking radar. The hard part was making sure it didn’t invent the physics.',
     description:
