@@ -4,7 +4,7 @@ Ask a large language model to translate John 3:16 from the Greek and it will giv
 
 This is the story of how we built a system that translates the Bible from the original languages into a new American English edition (we call it `rbs`), why a model on its own could not do it honestly, and what it took instead: an ontology that describes the text, a translation loop that is held to that ontology, a test harness that measures the loop before it trusts it, and a workbench where people decide. Each piece exists because the job is genuinely hard. And the shape of the solution is not about the Bible at all.
 
-*Updated 20 October 2026: a language the model does not know — Tar Melbene (Naba), drafted only from open scholarship, with every missing word left as a gap. The 19 October note still stands: the second complete draft of the whole Bible, concept rules found from data, and how the translation is kept from creeping toward the English Bibles a model remembers.*
+*Updated 20 October 2026: a language the model does not know — Tar Melbene (Naba), drafted only from open scholarship, with every missing word left as a gap. The procedure an auditor can replay — the graph, the plan, the tests, and the workbench — is [Auditing the American English translation](/writing/auditing-the-english-bible-translation). The 19 October note still stands: the second complete draft of the whole Bible, concept rules found from data, and how the translation is kept from creeping toward the English Bibles a model remembers.*
 
 ## Why this is a tough job
 
