@@ -86,6 +86,52 @@ The scripture knowledge base is not this graph. It is its own named graph, `urn:
 
 What the graph is for, in the English loop: a check does not invent a rule. `names` reads the node's decided rendering. `terminology-consistency` reads the concept's stems, and only on the dictionary sense that denotes the concept. `divine-name` holds only when the Strong's number is beside its partner or is exclusive. A change to a class or a rendering is a change to the source Turtle, then preflight, then a versioned release. The graph on the site is a view of that source. It does not authorize a write.
 
+## The skill artifacts that direct the harness
+
+A skill is a `SKILL.md` in the corpus, canonical id `skill:bible-translation/<name>`. The runtime loads the ones that govern a model step by that id (`GET /skill?id=…` on skills-a2a), strips the YAML frontmatter, and keeps the body with the content commitment. On the trace, `governedBySkill` is `skill:bible-translation/<name>@<commitment>`. An auditor resolves that id in the corpus and checks the body against the system prompt of the activity. A corpus miss does not invent a skill: the plan falls back to a built-in brief and the run records a warning.
+
+The frontmatter is the contract. `capability` is the operation. `covers` names the ontology classes the skill may produce. `excludes` names the classes it must not touch. `tools` names the MCP tools it may call. `utterances` include asks it must refuse (`isNot`). The body is the instruction the model step receives. Code then appends invariants the skill is not allowed to drop: no existing English translation of the passage, the tokens are the text, alignment rules, and — when the ask turned them on — the syntax/sense rules and the context rules.
+
+```mermaid
+flowchart LR
+  corpus[Corpus SKILL.md plus commitment]
+  load[governingSkills]
+  plan[translatePlan]
+  model[Model step system prompt]
+  trace[Activity governedBySkill]
+  corpus --> load --> plan
+  plan --> model
+  plan --> trace
+  brief[en-us-translation-brief body]
+  inv[Code invariants appended after the body]
+  brief --> model
+  inv --> model
+```
+
+Skills the English translate run actually loads (`apps/translation-runtime/src/skills.ts`):
+
+| Capability | Artifact | What it does to the harness |
+| --- | --- | --- |
+| `btr.translate.draft` | `skill:bible-translation/translate-from-source` | Body is the drafter's and every reviser's system prompt. `governedBySkill` on `draft`, `revise`, `revise2`, `revise3` |
+| `btr.translate.brief` | `skill:bible-translation/en-us-translation-brief` | Body is appended as "The translation brief." Registry release names `brief-amer-v1@2.2.0`; the run's prompt is whatever commitment the corpus served |
+| `btr.referents.resolve` | `skill:bible-translation/resolve-referents` | Body is appended only when the ask sets `referents`. Production shape leaves this off. Governs the `referents` step when it runs |
+| `btr.review.critique` | `skill:bible-translation/independent-critique` | Body is the critic's system prompt, and only when the ask names a critic different from the drafter. Production shape does not |
+| `btr.scope.decline` | `skill:bible-translation/decline-out-of-scope` | An out-of-scope ask never builds a translate plan. One activity, `decline`, governed by this skill |
+
+`translate-from-source` tells the model the order of work and the tools those steps are: read `get_source_tokens`, open `lookup_lexicon` (a concept rule on the entry is binding; a divine-name convention is exact; a unit stays the source unit), resolve `lookup_names` (the referent's decided rendering, not the spelling), and on the memory arm only `find_similar_approved`. It forbids an English edition as source, a localisation, and a request to make the text say more than the tokens. The alignment contract in the skill is the string the checker reads.
+
+`en-us-translation-brief` is the norm, not a draft. It states what is shown and never shown, the textual basis (WLC and the Greek the frozen tables carry), names and divine names through the knowledge base, register, units, and ambiguity. A change of brief is a new version a custodian cuts. A run does not edit it. The digest of the brief is what a decision record should name.
+
+Skills that name the tools, but whose bodies are not injected into the translate plan. The code is the execution. The skill is the written contract an auditor compares to the tool:
+
+| Capability | Artifact | Tool the plan calls | Wired into the prompt? |
+| --- | --- | --- | --- |
+| `btr.translate.check` | `source-fidelity-checks` | `run_translation_checks`, and `get_reference_renderings` for graders only | No. The checker is code. The skill says what that code must catch |
+| `btr.decision.record` | `record-decision` | `propose_translation` | No. The propose step writes the proposal and the decision fields |
+| `btr.review.submit` | `submit-for-review` | `submit_for_review` | Not in the production translate plan. The workbench is the review |
+
+Skills that belong to the other task, Irish-English localisation of the BSB, and do not direct this harness: `assemble-passage-context`, `rules-pass`, `localise-segments`, `structure-and-meaning-checks`. A translate arm on a localise ask is refused, and the reverse.
+
 ## The agent harness, step by step
 
 One passage is one `POST /harness/ask` with `task: translate`, an arm, a target edition, and a `runRef` of the form `<edition>/<osis range>`. The driver is `scripts/translate-bible.mts`. It walks pericopes, appends a ledger outside the repository (`~/eval-store/rbs/ledger.jsonl` for the first edition, `~/eval-store/rbs-v2` for the second), and can resume. `--retry-blocking` re-runs only chunks whose last checks still block. The PROV record of the chunk — every activity, its inputs, outputs, model, and token counts — is `~/eval-store/<store>/runs/<ref>.json`. Those words are not committed.
@@ -122,25 +168,28 @@ flowchart TD
   checks -->|clean| best
 ```
 
-What each step is, and what an auditor should find in the run file.
+What each step reads, which skill directs it, and what an auditor should find in the run file. Tool steps are not governed by a skill body. The skill named in parentheses is the contract for that tool.
 
-| Step | Kind | Who | What must be true |
+| Step | Skill | Data in | What must be true |
 | --- | --- | --- | --- |
-| `tokens` | tool | code | No English gloss in the prompt. Cantillation stripped. Labels are `v1`…`vn`. |
-| `lexicon` | tool | code | Strong's entry, and a concept rule when the number is bound to one |
-| `names` | tool | code | `v3 t1` plus the knowledge-base IRI. A rendering already decided is `RENDER AS` |
-| `situation` | tool | code | Book, attributed authorship, what is happening. Optional: a miss does not stop the chunk |
-| `syntax` | tool | code | Clause outline with token numbers. No English of the verse |
-| `senses` | tool | code | The sense at this passage. `OPEN` when the dictionary lists two |
-| `draft` | model | drafter, Haiku 5.5 | One call. Alignment is one string: `1 bereshit=In the beginning; 4=-` |
-| `unblind` | tool | code | Labels mapped back to OSIS. The model never had to emit the reference |
-| `repair` | tool | code | Binds names and glosses already in the verse. Does not rewrite the English |
-| `checks` | tool | code | Coverage, addition, negation, names, quantities, terminology, recall as observation |
-| `revise` / `revise2` | model | reviser, Haiku 5.5 | Only when `revisable > 0`. Same tool description as the draft, so the prefix stays cached |
-| `revise3` | model | reviser2, Sonnet 5 | Last round only. A failure that remains blocks the proposal |
-| `final` | tool | code | Keeps the pass with the fewest failures, not the last pass |
-| `finalChecks` | tool | code | `recallBlocks` on. A verse still identical to a held edition blocks. An addition blocks |
-| `propose` | tool | code | One proposal per verse: text, alignments, checks, models, cost, `runRef` |
+| `tokens` | `translate-from-source` names `get_source_tokens` | Frozen `wlc-ne1904` tokens for the OSIS range | No English gloss. Cantillation stripped. Labels `v1`…`vn` |
+| `lexicon` | same, `lookup_lexicon` | Strong's numbers from those tokens; concept, divine name, unit from the knowledge base | A concept `rule` on the entry is binding |
+| `names` | same, `lookup_names` | Forms at these verses, knowledge-base IRIs, decided `NameRendering` for `en-US` | Prompt says `v3 t1` and the IRI. Decided rendering is `RENDER AS` |
+| `situation` | none injected; tool `get_passage_situation` | Book record and the passage situation, when `context` is on | Optional. A miss does not stop the chunk. No English of the verse |
+| `syntax` | none injected; tool `get_source_syntax` | Macula trees joined to the frozen tokens, when `analysis` is on | Clause outline with token numbers |
+| `senses` | none injected; tool `get_token_senses` | UBS sense lists joined to these tokens | `OPEN` when the dictionary lists two |
+| `similar` | `translate-from-source` step 4, memory arm only | Approved proposals in this edition, limit 5 | Absent on the production shape unless the arm is the memory arm |
+| `draft` | `translate-from-source` body + brief body + invariants | Cached prefix: tokens, lexicon, names, situation, syntax, senses | One call. Alignment string `1 bereshit=In the beginning; 4=-`. `governedBySkill` is the corpus commitment |
+| `unblind` | code | Draft plus the label map from `tokens` | OSIS ids restored. The model never emitted the reference |
+| `repair` | code, `repair_alignments` | Draft text, tokens, rendering lexicon | Binds names and glosses already in the verse. Does not rewrite the English |
+| `checks` | contract: `source-fidelity-checks` | Repaired verses, variety `en-US`, frozen tokens, name renderings, concept stems. Reference editions only inside the checker, not in the draft prompt | Coverage, addition, negation, names, quantities, terminology. Recall is an observation until the last gate |
+| `revise` / `revise2` | same skill as `draft` | The cached prefix, the last draft, the failing checks relabelled to `v1`… | Only when `revisable > 0`. Same tool description as the draft |
+| `revise3` | same skill; model role `reviser2` | Same, plus the last-round rule | Sonnet 5. A failure that remains blocks |
+| `final` | code | Every pass and its checks | Fewest failures, not the latest pass |
+| `finalChecks` | same check contract | The kept pass, `recallBlocks: true` | A verse still identical to a held edition blocks. An addition blocks |
+| `propose` | contract: `record-decision` | Kept verses, final checks, notes, arm, `runRef`, model role | One row per verse in the edition store. Status is not approval |
+
+`get_reference_renderings` is a tool on `source-fidelity-checks` and is marked `forEvaluationOnly`. Graders and the recall gate may read WEB, ASV, KJV, and the BSB. No model step's input names it. An auditor greps the run file for that tool id under a step whose `kind` is `model` and expects no hits.
 
 The revise instruction tells the model that a match with a published Bible is an observation, not an order to paraphrase. Where a check names a concept rule, the word of the key term stays the rule's word. The construction around it may change. That rule was added after John 3:18, where a recall gate had pushed a reviser from "believes" / "saved" into "trusts" / "escapes."
 
@@ -246,14 +295,15 @@ The worked example already in the essay is the ruling on Ἰουδαῖοι in J
 ## A checklist
 
 1. Open the graph URL above. Confirm the module "From the Original Languages" lists `SourceToken`, `TokenAlignment`, `TranslationBrief`, and `ReferenceEdition`.
-2. Open one pericope run file. Confirm `tokens.prompt` contains no verse of a published English Bible, and that `get_reference_renderings` is not an input of `draft`.
-3. Confirm the proposal's `checks.checkerVersion` matches the release manifest's checker version, or that a later re-check is a separate file.
-4. Confirm `final` kept the pass with fewer failures when a later revise got worse. The step output says which candidate won.
-5. Confirm the last checks carry `recallBlocks`, and that a verse still identical to a held edition is blocking.
-6. Confirm the held-out table above against `evaluations/results/translation/` for `tr-heldout-prod-1`, judge Sonnet 5.5, and that the gpt-5.5 reading is a separate file.
-7. Confirm the regression catch map has an entry for every planted kind, and that flipped person is still reported near 0.80 rather than silently dropped.
-8. On the workbench, confirm the header names `2026-10-19-v2.1` and edition `rbs-v2`. Accept a verse as one person, validate as a second, and confirm the first person cannot approve it.
-9. Edit an accepted verse and confirm the earlier receipt is marked stale.
-10. File a change request and confirm the proposer cannot accept it, and that "accepted" does not change the ontology until a release is cut and measured.
+2. On a model activity, resolve `governedBySkill`. It is `skill:bible-translation/translate-from-source@<commitment>`. Fetch that id from the corpus and confirm the system prompt starts with that body, then the brief, then the invariants.
+3. Confirm `get_reference_renderings` is not an input of `draft` or any `revise` step, and that `tokens.prompt` contains no verse of a published English Bible.
+4. Confirm the proposal's `checks.checkerVersion` matches the release manifest's checker version, or that a later re-check is a separate file.
+5. Confirm `final` kept the pass with fewer failures when a later revise got worse. The step output says which candidate won.
+6. Confirm the last checks carry `recallBlocks`, and that a verse still identical to a held edition is blocking.
+7. Confirm the held-out table above against `evaluations/results/translation/` for `tr-heldout-prod-1`, judge Sonnet 5.5, and that the gpt-5.5 reading is a separate file.
+8. Confirm the regression catch map has an entry for every planted kind, and that flipped person is still reported near 0.80 rather than silently dropped.
+9. On the workbench, confirm the header names `2026-10-19-v2.1` and edition `rbs-v2`. Accept a verse as one person, validate as a second, and confirm the first person cannot approve it.
+10. Edit an accepted verse and confirm the earlier receipt is marked stale.
+11. File a change request and confirm the proposer cannot accept it, and that "accepted" does not change the ontology until a release is cut and measured.
 
 If any of those fail, the edition's stage on the public page is the honest one: a draft, with the open check named beside the verse.

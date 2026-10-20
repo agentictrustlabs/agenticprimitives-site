@@ -19,7 +19,7 @@ export const WRITING: readonly Writing[] = [
     slug: 'auditing-the-english-bible-translation',
     title: 'Auditing the American English translation: ontology, agent harness, tests, and the workbench',
     description:
-      'The procedure behind RBS 2026-10-19-v2.1: the Skills graph modules, every step of the translation plan, the pre-registered test harness with its floor, ceiling and held-out numbers, and the three-person workbench — written so an outsider can check it.',
+      'The procedure behind RBS 2026-10-19-v2.1: the skill artifacts that direct each harness step, the data those steps read, the Skills graph, the pre-registered tests, and the three-person workbench.',
     kind: 'essay',
     date: '2026-10-20',
     file: 'auditing-the-english-bible-translation.md',
