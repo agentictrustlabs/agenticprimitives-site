@@ -14,9 +14,9 @@ The written description is Elaine Marie Scherrer's [*A phonological description 
 
 ![Title page of Elaine Marie Scherrer, A phonological description of Naba, Afrika und Übersee 95, 2022. CC BY 4.0.](/writing/naba/scherrer-2022-title.png)
 
-Naba, or Melbene, also called Bilala, is a Nilo-Saharan language of the Bongo-Bagirmi group, Central Sudanic branch. It is spoken in the Batha-Est region of central Chad by about 410,000 people across three ethnic groups. The relatives that already have documentation, the paper says, are Kenga, Bagirmi and Sar. Chadian Arabic is the trade language around it, which is why religious and abstract vocabulary arrives as loans, and why a model that "knows" the region reaches for those loans first.
+Naba, or Melbene, also called Bilala, is a Nilo-Saharan language of the Bongo-Bagirmi group, Central Sudanic branch. It is spoken in the Batha-Est region of central Chad by about 410,000 people across three ethnic groups — Bilala, Kuka and Medogo. The paper's consultant speaks the Yao sub-dialect of Bilala. The relatives that already have documentation, the paper says, are Kenga, Bagirmi and Sar. Chadian Arabic is the trade language around it, which is why religious and abstract vocabulary arrives as loans, and why a model that "knows" the region reaches for those loans first.
 
-The paper describes the phonemic inventory, the syllable and what may stand in it, the tone system and how tone interacts with other processes, and the lexical and post-lexical processes. Its special claim is a sonority hierarchy: affricates and non-sibilant fricatives group with the stops as obstruents; nasals, liquids and approximants are the sonorants; and the two sibilants /s/ and /z/ sit on a level of their own between the two, because they cannot be classed with either. That hierarchy is what drives the syllable, the sandhi, and a set of processes that change a word once it is no longer said alone.
+The paper (Afrika und Übersee 95, pages 76–134) describes **25 consonants and 5 vowels**, the syllable and what may stand in it, the tone system and how tone interacts with other processes, and the lexical and post-lexical processes. Its special claim is a sonority hierarchy: affricates and non-sibilant fricatives group with the stops as obstruents; nasals, liquids and approximants are the sonorants; and the two sibilants /s/ and /z/ sit on a level of their own between the two, because they cannot be classed with either. That hierarchy is what drives the syllable, the sandhi, and a set of processes that change a word once it is no longer said alone. Vowels are lax in a closed syllable. Between vowels, /tʃ/ is heard [ʃ] — *gumace* "heart" is the written form of underlying *gumatʃe*.
 
 Two glossed sentences in the paper closed gaps we had been marking by hand. "Go" is *ɓawo*, in a sentence about going to a field. Existence and location are carried by *utu*, glossed "exist", and by postpositions — not by a verb "to be" of the kind English uses in "the word was God." Those are linguistic examples. They are not Scripture, and they still have to be reconciled with the dialect and the spelling a community actually writes.
 
@@ -28,16 +28,34 @@ What the paper and the 2021 talk together let us state, as a working description
 | ISO / Glottolog | `mne` · `naba1253` | ISO 639-3; Glottolog |
 | Family | Nilo-Saharan › Central Sudanic › Bongo-Bagirmi (Bagirmi branch) | Scherrer 2022 |
 | Relatives with documentation | Kenga, Bagirmi, Sar | Scherrer 2022 |
-| Speakers | about 410,000, three ethnic groups | Scherrer 2022, citing Eberhard et al. |
-| Where | Batha-Est, central Chad | Scherrer 2022 |
+| Speakers | about 410,000 | Scherrer 2022, citing Eberhard et al. |
+| Ethnic groups / dialects | Bilala, Kuka (Kouka), Medogo | Scherrer 2022; Glottolog `naba1253` |
+| Where | Batha-Est, central Chad; the paper's consultant is from Yao | Scherrer 2022 |
 | Trade language | Chadian Arabic — religious and abstract words arrive as loans | the regional setting the sources describe |
 | Scripture | none in this language | — |
-| Consultant dialect of the paper | Yao sub-dialect (Bilala); consultant Abderhaman Daoud of Yao | Scherrer 2022 |
+| Consultant of the paper | Abderhaman Daoud of Yao; Yao sub-dialect (Bilala) | Scherrer 2022 |
+| Inventory | 25 consonants, 5 vowels (long vowels written double) | Scherrer 2022 |
 | Tone | lexical and grammatical; **not written** | Scherrer 2021 talk (community decision) |
 | Basic order | subject–verb–object; noun before its modifiers | Scherrer 2022 §1.4 |
+| Paper | Afrika und Übersee 95:76–134; 81 interlinear glossed examples | Scherrer 2022 |
+| Talk | 16:37; 15th Nilo-Saharan Linguistics Colloquium, Edinburgh, 4 Aug 2021 | Zenodo 5395439 |
+| Orthography workshops | eight speakers, four workshops; statement finalized July 2020; community decided every point | Scherrer 2021 talk |
 | Not yet ours to state | negation, questions, relative clauses, tense | no statement in these sources |
 
-The paper's examples also give us a suffix table we can write down. Possessive and object: 1sg *-ma*, 2sg *-i*, 3sg *-n̰a* (written *-ca / -ja / -ya* after the consonant), 1pl *-ze / -zege*, 2pl *-se / -sege*, 3pl *-re / -rege*. Subject marking: prefixes for 1sg and 1pl on vowel-initial verbs only; suffixes for 2pl and 3pl on any verb; 2sg and 3sg unmarked, so a third-person verb is the bare form and *ya* is the optional pronoun. Location and existence: *utu* "exist", *ti* "at, in", *te* "to / with", *taara* "above", *derg* "under". Numbers seen in the sources: *fene* "one", and a "ten two" construction for twenty.
+The paper's Table 11 is the suffix table we can write down. The plural object forms carry the plural clitic *=ge*.
+
+| | Possessive (on a noun) | Object (on a verb) |
+| --- | --- | --- |
+| 1sg | *-ma* | *-ma* |
+| 2sg | *-i* | *-i* |
+| 3sg | *-n̰a* | *-n̰a* (written *-ca / -ja / -ya* after the consonant) |
+| 1pl | *-ze* | *-zege* |
+| 2pl | *-se* | *-sege* |
+| 3pl | *-re* | *-rege* |
+
+Subject marking, from §1.4: prefixes for 1sg and 1pl on vowel-initial verbs only; suffixes for 2pl (*-ki*) and 3pl (*-ni*) on any verb; 2sg and 3sg unmarked, so a third-person verb is the bare form and *ya* is the optional pronoun. Independent pronouns are optional; *zig / zeg* is 1pl. Noun-phrase clitics attach at the end of the phrase: *=ge* plural, *=ne* definite, *=n* connective. *an* is the genitive "of". Location and existence: *utu* "exist", *ti* "at, in", *te* "to / with", *taara* "above", *derg* "under"; demonstratives *nani* "here", *ɗe* "there", *nen* "this". Numbers seen in the sources: *fene* "one", ASJP *riyo* "two" and *kilkama* "one", and a "ten two" construction for twenty.
+
+The talk's own sentences are how those pieces sit together: *ya kay yele* "he sees a bird"; *mad an cema* "my mother's baboon"; *werg nen* "this mouse"; *ya tek te sa koolo* "he is rich with many cows." Those are linguistic examples. They are not Scripture.
 
 ## The orthography is a recorded decision, not a guess
 
@@ -45,11 +63,25 @@ The other open source is the video. Scherrer's talk [*Lexical phonology and the 
 
 ![Zenodo record 5395439: Lexical phonology and the participatory development of the Naba orthography, 15th Nilo-Saharan Linguistics Colloquium, 4 August 2021. CC BY 4.0.](/writing/naba/zenodo-talk.png)
 
+The talk is the record of the workshops: eight speakers, four sessions, the community deciding every point. The statement was finalized in July 2020. Tone is not written because the speakers said so, not because the linguist left it off.
+
 What the draft is held to, from that talk and the paper together:
 
-- Five vowels, a e i o u. Long vowels are written double. Tone is not written. That last one is a community decision, not an omission.
+- Five vowels, a e i o u. Long vowels are written double. Tone is not written.
 - The palatal nasal is *n̰* — an n with a combining tilde below — and never *ny*. *y* is the glide. *j* is only the affricate.
 - Nearly every word is underlyingly vowel-final. In a sentence, most words drop that vowel. A long vowel left before the drop is shortened. A third-person object *-n̰a* changes shape after the consonant before it. *h* hardens to *k* or *g* in context. Some of these changes are written; some are heard and not written. Which words drop the vowel is lexical: it is learned from attested pairs, and an unknown stem is reported, never guessed.
+
+The seven writing rules, as the talk states them:
+
+| Rule | Written? | What it does |
+| --- | --- | --- |
+| Final-vowel drop | yes — the dropped form | ~70% of words, lexically determined; isolation keeps the vowel (*kaye* → *ya kay yele*) |
+| Long vowel shortened after the drop | yes (under debate for minimal pairs) | *maada* "baboon" → *madge* "baboons" |
+| 3sg object *-n̰a* | yes | *-ca* after a voiceless stop, *-ja* after a voiced stop, *-ya* after *y* (*titi* → *titca*; *baga* → *ya bagja*) |
+| Other fortition (f→b, j→ɟ, ɗ→t) | no — underlying letter kept | *naafe* → *nafge* (said [nābgè]) |
+| *h* hardened to *k* / *g* | yes — the exception | *naha* "touch" → *nagrege* "he touched them" |
+| Intervocalic /k/ written *h* | yes | *kehe* "wrap" → *kek azaama* in context |
+| Epenthetic vowel in a 3-consonant cluster | no | *marba* → *marbge* |
 
 The letters the draft may use, from the talk's consonant chart:
 
@@ -63,7 +95,7 @@ The letters the draft may use, from the talk's consonant chart:
 | liquid | | l, r | | | |
 | approximant | w | | y /j/ | | |
 
-Those rules are data. A small renderer applies them — isolation form in, in-context form out. Fitted to the talk's 18 examples it wrote 18 of 18, as it should: those examples *are* the rules. A model that writes *ny*, or marks tone, or keeps every word in its isolation shape, fails a check. The check is the orthography. The model is not.
+Those rules are data. A small renderer applies them — isolation form in, in-context form out. Fitted to the talk's isolation→context examples it wrote every one, as it should: those examples *are* the rules. A model that writes *ny*, or marks tone, or keeps every word in its isolation shape, fails a check. The check is the orthography. The model is not.
 
 Subject pronouns are optional. On the verb, first person singular and plural are marked on vowel-initial verbs, second and third plural by suffixes, and second and third singular are unmarked, so a third-person verb is the bare form and *ya* is the optional pronoun. A draft that needs negation, a question, a relative, or tense — none of them stated in these sources — says so. It does not borrow the English pattern and call it Naba.
 
@@ -79,15 +111,19 @@ A form is **attested** only when a published source writes it and gives it a mea
 
 | Source | Licence | What we took |
 | --- | --- | --- |
-| Scherrer 2022, including Table 11 | CC BY 4.0 | **355** attested forms (stems, suffixes, glossed words) |
-| Scherrer 2021 talk | CC BY 4.0 | **19** written examples; **22** word forms; the orthography rules |
+| Scherrer 2022 | CC BY 4.0 | **381** forms extracted by rule (93 isolated words, 185 table rows including Table 11, 103 morphemes) → **355** unique glosses |
+| Scherrer 2022 IGT | CC BY 4.0 | **81** interlinear glossed sentences — how *ɓawo* "go" and *utu* "exist" were seen in use |
+| Scherrer 2021 talk | CC BY 4.0 | **7** writing rules; **19** isolation→context examples; **22** word forms |
 | ASJP Naba–Kuka list | CC BY | **22** core words |
+| Combined, after overlap | CC BY | **422** open attested rows on the lexicon |
 
-ASJP confirmed several words already in the paper and corrected one an earlier pass had guessed: "fire" is *fodu*. The same list, set beside the related languages it already contains, shows regular sound changes. A change of that kind can predict a candidate. A prediction is not an attestation. It does not enter a verse as a Tar Melbene word.
+ASJP is the short Swadesh-style list. Its twenty-two items, in the community spelling as we hold them: *mane* "I" / "water", *kilkama* "one", *riyo* "two", *kenje* "fish", *bisi* "dog", *gaga* "tree", *imbi* "ear", *kami* "eye", *wumi* "nose", *iŋaŋa* "tooth", *role* "tongue", *koje* "knee", *zine* "hand", *yoda* "hear", *or* "come", *kamkara* "sun", *molo* "star", *fodu* "fire", *dobo* "path", *ko* "mountain", *ro* "night". It confirmed several words already in the paper (*kenje* = the paper's *kendʒe*) and corrected one an earlier pass had guessed: "fire" is *fodu*. The same list, set beside the related languages it already contains, shows regular sound changes (k→g, p→f). A change of that kind can predict a candidate. A prediction is not an attestation. It does not enter a verse as a Tar Melbene word.
 
-The paper also carries **81** interlinear glossed examples. Those are sentences, not a second lexicon: they are how we saw *ɓawo* "go" and *utu* "exist" in use, and how the renderer was checked.
+The paper's 81 glossed sentences are not a second lexicon. They are how the renderer was checked, and how two gaps we had been marking by hand closed: *ɓawo* "go", in a sentence about going to a field, and *utu* "exist" for location.
 
-Everything else is a candidate, and it is labelled as one. Heard in a public recording, proposed as a loan, inferred from a passage whose other words are known: each of those is a tier below attested, and none of them is written as if a source had settled it. A meaning with no published form is a **gap**, written in the verse as `[GAP: meaning]`. The gap is the record. Filling it with a word the model remembers would be the failure this whole system exists to prevent.
+A sample of the everyday stems the three sources actually supplied — the ones a verse can use without a gap: *ɓawo* "go", *or* "come", *kaye* "see", *eele* "say", *oso* "eat", *aaya* "drink", *utu* "exist", *fasa* "good", *bo* "big", *iili* "black", *ngaaba* "man", *ɗoho* "woman", *muuno* "child", *bobo* "father", *ce* "mother", *ɓe* "house", *sa* "cow", *biisi* "dog", *yeele* "bird", *gaga* "tree", *fene* "one", *riyo* "two". Religious and abstract words are not on that list. They arrive, when they arrive, as Chadian Arabic.
+
+Everything else is a candidate, and it is labelled as one. A proposed loan, a form a model remembers, a guess from a relative language: none of those is written as if a source had settled it. A meaning with no published form is a **gap**, written in the verse as `[GAP: meaning]`. The gap is the record. Filling it with a word the model remembers would be the failure this whole system exists to prevent.
 
 Coverage is stated against a denominator, and the denominator is the source, not the draft.
 
@@ -96,15 +132,17 @@ Coverage is stated against a denominator, and the denominator is the source, not
 | Frozen source content tokens | 255,742 | nouns, verbs, adjectives in WLC + the tables' Greek |
 | Lemmas those tokens belong to | 10,690 | the unit a lexicon entry can cover |
 | Proper nouns, held apart | 35,353 | names, not mixed into the content share |
-| Share with an attested candidate | **35.1%** | a published form shares a content word with the commonest English gloss — a proxy, not a translation |
-| Next 100 / 500 / 1,000 uncovered lemmas | +14% / +26% / +32% of content tokens | what a speaker session or a larger lexicon would move |
+| Open attested rows (the three CC BY sources) | 422 | 381 paper + 22 ASJP + 19 talk |
+| Tokens whose commonest English gloss shares a content word with one of those rows | **78,202 / 255,742 = 30.6%** | a proxy, not a translation — and only the open sources |
+| Lemmas those tokens belong to | 1,862 / 10,690 | the same proxy, counted by Strong's number |
+| Next 100 / 500 / 1,000 uncovered lemmas | +27% / +46% / +54% of content tokens | what a speaker session or a larger open lexicon would move |
 | Models asked for 60 words, no help | **0 / 60** | Haiku 5.5, Sonnet 5, Opus 5.5, GPT-5.5, Fable 5.1 |
 | Forced, Arabic loans only | 1–2 / 60 | the model writing the trade language |
 | Experimental release | 926 verses | Jonah and John, labelled on every verse |
 
-That 35.1% is not 35% translated. "A candidate exists for this meaning" is all the number says. The open gaps are the everyday core: day, city, before, stand, lift up, holy, sea, wind, gold, bread, build, blood. No open source we have found supplies them.
+That 30.6% is not 31% translated. "A candidate exists for this meaning" is all the number says, and the candidate had to come from the paper, the talk, or ASJP. The open gaps are the everyday core: day, city, before, stand, lift up, holy, sea, wind, gold, bread, build, blood. No open source we have found supplies them.
 
-Two models agreeing on a loan is not a source. We did ask two model families, separately, which of the missing religious words were likely Chadian Arabic borrowings. Where they agreed, the proposal was kept as a proposal. It becomes a word in the draft only when the form also occurs in material we hold and the meaning occurs beside it. Code does that check. A model's confidence does not.
+Two models agreeing on a loan is not a source. We did ask two model families, separately, which of the missing religious words were likely Chadian Arabic borrowings. Where they agreed, the proposal was kept as a proposal. It becomes a word in the draft only when a published source we can cite writes the form and the meaning beside it. Code does that check. A model's confidence does not.
 
 ## How a verse is drafted
 
@@ -146,7 +184,7 @@ Jonah is the harder reading, because the book is full of the everyday words the 
 
 It is a demonstration that the ontology carries to a language the model has never read. The nodes do not change. The source does not change. A new language is a lexicon with a rule of entry, an orthography with tests, a brief, and a release that says what it is. The English edition's guardrails still hold: nothing the drafter reads is another Bible's wording of the passage, nothing that decides "better" compares our wording to one, and a word the model merely remembers does not get in.
 
-It is not Scripture, not a community translation, and not a claim that 35% of the Bible can now be read in Tar Melbene. Coverage is not correctness. No speaker has reviewed a verse. Negation and questions are not yet ours to state. The next words have to come from a speaker of the variety being written — short sentences, not a list of isolated glosses, checked against the orthography — or from further scholarship published under a licence that lets us use it. Until a source writes the form and the meaning, the gap stays a gap.
+It is not Scripture, not a community translation, and not a claim that 31% of the Bible can now be read in Tar Melbene. Coverage is not correctness. No speaker has reviewed a verse. Negation and questions are not yet ours to state. The next words have to come from a speaker of the variety being written — short sentences, not a list of isolated glosses, checked against the orthography — or from further scholarship published under a licence that lets us use it. Until a source writes the form and the meaning, the gap stays a gap.
 
 The sibling account, of the English edition and why a model must not recite the Bibles it remembers, is [Translating the Bible with an ontology](/writing/translating-the-bible-with-an-ontology).
 
