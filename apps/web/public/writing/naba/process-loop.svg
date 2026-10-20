@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" role="img" aria-labelledby="t d">
+  <title id="t">The Tar Melbene draft loop</title>
+  <desc id="d">Five stations: open sources, lexicon gate, ontology, draft, checks and release.</desc>
+  <rect width="1100" height="420" fill="#f7f3ea"/>
+  <text x="550" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#13233a">The Tar Melbene draft loop</text>
+  <g font-family="system-ui, sans-serif" fill="#13233a">
+    <rect x="36" y="90" width="180" height="210" rx="10" fill="#fff" stroke="#13233a"/>
+    <text x="126" y="118" text-anchor="middle" font-size="13" font-weight="700">1 · Open sources</text>
+    <text x="126" y="150" text-anchor="middle" font-size="12">Scherrer 2022</text>
+    <text x="126" y="170" text-anchor="middle" font-size="12">355 attested forms</text>
+    <text x="126" y="200" text-anchor="middle" font-size="12">Zenodo 2021 talk</text>
+    <text x="126" y="220" text-anchor="middle" font-size="12">19 written examples</text>
+    <text x="126" y="250" text-anchor="middle" font-size="12">ASJP list</text>
+    <text x="126" y="270" text-anchor="middle" font-size="12">22 core words</text>
+
+    <rect x="256" y="90" width="180" height="210" rx="10" fill="#fff" stroke="#13233a"/>
+    <text x="346" y="118" text-anchor="middle" font-size="13" font-weight="700">2 · Lexicon gate</text>
+    <text x="346" y="160" text-anchor="middle" font-size="12">Published form</text>
+    <text x="346" y="178" text-anchor="middle" font-size="12">and meaning</text>
+    <text x="346" y="210" text-anchor="middle" font-size="12">yes ’ attested</text>
+    <text x="346" y="240" text-anchor="middle" font-size="12">no ’ [GAP]</text>
+    <text x="346" y="270" text-anchor="middle" font-size="12">code decides</text>
+
+    <rect x="476" y="90" width="180" height="210" rx="10" fill="#fff" stroke="#13233a"/>
+    <text x="566" y="118" text-anchor="middle" font-size="13" font-weight="700">3 · Ontology</text>
+    <text x="566" y="160" text-anchor="middle" font-size="12">person · place</text>
+    <text x="566" y="180" text-anchor="middle" font-size="12">concept · name</text>
+    <text x="566" y="210" text-anchor="middle" font-size="12">same nodes as English</text>
+    <text x="566" y="240" text-anchor="middle" font-size="12">mne is a new row</text>
+    <text x="566" y="270" text-anchor="middle" font-size="12">not a new node</text>
+
+    <rect x="696" y="90" width="180" height="210" rx="10" fill="#fff" stroke="#13233a"/>
+    <text x="786" y="118" text-anchor="middle" font-size="13" font-weight="700">4 · Draft</text>
+    <text x="786" y="160" text-anchor="middle" font-size="12">Hebrew / Greek in</text>
+    <text x="786" y="190" text-anchor="middle" font-size="12">model arranges</text>
+    <text x="786" y="210" text-anchor="middle" font-size="12">attested words</text>
+    <text x="786" y="240" text-anchor="middle" font-size="12">never invents one</text>
+    <text x="786" y="270" text-anchor="middle" font-size="12">[GAP] stays a gap</text>
+
+    <rect x="916" y="90" width="160" height="210" rx="10" fill="#fff" stroke="#13233a"/>
+    <text x="996" y="118" text-anchor="middle" font-size="13" font-weight="700">5 · Release</text>
+    <text x="996" y="160" text-anchor="middle" font-size="12">orthography</text>
+    <text x="996" y="180" text-anchor="middle" font-size="12">coverage · names</text>
+    <text x="996" y="210" text-anchor="middle" font-size="12">926 verses</text>
+    <text x="996" y="240" text-anchor="middle" font-size="12">Jonah + John</text>
+    <text x="996" y="270" text-anchor="middle" font-size="12">labelled experiment</text>
+  </g>
+  <g fill="#8a6a2f">
+    <polygon points="226,195 250,185 250,205"/>
+    <polygon points="446,195 470,185 470,205"/>
+    <polygon points="666,195 690,185 690,205"/>
+    <polygon points="886,195 910,185 910,205"/>
+  </g>
+  <text x="550" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#4a5560">A model may arrange attested material. It may not supply a word from memory.</text>
+  <text x="550" y="378" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#4a5560">rbs.faithnet.io/mne · explorer.faithnet.io · experimental</text>
+</svg>

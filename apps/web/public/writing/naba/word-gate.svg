@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" role="img" aria-labelledby="t d">
+  <title id="t">How a word enters a verse</title>
+  <desc id="d">Published source required for attestation; otherwise the verse keeps a gap.</desc>
+  <rect width="1100" height="380" fill="#f7f3ea"/>
+  <text x="550" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#13233a">How a word enters a verse</text>
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#13233a">
+    <rect x="40" y="90" width="200" height="70" rx="8" fill="#fff" stroke="#13233a"/>
+    <text x="140" y="120" text-anchor="middle">Naba form</text>
+    <text x="140" y="140" text-anchor="middle">+ a meaning</text>
+    <rect x="300" y="80" width="260" height="90" rx="8" fill="#fff" stroke="#13233a"/>
+    <text x="430" y="112" text-anchor="middle">Does a published CC BY</text>
+    <text x="430" y="132" text-anchor="middle">source write the form</text>
+    <text x="430" y="152" text-anchor="middle">and the meaning?</text>
+    <rect x="680" y="40" width="380" height="70" rx="8" fill="#eef4ea" stroke="#13233a"/>
+    <text x="870" y="70" text-anchor="middle" font-weight="700">ATTESTED  may be written</text>
+    <text x="870" y="92" text-anchor="middle">Paper 355 · talk 19 · ASJP 22</text>
+    <rect x="680" y="140" width="380" height="70" rx="8" fill="#eeeae2" stroke="#13233a"/>
+    <text x="870" y="170" text-anchor="middle" font-weight="700">CANDIDATE  labelled only</text>
+    <text x="870" y="192" text-anchor="middle">loan, cognate, heard form</text>
+    <rect x="680" y="240" width="380" height="70" rx="8" fill="#fff" stroke="#13233a"/>
+    <text x="870" y="270" text-anchor="middle" font-weight="700">[GAP: meaning]</text>
+    <text x="870" y="292" text-anchor="middle">the verse keeps the gap</text>
+  </g>
+  <g stroke="#8a6a2f" fill="none" stroke-width="1.6">
+    <path d="M240 125 H300"/>
+    <path d="M560 100 H680"/>
+    <path d="M560 125 H640 V175 H680"/>
+    <path d="M560 150 H640 V275 H680"/>
+  </g>
+  <text x="140" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#4a5560">yes ’ attested</text>
+  <text x="140" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#4a5560">guess ’ candidate</text>
+  <text x="140" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#4a5560">nothing ’ gap</text>
+  <text x="550" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#13233a">Code checks the source. The model is not the gate.</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" role="img" aria-labelledby="t d">
+  <title id="t">What the drafter may see</title>
+  <desc id="d">Source tokens and attested forms on the left; English Bibles and invented Naba on the right.</desc>
+  <rect width="1100" height="400" fill="#f7f3ea"/>
+  <text x="550" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#13233a">What the drafter may see</text>
+  <rect x="40" y="70" width="480" height="260" rx="10" fill="#fff8e8" stroke="#13233a"/>
+  <rect x="580" y="70" width="480" height="260" rx="10" fill="#f6eee9" stroke="#13233a"/>
+  <text x="280" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#13233a">May see</text>
+  <text x="820" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#13233a">Must never see</text>
+  <g font-family="system-ui, sans-serif" font-size="15" fill="#13233a">
+    <text x="70" y="150">Hebrew and Greek tokens, parsing, Strongs</text>
+    <text x="70" y="182">STEP lexicon glosses</text>
+    <text x="70" y="214">Name and concept nodes already in the KB</text>
+    <text x="70" y="246">Attested Tar Melbene forms</text>
+    <text x="70" y="278">Orthography: n0, no tone, vowel drop</text>
+    <text x="610" y="150">Any English Bible of the passage</text>
+    <text x="610" y="182">A Naba word the model remembered</text>
+    <text x="610" y="214">A candidate that failed the source check</text>
+    <text x="610" y="246">Unpublished field collections</text>
+    <text x="610" y="278">A neighbour language written as Naba</text>
+  </g>
+  <text x="550" y="370" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#13233a">The brief is the lock. Five models scored 0 of 60 Naba words unprompted.</text>
+</svg>
