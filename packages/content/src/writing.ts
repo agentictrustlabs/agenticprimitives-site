@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'two-drafts-of-ruth-and-jonah',
+    title: 'Two machine drafts of Ruth and Jonah in Kamano-Kafe — and what the checks see in each',
+    description:
+      'A fine-tuned NLLB (SIL machine.py, Serval-style) and our agent harness draft the same two held-out books from the same New Testament, scored against the team\'s own translation: the exact configuration of each, chrF and BLEU, the source-anchored checks run over all three, and where each system belongs.',
+    kind: 'essay',
+    date: '2026-10-20',
+    file: 'two-drafts-of-ruth-and-jonah.md',
+  },
+  {
     slug: 'auditing-the-english-bible-translation',
     title: 'Auditing the American English translation: ontology, agent harness, tests, and the workbench',
     description:
@@ -37,9 +46,9 @@ export const WRITING: readonly Writing[] = [
     slug: 'designing-a-radar-with-an-ontology',
     title: 'A machine designed a tracking radar. The hard part was making sure it didn’t invent the physics.',
     description:
-      'How a tracking radar for a low-observable aircraft is designed from open physics without copying a brochure the model remembers: an ontology that describes the problem once, a design loop held to a deterministic simulator, a test harness that measures the checker before the model, and a workbench where people decide — the same four parts as the Bible-translation programme, on a different domain.',
+      'How a tracking radar for a low-observable aircraft is designed from open physics: two ontologies (the tracking problem and the signal), a twelve-role design team, a loop held to a simulator, a test harness that measures the checker before the model, and a workbench where people decide.',
     kind: 'essay',
-    date: '2026-10-18',
+    date: '2026-10-20',
     file: 'designing-a-radar-with-an-ontology.md',
   },
   {
