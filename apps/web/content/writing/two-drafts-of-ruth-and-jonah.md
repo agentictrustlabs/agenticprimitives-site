@@ -2,7 +2,7 @@
 
 A translation team in the Eastern Highlands of Papua New Guinea has finished its New Testament and wants a first draft of the next books. Two kinds of machine can produce one today. One is a translation model fine-tuned on the team's own text — the way SIL's Serval service drafts for Paratext projects. The other is an agent harness — a language model held to the original-language source, a lexicon and a battery of checks, which is how we draft the [RBS](/writing/translating-the-bible-with-an-ontology) editions. We ran both on the same two books, from the same target-language material, and scored both against the team's own translation of those books.
 
-This page records exactly what each system was, so the numbers can be compared with what we end up with when either is run at full strength. Neither draft is published, and neither is Scripture. Both are machine drafts that no speaker of Kamano-Kafe has read.
+This page records exactly what each system was, so the numbers can be compared with what we end up with when either is run at full strength. Neither draft is Scripture. Both are machine drafts that no speaker of Kamano-Kafe has read. Our harness's draft can be read verse by verse on the [Bible Explorer](https://explorer.faithnet.io) (source *Kamano-Kafe · machine pilot*; landing page [rbs.faithnet.io/kbq](https://rbs.faithnet.io/kbq)). It is labelled experimental and shared under CC BY-SA 4.0, because every word in it comes from the team's text. The NLLB draft is not published: its weights are CC BY-NC, and its output belongs to the team's project.
 
 ## The test
 
