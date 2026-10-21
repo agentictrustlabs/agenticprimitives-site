@@ -37,7 +37,7 @@ export const WRITING: readonly Writing[] = [
     slug: 'designing-a-radar-with-an-ontology',
     title: 'A machine designed a tracking radar. The hard part was making sure it didn’t invent the physics.',
     description:
-      'How a tracking radar for a low-observable aircraft is designed from open physics: two ontologies (the tracking problem and the signal), a twelve-role design team, a loop held to a simulator, a test harness that measures the checker before the model, and a workbench where people decide.',
+      'How a tracking radar for a low-observable aircraft is designed from open physics: two ontologies, the signal skill artifacts (waveform library, ambiguity, receive chain, selection policy), a loop held to a simulator, and a workbench where people decide.',
     kind: 'essay',
     date: '2026-10-20',
     file: 'designing-a-radar-with-an-ontology.md',

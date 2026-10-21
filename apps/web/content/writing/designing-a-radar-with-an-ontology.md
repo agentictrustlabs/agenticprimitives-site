@@ -106,6 +106,102 @@ The acquisition radar has already handed over a location. The tracking radar doe
 
 The lead binds the hardware and the signal (`transmits`, `processesWith`), proposes one configuration, sends it to the campaign, revises on a blocking check, takes the critic's reading, and records a decision. The status of a machine proposal is `checked`. It is not approved.
 
+## The signal archetypes and the skill artifacts
+
+A skill is a `SKILL.md`. Its canonical id is `skill:radar-tracking/<name>`. The frontmatter names the archetype that wears it, the capability, the ontology classes it may produce (`covers`), the classes it must leave alone (`excludes`), and the tools it may call. The body is the instruction. On a full design arm the runtime appends that body to the system prompt of the step the capability governs, and the activity records `governedBySkill`. On the signal-receive focus the four short questions are written into the plan itself, and the skill body is left off those steps, so a trace of that arm will not show the text below. The text is still the contract those questions are cut from.
+
+Three archetypes own the signal. The others own the problem around it.
+
+| Archetype | Artifact | Capability | What the body directs |
+| --- | --- | --- | --- |
+| `radar-signal-designer` | `skill:radar-tracking/design-waveform-library` | `rtr.signal.design` | The library, mode by mode, to the pulse, and the link budget of each mode at each cross-section |
+| `radar-signal-designer` | `skill:radar-tracking/compute-ambiguity` | `rtr.signal.ambiguity` | The ambiguity profile, computed from the pulse. The tool runs it. The skill says which numbers, and that a typed-in figure is a blocking check |
+| `radar-processing-designer` | `skill:radar-tracking/design-receive-chain` | `rtr.processing.design` | The chain that reads that library: compression, Doppler, clutter, detector |
+| `radar-controller-designer` | `skill:radar-tracking/design-selection-policy` | `rtr.controller.design` | The rule table that picks a mode each dwell from track state and signal quality |
+
+The rest of the team, the same way: `radar-design-agent` wears `frame-the-problem`, `explore-design-space`, `ground-in-evidence`, `propose-configuration`, `simulate-and-check`, `independent-critique`, `record-decision`, `decline-out-of-scope`. `radar-target-analyst` wears `assess-target`. `radar-countermeasures-analyst` wears `assess-countermeasures`. `radar-environment-analyst` wears `assess-environment`. `radar-hardware-architect` wears `design-hardware-layer`. `radar-tracking-designer` wears `design-tracker`. `radar-simulation-engineer` wears `run-simulation-campaign`. `radar-evidence-librarian` wears `curate-claims`. `radar-design-critic` wears `red-team-design`.
+
+### What goes on the pulse
+
+`design-waveform-library` is the signal designer's instruction. It takes the target assessment (Doppler span, fade fraction, decorrelation time), the environment (clutter spread, the band), the hypothetical posture, and the transmitter's limits (peak, average, duty, instantaneous bandwidth). It then specifies every mode the controller will be allowed to send.
+
+The scene decides what the signal spends.
+
+- **High signal-to-noise.** Detection is already easy. Bandwidth is spent on range and coherent time on velocity. Range resolution is \(c/(2B)\). Velocity resolution is the wavelength over twice the coherent time. A linear chirp puts range and velocity on one ridge: a moving target walks in range, and a range error looks like a speed. A thumbtack separates them. Costas frequency hops, or a polyphase code (Frank, P1–P4, Zadoff–Chu) with a Doppler bank, are thumbtacks. The code length is the one nearest the chip count, bandwidth times pulse width. Barker is short and has low sidelobes, and it runs out of length before a long pulse does.
+- **Clutter.** A long coherent burst, and a notch wider than the clutter's Doppler spread. The burst stays inside one clutter decorrelation time, or the notch stops matching. The repetition frequency is chosen so the target's speed is not a blind speed. Unambiguous range is \(c/(2\cdot\mathrm{PRF})\). Unambiguous velocity is \(\lambda\cdot\mathrm{PRF}/4\). When one repetition frequency cannot hold both, the pulse interval is staggered, or a second frequency is added.
+- **A hypothetical jammer.** Noise wants energy on the target and a carrier hop so the noise does not sit on every dwell. A hypothetical repeater wants a code or a carrier it cannot predict from the last pulse, and a mismatched filter that keeps the code's sidelobes down. The posture is named as hypothetical. The skill forbids naming a piece of equipment to defeat.
+- **The lowest cross-section, at speed, at the cue.** That dwell is designed first. The open-estimate cross-section is larger at long wavelengths and smaller at X-band and above, so the band is scored on the low sector at the cue: detection has to hold, and the beam (wavelength over aperture) still has to serve the track. Energy is peak power times pulse width times the number of pulses. Duty is pulse width times the repetition frequency, and it stays under the transmitter's ceiling. A far cue wants a lower repetition frequency. A fast target wants a higher one. When one cannot hold both, the library carries two, and says so. A longer pulse raises energy and the time–bandwidth product, and it raises duty.
+- **Frequency modulation.** A linear chirp is Doppler-tolerant and couples range and velocity by a known walk. Nonlinear FM lowers the sidelobes and gives up some of that tolerance. Stepped frequency buys range resolution across steps, through a narrow instantaneous bandwidth. Costas hops are a thumbtack and do not tolerate speed unless the receiver has a Doppler bank.
+- **Phase modulation.** Barker does not tolerate speed. Frank, P1–P4 and Zadoff–Chu are longer and keep a peak that walks. Complementary codes cancel sidelobes across a pair at zero Doppler, and the cancellation breaks when the target moves. A code with no Doppler bank is a missed peak.
+- **Amplitude.** The transmitter wants a constant envelope. Amplitude enters as a taper on the pulse: none, Hann, Hamming, Taylor, Chebyshev, Kaiser, or Gaussian. A taper lowers sidelobes and broadens the main lobe, which spends range resolution. It is a weighting. It is not a third modulation family.
+
+What is kept is at least three modes: search until the track confirms, track while it is firm, and one for the thing that makes the scene hard (a longer burst in clutter, a thumbtack when range and speed must both be reported, a hop under a hypothetical jammer). Each kept mode is scored by `compute_ambiguity` and `compute_link_budget` at the low sector and at the cue. Compression gain on the budget is \(10\log_{10}(BT)\). A filter, a code, or a model that claims more than that is wrong by construction. Chip count times chip width equals pulse width. Chip bandwidth stays inside the transmitter. The coherent interval stays inside the echo's decorrelation time. A figure that was not computed is not a result.
+
+The source named on the skill is Robert M. O'Donnell, *Detection of Targets in Noise and Pulse Compression Techniques*, MIT Lincoln Laboratory open courseware, lecture 5 (2001–2002, posted 2018). It is cited as `ex:rc-mitll-radar-equation` plus that lecture: one megahertz of bandwidth is 150 m of range resolution; a long modulated pulse has the energy of its length and the resolution of its bandwidth; coherent gain is \(10\log_{10}(N)\) when the noise samples are independent; linear FM couples range and Doppler; a matched filter maximises peak signal over mean noise. The lecture does not pick a waveform for a scenario, and it says nothing about a target's cross-section. Whether the band can see the cue at all is lecture 3, answered before any family: attenuation, multipath as a coherent path sum, and the 4/3-earth horizon.
+
+### The ambiguity profile, computed
+
+`compute-ambiguity` is the other skill on the same archetype. The ambiguity function is what the waveform is to the receiver. The profile is computed from the scheme and the train:
+
+- range resolution \(c/(2B)\); Doppler resolution \(1/\mathrm{CPI}\); velocity resolution \(\lambda/(2\cdot\mathrm{CPI})\)
+- peak and integrated range sidelobes after the taper, or of the code
+- Doppler tolerance at 3 dB, in \(f_d T\) and in metres per second at the band. A linear chirp's is large. A Barker's is about 0.4. A P4's is about 4, and the peak walks
+- range–Doppler coupling, metres of range error per metre per second of speed, for FM. Zero for a code, which pays in tolerance instead
+- unambiguous range \(c/(2\cdot\mathrm{PRF})\), unambiguous velocity \(\lambda\cdot\mathrm{PRF}/4\), first blind speed \(\lambda\cdot\mathrm{PRF}/2\)
+- eclipsing loss at the cue, from pulse width and the pulse interval
+- compression gain \(10\log_{10}(BT)\)
+- the shape: thumbtack, ridge, bed of nails, or periodic
+
+The skill then reads that profile against the scenario: how many velocity folds the target's Doppler span crosses, how many bins the clutter fills, which blind speeds the trajectory crosses, what fraction of the cue volume is eclipsed. Two modulations proposed for one role are compared at the same pulse width and the same bandwidth. A proposal's sidelobe that differs from the computed one is a physics check, and it blocks. An unweighted linear chirp does not have −45 dB sidelobes. The profile computes about −13 dB.
+
+### The receive chain that matches the signal
+
+`design-receive-chain`, worn by `radar-processing-designer`, is the receive half. The order is beamforming, then pulse compression, then Doppler, then space-time adaptive processing when the geometry has more than one channel, then excision, then the detector. Compression comes before Doppler because of the chirp's coupling.
+
+The filter follows the mode. A chirp wants pulse compression and then a Doppler FFT. A phase code wants that code's matched filter, or a mismatched filter when the sidelobes matter more than a fraction of a decibel, and then a Doppler bank (eight or more when the code cannot tolerate speed). A Costas hop wants a bank across the hops, then the Doppler FFT. Clutter wants a canceller or a notch sized to the clutter's spread, before the detector. A window on the receive filter changes sidelobes and spends signal-to-noise. A window across pulses changes the Doppler response. A taper on the transmitted pulse changes the envelope and the energy. The skill requires the designer to say which one.
+
+Range comes from the compressed pulse. Velocity comes from the coherent burst. Angle comes from monopulse when the antenna has a difference channel, and from the baseline when there is more than one site. No stage adds to the time–bandwidth product. A matched filter maximises peak signal over mean noise. Coherent integration keeps amplitude and phase and gains with the number of pulses. The same lecture 5 is the cited source, including CFAR: the threshold comes from the noise estimate in nearby cells, with guard cells, because a fixed threshold fails when the noise floor moves.
+
+### The signal changes during the track
+
+`design-selection-policy`, worn by `radar-controller-designer`, is where that library is used. One waveform for the whole track is a fixed radar. Each mode has its own repetition frequency, pulse width, bandwidth, pulse count and modulation, and a track state that selects it. The simulator picks a mode every dwell and writes the choice.
+
+What may change, and what it does, is written in `design-waveform-library` and executed by this policy:
+
+- **Repetition frequency.** Raise it when the target is fast or the range is short. Lower it when the cue is far. A second mode with a different frequency is how both unambiguous range and unambiguous speed are held. The acquisition cue is what makes a range fold survivable: the tracker assigns the measurement to the fold the track predicts, inside the cue volume. A speed fold is not survivable in the same way. A return whose Doppler lands in the clutter notch, or on the same bin as a stationary reflector, is not separated by adding pulses. The policy's ambiguity flag, read from the profile, is what sends the second frequency.
+- **Pulses per dwell.** More pulses raise coherent time and energy, which is the detection lever on a weak return, until the burst is longer than the clutter's decorrelation time or the target's manoeuvre smears the bin. The fade rule is this: when the signal-to-noise estimate stays under the detector's requirement for two dwells, switch to the burst (the track mode with more pulses). Hysteresis and a minimum stay stop it flipping every dwell.
+- **Bandwidth and family.** A firm track in high signal-to-noise spends bandwidth on range. When range and speed must be reported apart, the track mode switches from the chirp to a thumbtack. Precision near handoff widens the bandwidth and shortens the burst. Clutter lengthens the burst and picks a frequency off the blind speed.
+- **Power.** Peak is the transmitter's ceiling. A mode spends more of it with a longer pulse or more pulses, inside the average-power cap. It does not get a new peak.
+
+The rule table is data. A typical table, as the skill writes it: reacquiring sends search; signal-to-noise below the fade threshold for two dwells sends the burst; radial speed inside the clutter sends the clutter mode; a hypothetical jammer-to-signal ratio or a false-target density sends the eccm mode; time-to-handoff inside the window, on a firm track, sends precision; otherwise track. Every target mode is a mode of this library. Thresholds have arithmetic: the fade threshold is the detector's requirement plus the margin, and the burst's extra decibels say how far below that the burst still works. The policy is then dry-run, and the selection trace — how often each mode fired, which rule chose it, switches per ten dwells, dwells spent fading with no change — is what the thresholds are tuned from.
+
+### The signal ontology those skills are held to
+
+`radar-signals` 1.0.0 is the typed form of the same science. A `rtr:Waveform` names a family. A `rsg:TransmitSignal` names the carrier, the envelope, the spectrum, the energy, the sweep or the code generator, the slow-time phase, and the repetition-frequency schedule. The envelope is rectangular, trapezoidal, raised-cosine edges, or Gaussian. A taper is a weighting on that envelope. Fast edges widen the spectrum. A taper on transmit spends average power.
+
+The sweep laws are functions, each with the sidelobes it has at rest and at a stated Doppler, taken from the attributed claim and then recomputed:
+
+- Linear: \(f(t) = f_0 + (B/T)\,t\). The ontology records −13.2 dB with a matched filter, and a receive window buying about −40 dB for about 1.3 dB of signal-to-noise and about 1.4 times the main-lobe width. The coupling is \(\Delta t = f_d T / B\). The peak walks by a known amount.
+- Polynomial nonlinear FM: a low-order odd polynomial concentrates the sweep at the centre and shapes the spectrum without a window's loss.
+- Tan-hybrid: a linear share \(\alpha\) for Doppler tolerance and a curvature \(\gamma\) for sidelobes. The cited example (\(\alpha \approx 0.28\), \(\gamma \approx 1.18\)) is a literature report of about −42 dB at rest and under −36 dB across ±20 kHz. It is the claim's figure. The simulator still computes the waveform that is actually sent.
+- Cosine-on-pedestal, stationary-phase (Taylor or Chebyshev: the window's sidelobes at rest, and the least Doppler tolerance, because the edge slope is unbounded), piecewise linear (a V or an alternating slope is two segments), and stepped frequency across pulses (synthesised bandwidth \(N\Delta f\), synthesised range resolution \(c/(2 N \Delta f)\), unambiguous synthesised range \(c/(2\Delta f)\)).
+
+A code is the generator that produces it: P4, Frank, Zadoff–Chu with a root, an m-sequence, Gold, Kasami, Legendre, Golay, Costas–Welch, a seeded polyphase, or a minimum-peak-sidelobe search. A set built from one generator is orthogonal, complementary, or agile. Continuous-phase shaping (PCFM) turns a code's phase steps into a constant envelope so a saturated amplifier does not splatter them. The cited hardware-in-the-loop figure is the source's, not a number this study measured. A slow-time phase code across the burst is in the ontology as a way to park a range-folded return in a known Doppler zone. The simulator does not model it, so a design that names it has no scored gain from it.
+
+The schedule is ordered repetition-frequency entries: single, dual, a set, major–minor, jitter, or a stagger. Each entry's unambiguous range and speed are derived. The blind-zone map — eclipsed ranges, blind speeds, and the fraction of the cue that is blind on every entry at once — is derived. It is not typed in. Sidelobes are split into the near peak, which masks a second scatterer beside the target, and the far peak, which leaks a strong cell across the swath. The Doppler-tolerance curve is read at the target's Doppler, not at the brochure's 3 dB point. Coupling correction is one of four: none, the average of an up-sweep and a down-sweep, the tracker's own velocity estimate subtracted off, or keystone when the target walks more than a cell during the burst.
+
+The design rules over these fields are three kinds. A derivation must match the simulator. A constraint blocks (duty, chips, compression gain, coherent interval, far sidelobes against the clutter). A heuristic only proposes an alternative to score: a stationary-phase law when the Doppler span is small, a tan-hybrid when it is not, two repetition frequencies whose blind speeds interleave, a Doppler bank when the clutter is spread. A heuristic never scores by itself.
+
+### A separate laboratory reading
+
+The same characteristics were read on a bench that is not an aircraft scenario: a 200 kHz carrier, 80 kHz sweep, 250 µs pulse, 800 Hz repetition frequency, eight pulses, in water at 1500 m/s. That is a laboratory ultrasonic pulse, recorded so the formulas can be checked on a grid a person can recompute.
+
+An unweighted linear chirp there has zero-Doppler peak sidelobes of −15.3 dB and a main lobe of 11.7 µs. At 15 m/s the up-sweep peak walks −11.7 µs and the down-sweep walks +11.7 µs. The midpoint of the two peaks is at 0. The unambiguous speed at 800 Hz is 1.5 m/s, so 15 m/s aliases to 0 m/s and 7 m/s aliases to 1.0 m/s. Reversing the sweep removes the range bias. It does not unfold the speed.
+
+Against a stationary reflector at 0 dB, with that reflector at 40 dB signal-to-noise on one pulse, a return 30 dB or 45 dB weaker was not found in 40 trials: it sits under the −15 dB sidelobes, and at 15 m/s it shares the reflector's Doppler bin. A return 15 dB down, at the sidelobe floor, was found on a minority of trials. When it was found at 1 m/s, the range scatter was a few millimetres and the speed error was about 0.1 m/s. This is why the skills spend pulses and a second repetition frequency on a dim mover, and why a sidelobe number alone is not a detection.
+
+Several later waveform notes — a hyperbolic envelope with a phase ripple, a staggered V-chirp with a Legendre phase, an amplitude ripple treated as a second ambiguity channel, and a seven-role discovery loop — are in the claim record as extracted proposals. The author later identified the first two as composites of published blocks. Their courtyard figures are stopping criteria. The bench above did not reproduce them. The alternating linear chirp, with the midpoint, is what that bench measured.
+
 ## Part two: the agent harness — one scenario, a declared plan, tools that are the physics
 
 The loop runs on one scenario at a time — 332 of them, content-committed, split into a development set of 107, a held-out set of 31 written once and locked, and a regression set of 194 planted errors — as a declared plan of steps. Every step is a provenance activity: inputs, outputs, model, cost, cache hits. A run is a graph you can query.
