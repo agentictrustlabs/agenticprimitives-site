@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'what-counts-as-a-better-translation',
+    title: 'Two machines translated the same Greek into the same language. Deciding which did it better turned out to be the hard part.',
+    description:
+      'Four machine translators into Kamano-Kafe, five complete books held back from all of them, and the measurement problem underneath: why chrF and BLEU rank them one way, why reference-free source checks rank them another, and what the team\u2019s own published translation scores when you run those checks on it.',
+    kind: 'essay',
+    date: '2026-10-21',
+    file: 'what-counts-as-a-better-translation.md',
+  },
+  {
     slug: 'auditing-the-english-bible-translation',
     title: 'Auditing the American English translation: ontology, agent harness, tests, and the workbench',
     description:
