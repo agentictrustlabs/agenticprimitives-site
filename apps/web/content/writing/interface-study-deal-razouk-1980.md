@@ -118,13 +118,13 @@ SPECIMEN TR_5 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1000->400 AMBIENT dry_O2 TIMING bound VARY T_end 200..700 VARY duration 1..3
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -139,13 +139,13 @@ SPECIMEN TR_6 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 600 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 600 TEMP 1000->400 AMBIENT dry_O2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -160,14 +160,14 @@ SPECIMEN TR_7 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_N2
-    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_N2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_N2 TIMING stated VARY T_hold 900..1000
+    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_N2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -182,14 +182,14 @@ SPECIMEN TR_8 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_Ar
-    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_Ar
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_Ar TIMING stated VARY T_hold 900..1000
+    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_Ar TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -204,13 +204,13 @@ SPECIMEN TR_1 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 900->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 900->400 AMBIENT dry_O2 TIMING bound VARY T_end 200..700 VARY duration 1..3
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -225,13 +225,13 @@ SPECIMEN TR_2 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2
-    RUN Pull DURATION 600 TEMP 900->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 600 TEMP 900->400 AMBIENT dry_O2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -246,14 +246,14 @@ SPECIMEN TR_3 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2
-    RUN InertAnneal DURATION 600 TEMP 900->900 AMBIENT inert_N2
-    RUN Pull DURATION 120 TEMP 900->400 AMBIENT inert_N2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 18000 TEMP 900->900 AMBIENT dry_O2 TIMING stated
+    RUN InertAnneal DURATION 600 TEMP 900->900 AMBIENT inert_N2 TIMING stated VARY T_hold 800..900
+    RUN Pull DURATION 120 TEMP 900->400 AMBIENT inert_N2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -268,13 +268,13 @@ SPECIMEN TR_9 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 1100->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1100->400 AMBIENT dry_O2 TIMING bound VARY T_end 200..700 VARY duration 1..3
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -289,13 +289,13 @@ SPECIMEN TR_10 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2
-    RUN Pull DURATION 600 TEMP 1100->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 600 TEMP 1100->400 AMBIENT dry_O2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -310,14 +310,14 @@ SPECIMEN TR_11 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2
-    RUN InertAnneal DURATION 600 TEMP 1100->1100 AMBIENT inert_N2
-    RUN Pull DURATION 120 TEMP 1100->400 AMBIENT inert_N2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 1680 TEMP 1100->1100 AMBIENT dry_O2 TIMING stated
+    RUN InertAnneal DURATION 600 TEMP 1100->1100 AMBIENT inert_N2 TIMING stated VARY T_hold 1000..1100
+    RUN Pull DURATION 120 TEMP 1100->400 AMBIENT inert_N2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -332,13 +332,13 @@ SPECIMEN TR_17 {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1000->400 AMBIENT dry_O2 TIMING bound VARY T_end 200..700 VARY duration 1..3
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -353,14 +353,14 @@ SPECIMEN TR_19 {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acid clean, HF, propanol vapour
-    # not simulated: Loaded “in the appropriate ambient”
-    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2
-    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_N2
-    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_N2
-    # not simulated: Al-Cu-Si by cold flash evaporation
-    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2
-    # not simulated: 1 MHz and quasi-static C-V, before any injection
+    EVENT Clean KIND clean TIMING assumed                        # Acid clean, HF, propanol vapour
+    EVENT Load KIND load TIMING assumed                          # Loaded “in the appropriate ambient”
+    RUN Oxidation DURATION 5040 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN InertAnneal DURATION 600 TEMP 1000->1000 AMBIENT inert_N2 TIMING stated VARY T_hold 900..1000
+    RUN Pull DURATION 120 TEMP 1000->400 AMBIENT inert_N2 TIMING stated VARY T_end 200..700
+    EVENT Metal KIND metallization TIMING assumed                # Al-Cu-Si by cold flash evaporation
+    RUN PostMetalAnneal DURATION 600 TEMP 400->400 AMBIENT inert_N2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # 1 MHz and quasi-static C-V, before any injection
 }
 ```
 
@@ -467,6 +467,62 @@ study: deal-razouk-1980
 | TR-17: p-type, 1000 °C, fast pull in oxygen | oxide thickness | 80 nm | 84.7 nm | +6% | within (±10%) | supported within scope | Table 4-2 |
 | TR-19: p-type, 1000 °C, nitrogen anneal, slow pull in nitrogen | fixed charge (Nf) | 2.22e+11 cm⁻² | 1.67e+11 cm⁻² | -25% | near (±22.5225%) | supported within scope | Table 4-2, N2-annealed half |
 | TR-19: p-type, 1000 °C, nitrogen anneal, slow pull in nitrogen | oxide thickness | 81 nm | 84.7 nm | +5% | within (±10%) | supported within scope | Table 4-2 |
+
+## Aligning the simulation: what the unstated things would have to be
+
+Every step whose timing or temperature the paper leaves open carries a range in the history above (`VARY`). `scripts/align_study.py` searched those ranges against the paper's numbers through the same predictor, first one unknown at a time, then all together. No parameter a program declares `fitted` was touched. The unknowns were chosen on TR-5, TR-6, TR-7, TR-8 only; every other number is a test they played no part in.
+
+| Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
+|---|---|---|---|---|---|---|
+| Pull, under 3 s, in oxygen: T end | “<3 sec” in the table, “1-3 sec” in the text, 0 in the time column | 200 to 700 °C | 400 °C | 533.3 °C | 7 of 8 within tolerance, median error 6.9% | 7 of 8 within tolerance, median error 3.7% |
+| Pull, under 3 s, in oxygen: duration | “<3 sec” in the table, “1-3 sec” in the text, 0 in the time column | 1 to 3 s | 3 s | 2.667 s | 7 of 8 within tolerance, median error 6.9% | 7 of 8 within tolerance, median error 6.9% |
+| In-situ nitrogen anneal, 10 min: T hold | 10 min; a footnote elsewhere in the report says 15 min for the HCl runs | -100 to 0 °C shift | 0 °C shift | -66.67 °C shift | 7 of 8 within tolerance, median error 6.9% | 7 of 8 within tolerance, median error 3.2% |
+
+Together: Pull T end 533.3 °C (was 400); Pull duration 2.667 s (was 3); InertAnneal T hold -66.67 °C shift (was 0).
+
+As reproduced: 19 of 24 within tolerance, median error 5.0%. Aligned: 20 of 24 within tolerance, median error 4.5%. On the held-out specimens only: 12 of 16 within tolerance, median error 5.0% as reproduced, 13 of 16 within tolerance, median error 4.6% aligned.
+
+The unknowns were chosen on the four n-type wafers oxidized at 1000 °C, one per ending, and tested on the eight other wafers on this page (900 and 1100 °C, and the p-type wafers at 1000 °C). On the four 1000 °C wafers every setting passes 6 or 7 of 8, so the choice rests on the median error, which is weak evidence.
+
+**The end of a pull.** The stored recipe ends every pull at 400 °C, a value chosen in 1967 against Deal's Table I. Here a pull that ends near 530 °C does better: the 10 minute pull in oxygen at 900 °C falls from 10.0 to 8.7 × 10^11 cm^-2 against 8.9 measured. Read physically, charge stops following the oxygen equilibrium at a higher temperature than our cut-off says during a slow pull. That is a statement about cooling, which a straight line to a fixed end temperature cannot carry; see below.
+
+**The temperature of the in-situ anneal.** The report never states it. Moving it below the oxidation temperature improves the 1000 °C p-type wafer (1.67 to 2.12 against 2.22) and the 1100 °C wafer, and spoils the 900 °C wafer (2.80 to 4.01 against 2.96). No single shift serves all three, so this is not evidence that the anneal ran cooler. It is evidence that the program's level without oxygen, fitted to Stanford's argon anneals, does not have the temperature dependence these nitrogen anneals show.
+
+**The fast pull's duration** (1 to 3 s) moves nothing: at these temperatures three seconds is too short for the program to change the charge.
+
+```study-compare
+study: deal-razouk-1980
+set: aligned
+```
+
+**13** within, **2** near, **1** off of 16 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
+
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| TR-1: n-type, 900 °C, fast pull in oxygen | fixed charge (Nf) | 5.40e+11 cm⁻² | 5.22e+11 | 5.13e+11 | -5% | within (±10%) | test |
+| TR-1: n-type, 900 °C, fast pull in oxygen | oxide thickness | 79 nm | 80.5 | 80.5 | +2% | within (±10%) | test |
+| TR-2: n-type, 900 °C, slow pull in oxygen | fixed charge (Nf) | 8.90e+11 cm⁻² | 1.00e+12 | 8.68e+11 | -2% | within (±10%) | test |
+| TR-2: n-type, 900 °C, slow pull in oxygen | oxide thickness | 81 nm | 80.7 | 80.7 | -0% | within (±10%) | test |
+| TR-3: n-type, 900 °C, nitrogen anneal, slow pull in nitrogen | fixed charge (Nf) | 2.96e+11 cm⁻² | 2.80e+11 | 4.01e+11 | +35% | off (±17%) | test |
+| TR-3: n-type, 900 °C, nitrogen anneal, slow pull in nitrogen | oxide thickness | 79 nm | 80.5 | 80.5 | +2% | within (±10%) | test |
+| TR-9: n-type, 1100 °C, fast pull in oxygen | fixed charge (Nf) | 4.10e+11 cm⁻² | 3.23e+11 | 3.12e+11 | -24% | near (±12%) | test |
+| TR-9: n-type, 1100 °C, fast pull in oxygen | oxide thickness | 79 nm | 84.5 | 84.5 | +7% | within (±10%) | test |
+| TR-10: n-type, 1100 °C, slow pull in oxygen | fixed charge (Nf) | 7.16e+11 cm⁻² | 9.92e+11 | 8.59e+11 | +20% | near (±10%) | test |
+| TR-10: n-type, 1100 °C, slow pull in oxygen | oxide thickness | 88 nm | 86.6 | 87.1 | -1% | within (±10%) | test |
+| TR-11: n-type, 1100 °C, nitrogen anneal, slow pull in nitrogen | fixed charge (Nf) | 1.55e+11 cm⁻² | 1.36e+11 | 1.52e+11 | -2% | within (±32%) | test |
+| TR-11: n-type, 1100 °C, nitrogen anneal, slow pull in nitrogen | oxide thickness | 81 nm | 84.5 | 84.5 | +4% | within (±10%) | test |
+| TR-17: p-type, 1000 °C, fast pull in oxygen | fixed charge (Nf) | 4.35e+11 cm⁻² | 4.22e+11 | 4.13e+11 | -5% | within (±11%) | test |
+| TR-17: p-type, 1000 °C, fast pull in oxygen | oxide thickness | 80 nm | 84.7 | 84.7 | +6% | within (±10%) | test |
+| TR-19: p-type, 1000 °C, nitrogen anneal, slow pull in nitrogen | fixed charge (Nf) | 2.22e+11 cm⁻² | 1.67e+11 | 2.12e+11 | -5% | within (±23%) | test |
+| TR-19: p-type, 1000 °C, nitrogen anneal, slow pull in nitrogen | oxide thickness | 81 nm | 84.7 | 84.7 | +5% | within (±10%) | test |
+
+What alignment cannot fix. The slow pull in oxygen at 1100 °C stays 20% high (8.6 against 7.2) under every setting, and n-type and p-type wafers on one recipe differ by up to 2.5 × 10^11 cm^-2 in the report while the program gives them one value: doping is not an input to any program. The thickness rows pass throughout and were never in question.
+
+### What our language and ontology cannot yet say
+
+- **Cooling with a freezing point.** With PROFILE exponential the language can now cool a wafer realistically, but the charge program then keeps moving charge down to room temperature, because its oxygen rate was fitted with an activation energy of 0.05 eV. A program needs a rate that vanishes as the wafer cools, fitted against pulls written as real cooling curves; then the pull's end temperature stops being a free number.
+- **Doping as an input.** DOPING is recorded on each specimen and read by nothing. The report's n-type and p-type wafers differ by more than the tolerance.
+- **The anneal's gas as a separate level.** Nitrogen and argon are one curve in the report and one level in the program; if they differ (the 1100 °C rows hint that they might), the program needs a level per inert gas.
 
 ### The paper's own conclusions
 

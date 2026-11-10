@@ -126,14 +126,14 @@ SPECIMEN Wafer_100_1000C_1h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -148,14 +148,14 @@ SPECIMEN Wafer_111_1000C_1h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -170,14 +170,14 @@ SPECIMEN Wafer_100_1000C_8h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 28800 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 28800 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -192,14 +192,14 @@ SPECIMEN Wafer_111_1000C_8h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 28800 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 28800 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -214,14 +214,14 @@ SPECIMEN Wafer_110_1000C_1h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -236,14 +236,14 @@ SPECIMEN Wafer_511_1000C_1h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -258,14 +258,14 @@ SPECIMEN Wafer_100_750C_23h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 82800 TEMP 750->750 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 750->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 82800 TEMP 750->750 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 750->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -280,14 +280,14 @@ SPECIMEN Wafer_100_1000C_1h_NPMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2
-    # not simulated: Stored in a nitrogen dry box
-    # not simulated: Aluminium evaporated
-    # not simulated: No post-metallization anneal (NPMA half)
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
+    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    EVENT NoAnneal KIND other TIMING assumed                     # No post-metallization anneal (NPMA half)
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -304,13 +304,13 @@ SPECIMEN Wafer_nc_100_750C_24h {
     DOPING: p_type_boron
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 86400 TEMP 750->750 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 750->400 AMBIENT dry_O2
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 86400 TEMP 750->750 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 750->400 AMBIENT dry_O2 TIMING bound
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -325,13 +325,13 @@ SPECIMEN Wafer_nc_110_1100C_30min {
     DOPING: p_type_boron
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Pre-oxidation clean
-    # not simulated: Load into the furnace in nitrogen
-    RUN Oxidation DURATION 1800 TEMP 1100->1100 AMBIENT dry_O2
-    RUN Pull DURATION 5 TEMP 1100->400 AMBIENT dry_O2
-    # not simulated: Aluminium evaporated
-    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
-    # not simulated: Capacitance-voltage measurement
+    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
+    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    RUN Oxidation DURATION 1800 TEMP 1100->1100 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 5 TEMP 1100->400 AMBIENT dry_O2 TIMING bound
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
+    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
 }
 ```
 
@@ -407,7 +407,7 @@ EVALUATION_CONTRACT {contract_id} {{
 
 ## Our simulation against the paper
 
-**9** within, **3** near, **9** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**9** within, **4** near, **8** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: vitkavage-1990
@@ -427,9 +427,9 @@ study: vitkavage-1990
 | (111), 1000 °C, 8 h, with PMA | oxide thickness | 240 nm | 238 nm | -1% | within (±10%) | supported within scope | text, PDF p. 14: 2400 Å |
 | (111), 1000 °C, 8 h, with PMA | fixed charge | 3.80e+11 cm⁻² | 4.46e+11 cm⁻² | +17% | near (±10%) | supported within scope | Table VI |
 | (111), 1000 °C, 8 h, with PMA | interface state density at midgap | 6.00e+10 cm⁻² eV⁻¹ | 2.29e+10 cm⁻² eV⁻¹ | -62% | off (±10%) | direction only | Table VII |
-| (110), 1000 °C, 1 h, with PMA | fixed charge | 1.08e+11 cm⁻² | 4.46e+11 cm⁻² | +313% | off (±10%) | outside the tested scope | Table II/VI (Table III prints 1.8; ruling 1) |
+| (110), 1000 °C, 1 h, with PMA | fixed charge | 1.08e+11 cm⁻² | 1.58e+11 cm⁻² | +46% | off (±10%) | outside the tested scope | Table II/VI (Table III prints 1.8; ruling 1) |
 | (110), 1000 °C, 1 h, with PMA | interface state density at midgap | 7.90e+10 cm⁻² eV⁻¹ | 1.05e+11 cm⁻² eV⁻¹ | +33% | off (±10%) | direction only | Table IV/VII |
-| (511), 1000 °C, 1 h, with PMA | fixed charge | 1.80e+11 cm⁻² | 4.46e+11 cm⁻² | +148% | off (±10%) | outside the tested scope | Table III/VI |
+| (511), 1000 °C, 1 h, with PMA | fixed charge | 1.80e+11 cm⁻² | 1.58e+11 cm⁻² | -12% | near (±10%) | outside the tested scope | Table III/VI |
 | (511), 1000 °C, 1 h, with PMA | interface state density at midgap | 5.70e+10 cm⁻² eV⁻¹ | 4.73e+10 cm⁻² eV⁻¹ | -17% | near (±10%) | direction only | Table IV/VII |
 | (100), 750 °C, 23 h, with PMA | fixed charge | 7.00e+10 cm⁻² | 2.78e+11 cm⁻² | +297% | off (±10%) | outside the tested scope | Table III (±0.4) |
 | (100), 750 °C, 23 h, with PMA | interface state density at midgap | 1.20e+11 cm⁻² eV⁻¹ | 1.14e+11 cm⁻² eV⁻¹ | -5% | within (±10%) | direction only | Table IV (printed header 10^11; ruling 2) |
@@ -447,16 +447,16 @@ The reproduction above fills every gap in the report with an assumption of ours.
 
 **Fixed charge: the unknown is one thing per furnace run.** All four orientations were oxidized together. At 1000 °C the report's own values for one orientation move between the four runs by 8 to 33% (standard deviation over mean), and three of the four orientations dip together in the 4 h run. A simulation that gives one number for one recipe can match at most two of four such values to 10%. So we inferred one unknown for each run from its (111) wafer, which carries the most charge: either a pull of some seconds in oxygen, or some minutes without oxygen before the pull. The other three wafers of each run, which played no part, then test it. Their median error falls from 58% (stated history) to 28%, and those within twice the tolerance rise from 5 to 10 of 21. The inferred values: pulls of 4 s for the 1 h and 2.5 h runs, effectively instant for the 900 °C and 8 h runs, half a minute without oxygen for the 4 h run, and the equivalent of 30 minutes without oxygen for the 750 and 800 °C runs.
 
-**Orientation.** The predictor has fixed-charge constants for (100) and (111) only and silently ran (110) and (511) on the (111) line, which is why they were three to four times high above. Run on the (100) line they are 46% and 74% off, not 272% and 329%. Deal's 1967 Table II has a (110) line that we had never transcribed; with it (110) is 70% high, worse than treating (110) as (100). On these wafers (110) and (511) carry about as little charge as (100).
+**Orientation.** The predictor has fixed-charge constants for (100) and (111) only. Until this alignment it silently ran (110) and (511) on the (111) line and they came out three to four times high (272% and 329% median error); run on the (100) line they are 46% and 74% off, and the predictor now does that, labelled outside its tested scope. Deal's 1967 Table II has a (110) line that we had never transcribed; with it (110) is 70% high, worse than treating (110) as (100). On these wafers (110) and (511) carry about as little charge as (100).
 
 ```study-compare
 study: vitkavage-1990
 set: aligned
 ```
 
-**9** within, **7** near, **11** off of 27 numbers with the aligned settings.
+**9** within, **7** near, **11** off of 27 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
 
-| Wafer | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
 |---|---|---|---|---|---|---|---|
 | (100), 750 °C, 24 h (non-cleanroom) | oxide thickness | 25 nm | 34.9 | 20.6 | -17% | near (±10%) | thin-oxide law found on Massoud's data |
 | (100), 1000 °C, 1 h (cleanroom) | oxide thickness | 50 nm | 57.9 | 51.6 | +3% | within (±10%) | thin-oxide law found on Massoud's data |
@@ -465,26 +465,26 @@ set: aligned
 | (111), 1000 °C, 8 h (cleanroom) | oxide thickness | 240 nm | 238 | 238 | -1% | within (±10%) | 1965 law, unchanged |
 | (110), 1100 °C, 0.5 h (non-cleanroom) | oxide thickness | 90 nm | 84.7 | 84.7 | -6% | within (±10%) | 1965 law, unchanged |
 | (100), 750 °C, 23 h | fixed charge | 7.00e+10 cm⁻² | 2.78e+11 | 2.17e+11 | +210% | off (±57%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
-| (511), 750 °C, 23 h | fixed charge | 1.60e+11 cm⁻² | 6.86e+11 | 2.17e+11 | +36% | near (±25%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
-| (110), 750 °C, 23 h | fixed charge | 1.08e+12 cm⁻² | 6.86e+11 | 2.17e+11 | -80% | off (±11%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (511), 750 °C, 23 h | fixed charge | 1.60e+11 cm⁻² | 2.78e+11 | 2.17e+11 | +36% | near (±25%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (110), 750 °C, 23 h | fixed charge | 1.08e+12 cm⁻² | 2.78e+11 | 2.17e+11 | -80% | off (±11%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
 | (100), 800 °C, 18 h | fixed charge | 1.60e+11 cm⁻² | 2.54e+11 | 1.46e+11 | -9% | within (±31%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
-| (511), 800 °C, 18 h | fixed charge | 2.00e+10 cm⁻² | 6.38e+11 | 1.46e+11 | +631% | off (±100%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
-| (110), 800 °C, 18 h | fixed charge | 1.90e+11 cm⁻² | 6.38e+11 | 1.46e+11 | -23% | near (±16%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (511), 800 °C, 18 h | fixed charge | 2.00e+10 cm⁻² | 2.54e+11 | 1.46e+11 | +631% | off (±100%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (110), 800 °C, 18 h | fixed charge | 1.90e+11 cm⁻² | 2.54e+11 | 1.46e+11 | -23% | near (±16%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
 | (100), 900 °C, 4.5 h | fixed charge | 1.30e+11 cm⁻² | 2.06e+11 | 1.82e+11 | +40% | off (±15%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
-| (511), 900 °C, 4.5 h | fixed charge | 6.00e+10 cm⁻² | 5.42e+11 | 1.82e+11 | +203% | off (±33%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
-| (110), 900 °C, 4.5 h | fixed charge | 1.70e+11 cm⁻² | 5.42e+11 | 1.82e+11 | +7% | within (±18%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (511), 900 °C, 4.5 h | fixed charge | 6.00e+10 cm⁻² | 2.06e+11 | 1.82e+11 | +203% | off (±33%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (110), 900 °C, 4.5 h | fixed charge | 1.70e+11 cm⁻² | 2.06e+11 | 1.82e+11 | +7% | within (±18%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
 | (100), 1000 °C, 1 h | fixed charge | 1.70e+11 cm⁻² | 1.58e+11 | 1.52e+11 | -10% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
-| (511), 1000 °C, 1 h | fixed charge | 1.80e+11 cm⁻² | 4.46e+11 | 1.52e+11 | -15% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
-| (110), 1000 °C, 1 h | fixed charge | 1.08e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +41% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (511), 1000 °C, 1 h | fixed charge | 1.80e+11 cm⁻² | 1.58e+11 | 1.52e+11 | -15% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (110), 1000 °C, 1 h | fixed charge | 1.08e+11 cm⁻² | 1.58e+11 | 1.52e+11 | +41% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
 | (100), 1000 °C, 2.5 h | fixed charge | 1.70e+11 cm⁻² | 1.58e+11 | 1.52e+11 | -10% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
-| (511), 1000 °C, 2.5 h | fixed charge | 1.20e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +27% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
-| (110), 1000 °C, 2.5 h | fixed charge | 1.00e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +52% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (511), 1000 °C, 2.5 h | fixed charge | 1.20e+11 cm⁻² | 1.58e+11 | 1.52e+11 | +27% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (110), 1000 °C, 2.5 h | fixed charge | 1.00e+11 cm⁻² | 1.58e+11 | 1.52e+11 | +52% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
 | (100), 1000 °C, 4 h | fixed charge | 9.00e+10 cm⁻² | 1.58e+11 | 1.16e+11 | +28% | off (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
-| (511), 1000 °C, 4 h | fixed charge | 7.00e+10 cm⁻² | 4.46e+11 | 1.16e+11 | +65% | off (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
-| (110), 1000 °C, 4 h | fixed charge | 1.20e+11 cm⁻² | 4.46e+11 | 1.16e+11 | -4% | within (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
+| (511), 1000 °C, 4 h | fixed charge | 7.00e+10 cm⁻² | 1.58e+11 | 1.16e+11 | +65% | off (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
+| (110), 1000 °C, 4 h | fixed charge | 1.20e+11 cm⁻² | 1.58e+11 | 1.16e+11 | -4% | within (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
 | (100), 1000 °C, 8 h | fixed charge | 1.30e+11 cm⁻² | 1.58e+11 | 1.29e+11 | -1% | within (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
-| (511), 1000 °C, 8 h | fixed charge | 1.10e+11 cm⁻² | 4.46e+11 | 1.29e+11 | +17% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
-| (110), 1000 °C, 8 h | fixed charge | 1.00e+11 cm⁻² | 4.46e+11 | 1.29e+11 | +29% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (511), 1000 °C, 8 h | fixed charge | 1.10e+11 cm⁻² | 1.58e+11 | 1.29e+11 | +17% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (110), 1000 °C, 8 h | fixed charge | 1.00e+11 cm⁻² | 1.58e+11 | 1.29e+11 | +29% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
 
 What this does not fix. (100), (110) and (511) below 1000 °C still sit one and a half to three times above the report (for example 2.2 against 0.7 × 10^11 cm^-2 at 750 °C), and no unknown in the history moves them: the steady line we take from Deal 1967 says charge rises as oxidation temperature falls, and on these three orientations Vitkavage's does not. The program was never scored below 900 °C. Trap density after the anneal is 22% high on (110), 28% low on (111) and 17% low on (511) in the median, with (100) within 10%: an orientation dependence of the hydrogen step that the program does not have, and that no timing changes.
 
@@ -492,13 +492,13 @@ How to read the aligned numbers: the thickness change is a choice between two pr
 
 ### What our language and ontology cannot yet say
 
-- **A furnace run shared by several specimens.** The result above depends on four wafers having one history. A history file has one SPECIMEN; the ontology has no record that measurements came from one run. A `BATCH` of specimens under one `CONTROL_TRAJECTORY` would let one unknown be declared once and inferred from all of them.
-- **An unknown with a range, as a statement.** “Shorter than 5 sec” had to become `DURATION 5`. The language needs `DURATION 0.5..5` (a bound), and a status on each step's timing (stated, bound, assumed), which on this page is hand-written in Python. Then a scan like this one is a query, not a script.
-- **Cooling as a law, not a straight line.** A RUN's temperature is linear from start to end. A wafer leaving a furnace cools toward the room with a time constant. Without that, the end temperature of a pull (400 °C) is a cut-off that stands in for physics, and the charge program, whose oxygen rate barely depends on temperature (0.05 eV), keeps moving charge at 100 °C if a cooling step is written.
-- **Steps with no duration.** Clean, load, storage, metallization and measurement are comments in the history. The ontology has no classes for them that a program could read; an `EVENT` statement with a kind from the vocabulary would at least make them queryable.
+- **Done 10 November: a furnace run shared by several specimens.** A history may now hold several SPECIMEN blocks under one CONTROL_TRAJECTORY, and `scripts/align_study.py` can share an unknown per run (`share = "run"`). Still missing: a record in the ontology that measurements came from one run. Before: The result above depends on four wafers having one history. A history file has one SPECIMEN; the ontology has no record that measurements came from one run. A `BATCH` of specimens under one `CONTROL_TRAJECTORY` would let one unknown be declared once and inferred from all of them.
+- **Done 10 November: an unknown with a range, as a statement.** `TIMING bound` and `VARY duration 0.5..5` now exist and drive the alignment search. Before: “Shorter than 5 sec” had to become `DURATION 5`. The language needs `DURATION 0.5..5` (a bound), and a status on each step's timing (stated, bound, assumed), which on this page is hand-written in Python. Then a scan like this one is a query, not a script.
+- **Partly done 10 November: cooling as a law.** `PROFILE exponential TAU` now exists; the charge program still needs a rate that freezes as the wafer cools. Before: A RUN's temperature is linear from start to end. A wafer leaving a furnace cools toward the room with a time constant. Without that, the end temperature of a pull (400 °C) is a cut-off that stands in for physics, and the charge program, whose oxygen rate barely depends on temperature (0.05 eV), keeps moving charge at 100 °C if a cooling step is written.
+- **Done 10 November: steps with no duration.** `EVENT <id> KIND <kind>` now records them in place. Still missing: an ontology class a program could read. Before: Clean, load, storage, metallization and measurement are comments in the history. The ontology has no classes for them that a program could read; an `EVENT` statement with a kind from the vocabulary would at least make them queryable.
 - **Specimen properties a program can read.** Doping, wafer size, starting oxide and sample set are recorded and read by nothing. The starting oxide in particular is a parameter inside the growth program (23 nm) when it is a property of the wafer.
-- **An orientation with no constants must be refused or labelled per number.** (110) and (511) fell back to (111) for fixed charge with a note; the number looked like any other.
-- **Gas by pressure, not by name.** Writing the stated moisture (`mix:O2=0.999994,H2O=6.0e-6`) made the fixed-charge program return nothing, because the predictor looks for the name `dry_O2`. And the thin-oxide program keeps growing oxide during a nitrogen step: it does not read the oxygen pressure.
+- **Done 10 November: an orientation with no constants.** It now runs on the (100) line and is labelled outside the tested scope. Before: (110) and (511) fell back to (111) for fixed charge with a note; the number looked like any other.
+- **Partly done 10 November: gas by pressure, not by name.** The predictor now reads a gas by its partial pressures. Still open: the thin-oxide program grows oxide in nitrogen because it does not read the oxygen pressure. Before: Writing the stated moisture (`mix:O2=0.999994,H2O=6.0e-6`) made the fixed-charge program return nothing, because the predictor looks for the name `dry_O2`. And the thin-oxide program keeps growing oxide during a nitrogen step: it does not read the oxygen pressure.
 - **What a measurement is.** Fixed charge after a hydrogen anneal, apparent charge without one, and Deal's 1967 charge after 550 °C in nitrogen are three observables in the papers and one in ours. The work-function value behind every fixed charge here is not stated; an observation model for the C-V extraction would carry that assumption.
 - **Repeatability as data.** The report's run-to-run scatter (up to 33%) is larger than the 10% we score against. A dataset should carry its own repeatability so a contract's tolerance comes from the source.
 

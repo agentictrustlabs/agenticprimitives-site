@@ -6,12 +6,12 @@ Each page takes one paper we depend on, writes its specimen and process history 
 
 | Study | Interface | Reproducible from the paper? | Specimen and history: our encoding against the paper | Numbers: our simulation against the paper |
 |---|---|---|---|---|
-| [Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990) | Planar Si/SiO2 | **Moderate** | 3 same, 6 approximated, 6 not in ours | 9 within, 3 near, 9 off |
-| [Deal, Sklar, Grove and Snow 1967](/writing/interface-study-deal-1967) | Planar Si/SiO2 | **Moderate** | 3 same, 4 approximated, 5 not in ours | 9 within, 4 near |
-| [Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980) | Planar Si/SiO2 | **High** | 7 same, 2 approximated, 3 not in ours | 19 within, 4 near, 1 off |
-| [Song, Dhar, Feldman, Chung and Williams 2004](/writing/interface-study-song-2004) | SiC/SiO2 | **High for growth** | 5 same, 1 approximated, 1 assumed, 3 not in ours | 21 within, 3 near |
-| [Kobayashi et al. 2017](/writing/interface-study-kobayashi-2017) | SiC/SiO2 | **Low** | 4 same, 1 approximated, 1 assumed, 2 not in ours | 21 within |
-| [Goncharova et al. 2011](/writing/interface-study-goncharova-2011) | HfO2/SiO2/Si | **Moderate** | 5 same, 1 approximated, 2 assumed, 1 differs, 4 not in ours | 16 within, 5 near, 3 off |
+| [Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990) | Planar Si/SiO2 | **Moderate** · 9 of 21 within tolerance; aligned 6 → 9 of 27 held out | 3 same, 6 approximated, 6 not in ours | 9 within, 4 near, 8 off |
+| [Deal, Sklar, Grove and Snow 1967](/writing/interface-study-deal-1967) | Planar Si/SiO2 | **Moderate** · 9 of 13 within tolerance | 3 same, 4 approximated, 6 not in ours | 9 within, 4 near |
+| [Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980) | Planar Si/SiO2 | **High** · 19 of 24 within tolerance; aligned 12 → 13 of 16 held out | 7 same, 2 approximated, 3 not in ours | 19 within, 4 near, 1 off |
+| [Song, Dhar, Feldman, Chung and Williams 2004](/writing/interface-study-song-2004) | SiC/SiO2 | **High for growth** · 21 of 24 within tolerance | 5 same, 1 approximated, 1 assumed, 3 not in ours | 21 within, 3 near |
+| [Kobayashi et al. 2017](/writing/interface-study-kobayashi-2017) | SiC/SiO2 | **Low** · 21 of 21 within tolerance | 4 same, 1 approximated, 1 assumed, 2 not in ours | 21 within |
+| [Goncharova et al. 2011](/writing/interface-study-goncharova-2011) | HfO2/SiO2/Si | **Moderate** · 16 of 24 within tolerance | 5 same, 1 approximated, 2 assumed, 1 differs, 4 not in ours | 16 within, 5 near, 3 off |
 
 ## How to read a page
 
@@ -35,3 +35,43 @@ Each page takes one paper we depend on, writes its specimen and process history 
 - **Kobayashi et al. 2017.** Five minutes of argon and forty minutes of oxidation at 1300 °C are our choices from the ranges the paper gives (1 to 10 min; 40 min or 1 h 20 min). The stored records present them as the recipe.
 - **Goncharova et al. 2011.** The stored recipe gives the anneal as dry oxygen at one atmosphere. The paper's gas is 18O2 at 0.01 Torr, about 1.3 × 10^-5 atm. No program reads the pressure, so the numbers do not change, but the fitted rates belong to that pressure and cannot be carried to another.
 - **Goncharova et al. 2011.** Our oxygen dataset labels the lowest temperature 773 K and our profile dataset labels the same anneal 763 K. The paper uses both, and 490 °C; the figures say 763 K.
+
+## Aligning the simulations with the papers
+
+For each study the steps a paper leaves open were searched over the range the paper allows (see each page). Counted on the numbers each page's alignment chart shows: where a study has held-out specimens these are only the held-out ones, a test; elsewhere the unknowns were chosen on the same numbers and the aligned count is an upper bound.
+
+| Study | Numbers | Within tolerance as reproduced | Aligned | Kind of evidence |
+|---|---|---|---|---|
+| [Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990) | 27 | 6 | 9 | held-out test |
+| [Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980) | 16 | 12 | 13 | held-out test |
+
+## What the language gained from reproducing these studies
+
+Each addition below was forced by a paper that could not otherwise be written down as it was done. The words are in `ontology/isl_vocabulary.json` (`history_statements`) and the language reference, and the runtime refuses anything else.
+
+| Added | Because | Example |
+|---|---|---|
+| `TIMING stated\|bound\|range\|assumed` on every step | Vitkavage's pull is “shorter than 5 sec”, Kobayashi's anneal “1 - 10 min”, and most loading and cooling is not stated at all. A history now says which of its numbers are the paper's. | `RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound` |
+| `VARY <duration\|T_start\|T_end\|T_hold> <lo>..<hi>` | What a paper leaves open is an unknown with a range, not a number of ours. `scripts/align_study.py` searches these ranges against the paper's results, which turns alignment from a hand-written script into a query on the history. | `VARY duration 0.5..5 VARY T_end 300..800` |
+| `PROFILE exponential TAU <s>` | A wafer leaving a furnace cools toward the room along a curve. A straight line to an assumed end temperature hid a model fault: the fixed-charge program keeps moving charge at low temperature. | `RUN Endcap DURATION 120 TEMP 400->25 AMBIENT dry_O2 PROFILE exponential TAU 30` |
+| `EVENT <id> KIND <kind>` | Cleans, transfers between furnaces, storage, metallization and measurement were comments. Now they are statements in their place in the history, with a kind from the vocabulary. | `EVENT Transfer KIND transfer TIMING assumed` |
+| Several `SPECIMEN` blocks under one history | Vitkavage oxidized four orientations in one run, and their charge moves together from run to run. One history can now hold the wafers of a run. | `python -m isl_harness.predict run.isl` runs each wafer |
+| Gas read by partial pressure | Writing the paper's own gas (dry oxygen with 6 ppm water; ¹⁸O₂ at 0.01 Torr; 20% oxygen in nitrogen) made programs written for `dry_O2` return nothing. | `AMBIENT mix:O2=0.999994,H2O=6.0e-6` |
+| An orientation without constants is run on the (100) line, labelled outside scope | (110) and (511) had silently taken the (111) fixed-charge line and came out three to four times high. | |
+
+## What our language and ontology still cannot say
+
+Collected from every page. Each is something a paper states, or a simulation needs, that cannot yet be written down; each says what it would change. This is the agenda for the next changes to the language.
+
+- **Done 10 November: a furnace run shared by several specimens.** A history may now hold several SPECIMEN blocks under one CONTROL_TRAJECTORY, and `scripts/align_study.py` can share an unknown per run (`share = "run"`). Still missing: a record in the ontology that measurements came from one run. Before: The result above depends on four wafers having one history. A history file has one SPECIMEN; the ontology has no record that measurements came from one run. A `BATCH` of specimens under one `CONTROL_TRAJECTORY` would let one unknown be declared once and inferred from all of them. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Done 10 November: an unknown with a range, as a statement.** `TIMING bound` and `VARY duration 0.5..5` now exist and drive the alignment search. Before: “Shorter than 5 sec” had to become `DURATION 5`. The language needs `DURATION 0.5..5` (a bound), and a status on each step's timing (stated, bound, assumed), which on this page is hand-written in Python. Then a scan like this one is a query, not a script. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Partly done 10 November: cooling as a law.** `PROFILE exponential TAU` now exists; the charge program still needs a rate that freezes as the wafer cools. Before: A RUN's temperature is linear from start to end. A wafer leaving a furnace cools toward the room with a time constant. Without that, the end temperature of a pull (400 °C) is a cut-off that stands in for physics, and the charge program, whose oxygen rate barely depends on temperature (0.05 eV), keeps moving charge at 100 °C if a cooling step is written. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Done 10 November: steps with no duration.** `EVENT <id> KIND <kind>` now records them in place. Still missing: an ontology class a program could read. Before: Clean, load, storage, metallization and measurement are comments in the history. The ontology has no classes for them that a program could read; an `EVENT` statement with a kind from the vocabulary would at least make them queryable. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Specimen properties a program can read.** Doping, wafer size, starting oxide and sample set are recorded and read by nothing. The starting oxide in particular is a parameter inside the growth program (23 nm) when it is a property of the wafer. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Done 10 November: an orientation with no constants.** It now runs on the (100) line and is labelled outside the tested scope. Before: (110) and (511) fell back to (111) for fixed charge with a note; the number looked like any other. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Partly done 10 November: gas by pressure, not by name.** The predictor now reads a gas by its partial pressures. Still open: the thin-oxide program grows oxide in nitrogen because it does not read the oxygen pressure. Before: Writing the stated moisture (`mix:O2=0.999994,H2O=6.0e-6`) made the fixed-charge program return nothing, because the predictor looks for the name `dry_O2`. And the thin-oxide program keeps growing oxide during a nitrogen step: it does not read the oxygen pressure. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **What a measurement is.** Fixed charge after a hydrogen anneal, apparent charge without one, and Deal's 1967 charge after 550 °C in nitrogen are three observables in the papers and one in ours. The work-function value behind every fixed charge here is not stated; an observation model for the C-V extraction would carry that assumption. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Repeatability as data.** The report's run-to-run scatter (up to 33%) is larger than the 10% we score against. A dataset should carry its own repeatability so a contract's tolerance comes from the source. *([Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990))*
+- **Cooling with a freezing point.** With PROFILE exponential the language can now cool a wafer realistically, but the charge program then keeps moving charge down to room temperature, because its oxygen rate was fitted with an activation energy of 0.05 eV. A program needs a rate that vanishes as the wafer cools, fitted against pulls written as real cooling curves; then the pull's end temperature stops being a free number. *([Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980))*
+- **Doping as an input.** DOPING is recorded on each specimen and read by nothing. The report's n-type and p-type wafers differ by more than the tolerance. *([Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980))*
+- **The anneal's gas as a separate level.** Nitrogen and argon are one curve in the report and one level in the program; if they differ (the 1100 °C rows hint that they might), the program needs a level per inert gas. *([Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980))*
