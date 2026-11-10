@@ -85,7 +85,9 @@ Every value in our datasets was read by an AI agent. Page images sit beside ever
 *Default:* everything stays labelled unverified.
 
 **12. Does the vocabulary read like the field's?**
-Of 34 working terms, 25 are the sources' own, one is ours (surface-diffusion front) and eight domain terms have no source we can cite. We would like an expert to read the 67-term list and mark any that a practitioner would not use, or would use differently, for example whether Qss, Nf and Qf should stay as separate quantities.
+Of 36 working terms, 28 are the sources' own, one is ours (surface-diffusion front) and six of the 67 domain terms have no source we can cite. We would like an expert to read the 67-term list (linked below) and mark any that a practitioner would not use, or would use differently, for example whether Qss, Nf and Qf should stay as separate quantities.
+
+**The vocabulary itself is on its own page:** [the 67 domain terms and 36 working terms](/writing/interface-vocabulary-for-emily), with each term's definition, who wrote it, whether any source in our library uses the words, and which sources. Six domain terms have no source.
 
 **13. Which of the six hypotheses would you drop?**
 H1 to H6 are in the essay with their odds. H6 (an oxygen repair window) has no data behind it. H4 (stress linking nanowire geometry to electrical defects) has none for the electrical half. Which are not worth effort?

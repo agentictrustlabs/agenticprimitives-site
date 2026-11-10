@@ -37,6 +37,15 @@ const AUTHORED: readonly Writing[] = [
     file: 'questions-for-emily-testing-a-theory-of-the-interface.md',
   },
   {
+    slug: 'interface-vocabulary-for-emily',
+    title: 'The vocabulary: what the ontology calls things',
+    description:
+      'The 67 domain terms and 36 working terms of the interface ontology, each with its definition, who wrote it, whether any source in the library uses the words, and which sources. Six terms have no source.',
+    kind: 'essay',
+    date: '2026-11-10',
+    file: 'interface-vocabulary-for-emily.md',
+  },
+  {
     slug: 'what-counts-as-a-better-translation',
     title: 'Two machines translated the same Greek into the same language. Deciding which did it better turned out to be the hard part.',
     description:
