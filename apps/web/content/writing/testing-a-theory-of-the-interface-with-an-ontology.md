@@ -18,7 +18,7 @@
 | Interface trap density on flat silicon | **Partly** | Two trap populations: 41% within 10% in scope, 79% of pairs ordered right. Laboratories still differ three- to sevenfold on one recipe |
 | Trap density against energy on silicon carbide | **Partly** | A one-way anneal: 59% within 10%, 80% of pairs ordered right, one laboratory |
 | Germanium at a SiGe interface | **For thin oxides** | Fitted on one laboratory, within 2 points at two others; misses the one thick oxide |
-| Composition profile through a hafnium gate stack | **Not yet** | The delivered program is right on the amount and wrong on the place (2 of 9 depth points). A surface-limited screen, one rate per temperature with the mean matched, passes 9 of 9 interior points. At 1223 K the film total is the figure's sum, not the marker that misses it |
+| Composition profile through a hafnium gate stack | **Partly** | With oxygen exchange at the surface separated from uptake and interlayer growth, one temperature law passes 9 of 9 profile points it was not fitted to. The held-out temperature's amounts are missed (0 of 3), and the nine points are not independent |
 | Electrical properties on nanowires, hafnium stacks, SiGe and germanium | **No** | We hold no measurements and have no program |
 
 **What we propose.**
@@ -190,7 +190,7 @@ What did survive is narrower and, we think, real.
 - **Unannealed trap density falls with time at temperature, and we no longer know what that means.** One thesis varied oxygen pressure so that the same thickness was reached in very different times. Time orders the data within its scatter; thickness, growth rate and oxidant supply do not. Whether that law carries to another laboratory is not established. On five points from a second laboratory a simple power law in time lands within about 15%, and does better than the same predictions matched to the wrong recipes (3 of 5 inside 10%, against 0.8 by chance, p = 0.03). But four of those five points are at one temperature, and on those four alone the time dependence is not distinguishable from chance (p = 0.17). The contract-bound model of the same law passes 1 of 5, no better than knowing the typical level (p = 0.59). But a 2001 paper we read late gives the published reason to be careful: whether dangling bonds are seen after a thermal step "is determined by the cooling rate and the presence/absence of hydrogen/moisture in the ambient." The fall with time may be fewer defects, or the same defects better passivated on the way out of the furnace. Electrical data cannot tell the two apart.
 - **A recipe does not determine trap density.** A third laboratory reads three to seven times higher on the same nominal recipe, and not by a constant factor. Inside one laboratory, cleanroom and non-cleanroom wafers differ by 0.8 to 8.5. The same paper names the variable: hydrogen from moisture reaching the interface during cooling. A direct count by spin resonance shows the other half, that an hour without oxygen near 970 °C more than doubles the number of dangling bonds. Both happen, and a published recipe records neither.
 - **Oxide on a nanowire thins with the wire for the reason Kao gave.** A cylinder in a viscous shell, with one parameter fitted to five large wires, predicts oxide thickness on seven smaller ones to within 3 nm. Without the stress term the smallest wire is consumed entirely.
-- **A model can match an amount and miss the profile.** Our oxygen-exchange model reproduces how much isotope enters a hafnium silicate film and puts it in the wrong place: a surface layer, where the paper finds it through the whole film.
+- **A model can match an amount and miss the profile.** Our oxygen-exchange model reproduces how much isotope enters a hafnium silicate film and puts it in the wrong place: a surface layer, where the paper finds it through the whole film. This is the first-round result. Once oxygen uptake was separated from exchange and interlayer growth, a finite surface rate passes the profile (see H1).
 
 ## The plan: every cell of the challenge, the ideas in play, and our odds
 
@@ -230,8 +230,8 @@ An outside reviewer pointed out that our earlier headline, 91% of measurement pa
 | 2. Si nanowires | remaining silicon | 18 | 18 | 9 (50%) | 100% |
 | 3. SiC/SiO₂ | oxide thickness | 43 | 43 | 38 (88%) | 99.5% |
 | 3. SiC/SiO₂ | interface state density against energy | 27 | 27 | 16 (59%) | 80% |
-| 4. HfO₂/SiO₂/Si | oxygen isotope amounts | 15 | 15 | 9 (60%) | 100% |
-| 4. HfO₂/SiO₂/Si | isotope depth profile | 9 | 9 | 2 (22%) | 100% |
+| 4. HfO₂/SiO₂/Si | oxygen isotope amounts | 15 | 15 | 7 (47%) | 100% |
+| 4. HfO₂/SiO₂/Si | isotope depth profile | 9 | 9 | 9 (100%) | 100% |
 | 5a. SiGe/oxide | germanium at the interface | 5 | 4 | 4 | 3 of 6 |
 | 5a. SiGe/oxide | oxide thickness | 23 | 7 | 2 | 22% |
 | 5a. SiGe/oxide | remaining silicon | 16 | no program | | |
@@ -259,6 +259,8 @@ Six proposals came from reviewing the ontology, the existing ISL programs and th
 The common idea is to track the material that produces a measurement. Carbon configurations can contribute to a trap spectrum; oxygen inventories produce isotope profiles; germanium redistribution produces an enriched layer. ISL carries the states forward through a process history. An observation model says what the measurement reads from those states. Sharing that structure between materials requires the right species, geometry and measurement conditions; sharing a target called "trap density" is not enough.
 
 **H1. Oxygen enters a hafnium silicate slowly and mixes quickly.** The delivered program fixes the surface at pure oxygen-18 and uses slower transport inside the film. It passes 2 of 9 reconstructed interior depth points. The alternative gives surface exchange its own rate and conserves each isotope as oxygen-18 enters and oxygen-16 leaves. In a synthetic comparison at the same 20% total replacement, the inner-to-outer isotope ratio is 0.999 with finite surface exchange and 0.0037 with a perfectly exchanged surface. The amount alone cannot separate the mechanisms.
+
+**Update, after the oxygen balance was corrected.** The surface exchanged one oxygen for another while growth of the interlayer removed oxygen from the film and nothing supplied it. With uptake added, exchange, uptake and interlayer growth are three separate terms and the finite-surface form contains the pure-surface form as a limit. Refitted on integrated amounts at four temperatures only, it passes 8 of 12 (the pure-surface form also 8, with larger error), 0 of 3 amounts at the held-out 1073 K (the pure-surface form 1 of 3), and 9 of 9 profile points where the pure-surface form passes 2 of 9. It is now the program the predictor runs, labelled inconclusive: the held-out miss is real (3.6 tolerances), the nine points are three fitted layers at three temperatures and are nearly flat, and the fast internal transport sits at its fitting bound, so the data say fast and not how fast.
 
 The measured shape screen is more encouraging but narrower than a temperature prediction: one rate is chosen at each temperature to match the reconstructed interior mean, after which finite surface exchange passes 9 of 9 interior points. Those points sample fitted layers in the same MEIS reconstruction; they are not nine independent measurements. No common temperature law, held-out temperature, instrument convolution or interfacial-growth model has been tested in this screen. At 1223 K the isotope markers exceed the drawn film sum by 1.00 × 10^15 cm^-2. Using the sum gives an oxygen-18 atomic fraction of 0.580, compared with the reconstructed plateau of 0.545 and the thickness-weighted film value of 0.558. The paper says the detailed oxygen shape is unresolved because of straggling. [Goncharova and colleagues](https://physics.uwo.ca/~lgonchar/research/publications/pdfs/PRB_83_2011_115329.pdf) already describe exchange and its dependence on the stack. Our candidate is a constrained explanation of the amounts and profiles together.
 
@@ -349,8 +351,8 @@ The immediate order is H1 and H2, with H5 alongside them. Freeze a model and its
 
 | Cell | Now | Approaches, with our odds | Needs |
 |---|---|---|---|
-| Interlayer regrowth | 60% of amounts within tolerance; 1 of 3 at the held-out temperature | H1, interfacial growth as its own layer: 45% | Not started. The 1223 K film sum already matches the reconstructed film. The growth is a separate layer |
-| Composition profile | 2 of 9 in the delivered program | H1, finite surface exchange, 9 of 9 interior points once the mean is matched: 55% | Instrument resolution. A temperature law with a held-out temperature has not been run |
+| Interlayer regrowth | 47% of amounts within tolerance; 0 of 3 at the held-out temperature | H1, interfacial growth as its own layer, now a separate term: 40% | Why the held-out temperature is missed; the interlayer amounts are the weak part |
+| Composition profile | 9 of 9 in the delivered program, held-out temperature amounts 0 of 3 | H1, finite surface exchange with uptake, fitted on amounts only: 60% | Instrument resolution. A temperature law with a held-out temperature has not been run |
 | Interface states, fixed charge | No data | H6: 5% | A source |
 
 **5. SiGe/oxide and Ge/GeO₂**
