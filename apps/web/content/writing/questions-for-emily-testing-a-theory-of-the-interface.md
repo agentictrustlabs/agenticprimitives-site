@@ -4,6 +4,19 @@
 
 *Written 10 November 2026. Every number below is a judgement or a result described in the essay; all measured values were read from papers by an AI agent and have not been checked by a person.*
 
+## The studies we depend on, reproduced
+
+Before the questions, the thing we most want checked. For each paper our data come from we have written the specimen and the timing of its process history in our language as the paper states them, simulated it, and set the result beside the paper's numbers. Each page has the specimen in three dimensions with its history on a clock, the paper's words beside our encoding item by item, the paper's terms mapped to ours, the simulation as ISL text, a chart of how far we land from the paper, and our assessment of how well the paper lets its result be reproduced. Start at [the studies we depend on, reproduced](/writing/interface-studies-reproduced), or go to one:
+
+- [Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990): reproducible from the paper as written: moderate; 9 within, 3 near, 9 off of 21 numbers.
+- [Deal, Sklar, Grove and Snow 1967](/writing/interface-study-deal-1967): reproducible from the paper as written: moderate; 9 within, 4 near of 13 numbers.
+- [Deal and Razouk 1980](/writing/interface-study-deal-razouk-1980): reproducible from the paper as written: high; 19 within, 4 near, 1 off of 24 numbers.
+- [Song, Dhar, Feldman, Chung and Williams 2004](/writing/interface-study-song-2004): reproducible from the paper as written: high for growth; 21 within, 3 near of 24 numbers.
+- [Kobayashi et al. 2017](/writing/interface-study-kobayashi-2017): reproducible from the paper as written: low; 21 within of 21 numbers.
+- [Goncharova et al. 2011](/writing/interface-study-goncharova-2011): reproducible from the paper as written: moderate; 16 within, 5 near, 3 off of 24 numbers.
+
+More are being added (Hung 1987, Rabie 2005, Müller 2023, Krzeminski 2012, Wang 1994). On each page the section “What we would like Emily to check” lists what we could not settle from the paper.
+
 ## How to read this page
 
 Each question has four parts: **what we need to know**, **why it matters**, **what we do by default**, and **what it is worth** (our own estimate of how far the answer moves the chance of meeting a criterion). Questions are ordered by that last part. Short answers are enough: a number, a yes or a no, a name, a file.

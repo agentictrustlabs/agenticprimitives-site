@@ -1,0 +1,44 @@
+[
+ {
+  "slug": "interface-studies-reproduced",
+  "title": "The studies we depend on, reproduced",
+  "file": "interface-studies-reproduced.md",
+  "description": "6 papers the interface study depends on: each one's specimen and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
+ },
+ {
+  "slug": "interface-study-vitkavage-1990",
+  "title": "Reproducing Vitkavage, Irene and Massoud 1990: interface charges on four orientations of silicon",
+  "file": "interface-study-vitkavage-1990.md",
+  "description": "Vitkavage, Irene and Massoud 1990: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 3 near, 9 off)."
+ },
+ {
+  "slug": "interface-study-deal-1967",
+  "title": "Reproducing Deal, Sklar, Grove and Snow 1967: fixed charge and the last hot step",
+  "file": "interface-study-deal-1967.md",
+  "description": "Deal, Sklar, Grove and Snow 1967: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near)."
+ },
+ {
+  "slug": "interface-study-deal-razouk-1980",
+  "title": "Reproducing Deal and Razouk 1980: four ways to end an oxidation",
+  "file": "interface-study-deal-razouk-1980.md",
+  "description": "Deal and Razouk 1980: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (19 within, 4 near, 1 off)."
+ },
+ {
+  "slug": "interface-study-song-2004",
+  "title": "Reproducing Song et al. 2004: dry oxidation of three faces of 4H-SiC",
+  "file": "interface-study-song-2004.md",
+  "description": "Song, Dhar, Feldman, Chung and Williams 2004: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within, 3 near)."
+ },
+ {
+  "slug": "interface-study-kobayashi-2017",
+  "title": "Reproducing Kobayashi et al. 2017: interface states on SiC after an argon anneal",
+  "file": "interface-study-kobayashi-2017.md",
+  "description": "Kobayashi et al. 2017: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within)."
+ },
+ {
+  "slug": "interface-study-goncharova-2011",
+  "title": "Reproducing Goncharova et al. 2011: oxygen exchange and interface growth under a hafnium silicate film",
+  "file": "interface-study-goncharova-2011.md",
+  "description": "Goncharova et al. 2011: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (16 within, 5 near, 3 off)."
+ }
+]

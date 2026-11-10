@@ -40,7 +40,7 @@ export default async function Essay({ params }: { params: Promise<{ slug: string
   const first = blocks[0]?.trim() ?? '';
   const heading = first.startsWith('# ') ? first.slice(2) : w.title;
   const body = first.startsWith('# ') ? blocks.slice(1).join('\n\n') : raw;
-  const kicker = w.kind === 'series' ? `Day ${w.day} of ${SERIES.length} · The missing layer${w.week ? ` · ${w.week}` : ''}` : 'Essay';
+  const kicker = w.kind === 'series' ? `Day ${w.day} of ${SERIES.length} · The missing layer${w.week ? ` · ${w.week}` : ''}` : w.kind === 'study' ? 'Study reproduced' : 'Essay';
   return (
     <>
       <JsonLd

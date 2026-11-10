@@ -1,4 +1,7 @@
-export type WritingKind = 'essay' | 'series';
+import INTERFACE_STUDIES from './interface-studies.json';
+
+/** 'study' pages are companions to an essay: reachable by link and in the sitemap, not listed among the essays. */
+export type WritingKind = 'essay' | 'series' | 'study';
 
 export interface Writing {
   slug: string;
@@ -14,7 +17,7 @@ export interface Writing {
 }
 
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
-export const WRITING: readonly Writing[] = [
+const AUTHORED: readonly Writing[] = [
   {
     slug: 'testing-a-theory-of-the-interface-with-an-ontology',
     title: 'A machine proposed a theory of the silicon interface. The hard part was building what could prove it wrong.',
@@ -275,6 +278,11 @@ export const WRITING: readonly Writing[] = [
     linkedin: 'https://www.linkedin.com/pulse/day-21-rails-throttles-richard-pedersen-nyzjc',
   },
 ];
+
+/** The studies reproduced for the interface essay. Written by the ISL harness (`scripts/reproduce_studies.py --site`). */
+const STUDIES: readonly Writing[] = (INTERFACE_STUDIES as { slug: string; title: string; description: string; file: string }[]).map((s) => ({ ...s, kind: 'study' as const, date: '2026-11-10' }));
+
+export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES];
 
 export const SERIES = WRITING.filter((w) => w.kind === 'series');
 export const ESSAYS = WRITING.filter((w) => w.kind === 'essay');

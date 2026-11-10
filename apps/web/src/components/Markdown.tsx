@@ -1,4 +1,7 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import type { ReactNode } from 'react';
+import { StudyCompare, StudyMatch, StudyPlayer, type StudyData } from '@/components/InterfaceStudy';
 import { Mermaid } from '@/components/Mermaid';
 import { TownStory } from '@/components/TownStory';
 
@@ -57,6 +60,27 @@ export function Markdown({ source }: { source: string }) {
           const lang = lines[0]!.slice(3).trim();
           const code = lines.slice(1, lines[lines.length - 1]!.trim() === '```' ? -1 : undefined).join('\n');
           if (lang === 'mermaid') return <Mermaid key={i} chart={code} />;
+          if (lang === 'study-player' || lang === 'study-match' || lang === 'study-compare') {
+            // A figure for one reproduced study of the interface essay. The record is written by the ISL harness
+            // (`scripts/reproduce_studies.py --site`) to content/studies/<id>.json:
+            //   ```study-player
+            //   study: vitkavage-1990
+            //   ```
+            const id = (code.match(/study:\s*([a-z0-9-]+)/)?.[1] ?? '').replace(/[^a-z0-9-]/g, '');
+            const data = JSON.parse(readFileSync(join(process.cwd(), 'content/studies', `${id}.json`), 'utf8')) as StudyData;
+            if (lang === 'study-player') {
+              return (
+                <div key={i} className="relative left-1/2 my-10 w-[min(100vw-2rem,1280px)] -translate-x-1/2 rounded-2xl bg-ink p-4 text-white md:p-6">
+                  <StudyPlayer data={data} />
+                </div>
+              );
+            }
+            return (
+              <div key={i} className="relative left-1/2 w-[min(100vw-2rem,1100px)] -translate-x-1/2">
+                {lang === 'study-match' ? <StudyMatch data={data} /> : <StudyCompare data={data} />}
+              </div>
+            );
+          }
           if (lang === 'story') {
             // An animated walkthrough from the diagrams package, embedded in an essay:
             //   ```story
