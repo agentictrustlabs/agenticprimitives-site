@@ -1,14 +1,41 @@
 # A machine proposed a theory of the silicon interface. The hard part was building what could prove it wrong.
 
-*How an AI-driven study of semiconductor interfaces was held to fifty years of published measurements: one ontology, a small language that decides what may run, an agent harness that cannot write its own evidence, an evaluation harness that scores before anyone sees the answer, and a record in which the starting hypothesis is marked refuted.*
+*Can you predict what a semiconductor interface will be from how it was made? Our answer: oxide thickness, yes; fixed charge, yes within a stated range; trap density, not from the recipe alone. And a language, an ontology and two harnesses that let anyone check each of those answers against the published record.*
+
+## The answer, first
+
+**The question.** A chip's performance is set at interfaces a few atoms thick. Engineers can predict how thick an oxide will grow. They cannot reliably predict, from the recipe, how many electrical defects the finished interface will hold, and today that is managed by trial and error. An open challenge asks for one framework that predicts thickness, composition and electrical quality from processing history, across five kinds of interface.
+
+**What we found.** We wrote seventeen candidate models and scored each on published measurements it had not been fitted to, wherever possible from a laboratory other than the one it was tuned on.
+
+| What you want to predict | From the recipe alone? | How well, on data the model had not seen |
+|---|---|---|
+| Oxide thickness on silicon and silicon carbide | **Yes** | Published constants, nothing fitted: 7 of 7 held-out points on SiC; 4 of 6 within 10% on Si |
+| Oxide thickness on a silicon nanowire | **Yes, with one extra parameter** | A viscous-shell stress term fitted to five large wires predicts seven smaller ones to within 3 nm |
+| Fixed charge at the interface | **Yes, within a stated range** | It is a reversible equilibrium of the last hot step. Fitted at one laboratory, 12 of 16 within 10% at another (thick oxides, 900–1100 °C) |
+| Interface trap density | **No** | Directions right on 145 of 190 comparisons. Magnitudes differ three- to sevenfold between laboratories running the same recipe |
+| Composition profile through a gate stack | **Not yet** | The amount of exchanged oxygen is right; where it sits in the film is wrong |
+
+**What we propose.**
+
+1. **For thickness: the established growth law, plus viscous stress on curved surfaces.** Nothing new is needed on flat silicon or silicon carbide. On a nanowire, one parameter for the compression that a flowing oxide shell puts on the silicon accounts for the thinning.
+2. **For fixed charge: two equilibria and a clock.** The charge moves toward one temperature-dependent value in oxygen and a lower one in inert gas, reversibly. Whatever came before the last hot step is forgotten. This replaces the idea we started with, that the interface freezes in a memory of its history.
+3. **For trap density: a missing input, not a missing equation.** What an unannealed measurement sees depends on how much hydrogen reached the interface while the wafer cooled: the moisture in the gas, the pull, the tube. Published recipes do not record that, which is why laboratories disagree. Our proposal is that process records carry the cooling ambient and the pre-oxidation clean as first-class fields, and that models take them as inputs. Until then no model that reads only the recipe will predict trap density to better than a factor of several, and we can show that ours do not.
+4. **For all of it: a way to check.** Each of the statements above is a short program in a purpose-built language, bound by hash to the data that tests it, with its assumptions recorded in an ontology. A different group can rerun every one, or write a competing mechanism in forty lines and see whether it survives the same contracts.
+
+**What we rejected.** Our own starting theory, that the interface is a glass whose defects are set by one relaxing structural state. It failed for fixed charge, was unsupported for trap density, and had been proposed in 1982 by a group whose own data then argued against it. Four of the seventeen models are marked refuted and one withdrawn.
+
+**What this is not.** It is not a winning entry: we have nothing on germanium and electrical results on flat silicon only. And every measured value was read from a paper by an AI agent and has not been checked by a person.
+
+The rest of this account is how those answers were reached, and why we think the method matters more than any one of them.
+
+## How it started
 
 A fluent language model can write a theory of the silicon–oxide interface in a minute. Ask it why two wafers with the same oxide thickness carry different numbers of electrical defects and it will tell you, convincingly, that the interface is a glass frozen out of equilibrium, that a structural state relaxes during the anneal, and that hydrogen then decides how much of the damage shows. It will give you equations. It will cite the right people.
 
 We know, because that is how this project began. The theory was ours, written with a model's help, and it was good enough to put on the cover of a proposal.
 
-It was also wrong for one of the two quantities it was meant to explain and unsupported for the other. And, as we found late, in a scanned government report with no text layer, it had been proposed in 1982 by a group at Stanford whose own data then argued against it.
-
-This is an account of the machinery that found that out. It uses the same four parts as [the radar design](/writing/designing-a-radar-with-an-ontology) and [the Bible-translation programme](/writing/translating-the-bible-with-an-ontology): an ontology that describes the domain once, a loop held to deterministic checks, a harness that scores before anyone sees the answer, and a place where people decide. Here the thing held to account is not a design or a translation. It is a scientific claim, and the machinery is the product. The theory was the test load.
+What follows uses the same four parts as [the radar design](/writing/designing-a-radar-with-an-ontology) and [the Bible-translation programme](/writing/translating-the-bible-with-an-ontology): an ontology that describes the domain once, a loop held to deterministic checks, a harness that scores before anyone sees the answer, and a place where people decide. Here the thing held to account is not a design or a translation. It is a scientific claim. The machinery is the product. The theory was the test load.
 
 ## Why this is a tough job
 
@@ -57,7 +84,7 @@ For most of this project the ontology and the working code lived apart, and we s
 
 So each parameter a program marks `hypothesis` became an assumption record. Every model now carries the sentence "the recipe as published determines the predicted quantity; conditions a paper does not state are not represented." Every observation carries "values were transcribed or read from figures by an AI agent and are unverified." These were true before. Now they are data, attached to the thing they qualify, and a query returns them.
 
-Today the graph holds 17 models, 13 datasets, 39 sources and 30 results from this study, generated from the repository by one script. A test fails if the generated files drift from the code, and a second script compares the store with a fresh build.
+Today the graph holds 17 models, 13 datasets, 42 sources and 30 results from this study, generated from the repository by one script. A test fails if the generated files drift from the code, and a second script compares the store with a fresh build.
 
 ## Part two: the language
 
@@ -102,7 +129,7 @@ The agent in this study reads papers, transcribes tables, writes models, runs fi
 - **It cannot change a dataset under a model.** A frozen contract names its dataset by SHA-256. Change one digit and the run is refused.
 - **It cannot tune what it did not declare.** Overriding a parameter whose status is not `fitted` is an error.
 - **It cannot merge.** Every piece of work goes on a branch. A person says "merge".
-- **It must record how far it read.** Every source folder has a note: which pages were read, which figures digitized, which were only seen at low resolution. A library index ties each of the 39 sources to a system, to the targets it bears on, and to the scripts that use it. A test fails if a folder is missing from the index.
+- **It must record how far it read.** Every source folder has a note: which pages were read, which figures digitized, which were only seen at low resolution. A library index ties each of the 42 sources to a system, to the targets it bears on, and to the scripts that use it. A test fails if a folder is missing from the index.
 - **It must say what was not done.** The index distinguishes used, read, skimmed and held. Eleven documents are marked held.
 
 Two things happened that show what this buys.
@@ -153,8 +180,8 @@ Seventeen models were written and tested against seven principal sources from fi
 What did survive is narrower and, we think, real.
 
 - **Fixed charge is a reversible equilibrium of the last hot step.** It moves toward one value in oxygen and a lower one in inert gas, both set by temperature, and it cycles. A model fitted to argon anneals at one laboratory passes 12 of 16 contracts on another laboratory's wafers, seven years and a different cleaning chemistry apart. No memory of earlier processing is needed, between 900 and 1100 °C on thick oxides.
-- **Unannealed trap density follows time at temperature.** One thesis varied oxygen pressure so that the same thickness was reached in very different times. Time orders the data within its scatter; thickness, growth rate and oxidant supply do not. The law carries to a second laboratory at about 15%.
-- **A recipe does not determine trap density.** A third laboratory reads three to seven times higher on the same nominal recipe, and not by a constant factor. Inside one laboratory, cleanroom and non-cleanroom wafers differ by 0.8 to 8.5. Something not in a published recipe — the clean, the gas, the tool — carries most of the variance.
+- **Unannealed trap density falls with time at temperature, and we no longer know what that means.** One thesis varied oxygen pressure so that the same thickness was reached in very different times. Time orders the data within its scatter; thickness, growth rate and oxidant supply do not, and the law carries to a second laboratory at about 15%. But a 2001 paper we read late gives the published reason to be careful: whether dangling bonds are seen after a thermal step "is determined by the cooling rate and the presence/absence of hydrogen/moisture in the ambient." The fall with time may be fewer defects, or the same defects better passivated on the way out of the furnace. Electrical data cannot tell the two apart.
+- **A recipe does not determine trap density.** A third laboratory reads three to seven times higher on the same nominal recipe, and not by a constant factor. Inside one laboratory, cleanroom and non-cleanroom wafers differ by 0.8 to 8.5. The same paper names the variable: hydrogen from moisture reaching the interface during cooling. A direct count by spin resonance shows the other half, that an hour without oxygen near 970 °C more than doubles the number of dangling bonds. Both happen, and a published recipe records neither.
 - **Oxide on a nanowire thins with the wire for the reason Kao gave.** A cylinder in a viscous shell, with one parameter fitted to five large wires, predicts oxide thickness on seven smaller ones to within 3 nm. Without the stress term the smallest wire is consumed entirely.
 - **A model can match an amount and miss the profile.** Our oxygen-exchange model reproduces how much isotope enters a hafnium silicate film and puts it in the wrong place: a surface layer, where the paper finds it through the whole film.
 
@@ -170,7 +197,7 @@ Most machine-learning work on process–property relations fits a regressor to o
 
 ## What this is worth to the industry
 
-**A map of what a recipe can and cannot tell you.** Growth: yes, across materials, with published constants. Fixed charge after a defined last step: yes, to about 10–25% between laboratories that work alike. Trap density from a recipe alone: no, not to better than a factor of several, until the clean and the ambient are part of what is recorded. That last statement is a specification for what process records should contain.
+**A map of what a recipe can and cannot tell you.** Growth: yes, across materials, with published constants. Fixed charge after a defined last step: yes, to about 10–25% between laboratories that work alike. Trap density from a recipe alone: no, not to better than a factor of several, until the clean and the cooling ambient are part of what is recorded. That last statement is a specification for what process records should contain.
 
 **A reusable harness for vetting a claimed mechanism.** A paper proposes that a defect is generated in proportion to oxidant concentration at the interface. In this system that is forty lines of ISL and an afternoon: write it, freeze contracts on three other papers, read the receipts. We did exactly that to a 1987 thesis's own explanation; it failed on that thesis's own numbers.
 
@@ -186,7 +213,7 @@ Most machine-learning work on process–property relations fits a regressor to o
 
 **The agent harness has one seat.** Proposer, checker and reporter are the same agent under the same rules. The second check that withdrew the growth-memory claim was a habit, not a role. It should be a role.
 
-**The probabilities are judgements.** We publish them — 80% that fixed charge is set by the last hot step, 60–65% for the time law, under 5% for fictive temperature — so that a reader can disagree with a number.
+**The probabilities are judgements.** We publish them — 80% that fixed charge is set by the last hot step, 60–65% that trap density is ordered by time at temperature, about 40% that this reflects a change in the number of defects and not in their passivation, under 5% for fictive temperature — so that a reader can disagree with a number.
 
 ## Why this is not about silicon
 
