@@ -16,6 +16,15 @@ export interface Writing {
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
 export const WRITING: readonly Writing[] = [
   {
+    slug: 'testing-a-theory-of-the-interface-with-an-ontology',
+    title: 'A machine proposed a theory of the silicon interface. The hard part was building what could prove it wrong.',
+    description:
+      'How an AI-driven study of semiconductor interfaces was held to fifty years of published measurements: one ontology, a small language that decides what may run, an agent harness that cannot write its own evidence, an evaluation harness that scores before anyone sees the answer, and a record in which the starting hypothesis is marked refuted.',
+    kind: 'essay',
+    date: '2026-11-10',
+    file: 'testing-a-theory-of-the-interface-with-an-ontology.md',
+  },
+  {
     slug: 'what-counts-as-a-better-translation',
     title: 'Two machines translated the same Greek into the same language. Deciding which did it better turned out to be the hard part.',
     description:
