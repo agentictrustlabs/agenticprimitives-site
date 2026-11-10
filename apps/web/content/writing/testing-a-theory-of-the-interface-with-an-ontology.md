@@ -1,31 +1,36 @@
 # A machine proposed a theory of the silicon interface. The hard part was building what could prove it wrong.
 
-*Can you predict what a semiconductor interface will be from how it was made? Our answer: oxide thickness, yes; fixed charge, yes within a stated range; trap density, not from the recipe alone. And a language, an ontology and two harnesses that let anyone check each of those answers against the published record.*
+*Can you predict what a semiconductor interface will be from how it was made? One command now takes a process history and returns thickness, composition, trap density and fixed charge for five kinds of interface, and says how far each number can be trusted. This is the scorecard, the hypotheses in play, and our odds, cell by cell. And a language, an ontology and two harnesses that let anyone check each answer against the published record.*
 
 ## The answer, first
 
+*Updated 10 November 2026 with the scorecard and the plan. Earlier versions of this section reported seventeen models and a five-row table; those numbers are superseded by the ones here, and the section "The plan" below says what changed and why.*
+
 **The question.** A chip's performance is set at interfaces a few atoms thick. Engineers can predict how thick an oxide will grow. They cannot reliably predict, from the recipe, how many electrical defects the finished interface will hold, and today that is managed by trial and error. An open challenge asks for one framework that predicts thickness, composition and electrical quality from processing history, across five kinds of interface.
 
-**What we found.** We wrote seventeen candidate models and scored each on published measurements it had not been fitted to, wherever possible from a laboratory other than the one it was tuned on.
+**What we found.** Every measurement we hold was turned into a process history and run through the one predictor we would hand in, with nothing refitted.
 
-| What you want to predict | From the recipe alone? | How well, on data the model had not seen |
+| What you want to predict | From the recipe alone? | How well, through the delivered predictor |
 |---|---|---|
-| Oxide thickness on silicon and silicon carbide | **Yes** | Published constants, nothing fitted: 7 of 7 held-out points on SiC; 4 of 6 within 10% on Si |
-| Oxide thickness on a silicon nanowire | **Yes, with one extra parameter** | A viscous-shell stress term fitted to five large wires predicts seven smaller ones to within 3 nm |
-| Fixed charge at the interface | **Yes, within a stated range** | It is a reversible equilibrium of the last hot step. Fitted at one laboratory, 12 of 16 within 10% at another (thick oxides, 900–1100 °C) |
-| Interface trap density | **No** | Directions right on 145 of 190 comparisons. Magnitudes differ three- to sevenfold between laboratories running the same recipe |
-| Composition profile through a gate stack | **Not yet** | The amount of exchanged oxygen is right; where it sits in the film is wrong |
+| Oxide thickness on flat silicon, silicon carbide and germanium | **Yes** | Within 10% on 76%, 88% and 73% of measurements; pairs put in the right order 99% of the time or better |
+| Oxide thickness on a silicon nanowire | **Direction yes, amount not yet** | 97% of pairs ordered right, 47% within tolerance. The stress model that passed its first test failed on a second dataset |
+| Fixed charge on flat silicon | **Yes, within a stated range** | A reversible equilibrium of the last hot step: fitted at one laboratory, 12 of 16 within 10% at another. Over every source we hold, 47% |
+| Interface trap density on flat silicon | **Partly** | Two trap populations: 41% within 10% in scope, 79% of pairs ordered right. Laboratories still differ three- to sevenfold on one recipe |
+| Trap density against energy on silicon carbide | **Partly** | A one-way anneal: 59% within 10%, 80% of pairs ordered right, one laboratory |
+| Germanium at a SiGe interface | **For thin oxides** | Fitted on one laboratory, within 2 points at two others; misses the one thick oxide |
+| Composition profile through a hafnium gate stack | **Not yet** | The amount of exchanged oxygen is right; where it sits is wrong (2 of 9 depth points). A surface-limited form is being tested |
+| Electrical properties on nanowires, hafnium stacks, SiGe and germanium | **No** | We hold no measurements and have no program |
 
 **What we propose.**
 
-1. **For thickness: the established growth law, plus viscous stress on curved surfaces.** Nothing new is needed on flat silicon or silicon carbide. On a nanowire, one parameter for the compression that a flowing oxide shell puts on the silicon accounts for the thinning.
-2. **For fixed charge: two equilibria and a clock.** The charge moves toward one temperature-dependent value in oxygen and a lower one in inert gas, reversibly. Whatever came before the last hot step is forgotten. This replaces the idea we started with, that the interface freezes in a memory of its history.
-3. **For trap density: a missing input, not a missing equation.** What an unannealed measurement sees depends on how much hydrogen reached the interface while the wafer cooled: the moisture in the gas, the pull, the tube. Published recipes do not record that, which is why laboratories disagree. Our proposal is that process records carry the cooling ambient and the pre-oxidation clean as first-class fields, and that models take them as inputs. Until then no model that reads only the recipe will predict trap density to better than a factor of several, and we can show that ours do not.
-4. **For all of it: a way to check.** Each of the statements above is a short program in a purpose-built language, bound by hash to the data that tests it, with its assumptions recorded in an ontology. A different group can rerun every one, or write a competing mechanism in forty lines and see whether it survives the same contracts.
+1. **For thickness: growth laws chosen by search, not taken from a paper.** A small grammar of rate laws is fitted on training rows and the winner is chosen there. Silicon and silicon carbide keep the same form. Germanium and nanowires are not settled.
+2. **For fixed charge: two equilibria and a clock,** plus a separate model of what a capacitance measurement actually counts. The charge moves toward one temperature-dependent value in oxygen and a lower one in inert gas, reversibly. Whatever came before the last hot step is forgotten.
+3. **For trap density: two populations and a missing input.** One population relaxes with time at temperature; one is set by oxidation temperature and orientation and is removed by hydrogen. What an unannealed measurement sees also depends on hydrogen reaching the interface while the wafer cools, which published recipes do not record. Process records should carry the cooling ambient and the pre-oxidation clean as fields.
+4. **For all of it: a way to check.** Each statement is a short program in a purpose-built language, bound by hash to the data that tests it, with its assumptions recorded in an ontology. A different group can rerun every one, or write a competing mechanism in forty lines and see whether it survives the same contracts.
 
-**What we rejected.** Our own starting theory, that the interface is a glass whose defects are set by one relaxing structural state. It failed for fixed charge, was unsupported for trap density, and had been proposed in 1982 by a group whose own data then argued against it. Four of the seventeen models are marked refuted and one withdrawn.
+**What we rejected.** Our own starting theory, that the interface is a glass whose defects are set by one relaxing structural state. It failed for fixed charge, was unsupported for trap density, and had been proposed in 1982 by a group whose own data then argued against it. The list of what we have withdrawn since is at the end of "The plan".
 
-**What this is not.** It is not a winning entry: we have nothing on germanium and electrical results on flat silicon only.
+**What this is not.** It is not a winning entry. The challenge is won by the first entry that meets every criterion, and our own estimate that this one does is under 3%. The matrix below says where the rest of the probability would have to come from.
 
 The rest of this account is how those answers were reached, and why we think the method matters more than any one of them.
 
@@ -166,6 +171,8 @@ The agent proposes and reports. People decide three things.
 
 ## What the harness found
 
+*This section is the record of the first round: seventeen models, seven principal sources. Three statements in it have since changed and are corrected in "The plan" below: a two-population model of trap density, refuted here in its first form, is now the best one we have; the nanowire model failed on a second dataset; and the 15% figure for the time law is "not established".*
+
 Seventeen models were written and tested against seven principal sources from five laboratories, 1965 to 2023.
 
 | Status | Models | Examples |
@@ -184,6 +191,170 @@ What did survive is narrower and, we think, real.
 - **A recipe does not determine trap density.** A third laboratory reads three to seven times higher on the same nominal recipe, and not by a constant factor. Inside one laboratory, cleanroom and non-cleanroom wafers differ by 0.8 to 8.5. The same paper names the variable: hydrogen from moisture reaching the interface during cooling. A direct count by spin resonance shows the other half, that an hour without oxygen near 970 °C more than doubles the number of dangling bonds. Both happen, and a published recipe records neither.
 - **Oxide on a nanowire thins with the wire for the reason Kao gave.** A cylinder in a viscous shell, with one parameter fitted to five large wires, predicts oxide thickness on seven smaller ones to within 3 nm. Without the stress term the smallest wire is consumed entirely.
 - **A model can match an amount and miss the profile.** Our oxygen-exchange model reproduces how much isotope enters a hafnium silicate film and puts it in the wrong place: a surface layer, where the paper finds it through the whole film.
+
+## The plan: every cell of the challenge, the ideas in play, and our odds
+
+*Added 10 November 2026. The sections above tell how the method was built and what it found first. This one is the working plan: what the challenge requires, where each part of it stands when scored honestly, which hypotheses we are pursuing for each part, and how likely we think each is to work. The percentages are judgements. We publish them so that a reader can disagree with a number.*
+
+### How the challenge is decided
+
+We re-read the challenge page and its rules, and three things in them shape everything below.
+
+- **It is not a ranking.** The prize goes to the first entry that meets every success criterion. A partial result counts only if the challenge says so, and it does not. An entrant has three attempts.
+- **What must be handed in is working code** that takes a process history and computes the interface: layer thicknesses (oxide, interlayer, consumed substrate), composition profiles, the density of interface states against energy, and fixed charge, for five interfaces, with "one framework, with declared parameters".
+- **It is judged qualitatively first** (does a hydrogen anneal lower the trap density?), then quantitatively, on predictive accuracy, transferability and reproducibility. For very promising models the organisers say they will run their own experiments to check predictions.
+
+So an account of why something cannot be predicted does not win. A framework that returns every quantity for every interface, gets the directions right, and says plainly how far each number can be trusted, might.
+
+### What we now hand in
+
+One command takes a specimen and a recipe written in the language and returns everything the study can say about the interface that results:
+
+```
+python -m isl_harness.predict examples/histories/planar_si_dry_then_forming_gas.isl
+```
+
+It puts the history into each program held for that interface, runs it with nothing fitted, and reports every observable with the program it came from, every parameter and its status, and a support statement taken from that program's stored evaluation. A history outside what a program was tested on (an orientation with no constants, a wet step in a dry-only program, a temperature outside the fitted range) is labelled as outside its scope instead of being answered with false confidence. What is not modelled is listed as not modelled.
+
+### The scorecard, from that command and nothing else
+
+An outside reviewer pointed out that our earlier headline, 91% of measurement pairs put in the right order, mixed several historical model runs and included training rows. It was true arithmetic and a poor summary. We replaced it. Every measurement in the graph is now turned into a history and run through the same command a user calls; no stored model report is read. The table is reported cell by cell, because a total lets hundreds of easy thickness comparisons hide an absent electrical model.
+
+| Interface | Observable | Measurements held | In the program's tested scope | Within tolerance | Pairs ordered right |
+|---|---|---|---|---|---|
+| 1. Planar Si/SiO₂ | oxide thickness | 134 | 131 | 100 (76%) | 99% |
+| 1. Planar Si/SiO₂ | fixed charge | 149 | 100 | 47 (47%) | 65% |
+| 1. Planar Si/SiO₂ | interface state density at midgap | 97 | 61 | 25 (41%) | 79% |
+| 2. Si nanowires | oxide thickness | 30 | 30 | 14 (47%) | 97% |
+| 2. Si nanowires | remaining silicon | 18 | 18 | 9 (50%) | 100% |
+| 3. SiC/SiO₂ | oxide thickness | 43 | 43 | 38 (88%) | 99.5% |
+| 3. SiC/SiO₂ | interface state density against energy | 27 | 27 | 16 (59%) | 80% |
+| 4. HfO₂/SiO₂/Si | oxygen isotope amounts | 15 | 15 | 9 (60%) | 100% |
+| 4. HfO₂/SiO₂/Si | isotope depth profile | 9 | 9 | 2 (22%) | 100% |
+| 5a. SiGe/oxide | germanium at the interface | 5 | 4 | 4 | 3 of 6 |
+| 5a. SiGe/oxide | oxide thickness | 23 | 7 | 2 | 22% |
+| 5a. SiGe/oxide | remaining silicon | 16 | no program | | |
+| 5b. Ge/GeO₂ | oxide thickness | 11 | 11 | 8 (73%) | 100% |
+
+Tolerance is each measurement's contract tolerance, 10% for most; the challenge sets none. Electrical rows do not exist for nanowires, the hafnium stack, SiGe or germanium because we hold no electrical measurements for them and have no program.
+
+### The methods every hypothesis has to pass through
+
+These are the same for every cell, and they are what we think is worth copying.
+
+1. **Hypotheses are programs.** A mechanism is a short program in the language, of one of six kinds (growth, transport, exchange, passivation, relaxation, defect generation). The compiler checks units, conservation and bounds, and refuses a kind that is not in the vocabulary. The kinds name forms, not theories: what relaxes or grows is said by the state.
+2. **Candidates come from a grammar where they can.** For growth, fixed charge and trap density the candidates are enumerated from a small grammar and none is taken from a paper. This is how we keep the language model's memory from choosing the answer: it writes the grammar, it does not pick the winner.
+3. **The winner is chosen on training rows only.** We learned this the hard way. On germanium we first chose a growth law by its score at the held-out temperature and reported that it "recovered" the paper's activation energy. Chosen on training rows alone, a different law wins and fails the held-out temperature. We corrected the claim.
+4. **A mechanism has to matter.** Each supported mechanism is switched off and the held-out measurements scored again. The fixed-charge model falls from 12 of 16 to 2 of 16; the nanowire model from 9 of 14 to 0 of 14.
+5. **Shuffle tests.** Recipes and measurements are re-paired at random to see whether a model does better than one that only knows the typical level.
+6. **Data are checked against the page.** Four papers hold their figures as vector drawings, so their values were taken from the drawing itself; this confirmed two of our transcriptions, found one wrong value, and showed that a second reader's axis was off by up to 9 nm. Scanned figures are read by locating the axes by pixel analysis; where a paper prints a number we can compare, it has agreed within 1%.
+7. **Every term is traced to the sources.** The words of the vocabulary are searched for in the text of the papers. Of 34 working terms, 25 are the sources' own, and one is ours.
+8. **Survivors design the next experiment.** When the data cannot separate candidates, each is run on recipes nobody has measured and the recipes are ranked by how far the predictions spread.
+
+### The hypotheses in play
+
+Six came from a colleague who reviewed the ontology as "the structure of the reasoning"; the rest came out of the searches. Each is stated with what would falsify it.
+
+**H1. Oxygen enters a hafnium silicate slowly and mixes quickly.** Our program held the film surface at pure oxygen-18 and let diffusion carry it inward. It matched how much isotope entered and put it in the wrong place: 2 of 9 depth points. If entry at the surface is the slow step and transport inside the film is fast, a film can be partly exchanged all the way through. In a screen with one rate per temperature this passes 9 of 9 interior points. The same colleague found that one marker in the paper's figure does not add to the sum drawn on the same figure (at 1223 K the two isotope markers total 11.53 where the sum is 10.53; at the other four temperatures they agree within 0.02), which we confirmed against the drawing. *Falsifier:* exchange time that scales with film thickness as diffusion would, not as a surface step would. *Status:* being fitted with a temperature law on amounts only, with the profile and one temperature held back.
+
+**H2. Annealing changes the shape of the SiC trap spectrum, not just its height.** After 1500 °C in argon the density that remains is about 27%, 16% and 10% of the as-oxidized value at the three energies sampled: one spectrum times one amplitude cannot do that. Our program has a stable part and a removable part with different weights at each energy. Fitted on samples oxidized at 1150 °C, it passes 7 of 12 within 10% and 11 of 12 within 25% on samples oxidized at 1300 °C. A level that follows temperature reversibly is rejected (3 of 15): the density would come back during cooling. Whether the removable part is carbon is not established. *Falsifier:* a second, cooler anneal that restores the density.
+
+**H3. Germanium at the SiGe interface is set by the starting alloy, until supply runs out.** A relation fitted to one laboratory's two planar values (wet, 850 °C) predicts another laboratory's dry oxidation within 2 points and a third's depth profile within 1: a 20% alloy sits at about 50% under the oxide between 700 and 900 °C whatever the ambient. It misses the one thick, long oxidation we hold (44% predicted, up to 75% measured) and, read literally, predicts germanium in pure silicon, so it is a regime, not a law. The hypothesis is that finite supply, transport along the interface and loss as GeO decide where the regime ends. *Falsifier:* enrichment that depends on temperature at fixed oxide thickness.
+
+**H4. Stress in the oxide on a wire links geometry to electrical defects.** A viscous-shell stress term, fitted to five large wires, predicted oxide on seven smaller ones (7 of 7) and then failed on a second dataset from the same laboratory (4 of 12): too little slowdown below 70 nm. So the form is wrong or incomplete even for geometry. The electrical half is a proposal with no data behind it. *Falsifier for the geometry:* a single form that fits both datasets.
+
+**H5. Defects and measurements need separate models.** Three sources call their charge Qss, Nf and Qf, and we had been scoring them as one quantity. In the first benchmark the charge read without a hydrogen anneal tracks the trap density almost one for one, because a C-V measurement counts charged traps along with fixed charge. The hypothesis is that one chemical state (defects present, passivated, active) with an explicit model of what each measurement extracts will transfer where a single scalar does not. *Falsifier:* a laboratory-specific factor still needed after the measurement is modelled.
+
+**H6. An oxygen repair window.** That oxygen can repair electrical defects in a stack faster than it grows an unwanted interlayer or removes germanium. No data in hand; lowest priority.
+
+**Two trap populations on silicon.** From the search on the first benchmark: one population relaxes with time at temperature (2.2 eV) and is only partly capped by hydrogen; a second is set by the oxidation temperature, is six to seven times larger on (110) than on (100), does not relax, and is removed by hydrogen. On recipes held out of the fit it passes 5 of 13 within 10% and 8 of 13 within 25%, where the single-population form passed 0 of 13. A hydrogen rate fitted per orientation, which a reviewer proposed and our own notes had raised, fitted to no effect.
+
+**Fixed charge as two equilibria.** Unchanged and still our best electrical result: fitted at one laboratory, 12 of 16 at another. A search over 32 structures, then elimination by anneals the search never saw, leaves only structures whose inert-gas value follows temperature.
+
+**Growth laws by search.** One grammar, four forms. Silicon and SiC both keep a rate that falls with thickness less steeply than 1/x (written as linear-parabolic or as a power law; the data do not separate the two, and one 24-hour oxidation would). Germanium needs a fast first regime that rises steeply with temperature and is otherwise close to diffusion-limited; eleven points do not single out a law.
+
+### The matrix
+
+"Solved" for a cell means: the delivered predictor returns an in-scope value, every dependence the challenge names goes the right way, and the amount is within 25% on measurements not used to fit, from at least two sources. "Now" is where the scorecard puts it. The percentage is our judgement of the chance each approach gets the cell to solved, given the papers listed; where approaches overlap the combined figure is not their sum.
+
+**1. Planar Si/SiO₂ (the first benchmark)**
+
+| Cell | Now | Approaches, with our odds | Needs |
+|---|---|---|---|
+| Oxide thickness | Close. 76% within 10%, 99% ordered right | Published law for thick oxides, the search's law for thin ones: 85%. Wet oxidation constants: 70% | Constants for steam on planar silicon |
+| Consumed substrate | Computed, never measured | Fixed volume ratio: 70% that it is accepted as is | A source that measures it, or the organisers' view |
+| Composition profile | Not modelled | Isotope profile from the Toriumi report (new oxygen only at the surface and the interface) as a transport-and-exchange program: 40% | That profile extracted; the transition-region paper digitized |
+| Interface states against energy | 41% within 10% at midgap, one laboratory; a measured shape for the annealed case only | Two populations (done): 45% to reach solved on the benchmark. Separate measurement model, H5: +10%. A declared level per laboratory: 30% that it then holds across three laboratories. Cooling hydrogen as an input: 15%, no data records it | The benchmark values checked by a person; a dataset that varies cooling ambient |
+| Fixed charge | 47% within 10% over all sources; 12 of 16 across laboratories in its range | Two equilibria plus a model of what C-V extracts (H5): 60% on the benchmark. Thin oxides: 20% | Revitz 1979; Akinwande and Plummer 1987 |
+
+**2. Si nanowires and nanosheets**
+
+| Cell | Now | Approaches, with our odds | Needs |
+|---|---|---|---|
+| Oxide thickness | 47% within tolerance; fails its second dataset | A structure search across both datasets for how the rate depends on curvature: 45%. Kao's own measurements as a third dataset: +10% | Kao Part I read and digitized (held) |
+| Remaining silicon | 50% | Follows from the same search: 40%. The paper's three diameters are not mutually consistent to better than a volume ratio of 2.1 to 2.7 | The same |
+| Composition profile | No data | Not attempted: 5% | A source |
+| Interface states, fixed charge | No data, no program | H4, stress to defects: 5% | Any electrical measurement on wires |
+
+**3. SiC/SiO₂**
+
+| Cell | Now | Approaches, with our odds | Needs |
+|---|---|---|---|
+| Oxide thickness | Solved by our measure: 88% within 10%, three faces | Published constants; the search agrees: 90% | A second laboratory to confirm |
+| Consumed substrate | A ratio from densities no source states | 60% that it is accepted | A stated molar-volume ratio from a source |
+| Composition profile | Not modelled | Carbon inventory (H2) against the measured carbon profile we hold: 25% | Li 2023 digitized |
+| Interface states against energy | 59% within 10%, 80% ordered right, one laboratory | One-way anneal (done): 45%. A second laboratory and face (Yano 2002, held): +10% | Yano 2002 transcribed; nitric-oxide anneal data |
+| Fixed charge | No data | 5% | A source |
+
+**4. HfO₂/SiO₂/Si**
+
+| Cell | Now | Approaches, with our odds | Needs |
+|---|---|---|---|
+| Interlayer regrowth | 60% of amounts within tolerance; 1 of 3 at the held-out temperature | H1 with interfacial growth as a separate step: 45% | The fit in progress |
+| Composition profile | 2 of 9 | H1, finite surface exchange: 55% | The same; instrument resolution taken into account |
+| Interface states, fixed charge | No data | H6: 5% | A source |
+
+**5. SiGe/oxide and Ge/GeO₂**
+
+| Cell | Now | Approaches, with our odds | Needs |
+|---|---|---|---|
+| SiGe oxide thickness | Fails outside its home case (six to eight times too slow) | A growth search using the dry and wet rates four papers now give: 35% | Long 2012 transcribed; LeGoues 1989 |
+| SiGe consumed substrate | Exact measurements, no program | A loss term for germanium oxide (H3): 30% | Nothing new |
+| SiGe composition | Interface value: 2 of 3 across laboratories. No profile | The interface relation, for thin oxides: 50%. Layer width and the thick-oxide regime, H3: 30% | Long 2012; the 2024 coupled model the colleague cites |
+| Ge oxide thickness | 73% within tolerance, one laboratory, no law singled out | Growth search plus loss as GeO: 40% | Wang 2017, the challenge's own reference (not held) |
+| Ge interlayer | Three printed values | A program for the layer under the oxide: 25% | More than three points |
+| Ge composition | Not modelled | Exchange through the whole film, as the Toriumi isotope profile shows: 40% | That profile extracted |
+| SiGe and Ge electrical | No data | 10% | Kita 2008 and Lee 2009, open access, not yet obtained |
+
+### What the matrix adds up to
+
+- **Thickness on all five interfaces, with directions right:** we are most of the way there. Chance of reaching "solved" on thickness everywhere: about 35%, held back by nanowires and SiGe.
+- **Composition on the three interfaces that have data:** about 30%. The hafnium profile and the SiGe interface value are the two with a real mechanism candidate.
+- **Electrical on planar silicon and SiC:** about 30% for both together.
+- **Electrical on the other three interfaces:** under 5%. We hold no measurements, and the reference papers the challenge names for them report none. We have drafted this as a question for the organisers: against what will those predictions be judged?
+- **Every criterion, as the rules require:** still under 3%.
+
+That last number is small and we think it is right. It could move for two reasons that are not in our hands: the organisers' answer about electrical data for interfaces 2 to 5, and whether "qualitative first" means a framework with honest scope labels is judged on what it covers.
+
+### What changes the odds most
+
+1. **The organisers' answers.** Which version of the first benchmark is scored, what electrical data exist for the other interfaces, whether published constants count as declared parameters.
+2. **A person checking the first benchmark.** Every value in it was read by an AI agent. Two of its tables disagree by a factor of ten in their unit headers and four values needed a ruling.
+3. **Five papers:** Wang 2017 (germanium), Revitz 1979 and Akinwande and Plummer 1987 (fixed charge through anneals), LeGoues 1989 (SiGe), Massoud 1985 (thin silicon oxides, first-hand).
+4. **Two measurements,** if the organisers do run experiments on promising models. The surviving fixed-charge candidates disagree by two tolerances after an hour in nitrogen at 700 °C following oxidation at 900 °C. The two surviving growth laws on SiC disagree by 19% after 24 hours on the carbon face at 1150 °C. And the experiment that would settle trap density: matched silicon wafers, one oxidation, cooling rate and hydrogen exposure varied on purpose.
+
+### What we have withdrawn or corrected along the way
+
+A plan like this is only worth reading if the record of being wrong is kept beside it.
+
+- The starting theory, a single relaxing structural state, refuted.
+- "Fixed charge carries a memory of growth", withdrawn.
+- "The time law for trap density carries to a second laboratory at about 15%", corrected to "not established".
+- The first ranking of the fixed-charge structure search, which was partly optimizer luck; rerun with random starts.
+- "The nanowire model holds on another dataset", tested and false.
+- "Germanium selects diffusion-limited growth", a choice made on held-out data, corrected.
+- The 91% trend score as a headline, replaced by the scorecard.
+- One transcribed value in the hafnium data, found wrong against the drawing and corrected; one marker in that paper's figure found inconsistent with its own sum.
 
 ## Where this is different
 
@@ -207,9 +378,9 @@ Most machine-learning work on process–property relations fits a regressor to o
 
 **Nothing here has been verified by a person.** About 650 values were read by an agent, half from figures. We put the chance that one headline conclusion changes when they are checked at one in five. The page images sit beside every file so that the check takes an hour, not a week.
 
-**It does not meet the challenge it was built for.** The challenge asks for thicknesses, composition profiles, trap density and fixed charge across five interfaces. We have thickness on three, first results on nanowires, a composition profile that is wrong in shape, nothing on germanium, and electrical results on planar silicon only. Our own estimate that this entry meets every criterion is under two per cent.
+**It does not meet the challenge it was built for.** The challenge asks for thicknesses, composition profiles, trap density and fixed charge across five interfaces. The matrix above is the cell-by-cell account: thickness on all five with two weak, composition with a mechanism candidate on two, electrical results on planar silicon and silicon carbide only. Our own estimate that this entry meets every criterion is under three per cent.
 
-**The models are separate.** Growth, charge and traps are three programs, not one.
+**The models are separate.** One command runs them, and they share one language and one vocabulary, but growth, charge and traps are still separate programs, not one coupled model.
 
 **The agent harness has one seat.** Proposer, checker and reporter are the same agent under the same rules. The second check that withdrew the growth-memory claim was a habit, not a role. It should be a role.
 

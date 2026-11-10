@@ -19,7 +19,7 @@ export const WRITING: readonly Writing[] = [
     slug: 'testing-a-theory-of-the-interface-with-an-ontology',
     title: 'A machine proposed a theory of the silicon interface. The hard part was building what could prove it wrong.',
     description:
-      'Can you predict what a semiconductor interface will be from how it was made? Our answer: oxide thickness, yes; fixed charge, yes within a stated range; trap density, not from the recipe alone. And a language, an ontology and two harnesses that let anyone check each of those answers against fifty years of published measurements.',
+      'Can you predict what a semiconductor interface will be from how it was made? One command now takes a process history and returns thickness, composition, trap density and fixed charge for five kinds of interface, and says how far each number can be trusted. The scorecard, the hypotheses in play, and our odds of solving each part of the challenge, cell by cell.',
     kind: 'essay',
     date: '2026-11-10',
     file: 'testing-a-theory-of-the-interface-with-an-ontology.md',
