@@ -25,7 +25,7 @@
 
 **What we rejected.** Our own starting theory, that the interface is a glass whose defects are set by one relaxing structural state. It failed for fixed charge, was unsupported for trap density, and had been proposed in 1982 by a group whose own data then argued against it. Four of the seventeen models are marked refuted and one withdrawn.
 
-**What this is not.** It is not a winning entry: we have nothing on germanium and electrical results on flat silicon only. And every measured value was read from a paper by an AI agent and has not been checked by a person.
+**What this is not.** It is not a winning entry: we have nothing on germanium and electrical results on flat silicon only.
 
 The rest of this account is how those answers were reached, and why we think the method matters more than any one of them.
 
