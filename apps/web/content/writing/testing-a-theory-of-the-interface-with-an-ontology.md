@@ -337,7 +337,7 @@ The immediate order is H1 and H2, with H5 alongside them. Freeze a model and its
 | Oxide thickness | 47% within tolerance; fails its second dataset | A structure search across both datasets for how the rate depends on curvature: 45%. Kao's own measurements as a third dataset: +10% | Kao Part I read and digitized (held) |
 | Remaining silicon | 50% | Follows from the same search: 40%. The paper's three diameters are not mutually consistent to better than a volume ratio of 2.1 to 2.7 | The same |
 | Composition profile | No data | Not attempted: 5% | A source |
-| Interface states, fixed charge | No data, no program | H4, stress to defects: 5% | Any electrical measurement on wires |
+| Interface states, fixed charge | Not required: Emily says not to worry about electrical measurements on nanowires | Not pursued | Nothing |
 
 **3. SiC/SiO₂**
 
@@ -367,14 +367,15 @@ The immediate order is H1 and H2, with H5 alongside them. Freeze a model and its
 | Ge oxide thickness | 73% within tolerance, one laboratory, no law singled out | Growth search plus loss as GeO: 40% | Wang 2017, the challenge's own reference (not held) |
 | Ge interlayer | Three printed values | A program for the layer under the oxide: 25% | More than three points |
 | Ge composition | Not modelled | Exchange through the whole film, as the Toriumi isotope profile shows: 40% | That profile extracted |
-| SiGe and Ge electrical | No data | 10% | Kita 2008 and Lee 2009, open access, not yet obtained |
+| Ge electrical (Dit, Qf) | No data held. Emily named a series: Matsubara 2008 (Dit against oxidation temperature, hydrogen anneal), Sasada 2009 (three orientations), Lee and Toriumi (oxygen pressure), all one group and one extraction method | Process axes already in the language (temperature, ambient, pressure, anneal, orientation): 10% now, about 25% once those papers are held and transcribed. The GeO-desorption paper and Matsubara disagree on whether Dit depends on temperature, a conflict to test H5 on | The papers are listed in `ontology/wanted_references.json`; none is held yet |
+| SiGe electrical | No data held. Qualitative checks only: the sign of Qf (a fixed negative charge is reported for rapid thermal oxidation of GeSi), Dit rising with germanium at the interface, and anneal recovery (Ahn 1999) | 10% for qualitative direction, under 5% for amounts: there is no comparable series | Nayak 1990, Ahn 1999 and Wu 2000 are named, not held |
 
 ### What the matrix adds up to
 
 - **Thickness on all five interfaces, with directions right:** we are most of the way there. Chance of reaching "solved" on thickness everywhere: about 35%, held back by nanowires and SiGe.
 - **Composition on the three interfaces that have data:** about 30%. The hafnium profile and the SiGe interface value are the two with a real mechanism candidate.
 - **Electrical on planar silicon and SiC:** about 30% for both together.
-- **Electrical on the other three interfaces:** under 5%. We hold no measurements, and the reference papers the challenge names for them report none. We have drafted this as a question for the organisers: against what will those predictions be judged?
+- **Electrical on the other three interfaces:** nanowires need none (Emily). For germanium there is now a named series from one group; about 25% once it is held, 10% before. For SiGe, qualitative checks only, 10%. Hafnium stacks: still no data, under 5%.
 - **Every criterion, as the rules require:** still under 3%.
 
 That last number is small and we think it is right. It could move for two reasons that are not in our hands: the organisers' answer about electrical data for interfaces 2 to 5, and whether "qualitative first" means a framework with honest scope labels is judged on what it covers.

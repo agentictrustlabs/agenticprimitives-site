@@ -10,7 +10,7 @@ Each question has four parts: **what we need to know**, **why it matters**, **wh
 
 ## A. What will be scored
 
-**1. What measurements will the electrical predictions for interfaces 2 to 5 be judged against?**
+**1. What measurements will the electrical predictions for interfaces 2 to 5 be judged against?** *(Answered 10 November: nanowires need no electrical measurements; for germanium and SiGe, see the list Emily gave. Still open: the hafnium stack, and whether the same extraction method is expected for all.)*
 The challenge lists interface-trap density and fixed charge for all five interfaces. The reference papers we have read for nanowires, hafnium stacks, SiGe and germanium report growth, thickness, composition or oxygen transport, not electrical measurements. We hold no electrical data for those four interfaces and have no program for them.
 *Why it matters:* it decides whether four of the five interfaces can be scored on electrical properties at all.
 *Default:* we say plainly that those cells are not modelled, and spend effort on thickness, composition and the two electrical cells we can test.
@@ -52,7 +52,9 @@ Listed by what they unlock:
 - **Revitz 1979** and **Akinwande and Plummer 1987**: fixed charge through anneals; would test our two-equilibria model on a third laboratory.
 - **LeGoues 1989**: the one thick SiGe oxidation our line misses; we know it only through a 2005 paper.
 - **Massoud 1985**: first-hand thin silicon oxides.
-- **Kita 2008** and **Lee 2009** (open access): the only source of electrical data we know of for germanium.
+- **Matsubara 2008** (APL 93, 032104), **Sasada 2009** (JAP 106, 073716), **Lee 2009** (ECS Transactions 19, 165) and **Lee 2008** (SSDM abstract A-1-5): the germanium electrical series Emily named. These come first; none is held.
+- **Wu and Chin 2000** (EDL 21, 113), **Ahn 1999** (JAP 86, 1542) and **Nayak 1990** (MRS Proc. 198, 521): the SiGe qualitative checks.
+- Emily's other pointers could not be resolved to a record without guessing (the GeO-desorption paper PMC2905455, the Osaka and Stanford ozone papers, the strained-Si and pile-up items): which exact papers are meant?
 - **Kao Part I** (nanowire oxidation): a third nanowire dataset.
 *Default:* we continue with what is held; the nanowire and SiGe thickness cells stay weak.
 
