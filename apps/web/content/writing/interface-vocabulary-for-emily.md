@@ -1,3 +1,5 @@
+**Emily's pages:** [Questions](/writing/questions-for-emily-testing-a-theory-of-the-interface) · **Vocabulary** · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+
 # The vocabulary: what the ontology calls things
 
 *Companion to [Questions we need Emily to answer](/writing/questions-for-emily-testing-a-theory-of-the-interface). Written 10 November 2026. Generated from the ontology's own files; this page is not edited by hand.*

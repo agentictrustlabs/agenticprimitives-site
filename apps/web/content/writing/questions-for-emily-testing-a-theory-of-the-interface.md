@@ -1,3 +1,5 @@
+**Emily's pages:** **Questions** · [Vocabulary](/writing/interface-vocabulary-for-emily) · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+
 # Questions we need Emily to answer
 
 *Companion to [A machine proposed a theory of the silicon interface](/writing/testing-a-theory-of-the-interface-with-an-ontology). The essay says where we stand and what we think our odds are. These are the questions whose answers would move those odds, or that we cannot settle by ourselves. Each one says why it matters and what we will do if we hear nothing, so none of them blocks the work.*
@@ -87,7 +89,7 @@ Every value in our datasets was read by an AI agent. Page images sit beside ever
 **12. Does the vocabulary read like the field's?**
 Of 36 working terms, 28 are the sources' own, one is ours (surface-diffusion front) and six of the 67 domain terms have no source we can cite. We would like an expert to read the 67-term list (linked below) and mark any that a practitioner would not use, or would use differently, for example whether Qss, Nf and Qf should stay as separate quantities.
 
-**The vocabulary itself is on its own page:** [the 67 domain terms and 36 working terms](/writing/interface-vocabulary-for-emily), with each term's definition, who wrote it, whether any source in our library uses the words, and which sources. Six domain terms have no source.
+**The vocabulary and the language are on their own pages:** [the 67 domain terms and 36 working terms](/writing/interface-vocabulary-for-emily) and [how a recipe and a model are written](/writing/interface-language-for-emily), with each term's definition, who wrote it, whether any source in our library uses the words, and which sources. Six domain terms have no source.
 
 **13. Which of the six hypotheses would you drop?**
 H1 to H6 are in the essay with their odds. H6 (an oxygen repair window) has no data behind it. H4 (stress linking nanowire geometry to electrical defects) has none for the electrical half. Which are not worth effort?

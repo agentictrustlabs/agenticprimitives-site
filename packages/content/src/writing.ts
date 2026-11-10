@@ -46,6 +46,15 @@ const AUTHORED: readonly Writing[] = [
     file: 'interface-vocabulary-for-emily.md',
   },
   {
+    slug: 'interface-language-for-emily',
+    title: 'The language: how a process history and a model are written',
+    description:
+      'What an ISL recipe and an ISL model look like, line by line: the six kinds of process, the five labels every number carries, what is checked before a program runs, what the language cannot yet say, and the observables it can predict.',
+    kind: 'essay',
+    date: '2026-11-10',
+    file: 'interface-language-for-emily.md',
+  },
+  {
     slug: 'what-counts-as-a-better-translation',
     title: 'Two machines translated the same Greek into the same language. Deciding which did it better turned out to be the hard part.',
     description:
