@@ -25,6 +25,15 @@ export const WRITING: readonly Writing[] = [
     file: 'testing-a-theory-of-the-interface-with-an-ontology.md',
   },
   {
+    slug: 'questions-for-emily-testing-a-theory-of-the-interface',
+    title: 'Questions we need Emily to answer',
+    description:
+      'Sixteen questions whose answers would move our odds on the interfacial-properties challenge, or that we cannot settle ourselves: what will be scored, which papers and measurements we still need, who checks the data, and what is not ours to decide.',
+    kind: 'essay',
+    date: '2026-11-10',
+    file: 'questions-for-emily-testing-a-theory-of-the-interface.md',
+  },
+  {
     slug: 'what-counts-as-a-better-translation',
     title: 'Two machines translated the same Greek into the same language. Deciding which did it better turned out to be the hard part.',
     description:

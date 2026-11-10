@@ -417,6 +417,8 @@ Most machine-learning work on process–property relations fits a regressor to o
 
 ## What is next, honestly
 
+**The questions we need answered** are on their own page: [Questions we need Emily to answer](/writing/questions-for-emily-testing-a-theory-of-the-interface). They are the ones whose answers would move the odds in the matrix above.
+
 **Nothing here has been verified by a person.** About 650 values were read by an agent, half from figures. We put the chance that one headline conclusion changes when they are checked at one in five. The page images sit beside every file so that the check takes an hour, not a week.
 
 **It does not meet the challenge it was built for.** The challenge asks for thicknesses, composition profiles, trap density and fixed charge across five interfaces. The matrix above is the cell-by-cell account: thickness on all five with two weak, composition with a mechanism candidate on two, electrical results on planar silicon and silicon carbide only. Our own estimate that this entry meets every criterion is under three per cent.

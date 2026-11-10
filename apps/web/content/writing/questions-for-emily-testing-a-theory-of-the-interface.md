@@ -1,0 +1,97 @@
+# Questions we need Emily to answer
+
+*Companion to [A machine proposed a theory of the silicon interface](/writing/testing-a-theory-of-the-interface-with-an-ontology). The essay says where we stand and what we think our odds are. These are the questions whose answers would move those odds, or that we cannot settle by ourselves. Each one says why it matters and what we will do if we hear nothing, so none of them blocks the work.*
+
+*Written 10 November 2026. Every number below is a judgement or a result described in the essay; all measured values were read from papers by an AI agent and have not been checked by a person.*
+
+## How to read this page
+
+Each question has four parts: **what we need to know**, **why it matters**, **what we do by default**, and **what it is worth** (our own estimate of how far the answer moves the chance of meeting a criterion). Questions are ordered by that last part. Short answers are enough: a number, a yes or a no, a name, a file.
+
+## A. What will be scored
+
+**1. What measurements will the electrical predictions for interfaces 2 to 5 be judged against?**
+The challenge lists interface-trap density and fixed charge for all five interfaces. The reference papers we have read for nanowires, hafnium stacks, SiGe and germanium report growth, thickness, composition or oxygen transport, not electrical measurements. We hold no electrical data for those four interfaces and have no program for them.
+*Why it matters:* it decides whether four of the five interfaces can be scored on electrical properties at all.
+*Default:* we say plainly that those cells are not modelled, and spend effort on thickness, composition and the two electrical cells we can test.
+*Worth:* the largest single uncertainty. Electrical on interfaces 2 to 5 is under 5% for us today; a pointer to data could raise it to 20 to 30% for one of them.
+
+**2. Which version of the first benchmark is scored?**
+We hold the ONR technical-report version of Vitkavage, Irene and Massoud (DTIC ADA231244). Its tables disagree internally: the units header of Table IV against Tables II and VII differs by a factor of ten, and four values needed a ruling. Is the journal version the scored one, and are the collated values available?
+*Default:* we keep the technical-report values, flag the four rulings, and say which version we used.
+*Worth:* if the collated values differ from ours, every quantitative cell on planar silicon could move.
+
+**3. Which oxide thicknesses will predictions for the first benchmark be compared with?**
+The report gives thickness for only a few samples, in the text. We predict thickness for all of them from the recipe.
+*Default:* we score on the six values we have, and report the rest as unscored.
+
+**4. Does "cooling" in the process history mean a recipe that varies cooling?**
+All of Vitkavage's wafers were pulled in under five seconds. The paper we read late on dangling bonds says they are seen or not "determined by the cooling rate and the presence/absence of hydrogen/moisture in the ambient". Is there a reference dataset in which cooling rate or cooling ambient is varied?
+*Why it matters:* our best reading of why laboratories disagree on trap density by three- to sevenfold is a missing input of exactly this kind. Without data that varies it, no model can be tested on it.
+*Default:* we state the missing input and do not model it.
+
+**5. May parameters taken from the reference papers count as declared?**
+Several reference papers fit their own rate constants to the data they report, in one case separately for each experiment. We use published constants where we can, label them sourced, and fit only what is labelled fitted. Is that consistent with "one framework, with declared parameters"?
+*Default:* we continue, and list every parameter with its status in the output of every prediction.
+
+**6. Will the collated literature results be published?**
+The page says submissions are evaluated on "accepted literature results that we collate". If the collation is published, even in part, we can test against it before submitting. If not, we are tuning blind to one half of the evaluation.
+
+**7. What counts as "qualitative first"?**
+Is a framework that gets every direction right (a hydrogen anneal lowers trap density, higher temperature thickens the oxide) and says honestly where a number is outside its tested range scored on that stage, even where the amount is wrong? Our pairs ordered right are 99% on thickness, 77% on fixed charge and 79% on midgap trap density; within 10%, 76%, 52% and 41%.
+*Worth:* this decides whether an honest scope label helps or hurts.
+
+**8. Does one framework "unchanged in form" allow separate programs behind one entry point?**
+We run one command, one language and one vocabulary, but growth, charge and traps are separate programs, not one coupled model. Is that what is meant?
+
+## B. Data we need and cannot get ourselves
+
+**9. Can you get us these papers, or a person who can?**
+Listed by what they unlock:
+- **Wang 2017** (germanium oxidation, the challenge's own reference): we hold 11 growth points from an older paper and cannot single out a growth law.
+- **Revitz 1979** and **Akinwande and Plummer 1987**: fixed charge through anneals; would test our two-equilibria model on a third laboratory.
+- **LeGoues 1989**: the one thick SiGe oxidation our line misses; we know it only through a 2005 paper.
+- **Massoud 1985**: first-hand thin silicon oxides.
+- **Kita 2008** and **Lee 2009** (open access): the only source of electrical data we know of for germanium.
+- **Kao Part I** (nanowire oxidation): a third nanowire dataset.
+*Default:* we continue with what is held; the nanowire and SiGe thickness cells stay weak.
+
+**10. Is there a laboratory that could run two measurements?**
+If the organisers do run experiments on promising models, we would like to propose the two that separate our surviving hypotheses:
+- Fixed charge: one hour in nitrogen at 700 °C after oxidation at 900 °C. The surviving structures disagree by two tolerances.
+- SiC interface states: one 50 minute argon anneal at 1300 °C after oxidation at 1300 °C. The two surviving forms agree on every anneal measured and part by 13 tolerances here.
+And, if possible, matched silicon wafers, one oxidation, with cooling rate and hydrogen exposure varied on purpose.
+*Worth:* these are the experiments that would turn inconclusive cells into supported or rejected ones.
+
+## C. Checking what we have
+
+**11. Can a person check the first benchmark's values against the page images?**
+Every value in our datasets was read by an AI agent. Page images sit beside every file, so the check takes about an hour for the first benchmark. Our estimate is a one in five chance that one headline conclusion changes when they are checked. Four values in the first benchmark need a human ruling and are listed with the page they come from.
+*Default:* everything stays labelled unverified.
+
+**12. Does the vocabulary read like the field's?**
+Of 34 working terms, 25 are the sources' own, one is ours (surface-diffusion front) and eight domain terms have no source we can cite. We would like an expert to read the 67-term list and mark any that a practitioner would not use, or would use differently, for example whether Qss, Nf and Qf should stay as separate quantities.
+
+**13. Which of the six hypotheses would you drop?**
+H1 to H6 are in the essay with their odds. H6 (an oxygen repair window) has no data behind it. H4 (stress linking nanowire geometry to electrical defects) has none for the electrical half. Which are not worth effort?
+
+## D. Decisions that are not ours
+
+**14. Do we submit, and with how many of the three entries?**
+Nothing has been submitted and nothing will be without a decision from a person. The prize goes to the first entry that meets every criterion; the rules allow three entries; the licence is perpetual and irrevocable whether or not we win; and patents should be filed before submitting. Our estimate of meeting every criterion is under 3%. If we submit early we use an entry on a partial result. If we wait, someone else may be first.
+*What we need:* a decision on timing, and whether anything here should be filed first.
+
+**15. May we contact authors?**
+Several data questions could be answered in one email by the author: the oxidation time Mueller used for the planar samples (we inferred about two minutes), the 1223 K marker in Goncharova Figure 5 that does not add to its drawn sum, and the oxygen-18 profile in Goncharova Figure 4(b), which we read by eye.
+*Default:* we contact nobody.
+
+**16. Is there anything in the essay or repository that should not be public?**
+The essay is published, the repository is on GitHub, and nothing in a submission is confidential.
+
+## E. What we will do while we wait
+
+- Nanowire structure search across both datasets (45% chance of reaching solved).
+- A trap-spectrum observation model that accounts for energy and occupancy, since one conversion factor between trap density and apparent charge predicts only 2 of 8 withheld values.
+- Conserved germanium redistribution as a program in the predictor, not only a check on three cases.
+- SiGe consumed substrate from Mueller's measurements.
+- Transcribing Yano 2002 and Long 2012.
