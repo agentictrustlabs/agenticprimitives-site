@@ -437,6 +437,71 @@ study: vitkavage-1990
 | Non-cleanroom (100), 750 °C, 24 h | oxide thickness | 25 nm | 34.9 nm | +39% | off (±10%) | outside the tested scope | text, PDF p. 6 |
 | Non-cleanroom (110), 1100 °C, 0.5 h | oxide thickness | 90 nm | 84.7 nm | -6% | within (±10%) | supported within scope | text, PDF p. 6 |
 
+## Aligning the simulation: what the unstated things would have to be
+
+The reproduction above fills every gap in the report with an assumption of ours. Here each gap is treated as an unknown and scanned over what a furnace of that kind allows, against every cleanroom value in the report: 6 thicknesses, 28 fixed-charge values after the hydrogen anneal and 46 midgap trap densities (`scripts/align_vitkavage.py`, report in `evaluations/vitkavage_alignment.json`). No parameter declared `fitted` was touched. A tolerance is the larger of 10% and the spread the report prints for that value.
+
+**Timing unknowns that the data rule out.** Extra time in oxygen before the stated time starts makes thickness worse at once (4 of 6 within tolerance with none, 3 with five minutes, 2 with ten), so the Table I times are times in oxygen at temperature, with no long ramp in oxygen before them. A nitrogen anneal at the oxidation temperature on every wafer makes fixed charge worse at any length from 5 to 60 minutes (median error from 20% to over 30%, simulation then too low), so the tabulated wafers are, as a set, not the wafers that had that anneal. For trap density neither unknown helps, and the hydrogen anneal length is pinned: 25 minutes instead of 30 loses 3 of the 11 passes and 35 minutes loses 7. That last result is not independent, because the program was fitted with 30.
+
+**Thickness is a material question, not a timing one.** The 1965 law starts every oxide at 23 nm and its constants are for (111). On (100) it runs high for thin oxides (57.9 against 50 nm after one hour at 1000 °C). The thin-oxide law that our structure search found on Massoud's data lands at 51.6 nm for the same wafer and 197.6 against 205 nm after eight hours; Massoud is an author of this report and the cleanroom oxidations were done in his laboratory. With that law on (100) and the 1965 law elsewhere, 5 of 6 thicknesses are within 10% (4 of 6 before), the sixth being the non-cleanroom wafer at 750 °C (20.6 against 25 nm).
+
+**Fixed charge: the unknown is one thing per furnace run.** All four orientations were oxidized together. At 1000 °C the report's own values for one orientation move between the four runs by 8 to 33% (standard deviation over mean), and three of the four orientations dip together in the 4 h run. A simulation that gives one number for one recipe can match at most two of four such values to 10%. So we inferred one unknown for each run from its (111) wafer, which carries the most charge: either a pull of some seconds in oxygen, or some minutes without oxygen before the pull. The other three wafers of each run, which played no part, then test it. Their median error falls from 58% (stated history) to 28%, and those within twice the tolerance rise from 5 to 10 of 21. The inferred values: pulls of 4 s for the 1 h and 2.5 h runs, effectively instant for the 900 °C and 8 h runs, half a minute without oxygen for the 4 h run, and the equivalent of 30 minutes without oxygen for the 750 and 800 °C runs.
+
+**Orientation.** The predictor has fixed-charge constants for (100) and (111) only and silently ran (110) and (511) on the (111) line, which is why they were three to four times high above. Run on the (100) line they are 46% and 74% off, not 272% and 329%. Deal's 1967 Table II has a (110) line that we had never transcribed; with it (110) is 70% high, worse than treating (110) as (100). On these wafers (110) and (511) carry about as little charge as (100).
+
+```study-compare
+study: vitkavage-1990
+set: aligned
+```
+
+**9** within, **7** near, **11** off of 27 numbers with the aligned settings.
+
+| Wafer | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| (100), 750 °C, 24 h (non-cleanroom) | oxide thickness | 25 nm | 34.9 | 20.6 | -17% | near (±10%) | thin-oxide law found on Massoud's data |
+| (100), 1000 °C, 1 h (cleanroom) | oxide thickness | 50 nm | 57.9 | 51.6 | +3% | within (±10%) | thin-oxide law found on Massoud's data |
+| (111), 1000 °C, 1 h (cleanroom) | oxide thickness | 64 nm | 70 | 70 | +9% | within (±10%) | 1965 law, unchanged |
+| (100), 1000 °C, 8 h (cleanroom) | oxide thickness | 205 nm | 209 | 198 | -4% | within (±10%) | thin-oxide law found on Massoud's data |
+| (111), 1000 °C, 8 h (cleanroom) | oxide thickness | 240 nm | 238 | 238 | -1% | within (±10%) | 1965 law, unchanged |
+| (110), 1100 °C, 0.5 h (non-cleanroom) | oxide thickness | 90 nm | 84.7 | 84.7 | -6% | within (±10%) | 1965 law, unchanged |
+| (100), 750 °C, 23 h | fixed charge | 7.00e+10 cm⁻² | 2.78e+11 | 2.17e+11 | +210% | off (±57%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (511), 750 °C, 23 h | fixed charge | 1.60e+11 cm⁻² | 6.86e+11 | 2.17e+11 | +36% | near (±25%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (110), 750 °C, 23 h | fixed charge | 1.08e+12 cm⁻² | 6.86e+11 | 2.17e+11 | -80% | off (±11%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (100), 800 °C, 18 h | fixed charge | 1.60e+11 cm⁻² | 2.54e+11 | 1.46e+11 | -9% | within (±31%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (511), 800 °C, 18 h | fixed charge | 2.00e+10 cm⁻² | 6.38e+11 | 1.46e+11 | +631% | off (±100%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (110), 800 °C, 18 h | fixed charge | 1.90e+11 cm⁻² | 6.38e+11 | 1.46e+11 | -23% | near (±16%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 30 min |
+| (100), 900 °C, 4.5 h | fixed charge | 1.30e+11 cm⁻² | 2.06e+11 | 1.82e+11 | +40% | off (±15%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (511), 900 °C, 4.5 h | fixed charge | 6.00e+10 cm⁻² | 5.42e+11 | 1.82e+11 | +203% | off (±33%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (110), 900 °C, 4.5 h | fixed charge | 1.70e+11 cm⁻² | 5.42e+11 | 1.82e+11 | +7% | within (±18%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (100), 1000 °C, 1 h | fixed charge | 1.70e+11 cm⁻² | 1.58e+11 | 1.52e+11 | -10% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (511), 1000 °C, 1 h | fixed charge | 1.80e+11 cm⁻² | 4.46e+11 | 1.52e+11 | -15% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (110), 1000 °C, 1 h | fixed charge | 1.08e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +41% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (100), 1000 °C, 2.5 h | fixed charge | 1.70e+11 cm⁻² | 1.58e+11 | 1.52e+11 | -10% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (511), 1000 °C, 2.5 h | fixed charge | 1.20e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +27% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (110), 1000 °C, 2.5 h | fixed charge | 1.00e+11 cm⁻² | 4.46e+11 | 1.52e+11 | +52% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 4 s |
+| (100), 1000 °C, 4 h | fixed charge | 9.00e+10 cm⁻² | 1.58e+11 | 1.16e+11 | +28% | off (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
+| (511), 1000 °C, 4 h | fixed charge | 7.00e+10 cm⁻² | 4.46e+11 | 1.16e+11 | +65% | off (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
+| (110), 1000 °C, 4 h | fixed charge | 1.20e+11 cm⁻² | 4.46e+11 | 1.16e+11 | -4% | within (±10%) | run unknown inferred from the (111) wafer of this run: minutes without oxygen 0.5 min |
+| (100), 1000 °C, 8 h | fixed charge | 1.30e+11 cm⁻² | 1.58e+11 | 1.29e+11 | -1% | within (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (511), 1000 °C, 8 h | fixed charge | 1.10e+11 cm⁻² | 4.46e+11 | 1.29e+11 | +17% | near (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+| (110), 1000 °C, 8 h | fixed charge | 1.00e+11 cm⁻² | 4.46e+11 | 1.29e+11 | +29% | off (±10%) | run unknown inferred from the (111) wafer of this run: pull 0.25 s |
+
+What this does not fix. (100), (110) and (511) below 1000 °C still sit one and a half to three times above the report (for example 2.2 against 0.7 × 10^11 cm^-2 at 750 °C), and no unknown in the history moves them: the steady line we take from Deal 1967 says charge rises as oxidation temperature falls, and on these three orientations Vitkavage's does not. The program was never scored below 900 °C. Trap density after the anneal is 22% high on (110), 28% low on (111) and 17% low on (511) in the median, with (100) within 10%: an orientation dependence of the hydrogen step that the program does not have, and that no timing changes.
+
+How to read the aligned numbers: the thickness change is a choice between two programs we already hold and is not fitted to this report. The run unknowns are inferred from this report's own (111) wafers, so the (111) rows are not in the chart; the 21 rows shown are the test. The inferred “minutes without oxygen” at 750 and 800 °C may equally be the steady line being too high at low temperature; the data here cannot tell those apart.
+
+### What our language and ontology cannot yet say
+
+- **A furnace run shared by several specimens.** The result above depends on four wafers having one history. A history file has one SPECIMEN; the ontology has no record that measurements came from one run. A `BATCH` of specimens under one `CONTROL_TRAJECTORY` would let one unknown be declared once and inferred from all of them.
+- **An unknown with a range, as a statement.** “Shorter than 5 sec” had to become `DURATION 5`. The language needs `DURATION 0.5..5` (a bound), and a status on each step's timing (stated, bound, assumed), which on this page is hand-written in Python. Then a scan like this one is a query, not a script.
+- **Cooling as a law, not a straight line.** A RUN's temperature is linear from start to end. A wafer leaving a furnace cools toward the room with a time constant. Without that, the end temperature of a pull (400 °C) is a cut-off that stands in for physics, and the charge program, whose oxygen rate barely depends on temperature (0.05 eV), keeps moving charge at 100 °C if a cooling step is written.
+- **Steps with no duration.** Clean, load, storage, metallization and measurement are comments in the history. The ontology has no classes for them that a program could read; an `EVENT` statement with a kind from the vocabulary would at least make them queryable.
+- **Specimen properties a program can read.** Doping, wafer size, starting oxide and sample set are recorded and read by nothing. The starting oxide in particular is a parameter inside the growth program (23 nm) when it is a property of the wafer.
+- **An orientation with no constants must be refused or labelled per number.** (110) and (511) fell back to (111) for fixed charge with a note; the number looked like any other.
+- **Gas by pressure, not by name.** Writing the stated moisture (`mix:O2=0.999994,H2O=6.0e-6`) made the fixed-charge program return nothing, because the predictor looks for the name `dry_O2`. And the thin-oxide program keeps growing oxide during a nitrogen step: it does not read the oxygen pressure.
+- **What a measurement is.** Fixed charge after a hydrogen anneal, apparent charge without one, and Deal's 1967 charge after 550 °C in nitrogen are three observables in the papers and one in ours. The work-function value behind every fixed charge here is not stated; an observation model for the C-V extraction would carry that assumption.
+- **Repeatability as data.** The report's run-to-run scatter (up to 33%) is larger than the 10% we score against. A dataset should carry its own repeatability so a contract's tolerance comes from the source.
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

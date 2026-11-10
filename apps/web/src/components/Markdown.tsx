@@ -77,7 +77,7 @@ export function Markdown({ source }: { source: string }) {
             }
             return (
               <div key={i} className="relative left-1/2 w-[min(100vw-2rem,1100px)] -translate-x-1/2">
-                {lang === 'study-match' ? <StudyMatch data={data} /> : <StudyCompare data={data} />}
+                {lang === 'study-match' ? <StudyMatch data={data} /> : <StudyCompare data={data} set={/set:\s*aligned/.test(code) ? 'aligned' : 'reproduced'} />}
               </div>
             );
           }

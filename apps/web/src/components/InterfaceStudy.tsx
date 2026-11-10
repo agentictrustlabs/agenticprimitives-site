@@ -31,6 +31,7 @@ export interface StudyData {
   match: { specimen: MatchRow[]; history: MatchRow[] };
   cases: StudyCase[];
   comparison: { rows: CompareRow[]; series: CompareSeries[] };
+  comparison_aligned?: { rows: CompareRow[]; series: CompareSeries[] };
 }
 
 // Status colours are the reserved good / warning / critical steps; each is always shown with a glyph and a word.
@@ -505,8 +506,9 @@ function SeriesChart({ s }: { s: CompareSeries }) {
   );
 }
 
-export function StudyCompare({ data }: { data: StudyData }) {
-  const rows = data.comparison.rows;
+export function StudyCompare({ data, set = 'reproduced' }: { data: StudyData; set?: 'reproduced' | 'aligned' }) {
+  const cmp = set === 'aligned' && data.comparison_aligned ? data.comparison_aligned : data.comparison;
+  const rows = cmp.rows;
   const [hover, setHover] = useState<number | null>(null);
   const lim = 100;                                                      // the axis runs to ±100 %; a bar that goes further is cut and says so
   const H = 30;
@@ -551,7 +553,7 @@ export function StudyCompare({ data }: { data: StudyData }) {
       <div className="mt-1 min-h-5 text-xs text-slate-500">
         {hover !== null && rows[hover] ? `${rows[hover]!.case}: ${rows[hover]!.where ?? ''}${rows[hover]!.support ? ` · support: ${rows[hover]!.support}` : ''}` : 'The pale green band is the tolerance. Bars past ±100% are cut and carry their value.'}
       </div>
-      {data.comparison.series.map((s) => <SeriesChart key={s.title} s={s} />)}
+      {cmp.series.map((s) => <SeriesChart key={s.title} s={s} />)}
     </figure>
   );
 }
