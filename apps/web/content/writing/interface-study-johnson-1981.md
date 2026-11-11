@@ -20,7 +20,7 @@ One of the two papers the Quantum ESPRESSO calculation of Si• + ½H₂ → Si�
 | How the results are given | Figures only, except four sentences in the text (60% reduction at 400 °C; complete removal at 450 °C; onset of spin loss at 250 °C with Al and 400 °C without; 6×10¹¹ spins cm⁻² as oxidized). Fig. 1 and Fig. 2 read by eye here |
 | Repeatability stated by the authors | Not stated; no error bars |
 | Internal consistency | Fair. The capacitors (116 nm) and the ESR wafers (200 nm) have different oxides. The text says “approximately 60%” for the 400 °C anneal; Fig. 1 reads 6.7 to 2.9×10¹² at the peak, 57%. Without aluminium and without hydrogen, a vacuum anneal above 500 °C removes the spin signal, which the paper does not explain and which runs opposite to Stesmans and Afanas'ev 1996 |
-| Is our model independent of this paper's data? | Yes. The trap-density program was found and fitted on Vitkavage 1990; the equilibrium program is computed (Quantum ESPRESSO) and not fitted. Neither has seen this paper |
+| Is our model independent of this paper's data? | Yes. The trap-density program was found and fitted on Vitkavage 1990, and its hydrogen barriers (passivation 1.66 eV, release 2.56 eV with 1.2×10¹² s⁻¹) are Brower's as quoted by Stesmans and Afanas'ev 1996; the equilibrium program is computed (Quantum ESPRESSO) and not fitted. Neither has seen this paper |
 | Outcome | 2 of 13 numbers within tolerance |
 
 The grade is ours and is about the paper as a source for simulation, not about the quality of the experiment: **high** means the sample, every step and its timing are stated well enough that a simulation needs no choices of ours; **moderate** that some choices are ours and are listed; **low** that the result depends on choices the paper does not constrain.
@@ -295,7 +295,7 @@ CONTROL_TRAJECTORY History {
 }
 ```
 
-Not scored: the paper's value is zero (no spin signal after any vacuum anneal up to 600 °C), which a relative tolerance cannot score. Brower's dissociation rate (Ed 2.56 eV, 1.2×10¹² s⁻¹, as cited by Stesmans 1996) gives 83% of the sites back after 15 min at 600 °C; the paper sees none.
+Not scored: the paper's value is zero (no spin signal after any vacuum anneal up to 600 °C), which a relative tolerance cannot score. The trap-density program's release, which is Brower's (Ed 2.56 eV, 1.2×10¹² s⁻¹, as cited by Stesmans 1996), gives 84% of the sites back after 15 min at 600 °C from a passivated start; the paper sees none.
 
 The programs the predictor ran on these histories: `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
 
@@ -312,7 +312,10 @@ The grammar asks which structure accounts for that:
     orientation_passivation the same, with the hydrogen rate fitted for each orientation
     two_populations         a second population set at oxidation, per orientation, that hydrogen removes and time does not
     two_populations_T       the same, with the second population depending on oxidation temperature
-Every candidate is an ISL program (kinds Relaxation and Passivation). Split, fixed here: the 900 C recipes and the
+Every candidate is an ISL program (kinds Relaxation and Passivation). Since 11 November every candidate also carries Brower's hydrogen
+kinetics: the passivation rate changes with temperature by E_f = 1.66 eV about 400 C (where it is fitted), and capped sites release their
+hydrogen at k_d0 exp(-E_d / kT) with E_d = 2.56 eV and k_d0 = 1.2e12 /s. Every scored anneal is at 400 C, where the release is negligible
+(about 1e-8 /s), so the fit is unchanged; the history now matters (a hot step after the anneal brings Pb back). Split, fixed here: the 900 C recipes and the
 8 h recipes are held out; everything else is fitted. (The earlier split held out the (511) orientation; a structure
 with a number per orientation cannot be scored that way, so the split was changed and that is recorded here.)
 The structure is chosen on training rows only: most passed, then fewest parameters, then smallest training error.
@@ -356,12 +359,13 @@ PARAMETER log_B {{ VALUE: 11.0; UNIT: 1; STATUS: fitted }}
 PARAMETER E_B {{ VALUE: 0.0; UNIT: eV; STATUS: fitted }}
 PARAMETER T_ox {{ VALUE: {row['T_ox_C'] + 273.15:.2f}; UNIT: K; STATUS: sourced; SOURCE: the temperature of the oxidation step in this recipe }}
 PARAMETER B_unit {{ VALUE: 1.0; UNIT: cm^-2; STATUS: constant }}
-# No source resolves how fast hydrogen removes this population; it is gone after the 30 min anneal in every sample.
+# No source resolves how fast hydrogen removes this population; it is gone after the 30 min anneal in every sample. Its rate is given the
+# temperature dependence of Pb passivation (E_f), an assumption; no release of this population is written, since no source measures one.
 PARAMETER k_HB {{ VALUE: 1.0; UNIT: atm^-1 s^-1; STATUS: hypothesis }}
 OPERATOR F_SecondPopulationPassivation : Passivation {{
     CONSERVATION: N_B + N_BH = const
-    EQUATION: d(N_B)/dt = -k_HB * p_H2 * N_B
-    EQUATION: d(N_BH)/dt = k_HB * p_H2 * N_B
+    EQUATION: d(N_B)/dt = -k_HB * exp(-(E_f / k_B) * (1 / T - 1 / T_H)) * p_H2 * N_B
+    EQUATION: d(N_BH)/dt = k_HB * exp(-(E_f / k_B) * (1 / T - 1 / T_H)) * p_H2 * N_B
 }}""" if two else ""
     return f"""# GENERATED by scripts/search_trap_density.py. Structure: {structure}. A candidate from the grammar; every rate and level is fitted.
 SAMPLE Wafer_{o}_{row['anneal']}_{row['T_ox_C']:.0f}C_{str(row['t_ox_hr']).replace('.', 'p')}h {{ FAMILY: Si_Planar; ORIENTATION: Si{o} }}
@@ -382,7 +386,14 @@ PARAMETER rate_unit {{ VALUE: 1.0; UNIT: s^-1; STATUS: constant }}
 PARAMETER H_unit {{ VALUE: 1.0; UNIT: atm^-1 s^-1; STATUS: constant }}
 PARAMETER T_ref {{ VALUE: {T_REF}; UNIT: K; STATUS: constant }}
 PARAMETER ln10 {{ VALUE: 2.302585092994046; UNIT: 1; STATUS: constant }}
-PARAMETER k_B {{ VALUE: 8.617333262e-5; UNIT: eV K^-1; STATUS: constant }}{second}
+PARAMETER k_B {{ VALUE: 8.617333262e-5; UNIT: eV K^-1; STATUS: constant }}
+# Hydrogen and the Pb centre, from Brower's measurements as quoted by Stesmans and Afanas'ev 1996 (p. L505-L506). The passivation rate is fitted
+# at T_H, the 400 C of every scored anneal, so E_f sets only how it changes away from 400 C. The release (HPb -> Pb + H) is Brower's, prefactor and
+# energy both; Stesmans and Afanas'ev adopt the same prefactor without fitting it, so their release data stay an independent test.
+PARAMETER E_f {{ VALUE: 1.66; UNIT: eV; STATUS: sourced; SOURCE: Brower 1988 as quoted by Stesmans and Afanas'ev 1996 J. Phys. Condens. Matter 8 L505 p. L505, activation energy of Pb + H2 -> HPb + H }}
+PARAMETER T_H {{ VALUE: 673.15; UNIT: K; STATUS: constant }}
+PARAMETER E_d {{ VALUE: 2.56; UNIT: eV; STATUS: sourced; SOURCE: Brower 1990 as quoted by Stesmans and Afanas'ev 1996 J. Phys. Condens. Matter 8 L505 p. L506, activation energy of HPb -> Pb + H }}
+PARAMETER k_d0 {{ VALUE: 1.2e12; UNIT: s^-1; STATUS: sourced; SOURCE: Brower 1990 as quoted and adopted unfitted by Stesmans and Afanas'ev 1996 J. Phys. Condens. Matter 8 L505 p. L506, prefactor of HPb -> Pb + H }}{second}
 CONTROL_TRAJECTORY History {{
 {chr(10).join(runs)}
 }}
@@ -391,8 +402,13 @@ OPERATOR F_Relaxation : Relaxation {{
 }}
 OPERATOR F_HydrogenPassivation : Passivation {{
     CONSERVATION: N_Pb + N_SiH = const
-    EQUATION: d(N_Pb)/dt = -H_unit * exp(ln10 * (log_k_H + log_h)) * p_H2 * N_Pb
-    EQUATION: d(N_SiH)/dt = H_unit * exp(ln10 * (log_k_H + log_h)) * p_H2 * N_Pb
+    EQUATION: d(N_Pb)/dt = -H_unit * exp(ln10 * (log_k_H + log_h)) * exp(-(E_f / k_B) * (1 / T - 1 / T_H)) * p_H2 * N_Pb
+    EQUATION: d(N_SiH)/dt = H_unit * exp(ln10 * (log_k_H + log_h)) * exp(-(E_f / k_B) * (1 / T - 1 / T_H)) * p_H2 * N_Pb
+}}
+OPERATOR F_HydrogenRelease : Passivation {{
+    CONSERVATION: N_Pb + N_SiH = const
+    EQUATION: d(N_Pb)/dt = k_d0 * exp(-E_d / (k_B * T)) * N_SiH
+    EQUATION: d(N_SiH)/dt = -k_d0 * exp(-E_d / (k_B * T)) * N_SiH
 }}
 OBSERVATION_MODEL Obs_Dit_Midgap {{ TARGET: Dit; UNIT: cm^-2 eV^-1; EQUATION: Dit = c_mid * ({'N_Pb + N_B' if two else 'N_Pb'}) }}
 EVALUATION_CONTRACT Contract {{
@@ -523,9 +539,9 @@ Choices of program or material property, each scored on its own and on top of th
 
 | Variant | Alone | With the aligned history |
 |---|---|---|
-| aluminium as a hydrogen source, written as forming gas during its anneal | 2 of 13 within tolerance, median error 95.7% | 2 of 13 within tolerance, median error 95.7% |
+| aluminium as a hydrogen source, written as forming gas during its anneal | 2 of 13 within tolerance, median error 97.9% | 2 of 13 within tolerance, median error 97.9% |
 | atomic deuterium written as molecular hydrogen (pure H2) | 2 of 13 within tolerance, median error 85.7% | 2 of 13 within tolerance, median error 85.6% |
-| both stand-ins | 2 of 13 within tolerance, median error 95.7% | 2 of 13 within tolerance, median error 95.7% |
+| both stand-ins | 2 of 13 within tolerance, median error 97.9% | 2 of 13 within tolerance, median error 97.9% |
 
 Four unknowns were declared: the oxidation time and the cool after oxidation, each shared within one batch (the 116 nm capacitor oxide and the 200 nm ESR oxide). Three variants try the only ways the language has to put hydrogen where the paper puts it: the aluminium written as forming gas during its anneal, the atomic deuterium written as molecular H₂, and both. No sample is held out: the unknowns were chosen on the same 13 numbers they are scored on, so the aligned count is an upper bound.
 
@@ -533,9 +549,9 @@ As reproduced: 2 of 13 within tolerance (median error 85.7%). Aligned: 2 of 13 (
 
 **The unknowns.** The thicknesses pin the oxidation times at the values assumed (2.3 h for 116 nm, 6 h for 200 nm at 1000 °C). Over its range the oxidation time moves the trap-density program's as-oxidized density between about 7×10¹⁰ and 1.9×10¹¹ cm⁻² eV⁻¹, 13 to 35 times below the paper's DLTS, so no value brings a row within tolerance. No program changes Pb or interface states in a 15 or 60 min vacuum anneal at 275 to 475 °C (the trap program's relaxation has a rate of about 2×10⁻¹⁰ s⁻¹ at 475 °C). The cool after oxidation is flat.
 
-**Aluminium as forming gas** (2 of 13, median 95.7%). The interface-state spectrum appears, but at a twentieth of the paper's level: 1.1×10¹¹ against 2.55×10¹² cm⁻² eV⁻¹ at 0.30 eV after 400 °C, 3.5×10¹⁰ against 3.5×10¹¹ after 450 °C for 60 min. Before any anneal the program has 1.1×10¹¹ cm⁻² eV⁻¹ near midgap where the paper's DLTS has 2.5×10¹² at 0.55 eV. On the ESR wafers the equilibrium program leaves 3×10⁻⁸ to 3×10⁻⁷ of the Pb uncapped at 275 to 325 °C (and would at 30 °C); the paper has 0.85, 0.42 and 0.14. The trap program removes the same 32% at 275, 300 and 325 °C, because its fitted hydrogen rate has no temperature in it. The measured fall from 0.85 to 0.14 over 50 °C is a barrier: with Brower's 1.66 eV for Pb + H₂ the rate changes by a factor of about 4 per 25 °C in this range.
+**Aluminium as forming gas** (2 of 13, median 97.9%). The interface-state spectrum appears, at a twentieth of the paper's level after 400 °C (1.1×10¹¹ against 2.55×10¹² cm⁻² eV⁻¹ at 0.30 eV; the trap program removes 32% there, the temperature its H₂ rate was fitted at) and at a four-thousandth after 450 °C for 60 min (9.3×10⁷ against 3.5×10¹¹: at 450 °C Brower's 1.66 eV makes the rate 7.2 times faster and it removes 99.94%). Before any anneal the program has 1.1×10¹¹ cm⁻² eV⁻¹ near midgap where the paper's DLTS has 2.5×10¹² at 0.55 eV. On the ESR wafers the equilibrium program leaves 3×10⁻⁸ to 3×10⁻⁷ of the Pb uncapped at 275 to 325 °C (and would at 30 °C); the paper has 0.85, 0.42 and 0.14. The trap program, whose H₂ rate is fitted at 400 °C and carries Brower's 1.66 eV away from it, removes 0.06%, 0.26% and 1.1% of its sites at 275, 300 and 325 °C. Its rate rises by a factor of 4.1 to 4.6 per 25 °C, which is the shape the measured fall from 0.85 to 0.14 over 50 °C needs, but 15 min in forming gas (0.1 atm H₂) is 180 to 330 times too slow to give it (in rate, against −ln of the measured shares). That is the paper's point: the aluminium supplies atomic hydrogen, which caps Pb without the 1.66 eV of H₂ dissociating at the bond.
 
-**Atomic deuterium as H₂.** Nothing scored changes (the deuterated sample's value is zero and is not scored). The history runs: after 30 min at 230 °C both programs have Pb capped (equilibrium share 10⁻⁹), as the paper finds. The paper also says molecular deuterium under the same conditions put no deuterium at the interface, so this is the right answer by a route the paper rules out. Then 15 min at 600 °C in vacuum: the equilibrium program's placeholder rate gives 26% of the Pb back, Brower's measured dissociation (2.56 eV, 1.2×10¹² s⁻¹, quoted by Stesmans 1996) gives 84%, Stesmans's own fit with its spread 53%. The paper sees none.
+**Atomic deuterium as H₂.** Nothing scored changes (the deuterated sample's value is zero and is not scored). The history runs: after 30 min at 230 °C the equilibrium program has Pb capped (equilibrium share 10⁻⁹), as the paper finds; the paper also says molecular deuterium under the same conditions put no deuterium at the interface, so this is the right answer by a route the paper rules out. The trap program agrees with the paper's control instead: at 230 °C its H₂ rate is 6×10⁻⁵ of the 400 °C value and it caps 0.06% of its sites. Then 15 min at 600 °C in vacuum: the equilibrium program's placeholder rate gives 26% of the Pb back; the trap program's release, Brower's measured dissociation (2.56 eV, 1.2×10¹² s⁻¹, quoted by Stesmans 1996), gives 84% back from a passivated start (40 min in H₂ at 405 °C, then this anneal: 5.1×10⁶ to 4.5×10¹⁰ of 5.3×10¹⁰ cm⁻² eV⁻¹); Stesmans's own fit with its spread gives 53%. The paper sees none.
 
 **Against the computed reaction energies.** This paper measures no rate and no activation energy, only temperatures at which signals go in 15 min. Its three hydrogen results set against the Quantum ESPRESSO numbers: (1) Atomic deuterium removes Pb at 230 °C. Capping by a free atom is downhill by the full bond energy, 3.54 eV (slightly more for Si–D, whose zero-point energy is smaller), with no barrier needed: consistent. (2) Molecular hydrogen from the aluminium removes Pb only between 250 and 350 °C. Capping from H₂ is downhill by 1.28 eV, so equilibrium is not what holds it back below 250 °C (equilibrium leaves 10⁻¹⁷ uncapped at 30 °C); a barrier is. (3) After deuteration, 600 °C does not bring Pb back. Equilibrium in vacuum is all uncapped, so this, too, is kinetic, and it is slower than any dissociation rate in the literature the project holds. The equilibrium bound is consistent with every Pb density this paper reports and decides none of them.
 
@@ -564,9 +580,9 @@ set: aligned
 | ESR wafer, 200 nm, without aluminium, vacuum 425 °C 15 min | spin density (Pb), share of the level before the loss | 0.83 (Fig. 2 units) | no program | no program |  | not modelled (±10%) | chosen on these numbers |
 | ESR wafer, 200 nm, without aluminium, vacuum 475 °C 15 min | spin density (Pb), share of the level before the loss | 0.37 (Fig. 2 units) | no program | no program |  | not modelled (±10%) | chosen on these numbers |
 
-What alignment cannot fix. **Hydrogen that does not come from the gas.** The paper's two hydrogen sources, the aluminium film during a vacuum anneal and atomic deuterium from a remote plasma, cannot be written. Every program here reads hydrogen only as p_H2 in the gas. Forming gas as a stand-in gives hydrogen everywhere at once and no temperature threshold.
+What alignment cannot fix. **Hydrogen that does not come from the gas.** The paper's two hydrogen sources, the aluminium film during a vacuum anneal and atomic deuterium from a remote plasma, cannot be written. Every program here reads hydrogen only as p_H2 in the gas. Forming gas as a stand-in gives the equilibrium program hydrogen everywhere at once with no temperature threshold, and gives the trap program Brower's 1.66 eV for H₂, which puts its threshold near 400 °C instead of the paper's 250 °C. A metal film that releases hydrogen and an ambient of atomic hydrogen are both missing.
 
-**No temperature in the passivation rate.** The trap program's hydrogen rate was fitted on one temperature (400 °C, Vitkavage) and carries none; the equilibrium program's is a placeholder. A 15 min isochronal series like Fig. 2 is the measurement that would fix an activation energy, and both programs give a flat line through it.
+**One release barrier, and rates for H₂ only.** The trap program's passivation rate is fitted at one temperature (400 °C, Vitkavage) and carries Brower's 1.66 eV away from it; its release is Brower's single barrier (2.56 eV, 1.2×10¹² s⁻¹). The equilibrium program's rate is a placeholder. After atomic deuterium the paper sees no Pb return at 600 °C, where Brower's single barrier returns 84% and Stesmans's spread of barriers (σ = 0.105 eV) still 53%: neither a spread of release barriers, which the program also lacks, nor anything the program has explains it; a slower Si–D release or deuterium held nearby would have to.
 
 **Interface states are not Pb here.** The paper's central result is that Pb goes 100 to 150 °C below the 0.3 eV peak. Both programs make interface states out of one population of dangling bonds (the trap program's second population is set to nothing on (111)), so they cannot separate them. The paper's DLTS values are also 20 times the trap program's as-oxidized density; the program was found on another laboratory's (111) wafers measured after forming gas, and on unannealed (111) it is outside its fitted range.
 
@@ -577,7 +593,7 @@ What alignment cannot fix. **Hydrogen that does not come from the gas.** The pap
 - **An ambient of atomic hydrogen.** “Annealing … in atomic deuterium at 230 °C” downstream of a plasma has no word. It needs a species (H or D atoms) with a flux or an arrival rate at the surface (cm⁻² s⁻¹) rather than a partial pressure, since the atoms recombine on the walls; e.g. `AMBIENT atomic:D FLUX 1e15`. With it, a kinetic program could cap Pb at the rate atoms arrive at the interface, which this paper shows happens at 25 to 230 °C (Fig. 5).
 - **A film as a hydrogen source.** The aluminium releases hydrogen during the anneal; the same anneal without it does nothing below 400 °C. A `FILM Al { RELEASES: H }` on the sample, read by hydrogen programs as a source term during any RUN, would let a post-metallization anneal in vacuum or nitrogen be written as what it is. The ontology has process factor hydrogen-anneal for a gas, nothing for a film.
 - **Isotopes.** Deuterium is written as hydrogen or not at all. `D2` in the gas list (and D in the atomic ambient) with masses carried into the zero-point energy (a computed ph.x number with deuterium masses) and into any rate prefactor would let the paper's “not regained up to 600 °C” be compared with Si–H dissociation rates on the right basis.
-- **A kinetic hydrogen program** (see also Stesmans 1996): passivation from H₂ with an activation energy (1.66 eV measured, by Brower) is what this paper's with-Al series needs; dissociation with its activation energy what its deuterated series needs. Both barriers can be computed on the H100 with neb.x, from the relaxed cluster for H₂ + Pb and from a (111)/SiO₂ slab for dissociation into a bound site; the Stesmans page gives the plan.
+- **A kinetic hydrogen program** (see also Stesmans 1996): the trap program now has passivation from H₂ with Brower's 1.66 eV and release with Brower's 2.56 eV, sourced, not computed. This paper's with-Al series needs a passivation by atomic hydrogen besides, and its deuterated series a release slower than Brower's. Both barriers can be computed on the H100 with neb.x, from the relaxed cluster for H₂ + Pb and from a (111)/SiO₂ slab for dissociation into a bound site; the Stesmans page gives the plan.
 - **Spin density as an observable, with its units.** Fig. 2 is in arbitrary units with one absolute anchor (6×10¹¹ cm⁻² as oxidized). A target `Pb_spin_density` in cm⁻² with a declared normalization (`RELATIVE TO <case>`) would let both programs be scored on Pb directly instead of on a share.
 - **A series on one sample.** Whether the isochronal anneals of Fig. 2 are one specimen annealed in turn is not stated. The language cannot write either reading as one statement; `REPEAT` over temperatures with an observation after each pass would, and an alignment could then treat the reading as a variant.
 - **Interface states at an energy without a hydrogen step.** The trap program reports a spectrum only after hydrogen, from the shape of one annealed curve. The as-oxidized (111) peak at 0.3 eV, 6.7×10¹² cm⁻² eV⁻¹, here and in Vitkavage, has no program at all.
@@ -599,14 +615,14 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 | The paper states | What we find | |
 |---|---|---|
 | A vacuum anneal of the capacitor at 400 °C for 15 min lowers the 0.3 eV peak by about 60%; 450 °C for 60 min removes it (p. 2, Fig. 1) | No program changes the interface states in a vacuum anneal at 400-450 °C: the trap-density program's relaxation is negligible there and its hydrogen step needs hydrogen in the gas | not reproduced |
-| With aluminium the Pb signal falls between 250 and 350 °C (15 min); without aluminium between 400 and 525 °C (p. 2, Fig. 2) | Without a hydrogen step no program reports Pb. Written with the aluminium as forming gas, the equilibrium program removes Pb at every temperature including 30 °C; the fitted hydrogen rate of the trap program has no temperature dependence | not reproduced |
+| With aluminium the Pb signal falls between 250 and 350 °C (15 min); without aluminium between 400 and 525 °C (p. 2, Fig. 2) | Without a hydrogen step no program reports Pb. Written with the aluminium as forming gas, the equilibrium program removes Pb at every temperature including 30 °C; the trap program, whose H₂ rate carries Brower's 1.66 eV, removes 0.06%, 0.26% and 1.1% of its sites at 275, 300 and 325 °C, 180 to 330 times too slow: the aluminium supplies atomic hydrogen, which H₂ in the gas does not stand for | not reproduced |
 | Pb goes below 300 °C, the interface-state peak above 400 °C: Pb is not the characteristic peak (p. 4-5) | Both programs tie the interface states to the same population of dangling bonds; the separation cannot appear | not in the program |
-| Atomic deuterium at 230 °C removes Pb, and vacuum anneals up to 600 °C do not bring it back (p. 2) | The language cannot write atomic deuterium. Written as molecular hydrogen, both programs remove Pb; the equilibrium program's assumed rate then returns 26% of it at 600 °C, Brower's measured rate 83% | partly |
+| Atomic deuterium at 230 °C removes Pb, and vacuum anneals up to 600 °C do not bring it back (p. 2) | The language cannot write atomic deuterium. Written as molecular hydrogen at 230 °C, the equilibrium program caps Pb and its assumed rate returns 26% of it at 600 °C; the trap program caps almost none (0.06%), its H₂ rate at 230 °C being 6×10⁻⁵ of its 400 °C value. From a passivated start the trap program's release (Brower's) returns 84% in 15 min at 600 °C | partly |
 | Deuterium accumulates at the interface after atomic but not molecular deuterium, and stays to above 500 °C (Figs 3-6) | No program carries hydrogen in the oxide | not in the program |
 
 ## What we would like Emily to check
 
 1. Without aluminium and without any hydrogen in the gas, the spin signal disappears in vacuum between 400 and 525 °C (Fig. 2). Is the hydrogen already in a 200 nm dry oxide (from the furnace or the rapid cool) enough to cap 6×10¹¹ cm⁻² of Pb? Or was the 1981 vacuum poor enough to supply water?
 2. Stesmans and Afanas'ev see the opposite in a diffusion-pumped vacuum (≤4×10⁻⁷ Torr): Pb returns above 480 °C. Is the difference the starting state (passivated or not), the vacuum, or the oxide?
-3. After atomic deuterium the spin signal stays away after 15 min at 600 °C, while Brower's dissociation rate (2.56 eV, 1.2×10¹² s⁻¹) would bring most of it back. Would Si–D dissociate that much more slowly than Si–H, or does the atomic-deuterium exposure do more than cap Pb?
+3. After atomic deuterium the spin signal stays away after 15 min at 600 °C, while Brower's dissociation rate (2.56 eV, 1.2×10¹² s⁻¹), which the trap-density program uses, would bring most of it back (84%). Would Si–D dissociate that much more slowly than Si–H, or does the atomic-deuterium exposure do more than cap Pb?
 4. Is 6×10¹¹ cm⁻² a usual as-oxidized Pb density for (111) at 1000 °C with no post-oxidation anneal, against Stesmans's 4.7×10¹² after dissociation?

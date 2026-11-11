@@ -9,7 +9,7 @@
   "slug": "interface-study-vitkavage-1990",
   "title": "Reproducing Vitkavage, Irene and Massoud 1990: interface charges on four orientations of silicon",
   "file": "interface-study-vitkavage-1990.md",
-  "description": "Vitkavage, Irene and Massoud 1990: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 4 near, 9 off)."
+  "description": "Vitkavage, Irene and Massoud 1990: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 5 near, 8 off)."
  },
  {
   "slug": "interface-study-deal-1967",
@@ -57,7 +57,7 @@
   "slug": "interface-study-razouk-deal-1979",
   "title": "Reproducing Razouk and Deal 1979: interface state density against oxidation temperature, orientation and the end of the oxidation",
   "file": "interface-study-razouk-deal-1979.md",
-  "description": "Razouk and Deal 1979: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 2 near, 24 off)."
+  "description": "Razouk and Deal 1979: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (5 within, 27 off)."
  },
  {
   "slug": "interface-study-deal-grove-1965",
@@ -195,7 +195,7 @@
   "slug": "interface-study-osullivan-2001",
   "title": "Reproducing O'Sullivan et al. 2001: dangling bonds exposed by rapid thermal processing",
   "file": "interface-study-osullivan-2001.md",
-  "description": "O'Sullivan et al. 2001: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 3 near, 4 off, 11 not modelled)."
+  "description": "O'Sullivan et al. 2001: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 2 near, 5 off, 11 not modelled)."
  },
  {
   "slug": "interface-study-reed-1989",

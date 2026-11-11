@@ -1019,15 +1019,15 @@ study: hung-1987
 | M1: 1050 °C, 20% O2 in N2, 8 min, 101 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 6.11e+10 cm⁻² eV⁻¹ | +22% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
 | M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | fixed charge (Qf) | 5.10e+11 cm⁻² | 2.68e+10 cm⁻² | -95% | off (±3.92%) | supported within scope | Table 4.2, PDF p. 131 (dataset hung_1987_fixed_charge, ±2×10^10) |
 | M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | oxide thickness | 15.7 nm | 16.6 nm | +6% | within (±10%) | outside the tested scope | Table 4.1a, PDF p. 125 |
-| M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 4.97e+10 cm⁻² eV⁻¹ | -1% | within (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
+| M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 4.98e+10 cm⁻² eV⁻¹ | -0% | within (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
 | M3: 1050 °C, 20% O2 in N2, 55 min, 265 Å, N2 anneal | fixed charge (Qf) | 4.40e+11 cm⁻² | 2.68e+10 cm⁻² | -94% | off (±4.55%) | supported within scope | Table 4.2, PDF p. 131 (dataset hung_1987_fixed_charge, ±2×10^10) |
 | M3: 1050 °C, 20% O2 in N2, 55 min, 265 Å, N2 anneal | oxide thickness | 26.5 nm | 28.4 nm | +7% | within (±10%) | outside the tested scope | Table 4.1a, PDF p. 125 |
 | M3: 1050 °C, 20% O2 in N2, 55 min, 265 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 3.37e+10 cm⁻² eV⁻¹ | -33% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
 | M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | fixed charge (Qf) | 3.90e+11 cm⁻² | 2.68e+10 cm⁻² | -93% | off (±5.13%) | supported within scope | Table 4.2, PDF p. 131 (dataset hung_1987_fixed_charge, ±2×10^10) |
 | M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | oxide thickness | 39.2 nm | 43.5 nm | +11% | near (±10%) | outside the tested scope | Table 4.1a, PDF p. 125 |
-| M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 2.34e+10 cm⁻² eV⁻¹ | -53% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
+| M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 2.35e+10 cm⁻² eV⁻¹ | -53% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
 | N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | fixed charge (Qf) | 3.80e+11 cm⁻² | 2.68e+10 cm⁻² | -93% | off (±5.26%) | supported within scope | Table 4.2, PDF p. 131 (dataset hung_1987_fixed_charge, ±2×10^10) |
-| N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 2.34e+10 cm⁻² eV⁻¹ | -53% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
+| N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 2.35e+10 cm⁻² eV⁻¹ | -53% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
 | K1: 900 °C, dry O2, 27 min, 103 Å, N2 anneal | fixed charge (Qf) | 6.00e+11 cm⁻² | 2.68e+10 cm⁻² | -96% | off (±3.33%) | supported within scope | Table 4.2, PDF p. 131 (dataset hung_1987_fixed_charge, ±2×10^10) |
 | K1: 900 °C, dry O2, 27 min, 103 Å, N2 anneal | oxide thickness | 10.3 nm | 12 nm | +16% | near (±10%) | supported within scope | Table 4.1b, PDF p. 126 |
 | K1: 900 °C, dry O2, 27 min, 103 Å, N2 anneal | trap density at midgap after forming gas | 5.00e+10 cm⁻² eV⁻¹ | 6.15e+10 cm⁻² eV⁻¹ | +23% | off (±10%) | outside the tested scope | Table 4.2, PDF p. 131: “~5×10^10” for the whole group, after forming gas |
@@ -1211,10 +1211,10 @@ What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon
 | Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
 |---|---|---|---|---|
 | M1: 1050 °C, 20% O2 in N2, 8 min, 101 Å, N2 anneal | no measurement on this page | 6.11e+10 | 3.38e+08 | |
-| M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | no measurement on this page | 4.97e+10 | 2.99e+08 | |
+| M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | no measurement on this page | 4.98e+10 | 2.99e+08 | |
 | M3: 1050 °C, 20% O2 in N2, 55 min, 265 Å, N2 anneal | no measurement on this page | 3.37e+10 | 2.43e+08 | |
-| M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | no measurement on this page | 2.34e+10 | 2.07e+08 | |
-| N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | no measurement on this page | 2.34e+10 | 2.07e+08 | |
+| M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | no measurement on this page | 2.35e+10 | 2.07e+08 | |
+| N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | no measurement on this page | 2.35e+10 | 2.07e+08 | |
 | K1: 900 °C, dry O2, 27 min, 103 Å, N2 anneal | no measurement on this page | 6.15e+10 | 4.91e+08 | |
 | K2: 900 °C, dry O2, 48 min, 150 Å, N2 anneal | no measurement on this page | 5.98e+10 | 4.85e+08 | |
 | K3: 900 °C, dry O2, 93 min, 230 Å, N2 anneal | no measurement on this page | 5.63e+10 | 4.73e+08 | |

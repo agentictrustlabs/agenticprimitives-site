@@ -104,8 +104,8 @@ Simulated time in this history: **4 h 26 min 40 s**.
 | steam-diluted RTO, 2.25 slpm H2O / 2.75 slpm N2 | `AMBIENT mix:H2O=0.45,N2=0.55` | ambient by partial pressure | Flows taken as partial pressures at 1 atm. |
 | alloy in 5% H2/95% N2 | `AMBIENT mix:H2=0.05,N2=0.95` | a RUN; process factor hydrogen-anneal | Read by the trap-density program as p_H2 = 0.05 atm. |
 | Pb0 / Pb1 silicon dangling-bond defects (Si3≡Si•) | `N_Pb (a STATE of the trap-density program)` | STATE | Ours counts one population that relaxes and one that hydrogen removes; Pb0 and Pb1 are not told apart. |
-| hydrogen desorption from pre-existing Pb (Si3≡SiH → Si3≡Si• + H, above 500 °C) | `(none)` | no operator | The capping operator has no reverse; N_SiH never returns to N_Pb. |
-| passivation during cooling (Si3≡Si• + H2 → Si3≡Si–H + H) | `F_HydrogenPassivation` | operator kind Passivation | Ours has no temperature dependence. |
+| hydrogen desorption from pre-existing Pb (Si3≡SiH → Si3≡Si• + H, above 500 °C) | `F_HydrogenRelease` | operator kind Passivation | N_SiH returns to N_Pb at k_d0 exp(-E_d/kT), Brower's k_d0 = 1.2×10^12 s⁻¹ and E_d = 2.56 eV (quoted by Stesmans and Afanas'ev 1996): 2×10⁻³ s⁻¹ at 600 °C (2% in 10 s), 20 s⁻¹ at 925 °C and 210 s⁻¹ at 1050 °C (all of it in 10 s). The second population has no release. No history here has hydrogen on the interface before its RTA, so the operator changes no number on this page. |
+| passivation during cooling (Si3≡Si• + H2 → Si3≡Si–H + H) | `F_HydrogenPassivation` | operator kind Passivation | Rate fitted at 400 °C, with Brower's E_f = 1.66 eV for its temperature: 1.3×10⁻⁴ of the 400 °C rate at 240 °C, 5.0 times it at 440 °C. It needs H2 in the gas; it does not read water, so moisture while cooling does nothing. |
 | cooling rate 10^1–10^2 °C/s; 3–10 °C/min furnace ramp; pull 5–20 cm/min | `RUN … TEMP T->T_end with a duration` | a RUN | A pull speed is not a cooling rate; the boat travel is not stated. |
 | background U-shaped DOS of a hydrogen-passivated interface, subtracted | `(none)` | an observation-model operation | The printed peaks are differences between two samples; no observation statement says so. |
 | QSCV with the Berglund integral; 8 kHz HFCV; mercury probe | `Dit at midgap` | observable (target: trap_density) |  |
@@ -376,7 +376,7 @@ OBSERVATION_MODEL Obs_Uncapped {{
 
 ## Our simulation against the paper
 
-**6** within, **3** near, **4** off, **11** not modelled of 24 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**6** within, **2** near, **5** off, **11** not modelled of 24 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: osullivan-2001
@@ -397,7 +397,7 @@ study: osullivan-2001
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | interface state density at midgap (0.56 eV), after RTA, no alloy | 7.40e+11 cm⁻² eV⁻¹ | 3.37e+11 cm⁻² eV⁻¹ | -54% | off (±25%) | outside the tested scope | Figure 7, PDF p. 5, read at 0.56 eV (8 kHz HFCV; graph reading) |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | oxide thickness | 26 nm | 26.2 nm | +1% | within (±10%) | supported within scope | “a 260 Å oxide”, PDF p. 5 (263 Å in the Fig. 6 caption) |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | upper-gap peak (0.88 eV) | 1.00e+13 cm⁻² eV⁻¹ | no program |  | not modelled (±10%) | no program | Table I, PDF p. 9 (printed); the text gives 7.5×10^12 at 0.88 eV from Figure 8 |
-| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | interface state density at midgap (0.56 eV), after RTA and alloy | 1.70e+11 cm⁻² eV⁻¹ | 9.65e+10 cm⁻² eV⁻¹ | -43% | near (±25%) | outside the tested scope | Figure 7, PDF p. 5, read at 0.56 eV (8 kHz HFCV; graph reading) |
+| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | interface state density at midgap (0.56 eV), after RTA and alloy | 1.70e+11 cm⁻² eV⁻¹ | 4.68e+09 cm⁻² eV⁻¹ | -97% | off (±25%) | outside the tested scope | Figure 7, PDF p. 5, read at 0.56 eV (8 kHz HFCV; graph reading) |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | oxide thickness | 26 nm | 26.2 nm | +1% | within (±10%) | supported within scope | “a 260 Å oxide”, PDF p. 5 (263 Å in the Fig. 6 caption) |
 | Process 3, p-Si, dry RTO, 1100 °C, 30 s, Hg probe | upper-gap peak (0.88 eV) | 8.00e+12 cm⁻² eV⁻¹ | no program |  | not modelled (±10%) | no program | Table I, PDF p. 9 (printed) |
 | Process 3, p-Si, dry RTO, 1100 °C, 30 s, Hg probe | lower-gap peak (0.33 eV) | 3.60e+12 cm⁻² eV⁻¹ | no program |  | not modelled (±10%) | no program | Table I, PDF p. 9 (printed) |
@@ -424,7 +424,7 @@ Every step whose timing or temperature the paper leaves open carries a range in 
 
 Together: Oxidation850 duration 4500 s (was 4400); Pull600 duration 600 s (was 600); Pull600 T end 200 °C (was 200); Pull900 duration 1800 s (was 600); RTAUp duration 1× (was 1); RTADown duration 1× (was 1).
 
-As reproduced: 6 of 24 within tolerance, median error 17.2%. Aligned: 6 of 24 within tolerance, median error 17.2%. On the held-out samples only: 2 of 14 within tolerance, median error 43.2% as reproduced, 2 of 14 within tolerance, median error 43.2% aligned.
+As reproduced: 6 of 24 within tolerance, median error 17.2%. Aligned: 6 of 24 within tolerance, median error 17.2%. On the held-out samples only: 2 of 14 within tolerance, median error 46.1% as reproduced, 2 of 14 within tolerance, median error 46.1% aligned.
 
 Choices of program or material property, each scored on its own and on top of the aligned history:
 
@@ -432,31 +432,31 @@ Choices of program or material property, each scored on its own and on top of th
 |---|---|---|
 | RTA and RTO cooling at 10 °C/s (the slow end of the stated range) | 6 of 24 within tolerance, median error 17.2% | 6 of 24 within tolerance, median error 17.2% |
 
-Six unknowns were declared: the 850 °C oxidation time, the duration and end temperature of the pull from 600 °C, the withdrawal after the 900 °C anneal, and the RTA heat-up and cool-down (as factors on the assumed 60 and 40 °C/s). They were chosen on the three process 1 capacitors (control, 925 °C and 1050 °C RTA) and tested on processes 2 to 5. As reproduced: 6 of 24 numbers within tolerance (median error 17.2%; 11 of the 24 have no program). Aligned: 6 of 24. On the held-out processes: 2 of 14 before and after (median error 43.2%).
+Six unknowns were declared: the 850 °C oxidation time, the duration and end temperature of the pull from 600 °C, the withdrawal after the 900 °C anneal, and the RTA heat-up and cool-down (as factors on the assumed 60 and 40 °C/s). They were chosen on the three process 1 capacitors (control, 925 °C and 1050 °C RTA) and tested on processes 2 to 5. As reproduced: 6 of 24 numbers within tolerance (median error 17.2%; 11 of the 24 have no program). Aligned: 6 of 24. On the held-out processes: 2 of 14 before and after (median error 46.1%).
 
 **Only the oxidation time is seen by the data, and only through thickness.** 4000 to 4500 s at 850 °C give 12 nm within 10%; 3000 s gives 1 of 10 within tolerance. The search moved it from 4400 to 4500 s. The midgap density moves by under 1% over the whole range.
 
-**The pulls and the RTA ramps change nothing.** Every value of the 600 °C pull (2 to 30 min, ending at 25 to 400 °C), of the 900 °C withdrawal and of the RTA ramp factors scores the same (4 of 10, median 3.8%), so the values printed for them are not findings. The search moved the 900 °C withdrawal to 1800 s on a tie. Cooling the RTA and RTO at 10 °C/s instead of 40 °C/s (the declared variant) also scores the same, 6 of 24. In this predictor no cooling can matter to the trap density: its capping operator needs hydrogen in the gas, and no step of these histories before the alloy has any.
+**The pulls and the RTA ramps change nothing.** Every value of the 600 °C pull (2 to 30 min, ending at 25 to 400 °C), of the 900 °C withdrawal and of the RTA ramp factors scores the same (4 of 10, median 3.8%), so the values printed for them are not findings. The search moved the 900 °C withdrawal to 1800 s on a tie. Cooling the RTA and RTO at 10 °C/s instead of 40 °C/s (the declared variant) also scores the same, 6 of 24. In this predictor no cooling before the alloy can matter to the trap density: its capping operator needs hydrogen in the gas, no step of these histories before the alloy has any, and so its release operator has nothing to release.
 
-**The control fits and the RTA does not move.** Without any hydrogen step the program gives 4.68 × 10^11 cm⁻² eV⁻¹ at midgap for the control (measured 4.4 × 10^11, +6%). After a 10 s RTA in nitrogen at 925 or 1050 °C it gives 4.68 and 4.67 × 10^11; the paper measures 9 × 10^11 and 1.0 × 10^12, a two-fold rise. On process 2 the program gives 3.37 × 10^11 after the RTA (measured 7.4 × 10^11, -54%) and 9.65 × 10^10 after the alloy in 5% H2 (measured 1.7 × 10^11, -43%). The program is low after every RTA and gets the direction of the alloy right.
+**The control fits and the RTA does not move.** Without any hydrogen step the program gives 4.68 × 10^11 cm⁻² eV⁻¹ at midgap for the control (measured 4.4 × 10^11, +6%). After a 10 s RTA in nitrogen at 925 or 1050 °C it gives 4.68 and 4.67 × 10^11; the paper measures 9 × 10^11 and 1.0 × 10^12, a two-fold rise. On process 2 the program gives 3.37 × 10^11 after the RTA (measured 7.4 × 10^11, -54%) and 4.68 × 10^9 after the alloy in 5% H2 (measured 1.7 × 10^11, -97%). The program is low after every RTA and gets the direction of the alloy right, but now overshoots it: see the capping rate below.
 
-**With Quantum ESPRESSO switched on**, the computed equilibrium bound after the 440 °C alloy in 5% H2 is 9.6 × 10^6 cm⁻² eV⁻¹. The measured 1.7 × 10^11 is 1.8 × 10^4 times the bound, and the fitted program's 9.65 × 10^10 is 1.0 × 10^4 times it. What remains after this alloy is not limited by the thermodynamics of the Si–H bond: the alloy is far from equilibrium (a polysilicon gate slows hydrogen, as the paper notes for lightly doped gates), or the states left are not ones hydrogen caps. The bound is only computed for hydrogen steps; the same reaction, run backwards in nitrogen at 1050 °C, is the paper's mechanism and is not computed.
+**With Quantum ESPRESSO switched on**, the computed equilibrium bound after the 440 °C alloy in 5% H2 is 9.6 × 10^6 cm⁻² eV⁻¹. The measured 1.7 × 10^11 is 1.8 × 10^4 times the bound, and the fitted program's 4.68 × 10^9 is 490 times it. What remains after this alloy is not limited by the thermodynamics of the Si–H bond: the alloy is far from equilibrium (a polysilicon gate slows hydrogen, as the paper notes for lightly doped gates), or the states left are not ones hydrogen caps. The bound is only computed for hydrogen steps; the same reaction, run backwards in nitrogen at 1050 °C, is the paper's mechanism and is not computed.
 
-**With heating and cooling transitions** (a hot push or a cold-furnace ramp before the first furnace step, fast or slow radiative cooling after it, ramps around the alloy), every scenario keeps 6 of 24 within tolerance and a median error of 17.2%; one number of 24 moves by more than 2%. The page's result does not depend on how the wafers heated or cooled, because nothing in the predictor responds to cooling in an inert or oxidizing gas.
+**With heating and cooling transitions** (a hot push or a cold-furnace ramp before the first furnace step, fast or slow radiative cooling after it, ramps around the alloy), every scenario keeps 6 of 24 within tolerance and a median error of 17.2%. The cold-furnace scenarios move one number of 24 by more than 2%: the alloy on process 2, 4.68 to 3.67 × 10^9 (-21%), almost all from the 30 min heat-up and 60 min cool-down in forming gas around the 440 °C alloy, which with Brower's 1.66 eV count as about 5 min at 440 °C. The hot push moves it 1%. The page's result does not depend on how the wafers heated or cooled: before the alloy no step has hydrogen to cap or to release.
 
 ```study-compare
 study: osullivan-2001
 set: aligned
 ```
 
-**2** within, **2** near, **3** off, **7** not modelled of 14 numbers with the aligned settings (the samples used to choose the unknowns are left out).
+**2** within, **1** near, **4** off, **7** not modelled of 14 numbers with the aligned settings (the samples used to choose the unknowns are left out).
 
 | Sample | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
 |---|---|---|---|---|---|---|---|
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | interface state density at midgap (0.56 eV), after RTA, no alloy | 7.40e+11 cm⁻² eV⁻¹ | 3.37e+11 | 3.37e+11 | -54% | off (±25%) | test |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | oxide thickness | 26 nm | 26.2 | 26.2 | +1% | within (±10%) | test |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s | upper-gap peak (0.88 eV) | 1.00e+13 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±10%) | test |
-| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | interface state density at midgap (0.56 eV), after RTA and alloy | 1.70e+11 cm⁻² eV⁻¹ | 9.65e+10 | 9.65e+10 | -43% | near (±25%) | test |
+| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | interface state density at midgap (0.56 eV), after RTA and alloy | 1.70e+11 cm⁻² eV⁻¹ | 4.68e+09 | 4.68e+09 | -97% | off (±25%) | test |
 | Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | oxide thickness | 26 nm | 26.2 | 26.2 | +1% | within (±10%) | test |
 | Process 3, p-Si, dry RTO, 1100 °C, 30 s, Hg probe | upper-gap peak (0.88 eV) | 8.00e+12 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±10%) | test |
 | Process 3, p-Si, dry RTO, 1100 °C, 30 s, Hg probe | lower-gap peak (0.33 eV) | 3.60e+12 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±10%) | test |
@@ -468,11 +468,11 @@ set: aligned
 | Process 5, p-Si, steam RTO, 1015 °C, 33 s, Hg probe | interface state density at midgap (0.56 eV), steam RTO | 1.55e+12 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±25%) | test |
 | Process 5, p-Si, steam RTO, 1015 °C, 33 s, Hg probe | oxide thickness | 4 nm | no program | no program |  | not modelled (±10%) | test |
 
-What alignment cannot fix. **No reverse of hydrogen capping.** The paper's central result is that an inert anneal above about 500 °C takes hydrogen off Pb centres that earlier steps passivated, and fast cooling in a hydrogen-free gas leaves them bare. The trap-density program has an operator for Si• + H → Si–H and none for Si–H → Si• + H, so N_SiH never returns to N_Pb, and an RTA can only lower the density (by relaxation). Adding the reverse needs a dissociation rate (the paper cites Stesmans 1996: dissociation above 500 °C) and an equilibrium with the hydrogen in the gas, which the computed Si–H energy (-1.28 eV per ½H2) already supplies.
+What alignment cannot fix. **The reverse of hydrogen capping has nothing to act on.** The paper's central result is that an inert anneal above about 500 °C takes hydrogen off Pb centres that earlier steps passivated, and fast cooling in a hydrogen-free gas leaves them bare. Since 11 November the trap-density program has the reverse, F_HydrogenRelease: N_SiH returns to N_Pb at 1.2 × 10^12 exp(-2.56 eV/kT) s⁻¹ (Brower, as quoted by Stesmans and Afanas'ev 1996; the paper cites Stesmans 1996 for dissociation above 500 °C). In a 10 s RTA that releases 2% of the capped sites at 600 °C and all of them at 925 and 1050 °C. But N_SiH is zero when every RTA here starts, because no earlier step can be written with hydrogen (next paragraph), so the RTA still only lowers the density, by relaxation (4.68 to 4.67 × 10^11 at 1050 °C). The release is first order and does not use the computed Si–H energy (-1.28 eV per ½H2), and the program's second population has no release.
 
 **No hydrogen before the alloy.** For the RTA to expose states, earlier steps must have passivated them: silane during the polysilicon deposition at 620 °C, POCl3 doping, and moisture during the slow pull at 600 °C. None of these can be written, so the predictor's control is an unpassivated interface that happens to match the measured 4.4 × 10^11.
 
-**No temperature in the capping rate.** The program caps at the same rate at 240 and 570 °C, so a 440 °C alloy and a 400 °C anneal differ only through the H2 fraction; the alloy's -43% is the program's rate fitted at 400 °C on Vitkavage's aluminium-gate wafers applied to a polysilicon gate.
+**The capping rate's temperature dependence is Brower's, applied to a polysilicon gate.** The rate is fitted at 400 °C on Vitkavage's aluminium-gate wafers; Brower's E_f = 1.66 eV makes it 5.0 times faster at 440 °C (1.3 × 10⁻⁴ of it at 240 °C, 320 times it at 570 °C), so the 60 min alloy in 5% H2 caps as much as 2.5 h in 10% H2 at 400 °C would. The program now gives 4.68 × 10^9 after the alloy against 1.7 × 10^11 measured (-97%); before the 11 November change, with no temperature in the rate, it gave 9.65 × 10^10 (-43%). The paper says a lightly doped polysilicon gate needs a longer alloy; nothing in the program slows hydrogen through a gate.
 
 **No wet oxidation and no thin RTO.** The trap-density program returns nothing for the steam RTO (it needs a dry-oxygen RUN) and does not read water. The dry RTO at 1000 °C, 8 s, is predicted at 3.7 × 10^11 against 2.5 × 10^12 measured (-85%): the program's second population is set by temperature alone, and its time scale is an hour. The thin-oxide program grows 2.2 nm in 8 s at 1000 °C against 4.0 nm printed and 6.2 nm in 30 s at 1100 °C against 7.5 nm, outside its fitted 800 to 1000 °C and its fitted times.
 
@@ -480,7 +480,7 @@ What alignment cannot fix. **No reverse of hydrogen capping.** The paper's centr
 
 ### What our language and ontology cannot yet say
 
-- **A reverse reaction for hydrogen capping (predictor).** Si–H → Si• + H above about 500 °C in an inert gas, with the computed Si–H energy setting the equilibrium against the gas's p_H2. Without it no history on this page can raise the trap density, and an RTA, a vacuum anneal and a rapid pull all look the same as no step.
+- **Hydrogen release tied to what the history put there (predictor).** The program now releases hydrogen (Si–H → Si• + H at Brower's rate), but a release can only raise the density where an earlier step capped sites, and on this page none can. It also has no release for the second population and does not use the computed Si–H energy against the gas's p_H2. Until the hydrogen sources below can be written, an RTA, a vacuum anneal and a rapid pull still look the same as no step.
 - **Hydrogen brought by a step that is not a gas anneal.** Polysilicon from silane at 620 °C, POCl3 doping, plasma steps and moisture during a slow pull passivate the interface (the paper, PDF p. 9-10). The language records them as EVENTs that do nothing. A `SOURCE hydrogen` clause on a deposition EVENT, or an AMBIENT for a deposition (`mix:SiH4=…`), and a stated moisture on pulls, would let a program see them. The vocabulary of gases is Ar, H2, H2O, N2, O2; silane, POCl3, NH3 and N2O are refused.
 - **Which step is the oxidation.** The RTO heat-up had to be written in nitrogen: the trap-density program takes the oxidation's temperature and time from the first dry-oxygen RUN, so a heat-up in oxygen from 25 °C would be read as an oxidation at 25 °C. A `ROLE oxidation|anneal|ramp|pull` on each RUN (as Hung's page asked) would remove the trap.
 - **A gate on the sample.** Polysilicon, aluminium and a mercury probe behave differently under hydrogen (the paper: lightly doped polysilicon needs a longer alloy). GATE is recorded here as a sample field no program reads. A gate field in the ontology, read by the hydrogen operator as a barrier or a source, would let processes 1-2 and 3-5 differ.
@@ -502,7 +502,7 @@ What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon
 
 | Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
 |---|---|---|---|---|
-| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | 1.70e+11 | 9.65e+10 | 9.57e+06 | 1.8e+04 |
+| Process 2, n-Si, 260 Å, RTA 1050 °C 10 s + alloy 440 °C 60 min | 1.70e+11 | 4.68e+09 | 9.57e+06 | 1.8e+04 |
 
 ## With heating and cooling transitions
 
@@ -511,8 +511,8 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 | History | Within tolerance | Median error | Changed numbers |
 |---|---|---|---|
 | as the paper states it (above) | 6 of 24 | 17.2% | |
-| heat-up A (hot push), fast cooling | 6 of 24 | 17.2% | 1 of 24 moved by more than 2% |
-| heat-up A (hot push), slow cooling | 6 of 24 | 17.2% | 1 of 24 moved by more than 2% |
+| heat-up A (hot push), fast cooling | 6 of 24 | 17.2% | 0 of 24 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 6 of 24 | 17.2% | 0 of 24 moved by more than 2% |
 | heat-up B (cold-furnace ramp), fast cooling | 6 of 24 | 17.2% | 1 of 24 moved by more than 2% |
 | heat-up B (cold-furnace ramp), slow cooling | 6 of 24 | 17.2% | 1 of 24 moved by more than 2% |
 
@@ -520,7 +520,7 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 
 | The paper states | What we find | |
 |---|---|---|
-| A 10 s RTA in N2 raises the density across the gap; the effect grows with RTA temperature (PDF p. 6-7) | The predictor's midgap value does not rise after an inert RTA: it has no reverse of hydrogen capping, and the histories carry no hydrogen to remove | not reproduced |
+| A 10 s RTA in N2 raises the density across the gap; the effect grows with RTA temperature (PDF p. 6-7) | The predictor's midgap value does not rise after an inert RTA. Its hydrogen release would empty every capped site in 10 s at 925 °C or above, but the histories carry no hydrogen to remove: no step before the RTA can be written with hydrogen | not reproduced |
 | A 440 °C, 60 min alloy in 5% H2 removes the upper-gap peak (PDF p. 7) | The alloy lowers the predicted midgap density; see the table for how far | direction right |
 | Dry RTO leaves the Pb centres unpassivated; steam RTO does not show the upper peak because hydrogen is present while cooling (PDF p. 10) | The trap-density program returns nothing for the steam RTO (it needs a dry-oxygen step) and does not read water | not in the program |
 | Pb density falls from the 1000 °C to the 1100 °C RTO (PDF p. 10) | The predictor's second population falls with oxidation temperature; the peaks it would be compared with are not modelled | not tested |
@@ -530,6 +530,6 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 
 1. For process 1, what would the polysilicon deposition (silane, about 600 to 650 °C) and the POCl3 doping (about 900 °C) do to the interface? The paper names deposition as a hydrogen source; is the control's 4×10^11 at midgap a partly passivated interface?
 2. How long would a 150 mm boat pulled at 8 cm/min from a 600 °C zone take to bring the wafers below 300 °C, and is a furnace's nitrogen moist enough to passivate Pb in that time?
-3. Is a 10 s RTA at 600 °C enough to take hydrogen off Pb centres, as the distorted QSCV at 600 °C suggests? Published Si-H dissociation energies near 2.6 eV would give very little in 10 s.
+3. Is a 10 s RTA at 600 °C enough to take hydrogen off Pb centres, as the distorted QSCV at 600 °C suggests? Brower's release rate, now in the trap-density program (1.2×10^12 exp(-2.56 eV/kT)), gives 2×10⁻³ s⁻¹ at 600 °C: 2% of the capped sites in 10 s.
 4. Are the midgap values read from Figures 4, 7 and 12 meaningful as midgap Dit, given that Figure 7 is from 8 kHz HFCV and Figure 12 from 40 Å oxides with a mercury probe?
 5. Is the steam RTO's lower midgap density (about 1.5 against 2.5×10^12) the hydrogen passivation the authors describe, or the difference in oxide charge (Vfb about -1.2 V)?

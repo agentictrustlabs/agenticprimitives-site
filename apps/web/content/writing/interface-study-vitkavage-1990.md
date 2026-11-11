@@ -452,7 +452,7 @@ EVALUATION_CONTRACT {contract_id} {{
 
 ## Our simulation against the paper
 
-**8** within, **4** near, **9** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**8** within, **5** near, **8** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: vitkavage-1990
@@ -468,7 +468,7 @@ study: vitkavage-1990
 | (111), 1000 °C, 1 h, with PMA | interface state density at midgap | 1.20e+11 cm⁻² eV⁻¹ | 8.63e+10 cm⁻² eV⁻¹ | -28% | off (±10%) | direction only | Table IV/VII |
 | (100), 1000 °C, 8 h, with PMA | oxide thickness | 205 nm | 209 nm | +2% | within (±10%) | supported within scope | text, PDF p. 14: 2050 Å |
 | (100), 1000 °C, 8 h, with PMA | fixed charge | 1.30e+11 cm⁻² | 2.69e+11 cm⁻² | +107% | off (±10%) | supported within scope | Table VI, PDF p. 42 |
-| (100), 1000 °C, 8 h, with PMA | interface state density at midgap | 2.20e+10 cm⁻² eV⁻¹ | 1.42e+10 cm⁻² eV⁻¹ | -35% | off (±10%) | direction only | Table VII, PDF p. 43 |
+| (100), 1000 °C, 8 h, with PMA | interface state density at midgap | 2.20e+10 cm⁻² eV⁻¹ | 1.93e+10 cm⁻² eV⁻¹ | -12% | near (±10%) | direction only | Table VII, PDF p. 43 |
 | (111), 1000 °C, 8 h, with PMA | oxide thickness | 240 nm | 238 nm | -1% | within (±10%) | supported within scope | text, PDF p. 14: 2400 Å |
 | (111), 1000 °C, 8 h, with PMA | fixed charge | 3.80e+11 cm⁻² | 4.46e+11 cm⁻² | +17% | near (±10%) | supported within scope | Table VI |
 | (111), 1000 °C, 8 h, with PMA | interface state density at midgap | 6.00e+10 cm⁻² eV⁻¹ | 2.29e+10 cm⁻² eV⁻¹ | -62% | off (±10%) | direction only | Table VII |
@@ -569,7 +569,7 @@ Limits: a cluster has no oxide around it and no interface strain; the zero-point
 |---|---|---|---|---|
 | (100), 1000 °C, 1 h, with PMA | 5.00e+10 | 7.51e+10 | 1.48e+06 | 3.4e+04 |
 | (111), 1000 °C, 1 h, with PMA | 1.20e+11 | 8.63e+10 | 1.06e+06 | 1.1e+05 |
-| (100), 1000 °C, 8 h, with PMA | 2.20e+10 | 1.42e+10 | 8.85e-07 | 2.5e+16 |
+| (100), 1000 °C, 8 h, with PMA | 2.20e+10 | 1.93e+10 | 8.85e-07 | 2.5e+16 |
 | (111), 1000 °C, 8 h, with PMA | 6.00e+10 | 2.29e+10 | 2.80e+05 | 2.1e+05 |
 | (110), 1000 °C, 1 h, with PMA | 7.90e+10 | 1.05e+11 | 5.05e+06 | 1.6e+04 |
 | (511), 1000 °C, 1 h, with PMA | 5.70e+10 | 4.73e+10 | 1.57e+06 | 3.6e+04 |
@@ -583,11 +583,11 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 
 | History | Within tolerance | Median error | Changed numbers |
 |---|---|---|---|
-| as the paper states it (above) | 8 of 21 | 17.0% | |
-| heat-up A (hot push), fast cooling | 7 of 21 | 32.2% | 12 of 21 moved by more than 2% |
-| heat-up A (hot push), slow cooling | 7 of 21 | 39.4% | 12 of 21 moved by more than 2% |
-| heat-up B (cold-furnace ramp), fast cooling | 5 of 21 | 39.4% | 13 of 21 moved by more than 2% |
-| heat-up B (cold-furnace ramp), slow cooling | 5 of 21 | 90.6% | 13 of 21 moved by more than 2% |
+| as the paper states it (above) | 8 of 21 | 15.9% | |
+| heat-up A (hot push), fast cooling | 6 of 21 | 27.6% | 12 of 21 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 6 of 21 | 31.0% | 12 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 5 of 21 | 25.5% | 13 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 5 of 21 | 30.6% | 13 of 21 moved by more than 2% |
 
 ### The paper's own conclusions
 

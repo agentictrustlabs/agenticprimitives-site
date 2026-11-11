@@ -1078,7 +1078,7 @@ What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon
 | (100), argon at 1000 °C for 0.041 h | no measurement on this page | 4.35e+10 | 1.09e+06 | |
 | (100), argon at 1000 °C for 0.083 h | no measurement on this page | 4.28e+10 | 1.08e+06 | |
 | (100), argon at 1000 °C for 0.125 h | no measurement on this page | 4.22e+10 | 1.08e+06 | |
-| (100), argon at 1000 °C for 0.17 h | no measurement on this page | 4.15e+10 | 1.07e+06 | |
+| (100), argon at 1000 °C for 0.17 h | no measurement on this page | 4.16e+10 | 1.07e+06 | |
 | (100), argon at 1000 °C for 0.26 h | no measurement on this page | 4.03e+10 | 1.05e+06 | |
 | (100), argon at 1000 °C for 0.34 h | no measurement on this page | 3.92e+10 | 1.04e+06 | |
 | (100), argon at 1000 °C for 1.04 h | no measurement on this page | 3.20e+10 | 9.50e+05 | |

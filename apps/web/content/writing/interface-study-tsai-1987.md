@@ -469,27 +469,27 @@ study: tsai-1987
 | Sample and history | Quantity | The paper | Our simulation | Difference | Verdict | What the program's own evaluation says | Where in the paper |
 |---|---|---|---|---|---|---|---|
 | Pure SiO2, 250 Å, not nitrided | gate oxide thickness | 25 nm | 25.3 nm | +1% | within (±10%) | supported within scope | PDF p. 1: “The gate oxide with a thickness of 250 A” |
-| Pure SiO2, 250 Å, not nitrided | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 5.19e+10 cm⁻² eV⁻¹ | +4% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| Pure SiO2, 250 Å, not nitrided | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 8.27e+09 cm⁻² eV⁻¹ | -83% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | Pure SiO2, 250 Å, not nitrided | flat-band voltage, unstressed | -0.167 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
-| 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 4.97e+10 cm⁻² eV⁻¹ | -1% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 7.92e+09 cm⁻² eV⁻¹ | -84% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | flat-band voltage, unstressed | -0.987 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | trap density after 3×10^18 cm⁻² injected | 1.20e+12 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 4.03e+10 cm⁻² eV⁻¹ | -19% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 6.42e+09 cm⁻² eV⁻¹ | -87% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | flat-band voltage, unstressed | -1.24 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | trap density after 3×10^18 cm⁻² injected | 8.00e+11 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 2.39e+10 cm⁻² eV⁻¹ | -52% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.81e+09 cm⁻² eV⁻¹ | -92% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | flat-band voltage, unstressed | -0.512 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | trap density after 3×10^18 cm⁻² injected | 7.80e+11 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 2.00e+10 cm⁻² eV⁻¹ | -60% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.19e+09 cm⁻² eV⁻¹ | -94% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | flat-band voltage, unstressed | -0.41 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | trap density after 3×10^18 cm⁻² injected | 8.00e+11 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 4.18e+10 cm⁻² eV⁻¹ | -16% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 6.65e+09 cm⁻² eV⁻¹ | -87% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 900 °C for 3 h | flat-band voltage, unstressed | -1.36 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 900 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 4.80e+11 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 1.93e+10 cm⁻² eV⁻¹ | -61% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.08e+09 cm⁻² eV⁻¹ | -94% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | flat-band voltage, unstressed | 0.174 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 7.50e+11 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
-| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 1.93e+10 cm⁻² eV⁻¹ | -61% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
+| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.07e+09 cm⁻² eV⁻¹ | -94% | within (±100%) | direction only | Figure 1, PDF p. 2, graph read: every curve starts between 0 and about 10×10^10 at zero fluence on a 0-500×10^10 axis; scored as a bound (0 to 1×10^11) |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | flat-band voltage, unstressed | 0.227 V | no program |  | not modelled (±10%) | no program | Table II, PDF p. 2, printed |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 2.00e+12 cm⁻² eV⁻¹ | no program |  | not modelled (±25%) | no program | Figure 1, PDF p. 2, graph read at 3×10^18 cm⁻² (10 mA/cm²) |
 
@@ -499,36 +499,36 @@ Every step whose timing or temperature the paper leaves open carries a range in 
 
 | Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
 |---|---|---|---|---|---|---|
-| Gate oxidation, dry O2, 920 °C, to 250 Å: duration | Only the thickness is given; 40 to 120 min searched | 2400 to 7200 s | 4200 s | 4200 s | 6 of 15 within tolerance, median error 11.6% | 6 of 15 within tolerance, median error 11.6% |
-| Drive-in, 1000 °C (time and gas not stated): duration | Only the temperature is given; 10 to 60 min searched | 600 to 3600 s | 1800 s | 1800 s (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 11.6% | 6 of 15 within tolerance, median error 11.6% |
-| Forming gas anneal, 430 °C (time and H2 fraction not stated): duration | Only the temperature is given; 10 to 60 min searched | 600 to 3600 s | 1800 s | 1800 s (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 11.6% | 6 of 15 within tolerance, median error 11.6% |
-| Ramp down from 900 °C for unloading (rate, gas and unload temperature not stated): T end | Rate, gas and end temperature not stated; end 600 to 900 °C searched | 600 to 900 °C | 800 °C | 600 °C (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 11.6% | 6 of 15 within tolerance, median error 10.9% |
-| Ramp 900 → 1000 °C (rate and gas not stated): duration | Rate not stated; 3 to 30 °C/min searched | 0.333333 to 3.33333× | 1× | 0.4893× | 6 of 15 within tolerance, median error 11.6% | 6 of 15 within tolerance, median error 11.0% |
+| Gate oxidation, dry O2, 920 °C, to 250 Å: duration | Only the thickness is given; 40 to 120 min searched | 2400 to 7200 s | 4200 s | 4000 s | 6 of 15 within tolerance, median error 85.7% | 6 of 15 within tolerance, median error 85.6% |
+| Drive-in, 1000 °C (time and gas not stated): duration | Only the temperature is given; 10 to 60 min searched | 600 to 3600 s | 1800 s | 600 s (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 85.7% | 6 of 15 within tolerance, median error 83.7% |
+| Forming gas anneal, 430 °C (time and H2 fraction not stated): duration | Only the temperature is given; 10 to 60 min searched | 600 to 3600 s | 1800 s | 600 s (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 85.7% | 6 of 15 within tolerance, median error 18.5% |
+| Ramp down from 900 °C for unloading (rate, gas and unload temperature not stated): T end | Rate, gas and end temperature not stated; end 600 to 900 °C searched | 600 to 900 °C | 800 °C | 600 °C (flat: the data do not constrain it) | 6 of 15 within tolerance, median error 85.7% | 6 of 15 within tolerance, median error 85.5% |
+| Ramp 900 → 1000 °C (rate and gas not stated): duration | Rate not stated; 3 to 30 °C/min searched | 0.333333 to 3.33333× | 1× | 0.4893× | 6 of 15 within tolerance, median error 85.7% | 6 of 15 within tolerance, median error 85.6% |
 
-Together: Oxidation duration 4000 s (was 4200); DriveIn duration 1981 s (was 1800); FormingGas duration 1800 s (was 1800); RampDown T end 600 °C (was 800); RampUp duration 0.4893× (was 1).
+Together: Oxidation duration 4200 s (was 4200); DriveIn duration 1090 s (was 1800); FormingGas duration 600 s (was 1800); RampDown T end 600 °C (was 800); RampUp duration 0.4893× (was 1).
 
-As reproduced: 9 of 24 within tolerance, median error 19.4%. Aligned: 9 of 24 within tolerance, median error 17.9%. On the held-out samples only: 3 of 9 within tolerance, median error 61.4% as reproduced, 3 of 9 within tolerance, median error 61.4% aligned.
+As reproduced: 9 of 24 within tolerance, median error 87.2%. Aligned: 9 of 24 within tolerance, median error 19.3%. On the held-out samples only: 3 of 9 within tolerance, median error 93.8% as reproduced, 3 of 9 within tolerance, median error 65.0% aligned.
 
 Choices of program or material property, each scored on its own and on top of the aligned history:
 
 | Variant | Alone | With the aligned history |
 |---|---|---|
-| nitridation left out entirely (no stand-in heat) | 9 of 24 within tolerance, median error 3.8% | 9 of 24 within tolerance, median error 2.3% |
-| forming gas with 5% H2 instead of 10% | 9 of 24 within tolerance, median error 41.1% | 9 of 24 within tolerance, median error 39.7% |
+| nitridation left out entirely (no stand-in heat) | 9 of 24 within tolerance, median error 83.5% | 9 of 24 within tolerance, median error 2.0% |
+| forming gas with 5% H2 instead of 10% | 9 of 24 within tolerance, median error 52.7% | 9 of 24 within tolerance, median error 42.1% |
 
-Five unknowns were declared: the gate oxidation time (40 to 120 min), the ramp up to the nitridation temperature (3 to 30 °C/min), the unload temperature after the ramp down (600 to 900 °C), the drive-in time (10 to 60 min) and the forming-gas time (10 to 60 min). They were chosen on the pure oxide and the four 0.5 h wafers and tested on the three 3 h wafers. Only 9 of 24 numbers have a program at all: one thickness and eight pre-stress trap densities, the latter scored as a bound (0 to 1×10^11 cm⁻² eV⁻¹) from Figure 1. As reproduced 9 of 24 within tolerance (median error on the modelled rows 19.4%); aligned 9 of 24 (17.9%); on the 3 h wafers 3 of 9 before and after, the other 6 having no program.
+Five unknowns were declared: the gate oxidation time (40 to 120 min), the ramp up to the nitridation temperature (3 to 30 °C/min), the unload temperature after the ramp down (600 to 900 °C), the drive-in time (10 to 60 min) and the forming-gas time (10 to 60 min). They were chosen on the pure oxide and the four 0.5 h wafers and tested on the three 3 h wafers. Only 9 of 24 numbers have a program at all: one thickness and eight pre-stress trap densities, the latter scored as a bound (0 to 1×10^11 cm⁻² eV⁻¹) from Figure 1. As reproduced 9 of 24 within tolerance (median error on the modelled rows 87.2%); aligned 9 of 24 (19.3%); on the 3 h wafers 3 of 9 before and after (median error 93.8% before, 65.0% after), the other 6 having no program.
 
-**The thickness pins the oxidation time and nothing else is pinned.** The 250 Å is matched with 67 to 70 min at 920 °C in the thin-oxide program (25.3 nm as reproduced). Every other scan ties at 6 of 15 on the chosen wafers: the bound on the trap density is wide enough that no history unknown moves a row across it, so the values printed for the ramps, the unload temperature and the drive-in are not findings.
+**The thickness pins the oxidation time and nothing else is pinned.** The 250 Å is matched with 67 to 70 min at 920 °C in the thin-oxide program (25.3 nm as reproduced). Every other scan ties at 6 of 15 on the chosen wafers: the bound on the trap density is wide enough that no history unknown moves a row across it, so the values printed for the ramps, the unload temperature and the drive-in are not findings. The combined search moves the forming gas to 10 min, the low end of its range, on the median error alone: 30 min in 10% H2 at 430 °C caps about 93% of the dangling bonds hydrogen reaches (the capping rate is fitted at 400 °C and, with Brower's 1.66 eV, 3.4 times faster at 430 °C), and a shorter anneal leaves the density nearer the bound's centre. That is the centre of a bound pulling, not a measurement of the time.
 
-**The nitridation enters only as heat, and the heat lowers the predicted trap density.** With nitrogen standing in for ammonia, the trap-density program's relaxation runs during the nitridation: 5.2×10^10 for the pure oxide, 5.0, 4.0, 2.4 and 2.0×10^10 after 0.5 h at 900, 1000, 1100 and 1150 °C, and 4.2, 1.9 and 1.9×10^10 after 3 h at 900, 1100 and 1150 °C (forming gas 30 min, 10% H2). Leaving the nitridation out altogether puts every wafer at the pure oxide's value (median error 3.8% against the bound's centre, from 19.4%): the data cannot tell, because no pre-stress value is printed.
+**The nitridation enters only as heat, and the heat lowers the predicted trap density.** With nitrogen standing in for ammonia, the trap-density program's relaxation runs during the nitridation: 8.3×10^9 for the pure oxide, 7.9, 6.4, 3.8 and 3.2×10^9 after 0.5 h at 900, 1000, 1100 and 1150 °C, and 6.7, 3.1 and 3.1×10^9 after 3 h at 900, 1100 and 1150 °C (forming gas 30 min, 10% H2). Leaving the nitridation out altogether puts every wafer at the pure oxide's value (median error 83.5% against the bound's centre, from 87.2%; 2.0% with the aligned 10 min forming gas): the data cannot tell, because no pre-stress value is printed.
 
 **The fixed-charge program gives 2.54×10^10 cm⁻² for every wafer**, because the 30 min reflow at 1038 °C in nitrogen sets it whatever came before. Table II's flat-band voltages run from −1.363 V (900 °C, 3 h) to +0.227 V (1150 °C, 3 h). With C_ox = 1.38×10^-7 F/cm² for 250 Å, that spread is 1.4×10^12 charges per cm², and the pure oxide to 900 °C, 0.5 h difference (−0.167 to −0.987 V) is 7.1×10^11 cm⁻² more positive charge. The program has no flat-band observable and no nitrogen; the gate work function is not stated, so the voltages were not converted to a charge and scored.
 
-**Forming gas with 5% H2 instead of 10%** keeps the count (9 of 24) and moves the median error from 19.4% to 41.1% the other way: it doubles the remaining density, which shows how much the unstated H2 fraction matters to the program (its capping rate is linear in p_H2).
+**Forming gas with 5% H2 instead of 10%** keeps the count (9 of 24) and moves the median error from 87.2% to 52.7% (42.1% with the aligned history): it multiplies the remaining density by 3.7 on every wafer (8.3×10^9 to 3.0×10^10 for the pure oxide), which shows how much the unstated H2 fraction matters to the program. Its capping rate is linear in p_H2, so halving it halves the exponent, and 30 min at 430 °C in 10% H2 is an exponent of 2.6.
 
-**With heating and cooling transitions** the count stays 9 of 24, but every trap density moves: 30% lower with a hot push and ten times lower (to about 2 to 5×10^9) with a cold-furnace ramp. The cause is the forming-gas step: the transitions add a heat-up and a cool-down around it in forming gas (180 s and 600 s for the hot push, about 90 min of ramp for the cold furnace), and the program's hydrogen capping has no temperature dependence, so a ramp from 25 °C caps as fast as the hold at 430 °C. The ramps around the 920 to 1150 °C steps change nothing.
+**With heating and cooling transitions** the count stays 9 of 24, and every trap density moves: 11 to 13% lower with a hot push (median error 88.8%) and 37 to 44% lower, to 1.9 to 4.7×10^9, with a cold-furnace ramp (92.6%). Most of it is the forming-gas step: the transitions add a heat-up and a cool-down around it in forming gas (180 s and 600 s for the hot push, 30 and 60 min for the cold furnace), and those alone lower every wafer by 10.5% and 37%. The capping rate now has Brower's activation energy (1.66 eV; 5.6×10⁻⁶ of the 400 °C rate at 200 °C), so the ramps count as about 76 s (hot push) and 320 s (cold furnace) at 430 °C, not their full 13 and 90 min as before the 11 November hydrogen change, when they gave 30% and ten times lower. The heat-ups and cool-downs around the 900 to 1150 °C steps add up to 2.5% (hot push) and 10.6% (cold furnace) by relaxation, on the wafers whose own steps relax them least (the pure oxide and 900 to 1000 °C); nothing on the 3 h wafers at 1100 and 1150 °C.
 
-**With Quantum ESPRESSO switched on**, the computed equilibrium bound after the 430 °C forming gas is 2.9 to 3.9×10^6 cm⁻² eV⁻¹, four orders of magnitude below both the program's 2 to 5×10^10 and the Figure 1 bound of about 1×10^11. The pre-stress density is not printed, so no measured-over-bound ratio is given; what Figure 1 shows is consistent with an anneal far from equilibrium.
+**With Quantum ESPRESSO switched on**, the computed equilibrium bound after the 430 °C forming gas is 2.9 to 3.9×10^6 cm⁻² eV⁻¹, three orders of magnitude below the program's 3.1 to 8.3×10^9 and four below the Figure 1 bound of about 1×10^11. The pre-stress density is not printed, so no measured-over-bound ratio is given; what Figure 1 shows is consistent with an anneal far from equilibrium.
 
 ```study-compare
 study: tsai-1987
@@ -539,13 +539,13 @@ set: aligned
 
 | Sample | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
 |---|---|---|---|---|---|---|---|
-| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 4.18e+10 | 4.14e+10 | -17% | within (±100%) | test |
+| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 6.65e+09 | 4.07e+10 | -19% | within (±100%) | test |
 | 250 Å oxide nitrided in NH3 at 900 °C for 3 h | flat-band voltage, unstressed | -1.36 V | no program | no program |  | not modelled (±10%) | test |
 | 250 Å oxide nitrided in NH3 at 900 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 4.80e+11 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±25%) | test |
-| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 1.93e+10 | 1.93e+10 | -61% | within (±100%) | test |
+| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.08e+09 | 1.75e+10 | -65% | within (±100%) | test |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | flat-band voltage, unstressed | 0.174 V | no program | no program |  | not modelled (±10%) | test |
 | 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 7.50e+11 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±25%) | test |
-| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 1.93e+10 | 1.93e+10 | -61% | within (±100%) | test |
+| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | interface state density before stress (bound from Figure 1) | 5.00e+10 cm⁻² eV⁻¹ | 3.07e+09 | 1.75e+10 | -65% | within (±100%) | test |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | flat-band voltage, unstressed | 0.227 V | no program | no program |  | not modelled (±10%) | test |
 | 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | trap density after 3×10^18 cm⁻² injected | 2.00e+12 cm⁻² eV⁻¹ | no program | no program |  | not modelled (±25%) | test |
 
@@ -559,7 +559,7 @@ What a nitridation program would need: a state for the nitrogen at the interface
 - **A program for nitrogen at the interface.** With the gas written, a program has to say what it does: incorporate nitrogen at the Si/SiO2 interface (rate rising with temperature, saturating with time), release hydrogen into the film, and shift fixed charge and trap generation. The paper's Table II (more negative flat-band voltage at lower nitridation temperature, positive after 3 h at 1100 and 1150 °C) is the first check such a program would have.
 - **An electrical stress step.** Figure 1 and 2 are measured during constant-current injection; the language has no statement for it, so the paper's main result is outside any history. A `STRESS` statement with current density, polarity and fluence, and observables for generated trap density and flat-band shift, would make it a target.
 - **The gate as a sample property a program reads.** A flat-band voltage needs the gate work function (As-doped polysilicon here). `GATE` is recorded on the sample and read by nothing; a program computing Vfb from fixed charge, trapped charge and the gate would let Table II be scored.
-- **Temperature in the hydrogen capping rate.** The transitions show that a forming-gas ramp from room temperature caps as fast as the 430 °C hold. A rate with an activation energy (Brower measured 1.66 eV for Pb + H2, see the Reed 1989 page) would make the unstated forming-gas ramps matter only as much as they should.
+- **The forming-gas time and H2 fraction (history).** Since 11 November the capping rate has Brower's 1.66 eV (see the Reed 1989 page), so a forming-gas ramp from room temperature counts for little (the cold-furnace ramps lower the density 37%, where they gave ten times before). What still sets the predicted density is what the paper does not state: the forming-gas time (10 to 60 min) and the H2 fraction (5% gives 3.7 times the density of 10%).
 - **Process steps that bring hydrogen.** LPCVD polysilicon (silane), CVD oxide and the ammonia itself are hydrogen sources the history records only as events. A hydrogen source on an EVENT or a deposition RUN with its gas would let them reach the trap-density program.
 
 ## With Quantum ESPRESSO switched on
@@ -576,14 +576,14 @@ What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon
 
 | Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
 |---|---|---|---|---|
-| Pure SiO2, 250 Å, not nitrided | 5.00e+10 | 5.19e+10 | 3.92e+06 | 1.3e+04 |
-| 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | 5.00e+10 | 4.97e+10 | 3.85e+06 | 1.3e+04 |
-| 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | 5.00e+10 | 4.03e+10 | 3.55e+06 | 1.4e+04 |
-| 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | 5.00e+10 | 2.39e+10 | 3.02e+06 | 1.7e+04 |
-| 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | 5.00e+10 | 2.00e+10 | 2.90e+06 | 1.7e+04 |
-| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | 5.00e+10 | 4.18e+10 | 3.59e+06 | 1.4e+04 |
-| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | 5.00e+10 | 1.93e+10 | 2.87e+06 | 1.7e+04 |
-| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | 5.00e+10 | 1.93e+10 | 2.87e+06 | 1.7e+04 |
+| Pure SiO2, 250 Å, not nitrided | 5.00e+10 | 8.27e+09 | 3.92e+06 | 1.3e+04 |
+| 250 Å oxide nitrided in NH3 at 900 °C for 0.5 h | 5.00e+10 | 7.92e+09 | 3.85e+06 | 1.3e+04 |
+| 250 Å oxide nitrided in NH3 at 1000 °C for 0.5 h | 5.00e+10 | 6.42e+09 | 3.55e+06 | 1.4e+04 |
+| 250 Å oxide nitrided in NH3 at 1100 °C for 0.5 h | 5.00e+10 | 3.81e+09 | 3.02e+06 | 1.7e+04 |
+| 250 Å oxide nitrided in NH3 at 1150 °C for 0.5 h | 5.00e+10 | 3.19e+09 | 2.90e+06 | 1.7e+04 |
+| 250 Å oxide nitrided in NH3 at 900 °C for 3 h | 5.00e+10 | 6.65e+09 | 3.59e+06 | 1.4e+04 |
+| 250 Å oxide nitrided in NH3 at 1100 °C for 3 h | 5.00e+10 | 3.08e+09 | 2.87e+06 | 1.7e+04 |
+| 250 Å oxide nitrided in NH3 at 1150 °C for 3 h | 5.00e+10 | 3.07e+09 | 2.87e+06 | 1.7e+04 |
 
 ## With heating and cooling transitions
 
@@ -591,11 +591,11 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 
 | History | Within tolerance | Median error | Changed numbers |
 |---|---|---|---|
-| as the paper states it (above) | 9 of 24 | 19.4% | |
-| heat-up A (hot push), fast cooling | 9 of 24 | 43.5% | 8 of 24 moved by more than 2% |
-| heat-up A (hot push), slow cooling | 9 of 24 | 43.5% | 8 of 24 moved by more than 2% |
-| heat-up B (cold-furnace ramp), fast cooling | 9 of 24 | 92.7% | 8 of 24 moved by more than 2% |
-| heat-up B (cold-furnace ramp), slow cooling | 9 of 24 | 92.7% | 8 of 24 moved by more than 2% |
+| as the paper states it (above) | 9 of 24 | 87.2% | |
+| heat-up A (hot push), fast cooling | 9 of 24 | 88.8% | 8 of 24 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 9 of 24 | 88.8% | 8 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 9 of 24 | 92.6% | 8 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 9 of 24 | 92.6% | 8 of 24 moved by more than 2% |
 
 ### The paper's own conclusions
 

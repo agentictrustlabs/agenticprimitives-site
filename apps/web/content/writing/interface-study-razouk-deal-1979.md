@@ -21,7 +21,7 @@ Fairchild's own measurement of midgap interface state density against oxidation 
 | Repeatability stated by the authors | “Typical variations in the values of interface state density at midgap were ±5% on a wafer. The largest recorded variation on one wafer was ±10%.” (p. 4). Run-to-run scatter not stated |
 | Internal consistency | Fair. Figure 13's unannealed n-type (100) points agree with Figure 8's; Figure 9's (111) oxygen-cooled value (about 16 × 10^11) is well below Figure 8's at the same temperature (26.5); the text's 3:1 (111):(100) ratio is 4.6:1 at 1200 °C on Figure 8 |
 | Is our model independent of this paper's data? | Yes. Nothing in the trap-density program was fitted to this paper: it was found on Vitkavage 1990, another laboratory eleven years later. The fixed-charge program was fitted to Stanford's argon anneals; growth uses the 1965 constants |
-| Outcome | 6 of 32 numbers within tolerance |
+| Outcome | 5 of 32 numbers within tolerance |
 
 The grade is ours and is about the paper as a source for simulation, not about the quality of the experiment: **high** means the sample, every step and its timing are stated well enough that a simulation needs no choices of ours; **moderate** that some choices are ours and are listed; **low** that the result depends on choices the paper does not constrain.
 
@@ -689,7 +689,7 @@ EVALUATION_CONTRACT {contract_id} {{
 
 ## Our simulation against the paper
 
-**6** within, **2** near, **24** off of 32 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**5** within, **27** off of 32 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: razouk-deal-1979
@@ -705,28 +705,28 @@ study: razouk-deal-1979
 | (111), 1000 °C, fast pull in oxygen, as oxidized | midgap Nst | 2.65e+12 cm⁻² eV⁻¹ | 5.55e+10 cm⁻² eV⁻¹ | -98% | off (±10%) | outside the tested scope | Figure 8, PDF p. 6; project reading (figures_agent_read_UNVERIFIED.csv), mean of n- and p-type |
 | (111), 1100 °C, fast pull in oxygen, as oxidized | midgap Nst | 2.16e+12 cm⁻² eV⁻¹ | 4.86e+10 cm⁻² eV⁻¹ | -98% | off (±10%) | outside the tested scope | Figure 8, PDF p. 6; project reading (figures_agent_read_UNVERIFIED.csv), mean of n- and p-type |
 | (111), 1200 °C, fast pull in oxygen, as oxidized | midgap Nst | 1.66e+12 cm⁻² eV⁻¹ | 4.80e+10 cm⁻² eV⁻¹ | -97% | off (±10%) | outside the tested scope | Figure 8, PDF p. 6; project reading (figures_agent_read_UNVERIFIED.csv), mean of n- and p-type |
-| (100), 900 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.40e+11 cm⁻² eV⁻¹ | 5.36e+10 cm⁻² eV⁻¹ | -62% | off (±10%) | direction only | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
-| (100), 1000 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.00e+11 cm⁻² eV⁻¹ | 3.73e+10 cm⁻² eV⁻¹ | -63% | off (±10%) | direction only | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
-| (100), 1100 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 6.50e+10 cm⁻² eV⁻¹ | 3.27e+10 cm⁻² eV⁻¹ | -50% | off (±10%) | outside the tested scope | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
-| (100), 1200 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 6.00e+10 cm⁻² eV⁻¹ | 3.23e+10 cm⁻² eV⁻¹ | -46% | off (±10%) | outside the tested scope | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
+| (100), 900 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.40e+11 cm⁻² eV⁻¹ | 1.01e+08 cm⁻² eV⁻¹ | -100% | off (±10%) | direction only | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
+| (100), 1000 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.00e+11 cm⁻² eV⁻¹ | 7.00e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | direction only | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
+| (100), 1100 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 6.50e+10 cm⁻² eV⁻¹ | 6.12e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
+| (100), 1200 °C, fast pull in oxygen, n-type, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 6.00e+10 cm⁻² eV⁻¹ | 6.05e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 13, PDF p. 8; project reading (figures_agent_read_UNVERIFIED.csv) |
 | (100), 1000 °C, 360 min, then 60 min in nitrogen, as oxidized | midgap Nst | 8.00e+11 cm⁻² eV⁻¹ | 1.43e+11 cm⁻² eV⁻¹ | -82% | off (±10%) | direction only | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (100), 1200 °C, 60 min, then 60 min in nitrogen, as oxidized | midgap Nst | 3.60e+11 cm⁻² eV⁻¹ | 8.28e+10 cm⁻² eV⁻¹ | -77% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (100), 1200 °C, 60 min, then 60 min in nitrogen, as oxidized | oxide thickness | 200 nm | 193 nm | -3% | within (±10%) | supported within scope | text, PDF p. 2: the 1200 °C end of the stated range |
 | (111), 1000 °C, 360 min, then 60 min in nitrogen, as oxidized | midgap Nst | 1.67e+12 cm⁻² eV⁻¹ | 5.08e+10 cm⁻² eV⁻¹ | -97% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (111), 1200 °C, 60 min, then 60 min in nitrogen, as oxidized | midgap Nst | 9.50e+11 cm⁻² eV⁻¹ | 4.80e+10 cm⁻² eV⁻¹ | -95% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (111), 1200 °C, 60 min, then 60 min in nitrogen, as oxidized | oxide thickness | 220 nm | 206 nm | -6% | within (±10%) | supported within scope | text, PDF p. 2: the 1200 °C end of the stated range |
-| (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.40e+10 cm⁻² eV⁻¹ | 3.42e+10 cm⁻² eV⁻¹ | +144% | off (±10%) | direction only | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.40e+10 cm⁻² eV⁻¹ | 6.41e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | direction only | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 3.80e+10 cm⁻² | 2.91e+10 cm⁻² | -24% | off (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
-| (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.50e+10 cm⁻² eV⁻¹ | 3.23e+10 cm⁻² eV⁻¹ | +115% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.50e+10 cm⁻² eV⁻¹ | 6.05e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 5.50e+10 cm⁻² | 2.17e+10 cm⁻² | -61% | off (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
-| (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.77e+10 cm⁻² eV⁻¹ | 3.93e+10 cm⁻² eV⁻¹ | +4% | within (±10%) | direction only | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.77e+10 cm⁻² eV⁻¹ | 7.37e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | direction only | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 1.73e+11 cm⁻² | 1.66e+11 cm⁻² | -4% | within (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
-| (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.30e+10 cm⁻² eV⁻¹ | 3.71e+10 cm⁻² eV⁻¹ | +12% | near (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.30e+10 cm⁻² eV⁻¹ | 6.96e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 2.50e+11 cm⁻² | 1.22e+11 cm⁻² | -51% | off (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
-| (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.23e+10 cm⁻² eV⁻¹ | 3.23e+10 cm⁻² eV⁻¹ | +162% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 1.23e+10 cm⁻² eV⁻¹ | 6.05e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 1.30e+10 cm⁻² | 2.17e+10 cm⁻² | +67% | off (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
 | (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | oxide thickness | 200 nm | 193 nm | -3% | within (±10%) | supported within scope | text, PDF p. 2: the 1200 °C end of the stated range |
-| (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.30e+10 cm⁻² eV⁻¹ | 3.71e+10 cm⁻² eV⁻¹ | +12% | near (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
+| (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | midgap Nst after the hydrogen anneal | 3.30e+10 cm⁻² eV⁻¹ | 6.96e+07 cm⁻² eV⁻¹ | -100% | off (±10%) | outside the tested scope | Figure 7, PDF p. 5; project reading (figures_agent_read_UNVERIFIED.csv), n- and p-type averaged by the authors |
 | (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | Qss/q, on the hydrogen-annealed half | 2.17e+11 cm⁻² | 1.22e+11 cm⁻² | -44% | off (±10%) | supported within scope | Figure 7 top, PDF p. 5; second reading, from the bar chart |
 | (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | oxide thickness | 220 nm | 206 nm | -6% | within (±10%) | supported within scope | text, PDF p. 2: the 1200 °C end of the stated range |
 
@@ -825,16 +825,16 @@ What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon
 
 | Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
 |---|---|---|---|---|
-| (100), 900 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 5.36e+10 | 2.55e+07 | |
-| (100), 1000 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.73e+10 | 1.56e+07 | |
-| (100), 1100 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.27e+10 | 1.10e+07 | |
-| (100), 1200 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
-| (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.42e+10 | 1.51e+07 | |
-| (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
-| (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.93e+10 | 5.38e+06 | |
-| (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.71e+10 | 5.08e+06 | |
-| (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
-| (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 3.71e+10 | 5.08e+06 | |
+| (100), 900 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 1.01e+08 | 2.55e+07 | |
+| (100), 1000 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 7.00e+07 | 1.56e+07 | |
+| (100), 1100 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 6.12e+07 | 1.10e+07 | |
+| (100), 1200 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 6.05e+07 | 8.77e+06 | |
+| (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 6.41e+07 | 1.51e+07 | |
+| (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 6.05e+07 | 8.77e+06 | |
+| (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 7.37e+07 | 5.38e+06 | |
+| (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 6.96e+07 | 5.08e+06 | |
+| (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 6.05e+07 | 8.77e+06 | |
+| (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 6.96e+07 | 5.08e+06 | |
 
 ## With heating and cooling transitions
 
@@ -842,11 +842,11 @@ No paper we hold states how its wafers heated up or cooled down. The project own
 
 | History | Within tolerance | Median error | Changed numbers |
 |---|---|---|---|
-| as the paper states it (above) | 6 of 32 | 66.9% | |
-| heat-up A (hot push), fast cooling | 8 of 32 | 67.1% | 10 of 32 moved by more than 2% |
-| heat-up A (hot push), slow cooling | 5 of 32 | 71.2% | 10 of 32 moved by more than 2% |
-| heat-up B (cold-furnace ramp), fast cooling | 8 of 32 | 67.3% | 10 of 32 moved by more than 2% |
-| heat-up B (cold-furnace ramp), slow cooling | 5 of 32 | 71.2% | 10 of 32 moved by more than 2% |
+| as the paper states it (above) | 5 of 32 | 95.0% | |
+| heat-up A (hot push), fast cooling | 5 of 32 | 95.0% | 0 of 32 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 5 of 32 | 95.0% | 10 of 32 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 5 of 32 | 95.0% | 0 of 32 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 5 of 32 | 95.0% | 10 of 32 moved by more than 2% |
 
 ### The paper's own conclusions
 
