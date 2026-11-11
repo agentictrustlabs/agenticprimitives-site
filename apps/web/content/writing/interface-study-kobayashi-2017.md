@@ -414,6 +414,18 @@ The program's anneal clock is a hypothesis (0.1 s^-1). A sample annealed for les
 - OFFCUT read by programs (4° off-axis here, on-axis in Song 2004), and the measurement method on an observable (1 MHz high-low counts fewer states than a 100 MHz reference, the paper's Figure 4).
 - For the predictor: a small tolerance on a state's declared bounds, or a hard clamp, so that a long low-temperature hold does not refuse a history at exactly 1.00.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 21 of 21 | 4.7% | |
+| heat-up A (hot push), fast cooling | 21 of 21 | 4.7% | 0 of 21 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 21 of 21 | 4.6% | 0 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 21 of 21 | 4.7% | 0 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 21 of 21 | 4.6% | 0 of 21 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

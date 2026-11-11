@@ -466,6 +466,18 @@ The inventory's layer rows are labelled outside the tested scope because the ram
 - **Germanium lost as GeO2.** The paper reports under 10% lost by oxidation (about 26% from its own thicknesses); the inventory conserves germanium exactly. A loss flux, or at least a declared bound on it, belongs in the inventory program.
 - **Strain as a sample property.** Relaxed against fully strained is the paper's subject (Eqs. 1 and 2); the language has no field for it that a program could read.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 7 of 21 | 30.4% | |
+| heat-up A (hot push), fast cooling | 7 of 21 | 30.4% | 0 of 21 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 7 of 21 | 30.4% | 0 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 7 of 21 | 30.4% | 0 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 7 of 21 | 30.4% | 0 of 21 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

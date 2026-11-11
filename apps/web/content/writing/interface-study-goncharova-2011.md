@@ -380,6 +380,18 @@ The starting interlayer (about 6 Å of SiOxNy, about 2.6 × 10^15 oxygen atoms p
 - Measurement in the middle of a history (`MEASURE … AFTER Anneal10min`, then more steps): Figure 2's 10 min and +30 min are one film measured twice, which today must be two separate samples.
 - Temperature in K as a unit on TEMP (`TEMP 763 K`): 763 K is written 489.85 °C, and the paper's own 763 K, 773 K and 490 °C for the same anneal are easier to keep apart when the unit is the paper's.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 16 of 24 | 12.8% | |
+| heat-up A (hot push), fast cooling | 16 of 24 | 13.7% | 23 of 24 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 16 of 24 | 13.5% | 24 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 8 of 24 | 36.5% | 24 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 8 of 24 | 37.7% | 24 of 24 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

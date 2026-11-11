@@ -656,6 +656,18 @@ The program's flat rate is linear in time. The paper's flat sidewall grows 32.2 
 - **Temperature and gas in the nanowire program.** Its rate depends on p_H2O only, so ramps, dry oxygen and the 850 °C itself are invisible. An Arrhenius rate and a dry-oxygen channel would let the furnace-cycle unknowns mean something.
 - **Which form runs.** The predictor runs the viscous shell fitted on one paper while the project's own search selected another form on two. A program registry that records which form a search selected, and runs that one, would make the page and the search agree.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 9 of 13 | 7.5% | |
+| heat-up A (hot push), fast cooling | 9 of 13 | 7.5% | 0 of 13 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 9 of 13 | 7.5% | 0 of 13 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 9 of 13 | 7.5% | 0 of 13 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 9 of 13 | 7.5% | 0 of 13 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

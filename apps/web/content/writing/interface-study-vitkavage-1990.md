@@ -380,7 +380,7 @@ CONTROL_TRAJECTORY History {
 }
 ```
 
-The programs the predictor ran on these histories: `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
+The programs the predictor ran on these histories: `experiments/atomistic/hydrogen_passivation_equilibrium.isl.template`, `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
 
 The model itself, `experiments/vitkavage_dit/oxide_growth.isl.template`, as it is written. Every equation the simulation uses is in this text; the runtime holds no physics.
 
@@ -559,42 +559,35 @@ With the predictor's switch on (`ISL_USE_COMPUTED=1` or `--computed`), the progr
 
 Limits: a cluster has no oxide around it and no interface strain; the zero-point correction (0.07 eV) and the gas entropy are recalled values marked hypothesis; no barrier was computed. The next calculation is the interface itself: a Si(100)/SiO₂ model with its suboxide transition and a Pb centre in place.
 
-| Calculation | Value | Backend | Status |
+| Calculation | Value | Where it ran | Status |
 |---|---|---|---|
 | dE_cap_half_H2: energy of capping the dangling bond from molecular hydrogen, Si* + 1/2 H2 -> SiH; negative means hydrogen stabilizes the bond | -1.2838 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
 | D_SiH: energy to break the Si-H bond into the dangling bond and a free hydrogen atom | 3.5429 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
 | D_H2: the H2 binding energy: a check on the method, to be compared with about 4.75 eV (well depth, recalled) | 4.5183 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
 
-| Sample | Measured after the anneal | Fitted program | Computed equilibrium bound | Measured over bound |
+| Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
 |---|---|---|---|---|
-| (100), 750 °C, 23 h | 1.20e+11 | 1.14e+11 | 3.50e+06 | 3.4e+04 |
-| (100), 800 °C, 18 h | 9.00e+10 | 9.83e+10 | 2.62e+06 | 3.4e+04 |
-| (100), 900 °C, 4.5 h | 6.00e+10 | 8.10e+10 | 1.68e+06 | 3.6e+04 |
-| (100), 1000 °C, 1 h | 5.00e+10 | 7.51e+10 | 1.26e+06 | 4e+04 |
-| (100), 1000 °C, 2.5 h | 2.10e+10 | 4.04e+10 | 9.01e+05 | 2.3e+04 |
-| (100), 1000 °C, 4 h | 2.60e+10 | 2.73e+10 | 7.63e+05 | 3.4e+04 |
-| (100), 1000 °C, 8 h | 2.20e+10 | 1.99e+10 | 6.86e+05 | 3.2e+04 |
-| (110), 750 °C, 23 h | 1.60e+11 | 1.59e+11 | 1.72e+07 | 9.3e+03 |
-| (110), 800 °C, 18 h | 9.50e+10 | 1.38e+11 | 1.22e+07 | 7.8e+03 |
-| (110), 900 °C, 4.5 h | 9.30e+10 | 1.14e+11 | 6.77e+06 | 1.4e+04 |
-| (110), 1000 °C, 1 h | 7.90e+10 | 1.05e+11 | 4.32e+06 | 1.8e+04 |
-| (110), 1000 °C, 2.5 h | 5.70e+10 | 5.66e+10 | 3.81e+06 | 1.5e+04 |
-| (110), 1000 °C, 4 h | 2.80e+10 | 3.82e+10 | 3.62e+06 | 7.7e+03 |
-| (110), 1000 °C, 8 h | 2.80e+10 | 2.79e+10 | 3.51e+06 | 8e+03 |
-| (111), 750 °C, 23 h | 1.30e+11 | 1.31e+11 | 1.36e+06 | 9.5e+04 |
-| (111), 800 °C, 18 h | 1.30e+11 | 1.13e+11 | 1.18e+06 | 1.1e+05 |
-| (111), 900 °C, 4.5 h | 1.00e+11 | 9.32e+10 | 9.74e+05 | 1e+05 |
-| (111), 1000 °C, 1 h | 1.20e+11 | 8.63e+10 | 9.03e+05 | 1.3e+05 |
-| (111), 1000 °C, 2.5 h | 7.90e+10 | 4.65e+10 | 4.86e+05 | 1.6e+05 |
-| (111), 1000 °C, 4 h | 5.00e+10 | 3.14e+10 | 3.28e+05 | 1.5e+05 |
-| (111), 1000 °C, 8 h | 6.00e+10 | 2.29e+10 | 2.39e+05 | 2.5e+05 |
-| (511), 750 °C, 23 h | 7.50e+10 | 7.15e+10 | 4.83e+06 | 1.6e+04 |
-| (511), 800 °C, 18 h | 8.00e+10 | 6.19e+10 | 3.46e+06 | 2.3e+04 |
-| (511), 900 °C, 4.5 h | 5.60e+10 | 5.11e+10 | 2.00e+06 | 2.8e+04 |
-| (511), 1000 °C, 1 h | 5.70e+10 | 4.73e+10 | 1.34e+06 | 4.3e+04 |
-| (511), 1000 °C, 2.5 h | 3.40e+10 | 2.55e+10 | 1.11e+06 | 3.1e+04 |
-| (511), 1000 °C, 4 h | 1.50e+10 | 1.72e+10 | 1.02e+06 | 1.5e+04 |
-| (511), 1000 °C, 8 h | 2.30e+10 | 1.25e+10 | 9.75e+05 | 2.4e+04 |
+| (100), 1000 °C, 1 h, with PMA | 5.00e+10 | 7.51e+10 | 1.48e+06 | 3.4e+04 |
+| (111), 1000 °C, 1 h, with PMA | 1.20e+11 | 8.63e+10 | 1.06e+06 | 1.1e+05 |
+| (100), 1000 °C, 8 h, with PMA | 2.20e+10 | 1.42e+10 | 8.85e-07 | 2.5e+16 |
+| (111), 1000 °C, 8 h, with PMA | 6.00e+10 | 2.29e+10 | 2.80e+05 | 2.1e+05 |
+| (110), 1000 °C, 1 h, with PMA | 7.90e+10 | 1.05e+11 | 5.05e+06 | 1.6e+04 |
+| (511), 1000 °C, 1 h, with PMA | 5.70e+10 | 4.73e+10 | 1.57e+06 | 3.6e+04 |
+| (100), 750 °C, 23 h, with PMA | 1.20e+11 | 1.14e+11 | 4.10e+06 | 2.9e+04 |
+| Non-cleanroom (100), 750 °C, 24 h | no measurement on this page | 1.13e+11 | 4.09e+06 | |
+| Non-cleanroom (110), 1100 °C, 0.5 h | no measurement on this page | 6.56e+10 | 3.16e+06 | |
+
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 8 of 21 | 17.0% | |
+| heat-up A (hot push), fast cooling | 7 of 21 | 32.2% | 12 of 21 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 7 of 21 | 39.4% | 12 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 5 of 21 | 39.4% | 13 of 21 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 5 of 21 | 90.6% | 13 of 21 moved by more than 2% |
 
 ### The paper's own conclusions
 

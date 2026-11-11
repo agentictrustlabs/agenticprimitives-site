@@ -533,6 +533,18 @@ What alignment cannot fix. The slow pull in oxygen at 1100 °C stays 20% high (8
 - **Doping as an input.** DOPING is recorded on each sample and read by nothing. The report's n-type and p-type wafers differ by more than the tolerance.
 - **The anneal's gas as a separate level.** Nitrogen and argon are one curve in the report and one level in the program; if they differ (the 1100 °C rows hint that they might), the program needs a level per inert gas.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 19 of 24 | 5.5% | |
+| heat-up A (hot push), fast cooling | 16 of 24 | 7.0% | 4 of 24 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 16 of 24 | 7.0% | 7 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 16 of 24 | 7.0% | 4 of 24 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 16 of 24 | 7.0% | 7 of 24 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

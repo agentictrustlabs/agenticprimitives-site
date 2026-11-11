@@ -478,6 +478,18 @@ How to read the scores: the constants come from Table II, which the authors fitt
 - **One slice measured several times.** The language cannot say that a curve's points are the same slice taken out, measured and put back (an EVENT unload, measure, reload between RUNs of one sample) or separate slices. The paper does not say which; the language should at least be able to write both.
 - **A support label per gas.** The planar growth program's label claims wet and steam steps grow nothing, but a mixture makes it grow the oxygen share. The label should be computed from what the program reads (p_O2) rather than from the gas class.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 35 of 44 | 3.2% | |
+| heat-up A (hot push), fast cooling | 35 of 44 | 3.2% | 0 of 44 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 35 of 44 | 3.2% | 0 of 44 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 35 of 44 | 3.2% | 0 of 44 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 35 of 44 | 3.2% | 0 of 44 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

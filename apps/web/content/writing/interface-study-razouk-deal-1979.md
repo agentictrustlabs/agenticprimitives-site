@@ -617,7 +617,7 @@ CONTROL_TRAJECTORY History {
 }
 ```
 
-The programs the predictor ran on these histories: `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
+The programs the predictor ran on these histories: `experiments/atomistic/hydrogen_passivation_equilibrium.isl.template`, `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
 
 The model itself, `experiments/vitkavage_dit/oxide_growth.isl.template`, as it is written. Every equation the simulation uses is in this text; the runtime holds no physics.
 
@@ -810,6 +810,43 @@ After hydrogen the error changes sign with the history: oxygen-cooled (100) wafe
 - **Mixtures with HCl and pyrogenic steam.** Figure 9's 5% and 10% HCl in oxygen cannot be written (the mixture gases are O2, N2, H2, H2O, Ar), so that figure is left off this page.
 - **Doping read by a program.** Figure 8's n- and p-type (100) differ by 40% at 1100 and 1200 °C; DOPING is recorded on every sample and read by nothing.
 - **The predictor:** the trap program does not respond to the gas of a step or to a pull, and labels (111) without hydrogen “outside the tested scope” while still reporting a number 35 to 48 times low. A refusal would be more honest than a number.
+
+## With Quantum ESPRESSO switched on
+
+This page was simulated with parameters from atomic calculations switched on (`ISL_USE_COMPUTED=1`). They come from Quantum ESPRESSO (the discovered-materials dm_qe build), run locally on CPU and on an H100 on RunPod, recorded in `evaluations/atomistic/` with the code version, inputs, pseudopotential checksums and convergence, and carried into ISL as `STATUS: computed`. They never replace a fitted or sourced number: the rows scored above are the same with the switch off. Each computed row sits beside the measurement it bears on.
+
+What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon dangling bond with three silicon back-bonds (the local structure of a Pb centre), on a 14-atom cluster. With the free energy of hydrogen gas it bounds the share of dangling bonds that a hydrogen step could leave uncapped if it reached equilibrium, and so the lowest interface state density that step could reach. A measurement far above the bound means what remains after the hydrogen step is not limited by the strength of the Si–H bond: the anneal is far from equilibrium, or the traps that remain are not dangling bonds hydrogen can cap.
+
+| Calculation | Value | Where it ran | Status |
+|---|---|---|---|
+| dE_cap_half_H2: energy of capping the dangling bond from molecular hydrogen, Si* + 1/2 H2 -> SiH; negative means hydrogen stabilizes the bond | -1.2838 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_SiH: energy to break the Si-H bond into the dangling bond and a free hydrogen atom | 3.5429 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_H2: the H2 binding energy: a check on the method, to be compared with about 4.75 eV (well depth, recalled) | 4.5183 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+
+| Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
+|---|---|---|---|---|
+| (100), 900 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 5.36e+10 | 2.55e+07 | |
+| (100), 1000 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.73e+10 | 1.56e+07 | |
+| (100), 1100 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.27e+10 | 1.10e+07 | |
+| (100), 1200 °C, fast pull in oxygen, n-type, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
+| (100), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.42e+10 | 1.51e+07 | |
+| (100), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
+| (111), 1000 °C, 360 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.93e+10 | 5.38e+06 | |
+| (111), 1200 °C, 60 min, then 60 min in nitrogen, after the hydrogen anneal | no measurement on this page | 3.71e+10 | 5.08e+06 | |
+| (100), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 3.23e+10 | 8.77e+06 | |
+| (111), 1200 °C, 60 min, then 60 min in argon, after the hydrogen anneal | no measurement on this page | 3.71e+10 | 5.08e+06 | |
+
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 6 of 32 | 66.9% | |
+| heat-up A (hot push), fast cooling | 8 of 32 | 67.1% | 10 of 32 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 5 of 32 | 71.2% | 10 of 32 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 8 of 32 | 67.3% | 10 of 32 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 5 of 32 | 71.2% | 10 of 32 moved by more than 2% |
 
 ### The paper's own conclusions
 

@@ -649,6 +649,18 @@ The aligned score is not a test on the fitted temperatures: the program's four n
 - **A germanium clean.** The vocabulary of pre-oxidation cleans is silicon's; bromine-methanol with buffered HF cannot be named.
 - **The program as a file.** The selected germanium law is generated in memory by scripts/search_growth.py; writing it to experiments/ as the SiC ones are would let this page print the model it ran.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 8 of 16 | 2.7% | |
+| heat-up A (hot push), fast cooling | 8 of 16 | 2.7% | 0 of 16 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 8 of 16 | 2.7% | 0 of 16 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 8 of 16 | 2.7% | 0 of 16 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 8 of 16 | 2.7% | 0 of 16 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

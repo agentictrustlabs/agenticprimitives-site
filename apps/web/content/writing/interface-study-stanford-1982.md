@@ -859,7 +859,7 @@ CONTROL_TRAJECTORY History {
 }
 ```
 
-The programs the predictor ran on these histories: `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
+The programs the predictor ran on these histories: `experiments/atomistic/hydrogen_passivation_equilibrium.isl.template`, `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
 
 The model itself, `experiments/deal_qss/two_equilibria.isl.template`, as it is written. Every equation the simulation uses is in this text; the runtime holds no physics.
 
@@ -1050,6 +1050,50 @@ The cooling result is a defect in the program, not in the report. A rate with al
 - **Where a starting value comes from.** The charge program's initial state is Deal's 1967 line for the oxidation temperature. Stanford's as-grown values sit below it on (111). The starting point is a laboratory property hidden in a program, and should be a stated input (for example `INITIAL Q_f FROM laboratory` with the 1967 line as one choice).
 - **Time zero of an anneal.** Figure 5 times count from an unstated moment (the push, or reaching temperature). TIMING says whether a duration is stated, not what it is counted from. An `ORIGIN push|at_temperature|gas_switch` on a RUN would carry it.
 - **Repeat durations.** The second 25 h and 20 min of the cycling are assumed equal to the first. A `TIMING assumed_same_as <step>` would make the assumption visible.
+
+## With Quantum ESPRESSO switched on
+
+This page was simulated with parameters from atomic calculations switched on (`ISL_USE_COMPUTED=1`). They come from Quantum ESPRESSO (the discovered-materials dm_qe build), run locally on CPU and on an H100 on RunPod, recorded in `evaluations/atomistic/` with the code version, inputs, pseudopotential checksums and convergence, and carried into ISL as `STATUS: computed`. They never replace a fitted or sourced number: the rows scored above are the same with the switch off. Each computed row sits beside the measurement it bears on.
+
+What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon dangling bond with three silicon back-bonds (the local structure of a Pb centre), on a 14-atom cluster. With the free energy of hydrogen gas it bounds the share of dangling bonds that a hydrogen step could leave uncapped if it reached equilibrium, and so the lowest interface state density that step could reach. A measurement far above the bound means what remains after the hydrogen step is not limited by the strength of the Si–H bond: the anneal is far from equilibrium, or the traps that remain are not dangling bonds hydrogen can cap.
+
+| Calculation | Value | Where it ran | Status |
+|---|---|---|---|
+| dE_cap_half_H2: energy of capping the dangling bond from molecular hydrogen, Si* + 1/2 H2 -> SiH; negative means hydrogen stabilizes the bond | -1.2838 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_SiH: energy to break the Si-H bond into the dangling bond and a free hydrogen atom | 3.5429 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_H2: the H2 binding energy: a check on the method, to be compared with about 4.75 eV (well depth, recalled) | 4.5183 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+
+| Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
+|---|---|---|---|---|
+| (100), as grown (Figure 5) | no measurement on this page | 4.42e+10 | 1.10e+06 | |
+| (100), argon at 800 °C for 0.092 h | no measurement on this page | 4.41e+10 | 1.10e+06 | |
+| (100), argon at 800 °C for 0.178 h | no measurement on this page | 4.41e+10 | 1.10e+06 | |
+| (100), argon at 800 °C for 0.37 h | no measurement on this page | 4.40e+10 | 1.10e+06 | |
+| (100), argon at 800 °C for 0.55 h | no measurement on this page | 4.39e+10 | 1.10e+06 | |
+| (100), argon at 800 °C for 2.2 h | no measurement on this page | 4.33e+10 | 1.09e+06 | |
+| (100), argon at 800 °C for 4.3 h | no measurement on this page | 4.24e+10 | 1.08e+06 | |
+| (100), argon at 800 °C for 10.6 h | no measurement on this page | 4.02e+10 | 1.05e+06 | |
+| (100), argon at 800 °C for 21 h | no measurement on this page | 3.68e+10 | 1.01e+06 | |
+| (100), argon at 800 °C for 37 h | no measurement on this page | 3.28e+10 | 9.60e+05 | |
+| (100), argon at 1000 °C for 0.041 h | no measurement on this page | 4.35e+10 | 1.09e+06 | |
+| (100), argon at 1000 °C for 0.083 h | no measurement on this page | 4.28e+10 | 1.08e+06 | |
+| (100), argon at 1000 °C for 0.125 h | no measurement on this page | 4.22e+10 | 1.08e+06 | |
+| (100), argon at 1000 °C for 0.17 h | no measurement on this page | 4.15e+10 | 1.07e+06 | |
+| (100), argon at 1000 °C for 0.26 h | no measurement on this page | 4.03e+10 | 1.05e+06 | |
+| (100), argon at 1000 °C for 0.34 h | no measurement on this page | 3.92e+10 | 1.04e+06 | |
+| (100), argon at 1000 °C for 1.04 h | no measurement on this page | 3.20e+10 | 9.50e+05 | |
+
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 17 of 27 | 12.9% | |
+| heat-up A (hot push), fast cooling | 14 of 27 | 22.6% | 10 of 27 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 13 of 27 | 29.5% | 11 of 27 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 14 of 27 | 22.6% | 10 of 27 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 13 of 27 | 29.5% | 11 of 27 moved by more than 2% |
 
 ### The paper's own conclusions
 

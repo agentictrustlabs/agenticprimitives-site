@@ -573,6 +573,18 @@ Alignment cannot fix the anneals without oxygen either: nitrogen at 1200 °C and
 - A tag for which samples were measured with a gold probe on bare oxide and which were metallized and given the 550 °C treatment: an optional step (`EVENT … OPTIONAL`, or two histories under one measured value), since the paper does not say which tabulated value is which.
 - An ambient for “the end of the tube”: where the slice sits after the pull (open tube, flowing oxygen, room air) is part of the history and has no word.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 9 of 13 | 12.5% | |
+| heat-up A (hot push), fast cooling | 7 of 13 | 15.6% | 9 of 13 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 5 of 13 | 45.8% | 10 of 13 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 7 of 13 | 15.7% | 9 of 13 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 5 of 13 | 45.6% | 10 of 13 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

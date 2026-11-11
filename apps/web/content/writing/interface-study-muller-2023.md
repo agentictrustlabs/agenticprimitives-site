@@ -716,6 +716,18 @@ The SG50 sheet (32.25 nm measured) has a GeO2 layer over SiO2 and a Ge-rich oxid
 - **An observable for what the paper measures.** Figure 5(a) is the increase of the outer diameter; Figure 5(b) is the core after a buffered-oxide etch. The dataset turns them into an oxide thickness, which already assumes the etch removes no silicon. Observables `Outer_diameter` and `Core_diameter_after_strip` would let the program be scored on the measured quantities and show the volume balance the data do not close.
 - **Faceting and sidewall orientation.** Above 60 nm the paper's Si wires are faceted by faster growth on {110}. A wire has one rate around its circumference in our language; a sidewall orientation mix on the sample would let that be tested.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 1 of 25 | 41.2% | |
+| heat-up A (hot push), fast cooling | 0 of 25 | 41.2% | 2 of 25 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 0 of 25 | 41.2% | 2 of 25 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 0 of 25 | 41.4% | 2 of 25 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 0 of 25 | 41.4% | 2 of 25 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |

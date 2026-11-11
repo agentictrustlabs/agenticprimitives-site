@@ -926,7 +926,7 @@ CONTROL_TRAJECTORY History {
 }
 ```
 
-The programs the predictor ran on these histories: `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
+The programs the predictor ran on these histories: `experiments/atomistic/hydrogen_passivation_equilibrium.isl.template`, `experiments/deal_qss/two_equilibria.isl.template`, `experiments/vitkavage_dit/oxide_growth.isl.template`, `scripts/search_growth.py (structure generated from the grammar)`, `scripts/search_trap_density.py (structure generated from the grammar)`.
 
 The model itself, `experiments/deal_qss/two_equilibria.isl.template`, as it is written. Every equation the simulation uses is in this text; the runtime holds no physics.
 
@@ -1195,6 +1195,43 @@ How to read the aligned numbers: the unknowns were chosen on the 1050 °C wafers
 - **How a charge was extracted.** Hung's Qf uses φMS = -0.715 V from the etched-back intercept. At 10 nm, 0.1 V of φMS is 2.1 × 10^11 cm⁻² of charge; at 40 nm it is 0.5 × 10^11. An observation statement carrying the φMS, the frequency and whether the half had forming gas would let charge from different laboratories be compared on one basis.
 - **Gas by pressure in every program.** Writing `mix:O2=0.2,N2=0.8` now reaches the programs, but the thin-oxide growth program ignores the oxygen pressure and grows oxide in nitrogen. That is a predictor change, not a language one, and it decides every 20% and 50% thickness on this page.
 - **Rounded and typical values.** Table 4.2 gives “~5×10^10” for a group of four, and chapter 5 reports “only typical or representative results”. A result's tolerance should be able to say it is a rounding of a group value, so that a search does not fit one wafer to it, as happened with the forming-gas time here.
+
+## With Quantum ESPRESSO switched on
+
+This page was simulated with parameters from atomic calculations switched on (`ISL_USE_COMPUTED=1`). They come from Quantum ESPRESSO (the discovered-materials dm_qe build), run locally on CPU and on an H100 on RunPod, recorded in `evaluations/atomistic/` with the code version, inputs, pseudopotential checksums and convergence, and carried into ISL as `STATUS: computed`. They never replace a fitted or sourced number: the rows scored above are the same with the switch off. Each computed row sits beside the measurement it bears on.
+
+What is computed so far is one reaction: Si• + ½H₂ → Si–H for a silicon dangling bond with three silicon back-bonds (the local structure of a Pb centre), on a 14-atom cluster. With the free energy of hydrogen gas it bounds the share of dangling bonds that a hydrogen step could leave uncapped if it reached equilibrium, and so the lowest interface state density that step could reach. A measurement far above the bound means what remains after the hydrogen step is not limited by the strength of the Si–H bond: the anneal is far from equilibrium, or the traps that remain are not dangling bonds hydrogen can cap.
+
+| Calculation | Value | Where it ran | Status |
+|---|---|---|---|
+| dE_cap_half_H2: energy of capping the dangling bond from molecular hydrogen, Si* + 1/2 H2 -> SiH; negative means hydrogen stabilizes the bond | -1.2838 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_SiH: energy to break the Si-H bond into the dangling bond and a free hydrogen atom | 3.5429 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_H2: the H2 binding energy: a check on the method, to be compared with about 4.75 eV (well depth, recalled) | 4.5183 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+
+| Sample | Measured interface state density | Our fitted program | Computed equilibrium bound | Measured over bound |
+|---|---|---|---|---|
+| M1: 1050 °C, 20% O2 in N2, 8 min, 101 Å, N2 anneal | no measurement on this page | 6.11e+10 | 3.38e+08 | |
+| M2: 1050 °C, 20% O2 in N2, 22 min, 157 Å, N2 anneal | no measurement on this page | 4.97e+10 | 2.99e+08 | |
+| M3: 1050 °C, 20% O2 in N2, 55 min, 265 Å, N2 anneal | no measurement on this page | 3.37e+10 | 2.43e+08 | |
+| M4: 1050 °C, 20% O2 in N2, 110 min, 392 Å, N2 anneal | no measurement on this page | 2.34e+10 | 2.07e+08 | |
+| N1: 1050 °C, 20% O2 in N2, 110 min, etched back to 145 Å, N2 anneal | no measurement on this page | 2.34e+10 | 2.07e+08 | |
+| K1: 900 °C, dry O2, 27 min, 103 Å, N2 anneal | no measurement on this page | 6.15e+10 | 4.91e+08 | |
+| K2: 900 °C, dry O2, 48 min, 150 Å, N2 anneal | no measurement on this page | 5.98e+10 | 4.85e+08 | |
+| K3: 900 °C, dry O2, 93 min, 230 Å, N2 anneal | no measurement on this page | 5.63e+10 | 4.73e+08 | |
+| K4: 900 °C, dry O2, 151 min, 318 Å, N2 anneal | no measurement on this page | 5.22e+10 | 4.59e+08 | |
+| J1: 900 °C, dry O2, 151 min, etched back to 140 Å, N2 anneal | no measurement on this page | 5.22e+10 | 4.59e+08 | |
+
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 16 of 76 | 29.6% | |
+| heat-up A (hot push), fast cooling | 17 of 76 | 29.6% | 0 of 76 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 17 of 76 | 29.6% | 0 of 76 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 17 of 76 | 29.6% | 15 of 76 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 17 of 76 | 29.6% | 15 of 76 moved by more than 2% |
 
 ### The paper's own conclusions
 

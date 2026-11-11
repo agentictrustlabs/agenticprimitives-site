@@ -392,6 +392,18 @@ How to read the aligned numbers: the push was chosen on the LeGoues case, whose 
 - **An upper value as data.** “Up to 75%” is scored as 75 ± 10%. A result should carry `≤`, `≥` or `about`, so that a program giving 60% is not counted as wrong by the same rule as one giving 44%.
 - **A finite alloy layer.** The source experiments are epilayers of unstated thickness; Table VI consumes up to 425 nm of alloy. The sample cannot say how thick the alloy is or what lies under it.
 
+## With heating and cooling transitions
+
+No paper we hold states how its wafers heated up or cooled down. The project owner specified scenarios for one Vitkavage wafer (`isl_harness/vitkavage_transitions.py`); `isl_harness/thermal_transitions.py` applies the same numbers to every sample here: a heat-up in nitrogen before the first furnace step (a hot push of 1 to 5 min, or a cold-furnace ramp of 60 to 120 min), the owner's radiative cooling knots after the last furnace step or after the paper's own pull (fast, or every time multiplied by 5), and ramps around an anneal at 300 to 500 °C. The paper's own steps are kept as written. All transitions are assumptions, written in the history with `TIMING assumed`.
+
+| History | Within tolerance | Median error | Changed numbers |
+|---|---|---|---|
+| as the paper states it (above) | 3 of 26 | 71.1% | |
+| heat-up A (hot push), fast cooling | 2 of 26 | 70.6% | 12 of 26 moved by more than 2% |
+| heat-up A (hot push), slow cooling | 2 of 26 | 70.6% | 13 of 26 moved by more than 2% |
+| heat-up B (cold-furnace ramp), fast cooling | 0 of 26 | 68.6% | 23 of 26 moved by more than 2% |
+| heat-up B (cold-furnace ramp), slow cooling | 0 of 26 | 68.6% | 24 of 26 moved by more than 2% |
+
 ### The paper's own conclusions
 
 | The paper states | What we find | |
