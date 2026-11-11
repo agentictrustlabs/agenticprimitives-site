@@ -3,7 +3,7 @@
   "slug": "interface-studies-reproduced",
   "title": "The studies we depend on, reproduced",
   "file": "interface-studies-reproduced.md",
-  "description": "16 papers the interface study depends on: each one's sample and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
+  "description": "35 papers the interface study depends on: each one's sample and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
  },
  {
   "slug": "interface-study-vitkavage-1990",
@@ -100,5 +100,119 @@
   "title": "Reproducing Wang, Hu and Irene 1994: thermal oxidation of germanium at 400 to 550 \u00b0C",
   "file": "interface-study-wang-1994.md",
   "description": "Wang, Hu and Irene 1994: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 2 near, 3 off, 3 not modelled)."
+ },
+ {
+  "slug": "interface-study-kao-1988",
+  "title": "Reproducing Kao et al. 1988: wet oxidation of convex and concave silicon cylinders",
+  "file": "interface-study-kao-1988.md",
+  "description": "Kao, McVittie, Nix and Saraswat 1988: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 within, 3 near, 5 off, 5 not modelled)."
+ },
+ {
+  "slug": "interface-study-kao-1987-report",
+  "title": "Reproducing Kao et al. Part I: flat, dry and doped oxidation of silicon cylinders",
+  "file": "interface-study-kao-1987-report.md",
+  "description": "Kao, McVittie, Nix and Saraswat 1987 (Part I, report): the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 within, 3 near, 10 off, 2 not modelled)."
+ },
+ {
+  "slug": "interface-study-raider-flitsch-1978",
+  "title": "Reproducing Raider and Flitsch 1978: width and composition of the silicon-to-oxide transition region",
+  "file": "interface-study-raider-flitsch-1978.md",
+  "description": "Raider and Flitsch 1978: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 off, 18 not modelled)."
+ },
+ {
+  "slug": "interface-study-johnson-1981",
+  "title": "Reproducing Johnson, Biegelsen and Moyer 1981: interface states and the Pb centre removed by low-temperature anneals and atomic deuterium",
+  "file": "interface-study-johnson-1981.md",
+  "description": "Johnson, Biegelsen and Moyer 1981: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (2 within, 3 off, 8 not modelled)."
+ },
+ {
+  "slug": "interface-study-stesmans-1996",
+  "title": "Reproducing Stesmans and Afanas'ev 1996: Pb defects released from hydrogen and created by vacuum anneals",
+  "file": "interface-study-stesmans-1996.md",
+  "description": "Stesmans and Afanas'ev 1996: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 1 near, 7 off)."
+ },
+ {
+  "slug": "interface-study-yano-2002",
+  "title": "Reproducing Yano et al. 2002: interface states on wet-oxidized 4H-SiC (03-38) and (0001)",
+  "file": "interface-study-yano-2002.md",
+  "description": "Yano et al. 2002: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (2 off, 4 not modelled)."
+ },
+ {
+  "slug": "interface-study-gupta-akhtar",
+  "title": "Reproducing Gupta and Akhtar 2011: dry and wet oxidation of both faces of 4H-SiC, a second laboratory for Song's constants",
+  "file": "interface-study-gupta-akhtar.md",
+  "description": "Gupta and Akhtar 2011: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (17 within, 4 near, 27 off)."
+ },
+ {
+  "slug": "interface-study-goto-2016",
+  "title": "Reproducing Goto and Hijikata 2016: SiC growth rates on two faces, and the Si and C emission model as a candidate structure",
+  "file": "interface-study-goto-2016.md",
+  "description": "Goto and Hijikata 2016: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (29 within, 15 near, 29 off)."
+ },
+ {
+  "slug": "interface-study-li-2023",
+  "title": "Reproducing Li, Luo and Ye 2023: carbon across the SiO2/4H-SiC interface after a 1400 \u00b0C oxidation",
+  "file": "interface-study-li-2023.md",
+  "description": "Li, Luo and Ye 2023: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (18 off, 4 not modelled)."
+ },
+ {
+  "slug": "interface-study-hijikata-2013",
+  "title": "Reproducing Hijikata et al. 2013: growth rate against thickness on both faces of 4H-SiC",
+  "file": "interface-study-hijikata-2013.md",
+  "description": "Hijikata, Yagi, Yaguchi and Yoshida 2013: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within, 16 near, 66 off)."
+ },
+ {
+  "slug": "interface-study-long-2012",
+  "title": "Reproducing Long et al. 2012: where the germanium goes under a dry oxide on thin SiGe",
+  "file": "interface-study-long-2012.md",
+  "description": "Long et al. 2012: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 2 near, 16 off)."
+ },
+ {
+  "slug": "interface-study-thornton-2022",
+  "title": "Reproducing Thornton et al. 2022: germanium running down the oxidizing sidewall of SiGe fins",
+  "file": "interface-study-thornton-2022.md",
+  "description": "Thornton et al. 2022: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 near, 4 off, 14 not modelled)."
+ },
+ {
+  "slug": "interface-study-fukuda-1992",
+  "title": "Reproducing Fukuda et al. 1992: trap density and charge of rapid thermal oxides",
+  "file": "interface-study-fukuda-1992.md",
+  "description": "Fukuda et al. 1992: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 within, 1 near, 55 off)."
+ },
+ {
+  "slug": "interface-study-kar-1987",
+  "title": "Reproducing Kar and Narasimhan 1987: interface states across the gap of thin unannealed oxides",
+  "file": "interface-study-kar-1987.md",
+  "description": "Kar and Narasimhan 1987: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 near, 7 off, 30 not modelled)."
+ },
+ {
+  "slug": "interface-study-tsai-1987",
+  "title": "Reproducing Tsai et al. 1987: trap density after nitridation in ammonia",
+  "file": "interface-study-tsai-1987.md",
+  "description": "Tsai, Wu, Wu and Hu 1987: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 15 not modelled)."
+ },
+ {
+  "slug": "interface-study-osullivan-2001",
+  "title": "Reproducing O'Sullivan et al. 2001: dangling bonds exposed by rapid thermal processing",
+  "file": "interface-study-osullivan-2001.md",
+  "description": "O'Sullivan et al. 2001: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 3 near, 4 off, 11 not modelled)."
+ },
+ {
+  "slug": "interface-study-reed-1989",
+  "title": "Reproducing Reed 1989: how fast hydrogen anneals interface traps",
+  "file": "interface-study-reed-1989.md",
+  "description": "Reed 1989: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 within, 32 off)."
+ },
+ {
+  "slug": "interface-study-kar-1985",
+  "title": "Reproducing Kar, Shanker and Chari 1985: interface states against oxide thickness in unannealed ultrathin oxides",
+  "file": "interface-study-kar-1985.md",
+  "description": "Kar, Shanker and Chari 1985: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 off, 18 not modelled)."
+ },
+ {
+  "slug": "interface-study-stanford-1981",
+  "title": "Reproducing Akinwande, Ho and Plummer 1981: fixed charge against growth and anneal temperature, the earlier Stanford report",
+  "file": "interface-study-stanford-1981.md",
+  "description": "Akinwande, Ho and Plummer 1981: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (4 within, 6 near, 58 off)."
  }
 ]
