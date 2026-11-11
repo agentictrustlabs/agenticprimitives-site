@@ -249,7 +249,7 @@ These are the same for every cell, and they are what we think is worth copying.
 4. **A mechanism has to matter.** Each supported mechanism is switched off and the held-out measurements scored again. The fixed-charge model falls from 12 of 16 to 2 of 16; the nanowire model from 9 of 14 to 0 of 14.
 5. **Shuffle tests.** Recipes and measurements are re-paired at random to see whether a model does better than one that only knows the typical level.
 6. **Data are checked against the page.** Four papers hold their figures as vector drawings, so their values were taken from the drawing itself; this confirmed two of our transcriptions, found one wrong value, and showed that a second reader's axis was off by up to 9 nm. Scanned figures are read by locating the axes by pixel analysis; where a paper prints a number we can compare, it has agreed within 1%.
-7. **Every term is traced to the sources.** The words of the vocabulary are searched for in the text of the papers. Of 36 working terms, 28 are the sources' own, and one is ours; of 67 further domain terms, 6 have no source we can cite. [The full list, with definitions and sources](/writing/interface-vocabulary-for-emily).
+7. **Every term is traced to the sources.** The words of the vocabulary are searched for in the text of the papers. Of 36 working terms, 28 are the sources' own, and one is ours; of 68 further domain terms, 7 have no source we can cite. [The full list, with definitions and sources](/writing/interface-vocabulary-for-emily).
 8. **Survivors design the next experiment.** When the data cannot separate candidates, each is run on recipes nobody has measured and the recipes are ranked by how far the predictions spread.
 
 ### The hypotheses in play
