@@ -3,84 +3,84 @@
   "slug": "interface-studies-reproduced",
   "title": "The studies we depend on, reproduced",
   "file": "interface-studies-reproduced.md",
-  "description": "13 papers the interface study depends on: each one's specimen and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
+  "description": "13 papers the interface study depends on: each one's sample and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
  },
  {
   "slug": "interface-study-vitkavage-1990",
   "title": "Reproducing Vitkavage, Irene and Massoud 1990: interface charges on four orientations of silicon",
   "file": "interface-study-vitkavage-1990.md",
-  "description": "Vitkavage, Irene and Massoud 1990: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near, 8 off)."
+  "description": "Vitkavage, Irene and Massoud 1990: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near, 8 off)."
  },
  {
   "slug": "interface-study-deal-1967",
   "title": "Reproducing Deal, Sklar, Grove and Snow 1967: fixed charge and the last hot step",
   "file": "interface-study-deal-1967.md",
-  "description": "Deal, Sklar, Grove and Snow 1967: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near)."
+  "description": "Deal, Sklar, Grove and Snow 1967: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near)."
  },
  {
   "slug": "interface-study-deal-razouk-1980",
   "title": "Reproducing Deal and Razouk 1980: four ways to end an oxidation",
   "file": "interface-study-deal-razouk-1980.md",
-  "description": "Deal and Razouk 1980: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (19 within, 4 near, 1 off)."
+  "description": "Deal and Razouk 1980: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (19 within, 4 near, 1 off)."
  },
  {
   "slug": "interface-study-hung-1987",
   "title": "Reproducing Hung 1987: fixed charge and trap density of thin oxides",
   "file": "interface-study-hung-1987.md",
-  "description": "Hung 1987: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (5 within, 6 near, 65 off)."
+  "description": "Hung 1987: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (16 within, 14 near, 46 off)."
  },
  {
   "slug": "interface-study-song-2004",
   "title": "Reproducing Song et al. 2004: dry oxidation of three faces of 4H-SiC",
   "file": "interface-study-song-2004.md",
-  "description": "Song, Dhar, Feldman, Chung and Williams 2004: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within, 3 near)."
+  "description": "Song, Dhar, Feldman, Chung and Williams 2004: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within, 3 near)."
  },
  {
   "slug": "interface-study-kobayashi-2017",
   "title": "Reproducing Kobayashi et al. 2017: interface states on SiC after an argon anneal",
   "file": "interface-study-kobayashi-2017.md",
-  "description": "Kobayashi et al. 2017: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within)."
+  "description": "Kobayashi et al. 2017: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (21 within)."
  },
  {
   "slug": "interface-study-goncharova-2011",
   "title": "Reproducing Goncharova et al. 2011: oxygen exchange and interface growth under a hafnium silicate film",
   "file": "interface-study-goncharova-2011.md",
-  "description": "Goncharova et al. 2011: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (16 within, 5 near, 3 off)."
+  "description": "Goncharova et al. 2011: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (16 within, 5 near, 3 off)."
  },
  {
   "slug": "interface-study-stanford-1982",
   "title": "Reproducing Akinwande, Ho and Plummer 1982: fixed charge under argon anneals and thermal cycling",
   "file": "interface-study-stanford-1982.md",
-  "description": "Akinwande, Ho and Plummer 1982: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (17 within, 5 near, 5 off)."
+  "description": "Akinwande, Ho and Plummer 1982: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (17 within, 5 near, 5 off)."
  },
  {
   "slug": "interface-study-razouk-deal-1979",
   "title": "Reproducing Razouk and Deal 1979: interface state density against oxidation temperature, orientation and the end of the oxidation",
   "file": "interface-study-razouk-deal-1979.md",
-  "description": "Razouk and Deal 1979: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 2 near, 24 off)."
+  "description": "Razouk and Deal 1979: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (6 within, 2 near, 24 off)."
  },
  {
   "slug": "interface-study-deal-grove-1965",
   "title": "Reproducing Deal and Grove 1965: the linear-parabolic law and the constants our growth program takes from it",
   "file": "interface-study-deal-grove-1965.md",
-  "description": "Deal and Grove 1965: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (27 within, 4 near, 13 off)."
+  "description": "Deal and Grove 1965: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (27 within, 4 near, 13 off)."
  },
  {
   "slug": "interface-study-krzeminski-2007",
   "title": "Reproducing Krzeminski et al. 2007: thin dry oxides, Massoud's kinetics and a furnace cycle at 725 and 750 \u00b0C",
   "file": "interface-study-krzeminski-2007.md",
-  "description": "Krzeminski et al. 2007: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (103 within, 20 near, 4 off)."
+  "description": "Krzeminski et al. 2007: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (107 within, 19 near, 1 off)."
  },
  {
   "slug": "interface-study-muller-2023",
   "title": "Reproducing M\u00fcller et al. 2023: wet oxidation of vertical Si and SiGe nanowires and nanosheets",
   "file": "interface-study-muller-2023.md",
-  "description": "M\u00fcller, Lecestre, Demoulin, Cristiano, Hartmann and Larrieu 2023: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 within, 1 near, 23 off)."
+  "description": "M\u00fcller, Lecestre, Demoulin, Cristiano, Hartmann and Larrieu 2023: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (1 within, 1 near, 23 off)."
  },
  {
   "slug": "interface-study-krzeminski-2012",
   "title": "Reproducing Krzeminski et al. 2012: retarded oxidation of silicon nanowires",
   "file": "interface-study-krzeminski-2012.md",
-  "description": "Krzeminski, Han and Larrieu 2012: the specimen and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 near, 9 off, 1 not modelled)."
+  "description": "Krzeminski, Han and Larrieu 2012: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 near, 9 off, 1 not modelled)."
  }
 ]

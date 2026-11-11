@@ -4,7 +4,7 @@
 
 *Written 10 November 2026 for Emily. Generated from the language's own files and a live run of the predictor; not edited by hand.*
 
-ISL, the Interface Science Language, is how this project writes down two things: **what was done to a specimen** (the recipe) and **what we think happens because of it** (a model). Both are plain text. A model is a short program; it contains no built-in physics, so every rate law and every constant a prediction uses is on the page where a person can read, question and change it.
+ISL, the Interface Science Language, is how this project writes down two things: **what was done to a sample** (the recipe) and **what we think happens because of it** (a model). Both are plain text. A model is a short program; it contains no built-in physics, so every rate law and every constant a prediction uses is on the page where a person can read, question and change it.
 
 It exists so that two kinds of claim can be told apart: a model that was *fitted* to data and a model that was *checked* against data it never saw. The language labels every number with which of those it is, and refuses to run a program whose units, conservation claims or bounds do not hold.
 
@@ -17,11 +17,11 @@ It exists so that two kinds of claim can be told apart: a model that was *fitted
 
 ## 1. From a recipe to a prediction
 
-A recipe is a specimen and a list of steps. This is the whole file for one:
+A recipe is a sample and a list of steps. This is the whole file for one:
 
 ```
 # (100) silicon, dry oxidation for one hour at 1000 C, then a forming-gas anneal after metallization.
-SPECIMEN Wafer_A {
+SAMPLE Wafer_A {
     FAMILY: Si_Planar
     ORIENTATION: Si100
     CLEAN: RCA
@@ -42,7 +42,7 @@ which prints (shortened):
 
 ```
 Interface: Si_Planar (challenge system 1)
-Specimen: FAMILY: Si_Planar; ORIENTATION: Si100; CLEAN: RCA
+Sample: FAMILY: Si_Planar; ORIENTATION: Si100; CLEAN: RCA
 Recipe:
   RUN Oxidation DURATION 3600 TEMP 1000->1000 AMBIENT dry_O2
   RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2
@@ -65,7 +65,7 @@ Every line carries a label saying how far to trust it. *Supported within scope* 
 
 ## 2. What a recipe can say
 
-A specimen has a **family** (which of the challenge's five interfaces; SiGe and germanium are separate families) and, where they matter, an **orientation**, a **pre-oxidation clean** (one of RCA, sulfuric_aqua_regia_HF, peroxide_HF, HCl_in_situ, sulfuric_peroxide_HF, not_stated), a **shape**, a **composition** and a **diameter**.
+A sample has a **family** (which of the challenge's five interfaces; SiGe and germanium are separate families) and, where they matter, an **orientation**, a **pre-oxidation clean** (one of RCA, sulfuric_aqua_regia_HF, peroxide_HF, HCl_in_situ, sulfuric_peroxide_HF, not_stated), a **shape**, a **composition** and a **diameter**.
 
 A recipe is a list of steps, each `RUN <name> DURATION <seconds> TEMP <start °C>-><end °C> AMBIENT <gas>`. A ramp is a step whose two temperatures differ. The gases it knows by name are `dry_O2`, `inert_N2`, `inert_Ar`, `forming_gas_H2` (10% hydrogen), `pure_H2`, `steam`, `wet_O2` and `vacuum`. A mixture is written with its partial pressures: `mix:N2=0.999998,H2O=2.0e-6` is nitrogen with 2 ppm of water, and a model may read the water pressure.
 
@@ -87,7 +87,7 @@ A model is a set of named blocks. This is a real one and a short one: it says wh
 # interface composition settles, not why. How fast it settles is not measured by any source we
 # hold (the shortest oxidation is two minutes), so the settling time is a hypothesis.
 
-SPECIMEN Alloy_A {
+SAMPLE Alloy_A {
     FAMILY: SiGe_oxide
     COMPOSITION: Si0.80Ge0.20
 }
@@ -98,7 +98,7 @@ CONTROL T { UNIT: K }
 CONTROL p_N2 { UNIT: atm }
 CONTROL p_Ar { UNIT: atm }
 
-PARAMETER ge_start { VALUE: 0.2; UNIT: 1; STATUS: sourced; SOURCE: the specimen's stated composition }
+PARAMETER ge_start { VALUE: 0.2; UNIT: 1; STATUS: sourced; SOURCE: the sample's stated composition }
 PARAMETER floor_ge { VALUE: 0.3; UNIT: 1; STATUS: fitted }
 PARAMETER share_ge { VALUE: 0.8; UNIT: 1; STATUS: fitted }
 # No source measures the interface earlier than two minutes into an oxidation.
@@ -129,7 +129,7 @@ EVALUATION_CONTRACT Contract_A {
 
 | Block | What it is |
 |---|---|
-| `SPECIMEN` | what is being processed |
+| `SAMPLE` | what is being processed |
 | `STATE` | a quantity with one value that changes in time (a thickness, a fraction, a number of sites) |
 | `GRID`, `FIELD` | a coordinate, and a quantity that varies along it (a concentration against depth) |
 | `PARAMETER` | a number, with a unit and a label (Section 5) |

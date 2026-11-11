@@ -80,7 +80,7 @@ An ontology that says what the things are. A language in which a hypothesis has 
 The Interface Science ontology has 86 classes and about a hundred properties, grounded on PROV-O, SOSA, QUDT and a base ontology for accountable agent work. Its job is to keep apart things that a fluent account runs together:
 
 - A **measurement** is not a **prediction**. They are disjoint classes. A model output "may be compared with measurements but does not become one."
-- A **model state** is not a physical entity. Declaring a variable called `N_Pb` does not assert that dangling bonds exist in the specimen.
+- A **model state** is not a physical entity. Declaring a variable called `N_Pb` does not assert that dangling bonds exist in the sample.
 - A **theory** is "an optional set of mechanism commitments. It is not a global truth graph."
 - An **assumption** is a record of its own, with a kind, attached to the model that makes it.
 - A **review status** is one of six words — proposed, under review, supported within scope, refuted within scope, inconclusive, withdrawn — and never a boolean.
@@ -208,7 +208,7 @@ So an account of why something cannot be predicted does not win. A framework tha
 
 ### What we now hand in
 
-One command takes a specimen and a recipe written in the language and returns everything the study can say about the interface that results:
+One command takes a sample and a recipe written in the language and returns everything the study can say about the interface that results:
 
 ```
 python -m isl_harness.predict examples/histories/planar_si_dry_then_forming_gas.isl
@@ -272,7 +272,7 @@ The executable candidate has two inventories and an escaped pool; the spectrum i
 
 We then asked what the data constrain, using our eight-number program (a stable and a removable part at each energy, and a level set by the anneal temperature), which passes 9 of 15 in training and 7 of 12 on the withheld oxidation. Every simpler form loses: no stable part, one spectrum times one amplitude, or a stable part flat in energy each pass 4 of 15 in training and 3 of 12 withheld; a level that ignores anneal temperature passes 3 of 15. What the data do not constrain is whether removal stops at a level or continues. The two forms agree on every anneal measured and part by 13 tolerances after 50 minutes at 1300 °C. That single anneal, on a sample oxidized at 1300 °C, separates them.
 
-*Next test:* an anneal-duration series, with carbon profiling and electrical spectra on matched specimens, followed by a second source. *Falsifier for irreversible removal:* reproducible recovery of the removed spectral contribution without renewed supply. A continuous distribution of barriers or electrical deactivation without carbon loss remains a competitor. *Status:* proposed; a fixed-shape null is rejected in four comparisons, and a two-inventory candidate has been tested on a withheld oxidation history.
+*Next test:* an anneal-duration series, with carbon profiling and electrical spectra on matched samples, followed by a second source. *Falsifier for irreversible removal:* reproducible recovery of the removed spectral contribution without renewed supply. A continuous distribution of barriers or electrical deactivation without carbon loss remains a competitor. *Status:* proposed; a fixed-shape null is rejected in four comparisons, and a two-inventory candidate has been tested on a withheld oxidation history.
 
 **H3. Finite germanium supply sets the enrichment regime.** A relation fitted to two planar values carries to a second laboratory's thin oxides, but misses the thick oxidation and extrapolates to germanium in pure silicon. The replacement hypothesis conserves Ge across the substrate, enriched layer, oxide and escaped material. It must predict the enriched layer's width and concentration together, as well as the remaining substrate. Zero starting Ge must give zero Ge everywhere.
 
@@ -292,7 +292,7 @@ A joint structure search followed. Six curvature factors were fitted to both lab
 
 The first paired-data screen now gives a useful limit. Across 18 before-and-after pairs, the drops in reported charge and midgap trap density correlate at 0.656. A single effective energy width of 0.446 eV, fitted on ten pairs, predicts only 2 of 8 withheld unannealed charge values within 10%. Adding a trap contribution is worth testing, but one universal conversion factor is inadequate. This calculation uses the measured annealed charge as an input; it is not a prediction of charge from the process recipe, and correlation does not establish that all of the charge change comes from traps.
 
-*Next test:* fit the chemistry once and compare independently calibrated electrical protocols on matched specimens, preferably with a spin or hydrogen measurement. *Falsifier for a specified mapping:* different probes require incompatible populations after their measurement responses are accounted for. *Status:* proposed; a simple observation mapping has failed its withheld comparison. Free scale factors per laboratory would conceal that failure.
+*Next test:* fit the chemistry once and compare independently calibrated electrical protocols on matched samples, preferably with a spin or hydrogen measurement. *Falsifier for a specified mapping:* different probes require incompatible populations after their measurement responses are accounted for. *Status:* proposed; a simple observation mapping has failed its withheld comparison. Free scale factors per laboratory would conceal that failure.
 
 Two things followed. The width is not one number: fitted by orientation it is about 1.0 eV on (100), 0.4 eV on (110) and 0.65 eV on (511), so the population that (110) has more of may sit in a narrower band of energies; testing that needs trap density against energy without an anneal, which the benchmark gives for the annealed case only. And the scorecard no longer scores the 28 unannealed readings against the fixed-charge program: they are a row of their own with no program, which moved fixed charge from 47% to 52% in scope and from 65% to 77% of pairs ordered right.
 

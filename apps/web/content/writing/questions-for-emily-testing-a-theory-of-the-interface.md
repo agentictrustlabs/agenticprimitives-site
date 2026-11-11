@@ -8,7 +8,7 @@
 
 ## The studies we depend on, reproduced
 
-Before the questions, the thing we most want checked. For each paper our data come from we have written the specimen and the timing of its process history in our language as the paper states them, simulated it, and set the result beside the paper's numbers. Each page has the specimen in three dimensions with its history on a clock, the paper's words beside our encoding item by item, the paper's terms mapped to ours, the simulation as ISL text, a chart of how far we land from the paper, and our assessment of how well the paper lets its result be reproduced. Start at [the studies we depend on, reproduced](/writing/interface-studies-reproduced), or go to one:
+Before the questions, the thing we most want checked. For each paper our data come from we have written the sample and the timing of its process history in our language as the paper states them, simulated it, and set the result beside the paper's numbers. Each page has the sample in three dimensions with its history on a clock, the paper's words beside our encoding item by item, the paper's terms mapped to ours, the simulation as ISL text, a chart of how far we land from the paper, and our assessment of how well the paper lets its result be reproduced. Start at [the studies we depend on, reproduced](/writing/interface-studies-reproduced), or go to one:
 
 - [Vitkavage, Irene and Massoud 1990](/writing/interface-study-vitkavage-1990): reproducible from the paper as written: moderate; 9 within, 3 near, 9 off of 21 numbers.
 - [Deal, Sklar, Grove and Snow 1967](/writing/interface-study-deal-1967): reproducible from the paper as written: moderate; 9 within, 4 near of 13 numbers.

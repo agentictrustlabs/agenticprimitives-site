@@ -1,9 +1,9 @@
 'use client';
 // THE STUDY FIGURES. Three figures for one reproduced study of the interface essay, all drawn from one JSON record
 // that the ISL harness writes (`scripts/reproduce_studies.py` → `content/studies/<id>.json`):
-//   StudyPlayer   the specimen in three dimensions and its process history on a clock; layer thicknesses and the
+//   StudyPlayer   the sample in three dimensions and its process history on a clock; layer thicknesses and the
 //                 read-outs are the simulation's own values at each moment, not a drawing of them.
-//   StudyMatch    the paper's specimen and history beside our encoding of them, item by item, with a verdict each.
+//   StudyMatch    the paper's sample and history beside our encoding of them, item by item, with a verdict each.
 //   StudyCompare  the simulation against the paper's numbers: signed difference per measurement, and curves.
 // No dependencies: the 3D view is a hand-rolled projection into SVG (drag to turn it).
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -28,7 +28,7 @@ export interface CompareRow { case: string; quantity: string; unit: string; meas
 export interface CompareSeries { title: string; xLabel: string; yLabel: string; logX?: boolean; lines: { name: string; sim: [number, number][]; meas: [number, number][] }[] }
 export interface StudyData {
   id: string; title: string;
-  match: { specimen: MatchRow[]; history: MatchRow[] };
+  match: { sample: MatchRow[]; history: MatchRow[] };
   cases: StudyCase[];
   comparison: { rows: CompareRow[]; series: CompareSeries[] };
   comparison_aligned?: { rows: CompareRow[]; series: CompareSeries[] };
@@ -231,7 +231,7 @@ function Scene({ c, t, T, gases, yaw, phase }: { c: StudyCase; t: number; T: num
   });
 
   return (
-    <svg viewBox="0 0 660 380" className="block w-full select-none" role="img" aria-label={`${c.label}: the specimen at ${span(t)} into its history`}>
+    <svg viewBox="0 0 660 380" className="block w-full select-none" role="img" aria-label={`${c.label}: the sample at ${span(t)} into its history`}>
       <defs>
         <radialGradient id="heat" cx="0.4" cy="0.55" r="0.6"><stop offset="0" stopColor="#ff7a1a" stopOpacity={0.5 * hot} /><stop offset="1" stopColor="#ff7a1a" stopOpacity="0" /></radialGradient>
       </defs>
@@ -312,7 +312,7 @@ export function StudyPlayer({ data }: { data: StudyData }) {
   return (
     <div ref={rootRef}>
       {data.cases.length > 1 && (
-        <div className="mb-3 flex flex-wrap gap-2" role="tablist" aria-label="Which specimen">
+        <div className="mb-3 flex flex-wrap gap-2" role="tablist" aria-label="Which sample">
           {data.cases.map((k, i) => (
             <button key={k.id} role="tab" aria-selected={i === ci} onClick={() => { setCi(i); setU(0); setPlaying(true); }}
               className={`rounded-full border px-3 py-1 text-xs ${i === ci ? 'border-teal-bright bg-teal-bright/15 text-white' : 'border-white/20 text-slate-300 hover:border-white/50'}`}>
@@ -404,7 +404,7 @@ export function StudyPlayer({ data }: { data: StudyData }) {
       </svg>
       <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-400">
         <button onClick={() => { if (u >= 1) setU(0); setPlaying((p) => !p); }} className="rounded-full border border-white/25 px-4 py-1.5 text-sm text-white hover:border-white">{playing ? 'Pause' : u >= 1 ? 'Replay' : 'Play'}</button>
-        <span>Drag the specimen to turn it. Click the clock to move through the history.</span>
+        <span>Drag the sample to turn it. Click the clock to move through the history.</span>
         <span className="ml-auto">Layer heights are the simulated thicknesses, drawn to one scale within the film; the substrate is cut short.</span>
       </div>
     </div>
@@ -414,7 +414,7 @@ export function StudyPlayer({ data }: { data: StudyData }) {
 // --------------------------------------------------------------------------------------------------------- match ---
 
 export function StudyMatch({ data }: { data: StudyData }) {
-  const all = [...data.match.specimen, ...data.match.history];
+  const all = [...data.match.sample, ...data.match.history];
   const count = (s: MatchStatus) => all.filter((r) => r.status === s).length;
   const block = (title: string, rows: MatchRow[]) => (
     <div className="mt-6">
@@ -456,7 +456,7 @@ export function StudyMatch({ data }: { data: StudyData }) {
           </span>
         ))}
       </div>
-      {block('Specimen', data.match.specimen)}
+      {block('Sample', data.match.sample)}
       {block('History', data.match.history)}
     </figure>
   );

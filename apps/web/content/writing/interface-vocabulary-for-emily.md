@@ -44,7 +44,7 @@ Two things to know before reading the tables.
 | germanium-pile-up | Germanium accumulated at the oxide interface when silicon is oxidized selectively. | one source's term | [Rabie 2005](https://doi.org/10.1063/1.2060927) (1) |
 | interlayer-thickness | Thickness of a layer that forms between a deposited dielectric and the substrate. | no source in the library | none |
 
-### Processes (22): things done to a specimen
+### Processes (22): things done to a sample
 
 | Term | Definition (agent, unverified) | Support | Sources (of how many) |
 |---|---|---|---|
