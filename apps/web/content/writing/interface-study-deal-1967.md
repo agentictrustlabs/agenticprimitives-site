@@ -15,8 +15,8 @@ The origin of the statement that fixed charge is set by the last hot step. Its T
 | | |
 |---|---|
 | Specimen described | 1 of 5 properties we need are stated and encoded the same |
-| History described | 2 of 7 steps are stated and encoded the same; 3 are stated by the paper and absent from our history; 0 are ours because the paper is silent |
-| Timing | 1 of 3 simulated steps have a stated duration; 4 of 4 other steps have none; 6 timing gaps listed below |
+| History described | 2 of 8 steps are stated and encoded the same; 4 are stated by the paper and absent from our history; 0 are ours because the paper is silent |
+| Timing | 1 of 3 simulated steps have a stated duration; 5 of 5 other steps have none; 6 timing gaps listed below |
 | How the results are given | Printed tables (I to III); Figures 3 and 4 not used |
 | Repeatability stated by the authors | Yes: “always better than 5 × 10^10 cm-2” |
 | Internal consistency | Fair: the standard fast pull is 1.9 in Table I and 1.7 in Tables II to IV; the tube is 50, 54 or 53.3 cm |
@@ -35,7 +35,7 @@ study: deal-1967
 
 ## Does our specimen and history match the paper's?
 
-Left: the paper's own words, with the page of the PDF. Right: what we simulate. **3** same, **4** approximated, **5** not in ours.
+Left: the paper's own words, with the page of the PDF. Right: what we simulate. **3** same, **4** approximated, **6** not in ours.
 
 ```study-match
 study: deal-1967
@@ -52,30 +52,31 @@ Time is counted from the start of the first simulated step. A step the language 
 | 1 | Solvent clean and chemical polish | 0 s | not simulated | | | | | **not stated** |
 | 2 | Slices flat on a quartz boat, into the tube | 0 s | not simulated | | | | | **not stated**. Push rate and push gas not given |
 | 3 | Dry oxidation at 1200 °C | 0 s | 1 h 00 min | 1 h 00 min | 1200 → 1200 °C | held | dry_O2 | **stated**. 60 min, from the Table I caption; Tables II and III give no time |
-| 4 | Pull from the furnace, 3 s | 1 h 00 min | 3 s | 1 h 00 min 03 s | 1200 → 400 °C | -267 °C/s | dry_O2 | **partly stated**. “less than 3 sec” is a bound; 3 s used |
-| 5 | 50–100 Å of oxide removed, aluminium on top, back oxide removed | 1 h 00 min 03 s | not simulated | | | | | **not stated** |
-| 6 | Heat treatment after metal, 550 °C in nitrogen | 1 h 00 min 03 s | 3 min 30 s | 1 h 03 min 33 s | 550 → 550 °C | held | inert_N2 | **partly stated**. “2-5 min”; 3.5 min used |
-| 7 | C-V at about 100 kc, 25 °C | 1 h 03 min 33 s | not simulated | | | | | **not stated** |
+| 4 | Pull from the furnace, 3 s | 1 h 00 min | 3 s | 1 h 00 min 03 s | 1200 → 400 °C | -267 °C/s | dry_O2 | **partly stated**. “less than 3 sec” is a bound; 3 s used; the end temperature is not given and is searched from 25 to 700 °C |
+| 5 | 50–100 Å of oxide removed in dilute HF, back oxide removed | 1 h 00 min 03 s | not simulated | | | | | **not stated** |
+| 6 | Aluminium field plates, 375 µm | 1 h 00 min 03 s | not simulated | | | | | **not stated** |
+| 7 | Heat treatment after metal, 550 °C in nitrogen | 1 h 00 min 03 s | 3 min 30 s | 1 h 03 min 33 s | 550 → 550 °C | held | inert_N2 | **partly stated**. “2-5 min”; 3.5 min used, searched from 2 to 5 min |
+| 8 | C-V at about 100 kc, 25 °C | 1 h 03 min 33 s | not simulated | | | | | **not stated** |
 
 Simulated time in this history: **1 h 03 min 33 s**.
 
 #### Across the specimens
 
-| Specimen | Oxidation | Pull | MetalAnneal | OxygenHold | NitrogenAnneal | ArgonAnneal | Total |
-|---|---|---|---|---|---|---|---|
-| (111), 1200 °C, standard fast pull | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 03 min 33 s |
-| (111), 1200 °C, pulled in 10 s | 1 h 00 min at 1200 °C | 10.02 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 03 min 40 s |
-| (111), 1200 °C, pulled in 30 s | 1 h 00 min at 1200 °C | 30 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 04 min |
-| (111), 1200 °C, pulled in 1 min | 1 h 00 min at 1200 °C | 1 min at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 04 min 30 s |
-| (111), 1200 °C, pulled in 2.8 min | 1 h 00 min at 1200 °C | 2 min 48 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 06 min 18 s |
-| (111), 1200 °C, pulled in 34 min | 1 h 00 min at 1200 °C | 34 min at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 37 min 30 s |
-| (111), 1200 °C, then oxygen at 900 °C | 1 h 00 min at 1200 °C | 3 s at 900→400 °C | 3 min 30 s at 550 °C | 10 min at 900 °C | – | – | 1 h 13 min 33 s |
-| (111), 1200 °C, then oxygen at 550 °C | 1 h 00 min at 1200 °C | 3 s at 550→400 °C | 3 min 30 s at 550 °C | 1 h 30 min at 550 °C | – | – | 2 h 33 min 33 s |
-| (111), 1200 °C, then nitrogen at 1200 °C | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | 10 min at 1200 °C | – | 1 h 13 min 33 s |
-| (111), 920 °C, then argon at 920 °C | 1 h 00 min at 920 °C | 3 s at 920→400 °C | 3 min 30 s at 550 °C | – | – | 30 min at 920 °C | 1 h 33 min 33 s |
-| (100), 1200 °C, standard fast pull | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | 1 h 03 min 33 s |
-| (100), 1200 °C, then oxygen at 550 °C | 1 h 00 min at 1200 °C | 3 s at 550→400 °C | 3 min 30 s at 550 °C | 1 h 30 min at 550 °C | – | – | 2 h 33 min 33 s |
-| (100), 920 °C, then argon at 920 °C | 1 h 00 min at 920 °C | 3 s at 920→400 °C | 3 min 30 s at 550 °C | – | – | 30 min at 920 °C | 1 h 33 min 33 s |
+| Specimen | Oxidation | Pull | MetalAnneal | OxygenHold | NitrogenAnneal | Oxidation920 | ArgonAnneal | Total |
+|---|---|---|---|---|---|---|---|---|
+| (111), 1200 °C, standard fast pull | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 03 min 33 s |
+| (111), 1200 °C, pulled in 10 s | 1 h 00 min at 1200 °C | 10.02 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 03 min 40 s |
+| (111), 1200 °C, pulled in 30 s | 1 h 00 min at 1200 °C | 30 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 04 min |
+| (111), 1200 °C, pulled in 1 min | 1 h 00 min at 1200 °C | 1 min at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 04 min 30 s |
+| (111), 1200 °C, pulled in 2.8 min | 1 h 00 min at 1200 °C | 2 min 48 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 06 min 18 s |
+| (111), 1200 °C, pulled in 34 min | 1 h 00 min at 1200 °C | 34 min at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 37 min 30 s |
+| (111), 1200 °C, then oxygen at 900 °C | 1 h 00 min at 1200 °C | 3 s at 900→400 °C | 3 min 30 s at 550 °C | 10 min at 900 °C | – | – | – | 1 h 13 min 33 s |
+| (111), 1200 °C, then oxygen at 550 °C | 1 h 00 min at 1200 °C | 3 s at 550→400 °C | 3 min 30 s at 550 °C | 1 h 30 min at 550 °C | – | – | – | 2 h 33 min 33 s |
+| (111), 1200 °C, then nitrogen at 1200 °C | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | 10 min at 1200 °C | – | – | 1 h 13 min 33 s |
+| (111), 920 °C, then argon at 920 °C | – | 3 s at 920→400 °C | 3 min 30 s at 550 °C | – | – | 1 h 00 min at 920 °C | 30 min at 920 °C | 1 h 33 min 33 s |
+| (100), 1200 °C, standard fast pull | 1 h 00 min at 1200 °C | 3 s at 1200→400 °C | 3 min 30 s at 550 °C | – | – | – | – | 1 h 03 min 33 s |
+| (100), 1200 °C, then oxygen at 550 °C | 1 h 00 min at 1200 °C | 3 s at 550→400 °C | 3 min 30 s at 550 °C | 1 h 30 min at 550 °C | – | – | – | 2 h 33 min 33 s |
+| (100), 920 °C, then argon at 920 °C | – | 3 s at 920→400 °C | 3 min 30 s at 550 °C | – | – | 1 h 00 min at 920 °C | 30 min at 920 °C | 1 h 33 min 33 s |
 
 #### Timing the paper does not give
 
@@ -122,13 +123,14 @@ SPECIMEN Slice_111_pull_3s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT dry_O2 TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -143,13 +145,14 @@ SPECIMEN Slice_111_pull_10s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 10.02 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 10.02 TEMP 1200->400 AMBIENT dry_O2 TIMING stated VARY T_end 25..700
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -164,13 +167,14 @@ SPECIMEN Slice_111_pull_30s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 30 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 30 TEMP 1200->400 AMBIENT dry_O2 TIMING stated VARY T_end 25..700
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -185,13 +189,14 @@ SPECIMEN Slice_111_pull_60s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 60 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 60 TEMP 1200->400 AMBIENT dry_O2 TIMING stated VARY T_end 25..700
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -206,13 +211,14 @@ SPECIMEN Slice_111_pull_168s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 168 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 168 TEMP 1200->400 AMBIENT dry_O2 TIMING stated VARY T_end 25..700
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -227,13 +233,14 @@ SPECIMEN Slice_111_pull_2040s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 2040 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 2040 TEMP 1200->400 AMBIENT dry_O2 TIMING stated VARY T_end 25..700
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -248,14 +255,15 @@ SPECIMEN Slice_111_O2_900 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN OxygenHold DURATION 600 TEMP 900->900 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 900->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN OxygenHold DURATION 600 TEMP 900->900 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 900->400 AMBIENT dry_O2 TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -270,14 +278,15 @@ SPECIMEN Slice_111_O2_550 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN OxygenHold DURATION 5400 TEMP 550->550 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 550->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN OxygenHold DURATION 5400 TEMP 550->550 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 550->400 AMBIENT dry_O2 TIMING bound VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -292,14 +301,15 @@ SPECIMEN Slice_111_N2_1200 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN NitrogenAnneal DURATION 600 TEMP 1200->1200 AMBIENT inert_N2
-    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT inert_N2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN NitrogenAnneal DURATION 600 TEMP 1200->1200 AMBIENT inert_N2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT inert_N2 TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -314,14 +324,15 @@ SPECIMEN Slice_111_Ar_920 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 920->920 AMBIENT dry_O2
-    RUN ArgonAnneal DURATION 1800 TEMP 920->920 AMBIENT inert_Ar
-    RUN Pull DURATION 3 TEMP 920->400 AMBIENT inert_Ar
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation920 DURATION 3600 TEMP 920->920 AMBIENT dry_O2 TIMING assumed VARY duration 1800..86400
+    RUN ArgonAnneal DURATION 1800 TEMP 920->920 AMBIENT inert_Ar TIMING stated
+    RUN Pull DURATION 3 TEMP 920->400 AMBIENT inert_Ar TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -336,13 +347,14 @@ SPECIMEN Slice_100_pull_3s {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 1200->400 AMBIENT dry_O2 TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -357,14 +369,15 @@ SPECIMEN Slice_100_O2_550 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2
-    RUN OxygenHold DURATION 5400 TEMP 550->550 AMBIENT dry_O2
-    RUN Pull DURATION 3 TEMP 550->400 AMBIENT dry_O2
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation DURATION 3600 TEMP 1200->1200 AMBIENT dry_O2 TIMING stated
+    RUN OxygenHold DURATION 5400 TEMP 550->550 AMBIENT dry_O2 TIMING stated
+    RUN Pull DURATION 3 TEMP 550->400 AMBIENT dry_O2 TIMING bound VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -379,14 +392,15 @@ SPECIMEN Slice_100_Ar_920 {
     DOPING: p_type_boron_1p4e16
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Solvent clean and chemical polish
-    # not simulated: Slices flat on a quartz boat, into the tube
-    RUN Oxidation DURATION 3600 TEMP 920->920 AMBIENT dry_O2
-    RUN ArgonAnneal DURATION 1800 TEMP 920->920 AMBIENT inert_Ar
-    RUN Pull DURATION 3 TEMP 920->400 AMBIENT inert_Ar
-    # not simulated: 50–100 Å of oxide removed, aluminium on top, back oxide removed
-    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2
-    # not simulated: C-V at about 100 kc, 25 °C
+    EVENT Polish KIND clean TIMING assumed                       # Solvent clean and chemical polish
+    EVENT Load KIND load TIMING assumed                          # Slices flat on a quartz boat, into the tube
+    RUN Oxidation920 DURATION 3600 TEMP 920->920 AMBIENT dry_O2 TIMING assumed VARY duration 1800..86400
+    RUN ArgonAnneal DURATION 1800 TEMP 920->920 AMBIENT inert_Ar TIMING stated
+    RUN Pull DURATION 3 TEMP 920->400 AMBIENT inert_Ar TIMING bound VARY T_end 25..700 VARY duration 1..3
+    EVENT Strip KIND etch TIMING assumed                         # 50–100 Å of oxide removed in dilute HF, back oxide removed
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium field plates, 375 µm
+    RUN MetalAnneal DURATION 210 TEMP 550->550 AMBIENT inert_N2 TIMING range VARY duration 120..300
+    EVENT CV KIND measurement TIMING assumed                     # C-V at about 100 kc, 25 °C
 }
 ```
 
@@ -482,6 +496,74 @@ study: deal-1967
 | (100), 1200 °C, standard fast pull | fixed charge (Qss/q) | 2.00e+10 cm⁻² | 4.65e+10 cm⁻² | +132% | within (±250%) | supported within scope | Table II |
 | (100), 1200 °C, then oxygen at 550 °C | fixed charge (Qss/q) | 4.20e+11 cm⁻² | 3.72e+11 cm⁻² | -11% | within (±11.9048%) | supported within scope | Table III A |
 | (100), 920 °C, then argon at 920 °C | fixed charge (Qss/q) | 7.00e+10 cm⁻² | 3.59e+10 cm⁻² | -49% | within (±71.4286%) | supported within scope | Table III B |
+
+## Aligning the simulation: what the unstated things would have to be
+
+Every step whose timing or temperature the paper leaves open carries a range in the history above (`VARY`). `scripts/align_study.py` searched those ranges against the paper's numbers through the same predictor, first one unknown at a time, then all together. No parameter a program declares `fitted` was touched. The unknowns were chosen on 111_pull_10s, 111_pull_168s, 111_pull_2040s, 111_pull_30s, 111_pull_3s, 111_pull_60s only; every other number is a test they played no part in.
+
+| Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
+|---|---|---|---|---|---|---|
+| Pull from the furnace, 3 s: T end | “less than 3 sec” is a bound; 3 s used; the end temperature is not given and is searched from 25 to 700 °C | 25 to 700 °C | 400 °C | 475 °C | 5 of 6 within tolerance, median error 3.5% | 6 of 6 within tolerance, median error 8.3% |
+| Pull from the furnace, 3 s: duration | “less than 3 sec” is a bound; 3 s used; the end temperature is not given and is searched from 25 to 700 °C | 1 to 3 s | 3 s | 1 s (flat: the data do not constrain it) | 5 of 6 within tolerance, median error 3.5% | 5 of 6 within tolerance, median error 3.1% |
+| Heat treatment after metal, 550 °C in nitrogen: duration | “2-5 min”; 3.5 min used, searched from 2 to 5 min | 120 to 300 s | 210 s | 120 s | 5 of 6 within tolerance, median error 3.5% | 6 of 6 within tolerance, median error 3.5% |
+| Dry oxidation at 920 °C: duration | No time is given for any 920 °C oxidation; searched from 30 min to 24 h | 1800 to 86400 s | 3600 s | 3600 s (flat: the data do not constrain it) | 5 of 6 within tolerance, median error 3.5% | 5 of 6 within tolerance, median error 3.5% |
+
+Together: Pull T end 400 °C (was 400); Pull duration 1 s (was 3); MetalAnneal duration 150 s (was 210); Oxidation920 duration 3600 s (was 3600).
+
+As reproduced: 9 of 13 within tolerance, median error 12.5%. Aligned: 10 of 13 within tolerance, median error 9.3%. On the held-out specimens only: 4 of 7 within tolerance, median error 13.6% as reproduced, 4 of 7 within tolerance, median error 13.1% aligned.
+
+Choices of program or material property, each scored on its own and on top of the aligned history:
+
+| Variant | Alone | With the aligned history |
+|---|---|---|
+| exponential pull toward 25 °C, TAU = pull time | 9 of 13 within tolerance, median error 12.5% | 9 of 13 within tolerance, median error 9.7% |
+| exponential pull toward 25 °C, TAU = 0.3 × pull time | 5 of 13 within tolerance, median error 28.8% | 5 of 13 within tolerance, median error 28.8% |
+| exponential pull toward 400 °C, TAU = 0.5 × pull time | 9 of 13 within tolerance, median error 12.5% | 9 of 13 within tolerance, median error 9.5% |
+| then 20 s more cooling in oxygen (TAU 60 s) | 2 of 13 within tolerance, median error 71.6% | 1 of 13 within tolerance, median error 69.2% |
+| then 10 min cooling to 25 °C in oxygen (TAU 60 s) | 1 of 13 within tolerance, median error 210.4% | 0 of 13 within tolerance, median error 210.4% |
+| then 10 min cooling to 25 °C in air (TAU 60 s) | 1 of 13 within tolerance, median error 171.7% | 0 of 13 within tolerance, median error 171.1% |
+| then 10 min cooling to 25 °C in nitrogen (TAU 60 s) | 9 of 13 within tolerance, median error 12.5% | 10 of 13 within tolerance, median error 9.3% |
+
+**What was searched.** Four things the paper leaves open: the temperature at which a pull ends (25 to 700 °C, one value for every pull that starts hot), the length of the standard fast pull (“less than 3 sec”: 1 to 3 s), the 550 °C nitrogen treatment after metal (“2-5 min”) and the 920 °C oxidation time (not given; 30 min to 24 h). They were chosen on Table I's six pulls only; the seven values of Tables II and III are the test.
+
+**The pull end temperature is pinned, and 400 °C stands.** Scanned alone on Table I it passes 2 of 6 at 25 °C, 2 at 137 °C, 3 at 250 °C, 5 at 362 and 400 °C, 6 at 475 °C, 2 at 587 °C and 2 at 700 °C. The window that works is about 360 to 480 °C; outside it the six pulls cannot all be matched by any one end temperature. Combined with the other unknowns the search returned to 400 °C. This number is a fit: it was first chosen against Table I when the pull model was built, and it is chosen against Table I again here.
+
+**The other three unknowns barely matter.** The fast-pull length moves the median error on Table I from 3.5% (3 s) to 3.1% (1 s) and changes no verdict. The 550 °C nitrogen treatment moves one Table I value across its tolerance (6 of 6 at 2 to 2.5 min, 5 of 6 at 3 to 5 min): the program's charge relaxes slightly without oxygen even at 550 °C. The 920 °C oxidation time changes nothing, because the charge program starts from its steady state and does not simulate the oxidation. Together: pull 1 s, metal treatment 2.5 min, pull end 400 °C, the 920 °C oxidation left at 60 min (its scan is flat).
+
+**On the held-out tables nothing improves.** Tables II and III: 4 of 7 within tolerance as reproduced and 4 of 7 aligned, median error 13.6% and 13.1%. The (111) hold in oxygen at 900 °C moves inside its tolerance (5.02 against 4.6 × 10^11 cm^-2) and the (100) hold at 550 °C moves just outside (3.70 against 4.2). The nitrogen anneal at 1200 °C stays at about half the paper's value (0.97 against 1.8) and the (100) argon anneal at 920 °C stays at half (0.36 against 0.7): those are the program's equilibria without oxygen, which no timing unknown reaches.
+
+**The shape of the pull.** An exponential fall toward 25 °C with a time constant equal to the pull time does as well as the straight fall to 400 °C (9 of 13, median 12.5%; 9.7% on the aligned history); it ends each pull at about 460 °C. So does an exponential fall toward 400 °C with a time constant of half the pull time (9 of 13). A faster exponential, time constant 0.3 × the pull time toward 25 °C, ends below 100 °C and fails (5 of 13, median 28.8%, simulation high). The data cannot tell a linear from an exponential pull; what they fix is that the charge must stop moving once the slice is somewhere around 400 to 480 °C.
+
+**Cooling to room temperature: a finding about the program, not the paper.** The program's oxygen rate was fitted with an activation energy of 0.05 eV (k0 = 0.081 s^-1), so in oxygen its time constant is about 18 s at 1200 °C and still about 90 s at 25 °C, and the value it relaxes toward is the steady-state line extrapolated down in temperature: 14.3 × 10^11 cm^-2 on (111) and 6.5 × 10^11 on (100) at 25 °C. Twenty more seconds of cooling in oxygen after the pull takes the score from 9 of 13 to 2 of 13 (median 72%, every value high); ten minutes of cooling to 25 °C in oxygen gives 1 of 13 (median 210%), and in air 1 of 13 (median 172%). The same ten minutes in nitrogen changes nothing (9 of 13). A slice in 1967 did cool to room temperature, in oxygen or air, and kept 1.9 × 10^11. So the program reproduces Table I only because its histories stop at 400 °C: the end temperature of the pull is standing in for an activation energy the oxygen kinetics do not have.
+
+```study-compare
+study: deal-1967
+set: aligned
+```
+
+**4** within, **3** near of 7 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
+
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| (111), 1200 °C, then oxygen at 900 °C | fixed charge (Qss/q) | 4.60e+11 cm⁻² | 5.23e+11 | 5.02e+11 | +9% | within (±11%) | test |
+| (111), 1200 °C, then oxygen at 550 °C | fixed charge (Qss/q) | 1.00e+12 cm⁻² | 8.75e+11 | 8.69e+11 | -13% | near (±10%) | test |
+| (111), 1200 °C, then nitrogen at 1200 °C | fixed charge (Qss/q) | 1.80e+11 cm⁻² | 9.74e+10 | 9.68e+10 | -46% | near (±28%) | test |
+| (111), 920 °C, then argon at 920 °C | fixed charge (Qss/q) | 1.90e+11 cm⁻² | 2.08e+11 | 2.08e+11 | +9% | within (±26%) | test |
+| (100), 1200 °C, standard fast pull | fixed charge (Qss/q) | 2.00e+10 cm⁻² | 4.65e+10 | 2.91e+10 | +46% | within (±250%) | test |
+| (100), 1200 °C, then oxygen at 550 °C | fixed charge (Qss/q) | 4.20e+11 cm⁻² | 3.72e+11 | 3.70e+11 | -12% | near (±12%) | test |
+| (100), 920 °C, then argon at 920 °C | fixed charge (Qss/q) | 7.00e+10 cm⁻² | 3.59e+10 | 3.58e+10 | -49% | within (±71%) | test |
+
+Alignment cannot fix the oxygen kinetics. With a 0.05 eV activation energy the charge keeps following the extrapolated steady-state line at any temperature, which no measurement supports below about 550 °C (the lowest temperature in Table III). A freeze-out is needed: a rate with a real activation energy (refitted on Table I with histories that cool to room temperature), or a steady-state line that stops falling below some temperature. That is a change to a fitted program, which this page does not make.
+
+Alignment cannot fix the anneals without oxygen either: nitrogen at 1200 °C and argon at 920 °C on (100) come out at about half the paper's values whatever the timing, because the inert equilibrium was fitted to another laboratory's wafers.
+
+### What our language and ontology cannot yet say
+
+- A pull as a motion through a furnace profile: `PULL DISTANCE 54 cm DURATION t PROFILE <furnace axial temperature profile>`, so that the wafer's temperature against time follows from the paper's own words (time and distance) instead of an end temperature and a shape we invent. The paper gives distance and time; we have to write a temperature ramp.
+- A history that ends at the measurement temperature by default (a final cooling to 25 °C written explicitly, with its gas). Our histories stop at the end of the last hot step, which is what hid the low-temperature behaviour of the charge program.
+- A way to search a PROFILE TAU as an unknown (`VARY tau <lo>..<hi>`, or `VARY tau_factor` relative to the duration). The exponential pull had to be tried as a handful of declared variants.
+- A tag for which samples were measured with a gold probe on bare oxide and which were metallized and given the 550 °C treatment: an optional step (`EVENT … OPTIONAL`, or two histories under one measured value), since the paper does not say which tabulated value is which.
+- An ambient for “the end of the tube”: where the slice sits after the pull (open tube, flowing oxygen, room air) is part of the history and has no word.
 
 ### The paper's own conclusions
 

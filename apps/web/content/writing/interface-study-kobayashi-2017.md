@@ -58,15 +58,15 @@ Simulated time in this history: **20 h 00 min**.
 
 #### Across the specimens
 
-| Specimen | Oxidation | ArgonAnneal0 | Cool | ArgonAnneal1 | Total |
-|---|---|---|---|---|---|
-| Oxidized at 1150 °C, no anneal | 20 h 00 min at 1150 °C | – | – | – | 20 h 00 min |
-| 1150 °C, argon 1300 °C, rapid cooling | 20 h 00 min at 1150 °C | 5 min at 1300 °C | 50 s at 1300→800 °C | – | 20 h 05 min 50 s |
-| 1150 °C, argon 1500 °C, rapid cooling | 20 h 00 min at 1150 °C | 5 min at 1500 °C | 1 min 10 s at 1500→800 °C | – | 20 h 06 min 10 s |
-| 1150 °C, argon 1500 °C, standard cooling | 20 h 00 min at 1150 °C | 5 min at 1500 °C | 10 min at 1500→800 °C | – | 20 h 15 min |
-| Oxidized at 1300 °C, no anneal | 40 min at 1300 °C | – | – | – | 40 min |
-| 1300 °C, argon 1500 °C, rapid cooling | 40 min at 1300 °C | 5 min at 1500 °C | 1 min 10 s at 1500→800 °C | – | 46 min 10 s |
-| 1300 °C, argon 1500 °C, then argon 1300 °C | 40 min at 1300 °C | 5 min at 1500 °C | 50 s at 1300→800 °C | 5 min at 1300 °C | 50 min 50 s |
+| Specimen | Oxidation | RampUp | ArgonAnneal0 | CoolRapid | CoolStandard | ArgonAnneal1 | Total |
+|---|---|---|---|---|---|---|---|
+| Oxidized at 1150 °C, no anneal | 20 h 00 min at 1150 °C | – | – | – | – | – | 20 h 00 min |
+| 1150 °C, argon 1300 °C, rapid cooling | 20 h 00 min at 1150 °C | 5 min at 25→1300 °C | 5 min at 1300 °C | 50 s at 1300→800 °C | – | – | 20 h 10 min 50 s |
+| 1150 °C, argon 1500 °C, rapid cooling | 20 h 00 min at 1150 °C | 5 min at 25→1500 °C | 5 min at 1500 °C | 1 min 10 s at 1500→800 °C | – | – | 20 h 11 min 10 s |
+| 1150 °C, argon 1500 °C, standard cooling | 20 h 00 min at 1150 °C | 5 min at 25→1500 °C | 5 min at 1500 °C | – | 10 min at 1500→800 °C | – | 20 h 20 min |
+| Oxidized at 1300 °C, no anneal | 40 min at 1300 °C | – | – | – | – | – | 40 min |
+| 1300 °C, argon 1500 °C, rapid cooling | 40 min at 1300 °C | 5 min at 25→1500 °C | 5 min at 1500 °C | 1 min 10 s at 1500→800 °C | – | – | 51 min 10 s |
+| 1300 °C, argon 1500 °C, then argon 1300 °C | 40 min at 1300 °C | 5 min at 25→1500 °C | 5 min at 1500 °C | 50 s at 1300→800 °C | – | 5 min at 1300 °C | 55 min 50 s |
 
 #### Timing the paper does not give
 
@@ -112,10 +112,10 @@ SPECIMEN ox1150C {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2 TIMING stated
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -131,13 +131,14 @@ SPECIMEN ox1150C_Ar1300C_cool600 {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Moved to a different furnace
-    RUN ArgonAnneal0 DURATION 300 TEMP 1300->1300 AMBIENT inert_Ar
-    RUN Cool DURATION 50 TEMP 1300->800 AMBIENT inert_Ar
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2 TIMING stated
+    EVENT Transfer KIND transfer TIMING assumed                  # Moved to a different furnace
+    RUN RampUp DURATION 300 TEMP 25->1300 AMBIENT inert_Ar TIMING assumed VARY duration 60..1800
+    RUN ArgonAnneal0 DURATION 300 TEMP 1300->1300 AMBIENT inert_Ar TIMING range VARY duration 60..600
+    RUN CoolRapid DURATION 50 TEMP 1300->800 AMBIENT inert_Ar TIMING bound VARY duration 12.5..50
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -153,13 +154,14 @@ SPECIMEN ox1150C_Ar1500C_cool600 {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Moved to a different furnace
-    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar
-    RUN Cool DURATION 70 TEMP 1500->800 AMBIENT inert_Ar
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2 TIMING stated
+    EVENT Transfer KIND transfer TIMING assumed                  # Moved to a different furnace
+    RUN RampUp DURATION 300 TEMP 25->1500 AMBIENT inert_Ar TIMING assumed VARY duration 60..1800
+    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar TIMING range VARY duration 60..600
+    RUN CoolRapid DURATION 70 TEMP 1500->800 AMBIENT inert_Ar TIMING bound VARY duration 17.5..70
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -175,13 +177,14 @@ SPECIMEN ox1150C_Ar1500C_cool70 {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Moved to a different furnace
-    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar
-    RUN Cool DURATION 600 TEMP 1500->800 AMBIENT inert_Ar
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 72000 TEMP 1150->1150 AMBIENT dry_O2 TIMING stated
+    EVENT Transfer KIND transfer TIMING assumed                  # Moved to a different furnace
+    RUN RampUp DURATION 300 TEMP 25->1500 AMBIENT inert_Ar TIMING assumed VARY duration 60..1800
+    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar TIMING range VARY duration 60..600
+    RUN CoolStandard DURATION 600 TEMP 1500->800 AMBIENT inert_Ar TIMING bound VARY duration 600..2400
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -197,10 +200,10 @@ SPECIMEN ox1300C {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2 TIMING range VARY duration 2400..4800
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -216,13 +219,14 @@ SPECIMEN ox1300C_Ar1500C_cool600 {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2
-    # not simulated: Moved to a different furnace
-    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar
-    RUN Cool DURATION 70 TEMP 1500->800 AMBIENT inert_Ar
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2 TIMING range VARY duration 2400..4800
+    EVENT Transfer KIND transfer TIMING assumed                  # Moved to a different furnace
+    RUN RampUp DURATION 300 TEMP 25->1500 AMBIENT inert_Ar TIMING assumed VARY duration 60..1800
+    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar TIMING range VARY duration 60..600
+    RUN CoolRapid DURATION 70 TEMP 1500->800 AMBIENT inert_Ar TIMING bound VARY duration 17.5..70
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -238,14 +242,15 @@ SPECIMEN ox1300C_Ar1500C_Ar1300C_cool600 {
     OFFCUT: 4_degrees
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Clean and load
-    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2
-    # not simulated: Moved to a different furnace
-    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar
-    RUN ArgonAnneal1 DURATION 300 TEMP 1300->1300 AMBIENT inert_Ar
-    RUN Cool DURATION 50 TEMP 1300->800 AMBIENT inert_Ar
-    # not simulated: Aluminium electrodes
-    # not simulated: C-V, high (1 MHz)-low method
+    EVENT Clean KIND clean TIMING assumed                        # Clean and load
+    RUN Oxidation DURATION 2400 TEMP 1300->1300 AMBIENT dry_O2 TIMING range VARY duration 2400..4800
+    EVENT Transfer KIND transfer TIMING assumed                  # Moved to a different furnace
+    RUN RampUp DURATION 300 TEMP 25->1500 AMBIENT inert_Ar TIMING assumed VARY duration 60..1800
+    RUN ArgonAnneal0 DURATION 300 TEMP 1500->1500 AMBIENT inert_Ar TIMING range VARY duration 60..600
+    RUN ArgonAnneal1 DURATION 300 TEMP 1300->1300 AMBIENT inert_Ar TIMING range
+    RUN CoolRapid DURATION 50 TEMP 1300->800 AMBIENT inert_Ar TIMING bound VARY duration 12.5..50
+    EVENT Metal KIND metallization TIMING assumed                # Aluminium electrodes
+    EVENT CV KIND measurement TIMING assumed                     # C-V, high (1 MHz)-low method
 }
 ```
 
@@ -347,6 +352,68 @@ study: kobayashi-2017
 | 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.3 eV | 1.05e+12 cm⁻² eV⁻¹ | 8.62e+11 cm⁻² eV⁻¹ | -18% | within (±20%) | inconclusive | Figures 2 and 3, from the vector drawing |
 | 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.4 eV | 4.10e+11 cm⁻² eV⁻¹ | 3.91e+11 cm⁻² eV⁻¹ | -5% | within (±20%) | inconclusive | Figures 2 and 3, from the vector drawing |
 | 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.5 eV | 1.85e+11 cm⁻² eV⁻¹ | 1.90e+11 cm⁻² eV⁻¹ | +3% | within (±20%) | inconclusive | Figures 2 and 3, from the vector drawing |
+
+## Aligning the simulation: what the unstated things would have to be
+
+Every step whose timing or temperature the paper leaves open carries a range in the history above (`VARY`). `scripts/align_study.py` searched those ranges against the paper's numbers through the same predictor, first one unknown at a time, then all together. No parameter a program declares `fitted` was touched. The unknowns were chosen on ox1150C, ox1150C_Ar1300C_cool600, ox1150C_Ar1500C_cool600, ox1150C_Ar1500C_cool70 only; every other number is a test they played no part in.
+
+| Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
+|---|---|---|---|---|---|---|
+| Heated in argon to 1300 °C in the anneal furnace: duration | Not described; searched from 1 to 30 min | 60 to 1800 s | 300 s | 300 s | 12 of 12 within tolerance, median error 4.5% | 12 of 12 within tolerance, median error 4.5% |
+| Argon anneal at 1300 °C, 5 min: duration | “1 - 10 min”; 5 min used, searched from 1 to 10 min | 60 to 600 s | 300 s | 60 s (flat: the data do not constrain it) | 12 of 12 within tolerance, median error 4.5% | 12 of 12 within tolerance, median error 4.4% |
+| Cooled in argon at 600 °C/min: duration | > 600 °C/min; end temperature not given; searched over 600 to 2400 °C/min | 0.25 to 1× | 1× | 1× (flat: the data do not constrain it) | 12 of 12 within tolerance, median error 4.5% | 12 of 12 within tolerance, median error 4.5% |
+| Cooled in argon at 70 °C/min: duration | < 70 °C/min; end temperature not given; searched over 70 to 17.5 °C/min | 600 to 2400 s | 600 s | 2100 s (flat: the data do not constrain it) | 12 of 12 within tolerance, median error 4.5% | 12 of 12 within tolerance, median error 4.2% |
+| Dry oxidation, 1300 °C, 40 min: duration | 20 h | 2400 to 4800 s | 2400 s | 2400 s (flat: the data do not constrain it) | 12 of 12 within tolerance, median error 4.5% | 12 of 12 within tolerance, median error 4.5% |
+
+Together: RampUp duration 300 s (was 300); ArgonAnneal0 duration 60 s (was 300); CoolRapid duration 1× (was 1); CoolStandard duration 2100 s (was 600); Oxidation duration 2400 s (was 2400).
+
+As reproduced: 21 of 21 within tolerance, median error 4.7%. Aligned: 21 of 21 within tolerance, median error 4.6%. On the held-out specimens only: 9 of 9 within tolerance, median error 4.7% as reproduced, 9 of 9 within tolerance, median error 4.6% aligned.
+
+Choices of program or material property, each scored on its own and on top of the aligned history:
+
+| Variant | Alone | With the aligned history |
+|---|---|---|
+| exponential cooling to 25 °C at the bound rate | 21 of 21 within tolerance, median error 4.7% | 21 of 21 within tolerance, median error 4.6% |
+| no ramp: furnace at temperature when loaded | 21 of 21 within tolerance, median error 4.7% | 21 of 21 within tolerance, median error 4.8% |
+
+**What was searched.** Five things the paper gives only as ranges or not at all: the ramp to the anneal temperature in the anneal furnace (not described; 1 to 30 min, written as a new step, RampUp), the argon anneal time (“1 - 10 min”), the 1300 °C oxidation time (“40 min or 1h 20 min”), and the two cooling rates (“< 70” and “> 600 °C/min”, searched from 70 down to 17.5 °C/min and from 600 up to 2400 °C/min). The time of the second anneal of the twice-annealed sample is also “1 - 10 min”, but that sample is a test sample, so it was left at 5 min. Exponential cooling at the bound rate and a furnace already hot at loading are variants.
+
+**Read this as an upper bound.** The unknowns were chosen on the four samples oxidized at 1150 °C (12 values), the same samples the program's eight fitted numbers were fitted on (`evaluations/sic_interface_states_report.json`). The three samples oxidized at 1300 °C (9 values) were not used in that fit or here, and are the test; they carry the same argon anneals at 1500 °C, so they test the oxidation temperature, which the program does not read.
+
+**Nothing in the history moves the numbers.** On the chosen samples every unknown is flat: 12 of 12 within tolerance at every value searched, the median error between 4.2% and 4.5%. The anneal time does not matter between 1 and 10 min because the program's settling rate (0.1 s^-1, a hypothesis, not a fit) finishes the reduction in under a minute. The oxidation time and the cooling rates are not read: the as-oxidized level is a constant, and the reduction is one-way, so a slower cooling only lets it go on a little longer (median 4.5% at 600 s, 4.2% at 2400 s for the standard cooling). The combined search, which breaks ties on median error, settles on a 1 min anneal and a standard cooling of 35 min (20 °C/min) with nothing else changed. Aligned: 21 of 21, median error 4.6% (4.7% as reproduced); on the 1300 °C samples 9 of 9 both ways, median 4.7% to 4.6%. The two variants give 21 of 21 as well (median 4.7% alone, 4.6% and 4.8% on the aligned history). None of these differences is evidence.
+
+**The search found a fault in the program instead.** With a ramp of 9.7 min or longer from room temperature in argon, the predictor refuses every annealed sample: the state `removable` reaches 1.00 and is reported as outside its bounds [0, 1]. At low temperature the program's level is softly capped just below 1, and a long time there lets the solver step over it. At 9.7 min 9 of the 12 chosen values are still simulated, at 17 and 30 min only the 3 as-oxidized ones. The search did not choose those values only because it counts values within tolerance, not values refused; it would have been wrong for it to choose them on median error.
+
+```study-compare
+study: kobayashi-2017
+set: aligned
+```
+
+**9** within of 9 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
+
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| Oxidized at 1300 °C, no anneal | Dit at Ec − 0.3 eV | 3.28e+12 cm⁻² eV⁻¹ | 3.23e+12 | 3.23e+12 | -2% | within (±20%) | test |
+| Oxidized at 1300 °C, no anneal | Dit at Ec − 0.4 eV | 2.14e+12 cm⁻² eV⁻¹ | 2.32e+12 | 2.32e+12 | +9% | within (±20%) | test |
+| Oxidized at 1300 °C, no anneal | Dit at Ec − 0.5 eV | 1.36e+12 cm⁻² eV⁻¹ | 1.60e+12 | 1.60e+12 | +17% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, rapid cooling | Dit at Ec − 0.3 eV | 8.76e+11 cm⁻² eV⁻¹ | 8.62e+11 | 8.63e+11 | -1% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, rapid cooling | Dit at Ec − 0.4 eV | 4.44e+11 cm⁻² eV⁻¹ | 3.91e+11 | 3.91e+11 | -12% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, rapid cooling | Dit at Ec − 0.5 eV | 1.95e+11 cm⁻² eV⁻¹ | 1.90e+11 | 1.91e+11 | -2% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.3 eV | 1.05e+12 cm⁻² eV⁻¹ | 8.62e+11 | 8.63e+11 | -18% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.4 eV | 4.10e+11 cm⁻² eV⁻¹ | 3.91e+11 | 3.91e+11 | -5% | within (±20%) | test |
+| 1300 °C, argon 1500 °C, then argon 1300 °C | Dit at Ec − 0.5 eV | 1.85e+11 cm⁻² eV⁻¹ | 1.90e+11 | 1.91e+11 | +3% | within (±20%) | test |
+
+This paper cannot discriminate between histories, so alignment cannot test the program here. What the data do show and the program does not have is the cooling rate: at 0.4 and 0.5 eV the 1500 °C samples differ by 18 and 32% between standard and rapid cooling (4.25 against 3.60, 2.19 against 1.66 × 10^11 cm^-2 eV^-1), more states after the slow cooling; after argon at 1300 °C the slow-cooled sample (not among the cases here) has fewer (1.18 against 1.65 × 10^12 at 0.4 eV). The program gives each pair the same value. Because each cooling rate is also a different furnace, that difference cannot be assigned to the cooling alone.
+
+The program's anneal clock is a hypothesis (0.1 s^-1). A sample annealed for less than a minute, or an isothermal series in time, would be needed to test it; this paper has neither.
+
+### What our language and ontology cannot yet say
+
+- A cooling rate as a statement (`COOL RATE <K/min> TO <T> [BOUND upper|lower]`), so “< 70 °C/min” is written as the paper gives it rather than as an invented end temperature and duration. The rate also needs its own furnace, so a cooling difference is not silently also a furnace difference.
+- A furnace or equipment field on a RUN (`FURNACE resistive | rf_induction`), and the residual oxygen it is known for (under 1 ppm for one, not reported for the other). Here the two cooling rates are two furnaces.
+- A transfer through air as a RUN-like step with its own gas and time (`TRANSFER AMBIENT air DURATION …`): the Transfer here is an EVENT, so any exposure of the interface to room air between furnaces cannot reach a program.
+- OFFCUT read by programs (4° off-axis here, on-axis in Song 2004), and the measurement method on an observable (1 MHz high-low counts fewer states than a 100 MHz reference, the paper's Figure 4).
+- For the predictor: a small tolerance on a state's declared bounds, or a hard clamp, so that a long low-temperature hold does not refuse a history at exactly 1.00.
 
 ### The paper's own conclusions
 

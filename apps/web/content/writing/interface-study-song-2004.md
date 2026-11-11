@@ -15,8 +15,8 @@ The challenge's reference for SiC. The graph holds 43 thicknesses read from its 
 | | |
 |---|---|
 | Specimen described | 3 of 5 properties we need are stated and encoded the same |
-| History described | 2 of 5 steps are stated and encoded the same; 2 are stated by the paper and absent from our history; 1 are ours because the paper is silent |
-| Timing | 0 of 1 simulated steps have a stated duration; 4 of 4 other steps have none; 5 timing gaps listed below |
+| History described | 2 of 6 steps are stated and encoded the same; 2 are stated by the paper and absent from our history; 2 are ours because the paper is silent |
+| Timing | 0 of 2 simulated steps have a stated duration; 4 of 4 other steps have none; 5 timing gaps listed below |
 | How the results are given | Thickness only in Figures 3 to 5 (read from the page by an agent, about ±2 nm); rate constants in printed tables |
 | Repeatability stated by the authors | Not stated; RBS and ellipsometry “agreed well within the limits of experimental errors” |
 | Internal consistency | Good. One ratio in the text (1.60) has no temperature and differs from the table's |
@@ -35,7 +35,7 @@ study: song-2004
 
 ## Does our specimen and history match the paper's?
 
-Left: the paper's own words, with the page of the PDF. Right: what we simulate. **5** same, **1** approximated, **1** assumed, **3** not in ours.
+Left: the paper's own words, with the page of the PDF. Right: what we simulate. **5** same, **1** approximated, **2** assumed, **3** not in ours.
 
 ```study-match
 study: song-2004
@@ -51,23 +51,24 @@ Time is counted from the start of the first simulated step. A step the language 
 |---|---|---|---|---|---|---|---|---|
 | 1 | Acetone, methanol, 5% HF | 0 s | not simulated | | | | | **not stated** |
 | 2 | Loaded at once into the furnace | 0 s | not simulated | | | | | **not stated**. Furnace temperature at loading, push, ramp and the moment time zero is counted from: none given |
-| 3 | Dry oxidation at 1150 °C | 0 s | 6 h 00 min | 6 h 00 min | 1150 → 1150 °C | held | dry_O2 | **partly stated**. Times appear only on the figures' axes (0.25 to 6 h); the paper does not say whether one sample was oxidized cumulatively or a separate sample was used for each time |
-| 4 | Unloaded and cooled | 6 h 00 min | not simulated | | | | | **not stated**. Not described |
-| 5 | Thickness by RBS and ellipsometry | 6 h 00 min | not simulated | | | | | **not stated** |
+| 3 | Time in oxygen at 1150 °C before the clock starts | 0 s | 1 s | 1 s | 1150 → 1150 °C | held | dry_O2 | **not stated; assumed**. Not stated; searched from 0 to 30 min |
+| 4 | Dry oxidation at 1150 °C | 1 s | 6 h 00 min | 6 h 00 min 01 s | 1150 → 1150 °C | held | dry_O2 | **partly stated**. Times appear only on the figures' axes (0.25 to 6 h); the paper does not say whether one sample was oxidized cumulatively or a separate sample was used for each time |
+| 5 | Unloaded and cooled | 6 h 00 min 01 s | not simulated | | | | | **not stated**. Not described |
+| 6 | Thickness by RBS and ellipsometry | 6 h 00 min 01 s | not simulated | | | | | **not stated** |
 
-Simulated time in this history: **6 h 00 min**.
+Simulated time in this history: **6 h 00 min 01 s**.
 
 #### Across the specimens
 
-| Specimen | Oxidation | Total |
-|---|---|---|
-| C face (000-1), 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min |
-| C face (000-1), 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min |
-| C face (000-1), 950 °C | 6 h 00 min at 950 °C | 6 h 00 min |
-| a face (11-20), 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min |
-| a face (11-20), 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min |
-| Si face (0001), 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min |
-| Si face (0001), 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min |
+| Specimen | BeforeClock | Oxidation | Total |
+|---|---|---|---|
+| C face (000-1), 1150 °C | 1 s at 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min 01 s |
+| C face (000-1), 1050 °C | 1 s at 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min 01 s |
+| C face (000-1), 950 °C | 1 s at 950 °C | 6 h 00 min at 950 °C | 6 h 00 min 01 s |
+| a face (11-20), 1150 °C | 1 s at 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min 01 s |
+| a face (11-20), 1050 °C | 1 s at 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min 01 s |
+| Si face (0001), 1150 °C | 1 s at 1150 °C | 6 h 00 min at 1150 °C | 6 h 00 min 01 s |
+| Si face (0001), 1050 °C | 1 s at 1050 °C | 6 h 00 min at 1050 °C | 6 h 00 min 01 s |
 
 #### Timing the paper does not give
 
@@ -111,11 +112,12 @@ SPECIMEN SiC_C_1150 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1150->1150 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -130,11 +132,12 @@ SPECIMEN SiC_C_1050 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1050->1050 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -149,11 +152,12 @@ SPECIMEN SiC_C_950 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 950->950 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 950->950 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 950->950 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -168,11 +172,12 @@ SPECIMEN SiC_a_1150 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1150->1150 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -187,11 +192,12 @@ SPECIMEN SiC_a_1050 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1050->1050 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -206,11 +212,12 @@ SPECIMEN SiC_Si_1150 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1150->1150 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1150->1150 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -225,11 +232,12 @@ SPECIMEN SiC_Si_1050 {
     DOPING: n_type
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Acetone, methanol, 5% HF
-    # not simulated: Loaded at once into the furnace
-    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2
-    # not simulated: Unloaded and cooled
-    # not simulated: Thickness by RBS and ellipsometry
+    EVENT Clean KIND clean TIMING assumed                        # Acetone, methanol, 5% HF
+    EVENT Load KIND load TIMING assumed                          # Loaded at once into the furnace
+    RUN BeforeClock DURATION 1 TEMP 1050->1050 AMBIENT dry_O2 TIMING assumed VARY duration 1..1800
+    RUN Oxidation DURATION 21600 TEMP 1050->1050 AMBIENT dry_O2 TIMING bound
+    EVENT Unload KIND other TIMING assumed                       # Unloaded and cooled
+    EVENT Measure KIND measurement TIMING assumed                # Thickness by RBS and ellipsometry
 }
 ```
 
@@ -305,10 +313,10 @@ study: song-2004
 | Specimen and history | Quantity | The paper | Our simulation | Difference | Verdict | What the program's own evaluation says | Where in the paper |
 |---|---|---|---|---|---|---|---|
 | C face (000-1), 1150 °C, 1 h | oxide thickness | 89.9 nm | 89.5 nm | -0% | within (±10%) | supported within scope | Figure 3, read from the page |
-| C face (000-1), 1150 °C, 2 h | oxide thickness | 141 nm | 141 nm | +0% | within (±10%) | supported within scope | Figure 3, read from the page |
+| C face (000-1), 1150 °C, 2 h | oxide thickness | 141 nm | 142 nm | +0% | within (±10%) | supported within scope | Figure 3, read from the page |
 | C face (000-1), 1150 °C, 4 h | oxide thickness | 219 nm | 217 nm | -1% | within (±10%) | supported within scope | Figure 3, read from the page |
 | C face (000-1), 1150 °C, 6 h | oxide thickness | 278 nm | 275 nm | -1% | within (±10%) | supported within scope | Figure 3, read from the page |
-| C face (000-1), 1050 °C, 2 h | oxide thickness | 78.5 nm | 74.2 nm | -5% | within (±10%) | supported within scope | Figure 3, read from the page |
+| C face (000-1), 1050 °C, 2 h | oxide thickness | 78.5 nm | 74.3 nm | -5% | within (±10%) | supported within scope | Figure 3, read from the page |
 | C face (000-1), 1050 °C, 4 h | oxide thickness | 125 nm | 115 nm | -8% | within (±10%) | supported within scope | Figure 3, read from the page |
 | C face (000-1), 1050 °C, 6 h | oxide thickness | 159 nm | 146 nm | -8% | within (±10%) | supported within scope | Figure 3, read from the page |
 | C face (000-1), 950 °C, 4 h | oxide thickness | 55.1 nm | 54.7 nm | -1% | within (±10%) | supported within scope | Figure 3, read from the page |
@@ -318,7 +326,7 @@ study: song-2004
 | a face (11-20), 1150 °C, 4 h | oxide thickness | 187 nm | 186 nm | -1% | within (±10%) | supported within scope | Figure 4, read from the page |
 | a face (11-20), 1150 °C, 6 h | oxide thickness | 246 nm | 239 nm | -3% | within (±10%) | supported within scope | Figure 4, read from the page |
 | a face (11-20), 1050 °C, 1 h | oxide thickness | 29.5 nm | 30.5 nm | +3% | within (±10%) | supported within scope | Figure 4, read from the page |
-| a face (11-20), 1050 °C, 2 h | oxide thickness | 47.9 nm | 49.3 nm | +3% | within (±10%) | supported within scope | Figure 4, read from the page |
+| a face (11-20), 1050 °C, 2 h | oxide thickness | 47.9 nm | 49.4 nm | +3% | within (±10%) | supported within scope | Figure 4, read from the page |
 | a face (11-20), 1050 °C, 4 h | oxide thickness | 81.5 nm | 77.1 nm | -5% | within (±10%) | supported within scope | Figure 4, read from the page |
 | a face (11-20), 1050 °C, 6 h | oxide thickness | 107 nm | 98.7 nm | -8% | within (±10%) | supported within scope | Figure 4, read from the page |
 | Si face (0001), 1150 °C, 1 h | oxide thickness | 15.9 nm | 16.1 nm | +1% | within (±10%) | supported within scope | Figure 5, read from the page |
@@ -328,6 +336,66 @@ study: song-2004
 | Si face (0001), 1050 °C, 2 h | oxide thickness | 8.4 nm | 9.48 nm | +13% | near (±10%) | supported within scope | Figure 5, read from the page |
 | Si face (0001), 1050 °C, 4 h | oxide thickness | 14 nm | 14 nm | -0% | within (±10%) | supported within scope | Figure 5, read from the page |
 | Si face (0001), 1050 °C, 6 h | oxide thickness | 15.3 nm | 17.4 nm | +14% | near (±10%) | supported within scope | Figure 5, read from the page |
+
+## Aligning the simulation: what the unstated things would have to be
+
+Every step whose timing or temperature the paper leaves open carries a range in the history above (`VARY`). `scripts/align_study.py` searched those ranges against the paper's numbers through the same predictor, first one unknown at a time, then all together. No parameter a program declares `fitted` was touched. The unknowns were chosen on C_1150, C_950, Si_1150, a_1150 only; every other number is a test they played no part in.
+
+| Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
+|---|---|---|---|---|---|---|
+| Time in oxygen at 1150 °C before the clock starts: duration | Not stated; searched from 0 to 30 min | 1 to 1800 s | 1 s | 1 s | 13 of 14 within tolerance, median error 1.1% | 13 of 14 within tolerance, median error 1.1% |
+
+Together: BeforeClock duration 1 s (was 1).
+
+As reproduced: 21 of 24 within tolerance, median error 3.0%. Aligned: 21 of 24 within tolerance, median error 3.0%. On the held-out specimens only: 8 of 10 within tolerance, median error 6.5% as reproduced, 8 of 10 within tolerance, median error 6.5% aligned.
+
+Choices of program or material property, each scored on its own and on top of the aligned history:
+
+| Variant | Alone | With the aligned history |
+|---|---|---|
+| clock starts 5 min before the oxygen reaches the sample | 21 of 24 within tolerance, median error 3.4% | 21 of 24 within tolerance, median error 3.4% |
+| clock starts 10 min before the oxygen reaches the sample | 20 of 24 within tolerance, median error 6.2% | 20 of 24 within tolerance, median error 6.2% |
+| one sample per curve, oxidized cumulatively, 5 min in oxygen before the clock at each reload | 21 of 24 within tolerance, median error 5.3% | 21 of 24 within tolerance, median error 5.3% |
+| one sample per curve, oxidized cumulatively, 15 min in oxygen before the clock at each reload | 12 of 24 within tolerance, median error 10.1% | 12 of 24 within tolerance, median error 10.1% |
+
+**What was searched.** The paper states the gas, the temperature and the times on the figure axes. It does not say when time zero is, or whether the points of a curve are separate pieces. Time zero was written as one unknown step before the oxidation, time in oxygen at temperature before the clock starts (1 s to 30 min; the language does not allow a zero-length step, so 1 s stands for none). The opposite sign, a clock that starts before the oxygen arrives, and the cumulative reading were declared as variants. The unknown was chosen on the 1150 and 950 °C curves (14 points); the 1050 °C curves (10 points), whose rate constants we interpolate, are the test.
+
+**A long offset is ruled out; a short one cannot be told from none.** On the 14 chosen points, 13 are within tolerance for any offset from 1 s to 148 s (median error 1.1% at 1 s, 2.4% at 148 s), 12 at 8.6 min (3.0%) and 8 at 30 min (7.3%, every point high). The search keeps 1 s. This is not independent of the paper: Song et al. fitted their rate constants with the time offset set to zero, and our program uses those constants, so a zero offset is built into the numbers being compared.
+
+**The held-out 1050 °C curves do not change**: 8 of 10 within tolerance, median error 6.5%, before and after. The two that fail are the Si face at 2 h and 6 h, 13% and 14% high; the C face at 1050 °C is 5 to 8% low at every time. Those are errors of the interpolated constants, not of the timing.
+
+**The variants.** A clock that starts 5 min before the oxygen reaches the sample: 21 of 24 (median 3.4%), and on the 1050 °C points alone 8 of 10 (median 8.2%, computed from the same rows); 10 min: 20 of 24 (median 6.2%), 7 of 10 at 1050 °C. One sample per curve, oxidized cumulatively, with 5 min in oxygen before the clock at each reload: 21 of 24 (median 5.3%); on the chosen points the median rises from 1.1% to 4.1%, on the 1050 °C points it falls from 6.5% to 5.4% (signed +0.2%). With 15 min per reload: 12 of 24 (median 10.1%, every point high). So the data allow at most a few minutes of extra oxygen per reload if the curves are cumulative, and they do not choose between separate pieces and one piece re-oxidized.
+
+```study-compare
+study: song-2004
+set: aligned
+```
+
+**8** within, **2** near of 10 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
+
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| C face (000-1), 1050 °C, 2 h | oxide thickness | 78.5 nm | 74.3 | 74.3 | -5% | within (±10%) | test |
+| C face (000-1), 1050 °C, 4 h | oxide thickness | 125 nm | 115 | 115 | -8% | within (±10%) | test |
+| C face (000-1), 1050 °C, 6 h | oxide thickness | 159 nm | 146 | 146 | -8% | within (±10%) | test |
+| a face (11-20), 1050 °C, 1 h | oxide thickness | 29.5 nm | 30.5 | 30.5 | +3% | within (±10%) | test |
+| a face (11-20), 1050 °C, 2 h | oxide thickness | 47.9 nm | 49.4 | 49.4 | +3% | within (±10%) | test |
+| a face (11-20), 1050 °C, 4 h | oxide thickness | 81.5 nm | 77.1 | 77.1 | -5% | within (±10%) | test |
+| a face (11-20), 1050 °C, 6 h | oxide thickness | 107 nm | 98.7 | 98.7 | -8% | within (±10%) | test |
+| Si face (0001), 1050 °C, 2 h | oxide thickness | 8.4 nm | 9.48 | 9.48 | +13% | near (±10%) | test |
+| Si face (0001), 1050 °C, 4 h | oxide thickness | 14 nm | 14 | 14 | -0% | within (±10%) | test |
+| Si face (0001), 1050 °C, 6 h | oxide thickness | 15.3 nm | 17.4 | 17.4 | +14% | near (±10%) | test |
+
+The thickness curves cannot test their own time zero, because the program's rate constants were fitted to these curves under the paper's assumption of no offset. A test needs either the paper's 0.25 h and 0.5 h points (not in our dataset) or another laboratory's curve at one of these temperatures.
+
+The remaining error at 1050 °C is in the constants: at 1050 °C the program's B and B/A come from an Arrhenius fit to the paper's tables, interpolated from the neighbouring temperatures rather than read from the paper. No history change reaches it.
+
+### What our language and ontology cannot yet say
+
+- A clock reference for a RUN: `TIME_ZERO at_load | at_temperature | at_gas_on` (or a signed `OFFSET <s>`), so that “time” on a figure axis can be stated as what it is. Here the offset had to be an extra 1 s step, because a RUN cannot have zero duration and VARY cannot go negative.
+- Measurements part-way through a history: `MEASURE <observable> AFTER <step>` followed by more steps, so a cumulatively oxidized sample (oxidize, unload, measure, reload, oxidize) is one history with several measured points. Today each point has to be a separate specimen built by a variant function.
+- An optional or repeated step (`REPEAT <n> { … }`) for the reload of a cumulative series, with its own VARY on the per-reload time.
+- OFFCUT as a field a program reads, so that this on-axis data and Kobayashi's 4° off-axis epilayers are not the same specimen to the growth program; and a word for the measurement technique (RBS or ellipsometry) on an observable.
 
 ### The paper's own conclusions
 

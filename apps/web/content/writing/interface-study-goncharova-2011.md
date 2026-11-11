@@ -15,8 +15,8 @@ The challenge's reference for the hafnium stack. The graph holds 15 isotope amou
 | | |
 |---|---|
 | Specimen described | 3 of 6 properties we need are stated and encoded the same |
-| History described | 2 of 7 steps are stated and encoded the same; 3 are stated by the paper and absent from our history; 1 are ours because the paper is silent |
-| Timing | 1 of 1 simulated steps have a stated duration; 5 of 6 other steps have none; 5 timing gaps listed below |
+| History described | 2 of 7 steps are stated and encoded the same; 2 are stated by the paper and absent from our history; 2 are ours because the paper is silent |
+| Timing | 1 of 2 simulated steps have a stated duration; 4 of 5 other steps have none; 5 timing gaps listed below |
 | How the results are given | Isotope amounts in Figure 5 (vector drawing, exact); depth profiles in Figure 4(b), read by eye; Table I printed |
 | Repeatability stated by the authors | Not stated; depth resolution 3 Å at the surface and 8 Å at 30 Å |
 | Internal consistency | Fair: the lowest temperature is 763 K, 490 °C or about 773 K; film thickness is 2–5 nm in the abstract and 2–3 nm in the text; 10.3 to 6.9 is called about 35% |
@@ -35,7 +35,7 @@ study: goncharova-2011
 
 ## Does our specimen and history match the paper's?
 
-Left: the paper's own words, with the page of the PDF. Right: what we simulate. **5** same, **1** approximated, **2** assumed, **1** differs, **4** not in ours.
+Left: the paper's own words, with the page of the PDF. Right: what we simulate. **5** same, **1** approximated, **3** assumed, **1** differs, **3** not in ours.
 
 ```study-match
 study: goncharova-2011
@@ -52,22 +52,22 @@ Time is counted from the start of the first simulated step. A step the language 
 | 1 | Silicate film by ALD on a 1 nm interlayer | 0 s | not simulated | | | | | **not stated**. Deposition time not given |
 | 2 | Ammonia anneal, 973 K, 60 s | 0 s | not simulated | | | | | **stated**. 60 s at 973 K |
 | 3 | Brief anneal to remove surface carbon | 0 s | not simulated | | | | | **not stated**. “briefly” |
-| 4 | Brought to temperature in vacuum | 0 s | not simulated | | | | | **not stated**. Ramp rate and hold time before gas: not given |
-| 5 | Anneal in ¹⁸O₂ at 763 K, 30 min, 0.01 Torr | 0 s | 30 min | 30 min | 489.85 → 489.85 °C | held | mix:O2=1.316e-05 | **stated**. 30 min. The text gives the range of exposures as “5–30 min”, and Figure 2 uses 10 + 30 min on one sample |
-| 6 | Gas pumped out, sample cooled | 30 min | not simulated | | | | | **not stated**. Not described |
-| 7 | Ion scattering, in the same vacuum system | 30 min | not simulated | | | | | **not stated** |
+| 4 | Held at 763 K in vacuum before the gas | 0 s | 1 s | 1 s | 489.85 → 489.85 °C | held | vacuum | **not stated; assumed**. Ramp rate and hold time before gas: not given; searched from 0 to 30 min |
+| 5 | Anneal in ¹⁸O₂ at 763 K, 30 min, 0.01 Torr | 1 s | 30 min | 30 min 01 s | 489.85 → 489.85 °C | held | mix:O2=1.316e-05 | **stated**. 30 min. The text gives the range of exposures as “5–30 min”, and Figure 2 uses 10 + 30 min on one sample; searched from 5 to 40 min |
+| 6 | Gas pumped out, sample cooled | 30 min 01 s | not simulated | | | | | **not stated**. Not described |
+| 7 | Ion scattering, in the same vacuum system | 30 min 01 s | not simulated | | | | | **not stated** |
 
-Simulated time in this history: **30 min**.
+Simulated time in this history: **30 min 01 s**.
 
 #### Across the specimens
 
-| Specimen | Anneal | Total |
-|---|---|---|
-| 763 K (490 °C), 30 min | 30 min at 489.85 °C | 30 min |
-| 883 K (610 °C), 30 min | 30 min at 609.85 °C | 30 min |
-| 973 K (700 °C), 30 min | 30 min at 699.85 °C | 30 min |
-| 1073 K (800 °C), 30 min | 30 min at 799.85 °C | 30 min |
-| 1223 K (950 °C), 30 min | 30 min at 949.85 °C | 30 min |
+| Specimen | Stabilize | Anneal | Total |
+|---|---|---|---|
+| 763 K (490 °C), 30 min | 1 s at 489.85 °C | 30 min at 489.85 °C | 30 min 01 s |
+| 883 K (610 °C), 30 min | 1 s at 609.85 °C | 30 min at 609.85 °C | 30 min 01 s |
+| 973 K (700 °C), 30 min | 1 s at 699.85 °C | 30 min at 699.85 °C | 30 min 01 s |
+| 1073 K (800 °C), 30 min | 1 s at 799.85 °C | 30 min at 799.85 °C | 30 min 01 s |
+| 1223 K (950 °C), 30 min | 1 s at 949.85 °C | 30 min at 949.85 °C | 30 min 01 s |
 
 #### Timing the paper does not give
 
@@ -112,13 +112,13 @@ SPECIMEN Film_763K {
     INTERLAYER: SiOxNy_6A
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Silicate film by ALD on a 1 nm interlayer
-    # not simulated: Ammonia anneal, 973 K, 60 s
-    # not simulated: Brief anneal to remove surface carbon
-    # not simulated: Brought to temperature in vacuum
-    RUN Anneal DURATION 1800 TEMP 489.85->489.85 AMBIENT mix:O2=1.316e-05
-    # not simulated: Gas pumped out, sample cooled
-    # not simulated: Ion scattering, in the same vacuum system
+    EVENT Deposit KIND deposition TIMING assumed                 # Silicate film by ALD on a 1 nm interlayer
+    EVENT Nitride KIND other TIMING stated                       # Ammonia anneal, 973 K, 60 s
+    EVENT Degas KIND clean TIMING assumed                        # Brief anneal to remove surface carbon
+    RUN Stabilize DURATION 1 TEMP 489.85->489.85 AMBIENT vacuum TIMING assumed VARY duration 1..1800
+    RUN Anneal DURATION 1800 TEMP 489.85->489.85 AMBIENT mix:O2=1.316e-05 TIMING stated VARY duration 300..2400
+    EVENT Cool KIND other TIMING assumed                         # Gas pumped out, sample cooled
+    EVENT MEIS KIND measurement TIMING assumed                   # Ion scattering, in the same vacuum system
 }
 ```
 
@@ -133,13 +133,13 @@ SPECIMEN Film_883K {
     INTERLAYER: SiOxNy_6A
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Silicate film by ALD on a 1 nm interlayer
-    # not simulated: Ammonia anneal, 973 K, 60 s
-    # not simulated: Brief anneal to remove surface carbon
-    # not simulated: Brought to temperature in vacuum
-    RUN Anneal DURATION 1800 TEMP 609.85->609.85 AMBIENT mix:O2=1.316e-05
-    # not simulated: Gas pumped out, sample cooled
-    # not simulated: Ion scattering, in the same vacuum system
+    EVENT Deposit KIND deposition TIMING assumed                 # Silicate film by ALD on a 1 nm interlayer
+    EVENT Nitride KIND other TIMING stated                       # Ammonia anneal, 973 K, 60 s
+    EVENT Degas KIND clean TIMING assumed                        # Brief anneal to remove surface carbon
+    RUN Stabilize DURATION 1 TEMP 609.85->609.85 AMBIENT vacuum TIMING assumed VARY duration 1..1800
+    RUN Anneal DURATION 1800 TEMP 609.85->609.85 AMBIENT mix:O2=1.316e-05 TIMING stated VARY duration 300..2400
+    EVENT Cool KIND other TIMING assumed                         # Gas pumped out, sample cooled
+    EVENT MEIS KIND measurement TIMING assumed                   # Ion scattering, in the same vacuum system
 }
 ```
 
@@ -154,13 +154,13 @@ SPECIMEN Film_973K {
     INTERLAYER: SiOxNy_6A
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Silicate film by ALD on a 1 nm interlayer
-    # not simulated: Ammonia anneal, 973 K, 60 s
-    # not simulated: Brief anneal to remove surface carbon
-    # not simulated: Brought to temperature in vacuum
-    RUN Anneal DURATION 1800 TEMP 699.85->699.85 AMBIENT mix:O2=1.316e-05
-    # not simulated: Gas pumped out, sample cooled
-    # not simulated: Ion scattering, in the same vacuum system
+    EVENT Deposit KIND deposition TIMING assumed                 # Silicate film by ALD on a 1 nm interlayer
+    EVENT Nitride KIND other TIMING stated                       # Ammonia anneal, 973 K, 60 s
+    EVENT Degas KIND clean TIMING assumed                        # Brief anneal to remove surface carbon
+    RUN Stabilize DURATION 1 TEMP 699.85->699.85 AMBIENT vacuum TIMING assumed VARY duration 1..1800
+    RUN Anneal DURATION 1800 TEMP 699.85->699.85 AMBIENT mix:O2=1.316e-05 TIMING stated VARY duration 300..2400
+    EVENT Cool KIND other TIMING assumed                         # Gas pumped out, sample cooled
+    EVENT MEIS KIND measurement TIMING assumed                   # Ion scattering, in the same vacuum system
 }
 ```
 
@@ -175,13 +175,13 @@ SPECIMEN Film_1073K {
     INTERLAYER: SiOxNy_6A
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Silicate film by ALD on a 1 nm interlayer
-    # not simulated: Ammonia anneal, 973 K, 60 s
-    # not simulated: Brief anneal to remove surface carbon
-    # not simulated: Brought to temperature in vacuum
-    RUN Anneal DURATION 1800 TEMP 799.85->799.85 AMBIENT mix:O2=1.316e-05
-    # not simulated: Gas pumped out, sample cooled
-    # not simulated: Ion scattering, in the same vacuum system
+    EVENT Deposit KIND deposition TIMING assumed                 # Silicate film by ALD on a 1 nm interlayer
+    EVENT Nitride KIND other TIMING stated                       # Ammonia anneal, 973 K, 60 s
+    EVENT Degas KIND clean TIMING assumed                        # Brief anneal to remove surface carbon
+    RUN Stabilize DURATION 1 TEMP 799.85->799.85 AMBIENT vacuum TIMING assumed VARY duration 1..1800
+    RUN Anneal DURATION 1800 TEMP 799.85->799.85 AMBIENT mix:O2=1.316e-05 TIMING stated VARY duration 300..2400
+    EVENT Cool KIND other TIMING assumed                         # Gas pumped out, sample cooled
+    EVENT MEIS KIND measurement TIMING assumed                   # Ion scattering, in the same vacuum system
 }
 ```
 
@@ -196,13 +196,13 @@ SPECIMEN Film_1223K {
     INTERLAYER: SiOxNy_6A
 }
 CONTROL_TRAJECTORY History {
-    # not simulated: Silicate film by ALD on a 1 nm interlayer
-    # not simulated: Ammonia anneal, 973 K, 60 s
-    # not simulated: Brief anneal to remove surface carbon
-    # not simulated: Brought to temperature in vacuum
-    RUN Anneal DURATION 1800 TEMP 949.85->949.85 AMBIENT mix:O2=1.316e-05
-    # not simulated: Gas pumped out, sample cooled
-    # not simulated: Ion scattering, in the same vacuum system
+    EVENT Deposit KIND deposition TIMING assumed                 # Silicate film by ALD on a 1 nm interlayer
+    EVENT Nitride KIND other TIMING stated                       # Ammonia anneal, 973 K, 60 s
+    EVENT Degas KIND clean TIMING assumed                        # Brief anneal to remove surface carbon
+    RUN Stabilize DURATION 1 TEMP 949.85->949.85 AMBIENT vacuum TIMING assumed VARY duration 1..1800
+    RUN Anneal DURATION 1800 TEMP 949.85->949.85 AMBIENT mix:O2=1.316e-05 TIMING stated VARY duration 300..2400
+    EVENT Cool KIND other TIMING assumed                         # Gas pumped out, sample cooled
+    EVENT MEIS KIND measurement TIMING assumed                   # Ion scattering, in the same vacuum system
 }
 ```
 
@@ -301,7 +301,7 @@ study: goncharova-2011
 |---|---|---|---|---|---|---|---|
 | 763 K (490 °C), 30 min | 16O at the interface | 0.3 10¹⁵ cm⁻² | 0.664 10¹⁵ cm⁻² | +121% | near (±100%) | inconclusive | Figure 5, from the vector drawing |
 | 763 K (490 °C), 30 min | 18O in the film | 2.04 10¹⁵ cm⁻² | 1.47 10¹⁵ cm⁻² | -28% | near (±14.7059%) | inconclusive | Figure 5, from the vector drawing |
-| 763 K (490 °C), 30 min | 18O at the interface | 0.02 10¹⁵ cm⁻² | 0.0523 10¹⁵ cm⁻² | +161% | within (±1500%) | inconclusive | Figure 5, from the vector drawing |
+| 763 K (490 °C), 30 min | 18O at the interface | 0.02 10¹⁵ cm⁻² | 0.0523 10¹⁵ cm⁻² | +162% | within (±1500%) | inconclusive | Figure 5, from the vector drawing |
 | 763 K (490 °C), 30 min | 18O fraction of the oxygen at 0.5 nm depth | 0.135  | 0.0954  | -29% | within (±37.037%) | inconclusive | Figure 4(b), read by eye |
 | 763 K (490 °C), 30 min | 18O fraction of the oxygen at 1.3 nm depth | 0.135  | 0.0954  | -29% | within (±37.037%) | inconclusive | Figure 4(b), read by eye |
 | 763 K (490 °C), 30 min | 18O fraction of the oxygen at 2.2 nm depth | 0.135  | 0.0954  | -29% | within (±37.037%) | inconclusive | Figure 4(b), read by eye |
@@ -310,19 +310,75 @@ study: goncharova-2011
 | 883 K (610 °C), 30 min | 18O at the interface | 0.3 10¹⁵ cm⁻² | 0.323 10¹⁵ cm⁻² | +8% | within (±100%) | inconclusive | Figure 5, from the vector drawing |
 | 973 K (700 °C), 30 min | 16O at the interface | 2.92 10¹⁵ cm⁻² | 2.76 10¹⁵ cm⁻² | -5% | within (±10.274%) | inconclusive | Figure 5, from the vector drawing |
 | 973 K (700 °C), 30 min | 18O in the film | 4.59 10¹⁵ cm⁻² | 4.68 10¹⁵ cm⁻² | +2% | within (±10%) | inconclusive | Figure 5, from the vector drawing |
-| 973 K (700 °C), 30 min | 18O at the interface | 1.61 10¹⁵ cm⁻² | 0.92 10¹⁵ cm⁻² | -43% | off (±18.6335%) | inconclusive | Figure 5, from the vector drawing |
+| 973 K (700 °C), 30 min | 18O at the interface | 1.61 10¹⁵ cm⁻² | 0.921 10¹⁵ cm⁻² | -43% | off (±18.6335%) | inconclusive | Figure 5, from the vector drawing |
 | 973 K (700 °C), 30 min | 18O fraction of the oxygen at 0.5 nm depth | 0.3  | 0.304  | +1% | within (±16.6667%) | inconclusive | Figure 4(b), read by eye |
 | 973 K (700 °C), 30 min | 18O fraction of the oxygen at 1.3 nm depth | 0.3  | 0.304  | +1% | within (±16.6667%) | inconclusive | Figure 4(b), read by eye |
 | 973 K (700 °C), 30 min | 18O fraction of the oxygen at 2.2 nm depth | 0.3  | 0.304  | +1% | within (±16.6667%) | inconclusive | Figure 4(b), read by eye |
 | 1073 K (800 °C), 30 min | 16O at the interface | 3 10¹⁵ cm⁻² | 4.09 10¹⁵ cm⁻² | +36% | off (±10%) | inconclusive | Figure 5, from the vector drawing |
-| 1073 K (800 °C), 30 min | 18O in the film | 7.38 10¹⁵ cm⁻² | 6.43 10¹⁵ cm⁻² | -13% | near (±10%) | inconclusive | Figure 5, from the vector drawing |
+| 1073 K (800 °C), 30 min | 18O in the film | 7.38 10¹⁵ cm⁻² | 6.44 10¹⁵ cm⁻² | -13% | near (±10%) | inconclusive | Figure 5, from the vector drawing |
 | 1073 K (800 °C), 30 min | 18O at the interface | 5.7 10¹⁵ cm⁻² | 2.33 10¹⁵ cm⁻² | -59% | off (±10%) | inconclusive | Figure 5, from the vector drawing |
 | 1223 K (950 °C), 30 min | 16O at the interface | 5.51 10¹⁵ cm⁻² | 5.85 10¹⁵ cm⁻² | +6% | within (±10%) | inconclusive | Figure 5, from the vector drawing |
 | 1223 K (950 °C), 30 min | 18O in the film | 10.1 10¹⁵ cm⁻² | 8.53 10¹⁵ cm⁻² | -16% | near (±10%) | inconclusive | Figure 5, from the vector drawing |
-| 1223 K (950 °C), 30 min | 18O at the interface | 6.49 10¹⁵ cm⁻² | 6.58 10¹⁵ cm⁻² | +1% | within (±10%) | inconclusive | Figure 5, from the vector drawing |
+| 1223 K (950 °C), 30 min | 18O at the interface | 6.49 10¹⁵ cm⁻² | 6.59 10¹⁵ cm⁻² | +2% | within (±10%) | inconclusive | Figure 5, from the vector drawing |
 | 1223 K (950 °C), 30 min | 18O fraction of the oxygen at 0.5 nm depth | 0.545  | 0.555  | +2% | within (±9.17431%) | inconclusive | Figure 4(b), read by eye |
 | 1223 K (950 °C), 30 min | 18O fraction of the oxygen at 1.3 nm depth | 0.545  | 0.555  | +2% | within (±9.17431%) | inconclusive | Figure 4(b), read by eye |
 | 1223 K (950 °C), 30 min | 18O fraction of the oxygen at 2.2 nm depth | 0.545  | 0.555  | +2% | within (±9.17431%) | inconclusive | Figure 4(b), read by eye |
+
+## Aligning the simulation: what the unstated things would have to be
+
+Every step whose timing or temperature the paper leaves open carries a range in the history above (`VARY`). `scripts/align_study.py` searched those ranges against the paper's numbers through the same predictor, first one unknown at a time, then all together. No parameter a program declares `fitted` was touched. The unknowns were chosen on 1223K, 763K, 883K, 973K only; every other number is a test they played no part in.
+
+| Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
+|---|---|---|---|---|---|---|
+| Held at 763 K in vacuum before the gas: duration | Ramp rate and hold time before gas: not given; searched from 0 to 30 min | 1 to 1800 s | 1 s | 1 s | 16 of 21 within tolerance, median error 6.1% | 16 of 21 within tolerance, median error 6.1% |
+| Anneal in ¹⁸O₂ at 763 K, 30 min, 0.01 Torr: duration | 30 min. The text gives the range of exposures as “5–30 min”, and Figure 2 uses 10 + 30 min on one sample; searched from 5 to 40 min | 300 to 2400 s | 1800 s | 1800 s | 16 of 21 within tolerance, median error 6.1% | 16 of 21 within tolerance, median error 6.1% |
+
+Together: Stabilize duration 1 s (was 1); Anneal duration 1800 s (was 1800).
+
+As reproduced: 16 of 24 within tolerance, median error 10.2%. Aligned: 16 of 24 within tolerance, median error 10.2%. On the held-out specimens only: 0 of 3 within tolerance, median error 36.3% as reproduced, 0 of 3 within tolerance, median error 36.3% aligned.
+
+Choices of program or material property, each scored on its own and on top of the aligned history:
+
+| Variant | Alone | With the aligned history |
+|---|---|---|
+| one film annealed at every temperature in turn | 7 of 24 within tolerance, median error 33.8% | 7 of 24 within tolerance, median error 33.8% |
+| 10 min then 30 min more at each temperature | 10 of 24 within tolerance, median error 19.8% | 10 of 24 within tolerance, median error 19.8% |
+| check: every step in argon instead of 18O2 | 16 of 24 within tolerance, median error 10.2% | 16 of 24 within tolerance, median error 10.2% |
+
+**What was searched.** Two things the paper leaves open, as unknowns: the time the sample sits at temperature in vacuum before the gas is admitted (a new step, Stabilize, 1 s to 30 min; 1 s stands for none) and the anneal time (5 to 40 min: the text gives “5–30 min”, the series “30 min”, and Figure 2 uses 10 + 30 min). Two readings are variants: one film taken through every temperature in turn, and 10 min then 30 min more at each temperature. They were chosen on 763, 883, 973 and 1223 K (21 values); the three amounts at 1073 K are the test, as in the program's own fit. The starting interlayer could not be searched: the program reads no specimen field for it and its interface reservoirs start at zero.
+
+**The anneal time is pinned at 30 min, but that is the fit, not the paper.** Alone, 30 min gives 16 of 21 (median 6.1%), 28 min 16 of 21 (7.4%), 20 min 4 of 21 (25.8%, every value low), 40 min 9 of 21 (15.9%, high). The program's six numbers were fitted to these amounts with 30 min, so any other time is bound to do worse.
+
+**The vacuum hold is not a test of anything: the program does not read the gas.** Every amount comes out the same with the anneal written in argon, in vacuum, in 18O2 at 0.01 Torr or in oxygen at one atmosphere (the check variant: 16 of 24, median 10.2%, identical to the reproduction). So a hold “in vacuum” is simulated as more time in 18O2, and the scan says only what the anneal-time scan says: up to about 40 s is harmless (16 of 21), 2.5 min loses one value (15), 8.6 min leaves 9 and 30 min leaves 5 (median 57%, every value high). Whether a 27 Å silicate grows interfacial oxide in vacuum before the gas, which the paper's crystallization anneal suggests it does, cannot be asked of this program.
+
+**The held-out 1073 K amounts do not move**: 0 of 3 within tolerance before and after (median 36.3%). The interfacial 18O at 1073 K is 5.7 × 10^15 cm^-2 measured against 2.33 simulated, and the interfacial 16O 3.0 against 4.09: the paper's 1073 K interface already holds nearly as much 18O as at 1223 K (6.49), a step the program's single temperature law does not make.
+
+**The variants.** One film taken through every temperature in turn gives 7 of 24 (median 33.8%, all high; the 1223 K interfacial 18O reaches 19.5 against 6.49), so the paper's Figure 5 is not one film re-annealed; the reading that each temperature is a fresh film stands. Ten minutes then thirty more gives 10 of 24 (median 19.8%); on 1073 K alone it brings the film's 18O within tolerance (7.51 against 7.38) and the median there to 33.7%, but it costs 7 of the 16 chosen values, which were fitted with 30 min.
+
+```study-compare
+study: goncharova-2011
+set: aligned
+```
+
+**1** near, **2** off of 3 numbers with the aligned settings (the specimens used to choose the unknowns are left out).
+
+| Specimen | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
+|---|---|---|---|---|---|---|---|
+| 1073 K (800 °C), 30 min | 16O at the interface | 3 10¹⁵ cm⁻² | 4.09 | 4.09 | +36% | off (±10%) | test |
+| 1073 K (800 °C), 30 min | 18O in the film | 7.38 10¹⁵ cm⁻² | 6.44 | 6.44 | -13% | near (±10%) | test |
+| 1073 K (800 °C), 30 min | 18O at the interface | 5.7 10¹⁵ cm⁻² | 2.33 | 2.33 | -59% | off (±10%) | test |
+
+The gas is the gap alignment cannot reach. The exchange program has no term in the oxygen pressure or the isotope: it adds 18O at a rate set by temperature alone, whatever the history says the sample is in. A vacuum hold, an argon anneal and an anneal in natural oxygen are all simulated as 18O2 at 0.01 Torr. A boundary flux proportional to p(18O2), and a reservoir of 16O that a vacuum anneal could move to the interface, are needed before the vacuum question can be asked.
+
+The starting interlayer (about 6 Å of SiOxNy, about 2.6 × 10^15 oxygen atoms per cm² if it were SiO2, and its nitrogen) is not in the program's state, so the measured interfacial 16O (0.3 to 5.5 × 10^15) is compared with growth only. Whether the paper's interfacial 16O is likewise the growth above the as-deposited interlayer is a question for the paper, not for alignment.
+
+### What our language and ontology cannot yet say
+
+- An isotope in a gas: `mix:18O2=0.98,16O2=0.02 PRESSURE 0.01 Torr`, so that the enrichment and the total pressure are stated and a program can read them. Today the isotope is implicit in the program and the pressure, though written, reaches nothing.
+- A layer in the specimen with its own composition that a program reads as an initial state (`LAYER interlayer SiOxNy THICKNESS 6 Å O:N 5:1`), so that the 6 Å oxynitride and its nitrogen start in the interface reservoir instead of being left out.
+- A check in the predictor that a program's operators can act in the history's gas: a program whose source term needs oxygen should refuse, or warn, on a RUN in vacuum or argon instead of acting as if the gas were present.
+- Measurement in the middle of a history (`MEASURE … AFTER Anneal10min`, then more steps): Figure 2's 10 min and +30 min are one film measured twice, which today must be two separate specimens.
+- Temperature in K as a unit on TEMP (`TEMP 763 K`): 763 K is written 489.85 °C, and the paper's own 763 K, 773 K and 490 °C for the same anneal are easier to keep apart when the unit is the paper's.
 
 ### The paper's own conclusions
 
