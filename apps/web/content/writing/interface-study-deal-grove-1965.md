@@ -21,7 +21,7 @@ The planar growth program, `experiments/vitkavage_dit/oxide_growth.isl.template`
 | Repeatability stated by the authors | Thickness accuracy ±25 Å below 0.20 μm and ±40 Å above; B ±2%, A ±2% to ±12% (wet), dry “of the same order” |
 | Internal consistency | Good. The intercept is given as 200, 210, 230 ± 30 and 250 Å in different places; the abstract claims 700–1300 °C and 0.1–1 atm, which come from other workers' data |
 | Is our model independent of this paper's data? | No. The program's constants are an Arrhenius fit to Table II, and Table II is the authors' fit to these same thicknesses. Agreement here checks our transcription, our derivation and the law's form, not a prediction |
-| Outcome | 27 of 44 numbers within tolerance |
+| Outcome | 35 of 44 numbers within tolerance |
 
 The grade is ours and is about the paper as a source for simulation, not about the quality of the experiment: **high** means the sample, every step and its timing are stated well enough that a simulation needs no choices of ours; **moderate** that some choices are ours and are listed; **low** that the result depends on choices the paper does not constrain.
 
@@ -340,7 +340,7 @@ EVALUATION_CONTRACT {contract_id} {{
 
 ## Our simulation against the paper
 
-**27** within, **4** near, **13** off of 44 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**35** within, **5** near, **4** off of 44 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: deal-grove-1965
@@ -383,15 +383,15 @@ study: deal-grove-1965
 | Dry oxygen, 700 °C, 93 h | oxide thickness | 44.4 nm | 46.3 nm | +4% | within (±15.1%) | supported within scope | Fig. 6 (linear axes), PDF p. 6, graph reading; pairs at one time are two points on the figure |
 | Dry oxygen, 700 °C, 120 h | oxide thickness | 53.7 nm | 52.9 nm | -1% | within (±15.1%) | supported within scope | Fig. 6 (linear axes), PDF p. 6, graph reading; pairs at one time are two points on the figure |
 | Dry oxygen, 700 °C, 120 h | oxide thickness | 51.3 nm | 52.9 nm | +3% | within (±15.1%) | supported within scope | Fig. 6 (linear axes), PDF p. 6, graph reading; pairs at one time are two points on the figure |
-| Wet oxygen, 920 °C, 0.117 h | oxide thickness | 42 nm | 23.4 nm | -44% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 920 °C, 0.23 h | oxide thickness | 78 nm | 23.7 nm | -70% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 920 °C, 0.3 h | oxide thickness | 102 nm | 23.9 nm | -77% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 920 °C, 0.4 h | oxide thickness | 131 nm | 24.2 nm | -82% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 920 °C, 0.5 h | oxide thickness | 155 nm | 24.5 nm | -84% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 920 °C, 0.6 h | oxide thickness | 181 nm | 24.8 nm | -86% | off (±10%) | outside the tested scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
-| Wet oxygen, 1100 °C, 0.05 h | oxide thickness | 100 nm | 24.5 nm | -75% | off (±10%) | outside the tested scope | Fig. 1 (log axes), PDF p. 2, graph reading |
-| Wet oxygen, 1100 °C, 0.64 h | oxide thickness | 520 nm | 40.4 nm | -92% | off (±10%) | outside the tested scope | Fig. 1 (log axes), PDF p. 2, graph reading |
-| Wet oxygen, 1100 °C, 2 h | oxide thickness | 920 nm | 68.5 nm | -93% | off (±10%) | outside the tested scope | Fig. 1 (log axes), PDF p. 2, graph reading |
+| Wet oxygen, 920 °C, 0.117 h | oxide thickness | 42 nm | 43.4 nm | +3% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 920 °C, 0.23 h | oxide thickness | 78 nm | 79.7 nm | +2% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 920 °C, 0.3 h | oxide thickness | 102 nm | 100 nm | -2% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 920 °C, 0.4 h | oxide thickness | 131 nm | 128 nm | -2% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 920 °C, 0.5 h | oxide thickness | 155 nm | 154 nm | -1% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 920 °C, 0.6 h | oxide thickness | 181 nm | 178 nm | -2% | within (±10%) | supported within scope | Fig. 5 (linear axes, open circles), PDF p. 6, graph reading |
+| Wet oxygen, 1100 °C, 0.05 h | oxide thickness | 100 nm | 114 nm | +14% | near (±10%) | supported within scope | Fig. 1 (log axes), PDF p. 2, graph reading |
+| Wet oxygen, 1100 °C, 0.64 h | oxide thickness | 520 nm | 511 nm | -2% | within (±10%) | supported within scope | Fig. 1 (log axes), PDF p. 2, graph reading |
+| Wet oxygen, 1100 °C, 2 h | oxide thickness | 920 nm | 940 nm | +2% | within (±10%) | supported within scope | Fig. 1 (log axes), PDF p. 2, graph reading |
 
 ## Aligning the simulation: what the unstated things would have to be
 
@@ -403,14 +403,14 @@ Every step whose timing or temperature the paper leaves open carries a range in 
 
 Together: Push duration 1 s (was 1).
 
-As reproduced: 27 of 44 within tolerance, median error 6.2%. Aligned: 27 of 44 within tolerance, median error 6.2%. On the held-out samples only: 22 of 38 within tolerance, median error 7.6% as reproduced, 22 of 38 within tolerance, median error 7.6% aligned.
+As reproduced: 35 of 44 within tolerance, median error 3.1%. Aligned: 35 of 44 within tolerance, median error 3.1%. On the held-out samples only: 30 of 38 within tolerance, median error 2.5% as reproduced, 30 of 38 within tolerance, median error 2.5% aligned.
 
 Choices of program or material property, each scored on its own and on top of the aligned history:
 
 | Variant | Alone | With the aligned history |
 |---|---|---|
 | wet written as the named ambient wet_O2 | 27 of 44 within tolerance, median error 6.2% | 27 of 44 within tolerance, median error 6.2% |
-| wet written as steam at 1 atm | 27 of 44 within tolerance, median error 6.2% | 27 of 44 within tolerance, median error 6.2% |
+| wet written as steam at 1 atm | 28 of 44 within tolerance, median error 6.2% | 28 of 44 within tolerance, median error 6.2% |
 
 **Time zero.** The only history unknown is how long a slice sat in the gas before the clock started (`Push`, 1 s to 30 min). It was chosen on the 1100 and 1200 °C curves, where a few minutes matter most. None is best: 5 of 6 within tolerance at 1 s, 3.5 s and 12 s, falling to 3 of 6 at 8.6 min and 2 of 6 at 30 min (median error from 5.0% to 22.9%). With the 230 Å start, 2.5 min before time zero still leaves 5 of 6 (median 7.3%); somewhere between 2.5 and 8.6 min the data rule it out. The aligned history is the reproduced one, so the test score is unchanged: 22 of 38 on the other six cases.
 
@@ -423,7 +423,7 @@ study: deal-grove-1965
 set: aligned
 ```
 
-**22** within, **3** near, **13** off of 38 numbers with the aligned settings (the samples used to choose the unknowns are left out).
+**30** within, **4** near, **4** off of 38 numbers with the aligned settings (the samples used to choose the unknowns are left out).
 
 | Sample | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
 |---|---|---|---|---|---|---|---|
@@ -456,15 +456,15 @@ set: aligned
 | Dry oxygen, 700 °C, 93 h | oxide thickness | 44.4 nm | 46.3 | 46.3 | +4% | within (±15%) | test |
 | Dry oxygen, 700 °C, 120 h | oxide thickness | 53.7 nm | 52.9 | 52.9 | -1% | within (±15%) | test |
 | Dry oxygen, 700 °C, 120 h | oxide thickness | 51.3 nm | 52.9 | 52.9 | +3% | within (±15%) | test |
-| Wet oxygen, 920 °C, 0.117 h | oxide thickness | 42 nm | 23.4 | 23.4 | -44% | off (±10%) | test |
-| Wet oxygen, 920 °C, 0.23 h | oxide thickness | 78 nm | 23.7 | 23.7 | -70% | off (±10%) | test |
-| Wet oxygen, 920 °C, 0.3 h | oxide thickness | 102 nm | 23.9 | 23.9 | -77% | off (±10%) | test |
-| Wet oxygen, 920 °C, 0.4 h | oxide thickness | 131 nm | 24.2 | 24.2 | -82% | off (±10%) | test |
-| Wet oxygen, 920 °C, 0.5 h | oxide thickness | 155 nm | 24.5 | 24.5 | -84% | off (±10%) | test |
-| Wet oxygen, 920 °C, 0.6 h | oxide thickness | 181 nm | 24.8 | 24.8 | -86% | off (±10%) | test |
-| Wet oxygen, 1100 °C, 0.05 h | oxide thickness | 100 nm | 24.5 | 24.5 | -75% | off (±10%) | test |
-| Wet oxygen, 1100 °C, 0.64 h | oxide thickness | 520 nm | 40.4 | 40.4 | -92% | off (±10%) | test |
-| Wet oxygen, 1100 °C, 2 h | oxide thickness | 920 nm | 68.5 | 68.5 | -93% | off (±10%) | test |
+| Wet oxygen, 920 °C, 0.117 h | oxide thickness | 42 nm | 43.4 | 43.4 | +3% | within (±10%) | test |
+| Wet oxygen, 920 °C, 0.23 h | oxide thickness | 78 nm | 79.7 | 79.7 | +2% | within (±10%) | test |
+| Wet oxygen, 920 °C, 0.3 h | oxide thickness | 102 nm | 100 | 100 | -2% | within (±10%) | test |
+| Wet oxygen, 920 °C, 0.4 h | oxide thickness | 131 nm | 128 | 128 | -2% | within (±10%) | test |
+| Wet oxygen, 920 °C, 0.5 h | oxide thickness | 155 nm | 154 | 154 | -1% | within (±10%) | test |
+| Wet oxygen, 920 °C, 0.6 h | oxide thickness | 181 nm | 178 | 178 | -2% | within (±10%) | test |
+| Wet oxygen, 1100 °C, 0.05 h | oxide thickness | 100 nm | 114 | 114 | +14% | near (±10%) | test |
+| Wet oxygen, 1100 °C, 0.64 h | oxide thickness | 520 nm | 511 | 511 | -2% | within (±10%) | test |
+| Wet oxygen, 1100 °C, 2 h | oxide thickness | 920 nm | 940 | 940 | +2% | within (±10%) | test |
 
 What alignment cannot fix. The dry misses are the program's constants, not the history: the Arrhenius line through Table II is off the table by up to 15%, and the 1200 °C short-time point and the 800 °C long-time points follow it. Using the table's own B and B/A at each temperature, or the paper's activation energies, is a change to sourced constants, not a history unknown, and was not made here. The 700 °C early points need a starting regime that grows from below 230 Å. Wet oxygen needs a program with water as the oxidant (Table I); none exists.
 

@@ -3,13 +3,13 @@
   "slug": "interface-studies-reproduced",
   "title": "The studies we depend on, reproduced",
   "file": "interface-studies-reproduced.md",
-  "description": "13 papers the interface study depends on: each one's sample and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
+  "description": "16 papers the interface study depends on: each one's sample and process history written in our language as the paper states them, simulated, and set beside the paper's numbers."
  },
  {
   "slug": "interface-study-vitkavage-1990",
   "title": "Reproducing Vitkavage, Irene and Massoud 1990: interface charges on four orientations of silicon",
   "file": "interface-study-vitkavage-1990.md",
-  "description": "Vitkavage, Irene and Massoud 1990: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near, 8 off)."
+  "description": "Vitkavage, Irene and Massoud 1990: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 4 near, 9 off)."
  },
  {
   "slug": "interface-study-deal-1967",
@@ -63,7 +63,7 @@
   "slug": "interface-study-deal-grove-1965",
   "title": "Reproducing Deal and Grove 1965: the linear-parabolic law and the constants our growth program takes from it",
   "file": "interface-study-deal-grove-1965.md",
-  "description": "Deal and Grove 1965: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (27 within, 4 near, 13 off)."
+  "description": "Deal and Grove 1965: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (35 within, 5 near, 4 off)."
  },
  {
   "slug": "interface-study-krzeminski-2007",
@@ -81,6 +81,24 @@
   "slug": "interface-study-krzeminski-2012",
   "title": "Reproducing Krzeminski et al. 2012: retarded oxidation of silicon nanowires",
   "file": "interface-study-krzeminski-2012.md",
-  "description": "Krzeminski, Han and Larrieu 2012: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 near, 9 off, 1 not modelled)."
+  "description": "Krzeminski, Han and Larrieu 2012: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (9 within, 4 near)."
+ },
+ {
+  "slug": "interface-study-rabie-2005",
+  "title": "Reproducing Rabie, Haddara and Carette 2005: a kinetic model of SiGe oxidation against four wet oxidations",
+  "file": "interface-study-rabie-2005.md",
+  "description": "Rabie, Haddara and Carette 2005: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (3 within, 23 off)."
+ },
+ {
+  "slug": "interface-study-david-2015",
+  "title": "Reproducing David et al. 2015: germanium condensation under a dry oxide",
+  "file": "interface-study-david-2015.md",
+  "description": "David et al. 2015: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (7 within, 1 near, 13 off)."
+ },
+ {
+  "slug": "interface-study-wang-1994",
+  "title": "Reproducing Wang, Hu and Irene 1994: thermal oxidation of germanium at 400 to 550 \u00b0C",
+  "file": "interface-study-wang-1994.md",
+  "description": "Wang, Hu and Irene 1994: the sample and the timing of its process history as the paper states them, our encoding beside them item by item, the simulation in ISL, and how far it lands from the paper's numbers (8 within, 2 near, 3 off, 3 not modelled)."
  }
 ]

@@ -21,7 +21,7 @@ This is the challenge's first reference, and the one the organisers say they eva
 | Repeatability stated by the authors | Yes: under 5% across a wafer and within 10% between identically processed wafers (cleanroom set) |
 | Internal consistency | Poor for a reference: a units header off by ten (Table IV), a dropped zero (Table VII), 1.8 against 1.08 (Table III against II and VI), and text values that differ from the tables. Four needed a ruling from the project owner |
 | Is our model independent of this paper's data? | Partly. Growth: nothing fitted. Fixed charge: fitted to another laboratory. Trap density: the program's structure and nine numbers were fitted to these wafers, with (511) and 900 °C held out |
-| Outcome | 9 of 21 numbers within tolerance |
+| Outcome | 8 of 21 numbers within tolerance |
 
 The grade is ours and is about the paper as a source for simulation, not about the quality of the experiment: **high** means the sample, every step and its timing are stated well enough that a simulation needs no choices of ours; **moderate** that some choices are ours and are listed; **low** that the result depends on choices the paper does not constrain.
 
@@ -62,18 +62,18 @@ Simulated time in this history: **1 h 30 min 05 s**.
 
 #### Across the samples
 
-| Sample | Oxidation | Pull | PostMetalAnneal | Total |
-|---|---|---|---|---|
-| (100), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 1 h 30 min 05 s |
-| (111), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 1 h 30 min 05 s |
-| (100), 1000 °C, 8 h, with PMA | 8 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 8 h 30 min 05 s |
-| (111), 1000 °C, 8 h, with PMA | 8 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 8 h 30 min 05 s |
-| (110), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 1 h 30 min 05 s |
-| (511), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | 1 h 30 min 05 s |
-| (100), 750 °C, 23 h, with PMA | 23 h 00 min at 750 °C | 5 s at 750→400 °C | 30 min at 400 °C | 23 h 30 min 05 s |
-| (100), 1000 °C, 1 h, no anneal | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | – | 1 h 00 min 05 s |
-| Non-cleanroom (100), 750 °C, 24 h | 24 h 00 min at 750 °C | 5 s at 750→400 °C | 30 min at 400 °C | 24 h 30 min 05 s |
-| Non-cleanroom (110), 1100 °C, 0.5 h | 30 min at 1100 °C | 5 s at 1100→400 °C | 30 min at 400 °C | 1 h 00 min 05 s |
+| Sample | Oxidation | Pull | PostMetalAnneal | N2_heatup_01 | N2_heatup_02 | N2_heatup_03 | N2_heatup_04 | N2_heatup_05 | N2_heatup_06 | N2_heatup_07 | N2_heatup_08 | N2_heatup_09 | N2_heatup_10 | N2_heatup_11 | N2_heatup_12 | PullTravel | O2_cool_01 | O2_cool_02 | O2_cool_03 | O2_cool_04 | O2_cool_05 | O2_cool_06 | FG_heatup_01 | FG_heatup_02 | FG_heatup_03 | FG_heatup_04 | FG_heatup_05 | FG_heatup_06 | FG_heatup_07 | FG_heatup_08 | FG_heatup_09 | FG_heatup_10 | FG_heatup_11 | FG_heatup_12 | FG_cool_01 | FG_cool_02 | FG_cool_03 | FG_cool_04 | FG_cool_05 | FG_cool_06 | FG_cool_07 | FG_cool_08 | FG_cool_09 | FG_cool_10 | FG_cool_11 | FG_cool_12 | Total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| (100), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 30 min 05 s |
+| (111), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 30 min 05 s |
+| (100), 1000 °C, 8 h, with PMA | 8 h 00 min at 1000 °C | – | 30 min at 400 °C | 15 s at 25→359.494 °C | 15 s at 359.494→580.006 °C | 15 s at 580.006→725.377 °C | 15 s at 725.377→821.211 °C | 15 s at 821.211→884.389 °C | 15 s at 884.389→926.038 °C | 15 s at 926.038→953.495 °C | 15 s at 953.495→971.596 °C | 15 s at 971.596→983.529 °C | 15 s at 983.529→991.395 °C | 15 s at 991.395→996.581 °C | 15 s at 996.581→1000 °C | 5 s at 1000 °C | 1.5 s at 1000→800 °C | 3.2 s at 800→600 °C | 8.3 s at 600→400 °C | 28 s at 400→200 °C | 49 s at 200→100 °C | 3 min 30 s at 100→25 °C | 15 s at 25→153.652 °C | 15 s at 153.652→238.464 °C | 15 s at 238.464→294.376 °C | 15 s at 294.376→331.235 °C | 15 s at 331.235→355.534 °C | 15 s at 355.534→371.553 °C | 15 s at 371.553→382.114 °C | 15 s at 382.114→389.075 °C | 15 s at 389.075→393.665 °C | 15 s at 393.665→396.69 °C | 15 s at 396.69→398.685 °C | 15 s at 398.685→400 °C | 50 s at 400→271.348 °C | 50 s at 271.348→186.536 °C | 50 s at 186.536→130.624 °C | 50 s at 130.624→93.765 °C | 50 s at 93.765→69.4658 °C | 50 s at 69.4658→53.4468 °C | 50 s at 53.4468→42.8865 °C | 50 s at 42.8865→35.9246 °C | 50 s at 35.9246→31.3351 °C | 50 s at 31.3351→28.3095 °C | 50 s at 28.3095→26.3149 °C | 50 s at 26.3149→25 °C | 8 h 51 min 05 s |
+| (111), 1000 °C, 8 h, with PMA | 8 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 8 h 30 min 05 s |
+| (110), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 30 min 05 s |
+| (511), 1000 °C, 1 h, with PMA | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 30 min 05 s |
+| (100), 750 °C, 23 h, with PMA | 23 h 00 min at 750 °C | 5 s at 750→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 23 h 30 min 05 s |
+| (100), 1000 °C, 1 h, no anneal | 1 h 00 min at 1000 °C | 5 s at 1000→400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 00 min 05 s |
+| Non-cleanroom (100), 750 °C, 24 h | 24 h 00 min at 750 °C | 5 s at 750→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 24 h 30 min 05 s |
+| Non-cleanroom (110), 1100 °C, 0.5 h | 30 min at 1100 °C | 5 s at 1100→400 °C | 30 min at 400 °C | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | – | 1 h 00 min 05 s |
 
 #### Timing the paper does not give
 
@@ -170,16 +170,61 @@ SAMPLE Wafer_100_1000C_8h_PMA {
     DOPING: p_type
 }
 CONTROL_TRAJECTORY History {
-    EVENT Clean KIND clean TIMING bound                          # Pre-oxidation clean
-    EVENT Load KIND load TIMING assumed                          # Load into the furnace in nitrogen
+    EVENT Clean KIND clean TEMP 25 TIMING assumed                # Pre-oxidation clean
+    EVENT Load KIND load TEMP 25 TIMING assumed                  # Load into the furnace in nitrogen
+    RUN N2_heatup_01 DURATION 15 TEMP 25->359.494 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_02 DURATION 15 TEMP 359.494->580.006 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_03 DURATION 15 TEMP 580.006->725.377 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_04 DURATION 15 TEMP 725.377->821.211 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_05 DURATION 15 TEMP 821.211->884.389 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_06 DURATION 15 TEMP 884.389->926.038 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_07 DURATION 15 TEMP 926.038->953.495 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_08 DURATION 15 TEMP 953.495->971.596 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_09 DURATION 15 TEMP 971.596->983.529 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_10 DURATION 15 TEMP 983.529->991.395 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_11 DURATION 15 TEMP 991.395->996.581 AMBIENT inert_N2 TIMING assumed
+    RUN N2_heatup_12 DURATION 15 TEMP 996.581->1000 AMBIENT inert_N2 TIMING assumed
     RUN Oxidation DURATION 28800 TEMP 1000->1000 AMBIENT dry_O2 TIMING stated
-    RUN Pull DURATION 5 TEMP 1000->400 AMBIENT dry_O2 TIMING bound
-    EVENT Store KIND storage TIMING assumed                      # Stored in a nitrogen dry box
-    EVENT Metal KIND metallization TIMING assumed                # Aluminium evaporated
+    # Source TIMING bound: <5 s, PDF p. 6, non-cleanroom set; transfer to this cleanroom wafer is assumed
+    RUN PullTravel DURATION 5 TEMP 1000->1000 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_01 DURATION 1.5 TEMP 1000->800 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_02 DURATION 3.2 TEMP 800->600 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_03 DURATION 8.3 TEMP 600->400 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_04 DURATION 28 TEMP 400->200 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_05 DURATION 49 TEMP 200->100 AMBIENT dry_O2 TIMING assumed
+    RUN O2_cool_06 DURATION 210 TEMP 100->25 AMBIENT dry_O2 TIMING assumed
+    EVENT Store KIND storage TEMP 25 TIMING assumed              # Stored in a nitrogen dry box
+    EVENT Metal KIND metallization TEMP 25 TIMING assumed        # Aluminium evaporated
+    RUN FG_heatup_01 DURATION 15 TEMP 25->153.652 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_02 DURATION 15 TEMP 153.652->238.464 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_03 DURATION 15 TEMP 238.464->294.376 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_04 DURATION 15 TEMP 294.376->331.235 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_05 DURATION 15 TEMP 331.235->355.534 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_06 DURATION 15 TEMP 355.534->371.553 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_07 DURATION 15 TEMP 371.553->382.114 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_08 DURATION 15 TEMP 382.114->389.075 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_09 DURATION 15 TEMP 389.075->393.665 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_10 DURATION 15 TEMP 393.665->396.69 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_11 DURATION 15 TEMP 396.69->398.685 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_heatup_12 DURATION 15 TEMP 398.685->400 AMBIENT forming_gas_H2 TIMING assumed
     RUN PostMetalAnneal DURATION 1800 TEMP 400->400 AMBIENT forming_gas_H2 TIMING stated
-    EVENT CV KIND measurement TIMING assumed                     # Capacitance-voltage measurement
+    RUN FG_cool_01 DURATION 50 TEMP 400->271.348 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_02 DURATION 50 TEMP 271.348->186.536 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_03 DURATION 50 TEMP 186.536->130.624 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_04 DURATION 50 TEMP 130.624->93.765 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_05 DURATION 50 TEMP 93.765->69.4658 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_06 DURATION 50 TEMP 69.4658->53.4468 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_07 DURATION 50 TEMP 53.4468->42.8865 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_08 DURATION 50 TEMP 42.8865->35.9246 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_09 DURATION 50 TEMP 35.9246->31.3351 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_10 DURATION 50 TEMP 31.3351->28.3095 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_11 DURATION 50 TEMP 28.3095->26.3149 AMBIENT forming_gas_H2 TIMING assumed
+    RUN FG_cool_12 DURATION 50 TEMP 26.3149->25 AMBIENT forming_gas_H2 TIMING assumed
+    EVENT CV KIND measurement TEMP 25 TIMING assumed             # Capacitance-voltage measurement
 }
 ```
+
+Thermal scenario A, fast O2 cooling, PMA A. Only the 1000 C/8 h and 400 C/30 min holds are stated; every transition is assumed. The <5 s pull bound comes from the other (non-cleanroom) set. Four scenarios and duration sensitivity: evaluations/vitkavage_transitions/report.json.
 
 #### (111), 1000 °C, 8 h, with PMA
 
@@ -407,7 +452,7 @@ EVALUATION_CONTRACT {contract_id} {{
 
 ## Our simulation against the paper
 
-**9** within, **4** near, **8** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
+**8** within, **4** near, **9** off of 21 numbers. Tolerance is stated per row; nothing was fitted for this page.
 
 ```study-compare
 study: vitkavage-1990
@@ -422,8 +467,8 @@ study: vitkavage-1990
 | (111), 1000 °C, 1 h, with PMA | fixed charge | 4.30e+11 cm⁻² | 4.46e+11 cm⁻² | +4% | within (±10%) | supported within scope | Table III/VI |
 | (111), 1000 °C, 1 h, with PMA | interface state density at midgap | 1.20e+11 cm⁻² eV⁻¹ | 8.63e+10 cm⁻² eV⁻¹ | -28% | off (±10%) | direction only | Table IV/VII |
 | (100), 1000 °C, 8 h, with PMA | oxide thickness | 205 nm | 209 nm | +2% | within (±10%) | supported within scope | text, PDF p. 14: 2050 Å |
-| (100), 1000 °C, 8 h, with PMA | fixed charge | 1.30e+11 cm⁻² | 1.58e+11 cm⁻² | +22% | off (±10%) | supported within scope | Table VI, PDF p. 42 |
-| (100), 1000 °C, 8 h, with PMA | interface state density at midgap | 2.20e+10 cm⁻² eV⁻¹ | 1.99e+10 cm⁻² eV⁻¹ | -10% | within (±10%) | direction only | Table VII, PDF p. 43 |
+| (100), 1000 °C, 8 h, with PMA | fixed charge | 1.30e+11 cm⁻² | 2.69e+11 cm⁻² | +107% | off (±10%) | supported within scope | Table VI, PDF p. 42 |
+| (100), 1000 °C, 8 h, with PMA | interface state density at midgap | 2.20e+10 cm⁻² eV⁻¹ | 1.42e+10 cm⁻² eV⁻¹ | -35% | off (±10%) | direction only | Table VII, PDF p. 43 |
 | (111), 1000 °C, 8 h, with PMA | oxide thickness | 240 nm | 238 nm | -1% | within (±10%) | supported within scope | text, PDF p. 14: 2400 Å |
 | (111), 1000 °C, 8 h, with PMA | fixed charge | 3.80e+11 cm⁻² | 4.46e+11 cm⁻² | +17% | near (±10%) | supported within scope | Table VI |
 | (111), 1000 °C, 8 h, with PMA | interface state density at midgap | 6.00e+10 cm⁻² eV⁻¹ | 2.29e+10 cm⁻² eV⁻¹ | -62% | off (±10%) | direction only | Table VII |
@@ -438,6 +483,8 @@ study: vitkavage-1990
 | Non-cleanroom (110), 1100 °C, 0.5 h | oxide thickness | 90 nm | 84.7 nm | -6% | within (±10%) | supported within scope | text, PDF p. 6 |
 
 ## Aligning the simulation: what the unstated things would have to be
+
+The alignment results below predate the revised (100), 1000 °C, 8 h, PMA thermal history. They use the earlier abbreviated cooling and PMA assumptions and do not validate the new transitions. The revised case uses scenario A with fast cooling; all four prompt-defined scenarios and duration-range checks are recorded in evaluations/vitkavage_transitions/report.json.
 
 The reproduction above fills every gap in the report with an assumption of ours. Here each gap is treated as an unknown and scanned over what a furnace of that kind allows, against every cleanroom value in the report: 6 thicknesses, 28 fixed-charge values after the hydrogen anneal and 46 midgap trap densities (`scripts/align_vitkavage.py`, report in `evaluations/vitkavage_alignment.json`). No parameter declared `fitted` was touched. A tolerance is the larger of 10% and the spread the report prints for that value.
 
@@ -501,6 +548,53 @@ How to read the aligned numbers: the thickness change is a choice between two pr
 - **Partly done 10 November: gas by pressure, not by name.** The predictor now reads a gas by its partial pressures. Still open: the thin-oxide program grows oxide in nitrogen because it does not read the oxygen pressure. Before: Writing the stated moisture (`mix:O2=0.999994,H2O=6.0e-6`) made the fixed-charge program return nothing, because the predictor looks for the name `dry_O2`. And the thin-oxide program keeps growing oxide during a nitrogen step: it does not read the oxygen pressure.
 - **What a measurement is.** Fixed charge after a hydrogen anneal, apparent charge without one, and Deal's 1967 charge after 550 °C in nitrogen are three observables in the papers and one in ours. The work-function value behind every fixed charge here is not stated; an observation model for the C-V extraction would carry that assumption.
 - **Repeatability as data.** The report's run-to-run scatter (up to 33%) is larger than the 10% we score against. A dataset should carry its own repeatability so a contract's tolerance comes from the source.
+
+## With Quantum ESPRESSO switched on
+
+The hydrogen step of the trap-density program has a fitted share of sites that the forming-gas anneal does not remove. An atomic calculation can say whether that share is set by how strongly hydrogen binds to a dangling bond. Quantum ESPRESSO (the dm_qe build) computed the energy of Si• + ½H₂ → Si–H for a silicon atom with three silicon back-bonds, the local structure of a Pb centre, on a 14-atom cluster (`atomistic/calcs/si_dangling_bond_hydrogen.json`; record `evaluations/atomistic/si_dangling_bond_hydrogen.json`). It ran twice: on the local CPU build and on an H100 on RunPod. The two agree to 0.3 meV in the reaction energy and to 10⁻⁸ Ry in the total energy, and the H100 was about four times faster on the larger cluster.
+
+With the predictor's switch on (`ISL_USE_COMPUTED=1` or `--computed`), the program `experiments/atomistic/hydrogen_passivation_equilibrium.isl.template` turns that energy, the free energy of hydrogen gas and a zero-point correction (both stated hypotheses) into the share of bonds an anneal would leave uncapped if it reached equilibrium, and multiplies the fitted density before the anneal by it. The fitted predictions do not change; the computed rows are added beside them and labelled as computed.
+
+**The numbers do not match, and the mismatch is the result.** At equilibrium only about five in a million dangling bonds would stay uncapped at 400 °C in forming gas, which bounds the trap density at 10⁵ to 10⁷ cm⁻² eV⁻¹. Vitkavage measured 1.5 × 10¹⁰ to 1.6 × 10¹¹ after the anneal, four to five orders of magnitude more. What remains after the anneal is therefore not limited by the thermodynamics of the Si–H bond: either thirty minutes at 400 °C is far from equilibrium (a rate question the calculation does not answer), or the remaining traps are not dangling bonds that hydrogen can cap. Either way it supports the two-population form of the trap program, in which one population is not removed by hydrogen.
+
+Limits: a cluster has no oxide around it and no interface strain; the zero-point correction (0.07 eV) and the gas entropy are recalled values marked hypothesis; no barrier was computed. The next calculation is the interface itself: a Si(100)/SiO₂ model with its suboxide transition and a Pb centre in place.
+
+| Calculation | Value | Backend | Status |
+|---|---|---|---|
+| dE_cap_half_H2: energy of capping the dangling bond from molecular hydrogen, Si* + 1/2 H2 -> SiH; negative means hydrogen stabilizes the bond | -1.2838 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_SiH: energy to break the Si-H bond into the dangling bond and a free hydrogen atom | 3.5429 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+| D_H2: the H2 binding energy: a check on the method, to be compared with about 4.75 eV (well depth, recalled) | 4.5183 eV | ssh NVIDIA H100 80GB HBM3, 595.91.07 | complete |
+
+| Sample | Measured after the anneal | Fitted program | Computed equilibrium bound | Measured over bound |
+|---|---|---|---|---|
+| (100), 750 °C, 23 h | 1.20e+11 | 1.14e+11 | 3.50e+06 | 3.4e+04 |
+| (100), 800 °C, 18 h | 9.00e+10 | 9.83e+10 | 2.62e+06 | 3.4e+04 |
+| (100), 900 °C, 4.5 h | 6.00e+10 | 8.10e+10 | 1.68e+06 | 3.6e+04 |
+| (100), 1000 °C, 1 h | 5.00e+10 | 7.51e+10 | 1.26e+06 | 4e+04 |
+| (100), 1000 °C, 2.5 h | 2.10e+10 | 4.04e+10 | 9.01e+05 | 2.3e+04 |
+| (100), 1000 °C, 4 h | 2.60e+10 | 2.73e+10 | 7.63e+05 | 3.4e+04 |
+| (100), 1000 °C, 8 h | 2.20e+10 | 1.99e+10 | 6.86e+05 | 3.2e+04 |
+| (110), 750 °C, 23 h | 1.60e+11 | 1.59e+11 | 1.72e+07 | 9.3e+03 |
+| (110), 800 °C, 18 h | 9.50e+10 | 1.38e+11 | 1.22e+07 | 7.8e+03 |
+| (110), 900 °C, 4.5 h | 9.30e+10 | 1.14e+11 | 6.77e+06 | 1.4e+04 |
+| (110), 1000 °C, 1 h | 7.90e+10 | 1.05e+11 | 4.32e+06 | 1.8e+04 |
+| (110), 1000 °C, 2.5 h | 5.70e+10 | 5.66e+10 | 3.81e+06 | 1.5e+04 |
+| (110), 1000 °C, 4 h | 2.80e+10 | 3.82e+10 | 3.62e+06 | 7.7e+03 |
+| (110), 1000 °C, 8 h | 2.80e+10 | 2.79e+10 | 3.51e+06 | 8e+03 |
+| (111), 750 °C, 23 h | 1.30e+11 | 1.31e+11 | 1.36e+06 | 9.5e+04 |
+| (111), 800 °C, 18 h | 1.30e+11 | 1.13e+11 | 1.18e+06 | 1.1e+05 |
+| (111), 900 °C, 4.5 h | 1.00e+11 | 9.32e+10 | 9.74e+05 | 1e+05 |
+| (111), 1000 °C, 1 h | 1.20e+11 | 8.63e+10 | 9.03e+05 | 1.3e+05 |
+| (111), 1000 °C, 2.5 h | 7.90e+10 | 4.65e+10 | 4.86e+05 | 1.6e+05 |
+| (111), 1000 °C, 4 h | 5.00e+10 | 3.14e+10 | 3.28e+05 | 1.5e+05 |
+| (111), 1000 °C, 8 h | 6.00e+10 | 2.29e+10 | 2.39e+05 | 2.5e+05 |
+| (511), 750 °C, 23 h | 7.50e+10 | 7.15e+10 | 4.83e+06 | 1.6e+04 |
+| (511), 800 °C, 18 h | 8.00e+10 | 6.19e+10 | 3.46e+06 | 2.3e+04 |
+| (511), 900 °C, 4.5 h | 5.60e+10 | 5.11e+10 | 2.00e+06 | 2.8e+04 |
+| (511), 1000 °C, 1 h | 5.70e+10 | 4.73e+10 | 1.34e+06 | 4.3e+04 |
+| (511), 1000 °C, 2.5 h | 3.40e+10 | 2.55e+10 | 1.11e+06 | 3.1e+04 |
+| (511), 1000 °C, 4 h | 1.50e+10 | 1.72e+10 | 1.02e+06 | 1.5e+04 |
+| (511), 1000 °C, 8 h | 2.30e+10 | 1.25e+10 | 9.75e+05 | 2.4e+04 |
 
 ### The paper's own conclusions
 

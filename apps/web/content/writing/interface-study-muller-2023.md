@@ -522,7 +522,7 @@ CONTROL_TRAJECTORY History {
 
 SiGe samples run through the SiGe programs (FAMILY SiGe_oxide). They are planar programs; the predictor labels every number outside its tested scope. None reports a remaining core.
 
-The programs the predictor ran on these histories: `experiments/muller_nanowire/radial_oxidation.isl.template`, `experiments/rabie_sige/legoues_800C_14Ge.isl`, `experiments/sige_interface/interface_enrichment.isl.template`, `experiments/sige_inventory/conserved_germanium.isl.template`.
+The programs the predictor ran on these histories: `experiments/muller_nanowire/radial_oxidation.isl.template with the length exponential curvature term`, `experiments/rabie_sige/legoues_800C_14Ge.isl`, `experiments/sige_interface/interface_enrichment.isl.template`, `experiments/sige_inventory/conserved_germanium.isl.template`.
 
 The model itself, `experiments/muller_nanowire/radial_oxidation.isl.template`, as it is written. Every equation the simulation uses is in this text; the runtime holds no physics.
 
@@ -613,28 +613,28 @@ study: muller-2023
 
 | Sample and history | Quantity | The paper | Our simulation | Difference | Verdict | What the program's own evaluation says | Where in the paper |
 |---|---|---|---|---|---|---|---|
-| Si nanowire, 94.4 nm as etched (fit wire) | oxide thickness on the wire | 33.4 nm | 20.9 nm | -38% | off (±9%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 94.4 nm as etched (fit wire) | remaining core diameter | 58.4 nm | 73.7 nm | +26% | off (±5.1%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 78.7 nm as etched (fit wire) | oxide thickness on the wire | 31.6 nm | 20.2 nm | -36% | off (±9.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 78.7 nm as etched (fit wire) | remaining core diameter | 44.1 nm | 58.3 nm | +32% | off (±6.8%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 84.7 nm as etched (fit wire) | oxide thickness on the wire | 33 nm | 20.5 nm | -38% | off (±9.1%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 84.7 nm as etched (fit wire) | remaining core diameter | 48 nm | 64.2 nm | +34% | off (±6.2%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 103.5 nm as etched (fit wire) | oxide thickness on the wire | 32.8 nm | 21.1 nm | -35% | off (±9.2%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 103.5 nm as etched (fit wire) | remaining core diameter | 66.9 nm | 82.7 nm | +24% | off (±4.5%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 108.8 nm as etched (fit wire) | oxide thickness on the wire | 33.5 nm | 21.3 nm | -36% | off (±9%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 108.8 nm as etched (fit wire) | remaining core diameter | 73.3 nm | 88 nm | +20% | off (±4.1%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 35.3 nm as etched (test wire) | oxide thickness on the wire | 22.2 nm | 16.1 nm | -28% | off (±13.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 35.3 nm as etched (test wire) | remaining core diameter | 11 nm | 17.4 nm | +58% | off (±27.3%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 40.2 nm as etched (test wire) | oxide thickness on the wire | 22.9 nm | 16.9 nm | -26% | off (±13.1%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 40.2 nm as etched (test wire) | remaining core diameter | 12.2 nm | 21.7 nm | +78% | off (±24.6%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 49.5 nm as etched (test wire) | oxide thickness on the wire | 25.5 nm | 18.1 nm | -29% | off (±11.8%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 49.5 nm as etched (test wire) | remaining core diameter | 22.4 nm | 30.2 nm | +35% | off (±13.4%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 61 nm as etched (test wire) | oxide thickness on the wire | 28 nm | 19.1 nm | -32% | off (±10.7%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 61 nm as etched (test wire) | remaining core diameter | 31.8 nm | 41.1 nm | +29% | off (±9.4%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanowire, 68.1 nm as etched (test wire) | oxide thickness on the wire | 28.6 nm | 19.6 nm | -31% | off (±10.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
-| Si nanowire, 68.1 nm as etched (test wire) | remaining core diameter | 37.8 nm | 48 nm | +27% | off (±7.9%) | outside the tested scope | Figure 5(b), after the oxide strip |
-| Si nanosheet, 79.6 nm wide as etched | oxide thickness on the sheet | 45.3 nm | 20.2 nm | -55% | off (±6.6%) | outside the tested scope | Figure 5, vector drawing; dataset muller_2023_series (text: 44.1 ± 3.7 nm for all sheets, p. 8) |
-| Si nanosheet, 79.6 nm wide as etched | remaining sheet width | 37.9 nm | 59.2 nm | +56% | off (±7.9%) | outside the tested scope | Figure 5(b), vector drawing; dataset muller_2023_series |
+| Si nanowire, 94.4 nm as etched (fit wire) | oxide thickness on the wire | 33.4 nm | 18.8 nm | -44% | off (±9%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 94.4 nm as etched (fit wire) | remaining core diameter | 58.4 nm | 76 nm | +30% | off (±5.1%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 78.7 nm as etched (fit wire) | oxide thickness on the wire | 31.6 nm | 17.9 nm | -43% | off (±9.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 78.7 nm as etched (fit wire) | remaining core diameter | 44.1 nm | 60.9 nm | +38% | off (±6.8%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 84.7 nm as etched (fit wire) | oxide thickness on the wire | 33 nm | 18.3 nm | -45% | off (±9.1%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 84.7 nm as etched (fit wire) | remaining core diameter | 48 nm | 66.7 nm | +39% | off (±6.2%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 103.5 nm as etched (fit wire) | oxide thickness on the wire | 32.8 nm | 19.2 nm | -41% | off (±9.2%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 103.5 nm as etched (fit wire) | remaining core diameter | 66.9 nm | 84.8 nm | +27% | off (±4.5%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 108.8 nm as etched (fit wire) | oxide thickness on the wire | 33.5 nm | 19.4 nm | -42% | off (±9%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 108.8 nm as etched (fit wire) | remaining core diameter | 73.3 nm | 90 nm | +23% | off (±4.1%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 35.3 nm as etched (test wire) | oxide thickness on the wire | 22.2 nm | 12.7 nm | -43% | off (±13.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 35.3 nm as etched (test wire) | remaining core diameter | 11 nm | 21.8 nm | +99% | off (±27.3%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 40.2 nm as etched (test wire) | oxide thickness on the wire | 22.9 nm | 13.6 nm | -40% | off (±13.1%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 40.2 nm as etched (test wire) | remaining core diameter | 12.2 nm | 25.8 nm | +112% | off (±24.6%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 49.5 nm as etched (test wire) | oxide thickness on the wire | 25.5 nm | 15.1 nm | -41% | off (±11.8%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 49.5 nm as etched (test wire) | remaining core diameter | 22.4 nm | 33.9 nm | +51% | off (±13.4%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 61 nm as etched (test wire) | oxide thickness on the wire | 28 nm | 16.4 nm | -41% | off (±10.7%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 61 nm as etched (test wire) | remaining core diameter | 31.8 nm | 44.3 nm | +39% | off (±9.4%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanowire, 68.1 nm as etched (test wire) | oxide thickness on the wire | 28.6 nm | 17.1 nm | -40% | off (±10.5%) | outside the tested scope | Figure 5(a) and (b): (as etched + increase − core) / 2; dataset muller_2023_nanowires |
+| Si nanowire, 68.1 nm as etched (test wire) | remaining core diameter | 37.8 nm | 50.9 nm | +35% | off (±7.9%) | outside the tested scope | Figure 5(b), after the oxide strip |
+| Si nanosheet, 79.6 nm wide as etched | oxide thickness on the sheet | 45.3 nm | 23.9 nm | -47% | off (±6.6%) | outside the tested scope | Figure 5, vector drawing; dataset muller_2023_series (text: 44.1 ± 3.7 nm for all sheets, p. 8) |
+| Si nanosheet, 79.6 nm wide as etched | remaining sheet width | 37.9 nm | 58.4 nm | +54% | off (±7.9%) | outside the tested scope | Figure 5(b), vector drawing; dataset muller_2023_series |
 | Si0.80Ge0.20 nanosheet, 114.8 nm wide as etched | oxide thickness on the sheet | 41.6 nm | 43.7 nm | +5% | within (±7.2%) | outside the tested scope | Figure 5, vector drawing; dataset muller_2023_series |
 | Si0.80Ge0.20 nanosheet, 114.8 nm wide as etched | germanium at the oxide/core interface | 55.6 % | 48.7 % | -12% | near (±10%) | outside the tested scope | text p. 9: “the Ge concentration at the oxide/core interface reaches 55.6%” (a large nanosheet in a separate TEM sample; its width is not given) |
 | Si0.50Ge0.50 nanosheet, 98.9 nm wide as etched | oxide thickness on the sheet | 32.2 nm | 47.8 nm | +48% | off (±9.3%) | outside the tested scope | Figure 5, vector drawing; dataset muller_2023_series |
@@ -645,22 +645,22 @@ Every step whose timing or temperature the paper leaves open carries a range in 
 
 | Unknown | What the paper says | Range searched | The reproduction used | Best alone | Score at the reproduction's value | Best score alone |
 |---|---|---|---|---|---|---|
-| Ramp 600 → 750 °C in nitrogen: duration (Si) | ramp rate not stated; 5 to 30 °C/min searched (5 to 30 min) | 300 to 1800 s | 900 s | 900 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 34.6% | 0 of 10 within tolerance, median error 34.6% |
-| Ramp 750 → 850 °C in pure oxygen: duration (Si) | ramp rate not stated; 5 to 30 °C/min searched (200 to 1200 s) | 200 to 1200 s | 600 s | 600 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 34.6% | 0 of 10 within tolerance, median error 34.6% |
-| Steam at 850 °C, 7.7 min for Si: duration (Si) | “e.g. 7.7 min for Si”, in the appendix only, as an example; counted from hydrogen injection | 400 to 900 s | 462 s | 816.7 s | 0 of 10 within tolerance, median error 34.6% | 10 of 10 within tolerance, median error 1.2% |
-| Cooled under nitrogen: duration (Si) | cool-down rate and unload temperature not stated | 300 to 2400 s | 1200 s | 1200 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 34.6% | 0 of 10 within tolerance, median error 34.6% |
+| Ramp 600 → 750 °C in nitrogen: duration (Si) | ramp rate not stated; 5 to 30 °C/min searched (5 to 30 min) | 300 to 1800 s | 900 s | 900 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 40.1% | 0 of 10 within tolerance, median error 40.1% |
+| Ramp 750 → 850 °C in pure oxygen: duration (Si) | ramp rate not stated; 5 to 30 °C/min searched (200 to 1200 s) | 200 to 1200 s | 600 s | 600 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 40.1% | 0 of 10 within tolerance, median error 40.1% |
+| Steam at 850 °C, 7.7 min for Si: duration (Si) | “e.g. 7.7 min for Si”, in the appendix only, as an example; counted from hydrogen injection | 400 to 900 s | 462 s | 900 s | 0 of 10 within tolerance, median error 40.1% | 10 of 10 within tolerance, median error 2.4% |
+| Cooled under nitrogen: duration (Si) | cool-down rate and unload temperature not stated | 300 to 2400 s | 1200 s | 1200 s (flat: the data do not constrain it) | 0 of 10 within tolerance, median error 40.1% | 0 of 10 within tolerance, median error 40.1% |
 
-Together: RampN2 duration 900 s (was 900); RampO2 duration 600 s (was 600); WetOxidation duration 816.7 s (was 462); CoolN2 duration 1200 s (was 1200).
+Together: RampN2 duration 900 s (was 900); RampO2 duration 600 s (was 600); WetOxidation duration 900 s (was 462); CoolN2 duration 1200 s (was 1200).
 
-As reproduced: 1 of 25 within tolerance, median error 32.2%. Aligned: 17 of 25 within tolerance, median error 5.4%. On the held-out samples only: 1 of 15 within tolerance, median error 31.3% as reproduced, 7 of 15 within tolerance, median error 12.4% aligned.
+As reproduced: 1 of 25 within tolerance, median error 41.2%. Aligned: 22 of 25 within tolerance, median error 3.7%. On the held-out samples only: 1 of 15 within tolerance, median error 41.2% as reproduced, 12 of 15 within tolerance, median error 4.9% aligned.
 
 Choices of program or material property, each scored on its own and on top of the aligned history:
 
 | Variant | Alone | With the aligned history |
 |---|---|---|
-| as stored: one steam step (779.5 s Si, 120 s SiGe) | 16 of 25 within tolerance, median error 6.4% | 16 of 25 within tolerance, median error 6.4% |
-| steam fraction 1.0 (pure H2O) | 1 of 25 within tolerance, median error 30.0% | 16 of 25 within tolerance, median error 8.9% |
-| steam fraction 0.67 (H2:O2 = 1:1) | 1 of 25 within tolerance, median error 48.1% | 5 of 25 within tolerance, median error 17.2% |
+| as stored: one steam step (779.5 s Si, 120 s SiGe) | 12 of 25 within tolerance, median error 8.9% | 12 of 25 within tolerance, median error 8.9% |
+| steam fraction 1.0 (pure H2O) | 1 of 25 within tolerance, median error 38.7% | 22 of 25 within tolerance, median error 4.9% |
+| steam fraction 0.67 (H2:O2 = 1:1) | 1 of 25 within tolerance, median error 55.7% | 1 of 25 within tolerance, median error 24.3% |
 
 The unknowns were chosen on the five fit wires (78.7 to 108.8 nm, oxide and core), the same wires the program's stress time was fitted on. The other ten numbers on Si (five smaller wires and one sheet) and the three SiGe numbers are the test. Unknowns are shared per furnace run: one set for the Si run, one for the SiGe run.
 
@@ -679,22 +679,22 @@ study: muller-2023
 set: aligned
 ```
 
-**7** within, **5** near, **3** off of 15 numbers with the aligned settings (the samples used to choose the unknowns are left out).
+**12** within, **2** near, **1** off of 15 numbers with the aligned settings (the samples used to choose the unknowns are left out).
 
 | Sample | Quantity | The paper | As reproduced above | Aligned | Difference | Verdict | How |
 |---|---|---|---|---|---|---|---|
-| Si nanowire, 35.3 nm as etched (test wire) | oxide thickness on the wire | 22.2 nm | 16.1 | 22.8 | +3% | within (±14%) | test |
-| Si nanowire, 35.3 nm as etched (test wire) | remaining core diameter | 11 nm | 17.4 | 7 | -36% | near (±27%) | test |
-| Si nanowire, 40.2 nm as etched (test wire) | oxide thickness on the wire | 22.9 nm | 16.9 | 24.6 | +7% | within (±13%) | test |
-| Si nanowire, 40.2 nm as etched (test wire) | remaining core diameter | 12.2 nm | 21.7 | 10.3 | -15% | within (±25%) | test |
-| Si nanowire, 49.5 nm as etched (test wire) | oxide thickness on the wire | 25.5 nm | 18.1 | 27.2 | +7% | within (±12%) | test |
-| Si nanowire, 49.5 nm as etched (test wire) | remaining core diameter | 22.4 nm | 30.2 | 17.6 | -22% | near (±13%) | test |
-| Si nanowire, 61 nm as etched (test wire) | oxide thickness on the wire | 28 nm | 19.1 | 29.5 | +5% | within (±11%) | test |
-| Si nanowire, 61 nm as etched (test wire) | remaining core diameter | 31.8 nm | 41.1 | 27.5 | -14% | near (±9%) | test |
-| Si nanowire, 68.1 nm as etched (test wire) | oxide thickness on the wire | 28.6 nm | 19.6 | 30.6 | +7% | within (±10%) | test |
-| Si nanowire, 68.1 nm as etched (test wire) | remaining core diameter | 37.8 nm | 48 | 34 | -10% | near (±8%) | test |
-| Si nanosheet, 79.6 nm wide as etched | oxide thickness on the sheet | 45.3 nm | 20.2 | 32.1 | -29% | off (±7%) | test |
-| Si nanosheet, 79.6 nm wide as etched | remaining sheet width | 37.9 nm | 59.2 | 44.7 | +18% | off (±8%) | test |
+| Si nanowire, 35.3 nm as etched (test wire) | oxide thickness on the wire | 22.2 nm | 12.7 | 19.3 | -13% | within (±14%) | test |
+| Si nanowire, 35.3 nm as etched (test wire) | remaining core diameter | 11 nm | 21.8 | 12.7 | +15% | within (±27%) | test |
+| Si nanowire, 40.2 nm as etched (test wire) | oxide thickness on the wire | 22.9 nm | 13.6 | 21.3 | -7% | within (±13%) | test |
+| Si nanowire, 40.2 nm as etched (test wire) | remaining core diameter | 12.2 nm | 25.8 | 15.4 | +26% | near (±25%) | test |
+| Si nanowire, 49.5 nm as etched (test wire) | oxide thickness on the wire | 25.5 nm | 15.1 | 24.6 | -4% | within (±12%) | test |
+| Si nanowire, 49.5 nm as etched (test wire) | remaining core diameter | 22.4 nm | 33.9 | 21.4 | -4% | within (±13%) | test |
+| Si nanowire, 61 nm as etched (test wire) | oxide thickness on the wire | 28 nm | 16.4 | 27.6 | -2% | within (±11%) | test |
+| Si nanowire, 61 nm as etched (test wire) | remaining core diameter | 31.8 nm | 44.3 | 30.2 | -5% | within (±9%) | test |
+| Si nanowire, 68.1 nm as etched (test wire) | oxide thickness on the wire | 28.6 nm | 17.1 | 29.1 | +2% | within (±10%) | test |
+| Si nanowire, 68.1 nm as etched (test wire) | remaining core diameter | 37.8 nm | 50.9 | 36.1 | -5% | within (±8%) | test |
+| Si nanosheet, 79.6 nm wide as etched | oxide thickness on the sheet | 45.3 nm | 23.9 | 45.4 | +0% | within (±7%) | test |
+| Si nanosheet, 79.6 nm wide as etched | remaining sheet width | 37.9 nm | 58.4 | 39 | +3% | within (±8%) | test |
 | Si0.80Ge0.20 nanosheet, 114.8 nm wide as etched | oxide thickness on the sheet | 41.6 nm | 43.7 | 43.7 | +5% | within (±7%) | test |
 | Si0.80Ge0.20 nanosheet, 114.8 nm wide as etched | germanium at the oxide/core interface | 55.6 % | 48.7 | 48.7 | -12% | near (±10%) | test |
 | Si0.50Ge0.50 nanosheet, 98.9 nm wide as etched | oxide thickness on the sheet | 32.2 nm | 47.8 | 47.8 | +48% | off (±9%) | test |
