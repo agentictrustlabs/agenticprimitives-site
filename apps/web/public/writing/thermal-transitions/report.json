@@ -1,0 +1,2447 @@
+{
+  "case": "Vitkavage 1990 (100), 1000 C, 8 h, cleanroom PMA",
+  "primary_durations": "midpoints of each prompt range",
+  "main": [
+    {
+      "id": "A_fast",
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 14253747670.327868,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "255ce57498c5f93f4e3fc71f60766345cb0a16fbc22112534d5fc1bc5dff4e6d",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "8da684f47f011f59784022dd2a113ea497a201ebb04ee5d8274f60da7b893e4c",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "bf50af08175126fdbff71843e5ec7b5a915c3ba7529a447f498064b5655150cf",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "9ea6384527584c1a40309798cde87c31daa91ed882d76ae8074e0ca9ba787c4e",
+      "scenario": {
+        "oxidation_heatup": "A",
+        "post_oxidation_cooling": "fast",
+        "pma": "A",
+        "durations_s": {
+          "heatup_s": 180.0,
+          "pma_heatup_s": 180.0,
+          "pma_cool_s": 600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": [],
+      "history": "examples/vitkavage_transitions/A_fast.isl"
+    },
+    {
+      "id": "A_slow",
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 14253609292.59699,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "42f8196126a2765d1d9d01d617fcf1476ed1263e3c99a378cbd0aeb884b385ea",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "826ba998a1e091c92019e55d6e78be63643e112828609679766d21986a251feb",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "d97bacf1af01bb1b605fd5600e1ef6d7db9704c692321a42aaaf1aed104bd249",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "b6fa08a66db6b43606c97bc614a634541eda03444aab811134554e7531ae79d9",
+      "scenario": {
+        "oxidation_heatup": "A",
+        "post_oxidation_cooling": "slow",
+        "pma": "A",
+        "durations_s": {
+          "heatup_s": 180.0,
+          "pma_heatup_s": 180.0,
+          "pma_cool_s": 600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": [],
+      "history": "examples/vitkavage_transitions/A_slow.isl"
+    },
+    {
+      "id": "B_fast",
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 1971519471.5117526,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "453c35e1245535c474f999f7b8a249b48dab4d52b9f672a3e09866dd5d60ea99",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "8da684f47f011f59784022dd2a113ea497a201ebb04ee5d8274f60da7b893e4c",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "89d557e4f3f5e609cf7caed2d3fc0a02ca98c2e59c78781d934d12f5b285f343",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "afd4ef2893beee7f901d0dc5ca8addfcb257bedf0e7a2cda316913838f3750c0",
+      "scenario": {
+        "oxidation_heatup": "B",
+        "post_oxidation_cooling": "fast",
+        "pma": "B",
+        "durations_s": {
+          "heatup_s": 5400.0,
+          "pma_heatup_s": 1800.0,
+          "pma_cool_s": 3600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": [],
+      "history": "examples/vitkavage_transitions/B_fast.isl"
+    },
+    {
+      "id": "B_slow",
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 1971501170.9722357,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "2372d2c3b0eb74e80cb30d409006554827e9a1b118c149dc3898af13150077e0",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "826ba998a1e091c92019e55d6e78be63643e112828609679766d21986a251feb",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "8456e79d936215ee853ebf0f393d6387ffeeafa9de5ac37220fa658288a109b2",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "6652d44cab605517c856668f9a8ab68657061bada69e82c88f61a021ab6844fa",
+      "scenario": {
+        "oxidation_heatup": "B",
+        "post_oxidation_cooling": "slow",
+        "pma": "B",
+        "durations_s": {
+          "heatup_s": 5400.0,
+          "pma_heatup_s": 1800.0,
+          "pma_cool_s": 3600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": [],
+      "history": "examples/vitkavage_transitions/B_slow.isl"
+    }
+  ],
+  "duration_corner_runs": [
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 17064252949.824282
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 13200438588.766289
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 15398829599.703602
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 11912112711.223042
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 17055726330.509089
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 13193842629.660128
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 15391135154.593107
+    },
+    {
+      "id": "A_fast",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 11906160499.283438
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 17064085938.213062
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 13200309393.15931
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 15398678887.958591
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 60,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 11911996124.746073
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 17055562088.509008
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 60,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 13193715576.548521
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 300
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 15390986942.152945
+    },
+    {
+      "id": "A_slow",
+      "durations_s": {
+        "heatup_s": 300,
+        "pma_heatup_s": 300,
+        "pma_cool_s": 900
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 11906045846.200163
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 5508610196.68034
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 1180452536.8991635
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 3296432667.2876387
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 706400012.4499495
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 5502449471.6422615
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 1179132341.2020297
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 3292745999.644987
+    },
+    {
+      "id": "B_fast",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 705609988.1058557
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 5508558081.548142
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 1180441369.029658
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 3296401480.5192857
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 3600,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 706393329.366851
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 5502399357.873965
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 1200,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 1179121602.20932
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 1800
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 3292716010.835736
+    },
+    {
+      "id": "B_slow",
+      "durations_s": {
+        "heatup_s": 7200,
+        "pma_heatup_s": 2400,
+        "pma_cool_s": 5400
+      },
+      "oxide_nm": 209.17904169258094,
+      "Qf_cm2": 435792021133.42505,
+      "Dit_cm2_eV": 705603561.7361213
+    }
+  ],
+  "pma_only_same_oxidized_wafer": [
+    {
+      "pma": "A",
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 14253747670.327868,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "255ce57498c5f93f4e3fc71f60766345cb0a16fbc22112534d5fc1bc5dff4e6d",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "8da684f47f011f59784022dd2a113ea497a201ebb04ee5d8274f60da7b893e4c",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "bf50af08175126fdbff71843e5ec7b5a915c3ba7529a447f498064b5655150cf",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "e2e783c0c2c91d8921fff40ae0c30b018ac77f255f3021bcc0f252aaddd0b33a",
+      "scenario": {
+        "oxidation_heatup": "A",
+        "post_oxidation_cooling": "fast",
+        "pma": "A",
+        "durations_s": {
+          "heatup_s": 180.0,
+          "pma_heatup_s": 180.0,
+          "pma_cool_s": 600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": []
+    },
+    {
+      "pma": "B",
+      "oxide_nm": 209.16803282240423,
+      "Qf_cm2": 268879576233.87775,
+      "Dit_cm2_eV": 1974182956.4210558,
+      "models": {
+        "oxide_nm": {
+          "program": "experiments/vitkavage_dit/oxide_growth.isl.template",
+          "program_sha256": "fbc107a341c0a2e13447fa400e0a418a683a1ca9e866b29766ca2fac98353fc1",
+          "support": "supported within scope",
+          "notes": [
+            "consumed substrate is 0.44 of the oxide grown beyond the law's 23 nm intercept, a fixed volume ratio; no source we hold measures it on planar silicon"
+          ],
+          "parameters": [
+            {
+              "name": "B0",
+              "value": 3.6053e-09,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_B",
+              "value": 1.286,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "BA0",
+              "value": 0.24265,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "E_BA",
+              "value": 2.0303,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), Table II, dry oxygen on (111), Arrhenius least-squares fit, table agent-read"
+            },
+            {
+              "name": "r_or",
+              "value": 0.59524,
+              "status": "hypothesis"
+            },
+            {
+              "name": "x_i",
+              "value": 2.3e-06,
+              "status": "sourced",
+              "source": "Deal and Grove, J. Appl. Phys. 36, 3770 (1965), stated intercept 230 +/- 30 angstrom for dry oxygen, agent-read"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            }
+          ]
+        },
+        "Qf_cm2": {
+          "program": "experiments/deal_qss/two_equilibria.isl.template",
+          "program_sha256": "8da684f47f011f59784022dd2a113ea497a201ebb04ee5d8274f60da7b893e4c",
+          "support": "supported within scope",
+          "notes": [
+            "hydrogen steps are left out: the program holds no effect of hydrogen on fixed charge. Charge read from a C-V curve can still fall after such an anneal because interface-trap charge falls; that apparent charge is not what this number is"
+          ],
+          "parameters": [
+            {
+              "name": "Q_hot",
+              "value": 20000000000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, steady value after dry oxidation at 1200 C"
+            },
+            {
+              "name": "slope",
+              "value": 535710000.0,
+              "status": "sourced",
+              "source": "Deal et al. 1967 Table II, line through the 1200 C and 920 C steady values"
+            },
+            {
+              "name": "T_hot",
+              "value": 1473.2,
+              "status": "constant"
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "k0",
+              "value": 0.081072,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_a",
+              "value": 0.05,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "k_i0",
+              "value": 153280.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_i",
+              "value": 1.8105,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "Qi_ref",
+              "value": 28131000000.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_q",
+              "value": 0.38313,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_iref",
+              "value": 1273.2,
+              "status": "constant"
+            },
+            {
+              "name": "p_ref",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "T_freeze",
+              "value": 623.15,
+              "status": "hypothesis"
+            },
+            {
+              "name": "w_freeze",
+              "value": 10.0,
+              "status": "hypothesis"
+            }
+          ]
+        },
+        "Dit_cm2_eV": {
+          "program": "scripts/search_trap_density.py (structure generated from the grammar)",
+          "program_sha256": "b3f5d99641ff52a04c0c0c75a0a741425995f84c4af2f42d2bd9687ebf0c0b5c",
+          "support": "direction only",
+          "notes": [
+            "the distribution over energy is the midgap prediction times the shape of one measured curve (an annealed p-type (111) sample); applying that shape to other orientations and recipes is an assumption"
+          ],
+          "parameters": [
+            {
+              "name": "log_N_born",
+              "value": 11.434,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_N_floor",
+              "value": 10.62,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_ref",
+              "value": -4.4731,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_r",
+              "value": 2.1562,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_k_H",
+              "value": -2.3687,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "log_h",
+              "value": 0.0,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "g_or",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage, Irene and Massoud, ONR TR 34 (1990), Table VIII, ratio of silicon surface atom density to (100)"
+            },
+            {
+              "name": "c_mid",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "N_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "rate_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "H_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "T_ref",
+              "value": 1173.2,
+              "status": "constant"
+            },
+            {
+              "name": "ln10",
+              "value": 2.3026,
+              "status": "constant"
+            },
+            {
+              "name": "k_B",
+              "value": 8.6173e-05,
+              "status": "constant"
+            },
+            {
+              "name": "log_B",
+              "value": 11.233,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "E_B",
+              "value": 0.70819,
+              "status": "fitted",
+              "given_the_value_recorded_at_its_last_scoring": true
+            },
+            {
+              "name": "T_ox",
+              "value": 1273.2,
+              "status": "sourced",
+              "source": "the temperature of the oxidation step in this recipe"
+            },
+            {
+              "name": "B_unit",
+              "value": 1.0,
+              "status": "constant"
+            },
+            {
+              "name": "k_HB",
+              "value": 1.0,
+              "status": "hypothesis"
+            },
+            {
+              "name": "shape_0p20",
+              "value": 1.8604,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.20 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p30",
+              "value": 1.5292,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.30 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p40",
+              "value": 1.4375,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.40 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p55",
+              "value": 1.0,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.55 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p70",
+              "value": 0.7216,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.70 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            },
+            {
+              "name": "shape_0p80",
+              "value": 0.9245,
+              "status": "sourced",
+              "source": "Vitkavage 1990 Figure 2, annealed p-type (111), density at 0.80 eV above the valence band over its midgap value, traced from the scan by an AI agent"
+            }
+          ]
+        }
+      },
+      "history_sha256": "c7e13674011d7f280742b8993ea75f9093ba6fb2fd0ac0eb9e9395c43cd00b57",
+      "scenario": {
+        "oxidation_heatup": "A",
+        "post_oxidation_cooling": "fast",
+        "pma": "B",
+        "durations_s": {
+          "heatup_s": 180.0,
+          "pma_heatup_s": 1800.0,
+          "pma_cool_s": 3600.0
+        },
+        "all_transition_timing": "assumed",
+        "pull_source_timing": "bound"
+      },
+      "refused": []
+    }
+  ],
+  "sensitivity": {
+    "oxide_nm": {
+      "four_run_min": 209.16803282240423,
+      "four_run_max": 209.17904169258094,
+      "four_run_span": 0.011008870176709706,
+      "duration_corner_min": 209.16803282240423,
+      "duration_corner_max": 209.17904169258094,
+      "duration_corner_span": 0.011008870176709706
+    },
+    "Qf_cm2": {
+      "four_run_min": 268879576233.87775,
+      "four_run_max": 435792021133.42505,
+      "four_run_span": 166912444899.5473,
+      "duration_corner_min": 268879576233.87775,
+      "duration_corner_max": 435792021133.42505,
+      "duration_corner_span": 166912444899.5473
+    },
+    "Dit_cm2_eV": {
+      "four_run_min": 1971501170.9722357,
+      "four_run_max": 14253747670.327868,
+      "four_run_span": 12282246499.355633,
+      "duration_corner_min": 705603561.7361213,
+      "duration_corner_max": 17064252949.824282,
+      "duration_corner_span": 16358649388.08816
+    }
+  },
+  "Qf_comparison": {
+    "reference_half_spread_cm2": 10000000000.0,
+    "four_run_insensitive": false,
+    "duration_corners_insensitive": false,
+    "criterion": "max minus min smaller than the supplied +/-0.1e11 half-spread; not the full 0.2e11 band"
+  },
+  "radiative_check": {
+    "formula": "dT/dt = -2 eps sigma (T^4 - T_env^4) / (rho cp d), T in kelvin",
+    "parameters": {
+      "eps": 0.7,
+      "sigma_W_m2_K4": 5.670374419e-08,
+      "rho_kg_m3": 2330,
+      "cp_J_kg_K": 900,
+      "d_m": 0.000525,
+      "T_env_K": 298.15
+    },
+    "comparison": [
+      {
+        "seconds": 0,
+        "prompt_C": 1000,
+        "equation_C": 1000.0000000000001
+      },
+      {
+        "seconds": 1.5,
+        "prompt_C": 800,
+        "equation_C": 800.668216225628
+      },
+      {
+        "seconds": 4.7,
+        "prompt_C": 600,
+        "equation_C": 601.7516060438472
+      },
+      {
+        "seconds": 13,
+        "prompt_C": 400,
+        "equation_C": 402.41669782527015
+      },
+      {
+        "seconds": 41,
+        "prompt_C": 200,
+        "equation_C": 211.881998901249
+      },
+      {
+        "seconds": 90,
+        "prompt_C": 100,
+        "equation_C": 117.32386127775521
+      },
+      {
+        "seconds": 300,
+        "prompt_C": 25,
+        "equation_C": 38.121989518242856
+      }
+    ],
+    "implementation": "The four histories use the prompt's knots exactly. Their final 25 C endpoint is an assumed tail, not the exact radiative solution (about 38.1 C at 300 s). The equation approaches 25 C asymptotically. Slow cooling is the prompt's phenomenological 5x time scaling."
+  },
+  "provenance": [
+    {
+      "number": "(100); 1000 C for 8 h",
+      "source": "paper",
+      "where": "Vitkavage 1990, Table I, PDF p. 37",
+      "timing": "stated"
+    },
+    {
+      "number": "400 C for 30 min in forming gas",
+      "source": "paper",
+      "where": "PDF p. 7",
+      "timing": "stated"
+    },
+    {
+      "number": "forming gas: 10% H2 / 90% N2",
+      "source": "paper plus transfer assumption",
+      "where": "PDF p. 7, explicitly specified for non-cleanroom set; adopted for cleanroom",
+      "timing": "assumed"
+    },
+    {
+      "number": "pull shorter than 5 s in oxidizing gas",
+      "source": "paper",
+      "where": "PDF p. 6, non-cleanroom set only",
+      "timing": "bound"
+    },
+    {
+      "number": "5 s travel at 1000 C, dry O2, applied to this cleanroom case",
+      "source": "prompt plus modelling assumption",
+      "timing": "assumed"
+    },
+    {
+      "number": "25 C at clean/load/store/metal/CV; N2 throughout preheat; dry O2 begins with the full 8 h clock",
+      "source": "prompt",
+      "timing": "assumed"
+    },
+    {
+      "number": "A: preheat 1\u20135 min; PMA heatup 1\u20135 min; PMA cooldown 5\u201315 min",
+      "source": "prompt",
+      "timing": "assumed"
+    },
+    {
+      "number": "B: preheat 60\u2013120 min; PMA heatup 20\u201340 min; PMA cooldown 30\u201390 min",
+      "source": "prompt",
+      "timing": "assumed"
+    },
+    {
+      "number": "fast cooling knots 0,1.5,4.7,13,41,90,300 s at 1000,800,600,400,200,100,25 C; slow times x5",
+      "source": "prompt",
+      "timing": "assumed"
+    },
+    {
+      "number": "emissivity 0.7; wafer thickness 525 um; density 2330 kg/m3; heat capacity 900 J/kg/K; surroundings 25 C",
+      "source": "prompt",
+      "timing": "assumed"
+    },
+    {
+      "number": "representative durations are range midpoints; hot-push curves use a normalized exponential, tau = duration/5, approximated by 12 linear segments; A PMA cooldown uses the same shape",
+      "source": "implementation choices within prompt ranges",
+      "timing": "assumed"
+    },
+    {
+      "number": "Qf comparison threshold +/-0.1e11 cm^-2",
+      "source": "prompt, referencing the paper's 1000 C spread",
+      "where": "Table III prints a spread for the 1 h temperature-series row; Table VI's 8 h row has no individual spread"
+    }
+  ],
+  "limits": [
+    "No transition temperatures or durations were fitted to measurements.",
+    "Qf starts at the oxidation equilibrium: preheat and forming-gas steps are omitted by its existing model, so their insensitivity is built in.",
+    "Dit uses the current fitted hydrogen rate without temperature dependence. Its changes during long forming-gas ramps are model sensitivity, not validated physical kinetics.",
+    "The growth model retains its existing 23 nm Deal\u2013Grove intercept; this is not a measured starting oxide. No material parameter was changed.",
+    "The paper's 8 h Table VI/VII rows do not give individual spreads; the Qf threshold comes from the prompt and the 1000 C temperature-series spread.",
+    "The 32 endpoint combinations sample the specified duration ranges; they are not a proof of extrema over every possible trajectory."
+  ]
+}

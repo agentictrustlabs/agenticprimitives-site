@@ -1,4 +1,4 @@
-**Emily's pages:** **Questions** · [Vocabulary](/writing/interface-vocabulary-for-emily) · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [Experiment proposal](/writing/experiment-proposal-for-emily) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+**Emily's pages:** **Questions** · [Thermal-transition test results](/writing/thermal-transition-test-results-for-emily) · [Vocabulary](/writing/interface-vocabulary-for-emily) · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [Experiment proposal](/writing/experiment-proposal-for-emily) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
 
 # Questions we need Emily to answer
 

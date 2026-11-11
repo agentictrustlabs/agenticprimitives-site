@@ -37,6 +37,15 @@ const AUTHORED: readonly Writing[] = [
     file: 'questions-for-emily-testing-a-theory-of-the-interface.md',
   },
   {
+    slug: 'thermal-transition-test-results-for-emily',
+    title: 'Thermal-transition test results',
+    description:
+      'Four simulated thermal histories for (100) silicon: hot push or furnace ramp, fast or slow oxidation cooling. Oxide thickness, fixed charge, interface traps, and the assumptions that limit the comparison.',
+    kind: 'study',
+    date: '2026-11-10',
+    file: 'thermal-transition-test-results-for-emily.md',
+  },
+  {
     slug: 'experiment-proposal-for-emily',
     title: 'Two measurements that would settle two open questions',
     description:
