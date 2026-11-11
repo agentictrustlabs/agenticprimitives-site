@@ -1,4 +1,4 @@
-**Emily's pages:** **Questions** · [Vocabulary](/writing/interface-vocabulary-for-emily) · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+**Emily's pages:** **Questions** · [Vocabulary](/writing/interface-vocabulary-for-emily) · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [Experiment proposal](/writing/experiment-proposal-for-emily) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
 
 # Questions we need Emily to answer
 
@@ -73,7 +73,7 @@ Listed by what they unlock:
 - **Kao Part I** (nanowire oxidation): a third nanowire dataset.
 *Default:* we continue with what is held; the nanowire and SiGe thickness cells stay weak.
 
-**10. Is there a laboratory that could run two measurements?**
+**10. Is there a laboratory that could run two measurements?** ([The proposal, on one page](/writing/experiment-proposal-for-emily).)
 If the organisers do run experiments on promising models, we would like to propose the two that separate our surviving hypotheses:
 - Fixed charge: one hour in nitrogen at 700 °C after oxidation at 900 °C. The surviving structures disagree by two tolerances.
 - SiC interface states: one 50 minute argon anneal at 1300 °C after oxidation at 1300 °C. The two surviving forms agree on every anneal measured and part by 13 tolerances here.

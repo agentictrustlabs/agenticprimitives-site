@@ -1,4 +1,4 @@
-**Emily's pages:** [Questions](/writing/questions-for-emily-testing-a-theory-of-the-interface) · [Vocabulary](/writing/interface-vocabulary-for-emily) · **Language** · [Studies reproduced](/writing/interface-studies-reproduced) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+**Emily's pages:** [Questions](/writing/questions-for-emily-testing-a-theory-of-the-interface) · [Vocabulary](/writing/interface-vocabulary-for-emily) · **Language** · [Studies reproduced](/writing/interface-studies-reproduced) · [Experiment proposal](/writing/experiment-proposal-for-emily) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
 
 # The language: how a process history and a model are written
 
@@ -159,15 +159,15 @@ A *Transport* operator must be written as a flux, so the amount is conserved. *E
 
 ## 5. Every number carries a label
 
-The 27 model files in this repository hold 285 labelled numbers:
+The 29 model files in this repository hold 311 labelled numbers:
 
 | Label | Meaning | Count |
 |---|---|---|
-| constant | a physical constant or a definition | 102 |
+| constant | a physical constant or a definition | 108 |
 | sourced | taken from a cited publication; the program must cite it | 62 |
-| computed | produced by a first-principles or atomistic calculation; the program must say which | 0 |
+| computed | produced by a first-principles or atomistic calculation; the program must say which | 1 |
 | fitted | adjusted to data by a calibration step: the only label a fit may change | 100 |
-| hypothesis | assumed, with nothing supporting it yet | 21 |
+| hypothesis | assumed, with nothing supporting it yet | 40 |
 
 A fit may change only `fitted` numbers. The runtime refuses to override a `sourced` one. This is how the project keeps a published constant from being quietly adjusted to match a result.
 

@@ -37,10 +37,19 @@ const AUTHORED: readonly Writing[] = [
     file: 'questions-for-emily-testing-a-theory-of-the-interface.md',
   },
   {
+    slug: 'experiment-proposal-for-emily',
+    title: 'Two measurements that would settle two open questions',
+    description:
+      'One page: the SiC argon anneal that separates two forms of interface-state removal, and the silicon nitrogen anneal that separates two fixed-charge programs, with the predictions and what each outcome would mean.',
+    kind: 'essay',
+    date: '2026-11-10',
+    file: 'experiment-proposal-for-emily.md',
+  },
+  {
     slug: 'interface-vocabulary-for-emily',
     title: 'The vocabulary: what the ontology calls things',
     description:
-      'The 67 domain terms and 36 working terms of the interface ontology, each with its definition, who wrote it, whether any source in the library uses the words, and which sources. Six terms have no source.',
+      'The 68 domain terms and 36 working terms of the interface ontology, each with its definition, who wrote it, whether any source in the library uses the words, and which sources. Seven terms have no source.',
     kind: 'essay',
     date: '2026-11-10',
     file: 'interface-vocabulary-for-emily.md',

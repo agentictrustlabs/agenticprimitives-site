@@ -1,4 +1,4 @@
-**Emily's pages:** [Questions](/writing/questions-for-emily-testing-a-theory-of-the-interface) · **Vocabulary** · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
+**Emily's pages:** [Questions](/writing/questions-for-emily-testing-a-theory-of-the-interface) · **Vocabulary** · [Language](/writing/interface-language-for-emily) · [Studies reproduced](/writing/interface-studies-reproduced) · [Experiment proposal](/writing/experiment-proposal-for-emily) · [The essay](/writing/testing-a-theory-of-the-interface-with-an-ontology)
 
 # The vocabulary: what the ontology calls things
 
