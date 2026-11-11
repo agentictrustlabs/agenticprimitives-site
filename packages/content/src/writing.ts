@@ -14,6 +14,8 @@ export interface Writing {
   file: string;
   cover?: string;
   linkedin?: string;
+  /** Kept on the site and in the sitemap, reachable by its link, but not listed on /writing. */
+  unlisted?: boolean;
 }
 
 /** Standalone essays, then the 21-day "The missing layer" series. Full text lives on this site. */
@@ -35,6 +37,7 @@ const AUTHORED: readonly Writing[] = [
     kind: 'essay',
     date: '2026-11-10',
     file: 'questions-for-emily-testing-a-theory-of-the-interface.md',
+    unlisted: true,
   },
   {
     slug: 'thermal-transition-test-results-for-emily',
@@ -321,7 +324,7 @@ const STUDIES: readonly Writing[] = (INTERFACE_STUDIES as { slug: string; title:
 export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES];
 
 export const SERIES = WRITING.filter((w) => w.kind === 'series');
-export const ESSAYS = WRITING.filter((w) => w.kind === 'essay');
+export const ESSAYS = WRITING.filter((w) => w.kind === 'essay' && !w.unlisted);
 
 export function writingBySlug(slug: string): Writing | undefined {
   return WRITING.find((w) => w.slug === slug);
