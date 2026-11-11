@@ -296,7 +296,7 @@ The first paired-data screen now gives a useful limit. Across 18 before-and-afte
 
 Two things followed. The width is not one number: fitted by orientation it is about 1.0 eV on (100), 0.4 eV on (110) and 0.65 eV on (511), so the population that (110) has more of may sit in a narrower band of energies; testing that needs trap density against energy without an anneal, which the benchmark gives for the annealed case only. And the scorecard no longer scores the 28 unannealed readings against the fixed-charge program: they are a row of their own with no program, which moved fixed charge from 47% to 52% in scope and from 65% to 77% of pairs ordered right.
 
-**H6. An oxygen repair window may precede unwanted growth or loss.** The hypothesis is that an oxygen pulse can change electrically active defects faster than it grows an unwanted interlayer or removes germanium. A useful window would require the repair time to be shorter than the pulse, and the pulse shorter than the growth and loss times. No such window has been established here.
+**H6 (dropped on Emily's advice, 10 November; it has no data behind it, and the odds below are kept only for the record). An oxygen repair window may precede unwanted growth or loss.** The hypothesis is that an oxygen pulse can change electrically active defects faster than it grows an unwanted interlayer or removes germanium. A useful window would require the repair time to be shorter than the pulse, and the pulse shorter than the growth and loss times. No such window has been established here.
 
 *Next test:* compare oxygen-then-inert with inert-then-oxygen at matched exposure and thermal history, including a final-state control and a pulse-duration series. Read electrical properties, isotope profiles, interlayer thickness and material loss together. Vacancy-mediated transport must compete with the published [network-interstitial explanation of Ge oxidation](https://doi.org/10.1063/1.4984805); isotope exchange alone cannot choose between them. *Falsifier:* the electrical improvement always requires growth or loss beyond a predeclared practical limit. *Status:* proposed; lowest priority until the coupled measurements are available.
 
@@ -357,7 +357,7 @@ The immediate order is H1 and H2, with H5 alongside them. Freeze a model and its
 |---|---|---|---|
 | Interlayer regrowth | 47% of amounts within tolerance; 0 of 3 at the held-out temperature | H1, interfacial growth as its own layer, now a separate term: 40% | Why the held-out temperature is missed; the interlayer amounts are the weak part |
 | Composition profile | 9 of 9 in the delivered program, held-out temperature amounts 0 of 3 | H1, finite surface exchange with uptake, fitted on amounts only: 60% | Instrument resolution. A temperature law with a held-out temperature has not been run |
-| Interface states, fixed charge | No data | H6: 5% | A source |
+| Interface states, fixed charge | No data | H6 dropped on Emily's advice (was 5%) | A source |
 
 **5. SiGe/oxide and Ge/GeO₂**
 
