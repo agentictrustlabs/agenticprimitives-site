@@ -329,7 +329,12 @@ const OFFLINE: ReadonlySet<string> = new Set([
   'interface-studies-reproduced', // taken down 2026-11-12; results move to the gated ISL workbench
 ]);
 
-export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES].filter((w) => !OFFLINE.has(w.slug));
+/** Every per-study page (kind 'study') taken down for now, 2026-11-12. Set to false to bring them all back. */
+const STUDIES_OFFLINE = true;
+
+export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES].filter(
+  (w) => !OFFLINE.has(w.slug) && !(STUDIES_OFFLINE && w.kind === 'study'),
+);
 
 export const SERIES = WRITING.filter((w) => w.kind === 'series');
 export const ESSAYS = WRITING.filter((w) => w.kind === 'essay' && !w.unlisted);
