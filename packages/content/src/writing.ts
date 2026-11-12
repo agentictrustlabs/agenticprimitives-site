@@ -321,7 +321,15 @@ const AUTHORED: readonly Writing[] = [
 /** The studies reproduced for the interface essay. Written by the ISL harness (`scripts/reproduce_studies.py --site`). */
 const STUDIES: readonly Writing[] = (INTERFACE_STUDIES as { slug: string; title: string; description: string; file: string }[]).map((s) => ({ ...s, kind: 'study' as const, date: '2026-11-10' }));
 
-export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES];
+/**
+ * Pages taken down for now. The markdown file and its entry stay, so a page comes back by removing its slug here.
+ * An offline page has no route (404), and is left out of the sitemap, RSS and llms.txt.
+ */
+const OFFLINE: ReadonlySet<string> = new Set([
+  'interface-studies-reproduced', // taken down 2026-11-12; results move to the gated ISL workbench
+]);
+
+export const WRITING: readonly Writing[] = [...AUTHORED, ...STUDIES].filter((w) => !OFFLINE.has(w.slug));
 
 export const SERIES = WRITING.filter((w) => w.kind === 'series');
 export const ESSAYS = WRITING.filter((w) => w.kind === 'essay' && !w.unlisted);
